@@ -169,3 +169,16 @@ non publiable.
   commentaires, pas de comptes publics.
 - Les notifications (étape 4) s'appuieront sur `poll.ouverture` et un cron
   du lundi, sans nouvelle table côté vote.
+
+## Migration 0009 : API et notifications
+
+- `voter(poll_id, option_id)` : un appel, et les résultats en retour. Le
+  client n'insère jamais dans `vote` directement.
+- `poll_resultats(poll_id)` renvoie le JSON lu par l'app, sous les mêmes
+  règles que la politique RLS : sondage fermé, ou l'appelant y a voté.
+- `device_token` : jetons FCM avec pays et langue, chacun ne lisant que les
+  siens. `notification_destinataires(type)` calcule côté base qui reçoit
+  quoi : tous les jetons du pays à l'ouverture, seuls ceux qui n'ont pas
+  voté pour le rappel du samedi 10h locale.
+- Cron horaire `palabre_poll_notify` → `pg_net` → Edge Function
+  `poll-notify`, si `pg_cron`, `pg_net` et deux secrets Vault sont présents.

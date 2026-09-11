@@ -13,24 +13,48 @@ faits sourcés.
 | Étape | Contenu | État |
 |---|---|---|
 | 1 | Schéma Supabase, RLS, jeu de test | fait |
-| 2 | Module sondage de bout en bout (Flutter, Edge Functions, crons) | à venir |
-| 3 | Module « Testez-vous » | à venir |
-| 4 | Notification hebdomadaire, partage d'image | à venir |
-| 5 | Module gouvernement | à venir |
-| 6 | Module assemblée | à venir |
-| 7 | Cache hors-ligne, poids, multi-pays | à venir |
+| 2 | Module sondage de bout en bout (Flutter, RPC, crons) | fait |
+| 3 | Module « Testez-vous », détail source par source, contestation | fait (quiz de test, contenu réel à rédiger) |
+| 4 | Notification hebdomadaire, partage d'image | fait (Firebase à configurer) |
+| 5 | Module gouvernement : grille, curseur temporel, fiche personne | fait (données fictives) |
+| 6 | Module assemblée : recherche, fiche député, fiche parti | fait (données fictives) |
+| 7 | Cache hors-ligne, poids, sélecteur multi-pays | fait |
 
 ## Structure
 
 ```
+lib/
+  main.dart            démarrage : cache local d'abord, réseau après le premier rendu
+  app/                 thème sombre plat, navigation à quatre onglets
+  core/                configuration pays, profil, cache Drift, Supabase, notifications
+  features/poll        question de la semaine, vote, résultats, archive
+  features/quiz        Testez-vous : moteur de concordance, détail, partage, contestation
+  features/reference   gouvernement (curseur temporel), assemblée, fiches personne et parti
+  l10n/                chaînes fr (référence), en, wo
 supabase/
   config.toml          configuration locale (auth anonyme activée)
   migrations/          schéma, dans l'ordre d'application
   seed.sql             jeu de données de test, entièrement fictif
   tests/               assertions SQL et stub pour Postgres nu
+  functions/           poll-notify : notification hebdomadaire via FCM
 scripts/db_check.sh    rejoue tout de zéro sur un Postgres local
+ios/ci_scripts/        préparation Xcode Cloud
 docs/schema.md         décisions de modélisation
+docs/deploiement.md    Supabase, Firebase, dart-defines, Xcode Cloud
 ```
+
+## Lancer l'app
+
+```sh
+flutter pub get
+flutter gen-l10n
+dart run build_runner build --delete-conflicting-outputs
+flutter run --dart-define=SUPABASE_URL=http://127.0.0.1:54321 \
+            --dart-define=SUPABASE_ANON_KEY=<clé anon locale>
+```
+
+Sans `--dart-define`, l'app démarre en mode « cache seul » et l'indique.
+Vérifications : `flutter analyze` et `flutter test`.
 
 ## Vérifier le schéma
 
