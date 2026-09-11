@@ -60,8 +60,6 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(path: Routes.settings, pageBuilder: (_, s) => fadePage(s, const SettingsScreen())),
       GoRoute(path: '/personne/:id', pageBuilder: (_, s) => fadePage(s, PersonScreen(personId: int.parse(s.pathParameters['id']!)))),
       GoRoute(path: '/parti/:id', pageBuilder: (_, s) => fadePage(s, PartyScreen(orgId: int.parse(s.pathParameters['id']!)))),
-      GoRoute(path: Routes.quizRun, pageBuilder: (_, s) => fadePage(s, const QuizRunScreen())),
-      GoRoute(path: Routes.quizResult, pageBuilder: (_, s) => fadePage(s, const QuizResultScreen())),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => AppShell(navigationShell: shell),
         branches: [
@@ -74,7 +72,17 @@ final routerProvider = Provider<GoRouter>((ref) {
               ],
             ),
           ]),
-          StatefulShellBranch(routes: [GoRoute(path: Routes.quiz, builder: (_, _) => const QuizTab())]),
+          StatefulShellBranch(routes: [
+            GoRoute(
+              path: Routes.quiz,
+              builder: (_, _) => const QuizTab(),
+              routes: [
+                // Enfants de l'onglet : la barre de navigation reste visible pendant le quiz.
+                GoRoute(path: 'repondre', pageBuilder: (_, s) => fadePage(s, const QuizRunScreen())),
+                GoRoute(path: 'resultat', pageBuilder: (_, s) => fadePage(s, const QuizResultScreen())),
+              ],
+            ),
+          ]),
           StatefulShellBranch(routes: [GoRoute(path: Routes.government, builder: (_, _) => const GovernmentTab())]),
           StatefulShellBranch(routes: [GoRoute(path: Routes.assembly, builder: (_, _) => const AssemblyTab())]),
         ],

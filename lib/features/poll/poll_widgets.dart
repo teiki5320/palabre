@@ -87,9 +87,8 @@ class OptionRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = context.tokens;
     final section = context.sectionColor;
-    final dim = neutral || !enabled;
-    final fg = selected ? context.onSectionColor : (dim ? t.muted : t.ink);
-    final borderColor = selected ? t.border : (dim ? t.disabled : t.border);
+    final fg = selected ? context.onSectionColor : (neutral || !enabled ? t.muted : t.ink);
+    final borderColor = neutral && !selected ? t.disabled : t.border;
     final row = AnimatedContainer(
       duration: const Duration(milliseconds: 160),
       curve: Curves.easeOut,
@@ -101,7 +100,7 @@ class OptionRow extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SquareCheck(checked: selected, disabled: dim, onDark: true),
+          SquareCheck(checked: selected, disabled: neutral, onDark: true),
           const SizedBox(width: 14),
           Expanded(child: Text(label, style: TextStyle(fontSize: 16, fontWeight: selected ? FontWeight.w800 : FontWeight.w700, color: fg))),
         ],

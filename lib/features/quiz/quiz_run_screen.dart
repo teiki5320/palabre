@@ -62,7 +62,7 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
       }
     }
 
-    final cardHeight = wide ? 380.0 : 320.0;
+    final cardHeight = (MediaQuery.sizeOf(context).height * 0.42).clamp(340.0, 560.0);
 
     Widget backCard() => Transform.translate(
           offset: const Offset(0, 10),

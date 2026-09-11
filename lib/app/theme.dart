@@ -208,7 +208,8 @@ class PalabreType {
   static const body = 'Manrope';
 
   /// Question de la semaine, titres d'écran.
-  static TextStyle poster(Color c) => TextStyle(fontFamily: display, fontSize: 34, fontWeight: FontWeight.w800, height: 1.1, letterSpacing: -1, color: c);
+  static TextStyle poster(Color c, {bool long = false}) =>
+      TextStyle(fontFamily: display, fontSize: long ? 28 : 34, fontWeight: FontWeight.w800, height: long ? 1.15 : 1.1, letterSpacing: long ? -0.8 : -1, color: c);
   static TextStyle title(Color c) => TextStyle(fontFamily: display, fontSize: 26, fontWeight: FontWeight.w800, height: 1.15, letterSpacing: -0.6, color: c);
   static TextStyle question(Color c) => TextStyle(fontFamily: display, fontSize: 27, fontWeight: FontWeight.w800, height: 1.2, letterSpacing: -0.6, color: c);
   static TextStyle cardTitle(Color c) => TextStyle(fontFamily: display, fontSize: 16, fontWeight: FontWeight.w700, height: 1.25, color: c);

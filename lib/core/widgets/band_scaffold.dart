@@ -236,20 +236,26 @@ class _Header extends StatelessWidget {
                           children: [
                             if ((eyebrow != null && eyebrow!.isNotEmpty) || clock != null) ...[
                               SizedBox(height: topRow ? 18 : 4),
-                              Row(
+                              Wrap(
+                                spacing: 8,
+                                runSpacing: 8,
+                                crossAxisAlignment: WrapCrossAlignment.center,
                                 children: [
-                                  if (eyebrow != null && eyebrow!.isNotEmpty) Flexible(child: Pill(label: eyebrow!)),
-                                  if (clock != null) ...[
-                                    const SizedBox(width: 8),
-                                    Icon(Icons.schedule, size: 16, color: t.muted),
-                                    const SizedBox(width: 4),
-                                    Flexible(child: Text(clock!, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: t.muted))),
-                                  ],
+                                  if (eyebrow != null && eyebrow!.isNotEmpty) Pill(label: eyebrow!),
+                                  if (clock != null)
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(Icons.schedule, size: 16, color: t.muted),
+                                        const SizedBox(width: 4),
+                                        Flexible(child: Text(clock!, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: t.muted))),
+                                      ],
+                                    ),
                                 ],
                               ),
                             ],
                             SizedBox(height: eyebrow == null && clock == null ? (topRow ? 16 : 4) : 14),
-                            titleWidget ?? Text(title, style: PalabreType.poster(t.ink).copyWith(fontSize: wide ? 40 : 34)),
+                            titleWidget ?? Text(title, style: PalabreType.poster(t.ink, long: title.length > 70).copyWith(fontSize: wide ? (title.length > 70 ? 34 : 40) : null)),
                             if (subtitle != null) ...[
                               const SizedBox(height: 8),
                               Text(subtitle!, style: TextStyle(fontSize: 14, height: 1.4, fontWeight: FontWeight.w500, color: t.muted)),
