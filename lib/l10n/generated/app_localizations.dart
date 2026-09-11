@@ -304,35 +304,11 @@ abstract class AppLocalizations {
   /// **'Ouvre le {date}'**
   String pollOpensAt(String date);
 
-  /// No description provided for @pollClosesAt.
-  ///
-  /// In fr, this message translates to:
-  /// **'Ferme le {date}'**
-  String pollClosesAt(String date);
-
   /// No description provided for @pollClosedAt.
   ///
   /// In fr, this message translates to:
   /// **'Fermé le {date}'**
   String pollClosedAt(String date);
-
-  /// No description provided for @pollStatusOpen.
-  ///
-  /// In fr, this message translates to:
-  /// **'Ouvert'**
-  String get pollStatusOpen;
-
-  /// No description provided for @pollStatusScheduled.
-  ///
-  /// In fr, this message translates to:
-  /// **'À venir'**
-  String get pollStatusScheduled;
-
-  /// No description provided for @pollStatusClosed.
-  ///
-  /// In fr, this message translates to:
-  /// **'Fermé'**
-  String get pollStatusClosed;
 
   /// No description provided for @pollOpenUntil.
   ///
@@ -376,23 +352,11 @@ abstract class AppLocalizations {
   /// **'Vous avez voté : {option}'**
   String pollVoted(String option);
 
-  /// No description provided for @pollVoteBeforeResults.
-  ///
-  /// In fr, this message translates to:
-  /// **'Votez pour voir les résultats.'**
-  String get pollVoteBeforeResults;
-
   /// No description provided for @pollVoteError.
   ///
   /// In fr, this message translates to:
   /// **'Le vote n\'a pas pu être enregistré.'**
   String get pollVoteError;
-
-  /// No description provided for @pollContext.
-  ///
-  /// In fr, this message translates to:
-  /// **'Contexte'**
-  String get pollContext;
 
   /// No description provided for @pollArchive.
   ///
@@ -435,12 +399,6 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Résultats en cours de calcul.'**
   String get pollNoResultsYet;
-
-  /// No description provided for @pollBreakdowns.
-  ///
-  /// In fr, this message translates to:
-  /// **'Découpes'**
-  String get pollBreakdowns;
 
   /// No description provided for @pollBreakdownTotal.
   ///
@@ -586,12 +544,6 @@ abstract class AppLocalizations {
   /// **'Neutre'**
   String get quizNeutral;
 
-  /// No description provided for @quizSkip.
-  ///
-  /// In fr, this message translates to:
-  /// **'Passer'**
-  String get quizSkip;
-
   /// No description provided for @quizImportant.
   ///
   /// In fr, this message translates to:
@@ -615,12 +567,6 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'{current} / {total}'**
   String quizProgress(int current, int total);
-
-  /// No description provided for @quizSeeResults.
-  ///
-  /// In fr, this message translates to:
-  /// **'Voir mon résultat'**
-  String get quizSeeResults;
 
   /// No description provided for @quizResultsTitle.
   ///
@@ -681,12 +627,6 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Non calculable : aucune position connue sur vos réponses.'**
   String get quizNotComparable;
-
-  /// No description provided for @quizDetail.
-  ///
-  /// In fr, this message translates to:
-  /// **'Détail, affirmation par affirmation'**
-  String get quizDetail;
 
   /// No description provided for @quizYou.
   ///
@@ -1269,6 +1209,30 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Profil'**
   String get settingsProfile;
+
+  /// No description provided for @settingsAppearance.
+  ///
+  /// In fr, this message translates to:
+  /// **'Apparence'**
+  String get settingsAppearance;
+
+  /// No description provided for @themeSystem.
+  ///
+  /// In fr, this message translates to:
+  /// **'Système'**
+  String get themeSystem;
+
+  /// No description provided for @themeLight.
+  ///
+  /// In fr, this message translates to:
+  /// **'Clair'**
+  String get themeLight;
+
+  /// No description provided for @themeDark.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sombre'**
+  String get themeDark;
 
   /// No description provided for @settingsLanguage.
   ///

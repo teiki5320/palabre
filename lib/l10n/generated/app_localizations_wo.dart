@@ -122,23 +122,9 @@ class AppLocalizationsWo extends AppLocalizations {
   }
 
   @override
-  String pollClosesAt(String date) {
-    return 'Ferme le $date';
-  }
-
-  @override
   String pollClosedAt(String date) {
     return 'Fermé le $date';
   }
-
-  @override
-  String get pollStatusOpen => 'Ubbi na';
-
-  @override
-  String get pollStatusScheduled => 'Di ñëw';
-
-  @override
-  String get pollStatusClosed => 'Tëj na';
 
   @override
   String pollOpenUntil(String date) {
@@ -177,13 +163,7 @@ class AppLocalizationsWo extends AppLocalizations {
   }
 
   @override
-  String get pollVoteBeforeResults => 'Woteel ngir gis li génn.';
-
-  @override
   String get pollVoteError => 'Le vote n\'a pas pu être enregistré.';
-
-  @override
-  String get pollContext => 'Cëslaay';
 
   @override
   String get pollArchive => 'Ayu-bés yi weesu';
@@ -217,9 +197,6 @@ class AppLocalizationsWo extends AppLocalizations {
 
   @override
   String get pollNoResultsYet => 'Résultats en cours de calcul.';
-
-  @override
-  String get pollBreakdowns => 'Découpes';
 
   @override
   String get pollBreakdownTotal => 'Ensemble';
@@ -308,9 +285,6 @@ class AppLocalizationsWo extends AppLocalizations {
   String get quizNeutral => 'Diggante';
 
   @override
-  String get quizSkip => 'Weesu';
-
-  @override
   String get quizImportant => 'Am solo ci man';
 
   @override
@@ -327,9 +301,6 @@ class AppLocalizationsWo extends AppLocalizations {
   String quizProgress(int current, int total) {
     return '$current / $total';
   }
-
-  @override
-  String get quizSeeResults => 'Voir mon résultat';
 
   @override
   String get quizResultsTitle => 'Votre concordance';
@@ -385,9 +356,6 @@ class AppLocalizationsWo extends AppLocalizations {
   @override
   String get quizNotComparable =>
       'Non calculable : aucune position connue sur vos réponses.';
-
-  @override
-  String get quizDetail => 'Détail, affirmation par affirmation';
 
   @override
   String get quizYou => 'Vous';
@@ -719,6 +687,18 @@ class AppLocalizationsWo extends AppLocalizations {
 
   @override
   String get settingsProfile => 'Profil';
+
+  @override
+  String get settingsAppearance => 'Apparence';
+
+  @override
+  String get themeSystem => 'Système';
+
+  @override
+  String get themeLight => 'Clair';
+
+  @override
+  String get themeDark => 'Sombre';
 
   @override
   String get settingsLanguage => 'Làkk';

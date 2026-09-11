@@ -31,7 +31,7 @@ String motifLabel(BuildContext context, String? m) => switch (m) {
       _ => context.l10n.motifAutre,
     };
 
-/// Fiche personne : mandats en frise, affiliations, parcours. Chaque ligne
+/// Fiche personne : identité, mandats, affiliations, parcours. Chaque ligne
 /// renvoie à sa source. Les positions affichées sont celles de son parti.
 class PersonScreen extends ConsumerWidget {
   const PersonScreen({super.key, required this.personId});
@@ -40,12 +40,17 @@ class PersonScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final scheme = Theme.of(context).colorScheme;
+    final t = context.tokens;
     final reference = ref.watch(currentReferenceProvider);
     final b = reference.value;
     final person = b?.person(personId);
     if (b == null || person == null) {
-      return Scaffold(appBar: AppBar(), body: reference.isLoading ? const Center(child: CircularProgressIndicator(strokeWidth: 2)) : ErrorRetry(message: l10n.personNoData));
+      return BandScaffold(
+        title: '',
+        children: [
+          SoftCard(child: reference.isLoading ? const Padding(padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator(strokeWidth: 2))) : ErrorRetry(message: l10n.personNoData)),
+        ],
+      );
     }
     final today = dayOnly(DateTime.now());
     final mandates = b.mandatesOf(personId);
@@ -56,13 +61,15 @@ class PersonScreen extends ConsumerWidget {
     final quiz = ref.watch(currentQuizProvider).value;
     final partyPositions = party == null || quiz == null ? const <dynamic>[] : quiz.positionsOf(party.id);
     final locale = context.localeName;
+    final current = mandates.where((m) => m.fin == null).firstOrNull;
+    final role = current == null ? null : (b.portfolio(current.portfolioId)?.intitule ?? b.role(current.roleId)?.intitule);
 
-    return Scaffold(
-      appBar: AppBar(),
-      body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
-        children: [
-          Row(
+    return BandScaffold(
+      eyebrow: role ?? party?.nom,
+      title: person.nom,
+      children: [
+        SoftCard(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               PersonAvatar(nom: person.nom, photoUrl: person.photoUrl, size: 84, color: parseHexColor(party?.couleur)),
@@ -71,50 +78,55 @@ class PersonScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(person.nom, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600, height: 1.2)),
-                    if (person.naissance != null) Padding(padding: const EdgeInsets.only(top: 4), child: Text(l10n.personBorn(LocalTime.civil(person.naissance!, locale)), style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant))),
+                    if (person.naissance != null) Text(l10n.personBorn(LocalTime.civil(person.naissance!, locale)), style: PalabreType.note(t.muted)),
                     if (party != null)
-                      TextButton(
-                        style: TextButton.styleFrom(padding: EdgeInsets.zero, alignment: Alignment.centerLeft),
-                        onPressed: () => context.push(Routes.party(party.id)),
-                        child: Text(party.nom),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 6),
+                        child: Pill(label: party.nom, icon: Icons.account_balance_outlined, onTap: () => context.push(Routes.party(party.id))),
                       ),
-                    if (person.photoSource != null) Text('${l10n.source} : ${person.photoSource}${person.photoLicence != null ? ' · ${person.photoLicence}' : ''}', style: TextStyle(fontSize: 10, color: scheme.onSurfaceVariant)),
+                    if (person.photoSource != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: Text('${l10n.source} : ${person.photoSource}${person.photoLicence != null ? ' · ${person.photoLicence}' : ''}', style: TextStyle(fontSize: 10.5, color: t.muted)),
+                      ),
                     if (person.wikidataId != null) SourceLink(url: 'https://www.wikidata.org/wiki/${person.wikidataId}', label: 'Wikidata', dense: true),
                   ],
                 ),
               ),
             ],
           ),
-          SectionTitle(l10n.personMandates),
-          if (mandates.isEmpty) Text(l10n.personNoData, style: TextStyle(color: scheme.onSurfaceVariant)),
-          for (final m in mandates) _MandateRow(bundle: b, mandate: m),
-          if (affiliations.isNotEmpty) ...[
-            SectionTitle(l10n.personAffiliations),
-            for (final a in affiliations) _AffiliationRow(bundle: b, affiliation: a),
+        ),
+        CardSection(
+          title: l10n.personMandates,
+          children: [
+            if (mandates.isEmpty) Text(l10n.personNoData, style: TextStyle(color: t.muted)),
+            for (final m in mandates) _MandateRow(bundle: b, mandate: m),
           ],
-          if (career.isNotEmpty) ...[
-            SectionTitle(l10n.personCareer),
-            for (final c in career)
-              _TimelineRow(
-                title: c.fonction,
-                subtitle: [c.periode, if (c.organisation != null) c.organisation!].join(' · '),
-                sourceUrl: c.sourceUrl,
-              ),
-          ],
-          if (party != null && partyPositions.isNotEmpty && quiz != null) ...[
-            SectionTitle(l10n.personPartyPositions),
-            Text(l10n.personPartyPositionsNote, style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant, height: 1.35)),
-            const SizedBox(height: 8),
-            for (final s in quiz.statements)
-              if (quiz.position(s.id, party.id) != null) ...[
-                Text(s.texte, style: const TextStyle(fontSize: 13, height: 1.3)),
-                PositionTile(party: quiz.party(party.id)!, position: quiz.position(s.id, party.id), dense: true),
-                const CardDivider(),
-              ],
-          ],
-        ],
-      ),
+        ),
+        if (affiliations.isNotEmpty)
+          CardSection(title: l10n.personAffiliations, children: [for (final a in affiliations) _AffiliationRow(bundle: b, affiliation: a)]),
+        if (career.isNotEmpty)
+          CardSection(
+            title: l10n.personCareer,
+            children: [
+              for (final c in career)
+                _TimelineRow(title: c.fonction, subtitle: [c.periode, if (c.organisation != null) c.organisation!].join(' · '), sourceUrl: c.sourceUrl),
+            ],
+          ),
+        if (party != null && partyPositions.isNotEmpty && quiz != null)
+          CardSection(
+            title: l10n.personPartyPositions,
+            children: [
+              Text(l10n.personPartyPositionsNote, style: PalabreType.note(t.muted)),
+              const SizedBox(height: 8),
+              for (final s in quiz.statements)
+                if (quiz.position(s.id, party.id) != null) ...[
+                  Padding(padding: const EdgeInsets.only(top: 8), child: Text(s.texte, style: TextStyle(fontSize: 13.5, height: 1.3, fontWeight: FontWeight.w600, color: t.ink))),
+                  PositionTile(party: quiz.party(party.id)!, position: quiz.position(s.id, party.id), dense: true),
+                ],
+            ],
+          ),
+      ],
     );
   }
 }
@@ -130,21 +142,21 @@ class _TimelineRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
+    final t = context.tokens;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 7),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(padding: const EdgeInsets.only(top: 6), child: ColorDot(color ?? scheme.outline)),
+          Padding(padding: const EdgeInsets.only(top: 6), child: ColorDot(color ?? t.line, size: 9)),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: const TextStyle(fontWeight: FontWeight.w500, height: 1.3)),
+                Text(title, style: TextStyle(fontWeight: FontWeight.w700, height: 1.3, color: t.ink)),
                 const SizedBox(height: 2),
-                Text(subtitle, style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant, height: 1.3)),
+                Text(subtitle, style: PalabreType.note(t.muted)),
                 ?trailing,
                 SourceLink(url: sourceUrl, label: sourceLabel, dense: true),
               ],
@@ -207,6 +219,7 @@ class _AffiliationRow extends StatelessWidget {
     final org = bundle.organization(affiliation.organizationId);
     if (org == null) return const SizedBox.shrink();
     return InkWell(
+      borderRadius: BorderRadius.circular(10),
       onTap: org.isParty ? () => context.push(Routes.party(org.id)) : null,
       child: _TimelineRow(
         title: org.nom,
@@ -229,16 +242,16 @@ class ActivityBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final scheme = Theme.of(context).colorScheme;
+    final t = context.tokens;
     String v(int? n) => n == null ? l10n.asmNotPublished : '$n';
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         for (final a in activities) ...[
-          Text(a.periode, style: const TextStyle(fontWeight: FontWeight.w500)),
+          Text(a.periode, style: TextStyle(fontWeight: FontWeight.w700, color: t.ink)),
           const SizedBox(height: 4),
           if (!a.hasAny)
-            Text(l10n.asmActivityNone, style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant))
+            Text(l10n.asmActivityNone, style: PalabreType.note(t.muted))
           else
             Table(
               columnWidths: const {1: IntrinsicColumnWidth()},
@@ -251,8 +264,8 @@ class ActivityBlock extends StatelessWidget {
                   (l10n.asmCommittees, v(a.commissions)),
                 ])
                   TableRow(children: [
-                    Padding(padding: const EdgeInsets.symmetric(vertical: 3), child: Text(row.$1, style: TextStyle(fontSize: 13, color: scheme.onSurfaceVariant))),
-                    Padding(padding: const EdgeInsets.symmetric(vertical: 3), child: Text(row.$2, textAlign: TextAlign.end, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500))),
+                    Padding(padding: const EdgeInsets.symmetric(vertical: 3), child: Text(row.$1, style: TextStyle(fontSize: 13, color: t.muted))),
+                    Padding(padding: const EdgeInsets.symmetric(vertical: 3), child: Text(row.$2, textAlign: TextAlign.end, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: t.ink))),
                   ]),
               ],
             ),

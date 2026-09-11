@@ -19,15 +19,20 @@ class PartyScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final scheme = Theme.of(context).colorScheme;
+    final t = context.tokens;
     final reference = ref.watch(currentReferenceProvider);
     final b = reference.value;
     final org = b?.organization(orgId);
     if (b == null || org == null) {
-      return Scaffold(appBar: AppBar(), body: reference.isLoading ? const Center(child: CircularProgressIndicator(strokeWidth: 2)) : ErrorRetry(message: l10n.errorGeneric));
+      return BandScaffold(
+        title: '',
+        children: [
+          SoftCard(child: reference.isLoading ? const Padding(padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator(strokeWidth: 2))) : ErrorRetry(message: l10n.errorGeneric)),
+        ],
+      );
     }
     final locale = context.localeName;
-    final color = parseHexColor(org.couleur) ?? scheme.primary;
+    final color = parseHexColor(org.couleur) ?? t.primary;
     final members = b.membersOf(org.id, dayOnly(DateTime.now()));
     final relations = b.orgRelations.where((r) => r.fromId == org.id || r.toId == org.id).toList();
     final quiz = ref.watch(currentQuizProvider).value;
@@ -40,80 +45,105 @@ class PartyScreen extends ConsumerWidget {
       _ => l10n.orgGroupe,
     };
 
-    return Scaffold(
-      appBar: AppBar(),
-      body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
-        children: [
-          Row(
+    return BandScaffold(
+      eyebrow: [typeLabel, if (org.sigle != null) org.sigle!].join(' · '),
+      title: org.nom,
+      children: [
+        SoftCard(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(width: 6, height: 44, decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(3))),
-              const SizedBox(width: 12),
+              Container(width: 10, height: 48, decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(5))),
+              const SizedBox(width: 14),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(org.nom, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600, height: 1.2)),
-                    Text([typeLabel, if (org.sigle != null) org.sigle!].join(' · '), style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant)),
+                    if (org.fondation != null) Text(l10n.partyFounded(LocalTime.civil(org.fondation!, locale)), style: PalabreType.note(t.muted)),
+                    if (org.dissolution != null) Text(l10n.partyDissolved(LocalTime.civil(org.dissolution!, locale)), style: PalabreType.note(t.muted)),
+                    SourceLink(url: org.sourceUrl, dense: true),
                   ],
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 8),
-          if (org.fondation != null) Text(l10n.partyFounded(LocalTime.civil(org.fondation!, locale)), style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant)),
-          if (org.dissolution != null) Text(l10n.partyDissolved(LocalTime.civil(org.dissolution!, locale)), style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant)),
-          SourceLink(url: org.sourceUrl, dense: true),
-          if (relations.isNotEmpty) ...[
-            SectionTitle(l10n.partyHistory),
-            for (final r in relations)
-              Builder(builder: (context) {
-                final isFrom = r.fromId == org.id;
-                final other = b.organization(isFrom ? r.toId : r.fromId);
-                final label = switch (r.type) {
-                  'scission' => l10n.relScission,
-                  'fusion' => l10n.relFusion,
-                  'renommage' => l10n.relRenommage,
-                  'coalition_membre' => l10n.relCoalitionMembre,
-                  _ => l10n.relAbsorption,
-                };
-                return ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  dense: true,
-                  onTap: other == null ? null : () => context.push(Routes.party(other.id)),
-                  title: Text('$label ${other?.nom ?? '?'}'),
-                  subtitle: Row(children: [
-                    if (r.date != null) Text(LocalTime.civil(r.date!, locale), style: const TextStyle(fontSize: 12)),
-                    const SizedBox(width: 8),
-                    SourceLink(url: r.sourceUrl, dense: true),
-                  ]),
-                );
-              }),
+        ),
+        if (relations.isNotEmpty)
+          CardSection(
+            title: l10n.partyHistory,
+            children: [
+              for (final r in relations)
+                Builder(builder: (context) {
+                  final isFrom = r.fromId == org.id;
+                  final other = b.organization(isFrom ? r.toId : r.fromId);
+                  final label = switch (r.type) {
+                    'scission' => l10n.relScission,
+                    'fusion' => l10n.relFusion,
+                    'renommage' => l10n.relRenommage,
+                    'coalition_membre' => l10n.relCoalitionMembre,
+                    _ => l10n.relAbsorption,
+                  };
+                  return InkWell(
+                    borderRadius: BorderRadius.circular(10),
+                    onTap: other == null ? null : () => context.push(Routes.party(other.id)),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 6),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('$label ${other?.nom ?? '?'}', style: TextStyle(fontWeight: FontWeight.w700, color: t.ink)),
+                          Row(children: [
+                            if (r.date != null) Text(LocalTime.civil(r.date!, locale), style: PalabreType.note(t.muted)),
+                            const SizedBox(width: 8),
+                            SourceLink(url: r.sourceUrl, dense: true),
+                          ]),
+                        ],
+                      ),
+                    ),
+                  );
+                }),
+            ],
+          ),
+        CardSection(
+          title: l10n.partyMembers,
+          trailing: members.isEmpty ? null : Pill(label: '${members.length}'),
+          children: [
+            if (members.isEmpty) Text(l10n.personNoData, style: TextStyle(color: t.muted)),
+            for (var i = 0; i < members.length; i++) ...[
+              if (i > 0) const CardDivider(space: 6),
+              InkWell(
+                borderRadius: BorderRadius.circular(10),
+                onTap: () => context.push(Routes.person(members[i].id)),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: Row(
+                    children: [
+                      PersonAvatar(nom: members[i].nom, photoUrl: members[i].photoUrl, size: 36, color: color),
+                      const SizedBox(width: 12),
+                      Expanded(child: Text(members[i].nom, style: PalabreType.label(t.ink))),
+                      Icon(Icons.chevron_right, size: 18, color: t.muted),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ],
-          SectionTitle(l10n.partyMembers),
-          if (members.isEmpty) Text(l10n.personNoData, style: TextStyle(color: scheme.onSurfaceVariant)),
-          for (final p in members)
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              dense: true,
-              leading: PersonAvatar(nom: p.nom, photoUrl: p.photoUrl, size: 36, color: color),
-              title: Text(p.nom),
-              onTap: () => context.push(Routes.person(p.id)),
-            ),
-          if (org.isParty) ...[
-            SectionTitle(l10n.partyPositions),
-            if (positions.isEmpty || quiz == null)
-              Text(l10n.partyPositionsNone, style: TextStyle(color: scheme.onSurfaceVariant))
-            else
-              for (final s in quiz.statements)
-                if (quiz.position(s.id, org.id) != null) ...[
-                  Text(s.texte, style: const TextStyle(fontSize: 13, height: 1.3)),
-                  PositionTile(party: quiz.party(org.id)!, position: quiz.position(s.id, org.id), dense: true),
-                  const CardDivider(),
-                ],
-          ],
-        ],
-      ),
+        ),
+        if (org.isParty)
+          CardSection(
+            title: l10n.partyPositions,
+            children: [
+              if (positions.isEmpty || quiz == null)
+                Text(l10n.partyPositionsNone, style: TextStyle(color: t.muted))
+              else
+                for (final s in quiz.statements)
+                  if (quiz.position(s.id, org.id) != null) ...[
+                    Padding(padding: const EdgeInsets.only(top: 8), child: Text(s.texte, style: TextStyle(fontSize: 13.5, height: 1.3, fontWeight: FontWeight.w600, color: t.ink))),
+                    PositionTile(party: quiz.party(org.id)!, position: quiz.position(s.id, org.id), dense: true),
+                  ],
+            ],
+          ),
+      ],
     );
   }
 }

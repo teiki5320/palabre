@@ -122,23 +122,9 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String pollClosesAt(String date) {
-    return 'Ferme le $date';
-  }
-
-  @override
   String pollClosedAt(String date) {
     return 'Fermé le $date';
   }
-
-  @override
-  String get pollStatusOpen => 'Ouvert';
-
-  @override
-  String get pollStatusScheduled => 'À venir';
-
-  @override
-  String get pollStatusClosed => 'Fermé';
 
   @override
   String pollOpenUntil(String date) {
@@ -178,13 +164,7 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get pollVoteBeforeResults => 'Votez pour voir les résultats.';
-
-  @override
   String get pollVoteError => 'Le vote n\'a pas pu être enregistré.';
-
-  @override
-  String get pollContext => 'Contexte';
 
   @override
   String get pollArchive => 'Semaines précédentes';
@@ -218,9 +198,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get pollNoResultsYet => 'Résultats en cours de calcul.';
-
-  @override
-  String get pollBreakdowns => 'Découpes';
 
   @override
   String get pollBreakdownTotal => 'Ensemble';
@@ -309,9 +286,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get quizNeutral => 'Neutre';
 
   @override
-  String get quizSkip => 'Passer';
-
-  @override
   String get quizImportant => 'Important pour moi';
 
   @override
@@ -328,9 +302,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String quizProgress(int current, int total) {
     return '$current / $total';
   }
-
-  @override
-  String get quizSeeResults => 'Voir mon résultat';
 
   @override
   String get quizResultsTitle => 'Votre concordance';
@@ -386,9 +357,6 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get quizNotComparable =>
       'Non calculable : aucune position connue sur vos réponses.';
-
-  @override
-  String get quizDetail => 'Détail, affirmation par affirmation';
 
   @override
   String get quizYou => 'Vous';
@@ -720,6 +688,18 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get settingsProfile => 'Profil';
+
+  @override
+  String get settingsAppearance => 'Apparence';
+
+  @override
+  String get themeSystem => 'Système';
+
+  @override
+  String get themeLight => 'Clair';
+
+  @override
+  String get themeDark => 'Sombre';
 
   @override
   String get settingsLanguage => 'Langue';

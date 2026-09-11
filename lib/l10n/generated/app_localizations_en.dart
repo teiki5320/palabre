@@ -122,23 +122,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String pollClosesAt(String date) {
-    return 'Closes on $date';
-  }
-
-  @override
   String pollClosedAt(String date) {
     return 'Closed on $date';
   }
-
-  @override
-  String get pollStatusOpen => 'Open';
-
-  @override
-  String get pollStatusScheduled => 'Upcoming';
-
-  @override
-  String get pollStatusClosed => 'Closed';
 
   @override
   String pollOpenUntil(String date) {
@@ -177,13 +163,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get pollVoteBeforeResults => 'Vote to see the results.';
-
-  @override
   String get pollVoteError => 'Your vote could not be recorded.';
-
-  @override
-  String get pollContext => 'Context';
 
   @override
   String get pollArchive => 'Previous weeks';
@@ -217,9 +197,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pollNoResultsYet => 'Results are being computed.';
-
-  @override
-  String get pollBreakdowns => 'Breakdowns';
 
   @override
   String get pollBreakdownTotal => 'All';
@@ -308,9 +285,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quizNeutral => 'Neutral';
 
   @override
-  String get quizSkip => 'Skip';
-
-  @override
   String get quizImportant => 'Important to me';
 
   @override
@@ -327,9 +301,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String quizProgress(int current, int total) {
     return '$current / $total';
   }
-
-  @override
-  String get quizSeeResults => 'See my result';
 
   @override
   String get quizResultsTitle => 'Your match';
@@ -384,9 +355,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get quizNotComparable =>
       'Not computable: no known position on your answers.';
-
-  @override
-  String get quizDetail => 'Detail, statement by statement';
 
   @override
   String get quizYou => 'You';
@@ -718,6 +686,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsProfile => 'Profile';
+
+  @override
+  String get settingsAppearance => 'Appearance';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get themeLight => 'Light';
+
+  @override
+  String get themeDark => 'Dark';
 
   @override
   String get settingsLanguage => 'Language';
