@@ -280,8 +280,8 @@ end $$;
 do $$ begin perform public.poll_tick(); end $$;
 
 -- ---------------------------------------------------------------------------
--- Testez-vous : quiz de test (5 affirmations, non publiable en l'état :
--- un quiz publié en compte entre 20 et 30). Le vrai quiz arrive à l'étape 3.
+-- Testez-vous : quiz de test, 25 affirmations fictives, publié en local
+-- seulement. Le vrai quiz arrive avec le contenu réel.
 -- ---------------------------------------------------------------------------
 
 insert into public.quiz (id, country_code, titre, version, publie) values
@@ -313,6 +313,95 @@ insert into public.party_position (statement_id, org_id, position, source_type, 
   (5, 1, 'neutre',        'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
   (5, 2, 'sans_position', 'aucune',          null, null, null),
   (5, 3, 'sans_position', 'aucune',          null, null, null);
+
+-- Vingt affirmations fictives de plus : le quiz atteint les 25 requises
+-- pour être publié en local et exercer le balayage de bout en bout.
+insert into public.statement (id, quiz_id, ordre, texte, theme) values
+  (6, 1, 6, 'Le service militaire civique doit être rétabli pour les 18-25 ans.', 'institutions'),
+  (7, 1, 7, 'Les députés doivent publier leur présence en séance chaque mois.', 'institutions'),
+  (8, 1, 8, 'Le prix du carburant doit être plafonné par l''État.', 'economie'),
+  (9, 1, 9, 'Les jeunes entreprises doivent être exonérées d''impôt trois ans.', 'economie'),
+  (10, 1, 10, 'L''agriculture familiale doit être prioritaire dans les subventions.', 'agriculture'),
+  (11, 1, 11, 'La pêche industrielle étrangère doit être interdite dans les eaux nationales.', 'agriculture'),
+  (12, 1, 12, 'Les langues nationales doivent être enseignées dès le primaire.', 'education'),
+  (13, 1, 13, 'Les universités publiques doivent sélectionner à l''entrée.', 'education'),
+  (14, 1, 14, 'Les médicaments essentiels doivent être gratuits pour les enfants.', 'sante'),
+  (15, 1, 15, 'Chaque département doit avoir un hôpital de référence d''ici cinq ans.', 'sante'),
+  (16, 1, 16, 'Le transport public urbain doit être gratuit pour les étudiants.', 'infrastructure'),
+  (17, 1, 17, 'Les autoroutes doivent rester à péage pour financer leur entretien.', 'infrastructure'),
+  (18, 1, 18, 'Les communes doivent élire directement leur maire.', 'decentralisation'),
+  (19, 1, 19, 'Les régions doivent gérer elles-mêmes leur budget d''éducation.', 'decentralisation'),
+  (20, 1, 20, 'Les déchets plastiques à usage unique doivent être interdits.', 'environnement'),
+  (21, 1, 21, 'L''énergie solaire doit couvrir la moitié des besoins d''ici 2035.', 'environnement'),
+  (22, 1, 22, 'Le salaire minimum doit être revalorisé chaque année selon l''inflation.', 'social'),
+  (23, 1, 23, 'Une allocation doit être versée aux familles sans revenu.', 'social'),
+  (24, 1, 24, 'La justice doit publier toutes ses décisions en ligne.', 'justice'),
+  (25, 1, 25, 'La détention provisoire doit être limitée à six mois.', 'justice');
+select setval('public.statement_id_seq', 25);
+
+insert into public.party_position (statement_id, org_id, position, source_type, source_url, source_extrait, date_source) values
+  (6, 1, 'sans_position', 'aucune', null, null, null),
+  (6, 2, 'neutre', 'document_public', 'https://example.org/org2/programme#institutions', 'Extrait de programme (test).', '2025-02-03'),
+  (6, 3, 'sans_position', 'aucune', null, null, null),
+  (7, 1, 'neutre', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (7, 2, 'desaccord', 'document_public', 'https://example.org/org2/programme#institutions', 'Extrait de programme (test).', '2025-02-03'),
+  (7, 3, 'accord', 'document_public', 'https://example.org/org3/programme#institutions', 'Extrait de programme (test).', '2025-02-03'),
+  (8, 1, 'desaccord', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (8, 2, 'accord', 'document_public', 'https://example.org/org2/programme#economie', 'Extrait de programme (test).', '2025-02-03'),
+  (8, 3, 'sans_position', 'aucune', null, null, null),
+  (9, 1, 'accord', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (9, 2, 'sans_position', 'aucune', null, null, null),
+  (9, 3, 'neutre', 'document_public', 'https://example.org/org3/programme#economie', 'Extrait de programme (test).', '2025-02-03'),
+  (10, 1, 'sans_position', 'aucune', null, null, null),
+  (10, 2, 'neutre', 'document_public', 'https://example.org/org2/programme#agriculture', 'Extrait de programme (test).', '2025-02-03'),
+  (10, 3, 'sans_position', 'aucune', null, null, null),
+  (11, 1, 'neutre', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (11, 2, 'desaccord', 'document_public', 'https://example.org/org2/programme#agriculture', 'Extrait de programme (test).', '2025-02-03'),
+  (11, 3, 'accord', 'document_public', 'https://example.org/org3/programme#agriculture', 'Extrait de programme (test).', '2025-02-03'),
+  (12, 1, 'desaccord', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (12, 2, 'accord', 'document_public', 'https://example.org/org2/programme#education', 'Extrait de programme (test).', '2025-02-03'),
+  (12, 3, 'sans_position', 'aucune', null, null, null),
+  (13, 1, 'accord', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (13, 2, 'sans_position', 'aucune', null, null, null),
+  (13, 3, 'neutre', 'document_public', 'https://example.org/org3/programme#education', 'Extrait de programme (test).', '2025-02-03'),
+  (14, 1, 'sans_position', 'aucune', null, null, null),
+  (14, 2, 'neutre', 'document_public', 'https://example.org/org2/programme#sante', 'Extrait de programme (test).', '2025-02-03'),
+  (14, 3, 'sans_position', 'aucune', null, null, null),
+  (15, 1, 'neutre', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (15, 2, 'desaccord', 'document_public', 'https://example.org/org2/programme#sante', 'Extrait de programme (test).', '2025-02-03'),
+  (15, 3, 'accord', 'document_public', 'https://example.org/org3/programme#sante', 'Extrait de programme (test).', '2025-02-03'),
+  (16, 1, 'desaccord', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (16, 2, 'accord', 'document_public', 'https://example.org/org2/programme#infrastructure', 'Extrait de programme (test).', '2025-02-03'),
+  (16, 3, 'sans_position', 'aucune', null, null, null),
+  (17, 1, 'accord', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (17, 2, 'sans_position', 'aucune', null, null, null),
+  (17, 3, 'neutre', 'document_public', 'https://example.org/org3/programme#infrastructure', 'Extrait de programme (test).', '2025-02-03'),
+  (18, 1, 'sans_position', 'aucune', null, null, null),
+  (18, 2, 'neutre', 'document_public', 'https://example.org/org2/programme#decentralisation', 'Extrait de programme (test).', '2025-02-03'),
+  (18, 3, 'sans_position', 'aucune', null, null, null),
+  (19, 1, 'neutre', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (19, 2, 'desaccord', 'document_public', 'https://example.org/org2/programme#decentralisation', 'Extrait de programme (test).', '2025-02-03'),
+  (19, 3, 'accord', 'document_public', 'https://example.org/org3/programme#decentralisation', 'Extrait de programme (test).', '2025-02-03'),
+  (20, 1, 'desaccord', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (20, 2, 'accord', 'document_public', 'https://example.org/org2/programme#environnement', 'Extrait de programme (test).', '2025-02-03'),
+  (20, 3, 'sans_position', 'aucune', null, null, null),
+  (21, 1, 'accord', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (21, 2, 'sans_position', 'aucune', null, null, null),
+  (21, 3, 'neutre', 'document_public', 'https://example.org/org3/programme#environnement', 'Extrait de programme (test).', '2025-02-03'),
+  (22, 1, 'sans_position', 'aucune', null, null, null),
+  (22, 2, 'neutre', 'document_public', 'https://example.org/org2/programme#social', 'Extrait de programme (test).', '2025-02-03'),
+  (22, 3, 'sans_position', 'aucune', null, null, null),
+  (23, 1, 'neutre', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (23, 2, 'desaccord', 'document_public', 'https://example.org/org2/programme#social', 'Extrait de programme (test).', '2025-02-03'),
+  (23, 3, 'accord', 'document_public', 'https://example.org/org3/programme#social', 'Extrait de programme (test).', '2025-02-03'),
+  (24, 1, 'desaccord', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (24, 2, 'accord', 'document_public', 'https://example.org/org2/programme#justice', 'Extrait de programme (test).', '2025-02-03'),
+  (24, 3, 'sans_position', 'aucune', null, null, null),
+  (25, 1, 'accord', 'reponse_directe', null, 'Réponse écrite (test).', '2026-06-01'),
+  (25, 2, 'sans_position', 'aucune', null, null, null),
+  (25, 3, 'neutre', 'document_public', 'https://example.org/org3/programme#justice', 'Extrait de programme (test).', '2025-02-03');
+
+update public.quiz set publie = true where id = 1;
 
 insert into public.position_contestation (position_id, auteur, argument, piece_url) values
   ((select id from public.party_position where statement_id = 1 and org_id = 2),
