@@ -54,7 +54,8 @@ flutter run --dart-define=SUPABASE_URL=http://127.0.0.1:54321 \
 ```
 
 Sans `--dart-define`, l'app démarre en mode « cache seul » et l'indique.
-Vérifications : `flutter analyze` et `flutter test`.
+Vérifications : `flutter analyze` et `flutter test`. APK release arm64 mesuré
+à 10,1 Mo (contrainte : 15 Mo).
 
 ## Vérifier le schéma
 
