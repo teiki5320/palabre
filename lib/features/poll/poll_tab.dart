@@ -1,3 +1,4 @@
+// ignore_for_file: sort_child_properties_last
 import 'dart:async';
 
 import 'package:flutter/material.dart';
