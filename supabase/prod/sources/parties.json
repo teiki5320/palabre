@@ -1,0 +1,397 @@
+{
+ "partis": [
+  {
+   "nom": "Patriotes africains du Sénégal pour le travail, l'éthique et la fraternité",
+   "sigle": "PASTEF",
+   "type": "parti",
+   "fondation": "2014",
+   "dirigeant": {
+    "nom": "Ousmane Sonko",
+    "titre": "Président du parti"
+   },
+   "site": "https://pastef.org",
+   "wikipedia": "https://fr.wikipedia.org/wiki/PASTEF",
+   "couleur": "#CC2B3A",
+   "source_url": "https://www.france24.com/fr/afrique/20260606-s%C3%A9n%C3%A9gal-ousmane-sonko-largement-r%C3%A9%C3%A9lu-%C3%A0-la-t%C3%AAte-du-pastef-parti-majoritaire",
+   "documents": [
+    {
+     "titre": "Projet de société (Appel aux patriotes)",
+     "url": "https://pastef.org/projet-de-societe/",
+     "date": "",
+     "type": "manifeste"
+    },
+    {
+     "titre": "Statuts de PASTEF – Les Patriotes",
+     "url": "https://pastef.org/wp-content/uploads/2026/03/Statuts-PASTEF-LES-PATRIOTES.pdf",
+     "date": "2026",
+     "type": "autre"
+    },
+    {
+     "titre": "Le Projet – Pour un Sénégal souverain, juste et prospère (programme de la coalition Diomaye Président, présidentielle 2024 ; copie archivée du site diomayepresident.org)",
+     "url": "https://web.archive.org/web/20250407124403id_/https://diomayepresident.org/wp-content/uploads/2024/03/Livre-Programme-Bassirou-Diomaye-Faye.pdf",
+     "date": "2024-03",
+     "type": "programme"
+    }
+   ]
+  },
+  {
+   "nom": "Alliance pour la République (APR-Yaakaar)",
+   "sigle": "APR",
+   "type": "parti",
+   "fondation": "2008-12-01",
+   "dirigeant": {
+    "nom": "Macky Sall",
+    "titre": "Président du parti"
+   },
+   "site": "",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Alliance_pour_la_R%C3%A9publique",
+   "couleur": "#5C482F",
+   "source_url": "https://fr.wikipedia.org/wiki/Alliance_pour_la_R%C3%A9publique",
+   "documents": []
+  },
+  {
+   "nom": "Parti démocratique sénégalais",
+   "sigle": "PDS",
+   "type": "parti",
+   "fondation": "1974-07-31",
+   "dirigeant": {
+    "nom": "Abdoulaye Wade",
+    "titre": "Secrétaire général national"
+   },
+   "site": "",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Parti_d%C3%A9mocratique_s%C3%A9n%C3%A9galais",
+   "couleur": "#427BBE",
+   "source_url": "https://fr.wikipedia.org/wiki/Parti_d%C3%A9mocratique_s%C3%A9n%C3%A9galais",
+   "documents": []
+  },
+  {
+   "nom": "Taxawu Sénégal",
+   "sigle": "TS",
+   "type": "parti",
+   "fondation": "2026-05-10",
+   "dirigeant": {
+    "nom": "Khalifa Ababacar Sall",
+    "titre": "Président du parti"
+   },
+   "site": "",
+   "wikipedia": "",
+   "couleur": "",
+   "source_url": "https://fr.allafrica.com/stories/202605110836.html",
+   "documents": [
+    {
+     "titre": "Programme du candidat Khalifa Ababacar Sall (site de campagne Khalifa 2024 / Taxawu Sénégal)",
+     "url": "https://khalifa2024.org/#programme",
+     "date": "2024",
+     "type": "programme"
+    }
+   ]
+  },
+  {
+   "nom": "Rewmi",
+   "sigle": "Rewmi",
+   "type": "parti",
+   "fondation": "2006",
+   "dirigeant": {
+    "nom": "Idrissa Seck",
+    "titre": "Président du parti"
+   },
+   "site": "",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Rewmi",
+   "couleur": "#E68F3F",
+   "source_url": "https://en.wikipedia.org/wiki/Idrissa_Seck",
+   "documents": []
+  },
+  {
+   "nom": "Parti de l'Unité et du Rassemblement",
+   "sigle": "PUR",
+   "type": "parti",
+   "fondation": "1998-02-03",
+   "dirigeant": {
+    "nom": "Cheikh Mouhamadou Moustapha Sy (Serigne Moustapha Sy)",
+    "titre": "Président du parti"
+   },
+   "site": "https://parti-pur.com/",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Parti_de_l'unit%C3%A9_et_du_rassemblement",
+   "couleur": "#349A51",
+   "source_url": "https://fr.wikipedia.org/wiki/Parti_de_l'unit%C3%A9_et_du_rassemblement",
+   "documents": [
+    {
+     "titre": "Profession de foi du candidat Aliou Mamadou Dia (présidentielle du 24 mars 2024)",
+     "url": "https://parti-pur.com/profession-de-foi-du-president-aliou-mamadou-dia/",
+     "date": "2024-03-23",
+     "type": "declaration"
+    }
+   ]
+  },
+  {
+   "nom": "Parti socialiste",
+   "sigle": "PS",
+   "type": "parti",
+   "fondation": "1976",
+   "dirigeant": {
+    "nom": "Aminata Mbengue Ndiaye",
+    "titre": "Secrétaire générale"
+   },
+   "site": "",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Parti_socialiste_(S%C3%A9n%C3%A9gal)",
+   "couleur": "",
+   "source_url": "https://fr.allafrica.com/stories/202606150409.html",
+   "documents": []
+  },
+  {
+   "nom": "Alliance des forces de progrès",
+   "sigle": "AFP",
+   "type": "parti",
+   "fondation": "1999-08-13",
+   "dirigeant": {
+    "nom": "Mbaye Dione",
+    "titre": "Secrétaire général"
+   },
+   "site": "",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Alliance_des_forces_de_progr%C3%A8s",
+   "couleur": "",
+   "source_url": "https://aps.sn/mbaye-dione-succede-a-moustapha-niasse-a-la-tete-de-lafp/",
+   "documents": []
+  },
+  {
+   "nom": "Kiiraay – Les Patriotes républicains",
+   "sigle": "Kiiraay",
+   "type": "parti",
+   "fondation": "2026-07-25",
+   "dirigeant": {
+    "nom": "Bassirou Diomaye Faye",
+    "titre": "Fondateur et chef du parti (titre statutaire non précisé dans les sources)"
+   },
+   "site": "",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Kiiraay_%E2%80%93_Les_Patriotes_r%C3%A9publicains",
+   "couleur": "#1E9BD9",
+   "source_url": "https://www.france24.com/fr/afrique/20260726-au-s%C3%A9n%C3%A9gal-le-pr%C3%A9sident-faye-lance-son-nouveau-parti-et-confirme-la-rupture-avec-ousmane-sonko",
+   "documents": []
+  },
+  {
+   "nom": "Takku Wallu Sénégal",
+   "sigle": "TWS",
+   "type": "coalition",
+   "fondation": "2024-09-25",
+   "dirigeant": {
+    "nom": "Macky Sall",
+    "titre": "Tête de liste nationale (législatives du 17 novembre 2024)"
+   },
+   "site": "",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Takku_Wallu_S%C3%A9n%C3%A9gal",
+   "couleur": "#724F39",
+   "source_url": "https://fr.wikipedia.org/wiki/Takku_Wallu_S%C3%A9n%C3%A9gal",
+   "documents": []
+  },
+  {
+   "nom": "Jàmm ak Njariñ",
+   "sigle": "JAN",
+   "type": "coalition",
+   "fondation": "2024-09-24",
+   "dirigeant": {
+    "nom": "Amadou Ba",
+    "titre": "Tête de liste nationale (législatives du 17 novembre 2024)"
+   },
+   "site": "",
+   "wikipedia": "https://fr.wikipedia.org/wiki/J%C3%A0mm_ak_Njari%C3%B1",
+   "couleur": "#005F35",
+   "source_url": "https://fr.wikipedia.org/wiki/J%C3%A0mm_ak_Njari%C3%B1",
+   "documents": []
+  },
+  {
+   "nom": "Sàmm Sa Kàddu",
+   "sigle": "SSK",
+   "type": "coalition",
+   "fondation": "2024-09-23",
+   "dirigeant": {
+    "nom": "Barthélémy Dias",
+    "titre": "Tête de liste nationale (législatives du 17 novembre 2024)"
+   },
+   "site": "",
+   "wikipedia": "https://fr.wikipedia.org/wiki/S%C3%A0mm_Sa_K%C3%A0ddu",
+   "couleur": "#FFC704",
+   "source_url": "https://fr.wikipedia.org/wiki/S%C3%A0mm_Sa_K%C3%A0ddu",
+   "documents": []
+  },
+  {
+   "nom": "Coalition Diomaye Président",
+   "sigle": "DP",
+   "type": "coalition",
+   "fondation": "2024",
+   "dirigeant": {
+    "nom": "Bassirou Diomaye Faye",
+    "titre": "candidat de la coalition à l'élection présidentielle du 24 mars 2024"
+   },
+   "site": "",
+   "wikipedia": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_s%C3%A9n%C3%A9galaise_de_2024",
+   "couleur": "",
+   "source_url": "https://web.archive.org/web/20250407124403id_/https://diomayepresident.org/wp-content/uploads/2024/03/Livre-Programme-Bassirou-Diomaye-Faye.pdf",
+   "documents": [
+    {
+     "titre": "Le Projet – Pour un Sénégal souverain, juste et prospère (programme 2024)",
+     "url": "https://web.archive.org/web/20250407124403id_/https://diomayepresident.org/wp-content/uploads/2024/03/Livre-Programme-Bassirou-Diomaye-Faye.pdf",
+     "date": "2024-03-20",
+     "type": "programme"
+    }
+   ],
+   "note": "Coalition de l'élection présidentielle de 2024, menée par PASTEF. Son programme « Le Projet » est un document de la coalition, pas du parti seul : les positions qu'il porte lui sont attribuées, et PASTEF apparaît « n'a pas pris position » tant qu'il n'a pas répondu directement."
+  }
+ ],
+ "relations": [
+  {
+   "de": "PDS",
+   "vers": "APR",
+   "type": "scission",
+   "date": "2008-12-01",
+   "source_url": "https://fr.wikipedia.org/wiki/Alliance_pour_la_R%C3%A9publique"
+  },
+  {
+   "de": "PDS",
+   "vers": "Rewmi",
+   "type": "scission",
+   "date": "2006-09-24",
+   "source_url": "https://en.wikipedia.org/wiki/Idrissa_Seck"
+  },
+  {
+   "de": "FPJ",
+   "vers": "Rewmi",
+   "type": "renommage",
+   "date": "2006-10-02",
+   "source_url": "https://fr.wikipedia.org/wiki/Rewmi"
+  },
+  {
+   "de": "PS",
+   "vers": "AFP",
+   "type": "scission",
+   "date": "1999-08-13",
+   "source_url": "https://fr.wikipedia.org/wiki/Alliance_des_forces_de_progr%C3%A8s"
+  },
+  {
+   "de": "PS",
+   "vers": "TS",
+   "type": "scission",
+   "date": "2017",
+   "source_url": "https://fr.wikipedia.org/wiki/Parti_socialiste_(S%C3%A9n%C3%A9gal)"
+  },
+  {
+   "de": "UPS",
+   "vers": "PS",
+   "type": "renommage",
+   "date": "1976-12",
+   "source_url": "https://fr.wikipedia.org/wiki/Parti_socialiste_(S%C3%A9n%C3%A9gal)"
+  },
+  {
+   "de": "PASTEF",
+   "vers": "Kiiraay",
+   "type": "scission",
+   "date": "2026-07-25",
+   "source_url": "https://www.france24.com/fr/afrique/20260726-au-s%C3%A9n%C3%A9gal-le-pr%C3%A9sident-faye-lance-son-nouveau-parti-et-confirme-la-rupture-avec-ousmane-sonko"
+  },
+  {
+   "de": "APR",
+   "vers": "BBY",
+   "type": "coalition_membre",
+   "date": "2012",
+   "source_url": "https://fr.wikipedia.org/wiki/Unis_par_l%27espoir"
+  },
+  {
+   "de": "PS",
+   "vers": "BBY",
+   "type": "coalition_membre",
+   "date": "2012",
+   "source_url": "https://fr.wikipedia.org/wiki/Unis_par_l%27espoir"
+  },
+  {
+   "de": "AFP",
+   "vers": "BBY",
+   "type": "coalition_membre",
+   "date": "2012",
+   "source_url": "https://fr.wikipedia.org/wiki/Unis_par_l%27espoir"
+  },
+  {
+   "de": "Rewmi",
+   "vers": "BBY",
+   "type": "coalition_membre",
+   "date": "2012",
+   "source_url": "https://fr.wikipedia.org/wiki/Unis_par_l%27espoir"
+  },
+  {
+   "de": "PASTEF",
+   "vers": "YAW",
+   "type": "coalition_membre",
+   "date": "2021-09-02",
+   "source_url": "https://fr.wikipedia.org/wiki/Yewwi_Askan_Wi"
+  },
+  {
+   "de": "TS",
+   "vers": "YAW",
+   "type": "coalition_membre",
+   "date": "2021-09-02",
+   "source_url": "https://fr.wikipedia.org/wiki/Yewwi_Askan_Wi"
+  },
+  {
+   "de": "PUR",
+   "vers": "YAW",
+   "type": "coalition_membre",
+   "date": "2021-09-02",
+   "source_url": "https://fr.wikipedia.org/wiki/Yewwi_Askan_Wi"
+  },
+  {
+   "de": "APR",
+   "vers": "TWS",
+   "type": "coalition_membre",
+   "date": "2024-09-25",
+   "source_url": "https://fr.wikipedia.org/wiki/Takku_Wallu_S%C3%A9n%C3%A9gal"
+  },
+  {
+   "de": "PDS",
+   "vers": "TWS",
+   "type": "coalition_membre",
+   "date": "2024-09-25",
+   "source_url": "https://fr.wikipedia.org/wiki/Takku_Wallu_S%C3%A9n%C3%A9gal"
+  },
+  {
+   "de": "Rewmi",
+   "vers": "TWS",
+   "type": "coalition_membre",
+   "date": "2024-09-25",
+   "source_url": "https://fr.wikipedia.org/wiki/Takku_Wallu_S%C3%A9n%C3%A9gal"
+  },
+  {
+   "de": "PS",
+   "vers": "JAN",
+   "type": "coalition_membre",
+   "date": "2024-09-24",
+   "source_url": "https://fr.wikipedia.org/wiki/J%C3%A0mm_ak_Njari%C3%B1"
+  },
+  {
+   "de": "AFP",
+   "vers": "JAN",
+   "type": "coalition_membre",
+   "date": "2024-09-24",
+   "source_url": "https://fr.wikipedia.org/wiki/J%C3%A0mm_ak_Njari%C3%B1"
+  },
+  {
+   "de": "TS",
+   "vers": "SSK",
+   "type": "coalition_membre",
+   "date": "2024-09-23",
+   "source_url": "https://fr.wikipedia.org/wiki/S%C3%A0mm_Sa_K%C3%A0ddu"
+  },
+  {
+   "de": "PUR",
+   "vers": "SSK",
+   "type": "coalition_membre",
+   "date": "2024-09-23",
+   "source_url": "https://fr.wikipedia.org/wiki/S%C3%A0mm_Sa_K%C3%A0ddu"
+  },
+  {
+   "de": "PASTEF",
+   "vers": "DP",
+   "type": "coalition_membre",
+   "date": "2024",
+   "source_url": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_s%C3%A9n%C3%A9galaise_de_2024"
+  }
+ ],
+ "notes": "Contexte septembre 2026 (vérifié) : Ousmane Sonko, limogé de la Primature le 22 mai 2026, a été élu président de l'Assemblée nationale le 26 mai 2026 (France 24, 26/05/2026) et réélu président de PASTEF au 1er congrès du parti le 6 juin 2026 à Diamniadio (France 24, 06/06/2026). PASTEF détient 130 sièges sur 165. Le président Bassirou Diomaye Faye a lancé son propre parti « Kiiraay – Les Patriotes républicains » le 25 juillet 2026 (France 24, Le Soleil, PressAfrik) : ajouté comme 9e parti car c'est le parti du chef de l'État et la principale recomposition de 2026 ; aucun des 8 partis demandés n'a été retiré. Taxawu Sénégal est passé de plateforme à parti politique lors de son congrès constitutif du 10 mai 2026 (allAfrica/Sud Quotidien) ; la date de fondation retenue est celle-ci, l'origine remontant à la scission du PS autour de Khalifa Sall (coalition Manko Taxawu Senegaal, 2017). Le PS connaît une crise interne (AG houleuse du 13-14 juin 2026, contestation par Alioune Ndoye et Serigne Mbaye Thiam ; Aminata Mbengue Ndiaye confirmée). APR : restructuration des instances décidée le 20 janvier 2026 par Macky Sall depuis l'étranger (Xibaaru, 26/01/2026). PDS : Wikipédia FR donne Abdoulaye Wade « Secrétaire général national » ; la RTS (15/06/2025) le qualifie de « président du PDS » ; Karim Wade est « Secrétaire général national adjoint chargé de la stratégie et des orientations » (Dakaractu, 04/01/2026) et réside au Qatar. PUR : Wikipédia (FR et EN) donne Serigne Moustapha Sy comme président ; le site du parti intitule une page « Profession de foi du Président Aliou Mamadou DIA » (candidat 2024) sans préciser de structure dirigeante actuelle ; la coalition Sàmm Sa Kàddu a été signée pour le PUR par Cheikh Tidiane Youm (secrétaire général national). Rewmi : Wikipédia FR indique en infobox une fondation au 1er décembre 2008 (identique à celle de l'APR, probable erreur) alors que son texte évoque le congrès du FPJ du 2 octobre 2006 et que Wikipédia EN (Idrissa Seck) date la création au 24 septembre 2006 ; l'année 2006 est retenue. Sites officiels : pastef.org et parti-pur.com confirmés ; apr.sn (indiqué par Wikipédia) affiche aujourd'hui un site de paris sportifs ; afp-senegal.org (indiqué par Wikipédia) est un site de contenus sponsorisés sans lien avec le parti ; pds.sn est une page parquée ; ps-senegal.sn (indiqué par Wikipédia et référencé par des moteurs) et partirewmi.com ne répondent plus (DNS/connexion) ; khalifa2024.org est un site de campagne 2024 et non un site de parti ; aucun site trouvé pour Kiiraay ni pour les trois coalitions. Couleurs : codes hexadécimaux repris des infobox Wikipédia FR (champ « couleurs ») ; PS (vert et rouge) et AFP (bleu et vert) n'ont pas de code hex documenté, champ laissé vide ; Kiiraay : Wikipédia FR donne bleu #1E9BD9 et rose #E4003C, PressAfrik parle de bleu et rouge repris de la coalition Diomaye Président ; PASTEF : rouge #CC2B3A et vert (le vert n'a pas de code). Documents de positions : PASTEF (projet de société et statuts sur pastef.org, non datés sur la page ; le PDF des statuts a été mis en ligne en 2026 ; le congrès du 6 juin 2026 a adopté une charte idéologique et un document d'orientation stratégique dont les textes n'ont pas été trouvés en ligne) ; le programme 2024 « Le Projet » est celui de la coalition Diomaye Président (PASTEF-led), son site est en maintenance et le PDF n'est plus accessible qu'en copie archivée (web.archive.org, capture du 07/04/2025, fichier daté du 20/03/2024). PUR : le programme 2024 « Nitté ak Natangué » est mentionné sur parti-pur.com sans lien téléchargeable ; seule la profession de foi du candidat est en ligne. Taxawu : programme 2024 présenté sur khalifa2024.org (section de page, pas de PDF). Aucun document de positions trouvé en ligne pour APR (programme Amadou Ba 2024 relayé par la presse, sans document du parti), PDS (les « 11 axes » présentés à l'AG de la FNCL en janvier 2026 sont décrits comme un avant-projet non publié), Rewmi, PS, AFP, Kiiraay, Takku Wallu Sénégal, Jàmm ak Njariñ ; le « contrat de législature » de Sàmm Sa Kàddu (présenté fin octobre 2024, cf. Seneweb 30/10/2024) n'a pas été trouvé en ligne. Relations non incluses faute de source ouverte : PASTEF → coalition Diomaye Président (2024) ; dissolution administrative de PASTEF en juillet 2023 et abrogation du décret le 27 mars 2024 (Wikipédia FR PASTEF, non modélisable dans les types de relation). Sigles BBY (Benno Bokk Yakaar / Unis par l'espoir, dissoute de facto en 2024), YAW (Yewwi Askan Wi, 2021, coquille vide de facto depuis 2024), UPS et FPJ ne correspondent pas à des entrées de la liste « partis » ; Taxawu Sénégal a quitté YAW en 2023. Partis écartés : Nouvelle Responsabilité (Amadou Ba, 2024, noyau de Jàmm ak Njariñ), Gueum Sa Bopp, ARC, AGIR, PRP, Bokk Gis Gis, UCS, LD, PIT — représentation ou influence documentée inférieure aux partis retenus ; ils apparaissent comme membres des coalitions sur les pages Wikipédia citées."
+}

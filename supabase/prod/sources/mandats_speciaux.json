@@ -1,0 +1,64 @@
+{
+  "commentaire": "Mandats de député à découper : suspensions pour entrée au gouvernement, suppléances, réintégrations. Sources : champ « changements » de assembly.json. Un titulaire nommé ministre clôt son mandat (motif nomination_gouvernement) ; son suppléant ouvre le sien en pointant dessus ; à la réintégration, le suppléant clôt (motif autre) et le titulaire rouvre.",
+  "alias": {
+    "Marie Ang Mame Selbe DIOUF": "Marie Angélique Mame Selbé DIOUF",
+    "Serigne Abdoul Ahad NDIAYE": "Abdoul Ahad NDIAYE"
+  },
+  "roles_supplementaires": [
+    {"id": 4, "type": "president_assemblee", "intitule": "Président de l'Assemblée nationale", "intitule_norm": "president_assemblee"}
+  ],
+  "cas": [
+    {
+      "depute": "Ousmane SONKO",
+      "segments": [
+        {"debut": "2024-12-02", "fin": "2024-12-02", "motif_fin": "nomination_gouvernement", "source_url": "https://www.ouestaf.com/senegal-el-hadj-malick-ndiaye-nouveau-president-de-lassemblee-nationale/", "suppleant": {"nom": "Ismaila Mamadou Abdoul WONE", "debut": "2024-12-02", "fin": "2026-05-26", "motif_fin": "autre", "source_url": "https://www.ndarinfo.com/Ousmane-Sonko-elu-president-de-l-Assemblee-nationale-avec-132-voix_a44862.html"}},
+        {"debut": "2026-05-26", "source_url": "https://www.ndarinfo.com/Ousmane-Sonko-elu-president-de-l-Assemblee-nationale-avec-132-voix_a44862.html"}
+      ],
+      "presidence": {"debut": "2026-05-26", "source_url": "https://www.france24.com/fr/afrique/20260526-senegal-sonko-apres-limogeage-retour-en-force-presidence-assemblee-nationale-diomaye-faye"}
+    },
+    {
+      "depute": "Malick NDIAYE",
+      "segments": [{"debut": "2024-12-02", "source_url": "https://fr.allafrica.com/stories/202412030496.html"}],
+      "presidence": {"debut": "2024-12-02", "fin": "2026-05-24", "motif_fin": "demission", "source_url": "https://www.france24.com/fr/afrique/20260524-senegal-el-malick-ndiaye-president-assemblee-nationale-annonce-sa-demission-sonko"}
+    },
+    {
+      "depute": "Momath Talla NDAO",
+      "segments": [
+        {"debut": "2024-12-02", "fin": "2024-12-02", "motif_fin": "nomination_gouvernement", "source_url": "https://www.ouestaf.com/senegal-el-hadj-malick-ndiaye-nouveau-president-de-lassemblee-nationale/", "suppleant": {"nom": "Abdoulaye Thomas FAYE", "debut": "2024-12-02", "fin": "2026-06-22", "motif_fin": "autre", "source_url": "https://www.ndarinfo.com/Assemblee-nationale-quatre-deputes-installes-lors-de-la-seance-pleniere_a45248.html"}},
+        {"debut": "2026-06-22", "source_url": "https://www.ndarinfo.com/Assemblee-nationale-quatre-deputes-installes-lors-de-la-seance-pleniere_a45248.html"}
+      ]
+    },
+    {
+      "depute": "Amadou BA",
+      "segments": [
+        {"debut": "2024-12-02", "fin": "2025-09-06", "motif_fin": "nomination_gouvernement", "source_url": "https://xalimasn.com/2025/09/09/assemblee-nationale-amadou-mbaye-dia-succede-a-amadou-ba-nomme-ministre/", "suppleant": {"nom": "Amadou Mbaye DIA", "debut": "2025-09-06", "fin": "2026-06-22", "motif_fin": "autre", "source_url": "https://www.ndarinfo.com/Assemblee-nationale-quatre-deputes-installes-lors-de-la-seance-pleniere_a45248.html"}},
+        {"debut": "2026-06-22", "source_url": "https://www.ndarinfo.com/Assemblee-nationale-quatre-deputes-installes-lors-de-la-seance-pleniere_a45248.html"}
+      ]
+    },
+    {
+      "depute": "Mame Omar NDOYE",
+      "titulaire": {"nom": "Abass FALL", "debut": "2024-12-02", "fin": "2024-12-02", "motif_fin": "nomination_gouvernement", "source_url": "https://lesoleil.sn/actualites/politique/assemblee-nationale-thierno-ali-sy-remplace-abass-fall/"},
+      "suppleant": {"debut": "2024-12-14", "source_url": "https://www.rts.sn/actualite/detail/a-la-une/assemblee-nationale-les-deputes-pape-djibril-fall-et-mame-omar-ndoye-officiellement-installes"}
+    },
+    {
+      "depute": "Salimata DIENG",
+      "titulaire": {"nom": "Marie Angélique Mame Selbé DIOUF", "debut": "2024-12-02", "fin": "2026-06-01", "motif_fin": "nomination_gouvernement", "source_url": "https://aps.sn/trois-deputes-pastef-rejoignent-le-gouvernement/"},
+      "suppleant": {"debut": "2026-06-22", "source_url": "https://www.ndarinfo.com/Assemblee-nationale-quatre-deputes-installes-lors-de-la-seance-pleniere_a45248.html"}
+    },
+    {
+      "depute": "Abass Boubou NDIAYE",
+      "titulaire": {"nom": "Abdoul Ahad NDIAYE", "debut": "2024-12-02", "fin": "2026-06-01", "motif_fin": "nomination_gouvernement", "source_url": "https://aps.sn/trois-deputes-pastef-rejoignent-le-gouvernement/"},
+      "suppleant": {"debut": "2026-06-22", "source_url": "https://www.ndarinfo.com/Assemblee-nationale-quatre-deputes-installes-lors-de-la-seance-pleniere_a45248.html"}
+    },
+    {
+      "depute": "Samba DIOUF",
+      "segments": [{"debut": "2024-12-02", "fin": "2026-06-01", "motif_fin": "nomination_gouvernement", "source_url": "https://aps.sn/trois-deputes-pastef-rejoignent-le-gouvernement/"}],
+      "note": "Suppléant non identifié dans les sources : le siège apparaît vacant dans l'app jusqu'à confirmation."
+    },
+    {
+      "depute": "Papa Djibril FALL",
+      "segments": [{"debut": "2024-12-14", "source_url": "https://www.rts.sn/actualite/detail/a-la-une/assemblee-nationale-les-deputes-pape-djibril-fall-et-mame-omar-ndoye-officiellement-installes"}],
+      "predecesseur": {"nom": "Barthélémy Toye DIAS", "debut": "2024-12-02", "fin": "2024-12-06", "motif_fin": "invalidation", "source_url": "https://fr.apanews.net/politique/senegal-barthelemy-dias-radie-de-la-liste-des-deputes/"}
+    }
+  ]
+}

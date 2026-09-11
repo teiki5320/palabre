@@ -1,0 +1,1820 @@
+{
+ "legislature": {
+  "numero": 15,
+  "debut": "2024-12-02",
+  "sieges_total": 165,
+  "source_url": "https://fr.allafrica.com/stories/202412030496.html",
+  "source_titre": "Sénégal: El Malick Ndiaye – Un nouveau visage à la Présidence de l'Assemblée Nationale (allAfrica, 3 décembre 2024) ; installation des 165 députés le 2 décembre 2024"
+ },
+ "president": {
+  "nom": "Ousmane SONKO",
+  "source_url": "https://www.france24.com/fr/afrique/20260526-senegal-sonko-apres-limogeage-retour-en-force-presidence-assemblee-nationale-diomaye-faye",
+  "note": "Élu le 26 mai 2026 (132 voix sur 133 suffrages exprimés) après la démission d'El Malick Ndiaye le 24 mai 2026 ; El Malick Ndiaye avait été élu le 2 décembre 2024 (134 voix)."
+ },
+ "groupes": [
+  {
+   "nom": "Pastef-Les Patriotes",
+   "sigle": "PASTEF",
+   "sieges": 130,
+   "president": "Mohamed Ayib Salim DAFFÉ",
+   "source_url": "https://www.vie-publique.sn/assemblee-nationale/groupes"
+  },
+  {
+   "nom": "Takku Wallu Sénégal",
+   "sigle": "TWS",
+   "sieges": 17,
+   "president": "Aïssata TALL SALL",
+   "source_url": "https://www.vie-publique.sn/assemblee-nationale/groupes",
+   "note": "16 élus Takku Wallu Sénégal + Abdoul Karim Sall (AKS) rattaché au groupe"
+  },
+  {
+   "nom": "Non inscrits",
+   "sigle": "NI",
+   "sieges": 18,
+   "president": null,
+   "source_url": "https://www.vie-publique.sn/assemblee-nationale/groupes"
+  }
+ ],
+ "listes": [
+  {
+   "nom": "PASTEF - Les Patriotes",
+   "sigle": "PASTEF",
+   "sieges": 130
+  },
+  {
+   "nom": "Coalition Takku Wallu Sénégal",
+   "sigle": "TAKKU WALLU SENEGAL",
+   "sieges": 16
+  },
+  {
+   "nom": "Coalition Jamm ak Njariñ",
+   "sigle": "JAMM AK NJARIÑ",
+   "sieges": 7
+  },
+  {
+   "nom": "Coalition Samm Sa Kaddu",
+   "sigle": "SAMM SA KADDU",
+   "sieges": 3
+  },
+  {
+   "nom": "Coalition La Marche des Territoires / Andu Nawlé",
+   "sigle": "ANDU NAWLE",
+   "sieges": 2
+  },
+  {
+   "nom": "Coalition FARLU",
+   "sigle": "FARLU",
+   "sieges": 1
+  },
+  {
+   "nom": "Entité indépendante Les Nationalistes / Jël liñu Moom",
+   "sigle": "LES NATIONALISTES",
+   "sieges": 1
+  },
+  {
+   "nom": "Coalition Pôle Alternatif 3ème Voie Kiraay ak Natangue",
+   "sigle": "KIRAAY AK NATANGUE",
+   "sieges": 1
+  },
+  {
+   "nom": "Coalition Senegaal Kesé",
+   "sigle": "SENEGAAL KESE",
+   "sieges": 1
+  },
+  {
+   "nom": "Coalition Sopi Sénégal",
+   "sigle": "SOPI SENEGAL",
+   "sieges": 1
+  },
+  {
+   "nom": "Coalition And Ci Koolute Nguir Sénégal",
+   "sigle": "AKS",
+   "sieges": 1
+  },
+  {
+   "nom": "Coalition And Bessal Senegal",
+   "sigle": "AND BEESAL SENEGAL",
+   "sieges": 1
+  }
+ ],
+ "deputes": [
+  {
+   "nom": "Cheikh Oumar ANNE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "JAMM AK NJARIÑ",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Amadou BA",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "JAMM AK NJARIÑ",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Fama BA",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Fatou BA",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Maïmouna BOUSSO",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Rokhaya CAMARA",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "JAMM AK NJARIÑ",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Amy DIA",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Anta DIA",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mouramani Kaba DIAKITÉ",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Salimata DIENG",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "suppleant_en_exercice",
+   "remplace": "Marie Ang Mame Selbe DIOUF",
+   "note": "Suppléante installée le 22 juin 2026 après la nomination de Marie Angélique Mame Selbé Diouf ministre de la Famille (gouvernement Lô, décret 2026-1130 du 1er juin 2026). Source : https://www.dakaractu.com/Salimata-Dieng-apres-son-installation-en-tant-que-deputee-Nous-sommes-la-pour-etre-une-qualite-supplementaire_a272977.html"
+  },
+  {
+   "nom": "Mbaye DIONE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "JAMM AK NJARIÑ",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Amadou Mame DIOP",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Assane DIOP",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Moustapha DIOP",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "FARLU",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Oumar DIOP",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Salimata DIOP",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "JAMM AK NJARIÑ",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Papa Djibril FALL",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "SAMM SA KADDU",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": "Papa Djibril Fall (7e de la liste nationale Samm Sa Kaddu) installé le 14 décembre 2024 à la place de Barthélémy Toye Dias, radié le 5-6 décembre 2024 (condamnation définitive, art. 61 Constitution), après la démission du 5e de liste Déthié Fall. Source : https://www.rts.sn/actualite/detail/a-la-une/assemblee-nationale-les-deputes-pape-djibril-fall-et-mame-omar-ndoye-officiellement-installes"
+  },
+  {
+   "nom": "Béatrice Germaine Tening FAYE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mbene FAYE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Thérèse FAYE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Alla KANE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ndeye Fatou MANÉ",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Birima MANGARA",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "KIRAAY AK NATANGUE",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mareme MBACKÉ",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mayabe MBAYE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Abdou MBOW",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": "Abdou Mbow (9e de la liste nationale Takku Wallu Sénégal) a pris le siège de Macky Sall, tête de liste, qui a démissionné avant l'installation ; installé le 2 décembre 2024 pour la durée de la législature. Source : https://www.dakaractu.com/15e-legislature-Abdou-Mbow-remplace-Macky-Sall-a-l-hemicycle%C2%A0_a256252.html"
+  },
+  {
+   "nom": "Alioune NDAO",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Bara NDIAYE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Fabineta NDIAYE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Saliou NDIONE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Anta Babacar NGOM",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "SAMM SA KADDU",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Fatou NGOM",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mouhamadou NGOM",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Jacqueline SAGNA",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Abdoul Karim SALL",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "AKS",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": "Élu sur la liste And Ci Koolute Nguir Sénégal (AKS) ; rattaché au groupe Takku Wallu selon vie-publique.sn."
+  },
+  {
+   "nom": "Mohamed SALL",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Thierno Alassane SALL",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "SENEGAAL KESE",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Papa Tahirou SARR",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "LES NATIONALISTES",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Awa SECK",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Maguette SENE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "ANDU NAWLE",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Awa SONKO",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ousmane SONKO",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": "Tête de liste nationale PASTEF ; mandat suspendu le 2 décembre 2024 (Premier ministre), remplacé par Ismaila Mamadou Abdoul Wone ; réintégré le 26 mai 2026 après son limogeage de la Primature (22 mai 2026) et élu président de l'Assemblée nationale le même jour (132 voix sur 133). Source : https://www.france24.com/fr/afrique/20260526-senegal-sonko-apres-limogeage-retour-en-force-presidence-assemblee-nationale-diomaye-faye"
+  },
+  {
+   "nom": "Fatou SOW",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Oumar SY",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Abdoulaye SYLLA",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "AND BEESAL SENEGAL",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Abdoulaye TALL",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Aissata TALL",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": "Présidente du groupe Takku Wallu Sénégal."
+  },
+  {
+   "nom": "Mamadou Lamine THIAM",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ousmane THIOUF",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Tafsir THIOYE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "SOPI SENEGAL",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Babacar VARORE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Banta WAGUE",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Cheikh Ahmed Tidiane YOUM",
+   "circonscription": "Liste nationale",
+   "type_circonscription": "liste_nationale",
+   "liste": "SAMM SA KADDU",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Boye BABY",
+   "circonscription": "Bakel",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Adama TANDJIGORA",
+   "circonscription": "Bakel",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Badara DIOUF",
+   "circonscription": "Bambey",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Sokhna Diarra THIAO",
+   "circonscription": "Bambey",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Bacary DIEDHIOU",
+   "circonscription": "Bignona",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ousmane SONKO",
+   "circonscription": "Bignona",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Samba DANG",
+   "circonscription": "Birkilane",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Insa DANFA",
+   "circonscription": "Bounkiling",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Awa SY",
+   "circonscription": "Bounkiling",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Marième DIAMANKA",
+   "circonscription": "Dagana",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ibrahima MBODJ",
+   "circonscription": "Dagana",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mame Mariama DARY",
+   "circonscription": "Dakar",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Abdourahmane DIOUF",
+   "circonscription": "Dakar",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Marie Hélène Ndofene DIOUF",
+   "circonscription": "Dakar",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Elhadji Ousmane FALL",
+   "circonscription": "Dakar",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mame Omar NDOYE",
+   "circonscription": "Dakar",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "suppleant_en_exercice",
+   "remplace": "Abass FALL",
+   "note": "Installé le 14 décembre 2024 (3e suppléant de la liste Pastef Dakar) après la suspension du mandat d'Abass Fall, nommé ministre du Travail le 2 décembre 2024, et l'inéligibilité du 1er suppléant Thierno Aly Sy. Abass Fall a quitté le gouvernement le 6 septembre 2025 (élu maire de Dakar) ; sa réintégration comme député n'est confirmée par aucune source consultée, et vie-publique.sn liste toujours Mame Omar Ndoye comme député en exercice (septembre 2026). Sources : https://www.rts.sn/actualite/detail/a-la-une/assemblee-nationale-les-deputes-pape-djibril-fall-et-mame-omar-ndoye-officiellement-installes ; https://lesoleil.sn/actualites/politique/remaniement-les-ministres-sortants/"
+  },
+  {
+   "nom": "Elhadji Ababacar TAMBEDOU",
+   "circonscription": "Dakar",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ndack THIAM",
+   "circonscription": "Dakar",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Coumba NDIAYE",
+   "circonscription": "Diourbel",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Aliou SÈNE",
+   "circonscription": "Diourbel",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Cheikh FAYE",
+   "circonscription": "Fatick",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Amy NDIAYE",
+   "circonscription": "Fatick",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mariama COLY",
+   "circonscription": "Foundiougne",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ansoumana SARR",
+   "circonscription": "Foundiougne",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Adama DIALLO",
+   "circonscription": "Gossas",
+   "type_circonscription": "departement",
+   "liste": "ANDU NAWLE",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Djimo SOUARÉ",
+   "circonscription": "Goudiry",
+   "type_circonscription": "departement",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Cherif Ahmed DICKO",
+   "circonscription": "Goudomp",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Sona Kinty SOLLY",
+   "circonscription": "Goudomp",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ismaïla DIALLO",
+   "circonscription": "Guinguinéo",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ramatoulaye BODIAN",
+   "circonscription": "Guédiawaye",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mamadou SEYE",
+   "circonscription": "Guédiawaye",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Maïmouna DIENG",
+   "circonscription": "Kaffrine",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Momath Talla NDAO",
+   "circonscription": "Kaffrine",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": "Mandat suspendu le 2 décembre 2024 (secrétaire d'État à l'Urbanisme et au Logement), remplacé par le suppléant Abdoulaye Thomas Faye ; réintégré le 22 juin 2026. Source : https://www.ndarinfo.com/Assemblee-nationale-quatre-deputes-installes-lors-de-la-seance-pleniere_a45248.html"
+  },
+  {
+   "nom": "Daouda DIA",
+   "circonscription": "Kanel",
+   "type_circonscription": "departement",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Raqui DIALLO",
+   "circonscription": "Kanel",
+   "type_circonscription": "departement",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Alioune Badara DIAGNE",
+   "circonscription": "Kaolack",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Rokhy NDIAYE",
+   "circonscription": "Kaolack",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ramatoulaye NDOM",
+   "circonscription": "Keur Massar",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mohamed Siradio SOUARÉ",
+   "circonscription": "Keur Massar",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Yoba BALDÉ",
+   "circonscription": "Kolda",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ndeye Marie SANÉ",
+   "circonscription": "Kolda",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Moussa MBAYE",
+   "circonscription": "Koumpentoum",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Awa SOW",
+   "circonscription": "Koumpentoum",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ndeye Awa DIENG",
+   "circonscription": "Koungheul",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "El Hadji GUEYE",
+   "circonscription": "Koungheul",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ousmane DIOP",
+   "circonscription": "Kébémer",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Daba WAGNANE",
+   "circonscription": "Kébémer",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Abdoulaye SOW",
+   "circonscription": "Kédougou",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Saye CISSÉ",
+   "circonscription": "Linguère",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Malick NDIAYE",
+   "circonscription": "Linguère",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": "El Malick Ndiaye : président de l'Assemblée nationale du 2 décembre 2024 au 24 mai 2026 (démission) ; premier vice-président depuis le 22 juin 2026. Source : https://xalimasn.com/2026/06/22/assemblee-nationale-le-nouveau-bureau-installe-malick-ndiaye-retrouve-une-vice-presidence/"
+  },
+  {
+   "nom": "Mareme FALL",
+   "circonscription": "Louga",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Abass Boubou NDIAYE",
+   "circonscription": "Louga",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "suppleant_en_exercice",
+   "remplace": "Serigne Abdoul Ahad NDIAYE",
+   "note": "Suppléant installé le 22 juin 2026 après la nomination de Serigne Abdoul Ahad Ndiaye ministre des Transports terrestres et aériens (1er juin 2026). Source : https://senego.com/fruit-de-nombreuses-luttes-les-premiers-mots-forts-dabass-boubou-ndiaye-installe-depute-ce-lundi_1975219.html"
+  },
+  {
+   "nom": "Elhadji DIOP",
+   "circonscription": "Malem Hodar",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Aissata Ousmane DIALLO",
+   "circonscription": "Matam",
+   "type_circonscription": "departement",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mamadou DIAW",
+   "circonscription": "Matam",
+   "type_circonscription": "departement",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Diogomaye DIAW",
+   "circonscription": "Mbacké",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ahmadou LO",
+   "circonscription": "Mbacké",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Cheikh Thioro MBACKÉ",
+   "circonscription": "Mbacké",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Fatma MBODJI",
+   "circonscription": "Mbacké",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Khady SOW",
+   "circonscription": "Mbacké",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Djiby CISS",
+   "circonscription": "Mbour",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Amy DABO",
+   "circonscription": "Mbour",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mamadou Lamine DIAÏTÉ",
+   "circonscription": "Mbour",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Félicité Mbougane SARR",
+   "circonscription": "Mbour",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Diaraye BA",
+   "circonscription": "Médina Yoro Foulah",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Bouly DOUCOURE",
+   "circonscription": "Médina Yoro Foulah",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Anthia DIENG",
+   "circonscription": "Nioro du Rip",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Massamba DIENG",
+   "circonscription": "Nioro du Rip",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Alphonse Mané SAMBOU",
+   "circonscription": "Oussouye",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mame Diarra BEYE",
+   "circonscription": "Pikine",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Safiatou Malick MBAYE",
+   "circonscription": "Pikine",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ibrahima MBENGUE",
+   "circonscription": "Pikine",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Babacar NDIAYE",
+   "circonscription": "Pikine",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Matar SYLLA",
+   "circonscription": "Pikine",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Nafi KANE",
+   "circonscription": "Podor",
+   "type_circonscription": "departement",
+   "liste": "JAMM AK NJARIÑ",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Moussa Hamady SARR",
+   "circonscription": "Podor",
+   "type_circonscription": "departement",
+   "liste": "JAMM AK NJARIÑ",
+   "groupe": "Non inscrit",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Amadou DIALLO",
+   "circonscription": "Ranérou Ferlo",
+   "type_circonscription": "departement",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Youngare DIONE",
+   "circonscription": "Rufisque",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Khady SARR",
+   "circonscription": "Rufisque",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Alioune DIÈYE",
+   "circonscription": "Saint-Louis",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Seynabou Yacine SAMBÉ",
+   "circonscription": "Saint-Louis",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mamadou Lamine SOUARÉ",
+   "circonscription": "Salémata",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Amdiatta DIABY",
+   "circonscription": "Saraya",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Holemata BAYO",
+   "circonscription": "Sédhiou",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Mohamed Ayib Salim DAFFÉ",
+   "circonscription": "Sédhiou",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": "Président du groupe Pastef-Les Patriotes."
+  },
+  {
+   "nom": "Mady DANFAKHA",
+   "circonscription": "Tambacounda",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Maye SAO",
+   "circonscription": "Tambacounda",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Amadou BA",
+   "circonscription": "Thiès",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": "Nommé ministre de la Culture, de l'Artisanat et du Tourisme le 6 septembre 2025 (remplacé par le suppléant Amadou Mbaye Dia) ; réintégré le 22 juin 2026 après la formation du gouvernement Lô. Source : https://www.ndarinfo.com/Assemblee-nationale-quatre-deputes-installes-lors-de-la-seance-pleniere_a45248.html"
+  },
+  {
+   "nom": "Abdoulaye FAYE",
+   "circonscription": "Thiès",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Fatma GUEYE",
+   "circonscription": "Thiès",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Anne Marie Yacine TINE",
+   "circonscription": "Thiès",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ousmane CISS",
+   "circonscription": "Tivaouane",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Grasse FAYE",
+   "circonscription": "Tivaouane",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ibou GUEYE",
+   "circonscription": "Vélingara",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Safiatou SOW",
+   "circonscription": "Vélingara",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Guy Marius SAGNA",
+   "circonscription": "Ziguinchor",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Oulimata SIDIBÉ",
+   "circonscription": "Ziguinchor",
+   "type_circonscription": "departement",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Lamine FAYE",
+   "circonscription": "Afrique australe",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Daouda NDIAYE",
+   "circonscription": "Afrique de l'Ouest",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Ndeye NDIAYE",
+   "circonscription": "Afrique de l'Ouest",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Alassane NIANG",
+   "circonscription": "Afrique de l'Ouest",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Sokhna BA",
+   "circonscription": "Afrique du Centre",
+   "type_circonscription": "diaspora",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Barane FOFANA",
+   "circonscription": "Afrique du Centre",
+   "type_circonscription": "diaspora",
+   "liste": "TAKKU WALLU SENEGAL",
+   "groupe": "Takku Wallu Sénégal",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Amadou Lamine DIOUF",
+   "circonscription": "Afrique du Nord",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Aïcha TOURE",
+   "circonscription": "Amérique-Océanie",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Younoussa CISSOKO",
+   "circonscription": "Asie-Moyen-Orient",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Fatou Diop CISSÉ",
+   "circonscription": "Europe de l'Ouest, du Centre et du Nord",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Samba DIOUF",
+   "circonscription": "Europe de l'Ouest, du Centre et du Nord",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": "Nommé ministre des Télécommunications et du Numérique le 1er juin 2026 (gouvernement Lô) ; son mandat est donc suspendu mais le suppléant installé à sa place n'a pas été identifié dans les sources consultées. Source : https://aps.sn/trois-deputes-pastef-rejoignent-le-gouvernement/"
+  },
+  {
+   "nom": "Abdoul Kadyr SONKO",
+   "circonscription": "Europe de l'Ouest, du Centre et du Nord",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Amadou DIALLO",
+   "circonscription": "Europe du Sud",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Awa DIONE",
+   "circonscription": "Europe du Sud",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  },
+  {
+   "nom": "Fodé MANÉ",
+   "circonscription": "Europe du Sud",
+   "type_circonscription": "diaspora",
+   "liste": "PASTEF",
+   "groupe": "Pastef-Les Patriotes",
+   "statut": "titulaire",
+   "remplace": "",
+   "note": ""
+  }
+ ],
+ "changements": [
+  {
+   "date": "2024-11-21",
+   "description": "Macky Sall, tête de la liste nationale Takku Wallu Sénégal, annonce qu'il ne siégera pas (démission) ; Abdou Mbow (9e de liste) prend son siège et est installé le 2 décembre 2024.",
+   "source_url": "https://www.dakaractu.com/15e-legislature-Abdou-Mbow-remplace-Macky-Sall-a-l-hemicycle%C2%A0_a256252.html"
+  },
+  {
+   "date": "2024-12-02",
+   "description": "Installation de la 15e législature (165 députés). El Malick Ndiaye (PASTEF, Linguère) élu président de l'Assemblée nationale (134 voix pour, 22 contre, 7 abstentions). Constitution de deux groupes : Pastef-Les Patriotes (130, président Ayib Daffé) et Takku Wallu (16, présidente Aïssata Tall Sall).",
+   "source_url": "https://www.pressafrik.com/Assemblee-nationale-Pastef-et-Takku-Wallu-constituent-leurs-groupes-parlementaires_a281714.html"
+  },
+  {
+   "date": "2024-12-02",
+   "description": "Ousmane Sonko (Premier ministre, tête de liste nationale PASTEF) et Momath Talla Ndao (secrétaire d'État à l'Urbanisme et au Logement, PASTEF Kaffrine) suspendent leur mandat ; leurs suppléants Ismaila Mamadou Abdoul Wone (31e de la liste nationale PASTEF) et Abdoulaye Thomas Faye sont installés.",
+   "source_url": "https://www.ouestaf.com/senegal-el-hadj-malick-ndiaye-nouveau-president-de-lassemblee-nationale/"
+  },
+  {
+   "date": "2024-12-02",
+   "description": "Abass Fall (PASTEF, tête de liste Dakar) nommé ministre du Travail, de l'Emploi et des Relations avec les Institutions ; il demande la suspension de son mandat. Son suppléant Thierno Aly Sy est installé le 6 décembre 2024.",
+   "source_url": "https://lesoleil.sn/actualites/politique/assemblee-nationale-thierno-ali-sy-remplace-abass-fall/"
+  },
+  {
+   "date": "2024-12-05",
+   "description": "Le Bureau de l'Assemblée radie Barthélémy Toye Dias (Samm Sa Kaddu, liste nationale) de la liste des députés à la demande du ministre de la Justice (condamnation définitive, art. 61 de la Constitution) ; annonce en plénière le 6 décembre 2024.",
+   "source_url": "https://fr.apanews.net/politique/senegal-barthelemy-dias-radie-de-la-liste-des-deputes/"
+  },
+  {
+   "date": "2024-12-14",
+   "description": "Installation de Papa Djibril Fall (7e de la liste nationale Samm Sa Kaddu) à la place de Barthélémy Dias, après la démission de Déthié Fall (5e de liste), et de Mame Omar Ndoye (Pastef Dakar) à la place de Thierno Aly Sy, frappé d'inéligibilité (art. 29 du Code électoral).",
+   "source_url": "https://www.rts.sn/actualite/detail/a-la-une/assemblee-nationale-les-deputes-pape-djibril-fall-et-mame-omar-ndoye-officiellement-installes"
+  },
+  {
+   "date": "2025-09-06",
+   "description": "Remaniement (gouvernement Sonko II) : Amadou Ba (PASTEF, Thiès) nommé ministre de la Culture, de l'Artisanat et du Tourisme ; son suppléant Amadou Mbaye Dia (1er suppléant de la liste départementale de Thiès) est installé. Abass Fall quitte le gouvernement après son élection comme maire de Dakar (élu le 25 août, installé le 10 septembre 2025).",
+   "source_url": "https://xalimasn.com/2025/09/09/assemblee-nationale-amadou-mbaye-dia-succede-a-amadou-ba-nomme-ministre/"
+  },
+  {
+   "date": "2026-05-22",
+   "description": "Le président Bassirou Diomaye Faye limoge le Premier ministre Ousmane Sonko.",
+   "source_url": "https://www.france24.com/fr/afrique/20260526-senegal-sonko-apres-limogeage-retour-en-force-presidence-assemblee-nationale-diomaye-faye"
+  },
+  {
+   "date": "2026-05-24",
+   "description": "El Malick Ndiaye démissionne de la présidence de l'Assemblée nationale (il conserve son mandat de député de Linguère).",
+   "source_url": "https://www.france24.com/fr/afrique/20260524-senegal-el-malick-ndiaye-president-assemblee-nationale-annonce-sa-demission-sonko"
+  },
+  {
+   "date": "2026-05-26",
+   "description": "Ousmane Sonko réintègre son siège de député (fin de la suppléance d'Ismaila Mamadou Abdoul Wone) et est élu président de l'Assemblée nationale avec 132 voix sur 133 suffrages exprimés, une partie de l'opposition boycottant le vote. Ahmadou Al Aminou Lô est nommé Premier ministre (décret 2026-1129).",
+   "source_url": "https://www.ndarinfo.com/Ousmane-Sonko-elu-president-de-l-Assemblee-nationale-avec-132-voix_a44862.html"
+  },
+  {
+   "date": "2026-06-01",
+   "description": "Gouvernement Lô (décret 2026-1130) : trois députés PASTEF nommés ministres — Marie Angélique Mame Selbé Diouf (liste nationale, Famille, Action sociale et Solidarités), Serigne Abdoul Ahad Ndiaye (Louga, Transports terrestres et aériens), Samba Diouf (Europe de l'Ouest, du Centre et du Nord, Télécommunications et Numérique).",
+   "source_url": "https://aps.sn/trois-deputes-pastef-rejoignent-le-gouvernement/"
+  },
+  {
+   "date": "2026-06-22",
+   "description": "Installation de quatre députés : Salimata Dieng (suppléante de Marie Angélique Mame Selbé Diouf), Abass Boubou Ndiaye (suppléant de Serigne Abdoul Ahad Ndiaye, Louga), et réintégration d'Amadou Ba (Thiès) et de Momath Talla Ndao (Kaffrine), dont les suppléants Amadou Mbaye Dia et Abdoulaye Thomas Faye quittent l'hémicycle. Nouveau bureau : El Malick Ndiaye 1er vice-président, Ismaila Diallo 3e vice-président ; secrétaires élus Maïmouna Bousso, Bacary Diedhiou, Ramatoulaye Bodian, Assane Diop, Daba Wagnane, Cheikh Faye ; questeurs Aïcha Touré et Alphonse Mané Sambou.",
+   "source_url": "https://www.ndarinfo.com/Assemblee-nationale-quatre-deputes-installes-lors-de-la-seance-pleniere_a45248.html"
+  },
+  {
+   "date": "2026-09-07",
+   "description": "Décision n° 8/C/2026 du Conseil constitutionnel : censure des dispositions du nouveau règlement intérieur (art. 118) prévoyant la perte du mandat pour absence à dix séances plénières consécutives.",
+   "source_url": "https://lesoleil.sn/actualites/politique/article-118-du-reglement-interieur-les-sages-retoquent-les-dispositions-sur-la-perte-du-mandat/"
+  }
+ ],
+ "notes": "SOURCES. Liste des 165 élus : proclamation du Conseil constitutionnel reproduite par Senego (https://senego.com/liste-complete-des-deputes-elus-aux-legislatives-senegalaises-du-17-novembre-2024-conseil-constitutionnel_1776022.html) — orthographe des noms reprise de cette source (accents inclus) pour les élus ; noms des suppléants en exercice repris de vie-publique.sn ou de la presse. Circonscription, type de circonscription, liste électorale et groupe parlementaire de chaque député : données structurées de vie-publique.sn (https://www.vie-publique.sn/assemblee-nationale/deputes, 166 fiches « actives » au 7 septembre 2026, et https://www.vie-publique.sn/assemblee-nationale/groupes pour les groupes : PASTEF 131, TAKKU WALLU 17, Non inscrits 18). Les noms de départements ont été mis en casse et accentuation usuelles (les sources les donnent en majuscules sans accents). Sièges par liste : Wikipédia (Élections législatives sénégalaises de 2024 ; Assemblée nationale (Sénégal)) et liste du Conseil constitutionnel (53 sièges liste nationale, 112 sièges départementaux dont 15 pour les 8 circonscriptions de la diaspora). Président : France 24 / Ndarinfo / Jeune Afrique (26 mai 2026). Bureau et groupes : Xalima (22 juin 2026), PressAfrik (2 décembre 2024). MÉTHODE. La liste des 165 députés en exercice a été reconstituée à partir des 166 fiches actives de vie-publique.sn, corrigées par la presse : retrait d'Ismaila Mamadou Abdoul Wone (suppléance de Sonko terminée le 26 mai 2026) et d'Abdoulaye Thomas Faye (suppléance terminée le 22 juin 2026, Momath Talla Ndao réintégré) ; remplacement de Marie Angélique Mame Selbé Diouf par Salimata Dieng et de Serigne Abdoul Ahad Ndiaye par Abass Boubou Ndiaye (installés le 22 juin 2026). Résultat : 165 députés = 53 liste nationale + 97 départements + 15 diaspora ; PASTEF 130, Takku Wallu Sénégal 16, Jamm ak Njariñ 7, Samm Sa Kaddu 3, Andu Nawlé 2, sept listes à 1 siège ; groupes : Pastef-Les Patriotes 130, Takku Wallu Sénégal 17, non inscrits 18. INCERTITUDES. (1) Samba Diouf (Europe de l'Ouest, du Centre et du Nord) est ministre depuis le 1er juin 2026 ; son suppléant n'a pas été identifié : il est laissé comme titulaire avec une note. (2) Abass Fall a quitté le gouvernement le 6 septembre 2025 mais aucune source ne confirme sa réintégration à l'Assemblée ; Mame Omar Ndoye est donc maintenu comme suppléant en exercice (vie-publique.sn le liste toujours). (3) vie-publique.sn n'est pas parfaitement à jour (liste encore Wone et A. T. Faye, mais déjà Amadou Ba réintégré). (4) Le site officiel assemblee-nationale.sn était injoignable et assemblee.sn ne rend son contenu qu'en JavaScript ; ils n'ont pas pu être exploités. (5) Statut « titulaire » attribué à Abdou Mbow et Papa Djibril Fall, qui ont pris définitivement les sièges de Macky Sall et Barthélémy Dias (remplacement définitif, pas suppléance temporaire). (6) Aucun décès ni changement de groupe autre que le rattachement d'Abdoul Karim Sall (AKS) à Takku Wallu n'a été trouvé. (7) Rangs et dates d'installation des suppléants de décembre 2024 (Wone, A. T. Faye, Abdou Mbow) donnés au 2 décembre 2024 d'après Ouestaf ; la date exacte de leur installation formelle peut différer de quelques jours."
+}
