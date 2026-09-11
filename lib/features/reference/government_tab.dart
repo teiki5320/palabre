@@ -120,8 +120,9 @@ class GovernmentTab extends ConsumerWidget {
       ),
       for (final bloc in keys)
         CardSection(
-          title: bloc == null ? l10n.govHead : blocLabel(context, bloc),
-          leading: ColorDot(bloc == null ? t.ink : blocColor(bloc), size: 10),
+          title: '',
+          leading: Pill(label: bloc == null ? l10n.govHead : blocLabel(context, bloc), icon: null, trailing: null),
+          trailing: ColorDot(bloc == null ? t.ink : blocColor(bloc), size: 10),
           children: [
             LayoutBuilder(
               builder: (context, c) {
@@ -186,16 +187,16 @@ class _TimeSlider extends ConsumerWidget {
                     Positioned(
                       left: pad + usable * (m / max) - 3,
                       bottom: 4,
-                      child: Container(width: 6, height: 6, decoration: BoxDecoration(color: t.onGovernment.withValues(alpha: 0.7), shape: BoxShape.circle)),
+                      child: Container(width: 6, height: 6, decoration: BoxDecoration(color: t.ink, borderRadius: BorderRadius.circular(1.5))),
                     ),
                   SliderTheme(
                     data: SliderThemeData(
-                      trackHeight: 4,
-                      activeTrackColor: t.onGovernment,
-                      inactiveTrackColor: t.onGovernment.withValues(alpha: 0.3),
-                      thumbColor: t.onGovernment,
-                      overlayColor: t.onGovernment.withValues(alpha: 0.15),
-                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 9),
+                      trackHeight: 6,
+                      activeTrackColor: t.government,
+                      inactiveTrackColor: t.line,
+                      thumbColor: t.card,
+                      overlayColor: t.government.withValues(alpha: 0.15),
+                      thumbShape: _PosterThumb(border: t.border, shadow: t.isDark ? t.government : t.hardShadow),
                       trackShape: const RoundedRectSliderTrackShape(),
                       padding: const EdgeInsets.symmetric(horizontal: pad),
                     ),
@@ -214,11 +215,11 @@ class _TimeSlider extends ConsumerWidget {
         ),
         Row(
           children: [
-            Text(LocalTime.civilShort(min, context.localeName), style: PalabreType.note(t.onGovernment.withValues(alpha: 0.8))),
-            Expanded(child: Text(l10n.govSliderHint, textAlign: TextAlign.center, style: PalabreType.note(t.onGovernment.withValues(alpha: 0.7)))),
+            Text(LocalTime.civilShort(min, context.localeName), style: PalabreType.note(t.muted)),
+            Expanded(child: Text(l10n.govSliderHint, textAlign: TextAlign.center, style: PalabreType.note(t.muted))),
             GestureDetector(
               onTap: () => ref.read(governmentDateProvider.notifier).set(today),
-              child: Text(l10n.govToday, style: PalabreType.note(t.onGovernment.withValues(alpha: 0.8)).copyWith(fontWeight: FontWeight.w700)),
+              child: Text(l10n.govToday, style: PalabreType.note(t.ink).copyWith(fontWeight: FontWeight.w800)),
             ),
           ],
         ),
@@ -263,5 +264,24 @@ class _PortraitCell extends StatelessWidget {
               ],
             ),
     );
+  }
+}
+
+/// Pouce du curseur : cercle 18 px, fond carte, bord 2 px, ombre dure 2/2.
+class _PosterThumb extends SliderComponentShape {
+  const _PosterThumb({required this.border, required this.shadow});
+  final Color border;
+  final Color shadow;
+
+  @override
+  Size getPreferredSize(bool isEnabled, bool isDiscrete) => const Size(22, 22);
+
+  @override
+  void paint(PaintingContext context, Offset center, {required Animation<double> activationAnimation, required Animation<double> enableAnimation, required bool isDiscrete, required TextPainter labelPainter, required RenderBox parentBox, required SliderThemeData sliderTheme, required TextDirection textDirection, required double value, required double textScaleFactor, required Size sizeWithOverflow}) {
+    final canvas = context.canvas;
+    const r = 9.0;
+    canvas.drawCircle(center + const Offset(2, 2), r, Paint()..color = shadow);
+    canvas.drawCircle(center, r, Paint()..color = sliderTheme.thumbColor ?? Colors.white);
+    canvas.drawCircle(center, r - 1, Paint()..color = border..style = PaintingStyle.stroke..strokeWidth = 2);
   }
 }

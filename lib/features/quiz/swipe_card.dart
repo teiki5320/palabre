@@ -30,7 +30,13 @@ class SwipeCard extends StatefulWidget {
     required this.onAnswer,
     required this.agreeLabel,
     required this.disagreeLabel,
+    this.stampColor,
+    this.onStampColor,
   }) : super(key: key);
+
+  /// Couleur de l'étiquette de swipe (défaut : couleur principale).
+  final Color? stampColor;
+  final Color? onStampColor;
 
   final Widget child;
   final SwipeController controller;
@@ -131,10 +137,11 @@ class _SwipeCardState extends State<SwipeCard> with SingleTickerProviderStateMix
     final t = context.tokens;
     return LayoutBuilder(builder: (context, constraints) {
       if (constraints.hasBoundedWidth) _size = Size(constraints.maxWidth, constraints.hasBoundedHeight ? constraints.maxHeight : _size.height);
-      final w = _size.width;
-      final limit = w * SwipeCard.threshold;
-      final agree = (_drag.dx / limit).clamp(0.0, 1.0);
-      final disagree = (-_drag.dx / limit).clamp(0.0, 1.0);
+      // Étiquette : opacité proportionnelle au glissement, 80 px pour être pleine.
+      final agree = (_drag.dx / 80).clamp(0.0, 1.0);
+      final disagree = (-_drag.dx / 80).clamp(0.0, 1.0);
+      final stampBg = widget.stampColor ?? t.primary;
+      final stampFg = widget.onStampColor ?? t.onPrimary;
       final fading = _exiting == Answer.neutre || _exiting == Answer.passer;
       return GestureDetector(
         onHorizontalDragUpdate: _onUpdate,
@@ -142,25 +149,25 @@ class _SwipeCardState extends State<SwipeCard> with SingleTickerProviderStateMix
         child: Transform.translate(
           offset: _drag,
           child: Transform.rotate(
-            angle: _drag.dx / w * 0.21,
+            angle: _drag.dx / 20 * 3.14159 / 180,
             child: Opacity(
               opacity: fading ? (1 - _anim.value).clamp(0.0, 1.0) : 1,
               child: Stack(
                 children: [
                   widget.child,
                   Positioned(
-                    top: 14,
-                    left: 14,
+                    top: 22,
+                    right: 22,
                     child: IgnorePointer(
                       child: Opacity(
                         opacity: agree,
-                        child: _Stamp(label: widget.agreeLabel, bg: t.primary, fg: t.onPrimary),
+                        child: _Stamp(label: widget.agreeLabel, bg: stampBg, fg: stampFg),
                       ),
                     ),
                   ),
                   Positioned(
-                    top: 14,
-                    right: 14,
+                    top: 22,
+                    right: 22,
                     child: IgnorePointer(
                       child: Opacity(
                         opacity: disagree,
@@ -184,9 +191,12 @@ class _Stamp extends StatelessWidget {
   final Color bg;
   final Color fg;
   @override
-  Widget build(BuildContext context) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-        decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(999)),
-        child: Text(label, style: TextStyle(fontFamily: PalabreType.display, fontSize: 13, fontWeight: FontWeight.w800, color: fg)),
+  Widget build(BuildContext context) => Transform.rotate(
+        angle: -6 * 3.14159 / 180,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(6)),
+          child: Text(label.toUpperCase(), style: TextStyle(fontFamily: PalabreType.display, fontSize: 12, fontWeight: FontWeight.w800, letterSpacing: 0.5, color: fg)),
+        ),
       );
 }

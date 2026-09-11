@@ -48,7 +48,7 @@ void main() {
     // Les quatre onglets répondent.
     await tester.tap(find.text('Testez-vous'));
     await tester.pumpAndSettle();
-    expect(find.byType(NavigationBar), findsOneWidget);
+    expect(find.text('Testez-vous'), findsWidgets);
     await tester.tap(find.text('Gouvernement'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Assemblée'));

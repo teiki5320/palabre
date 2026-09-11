@@ -27,9 +27,10 @@ class PollDetailScreen extends ConsumerWidget {
       );
     }
     return BandScaffold(
-      eyebrow: pollStatusLine(context, ref, poll),
-      title: l10n.pollWeekOf(LocalTime.civil(poll.semaine, context.localeName)),
-      children: [PollCard(poll), PollContextCard(poll, initiallyOpen: true)],
+      eyebrow: l10n.pollWeekOf(LocalTime.civil(poll.semaine, context.localeName)),
+      clock: pollStatusLine(context, ref, poll),
+      title: poll.question,
+      children: [PollCard(poll), const SizedBox(height: 4), PosterList(children: [PollContextCard(poll, initiallyOpen: true)])],
     );
   }
 }

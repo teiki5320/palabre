@@ -73,42 +73,27 @@ class _QuizResultScreenState extends ConsumerState<QuizResultScreen> {
       color: t.quiz,
       onColor: t.onQuiz,
       eyebrow: l10n.quizResultsSubtitle(answered),
-      title: l10n.quizResultsAllTitle,
-      children: [
-        SoftCard(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              for (var i = 0; i < scores.length; i++) ...[
-                if (i > 0) const CardDivider(space: 12),
-                _PartyRow(scores[i]),
-              ],
-            ],
-          ),
+      title: l10n.quizResultsTitle,
+      subtitle: l10n.quizResultsAllTitle,
+      actions: [
+        IconButton(
+          icon: _sharing ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)) : const Icon(Icons.ios_share),
+          tooltip: l10n.share,
+          onPressed: _sharing ? null : _share,
         ),
       ],
+      children: [
+        PosterList(children: [for (final s in scores) _PartyRow(s)]),
+        const SizedBox(height: 12),
+        Text(l10n.quizResultsNote, style: PalabreType.note(t.muted)),
+      ],
       sideChildren: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(4, 0, 4, 14),
-          child: Text(l10n.quizResultsNote, style: PalabreType.note(t.muted)),
-        ),
+        const SizedBox(height: 18),
         Row(
           children: [
-            Expanded(
-              child: OutlinedButton.icon(
-                onPressed: () => setState(() => _showDetail = !_showDetail),
-                icon: Icon(_showDetail ? Icons.expand_less : Icons.list_alt_outlined, size: 18),
-                label: Text(l10n.quizDetailShort),
-              ),
-            ),
+            Expanded(child: ActionButton(label: l10n.quizDetailShort, icon: _showDetail ? Icons.expand_less : Icons.list_alt_outlined, outlined: true, onPressed: () => setState(() => _showDetail = !_showDetail))),
             const SizedBox(width: 10),
-            Expanded(
-              child: FilledButton.icon(
-                onPressed: _sharing ? null : _share,
-                icon: _sharing ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2)) : const Icon(Icons.ios_share, size: 18),
-                label: Text(l10n.share),
-              ),
-            ),
+            Expanded(child: ActionButton(label: l10n.share, icon: Icons.ios_share, busy: _sharing, onPressed: _sharing ? null : _share)),
           ],
         ),
         const SizedBox(height: 14),
@@ -131,6 +116,8 @@ class _QuizResultScreenState extends ConsumerState<QuizResultScreen> {
   }
 }
 
+/// Un parti : carré couleur, nom, gros pourcentage, barre, note. Non
+/// calculable : nom atténué, pastille désactivée. Aucun rang.
 class _PartyRow extends StatelessWidget {
   const _PartyRow(this.s);
   final PartyScore s;
@@ -140,36 +127,50 @@ class _PartyRow extends StatelessWidget {
     final l10n = context.l10n;
     final t = context.tokens;
     final color = partyColor(context, s.party);
-    final meta = s.concordance == null
-        ? l10n.quizNotComparable
-        : [l10n.quizCompared(s.compared), if (s.sansPosition > 0) l10n.quizNoPosition(s.sansPosition)].join(' · ');
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Row(
+    if (s.concordance == null) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 14),
+        child: Row(
           children: [
-            Container(width: 10, height: 44, decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(5))),
+            ColorDot(color),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(s.party.nom, style: PalabreType.label(t.ink)),
-                  const SizedBox(height: 2),
-                  Text(meta, style: PalabreType.note(t.muted)),
+                  Text(s.party.nom, style: PalabreType.label(t.muted)),
+                  Text(l10n.quizNotComparable, style: PalabreType.note(t.muted)),
                 ],
               ),
             ),
-            const SizedBox(width: 10),
-            if (s.concordance == null)
-              Text(l10n.quizNotComputable, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: t.muted))
-            else
-              AnimatedNumber(value: s.concordance!, suffix: ' %', style: PalabreType.big(t.ink)),
+            const SizedBox(width: 8),
+            Pill(label: l10n.quizNotComputable, disabled: true),
           ],
         ),
-        const SizedBox(height: 8),
-        PercentBar(fraction: (s.concordance ?? 0) / 100, color: color),
-      ],
+      );
+    }
+    final meta = [l10n.quizCompared(s.compared), if (s.sansPosition > 0) l10n.quizNoPosition(s.sansPosition)].join(' · ');
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 14),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ColorDot(color),
+              const SizedBox(width: 12),
+              Expanded(child: Text(s.party.nom, style: PalabreType.label(t.ink))),
+              const SizedBox(width: 12),
+              BigPercent(s.concordance!),
+            ],
+          ),
+          const SizedBox(height: 8),
+          PercentBar(fraction: s.concordance! / 100, color: color),
+          const SizedBox(height: 8),
+          Text(meta, style: PalabreType.note(t.muted)),
+        ],
+      ),
     );
   }
 }
@@ -230,16 +231,18 @@ class ShareCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              color: t.primary,
-              padding: const EdgeInsets.fromLTRB(24, 22, 24, 22),
+              color: t.background,
+              padding: const EdgeInsets.fromLTRB(24, 22, 24, 18),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Palabre', style: PalabreType.wordmark(t.onPrimary)),
-                  const SizedBox(height: 10),
-                  Text(l10n.quizResultsTitle.toUpperCase(), style: PalabreType.eyebrow(t.onPrimary.withValues(alpha: 0.85))),
-                  const SizedBox(height: 4),
-                  Text(title, style: PalabreType.title(t.onPrimary)),
+                  Text('Palabre', style: PalabreType.wordmark(t.primary)),
+                  const SizedBox(height: 12),
+                  Text(l10n.quizResultsTitle.toUpperCase(), style: PalabreType.eyebrow(t.muted)),
+                  const SizedBox(height: 6),
+                  Text(title, style: PalabreType.title(t.ink)),
+                  const SizedBox(height: 12),
+                  Container(width: 56, height: 6, decoration: BoxDecoration(color: t.accent, borderRadius: BorderRadius.circular(3))),
                 ],
               ),
             ),
@@ -254,10 +257,10 @@ class ShareCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 6),
                       child: Row(
                         children: [
-                          Container(width: 8, height: 26, decoration: BoxDecoration(color: partyColor(context, s.party), borderRadius: BorderRadius.circular(4))),
+                          ColorDot(partyColor(context, s.party)),
                           const SizedBox(width: 10),
                           Expanded(child: Text(s.party.shortName, style: TextStyle(fontFamily: PalabreType.body, color: t.ink, fontSize: 14, fontWeight: FontWeight.w700))),
-                          SizedBox(width: 110, child: PercentBar(fraction: (s.concordance ?? 0) / 100, color: partyColor(context, s.party), track: t.line)),
+                          SizedBox(width: 110, child: PercentBar(fraction: (s.concordance ?? 0) / 100, color: partyColor(context, s.party), track: t.track, animate: false)),
                           const SizedBox(width: 10),
                           SizedBox(
                             width: 52,

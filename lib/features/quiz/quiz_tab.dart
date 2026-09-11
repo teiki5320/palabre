@@ -32,8 +32,8 @@ class QuizTab extends ConsumerWidget {
               Container(
                 width: 32,
                 height: 32,
-                decoration: BoxDecoration(color: t.primarySoft, shape: BoxShape.circle),
-                child: Icon(icon, size: 17, color: t.primary),
+                decoration: BoxDecoration(color: t.card, shape: BoxShape.circle, border: Border.all(color: t.border, width: 2)),
+                child: Icon(icon, size: 16, color: t.quiz),
               ),
               const SizedBox(width: 12),
               Expanded(child: Text(text, style: TextStyle(height: 1.4, color: t.ink))),
@@ -81,10 +81,11 @@ class QuizTab extends ConsumerWidget {
                     Text('${q.titre} · ${l10n.quizStatements(q.statements.length)} · ${l10n.quizParties(q.parties.length)}', style: PalabreType.note(t.muted)),
                     const SizedBox(height: 12),
                     if (inProgress && !complete) ...[
-                      FilledButton(
+                      ActionButton(
+                        label: '${l10n.quizResume} (${l10n.quizProgress(session.answers.length, q.statements.length)})',
                         onPressed: () => context.push(Routes.quizRun),
-                        child: Text('${l10n.quizResume} (${l10n.quizProgress(session.answers.length, q.statements.length)})'),
                       ),
+                      const SizedBox(height: 8),
                       TextButton(
                         onPressed: () {
                           ref.read(quizSessionProvider.notifier).reset();
@@ -93,20 +94,21 @@ class QuizTab extends ConsumerWidget {
                         child: Text(l10n.quizRestart),
                       ),
                     ] else if (complete)
-                      OutlinedButton(
+                      ActionButton(
+                        label: l10n.quizRestart,
+                        outlined: true,
                         onPressed: () {
                           ref.read(quizSessionProvider.notifier).reset();
                           context.push(Routes.quizRun);
                         },
-                        child: Text(l10n.quizRestart),
                       )
                     else
-                      FilledButton(
+                      ActionButton(
+                        label: l10n.start,
                         onPressed: () {
                           ref.read(quizSessionProvider.notifier).start(q.id);
                           context.push(Routes.quizRun);
                         },
-                        child: Text(l10n.start),
                       ),
                   ],
                 ],
@@ -120,8 +122,8 @@ class QuizTab extends ConsumerWidget {
                     Container(
                       width: 40,
                       height: 40,
-                      decoration: BoxDecoration(color: t.primarySoft, borderRadius: BorderRadius.circular(12)),
-                      child: Icon(Icons.bar_chart_rounded, color: t.primary),
+                      decoration: BoxDecoration(color: t.card, borderRadius: BorderRadius.circular(12), border: Border.all(color: t.border, width: 2)),
+                      child: Icon(Icons.bar_chart_rounded, color: t.quiz),
                     ),
                     const SizedBox(width: 12),
                     Expanded(

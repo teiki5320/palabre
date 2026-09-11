@@ -10,11 +10,14 @@ void main() {
   test('les deux thèmes exposent les jetons Lagune', () {
     final light = PalabreTheme.light().extension<PalabreTokens>()!;
     final dark = PalabreTheme.dark().extension<PalabreTokens>()!;
-    expect(light.primary, const Color(0xFF0F7F7C));
+    expect(light.primary, const Color(0xFF33357F));
     expect(light.accent, const Color(0xFFFF7A1A));
-    expect(light.background, const Color(0xFFEFF6F5));
+    expect(light.background, const Color(0xFFF5EFE4));
+    expect(light.border, light.ink);
+    expect(light.cardShadow.blurRadius, 0);
     expect(dark.primary, const Color(0xFF3ED0CB));
-    expect(dark.card, const Color(0xFF1C3A3C));
+    expect(dark.card, const Color(0xFF14313A));
+    expect(dark.quiz, const Color(0xFFC08BF0));
     expect(PalabreTheme.light().colorScheme.primary, light.primary);
     expect(PalabreTheme.light().scaffoldBackgroundColor, light.background);
     expect(PalabreTheme.light().textTheme.bodyMedium!.fontFamily, PalabreType.body);

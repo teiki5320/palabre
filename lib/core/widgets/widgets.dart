@@ -5,6 +5,7 @@ import '../../app/locale_fallbacks.dart';
 import '../../app/theme.dart';
 import '../../l10n/generated/app_localizations.dart';
 import 'motion.dart';
+import 'soft_card.dart';
 
 export 'band_scaffold.dart';
 export 'motion.dart';
@@ -37,28 +38,30 @@ class PersonAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = context.tokens;
     final accent = color ?? t.primary;
-    final fallback = Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(color: accent.withValues(alpha: 0.16), borderRadius: BorderRadius.circular(size / 4)),
+    final radius = BorderRadius.circular(size / 4);
+    Widget frame(Widget child) => Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(borderRadius: radius, border: Border.all(color: t.border, width: 2), boxShadow: [PalabreTokens.hard(context.hardShadowColor, 2)]),
+          child: ClipRRect(borderRadius: BorderRadius.circular(size / 4 - 2), child: child),
+        );
+    final fallback = frame(Container(
+      color: accent.withValues(alpha: 0.16),
       alignment: Alignment.center,
       child: Text(
         initials(nom),
-        style: TextStyle(fontFamily: PalabreType.display, fontSize: size * 0.34, fontWeight: FontWeight.w700, color: accent, letterSpacing: 0.5),
+        style: TextStyle(fontFamily: PalabreType.display, fontSize: size * 0.32, fontWeight: FontWeight.w800, color: accent, letterSpacing: 0.5),
       ),
-    );
+    ));
     if (photoUrl == null || photoUrl!.isEmpty) return fallback;
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(size / 4),
-      child: Image.network(
-        photoUrl!,
-        width: size,
-        height: size,
-        fit: BoxFit.cover,
-        errorBuilder: (_, _, _) => fallback,
-        loadingBuilder: (_, child, progress) => progress == null ? child : fallback,
-      ),
-    );
+    return frame(Image.network(
+      photoUrl!,
+      width: size,
+      height: size,
+      fit: BoxFit.cover,
+      errorBuilder: (_, _, _) => fallback,
+      loadingBuilder: (_, child, progress) => progress == null ? child : fallback,
+    ));
   }
 }
 
@@ -85,12 +88,12 @@ class SourceLink extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.link, size: dense ? 14 : 16, color: t.primary),
+            Icon(Icons.link, size: dense ? 14 : 16, color: context.sectionColor),
             const SizedBox(width: 4),
             Flexible(
               child: Text(text,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: t.primary, fontSize: dense ? 12 : 13, fontWeight: FontWeight.w700, decoration: TextDecoration.underline, decorationColor: t.primary.withValues(alpha: 0.5))),
+                  style: TextStyle(color: context.sectionColor, fontSize: dense ? 12 : 13, fontWeight: FontWeight.w700, decoration: TextDecoration.underline, decorationColor: context.sectionColor.withValues(alpha: 0.5))),
             ),
           ],
         ),
@@ -111,11 +114,11 @@ class NoticeBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.tokens;
-    final c = color ?? t.primary;
+    final c = color ?? context.sectionColor;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      decoration: BoxDecoration(color: color == null ? t.primarySoft : c.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(12)),
+      decoration: BoxDecoration(color: t.card, borderRadius: BorderRadius.circular(12), border: Border.all(color: color ?? t.border, width: 1.5)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -136,12 +139,12 @@ class SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final t = context.tokens;
     return Padding(
       padding: const EdgeInsets.only(top: 18, bottom: 10, left: 4, right: 4),
       child: Row(
         children: [
-          Expanded(child: Text(text.toUpperCase(), style: PalabreType.eyebrow(t.muted))),
+          Pill(label: text),
+          const Spacer(),
           ?trailing,
         ],
       ),
@@ -174,19 +177,24 @@ class ErrorRetry extends StatelessWidget {
   }
 }
 
-/// Pastille de couleur d'encodage (bloc, groupe).
+/// Pastille de couleur d'encodage (bloc, groupe, parti) : carré 14 px rayon 4.
 class ColorDot extends StatelessWidget {
-  const ColorDot(this.color, {super.key, this.size = 8});
+  const ColorDot(this.color, {super.key, this.size = 14, this.round = false});
   final Color color;
   final double size;
+  final bool round;
   @override
-  Widget build(BuildContext context) =>
-      Container(width: size, height: size, decoration: BoxDecoration(color: color, shape: BoxShape.circle));
+  Widget build(BuildContext context) => Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(color: color, shape: round ? BoxShape.circle : BoxShape.rectangle, borderRadius: round ? null : BorderRadius.circular(size * 0.28)),
+      );
 }
 
-/// Barre horizontale pour un pourcentage, qui se remplit à l'affichage.
+/// Barre de pourcentage : hauteur 8, rayon 2, piste `track`, remplissage
+/// dans la couleur d'encodage. Se remplit à l'affichage.
 class PercentBar extends StatelessWidget {
-  const PercentBar({super.key, required this.fraction, this.color, this.height = 6, this.track, this.animate = true});
+  const PercentBar({super.key, required this.fraction, this.color, this.height = 8, this.track, this.animate = true});
   final double fraction;
   final Color? color;
   final Color? track;
@@ -198,10 +206,10 @@ class PercentBar extends StatelessWidget {
     final t = context.tokens;
     final target = fraction.clamp(0.0, 1.0);
     Widget bar(double v) => ClipRRect(
-          borderRadius: BorderRadius.circular(height / 2),
+          borderRadius: BorderRadius.circular(2),
           child: SizedBox(
             height: height,
-            child: LinearProgressIndicator(value: v, backgroundColor: track ?? t.line, color: color ?? t.primary),
+            child: LinearProgressIndicator(value: v, backgroundColor: track ?? t.track, color: color ?? context.sectionColor, borderRadius: BorderRadius.circular(2)),
           ),
         );
     if (!animate || reduceMotion(context)) return bar(target);

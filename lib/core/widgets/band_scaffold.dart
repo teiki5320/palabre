@@ -3,16 +3,19 @@ import 'package:go_router/go_router.dart';
 
 import '../../app/theme.dart';
 import 'motion.dart';
+import 'soft_card.dart';
 
-/// Le squelette commun à tous les écrans : un bandeau de couleur forte qui
-/// porte le titre et le contrôle de contexte, puis un corps défilant dont la
-/// première carte chevauche le bandeau. Sur un écran large (iPad), le corps
-/// passe sur deux colonnes : `children` à gauche, `sideChildren` à droite.
+/// Le squelette commun à tous les écrans, style « affiche » : fond uni,
+/// en-tête sur le fond (wordmark ou retour, actions, eyebrow en pastille,
+/// titre géant, trait orange), puis le corps défilant. `color` est la couleur
+/// de section : wordmark, icônes, onglet actif, ombres dures en sombre.
 class BandScaffold extends StatelessWidget {
   const BandScaffold({
     super.key,
     required this.title,
     this.eyebrow,
+    this.subtitle,
+    this.clock,
     this.brand = false,
     this.leading,
     this.actions = const [],
@@ -24,19 +27,30 @@ class BandScaffold extends StatelessWidget {
     this.bottom,
     this.color,
     this.onColor,
+    this.compact = false,
+    this.titleWidget,
   }) : assert(children != null || body != null, 'children ou body');
 
-  /// Couleur du bandeau (par défaut la couleur principale) et de son texte.
+  /// Couleur de section et couleur de texte sur cette couleur.
   final Color? color;
   final Color? onColor;
 
-  /// Titre du bandeau, en Sora.
+  /// Titre en `poster`.
   final String title;
 
-  /// Surtitre en capitales espacées : statut, date, progression.
+  /// Remplace le titre texte (en-tête compact du quiz).
+  final Widget? titleWidget;
+
+  /// Eyebrow dans une pastille bordée.
   final String? eyebrow;
 
-  /// Affiche le nom de l'app en haut du bandeau (onglets).
+  /// Texte d'horloge à côté de l'eyebrow (icône schedule).
+  final String? clock;
+
+  /// Sous-titre 14 px sous le titre.
+  final String? subtitle;
+
+  /// Affiche le wordmark « Palabre » (onglets).
   final bool brand;
 
   /// Widget à gauche ; sinon un bouton retour si la route peut revenir.
@@ -46,7 +60,7 @@ class BandScaffold extends StatelessWidget {
   /// Contrôle de contexte sous le titre : curseur, recherche, progression.
   final Widget? control;
 
-  /// Corps simple : liste défilante avec marges de 16 px, entrée en cascade.
+  /// Corps simple : liste défilante avec marges de 22 px, entrée en cascade.
   final List<Widget>? children;
 
   /// Colonne de droite sur écran large ; à la suite sur téléphone.
@@ -56,19 +70,24 @@ class BandScaffold extends StatelessWidget {
   final Widget? body;
   final Future<void> Function()? onRefresh;
 
-  /// Zone fixe sous le corps (boutons du quiz).
+  /// Zone fixe sous le corps.
   final Widget? bottom;
 
-  /// Hauteur du chevauchement de la première carte sur le bandeau.
-  static const overlap = 30.0;
+  /// En-tête réduit sur une seule ligne (quiz).
+  final bool compact;
 
-  /// Largeur à partir de laquelle on est « large » : navigation latérale,
-  /// deux colonnes.
+  /// Conservé pour compatibilité : plus de chevauchement.
+  static const overlap = 0.0;
+
+  /// Largeur à partir de laquelle on est « large » : deux colonnes.
   static const wideBreakpoint = 700.0;
 
   /// Largeurs maximales du contenu, téléphone et large.
   static const maxWidth = 680.0;
   static const maxWidthWide = 1240.0;
+
+  /// Marges latérales.
+  static const side = 22.0;
 
   static bool isWide(BuildContext context) => MediaQuery.sizeOf(context).width >= wideBreakpoint;
 
@@ -85,7 +104,7 @@ class BandScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = context.tokens;
     final wide = isWide(context);
-    final pad = EdgeInsets.fromLTRB(wide ? 32 : 16, 0, wide ? 32 : 16, 40);
+    final pad = EdgeInsets.fromLTRB(wide ? 32 : side, 18, wide ? 32 : side, 40);
     Widget content;
     if (body != null) {
       content = body!;
@@ -95,9 +114,9 @@ class BandScaffold extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(flex: 3, child: ListView(padding: const EdgeInsets.only(bottom: 32), children: _staggered(children!))),
+            Expanded(flex: 3, child: ListView(padding: const EdgeInsets.only(top: 18, bottom: 32), children: _staggered(children!))),
             const SizedBox(width: 32),
-            Expanded(flex: 2, child: ListView(padding: const EdgeInsets.only(bottom: 32), children: _staggered(sideChildren!, 2))),
+            Expanded(flex: 2, child: ListView(padding: const EdgeInsets.only(top: 18, bottom: 32), children: _staggered(sideChildren!, 2))),
           ],
         ),
       );
@@ -108,108 +127,141 @@ class BandScaffold extends StatelessWidget {
       content = RefreshIndicator(onRefresh: onRefresh!, color: t.primary, backgroundColor: t.card, child: content);
     }
     content = BandScaffold.constrain(context, content);
-    final band = color ?? t.primary;
-    return Scaffold(
-      backgroundColor: t.background,
-      body: Column(
-        children: [
-          _Band(title: title, eyebrow: eyebrow, brand: brand, leading: leading, actions: actions, control: control, color: band, onColor: onColor ?? t.onPrimary),
-          Expanded(
-            child: Stack(
-              children: [
-                Positioned(top: 0, left: 0, right: 0, height: overlap, child: ColoredBox(color: band)),
-                Positioned.fill(child: content),
-              ],
+    final section = color ?? t.primary;
+    final on = onColor ?? t.onPrimary;
+    return SectionScope(
+      color: section,
+      onColor: on,
+      child: Scaffold(
+        backgroundColor: t.background,
+        body: Column(
+          children: [
+            _Header(
+              title: title,
+              titleWidget: titleWidget,
+              eyebrow: eyebrow,
+              clock: clock,
+              subtitle: subtitle,
+              brand: brand,
+              leading: leading,
+              actions: actions,
+              control: control,
+              compact: compact,
             ),
-          ),
-          if (bottom != null) SafeArea(top: false, child: BandScaffold.constrain(context, bottom!)),
-        ],
+            Expanded(child: content),
+            if (bottom != null) SafeArea(top: false, child: BandScaffold.constrain(context, bottom!)),
+          ],
+        ),
       ),
     );
   }
 }
 
-class _Band extends StatelessWidget {
-  const _Band({required this.title, this.eyebrow, required this.brand, this.leading, required this.actions, this.control, required this.color, required this.onColor});
-  final Color color;
-  final Color onColor;
+class _Header extends StatelessWidget {
+  const _Header({required this.title, this.titleWidget, this.eyebrow, this.clock, this.subtitle, required this.brand, this.leading, required this.actions, this.control, required this.compact});
   final String title;
+  final Widget? titleWidget;
   final String? eyebrow;
+  final String? clock;
+  final String? subtitle;
   final bool brand;
   final Widget? leading;
   final List<Widget> actions;
   final Widget? control;
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
+    final t = context.tokens;
     final wide = BandScaffold.isWide(context);
+    final section = context.sectionColor;
     final canPop = leading == null && Navigator.of(context).canPop();
     final lead = leading ??
         (canPop
             ? IconButton(
                 icon: const Icon(Icons.arrow_back),
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
                 tooltip: MaterialLocalizations.of(context).backButtonTooltip,
                 onPressed: () => GoRouter.maybeOf(context) != null ? context.pop() : Navigator.of(context).pop(),
               )
             : null);
-    final topRow = lead != null || brand || actions.isNotEmpty;
-    final on = onColor;
+    final topRow = lead != null || brand || actions.isNotEmpty || compact;
+    final sideMargin = wide ? 32.0 : BandScaffold.side;
     return ColoredBox(
-      color: color,
+      color: t.background,
       child: SafeArea(
         bottom: false,
         child: IconTheme(
-          data: IconThemeData(color: on, size: 24),
+          data: IconThemeData(color: section, size: 24),
           child: DefaultTextStyle(
-            style: TextStyle(fontFamily: PalabreType.body, color: on),
+            style: TextStyle(fontFamily: PalabreType.body, color: t.ink),
             child: BandScaffold.constrain(
               context,
               Padding(
-                padding: EdgeInsets.fromLTRB(lead != null ? 6 : (wide ? 32 : 20), wide ? 18 : 6, wide ? 24 : 8, BandScaffold.overlap + (wide ? 34 : 20)),
+                padding: EdgeInsets.fromLTRB(sideMargin, 14, sideMargin, compact ? 0 : 4),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (topRow)
-                      Row(
-                        children: [
-                          ?lead,
-                          Expanded(
-                            child: brand
-                                ? Padding(
-                                    padding: EdgeInsets.only(left: lead != null ? 4 : 0, top: 8),
-                                    child: Text('Palabre', style: PalabreType.wordmark(on)),
-                                  )
-                                : const SizedBox.shrink(),
-                          ),
-                          ...actions,
-                        ],
+                      SizedBox(
+                        height: 36,
+                        child: Row(
+                          children: [
+                            ?lead,
+                            if (lead != null) const SizedBox(width: 6),
+                            Expanded(
+                              child: compact
+                                  ? Center(child: titleWidget ?? Text(title, style: TextStyle(fontFamily: PalabreType.display, fontSize: 15, fontWeight: FontWeight.w800, color: section)))
+                                  : brand
+                                      ? Text('Palabre', style: PalabreType.wordmark(section))
+                                      : const SizedBox.shrink(),
+                            ),
+                            ...actions,
+                          ],
+                        ),
                       ),
-                    Padding(
-                      padding: EdgeInsets.only(left: lead != null ? 14 : 0, right: 12, top: topRow ? 12 : 6),
-                      child: AnimatedSwitcher(
+                    if (!compact)
+                      AnimatedSwitcher(
                         duration: const Duration(milliseconds: 260),
                         switchInCurve: Curves.easeOutCubic,
                         transitionBuilder: (child, anim) => FadeTransition(
                           opacity: anim,
-                          child: SlideTransition(position: Tween(begin: const Offset(0, 0.12), end: Offset.zero).animate(anim), child: child),
+                          child: SlideTransition(position: Tween(begin: const Offset(0, 0.08), end: Offset.zero).animate(anim), child: child),
                         ),
                         layoutBuilder: (current, previous) => Stack(alignment: Alignment.topLeft, children: [...previous, ?current]),
                         child: Column(
-                          key: ValueKey('$eyebrow|$title'),
+                          key: ValueKey('$eyebrow|$clock|$title'),
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            if (eyebrow != null && eyebrow!.isNotEmpty) ...[
-                              Text(eyebrow!.toUpperCase(), style: PalabreType.eyebrow(on.withValues(alpha: 0.85))),
-                              const SizedBox(height: 6),
+                            if ((eyebrow != null && eyebrow!.isNotEmpty) || clock != null) ...[
+                              SizedBox(height: topRow ? 18 : 4),
+                              Row(
+                                children: [
+                                  if (eyebrow != null && eyebrow!.isNotEmpty) Flexible(child: Pill(label: eyebrow!)),
+                                  if (clock != null) ...[
+                                    const SizedBox(width: 8),
+                                    Icon(Icons.schedule, size: 16, color: t.muted),
+                                    const SizedBox(width: 4),
+                                    Flexible(child: Text(clock!, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: t.muted))),
+                                  ],
+                                ],
+                              ),
                             ],
-                            Text(title, style: PalabreType.title(on).copyWith(fontSize: wide ? 26 : 22)),
+                            SizedBox(height: eyebrow == null && clock == null ? (topRow ? 16 : 4) : 14),
+                            titleWidget ?? Text(title, style: PalabreType.poster(t.ink).copyWith(fontSize: wide ? 40 : 34)),
+                            if (subtitle != null) ...[
+                              const SizedBox(height: 8),
+                              Text(subtitle!, style: TextStyle(fontSize: 14, height: 1.4, fontWeight: FontWeight.w500, color: t.muted)),
+                            ],
+                            const SizedBox(height: 14),
+                            Container(width: 56, height: 6, decoration: BoxDecoration(color: t.accent, borderRadius: BorderRadius.circular(3))),
                           ],
                         ),
                       ),
-                    ),
                     if (control != null)
                       Padding(
-                        padding: EdgeInsets.only(left: lead != null ? 14 : 0, right: 12, top: 14),
+                        padding: EdgeInsets.only(top: compact ? 6 : 18),
                         child: ConstrainedBox(constraints: BoxConstraints(maxWidth: wide ? 760 : double.infinity), child: control),
                       ),
                   ],
@@ -223,7 +275,7 @@ class _Band extends StatelessWidget {
   }
 }
 
-/// Champ de recherche posé sur le bandeau.
+/// Champ de recherche : bord 2 px, fond carte, icône en couleur de section.
 class BandSearchField extends StatelessWidget {
   const BandSearchField({super.key, required this.hint, required this.onChanged});
   final String hint;
@@ -234,17 +286,11 @@ class BandSearchField extends StatelessWidget {
     final t = context.tokens;
     return TextField(
       onChanged: onChanged,
-      style: TextStyle(color: t.onPrimary, fontWeight: FontWeight.w600),
-      cursorColor: t.onPrimary,
+      style: TextStyle(color: t.ink, fontWeight: FontWeight.w700),
+      cursorColor: context.sectionColor,
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: TextStyle(color: t.onPrimary.withValues(alpha: 0.7), fontWeight: FontWeight.w500),
-        prefixIcon: Icon(Icons.search, size: 20, color: t.onPrimary),
-        filled: true,
-        fillColor: t.onPrimary.withValues(alpha: 0.18),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: t.onPrimary.withValues(alpha: 0.6))),
+        prefixIcon: Icon(Icons.search, size: 20, color: context.sectionColor),
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       ),
     );

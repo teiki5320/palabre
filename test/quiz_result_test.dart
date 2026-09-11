@@ -6,6 +6,7 @@ import 'package:palabre/core/cache/cache_store.dart';
 import 'package:palabre/core/prefs/prefs_provider.dart';
 import 'package:palabre/features/quiz/quiz_models.dart';
 import 'package:palabre/features/quiz/quiz_providers.dart';
+import 'package:palabre/features/quiz/quiz_result_screen.dart';
 import 'package:palabre/features/quiz/quiz_tab.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest_10y.dart' as tzdata;
@@ -72,9 +73,9 @@ void main() {
 
     expect(find.text('Tous les partis, du plus proche au plus éloigné'), findsOneWidget);
     expect(find.text('3 RÉPONSES · CALCULÉ SUR VOTRE TÉLÉPHONE'), findsOneWidget);
-    expect(find.text('100 %'), findsOneWidget);
-    expect(find.text('50 %'), findsOneWidget);
-    expect(find.text('non calculable'), findsOneWidget);
+    expect(find.text('100'), findsOneWidget);
+    expect(find.text('50'), findsOneWidget);
+    expect(find.text('NON CALCULABLE'), findsOneWidget);
     final alpha = tester.getTopLeft(find.text('Alpha')).dy;
     final beta = tester.getTopLeft(find.text('Bêta')).dy;
     final gamma = tester.getTopLeft(find.text('Gamma')).dy;
@@ -83,8 +84,12 @@ void main() {
       expect(find.textContaining(rank), findsNothing);
     }
 
+    final scrollable = find.descendant(of: find.byType(QuizResultScreen), matching: find.byType(Scrollable)).first;
+    await tester.scrollUntilVisible(find.text('Détail par affirmation'), 120, scrollable: scrollable);
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Détail par affirmation'));
     await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(find.text('1. s1'), 200, scrollable: scrollable);
     expect(find.text('1. s1'), findsOneWidget);
   });
 }

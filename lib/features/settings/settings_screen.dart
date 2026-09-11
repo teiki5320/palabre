@@ -21,12 +21,25 @@ class SettingsScreen extends ConsumerWidget {
     final locale = ref.watch(localeSettingProvider);
     final themeMode = ref.watch(themeModeProvider);
 
-    Widget radio<T>(T value, String label) => RadioListTile<T>(
-          value: value,
-          title: Text(label, style: TextStyle(fontWeight: FontWeight.w600, color: t.ink)),
-          contentPadding: EdgeInsets.zero,
-          dense: true,
-          visualDensity: VisualDensity.compact,
+    Widget radio<T>(T value, String label) => Builder(
+          builder: (context) {
+            final group = RadioGroup.maybeOf<T>(context);
+            final checked = group?.groupValue == value;
+            return InkWell(
+              borderRadius: BorderRadius.circular(10),
+              onTap: () => group?.onChanged(value),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Row(
+                  children: [
+                    SquareCheck(checked: checked),
+                    const SizedBox(width: 12),
+                    Expanded(child: Text(label, style: TextStyle(fontWeight: checked ? FontWeight.w800 : FontWeight.w600, color: t.ink))),
+                  ],
+                ),
+              ),
+            );
+          },
         );
 
     return BandScaffold(

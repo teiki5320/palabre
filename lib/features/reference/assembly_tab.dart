@@ -104,7 +104,7 @@ class _AssemblyTabState extends ConsumerState<AssemblyTab> {
                 onSelected: (v) => setState(() => _regionId = v),
               ),
               const SizedBox(width: 10),
-              Expanded(child: Text(l10n.asmResults(filtered.length), textAlign: TextAlign.end, style: PalabreType.note(t.onAssembly.withValues(alpha: 0.8)))),
+              Expanded(child: Text(l10n.asmResults(filtered.length), textAlign: TextAlign.end, style: PalabreType.note(t.muted))),
             ],
           ),
         ],
@@ -167,7 +167,7 @@ class _FilterMenu<T> extends StatelessWidget {
     return PopupMenuButton<T>(
       onSelected: onSelected,
       itemBuilder: (_) => [for (final e in items) PopupMenuItem<T>(value: e.key, child: Text(e.value))],
-      child: Pill(label: label, icon: active ? Icons.filter_alt : Icons.filter_alt_outlined, onBand: true, selected: active, trailing: Icon(Icons.expand_more, size: 14, color: active ? context.tokens.primary : context.tokens.onPrimary)),
+      child: Pill(label: label, icon: active ? Icons.filter_alt : Icons.filter_alt_outlined, selected: active, trailing: Icon(Icons.expand_more, size: 14, color: active ? context.onSectionColor : context.tokens.ink)),
     );
   }
 }

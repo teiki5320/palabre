@@ -12,6 +12,7 @@ import '../../core/country/country_providers.dart';
 import '../../core/net/cached_notifier.dart';
 import '../../core/time/local_time.dart';
 import '../../core/widgets/widgets.dart';
+import 'poll_models.dart';
 import 'poll_providers.dart';
 import 'poll_widgets.dart';
 import 'refine_profile_card.dart';
@@ -56,8 +57,9 @@ class _PollTabState extends ConsumerState<PollTab> {
     final current = feed.value?.current;
 
     final suspended = module != null && !module.actif;
-    final eyebrow = suspended || current == null ? null : pollStatusLine(context, ref, current);
-    final title = current == null ? l10n.tabQuestion : l10n.pollWeekOf(LocalTime.civil(current.semaine, context.localeName));
+    final eyebrow = suspended || current == null ? null : l10n.pollWeekOf(LocalTime.civil(current.semaine, context.localeName));
+    final clock = suspended || current == null ? null : pollStatusLine(context, ref, current);
+    final title = current == null ? l10n.tabQuestion : current.question;
 
     List<Widget> children;
     List<Widget> side = const [];
@@ -103,12 +105,13 @@ class _PollTabState extends ConsumerState<PollTab> {
             ],
           ];
           final sideList = <Widget>[
-            if (f.current != null) PollContextCard(f.current!),
-            SectionTitle(l10n.pollArchive),
-            if (f.archive.isEmpty)
-              Padding(padding: const EdgeInsets.symmetric(horizontal: 4), child: Text(l10n.pollArchiveEmpty, style: TextStyle(color: t.muted)))
-            else
-              for (final p in f.archive) ArchiveCard(p),
+            const SizedBox(height: 4),
+            PosterList(
+              children: [
+                if (f.current != null) PollContextCard(f.current!),
+                _ArchiveRow(archive: f.archive),
+              ],
+            ),
           ];
           return (main, sideList);
         },
@@ -120,11 +123,53 @@ class _PollTabState extends ConsumerState<PollTab> {
     return BandScaffold(
       brand: true,
       eyebrow: eyebrow,
+      clock: clock,
       title: title,
       actions: const [SettingsAction()],
       onRefresh: () => ref.read(pollFeedProvider(code).notifier).refresh(),
       children: children,
       sideChildren: side,
+    );
+  }
+}
+
+/// « Semaines précédentes » : ligne affiche repliable qui liste l'archive.
+class _ArchiveRow extends StatefulWidget {
+  const _ArchiveRow({required this.archive});
+  final List<Poll> archive;
+
+  @override
+  State<_ArchiveRow> createState() => _ArchiveRowState();
+}
+
+class _ArchiveRowState extends State<_ArchiveRow> {
+  bool _open = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final t = context.tokens;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        PosterRow(
+          icon: Icons.history,
+          label: l10n.pollArchive,
+          onTap: () => setState(() => _open = !_open),
+          trailingWidget: AnimatedRotation(turns: _open ? 0.25 : 0, duration: const Duration(milliseconds: 200), child: Icon(Icons.chevron_right, size: 22, color: t.muted)),
+        ),
+        AnimatedCrossFade(
+          duration: const Duration(milliseconds: 200),
+          crossFadeState: _open ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+          firstChild: const SizedBox(width: double.infinity),
+          secondChild: Padding(
+            padding: const EdgeInsets.only(top: 4, bottom: 8),
+            child: widget.archive.isEmpty
+                ? Padding(padding: const EdgeInsets.fromLTRB(30, 0, 0, 8), child: Text(l10n.pollArchiveEmpty, style: PalabreType.note(t.muted)))
+                : Column(children: [for (final p in widget.archive) ArchiveCard(p)]),
+          ),
+        ),
+      ],
     );
   }
 }

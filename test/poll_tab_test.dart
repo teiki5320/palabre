@@ -58,19 +58,21 @@ void main() {
     ));
     await tester.pumpAndSettle();
 
-    expect(find.textContaining('Semaine du'), findsWidgets);
+    expect(find.textContaining('SEMAINE DU'), findsWidgets);
     expect(find.text('Question à venir ?'), findsOneWidget);
     expect(find.text('Voter'), findsNothing);
     expect(find.text('Contexte · 1 source'), findsOneWidget);
-    CrossFadeState contextState() => tester.widget<AnimatedCrossFade>(find.byType(AnimatedCrossFade)).crossFadeState;
+    CrossFadeState contextState() => tester.widget<AnimatedCrossFade>(find.byType(AnimatedCrossFade).first).crossFadeState;
     expect(contextState(), CrossFadeState.showFirst);
     await tester.ensureVisible(find.text('Contexte · 1 source'));
     await tester.tap(find.text('Contexte · 1 source'));
     await tester.pumpAndSettle();
     expect(contextState(), CrossFadeState.showSecond);
     expect(find.text('Un contexte court.'), findsOneWidget);
+    await tester.ensureVisible(find.text('Semaines précédentes'));
+    await tester.tap(find.text('Semaines précédentes'));
+    await tester.pumpAndSettle();
     await tester.scrollUntilVisible(find.text('Question passée ?'), 200, scrollable: find.byType(Scrollable).first);
-    expect(find.text('SEMAINES PRÉCÉDENTES'), findsOneWidget);
     expect(find.text('Question passée ?'), findsOneWidget);
     expect(find.text('Affiner les résultats'), findsNothing);
   });

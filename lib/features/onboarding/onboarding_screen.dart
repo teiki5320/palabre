@@ -25,57 +25,23 @@ class OnboardingScreen extends ConsumerWidget {
     final t = context.tokens;
     return Scaffold(
       backgroundColor: t.background,
-      body: Column(
-        children: [
-          ColoredBox(
-            color: t.primary,
-            child: SafeArea(
-              bottom: false,
-              child: _narrow(
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 28, 22, BandScaffold.overlap + 26),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Palabre', style: PalabreType.wordmark(t.onPrimary)),
-                      const SizedBox(height: 26),
-                      Text(l10n.onboardingTitle, style: PalabreType.title(t.onPrimary).copyWith(fontSize: 28)),
-                      const SizedBox(height: 14),
-                      Text(
-                        l10n.onboardingPrinciple,
-                        style: TextStyle(
-                          fontSize: 15.5,
-                          height: 1.45,
-                          fontWeight: FontWeight.w500,
-                          color: t.onPrimary.withValues(alpha: 0.92),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+      body: SafeArea(
+        child: _narrow(
+          ListView(
+            padding: const EdgeInsets.fromLTRB(BandScaffold.side, 28, BandScaffold.side, 32),
+            children: [
+              Text('Palabre', style: PalabreType.wordmark(t.primary)),
+              const SizedBox(height: 28),
+              Text(l10n.onboardingTitle, style: PalabreType.poster(t.ink)),
+              const SizedBox(height: 14),
+              Container(width: 56, height: 6, decoration: BoxDecoration(color: t.accent, borderRadius: BorderRadius.circular(3))),
+              const SizedBox(height: 18),
+              Text(l10n.onboardingPrinciple, style: TextStyle(fontSize: 16, height: 1.45, fontWeight: FontWeight.w600, color: t.ink)),
+              const SizedBox(height: 28),
+              const SoftCard(child: ProfileForm(onboarding: true)),
+            ],
           ),
-          Expanded(
-            child: Stack(
-              children: [
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: BandScaffold.overlap,
-                  child: ColoredBox(color: t.primary),
-                ),
-                _narrow(
-                  ListView(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
-                    children: const [SoftCard(child: ProfileForm(onboarding: true))],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -141,11 +107,10 @@ class _ProfileFormState extends ConsumerState<ProfileForm> {
     final showCountry = widget.onboarding || widget.showCountry;
     final showDetails = !widget.onboarding;
 
-    final saveButton = FilledButton(
+    final saveButton = ActionButton(
+      label: widget.saveLabel ?? (widget.onboarding ? l10n.start : l10n.save),
+      busy: _busy,
       onPressed: _busy ? null : _save,
-      child: _busy
-          ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
-          : Text(widget.saveLabel ?? (widget.onboarding ? l10n.start : l10n.save)),
     );
 
     return Column(

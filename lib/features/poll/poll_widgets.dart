@@ -29,7 +29,8 @@ String pollStatusLine(BuildContext context, WidgetRef ref, Poll poll) {
   };
 }
 
-/// La carte principale : la question, puis vote ou résultats selon l'état.
+/// Le corps de la question : options et vote, ou résultats, selon l'état.
+/// La question elle-même est le titre « poster » de l'écran.
 class PollCard extends ConsumerWidget {
   const PollCard(this.poll, {super.key});
   final Poll poll;
@@ -45,36 +46,35 @@ class PollCard extends ConsumerWidget {
     final canSeeResults = status == PollStatus.ferme || myVote != null;
     final lt = LocalTime(ref.watch(selectedCountryInfoProvider).fuseau);
 
-    return SoftCard(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(poll.question, style: PalabreType.question(t.ink)),
-          const SizedBox(height: 14),
-          if (poll.suspect)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: NoticeBanner(text: l10n.pollSuspect(poll.suspectMotif ?? ''), icon: Icons.warning_amber_outlined, color: scheme.error),
-            ),
-          if (status == PollStatus.programme) ...[
-            for (final o in poll.options) OptionRow(label: o.libelle, neutral: o.neutre, selected: false, enabled: false),
-            const SizedBox(height: 4),
-            NoticeBanner(text: l10n.pollStatusScheduledNote(lt.dateTime(poll.ouverture, context.localeName)), icon: Icons.schedule),
-          ] else if (!canSeeResults)
-            VoteBox(poll)
-          else
-            results.when(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (poll.suspect)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: NoticeBanner(text: l10n.pollSuspect(poll.suspectMotif ?? ''), icon: Icons.warning_amber_outlined, color: scheme.error),
+          ),
+        if (status == PollStatus.programme) ...[
+          for (final o in poll.options) OptionRow(label: o.libelle, neutral: o.neutre, selected: false, enabled: false),
+          const SizedBox(height: 4),
+          NoticeBanner(text: l10n.pollStatusScheduledNote(lt.dateTime(poll.ouverture, context.localeName)), icon: Icons.schedule),
+        ] else if (!canSeeResults)
+          VoteBox(poll)
+        else
+          SoftCard(
+            child: results.when(
               data: (r) => r == null ? Text(l10n.pollNoResultsYet, style: TextStyle(color: t.muted)) : ResultsView(poll: poll, results: r, myOptionId: myVote),
               loading: () => const Padding(padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator(strokeWidth: 2))),
               error: (_, _) => ErrorRetry(message: l10n.errorGeneric, onRetry: () => ref.invalidate(pollResultsProvider(poll.id))),
             ),
-        ],
-      ),
+          ),
+      ],
     );
   }
 }
 
-/// Une option : ligne sélectionnable, bord fin, sélection en couleur douce.
+/// Une option : ligne pleine largeur, bord 2 px, case carrée. Choisie : fond
+/// couleur de section, ombre dure. « Sans avis » : bord et texte désactivés.
 class OptionRow extends StatelessWidget {
   const OptionRow({super.key, required this.label, required this.selected, this.neutral = false, this.enabled = true, this.onTap});
   final String label;
@@ -86,38 +86,32 @@ class OptionRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.tokens;
-    final fg = !enabled ? t.muted : (neutral ? t.muted : t.ink);
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(12),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(12),
-          onTap: enabled ? onTap : null,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 180),
-            curve: Curves.easeOut,
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-            decoration: BoxDecoration(
-              color: selected ? t.primarySoft : Colors.transparent,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: selected ? t.primary : t.line, width: selected ? 1.5 : 1),
-            ),
-            child: Row(
-              children: [
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 220),
-                  transitionBuilder: (c, a) => ScaleTransition(scale: CurvedAnimation(parent: a, curve: Curves.easeOutBack), child: c),
-                  child: Icon(selected ? Icons.check_circle : Icons.circle_outlined, key: ValueKey(selected), size: 20, color: selected ? t.primary : (enabled ? t.muted : t.line)),
-                ),
-                const SizedBox(width: 12),
-                Expanded(child: Text(label, style: TextStyle(color: fg, fontWeight: selected ? FontWeight.w700 : FontWeight.w600))),
-              ],
-            ),
-          ),
-        ),
+    final section = context.sectionColor;
+    final dim = neutral || !enabled;
+    final fg = selected ? context.onSectionColor : (dim ? t.muted : t.ink);
+    final borderColor = selected ? t.border : (dim ? t.disabled : t.border);
+    final row = AnimatedContainer(
+      duration: const Duration(milliseconds: 160),
+      curve: Curves.easeOut,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: selected ? section : t.card,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: borderColor, width: 2),
       ),
+      child: Row(
+        children: [
+          SquareCheck(checked: selected, disabled: dim, onDark: true),
+          const SizedBox(width: 14),
+          Expanded(child: Text(label, style: TextStyle(fontSize: 16, fontWeight: selected ? FontWeight.w800 : FontWeight.w700, color: fg))),
+        ],
+      ),
+    );
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: selected
+          ? HardShadow(offset: 4, radius: 16, color: t.isDark ? t.ink : t.hardShadow, onTap: enabled ? onTap : null, child: row)
+          : GestureDetector(behavior: HitTestBehavior.opaque, onTap: enabled ? onTap : null, child: row),
     );
   }
 }
@@ -165,15 +159,14 @@ class _VoteBoxState extends ConsumerState<VoteBox> {
             enabled: !_busy,
             onTap: () => setState(() => _selected = o.id),
           ),
-        const SizedBox(height: 6),
-        FilledButton(
-          onPressed: _selected == null || _busy ? null : _vote,
-          child: _busy ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)) : Text(l10n.pollVote),
-        ),
         const SizedBox(height: 8),
-        Text(l10n.pollVoteFinal, style: PalabreType.note(t.muted), textAlign: TextAlign.center),
-        const SizedBox(height: 10),
-        Center(child: Pill(label: l10n.pollAlreadyAnswered(widget.poll.repondants), icon: Icons.people_outline)),
+        ActionButton(
+          label: l10n.pollVote,
+          busy: _busy,
+          onPressed: _selected == null || _busy ? null : _vote,
+        ),
+        const SizedBox(height: 12),
+        Text('${l10n.pollVoteFinal} · ${l10n.pollAlreadyAnswered(widget.poll.repondants)}', style: PalabreType.note(t.muted), textAlign: TextAlign.center),
       ],
     );
   }
@@ -221,7 +214,7 @@ class _ResultsViewState extends ConsumerState<ResultsView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(children: [AnimatedNumber(value: r.repondants, style: PalabreType.big(t.ink)), const SizedBox(width: 8), Text(l10n.pollRespondents(r.repondants).replaceFirst(RegExp(r'^\d+\s*'), ''), style: PalabreType.cardTitle(t.ink))]),
+        Row(crossAxisAlignment: CrossAxisAlignment.baseline, textBaseline: TextBaseline.alphabetic, children: [AnimatedNumber(value: r.repondants, style: PalabreType.big(t.ink)), const SizedBox(width: 8), Text(l10n.pollRespondents(r.repondants).replaceFirst(RegExp(r'^\d+\s*'), ''), style: PalabreType.cardTitle(t.ink))]),
         const SizedBox(height: 4),
         Text(r.isFinal ? l10n.pollResultsFinal : l10n.pollResultsProvisional, style: PalabreType.note(t.muted)),
         const SizedBox(height: 4),
@@ -273,13 +266,13 @@ class _ResultsViewState extends ConsumerState<ResultsView> {
                               style: TextStyle(fontSize: 13.5, color: o.neutre ? t.muted : t.ink, fontWeight: widget.myOptionId == o.id ? FontWeight.w700 : FontWeight.w500)),
                         ),
                         const SizedBox(width: 8),
-                        Text('${(c.fraction(o.id) * 100).round()} %', style: PalabreType.label(t.ink).copyWith(fontFeatures: const [FontFeature.tabularFigures()])),
+                        BigPercent((c.fraction(o.id) * 100).round(), size: 22),
                         const SizedBox(width: 6),
                         Text('(${c.counts[o.id] ?? 0})', style: PalabreType.note(t.muted)),
                       ],
                     ),
                     const SizedBox(height: 5),
-                    PercentBar(fraction: c.fraction(o.id), color: o.neutre ? t.muted : t.primary),
+                    PercentBar(fraction: c.fraction(o.id), color: o.neutre ? t.disabled : context.sectionColor),
                   ],
                 ),
               ),
@@ -289,8 +282,8 @@ class _ResultsViewState extends ConsumerState<ResultsView> {
   }
 }
 
-/// Contexte factuel court et ses sources, repliés par défaut. Jamais le texte
-/// intégral.
+/// Contexte factuel court et ses sources, repliés par défaut, en ligne
+/// « affiche ». Jamais le texte intégral.
 class PollContextCard extends StatefulWidget {
   const PollContextCard(this.poll, {super.key, this.initiallyOpen = false});
   final Poll poll;
@@ -308,63 +301,48 @@ class _PollContextCardState extends State<PollContextCard> {
     final l10n = context.l10n;
     final t = context.tokens;
     final poll = widget.poll;
-    return SoftCard(
-      padding: EdgeInsets.zero,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          InkWell(
-            onTap: () => setState(() => _open = !_open),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 14, 12, 14),
-              child: Row(
-                children: [
-                  Icon(Icons.menu_book_outlined, size: 18, color: t.primary),
-                  const SizedBox(width: 10),
-                  Expanded(child: Text(l10n.pollContextSources(poll.sources.length), style: PalabreType.label(t.ink))),
-                  AnimatedRotation(
-                    turns: _open ? 0.5 : 0,
-                    duration: const Duration(milliseconds: 200),
-                    child: Icon(Icons.expand_more, color: t.muted),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        PosterRow(
+          icon: Icons.menu_book_outlined,
+          label: l10n.pollContextSources(poll.sources.length),
+          onTap: () => setState(() => _open = !_open),
+          trailingWidget: AnimatedRotation(turns: _open ? 0.5 : 0, duration: const Duration(milliseconds: 200), child: Icon(Icons.expand_more, size: 22, color: t.muted)),
+        ),
+        AnimatedCrossFade(
+          duration: const Duration(milliseconds: 200),
+          crossFadeState: _open ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+          firstChild: const SizedBox(width: double.infinity),
+          secondChild: Padding(
+            padding: const EdgeInsets.fromLTRB(30, 0, 0, 14),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(poll.contexte, style: TextStyle(height: 1.45, fontWeight: FontWeight.w500, color: t.ink)),
+                if (poll.sources.isNotEmpty) ...[
+                  const SizedBox(height: 10),
+                  for (final s in poll.sources) SourceLink(url: s.url, label: s.titre, dense: true),
+                ],
+                if (poll.personId != null)
+                  TextButton.icon(
+                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                    onPressed: () => context.push(Routes.person(poll.personId!)),
+                    icon: const Icon(Icons.person_outline, size: 16),
+                    label: Text(l10n.pollLinkedPerson),
                   ),
-                ],
-              ),
+                if (poll.organizationId != null)
+                  TextButton.icon(
+                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                    onPressed: () => context.push(Routes.party(poll.organizationId!)),
+                    icon: const Icon(Icons.account_balance_outlined, size: 16),
+                    label: Text(l10n.pollLinkedOrg),
+                  ),
+              ],
             ),
           ),
-          AnimatedCrossFade(
-            duration: const Duration(milliseconds: 200),
-            crossFadeState: _open ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-            firstChild: const SizedBox(width: double.infinity),
-            secondChild: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(poll.contexte, style: TextStyle(height: 1.45, color: t.ink)),
-                  if (poll.sources.isNotEmpty) ...[
-                    const SizedBox(height: 10),
-                    for (final s in poll.sources) SourceLink(url: s.url, label: s.titre, dense: true),
-                  ],
-                  if (poll.personId != null)
-                    TextButton.icon(
-                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                      onPressed: () => context.push(Routes.person(poll.personId!)),
-                      icon: const Icon(Icons.person_outline, size: 16),
-                      label: Text(l10n.pollLinkedPerson),
-                    ),
-                  if (poll.organizationId != null)
-                    TextButton.icon(
-                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                      onPressed: () => context.push(Routes.party(poll.organizationId!)),
-                      icon: const Icon(Icons.account_balance_outlined, size: 16),
-                      label: Text(l10n.pollLinkedOrg),
-                    ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -398,11 +376,11 @@ class ArchiveCard extends ConsumerWidget {
               children: [
                 Expanded(child: Text(top.libelle, style: PalabreType.note(t.muted), overflow: TextOverflow.ellipsis)),
                 const SizedBox(width: 8),
-                Text('${(total.fraction(top.id) * 100).round()} %', style: PalabreType.label(t.ink)),
+                BigPercent((total.fraction(top.id) * 100).round(), size: 20),
               ],
             ),
             const SizedBox(height: 5),
-            PercentBar(fraction: total.fraction(top.id), height: 5, color: top.neutre ? t.muted : t.primary),
+            PercentBar(fraction: total.fraction(top.id), height: 6, color: top.neutre ? t.disabled : context.sectionColor),
             const SizedBox(height: 6),
             Text(l10n.pollRespondents(total.nCellule), style: PalabreType.note(t.muted)),
           ] else
