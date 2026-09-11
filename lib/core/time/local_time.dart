@@ -32,10 +32,14 @@ class LocalTime {
       DateFormat('d MMM yyyy', locale).format(date);
 }
 
+/// Une date civile (« 2026-09-07 ») est lue en UTC pour que les comparaisons
+/// au jour près ne dépendent pas du fuseau du téléphone.
 DateTime? parseDate(Object? v) {
   if (v == null) return null;
   if (v is DateTime) return v;
-  return DateTime.tryParse(v.toString());
+  final s = v.toString();
+  if (s.length == 10) return DateTime.tryParse('${s}T00:00:00Z');
+  return DateTime.tryParse(s);
 }
 
 /// Date civile ISO « 2026-09-07 » depuis un DateTime.

@@ -80,7 +80,7 @@ export async function sendToToken(
         token,
         notification,
         data,
-        android: { priority: "high", notification: { channel_id: "palabre_hebdo" } },
+        android: { priority: "high" },
         apns: { payload: { aps: { sound: "default" } } },
       },
     }),

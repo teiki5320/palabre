@@ -94,6 +94,6 @@ void main() {
     final again = ReferenceBundle.fromJson(b.toJson());
     expect(again.mandates.length, b.mandates.length);
     expect(again.governmentAt(DateTime.utc(2026, 1, 1))!.entries.length, 3);
-    expect(again.earliestDate, DateTime.parse('2024-04-05'));
+    expect(again.earliestDate, DateTime.utc(2024, 4, 5));
   });
 }

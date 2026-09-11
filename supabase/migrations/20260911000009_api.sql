@@ -42,16 +42,20 @@ $$;
 -- ---------------------------------------------------------------------------
 
 create or replace function public.voter(p_poll_id bigint, p_option_id bigint)
-returns jsonb language plpgsql
+returns jsonb language plpgsql security definer
 set search_path = public
 as $$
 begin
   if auth.uid() is null then
     raise exception 'Session requise' using errcode = 'insufficient_privilege';
   end if;
+  -- le trigger vote_avant_insert impose l'identité, la fenêtre et l'option
   insert into vote (poll_id, user_id, option_id) values (p_poll_id, auth.uid(), p_option_id);
-  -- les agrégats du sondage ouvert sont recalculés au prochain tour de cron ;
-  -- on renvoie tout de suite ceux qui existent
+  -- les agrégats sont recalculés toutes les cinq minutes par le cron ; seul
+  -- le tout premier votant paie un calcul immédiat, pour ne pas voir « 0 »
+  if not exists (select 1 from poll_result r where r.poll_id = p_poll_id) then
+    perform calculer_resultats(p_poll_id);
+  end if;
   return poll_resultats(p_poll_id);
 end $$;
 

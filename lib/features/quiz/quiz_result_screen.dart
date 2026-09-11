@@ -1,4 +1,4 @@
-import 'dart:typed_data';
+import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -37,9 +37,10 @@ class _QuizResultScreenState extends ConsumerState<QuizResultScreen> {
       final bytes = await image.toByteData(format: ui.ImageByteFormat.png);
       if (bytes == null) return;
       final dir = await getTemporaryDirectory();
-      final file = XFile.fromData(Uint8List.view(bytes.buffer), mimeType: 'image/png', name: 'palabre.png', path: '${dir.path}/palabre.png');
+      final file = File('${dir.path}/palabre.png');
+      await file.writeAsBytes(bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes), flush: true);
       if (!mounted) return;
-      await SharePlus.instance.share(ShareParams(files: [file], text: context.l10n.quizShareText));
+      await SharePlus.instance.share(ShareParams(files: [XFile(file.path, mimeType: 'image/png')], text: context.l10n.quizShareText));
     } finally {
       if (mounted) setState(() => _sharing = false);
     }
