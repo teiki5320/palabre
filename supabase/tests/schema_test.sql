@@ -199,8 +199,13 @@ begin
     raise exception 'document_public accepté sans lien ni extrait';
   exception when check_violation then null; end;
 
+  -- le quiz du jeu de test (25 affirmations) est publié ; un brouillon de 5 ne peut pas l'être
+  assert (select publie from quiz where id = 1), 'quiz de test non publié';
+  assert (select count(*) from statement where quiz_id = 1) between 20 and 30, 'quiz de test hors bornes';
+  insert into quiz (id, country_code, titre, version, publie) values (2, 'SN', 'Brouillon de test', 1, false);
+  insert into statement (quiz_id, ordre, texte) select 2, g, 'Affirmation brouillon ' || g from generate_series(1, 5) g;
   begin
-    update quiz set publie = true where id = 1;
+    update quiz set publie = true where id = 2;
     raise exception 'quiz de 5 affirmations publié';
   exception when check_violation then null; end;
 
@@ -270,9 +275,11 @@ begin
     raise exception 'insertion de sondage acceptée pour un utilisateur';
   exception when insufficient_privilege then null; end;
 
-  -- brouillons invisibles
-  select count(*) into n from quiz;
+  -- brouillons invisibles, quiz publié visible
+  select count(*) into n from quiz where id = 2;
   assert n = 0, 'quiz non publié visible';
+  select count(*) into n from quiz where id = 1;
+  assert n = 1, 'quiz publié invisible';
 
   -- vue d'anomalies interdite
   begin
