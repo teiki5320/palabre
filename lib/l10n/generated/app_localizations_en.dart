@@ -141,13 +141,35 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pollStatusClosed => 'Closed';
 
   @override
+  String pollOpenUntil(String date) {
+    return 'Open until $date';
+  }
+
+  @override
+  String pollStatusScheduledNote(String date) {
+    return 'Voting opens on $date.';
+  }
+
+  @override
+  String pollContextSources(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'Context · $n sources',
+      one: 'Context · 1 source',
+      zero: 'Context',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get pollNoCurrent => 'No question this week.';
 
   @override
   String get pollVote => 'Vote';
 
   @override
-  String get pollVoteFinal => 'Your vote is final.';
+  String get pollVoteFinal => 'One vote, final. Results show afterwards.';
 
   @override
   String pollVoted(String option) {

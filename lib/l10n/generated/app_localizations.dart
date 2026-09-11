@@ -334,6 +334,24 @@ abstract class AppLocalizations {
   /// **'Fermé'**
   String get pollStatusClosed;
 
+  /// No description provided for @pollOpenUntil.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ouverte jusqu\'au {date}'**
+  String pollOpenUntil(String date);
+
+  /// No description provided for @pollStatusScheduledNote.
+  ///
+  /// In fr, this message translates to:
+  /// **'Le vote ouvre le {date}.'**
+  String pollStatusScheduledNote(String date);
+
+  /// No description provided for @pollContextSources.
+  ///
+  /// In fr, this message translates to:
+  /// **'{n, plural, =0{Contexte} =1{Contexte · 1 source} other{Contexte · {n} sources}}'**
+  String pollContextSources(int n);
+
   /// No description provided for @pollNoCurrent.
   ///
   /// In fr, this message translates to:
@@ -349,7 +367,7 @@ abstract class AppLocalizations {
   /// No description provided for @pollVoteFinal.
   ///
   /// In fr, this message translates to:
-  /// **'Votre vote est définitif.'**
+  /// **'Un seul vote, définitif. Les résultats s\'affichent après.'**
   String get pollVoteFinal;
 
   /// No description provided for @pollVoted.
