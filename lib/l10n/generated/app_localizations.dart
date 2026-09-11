@@ -538,6 +538,30 @@ abstract class AppLocalizations {
   /// **'Recommencer'**
   String get quizRestart;
 
+  /// No description provided for @quizEstimate.
+  ///
+  /// In fr, this message translates to:
+  /// **'{n} affirmations · environ 5 minutes'**
+  String quizEstimate(int n);
+
+  /// No description provided for @quizLastResult.
+  ///
+  /// In fr, this message translates to:
+  /// **'Votre dernier résultat'**
+  String get quizLastResult;
+
+  /// No description provided for @quizSwipeHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Glissez la carte, ou touchez un bouton'**
+  String get quizSwipeHint;
+
+  /// No description provided for @quizSkipStatement.
+  ///
+  /// In fr, this message translates to:
+  /// **'Passer cette affirmation'**
+  String get quizSkipStatement;
+
   /// No description provided for @quizNone.
   ///
   /// In fr, this message translates to:

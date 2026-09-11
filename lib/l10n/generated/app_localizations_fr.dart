@@ -283,6 +283,20 @@ class AppLocalizationsFr extends AppLocalizations {
   String get quizRestart => 'Recommencer';
 
   @override
+  String quizEstimate(int n) {
+    return '$n affirmations · environ 5 minutes';
+  }
+
+  @override
+  String get quizLastResult => 'Votre dernier résultat';
+
+  @override
+  String get quizSwipeHint => 'Glissez la carte, ou touchez un bouton';
+
+  @override
+  String get quizSkipStatement => 'Passer cette affirmation';
+
+  @override
   String get quizNone => 'Aucun questionnaire publié pour ce pays.';
 
   @override

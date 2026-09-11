@@ -3,33 +3,48 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/router.dart';
+import '../../app/theme.dart';
 import '../../core/widgets/widgets.dart';
 import 'quiz_engine.dart';
 import 'quiz_models.dart';
 import 'quiz_providers.dart';
+import 'swipe_card.dart';
 
-/// Une affirmation à la fois : d'accord, pas d'accord, neutre, passer.
-/// Jusqu'à cinq affirmations « importantes pour moi », qui comptent double.
-class QuizRunScreen extends ConsumerWidget {
+/// Une affirmation par carte : on glisse, ou on touche un bouton. Jusqu'à
+/// cinq affirmations « importantes pour moi », qui comptent double.
+class QuizRunScreen extends ConsumerStatefulWidget {
   const QuizRunScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<QuizRunScreen> createState() => _QuizRunScreenState();
+}
+
+class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
+  final _controller = SwipeController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final scheme = Theme.of(context).colorScheme;
+    final t = context.tokens;
     final quiz = ref.watch(currentQuizProvider).value;
     final session = ref.watch(quizSessionProvider);
     if (quiz == null || quiz.statements.isEmpty) {
-      return Scaffold(appBar: AppBar(), body: ErrorRetry(message: l10n.quizNone));
+      return BandScaffold(title: l10n.tabQuiz, children: [SoftCard(child: ErrorRetry(message: l10n.quizNone))]);
     }
     final total = quiz.statements.length;
     final index = session.index.clamp(0, total - 1);
     final s = quiz.statements[index];
-    final answer = session.answers[s.id];
     final important = session.important.contains(s.id);
     final notifier = ref.read(quizSessionProvider.notifier);
 
-    void next() {
+    void onAnswer(Answer a) {
+      notifier.answer(s.id, a);
       if (index + 1 >= total) {
         context.pushReplacement(Routes.quizResult);
       } else {
@@ -37,56 +52,88 @@ class QuizRunScreen extends ConsumerWidget {
       }
     }
 
-    void choose(Answer a) {
-      notifier.answer(s.id, a);
-      next();
-    }
-
-    Widget answerButton(Answer a, String label, IconData icon) => Padding(
-          padding: const EdgeInsets.only(bottom: 8),
-          child: OutlinedButton.icon(
-            style: OutlinedButton.styleFrom(
-              alignment: Alignment.centerLeft,
-              foregroundColor: answer == a ? scheme.primary : scheme.onSurface,
-              side: BorderSide(color: answer == a ? scheme.primary : scheme.outlineVariant, width: answer == a ? 1 : 0.5),
-            ),
-            onPressed: () => choose(a),
-            icon: Icon(icon, size: 20),
-            label: Text(label),
+    Widget cardBody(Statement st) => Container(
+          constraints: const BoxConstraints(minHeight: 220),
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (st.theme != null) Pill(label: st.theme!),
+              const SizedBox(height: 14),
+              Text(st.texte, style: PalabreType.question(t.ink).copyWith(fontSize: 20)),
+              const SizedBox(height: 6),
+            ],
           ),
         );
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.quizProgress(index + 1, total)),
-        leading: IconButton(icon: const Icon(Icons.close), onPressed: () => context.pop()),
-        actions: [
-          if (index > 0) IconButton(icon: const Icon(Icons.chevron_left), tooltip: l10n.back, onPressed: () => notifier.goTo(index - 1)),
-          if (answer != null && index + 1 < total) IconButton(icon: const Icon(Icons.chevron_right), tooltip: l10n.next, onPressed: next),
-        ],
-      ),
-      body: Column(
+    return BandScaffold(
+      title: l10n.tabQuiz,
+      eyebrow: l10n.quizSwipeHint,
+      leading: IconButton(icon: const Icon(Icons.close), tooltip: l10n.close, onPressed: () => context.pop()),
+      actions: [
+        if (index > 0) IconButton(icon: const Icon(Icons.chevron_left), tooltip: l10n.back, onPressed: () => notifier.goTo(index - 1)),
+        Padding(
+          padding: const EdgeInsets.only(right: 8, top: 4),
+          child: Pill(label: l10n.quizProgress(index + 1, total), onBand: true),
+        ),
+      ],
+      control: PercentBar(fraction: (index + 1) / total, color: t.onPrimary, track: t.onPrimary.withValues(alpha: 0.25), height: 4),
+      body: ListView(
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         children: [
-          LinearProgressIndicator(value: (index + 1) / total, minHeight: 2, backgroundColor: scheme.outlineVariant.withValues(alpha: 0.4)),
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
+          Stack(
+            children: [
+              if (index + 2 < total)
+                Positioned.fill(
+                  top: 14,
+                  left: 12,
+                  right: 12,
+                  child: SoftCard(margin: EdgeInsets.zero, child: const SizedBox.expand()),
+                ),
+              if (index + 1 < total)
+                Positioned.fill(
+                  top: 7,
+                  left: 6,
+                  right: 6,
+                  child: SoftCard(margin: EdgeInsets.zero, child: const SizedBox.expand()),
+                ),
+              SwipeCard(
+                key: ValueKey('statement-card-${s.id}'),
+                controller: _controller,
+                onAnswer: onAnswer,
+                agreeLabel: l10n.quizAgree,
+                disagreeLabel: l10n.quizDisagree,
+                child: SoftCard(margin: EdgeInsets.zero, padding: EdgeInsets.zero, child: cardBody(s)),
+              ),
+            ],
+          ),
+          const SizedBox(height: 26),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _RoundButton(key: const ValueKey('answer-desaccord'), icon: Icons.close_rounded, label: l10n.quizDisagree, color: t.ink, onTap: () => _controller.fling(Answer.desaccord)),
+              _RoundButton(key: const ValueKey('answer-neutre'), icon: Icons.remove_rounded, label: l10n.quizNeutral, color: t.muted, onTap: () => _controller.fling(Answer.neutre)),
+              _RoundButton(key: const ValueKey('answer-accord'), icon: Icons.check_rounded, label: l10n.quizAgree, color: t.primary, onTap: () => _controller.fling(Answer.accord)),
+            ],
+          ),
+          const SizedBox(height: 18),
+          SoftCard(
+            padding: const EdgeInsets.fromLTRB(14, 8, 8, 8),
+            margin: EdgeInsets.zero,
+            child: Row(
               children: [
-                if (s.theme != null)
-                  Text(s.theme!.toUpperCase(), style: TextStyle(fontSize: 11, letterSpacing: 1.1, color: scheme.onSurfaceVariant, fontWeight: FontWeight.w600)),
-                const SizedBox(height: 8),
-                Text(s.texte, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600, height: 1.35)),
-                const SizedBox(height: 28),
-                answerButton(Answer.accord, l10n.quizAgree, Icons.thumb_up_outlined),
-                answerButton(Answer.desaccord, l10n.quizDisagree, Icons.thumb_down_outlined),
-                answerButton(Answer.neutre, l10n.quizNeutral, Icons.remove_circle_outline),
-                answerButton(Answer.passer, l10n.quizSkip, Icons.skip_next_outlined),
-                const SizedBox(height: 12),
-                SwitchListTile(
-                  contentPadding: EdgeInsets.zero,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(l10n.quizImportant, style: PalabreType.label(t.ink)),
+                      Text(l10n.quizImportantCount(session.important.length, QuizEngine.maxImportant), style: PalabreType.note(t.muted)),
+                    ],
+                  ),
+                ),
+                Switch(
                   value: important,
-                  title: Text(l10n.quizImportant),
-                  subtitle: Text(l10n.quizImportantCount(session.important.length, QuizEngine.maxImportant), style: const TextStyle(fontSize: 12)),
                   onChanged: (_) {
                     if (!notifier.toggleImportant(s.id)) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.quizImportantLimit(QuizEngine.maxImportant))));
@@ -96,13 +143,49 @@ class QuizRunScreen extends ConsumerWidget {
               ],
             ),
           ),
-          if (index + 1 >= total && answer != null)
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-              child: FilledButton(onPressed: () => context.pushReplacement(Routes.quizResult), child: Text(l10n.quizSeeResults)),
-            ),
+          const SizedBox(height: 6),
+          TextButton(
+            style: TextButton.styleFrom(foregroundColor: t.muted),
+            onPressed: () => _controller.fling(Answer.passer),
+            child: Text(l10n.quizSkipStatement),
+          ),
         ],
       ),
+    );
+  }
+}
+
+class _RoundButton extends StatelessWidget {
+  const _RoundButton({super.key, required this.icon, required this.label, required this.color, required this.onTap});
+  final IconData icon;
+  final String label;
+  final Color color;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = context.tokens;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Material(
+          color: t.card,
+          shape: const CircleBorder(),
+          elevation: 0,
+          child: InkWell(
+            customBorder: const CircleBorder(),
+            onTap: onTap,
+            child: Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [t.cardShadow]),
+              child: Icon(icon, size: 30, color: color),
+            ),
+          ),
+        ),
+        const SizedBox(height: 6),
+        Text(label, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: t.muted)),
+      ],
     );
   }
 }
