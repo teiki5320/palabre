@@ -482,6 +482,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get govHead => 'Head of government';
 
   @override
+  String get govToday => 'today';
+
+  @override
+  String get govSliderHint => 'Drag to go back in time';
+
+  @override
   String govSince(String date) {
     return 'since $date';
   }

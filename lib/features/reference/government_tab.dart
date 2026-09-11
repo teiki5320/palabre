@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/router.dart';
+import '../../app/theme.dart';
 import '../../core/country/country_models.dart';
 import '../../core/country/country_providers.dart';
 import '../../core/net/cached_notifier.dart';
@@ -11,48 +12,121 @@ import '../../core/widgets/widgets.dart';
 import 'reference_models.dart';
 import 'reference_providers.dart';
 
-/// Onglet 3 : grille de portraits groupée par bloc, couleur par bloc, et le
-/// curseur temporel. On fait glisser, la grille se recompose.
+/// Onglet 3 : le curseur temporel dans le bandeau, les points marquent les
+/// remaniements ; en dessous, une carte par bloc, couleur par bloc. On fait
+/// glisser, la grille se recompose.
 class GovernmentTab extends ConsumerWidget {
   const GovernmentTab({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final scheme = Theme.of(context).colorScheme;
+    final t = context.tokens;
     final code = ref.watch(selectedCountryProvider);
     final reference = ref.watch(referenceProvider(code));
     final module = ref.watch(moduleStateProvider(AppModule.government));
     final date = ref.watch(governmentDateProvider);
+    final today = dayOnly(DateTime.now());
+    final isToday = !date.isBefore(today);
+    final bundle = reference.value;
+    final suspended = module != null && !module.actif;
 
-    return Scaffold(
-      appBar: AppBar(title: Text(l10n.tabGovernment), actions: const [SettingsAction()]),
-      body: module != null && !module.actif
-          ? ListView(padding: const EdgeInsets.all(16), children: [
+    final dateLabel = l10n.govAt(LocalTime.civil(date, context.localeName));
+    final title = isToday ? '$dateLabel · ${l10n.govToday}' : dateLabel;
+
+    List<Widget> children;
+    if (suspended) {
+      children = [
+        SoftCard(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
               NoticeBanner(text: l10n.moduleSuspended, icon: Icons.pause_circle_outline),
-              if (module.motif != null) Padding(padding: const EdgeInsets.only(top: 8), child: Text(l10n.moduleSuspendedReason(module.motif!), style: TextStyle(color: scheme.onSurfaceVariant, fontSize: 13))),
-            ])
-          : reference.when(
-              loading: () => const Center(child: CircularProgressIndicator(strokeWidth: 2)),
-              error: (e, _) => ErrorRetry(message: e is NotConfiguredException ? l10n.notConfigured : l10n.errorGeneric, onRetry: () => ref.invalidate(referenceProvider(code))),
-              data: (ref_) {
-                if (ref_.governments.isEmpty) {
-                  return Padding(padding: const EdgeInsets.all(16), child: NoticeBanner(text: l10n.govNoData));
-                }
-                final composition = ref_.governmentAt(date);
-                return Column(
+              if (module.motif != null) Padding(padding: const EdgeInsets.only(top: 8), child: Text(l10n.moduleSuspendedReason(module.motif!), style: PalabreType.note(t.muted))),
+            ],
+          ),
+        ),
+      ];
+    } else {
+      children = reference.when(
+        loading: () => const [SoftCard(child: Padding(padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator(strokeWidth: 2))))],
+        error: (e, _) => [
+          SoftCard(child: ErrorRetry(message: e is NotConfiguredException ? l10n.notConfigured : l10n.errorGeneric, onRetry: () => ref.invalidate(referenceProvider(code)))),
+        ],
+        data: (b) {
+          if (b.governments.isEmpty) return [SoftCard(child: NoticeBanner(text: l10n.govNoData))];
+          final composition = b.governmentAt(date);
+          if (composition == null) return [SoftCard(child: NoticeBanner(text: l10n.govNone))];
+          return _compositionCards(context, composition);
+        },
+      );
+    }
+
+    return BandScaffold(
+      brand: true,
+      eyebrow: l10n.tabGovernment,
+      title: title,
+      actions: const [SettingsAction()],
+      control: bundle == null || bundle.governments.isEmpty || suspended ? null : _TimeSlider(bundle: bundle, date: date),
+      children: children,
+    );
+  }
+
+  List<Widget> _compositionCards(BuildContext context, GovernmentComposition composition) {
+    final l10n = context.l10n;
+    final t = context.tokens;
+    final g = composition.government;
+    final blocs = composition.byBloc;
+    const order = [null, 'regalien', 'economie', 'social', 'infrastructure'];
+    final keys = [...order.where(blocs.containsKey), ...blocs.keys.where((k) => !order.contains(k))];
+    final coverage = g.portefeuillesTotal == null
+        ? l10n.govCoverageUnknown(composition.portefeuillesRenseignes)
+        : l10n.govCoverage(composition.portefeuillesRenseignes, g.portefeuillesTotal!);
+    return [
+      SoftCard(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(g.nom, style: PalabreType.cardTitle(t.ink)),
+            const SizedBox(height: 4),
+            Text(
+              g.fin == null
+                  ? l10n.govSince(LocalTime.civil(g.debut, context.localeName))
+                  : l10n.govFromTo(LocalTime.civil(g.debut, context.localeName), LocalTime.civil(g.fin!, context.localeName)),
+              style: PalabreType.note(t.muted),
+            ),
+            const SizedBox(height: 6),
+            Row(
+              children: [
+                Expanded(child: Text(coverage, style: PalabreType.note(t.muted))),
+                SourceLink(url: g.sourceUrl, label: g.decretRef ?? l10n.source, dense: true),
+              ],
+            ),
+          ],
+        ),
+      ),
+      for (final bloc in keys)
+        CardSection(
+          title: bloc == null ? l10n.govHead : blocLabel(context, bloc),
+          leading: ColorDot(bloc == null ? t.ink : blocColor(bloc), size: 10),
+          children: [
+            LayoutBuilder(
+              builder: (context, c) {
+                final cols = bloc == null ? 1 : 3;
+                final w = bloc == null ? c.maxWidth : (c.maxWidth - 12 * (cols - 1)) / cols;
+                return Wrap(
+                  spacing: 12,
+                  runSpacing: 14,
                   children: [
-                    _TimeSlider(bundle: ref_, date: date),
-                    Expanded(
-                      child: composition == null
-                          ? Padding(padding: const EdgeInsets.all(16), child: NoticeBanner(text: l10n.govNone))
-                          : _CompositionGrid(composition: composition),
-                    ),
+                    for (final e in blocs[bloc]!)
+                      SizedBox(width: w, child: _PortraitCell(e, bloc == null ? t.primary : blocColor(bloc), wide: bloc == null)),
                   ],
                 );
               },
             ),
-    );
+          ],
+        ),
+    ];
   }
 }
 
@@ -64,144 +138,117 @@ class _TimeSlider extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final scheme = Theme.of(context).colorScheme;
+    final t = context.tokens;
     final today = dayOnly(DateTime.now());
     final min = dayOnly(bundle.earliestDate ?? today);
     final span = today.difference(min).inDays;
     final value = date.difference(min).inDays.clamp(0, span).toDouble();
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Text(l10n.govAt(LocalTime.civil(date, context.localeName)), style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
-              const Spacer(),
-              IconButton(
-                icon: const Icon(Icons.today_outlined, size: 20),
-                tooltip: l10n.govAt(LocalTime.civil(today, context.localeName)),
-                onPressed: () => ref.read(governmentDateProvider.notifier).set(today),
-              ),
-            ],
-          ),
-          Slider(
-            value: value,
-            min: 0,
-            max: span <= 0 ? 1 : span.toDouble(),
-            onChanged: span <= 0 ? null : (v) => ref.read(governmentDateProvider.notifier).set(min.add(Duration(days: v.round()))),
-          ),
-          Row(
-            children: [
-              Text(LocalTime.civilShort(min, context.localeName), style: TextStyle(fontSize: 11, color: scheme.onSurfaceVariant)),
-              const Spacer(),
-              Text(LocalTime.civilShort(today, context.localeName), style: TextStyle(fontSize: 11, color: scheme.onSurfaceVariant)),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
+    final max = span <= 0 ? 1.0 : span.toDouble();
+    final marks = <double>{
+      for (final g in bundle.governments) dayOnly(g.debut).difference(min).inDays.clamp(0, span).toDouble(),
+    }.toList()
+      ..sort();
 
-class _CompositionGrid extends StatelessWidget {
-  const _CompositionGrid({required this.composition});
-  final GovernmentComposition composition;
+    void set(double v) {
+      // Aimanté sur un remaniement s'il est à moins de 3 % de la course.
+      var d = v;
+      for (final m in marks) {
+        if ((m - v).abs() <= max * 0.03) d = m;
+      }
+      ref.read(governmentDateProvider.notifier).set(min.add(Duration(days: d.round())));
+    }
 
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final scheme = Theme.of(context).colorScheme;
-    final g = composition.government;
-    final blocs = composition.byBloc;
-    const order = [null, 'regalien', 'economie', 'social', 'infrastructure'];
-    final keys = [...order.where(blocs.containsKey), ...blocs.keys.where((k) => !order.contains(k))];
-    final coverage = g.portefeuillesTotal == null
-        ? l10n.govCoverageUnknown(composition.portefeuillesRenseignes)
-        : l10n.govCoverage(composition.portefeuillesRenseignes, g.portefeuillesTotal!);
-
-    return CustomScrollView(
-      slivers: [
-        SliverPadding(
-          padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
-          sliver: SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(g.nom, style: const TextStyle(fontWeight: FontWeight.w600)),
-                const SizedBox(height: 2),
-                Text(
-                  g.fin == null
-                      ? l10n.govSince(LocalTime.civil(g.debut, context.localeName))
-                      : l10n.govFromTo(LocalTime.civil(g.debut, context.localeName), LocalTime.civil(g.fin!, context.localeName)),
-                  style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant),
-                ),
-                const SizedBox(height: 4),
-                Row(
-                  children: [
-                    Expanded(child: Text(coverage, style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant))),
-                    SourceLink(url: g.sourceUrl, label: g.decretRef ?? l10n.source, dense: true),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        for (final bloc in keys) ...[
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(16, 12, 16, 6),
-            sliver: SliverToBoxAdapter(
-              child: Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        LayoutBuilder(
+          builder: (context, c) {
+            const pad = 12.0;
+            final usable = c.maxWidth - 2 * pad;
+            return SizedBox(
+              height: 40,
+              child: Stack(
                 children: [
-                  ColorDot(bloc == null ? scheme.onSurface : blocColor(bloc)),
-                  const SizedBox(width: 8),
-                  Text((bloc == null ? l10n.govHead : blocLabel(context, bloc)).toUpperCase(),
-                      style: TextStyle(fontSize: 11, letterSpacing: 1.1, fontWeight: FontWeight.w600, color: scheme.onSurfaceVariant)),
+                  for (final m in marks)
+                    Positioned(
+                      left: pad + usable * (m / max) - 3,
+                      bottom: 4,
+                      child: Container(width: 6, height: 6, decoration: BoxDecoration(color: t.onPrimary.withValues(alpha: 0.7), shape: BoxShape.circle)),
+                    ),
+                  SliderTheme(
+                    data: SliderThemeData(
+                      trackHeight: 4,
+                      activeTrackColor: t.onPrimary,
+                      inactiveTrackColor: t.onPrimary.withValues(alpha: 0.3),
+                      thumbColor: t.onPrimary,
+                      overlayColor: t.onPrimary.withValues(alpha: 0.15),
+                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 9),
+                      trackShape: const RoundedRectSliderTrackShape(),
+                      padding: const EdgeInsets.symmetric(horizontal: pad),
+                    ),
+                    child: Slider(
+                      value: value,
+                      min: 0,
+                      max: max,
+                      onChanged: span <= 0 ? null : (v) => ref.read(governmentDateProvider.notifier).set(min.add(Duration(days: v.round()))),
+                      onChangeEnd: span <= 0 ? null : set,
+                    ),
+                  ),
                 ],
               ),
+            );
+          },
+        ),
+        Row(
+          children: [
+            Text(LocalTime.civilShort(min, context.localeName), style: PalabreType.note(t.onPrimary.withValues(alpha: 0.8))),
+            Expanded(child: Text(l10n.govSliderHint, textAlign: TextAlign.center, style: PalabreType.note(t.onPrimary.withValues(alpha: 0.7)))),
+            GestureDetector(
+              onTap: () => ref.read(governmentDateProvider.notifier).set(today),
+              child: Text(l10n.govToday, style: PalabreType.note(t.onPrimary.withValues(alpha: 0.8)).copyWith(fontWeight: FontWeight.w700)),
             ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 120, mainAxisSpacing: 12, crossAxisSpacing: 12, childAspectRatio: 0.66),
-              delegate: SliverChildBuilderDelegate(
-                (context, i) => _PortraitCell(blocs[bloc]![i], bloc == null ? scheme.onSurface : blocColor(bloc)),
-                childCount: blocs[bloc]!.length,
-              ),
-            ),
-          ),
-        ],
-        const SliverToBoxAdapter(child: SizedBox(height: 32)),
+          ],
+        ),
       ],
     );
   }
 }
 
 class _PortraitCell extends StatelessWidget {
-  const _PortraitCell(this.entry, this.color);
+  const _PortraitCell(this.entry, this.color, {this.wide = false});
   final GovernmentEntry entry;
   final Color color;
+  final bool wide;
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
+    final t = context.tokens;
+    final name = Text(entry.person.nom, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: wide ? 15 : 12.5, fontWeight: FontWeight.w700, height: 1.2, color: t.ink));
+    final role = Text(entry.intitule, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: wide ? 13 : 11, color: t.muted, height: 1.25, fontWeight: FontWeight.w500));
     return InkWell(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(12),
       onTap: () => context.push(Routes.person(entry.person.id)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AspectRatio(
-            aspectRatio: 1,
-            child: LayoutBuilder(builder: (_, c) => PersonAvatar(nom: entry.person.nom, photoUrl: entry.person.photoUrl, size: c.maxWidth, color: color)),
-          ),
-          const SizedBox(height: 6),
-          Text(entry.person.nom, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, height: 1.2)),
-          const SizedBox(height: 2),
-          Text(entry.intitule, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 10.5, color: scheme.onSurfaceVariant, height: 1.2)),
-        ],
-      ),
+      child: wide
+          ? Row(
+              children: [
+                PersonAvatar(nom: entry.person.nom, photoUrl: entry.person.photoUrl, size: 64, color: color),
+                const SizedBox(width: 14),
+                Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [name, const SizedBox(height: 3), role])),
+              ],
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AspectRatio(
+                  aspectRatio: 1,
+                  child: LayoutBuilder(builder: (_, c) => PersonAvatar(nom: entry.person.nom, photoUrl: entry.person.photoUrl, size: c.maxWidth, color: color)),
+                ),
+                const SizedBox(height: 6),
+                name,
+                const SizedBox(height: 2),
+                role,
+              ],
+            ),
     );
   }
 }

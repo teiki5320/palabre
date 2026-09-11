@@ -850,6 +850,18 @@ abstract class AppLocalizations {
   /// **'Chef du gouvernement'**
   String get govHead;
 
+  /// No description provided for @govToday.
+  ///
+  /// In fr, this message translates to:
+  /// **'aujourd\'hui'**
+  String get govToday;
+
+  /// No description provided for @govSliderHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Faites glisser pour remonter le temps'**
+  String get govSliderHint;
+
   /// No description provided for @govSince.
   ///
   /// In fr, this message translates to:

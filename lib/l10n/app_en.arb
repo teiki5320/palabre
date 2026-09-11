@@ -134,6 +134,8 @@
   "govNone": "No government documented at this date.",
   "govNoData": "No government documented for this country.",
   "govHead": "Head of government",
+  "govToday": "today",
+  "govSliderHint": "Drag to go back in time",
   "govSince": "since {date}",
   "govFromTo": "from {debut} to {fin}",
   "blocRegalien": "Sovereign",

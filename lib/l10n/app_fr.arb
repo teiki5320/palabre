@@ -158,6 +158,8 @@
   "govNone": "Aucun gouvernement documenté à cette date.",
   "govNoData": "Aucun gouvernement documenté pour ce pays.",
   "govHead": "Chef du gouvernement",
+  "govToday": "aujourd'hui",
+  "govSliderHint": "Faites glisser pour remonter le temps",
   "govSince": "depuis le {date}",
   "@govSince": {"placeholders": {"date": {"type": "String"}}},
   "govFromTo": "du {debut} au {fin}",

@@ -483,6 +483,12 @@ class AppLocalizationsWo extends AppLocalizations {
   String get govHead => 'Njiitu nguur gi';
 
   @override
+  String get govToday => 'aujourd\'hui';
+
+  @override
+  String get govSliderHint => 'Faites glisser pour remonter le temps';
+
+  @override
   String govSince(String date) {
     return 'depuis le $date';
   }
