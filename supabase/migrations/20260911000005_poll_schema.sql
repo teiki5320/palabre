@@ -266,7 +266,7 @@ create or replace function public.poll_tick()
 returns int language plpgsql security definer
 set search_path = public
 as $$
-declare r record; n int := 0;
+declare r public.poll%rowtype; n int := 0;
 begin
   for r in
     select p.* from poll p

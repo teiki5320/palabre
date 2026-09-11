@@ -16,7 +16,11 @@ create table if not exists auth.users (
   updated_at         timestamptz,
   is_anonymous       boolean not null default false,
   raw_app_meta_data  jsonb,
-  raw_user_meta_data jsonb
+  raw_user_meta_data jsonb,
+  confirmation_token varchar(255) default '',
+  recovery_token     varchar(255) default '',
+  email_change_token_new varchar(255) default '',
+  email_change       varchar(255) default ''
 );
 
 create or replace function auth.uid() returns uuid
