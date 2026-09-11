@@ -40,9 +40,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get save => 'Enregistrer';
 
   @override
-  String get continueLabel => 'Continuer';
-
-  @override
   String get start => 'Commencer';
 
   @override
@@ -92,15 +89,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get onboardingPrinciple =>
-      'On pose une question, chacun donne son avis, et la discussion s\'appuie sur des faits vérifiables.';
-
-  @override
-  String get onboardingNoOpinion =>
-      'Palabre n\'exprime aucune opinion. Elle pose des questions et documente des faits sourcés.';
-
-  @override
-  String get onboardingProfileTitle =>
-      'Trois questions, facultatives sauf la première';
+      'Une question par semaine, un test pour comparer vos idées aux partis, la liste de qui gouverne. Rien n\'est jugé, tout est sourcé.';
 
   @override
   String onboardingProfileWhy(int seuil) {
@@ -115,6 +104,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get fieldRegion => 'Région';
+
+  @override
+  String get refineTitle => 'Affiner les résultats';
+
+  @override
+  String get refineLater => 'Plus tard';
 
   @override
   String pollWeekOf(String date) {

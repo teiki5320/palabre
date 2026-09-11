@@ -160,12 +160,6 @@ abstract class AppLocalizations {
   /// **'Enregistrer'**
   String get save;
 
-  /// No description provided for @continueLabel.
-  ///
-  /// In fr, this message translates to:
-  /// **'Continuer'**
-  String get continueLabel;
-
   /// No description provided for @start.
   ///
   /// In fr, this message translates to:
@@ -259,20 +253,8 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingPrinciple.
   ///
   /// In fr, this message translates to:
-  /// **'On pose une question, chacun donne son avis, et la discussion s\'appuie sur des faits vérifiables.'**
+  /// **'Une question par semaine, un test pour comparer vos idées aux partis, la liste de qui gouverne. Rien n\'est jugé, tout est sourcé.'**
   String get onboardingPrinciple;
-
-  /// No description provided for @onboardingNoOpinion.
-  ///
-  /// In fr, this message translates to:
-  /// **'Palabre n\'exprime aucune opinion. Elle pose des questions et documente des faits sourcés.'**
-  String get onboardingNoOpinion;
-
-  /// No description provided for @onboardingProfileTitle.
-  ///
-  /// In fr, this message translates to:
-  /// **'Trois questions, facultatives sauf la première'**
-  String get onboardingProfileTitle;
 
   /// No description provided for @onboardingProfileWhy.
   ///
@@ -297,6 +279,18 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Région'**
   String get fieldRegion;
+
+  /// No description provided for @refineTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Affiner les résultats'**
+  String get refineTitle;
+
+  /// No description provided for @refineLater.
+  ///
+  /// In fr, this message translates to:
+  /// **'Plus tard'**
+  String get refineLater;
 
   /// No description provided for @pollWeekOf.
   ///

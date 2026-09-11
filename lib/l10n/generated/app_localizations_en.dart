@@ -40,9 +40,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get save => 'Save';
 
   @override
-  String get continueLabel => 'Continue';
-
-  @override
   String get start => 'Start';
 
   @override
@@ -92,15 +89,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingPrinciple =>
-      'A question is asked, everyone gives their view, and the discussion rests on verifiable facts.';
-
-  @override
-  String get onboardingNoOpinion =>
-      'Palabre holds no opinion. It asks questions and documents sourced facts.';
-
-  @override
-  String get onboardingProfileTitle =>
-      'Three questions, all optional except the first';
+      'One question a week, a test to compare your views with the parties, the list of who governs. Nothing is judged, everything is sourced.';
 
   @override
   String onboardingProfileWhy(int seuil) {
@@ -115,6 +104,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fieldRegion => 'Region';
+
+  @override
+  String get refineTitle => 'Refine the results';
+
+  @override
+  String get refineLater => 'Later';
 
   @override
   String pollWeekOf(String date) {

@@ -40,9 +40,6 @@ class AppLocalizationsWo extends AppLocalizations {
   String get save => 'Denc';
 
   @override
-  String get continueLabel => 'Kontine';
-
-  @override
   String get start => 'Tàmbali';
 
   @override
@@ -95,14 +92,6 @@ class AppLocalizationsWo extends AppLocalizations {
       'Ñu laaj, ku nekk wax sa xalaat, te waxtaan wi sukkandiku ci ay dëgg yu ñu mën a seet.';
 
   @override
-  String get onboardingNoOpinion =>
-      'Palabre amul benn xalaat. Dafay laaj te di wone ay dëgg yu am gongikuwaay.';
-
-  @override
-  String get onboardingProfileTitle =>
-      'Trois questions, facultatives sauf la première';
-
-  @override
   String onboardingProfileWhy(int seuil) {
     return 'Le pays, la tranche d\'âge et la région servent uniquement à découper les résultats du sondage. Ils ne sont jamais affichés individuellement, et une découpe n\'apparaît qu\'à partir de $seuil répondants.';
   }
@@ -115,6 +104,12 @@ class AppLocalizationsWo extends AppLocalizations {
 
   @override
   String get fieldRegion => 'Diiwaan';
+
+  @override
+  String get refineTitle => 'Affiner les résultats';
+
+  @override
+  String get refineLater => 'Plus tard';
 
   @override
   String pollWeekOf(String date) {
