@@ -32,7 +32,16 @@ supabase secrets set FCM_SERVICE_ACCOUNT="$(cat service-account.json)"
 Auth : activer **Anonymous sign-ins** (Authentication → Providers).
 
 Le seed est réservé au développement local : ne jamais le charger sur le
-projet de production.
+projet de production. Les données de production se chargent avec les
+scripts de `supabase/prod/` :
+
+```sh
+psql "$DATABASE_URL" -f supabase/prod/01_configuration.sql   # pays, régions, modules
+# puis une copie remplie de 02_question_modele.sql par question de la semaine
+```
+
+L'URL `DATABASE_URL` se lit dans le tableau de bord : Connect → Session
+pooler.
 
 ## 2. Firebase (notification hebdomadaire)
 
