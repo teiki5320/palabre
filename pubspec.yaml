@@ -31,6 +31,7 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   drift_dev: ^2.35.0
   build_runner: ^2.16.1
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
   uses-material-design: true
@@ -40,3 +41,13 @@ flutter:
   config:
     enable-swift-package-manager: false
 
+# Icônes d'application : `dart run flutter_launcher_icons`.
+# Source : assets/icon/logo-palabre.png (1254×1254, fond #FCF8EF).
+flutter_launcher_icons:
+  image_path: "assets/icon/icon.png"
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  adaptive_icon_background: "#FCF8EF"
+  adaptive_icon_foreground: "assets/icon/icon.png"
+  min_sdk_android: 21
