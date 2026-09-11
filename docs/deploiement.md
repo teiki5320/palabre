@@ -54,12 +54,18 @@ Toute la configuration passe par des `--dart-define` :
 
 ```sh
 flutter build apk --release --split-per-abi \
+  --obfuscate --split-debug-info=build/symbols \
   --dart-define=SUPABASE_URL=https://<ref>.supabase.co \
   --dart-define=SUPABASE_ANON_KEY=<clé publique> \
   --dart-define=PALABRE_COUNTRY=SN
 ```
 
 Sans `SUPABASE_URL`, l'app tourne en mode « cache seul » et l'affiche.
+
+Poids : les bibliothèques natives sont compressées dans l'APK
+(`useLegacyPackaging` dans `android/app/build.gradle.kts`) et le code Dart
+est obfusqué. Le workflow CI échoue si un APK par architecture dépasse
+15 Mo. Conserver `build/symbols` pour dé-obfusquer les rapports de plantage.
 
 ## 4. Xcode Cloud et TestFlight
 

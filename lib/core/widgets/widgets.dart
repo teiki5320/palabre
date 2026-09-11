@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../app/locale_fallbacks.dart';
 import '../../app/theme.dart';
 import '../../l10n/generated/app_localizations.dart';
 
 extension L10nContext on BuildContext {
   AppLocalizations get l10n => AppLocalizations.of(this);
-  String get localeName => Localizations.localeOf(this).toString();
+  /// Locale pour `intl` (dates) : le wolof retombe sur le français.
+  String get localeName => intlLocaleFor(Localizations.localeOf(this));
 }
 
 /// Photo, ou repli en initiales traité aussi soigneusement que le cas nominal :

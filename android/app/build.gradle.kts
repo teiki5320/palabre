@@ -29,6 +29,15 @@ android {
         versionName = flutter.versionName
     }
 
+    // Bibliothèques natives compressées dans l'APK (extraites à l'installation)
+    // pour rester sous les 15 Mo. Sur Play, l'app bundle gère lui-même la
+    // compression ; ceci vise l'APK distribué directement.
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.

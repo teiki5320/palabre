@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/profile/profile.dart';
 import '../l10n/generated/app_localizations.dart';
+import 'locale_fallbacks.dart';
 import 'router.dart';
 import 'theme.dart';
 
@@ -25,6 +26,10 @@ class PalabreApp extends ConsumerWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: const [
         AppLocalizations.delegate,
+        // Les délégués wolof passent avant les globaux : premier qui accepte gagne.
+        WolofMaterialLocalizations(),
+        WolofCupertinoLocalizations(),
+        WolofWidgetsLocalizations(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
