@@ -62,7 +62,7 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
       }
     }
 
-    final cardHeight = wide ? 400.0 : 340.0;
+    final cardHeight = wide ? 380.0 : 320.0;
 
     Widget backCard() => Transform.translate(
           offset: const Offset(0, 10),
@@ -78,16 +78,18 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
         );
 
     Widget frontCard(Statement st) => Container(
+          constraints: BoxConstraints(minHeight: cardHeight),
           decoration: BoxDecoration(color: t.card, borderRadius: BorderRadius.circular(22), border: Border.all(color: t.border, width: 2)),
           padding: const EdgeInsets.all(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Row(children: [if (st.theme != null) Pill(label: st.theme!, color: t.quiz)]),
               const SizedBox(height: 16),
-              Expanded(child: Text(st.texte, style: PalabreType.question(t.ink).copyWith(fontSize: wide ? 30 : 27))),
+              Text(st.texte, style: PalabreType.question(t.ink).copyWith(fontSize: wide ? 28 : (st.texte.length > 90 ? 23 : 26))),
+              const SizedBox(height: 18),
               Container(
-                margin: const EdgeInsets.only(top: 12),
                 padding: const EdgeInsets.only(top: 12),
                 decoration: BoxDecoration(border: Border(top: BorderSide(color: t.line, width: 1.5))),
                 child: Text(l10n.quizMethod2, style: TextStyle(fontSize: 12.5, height: 1.45, fontWeight: FontWeight.w500, color: t.muted)),
@@ -96,34 +98,31 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
           ),
         );
 
-    final stack = SizedBox(
-      height: cardHeight,
-      child: Stack(
-        clipBehavior: Clip.none,
-        fit: StackFit.expand,
-        children: [
-          if (index + 1 < total) backCard(),
-          Transform.translate(
-            offset: const Offset(8, 0),
-            child: Transform.rotate(
-              angle: 2 * math.pi / 180,
-              child: SwipeCard(
-                key: ValueKey('statement-card-${s.id}'),
-                controller: _controller,
-                onAnswer: onAnswer,
-                agreeLabel: l10n.quizAgree,
-                disagreeLabel: l10n.quizDisagree,
-                stampColor: t.quiz,
-                onStampColor: t.onQuiz,
-                child: _CardEntrance(
-                  key: ValueKey('entrance-${s.id}'),
-                  child: HardShadow(offset: 6, radius: 22, color: t.isDark ? t.quiz : t.hardShadow, child: frontCard(s)),
-                ),
+    // La carte du dessus donne sa taille à la pile ; la carte arrière la suit.
+    final stack = Stack(
+      clipBehavior: Clip.none,
+      children: [
+        if (index + 1 < total) Positioned.fill(child: backCard()),
+        Transform.translate(
+          offset: const Offset(8, 0),
+          child: Transform.rotate(
+            angle: 2 * math.pi / 180,
+            child: SwipeCard(
+              key: ValueKey('statement-card-${s.id}'),
+              controller: _controller,
+              onAnswer: onAnswer,
+              agreeLabel: l10n.quizAgree,
+              disagreeLabel: l10n.quizDisagree,
+              stampColor: t.quiz,
+              onStampColor: t.onQuiz,
+              child: _CardEntrance(
+                key: ValueKey('entrance-${s.id}'),
+                child: HardShadow(offset: 6, radius: 22, color: t.isDark ? t.quiz : t.hardShadow, child: frontCard(s)),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
 
     final buttons = Row(
@@ -236,7 +235,7 @@ class _Circle extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = context.tokens;
     return SizedBox(
-      width: 62,
+      width: 68,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -258,7 +257,7 @@ class _Circle extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          Text(label, maxLines: 1, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: t.muted)),
+          Text(label, maxLines: 2, textAlign: TextAlign.center, style: TextStyle(fontSize: 11, height: 1.15, fontWeight: FontWeight.w700, color: t.muted)),
         ],
       ),
     );

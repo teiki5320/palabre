@@ -42,7 +42,7 @@ class PersonAvatar extends StatelessWidget {
     Widget frame(Widget child) => Container(
           width: size,
           height: size,
-          decoration: BoxDecoration(borderRadius: radius, border: Border.all(color: t.border, width: 2), boxShadow: [PalabreTokens.hard(context.hardShadowColor, 2)]),
+          decoration: BoxDecoration(color: t.card, borderRadius: radius, border: Border.all(color: t.border, width: 2), boxShadow: [PalabreTokens.hard(context.hardShadowColor, 2)]),
           child: ClipRRect(borderRadius: BorderRadius.circular(size / 4 - 2), child: child),
         );
     final fallback = frame(Container(

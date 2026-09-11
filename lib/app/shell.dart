@@ -28,22 +28,26 @@ class AppShell extends StatelessWidget {
       backgroundColor: t.background,
       body: navigationShell,
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(color: t.card, border: Border(top: BorderSide(color: t.border, width: 2))),
+        decoration: BoxDecoration(
+          color: t.card,
+          border: Border(top: BorderSide(color: t.border, width: 2)),
+        ),
         child: SafeArea(
           top: false,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(6, 10, 6, 2),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 for (var i = 0; i < items.length; i++)
-                  _Tab(
-                    icon: items[i].$1,
-                    filledIcon: items[i].$2,
-                    label: items[i].$3,
-                    color: items[i].$4,
-                    active: i == index,
-                    onTap: () => go(i),
+                  Expanded(
+                    child: _Tab(
+                      icon: items[i].$1,
+                      filledIcon: items[i].$2,
+                      label: items[i].$3,
+                      color: items[i].$4,
+                      active: i == index,
+                      onTap: () => go(i),
+                    ),
                   ),
               ],
             ),
@@ -55,7 +59,14 @@ class AppShell extends StatelessWidget {
 }
 
 class _Tab extends StatelessWidget {
-  const _Tab({required this.icon, required this.filledIcon, required this.label, required this.color, required this.active, required this.onTap});
+  const _Tab({
+    required this.icon,
+    required this.filledIcon,
+    required this.label,
+    required this.color,
+    required this.active,
+    required this.onTap,
+  });
   final IconData icon;
   final IconData filledIcon;
   final String label;
@@ -75,14 +86,24 @@ class _Tab extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
-        child: SizedBox(
-          width: 84,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(active ? filledIcon : icon, size: 24, color: c),
               const SizedBox(height: 3),
-              Text(label, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontFamily: PalabreType.body, fontSize: 11.5, fontWeight: active ? FontWeight.w800 : FontWeight.w700, color: c)),
+              Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontFamily: PalabreType.body,
+                  fontSize: 11.5,
+                  fontWeight: active ? FontWeight.w800 : FontWeight.w700,
+                  color: c,
+                ),
+              ),
               const SizedBox(height: 3),
               AnimatedContainer(
                 duration: Duration(milliseconds: motion ? 200 : 0),

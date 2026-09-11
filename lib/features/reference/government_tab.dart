@@ -109,12 +109,9 @@ class GovernmentTab extends ConsumerWidget {
               style: PalabreType.note(t.muted),
             ),
             const SizedBox(height: 6),
-            Row(
-              children: [
-                Expanded(child: Text(coverage, style: PalabreType.note(t.muted))),
-                SourceLink(url: g.sourceUrl, label: g.decretRef ?? l10n.source, dense: true),
-              ],
-            ),
+            Text(coverage, style: PalabreType.note(t.muted)),
+            const SizedBox(height: 4),
+            SourceLink(url: g.sourceUrl, label: g.decretRef ?? l10n.source, dense: true),
           ],
         ),
       ),
