@@ -25,7 +25,10 @@ flutter gen-l10n
 dart run build_runner build --delete-conflicting-outputs
 
 echo "▸ Configuration iOS"
+# Numéro de build = numéro de build Xcode Cloud : unique et croissant, la
+# version (0.1.0) reste celle de pubspec.yaml.
 flutter build ios --release --no-codesign --config-only \
+  --build-number="${CI_BUILD_NUMBER:-1}" \
   --dart-define=SUPABASE_URL="${SUPABASE_URL:-}" \
   --dart-define=SUPABASE_ANON_KEY="${SUPABASE_ANON_KEY:-}" \
   --dart-define=PALABRE_COUNTRY="${PALABRE_COUNTRY:-SN}"
