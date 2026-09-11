@@ -29,7 +29,7 @@ class QuizNotifier extends CachedNotifier<QuizBundle?> {
         .maybeSingle();
     if (quiz == null) return null;
     final id = (quiz['id'] as num).toInt();
-    final statements = await client.from('statement').select().eq('quiz_id', id).order('ordre');
+    final statements = await client.from('statement').select().eq('quiz_id', id).order('ordre', ascending: true);
     final statementIds = statements.map((s) => (s['id'] as num).toInt()).toList();
     final positions = statementIds.isEmpty
         ? <Map<String, dynamic>>[]
@@ -37,7 +37,7 @@ class QuizNotifier extends CachedNotifier<QuizBundle?> {
     final orgIds = positions.map((p) => (p['org_id'] as num).toInt()).toSet().toList();
     final orgs = orgIds.isEmpty
         ? <Map<String, dynamic>>[]
-        : await client.from('organization').select('id, nom, sigle, couleur, type').inFilter('id', orgIds).order('nom');
+        : await client.from('organization').select('id, nom, sigle, couleur, type').inFilter('id', orgIds).order('nom', ascending: true);
     return QuizBundle(
       id: id,
       titre: quiz['titre'] as String,

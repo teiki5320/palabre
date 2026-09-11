@@ -83,10 +83,12 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         children: [
           Stack(
+            clipBehavior: Clip.none,
             children: [
               if (index + 2 < total)
                 Positioned.fill(
                   top: 14,
+                  bottom: -14,
                   left: 12,
                   right: 12,
                   child: SoftCard(margin: EdgeInsets.zero, child: const SizedBox.expand()),
@@ -94,6 +96,7 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
               if (index + 1 < total)
                 Positioned.fill(
                   top: 7,
+                  bottom: -7,
                   left: 6,
                   right: 6,
                   child: SoftCard(margin: EdgeInsets.zero, child: const SizedBox.expand()),

@@ -15,8 +15,8 @@ class CountryConfigNotifier extends CachedNotifier<CountryConfig> {
     final client = ref.read(supabaseClientProvider);
     if (client == null) throw const NotConfiguredException();
     final results = await Future.wait([
-      client.from('country').select().order('nom'),
-      client.from('region').select().order('nom'),
+      client.from('country').select().order('nom', ascending: true),
+      client.from('region').select().order('nom', ascending: true),
       client.from('country_module').select(),
       client.from('app_config').select(),
     ]);

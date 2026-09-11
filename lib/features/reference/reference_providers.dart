@@ -18,13 +18,13 @@ class ReferenceNotifier extends CachedNotifier<ReferenceBundle> {
     if (client == null) throw const NotConfiguredException();
     final c = countryCode;
     final results = await Future.wait([
-      client.from('person').select().eq('country_code', c).order('nom'),
-      client.from('organization').select().eq('country_code', c).order('nom'),
-      client.from('portfolio').select().eq('country_code', c).order('rang'),
+      client.from('person').select().eq('country_code', c).order('nom', ascending: true),
+      client.from('organization').select().eq('country_code', c).order('nom', ascending: true),
+      client.from('portfolio').select().eq('country_code', c).order('rang', ascending: true),
       client.from('role').select().eq('country_code', c),
-      client.from('government').select().eq('country_code', c).order('debut'),
-      client.from('legislature').select().eq('country_code', c).order('numero'),
-      client.from('constituency').select().eq('country_code', c).order('nom'),
+      client.from('government').select().eq('country_code', c).order('debut', ascending: true),
+      client.from('legislature').select().eq('country_code', c).order('numero', ascending: true),
+      client.from('constituency').select().eq('country_code', c).order('nom', ascending: true),
       client.from('mandate').select('*, person!inner(country_code)').eq('person.country_code', c),
       client.from('affiliation').select('*, person!inner(country_code)').eq('person.country_code', c),
       client.from('career').select('*, person!inner(country_code)').eq('person.country_code', c),
