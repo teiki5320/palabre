@@ -109,7 +109,7 @@ class PartyScreen extends ConsumerWidget {
                 if (quiz.position(s.id, org.id) != null) ...[
                   Text(s.texte, style: const TextStyle(fontSize: 13, height: 1.3)),
                   PositionTile(party: quiz.party(org.id)!, position: quiz.position(s.id, org.id), dense: true),
-                  const Hairline(),
+                  const CardDivider(),
                 ],
           ],
         ],

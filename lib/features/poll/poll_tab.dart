@@ -132,7 +132,7 @@ class _ArchiveRow extends ConsumerWidget {
             ] else
               Text(l10n.pollRespondents(poll.repondants), style: TextStyle(fontSize: 11, color: scheme.onSurfaceVariant)),
             const SizedBox(height: 8),
-            const Hairline(),
+            const CardDivider(),
           ],
         ),
       ),

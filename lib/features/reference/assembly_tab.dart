@@ -119,7 +119,7 @@ class _AssemblyTabState extends ConsumerState<AssemblyTab> {
                       child: ListView.separated(
                         padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
                         itemCount: filtered.length,
-                        separatorBuilder: (_, _) => const Hairline(),
+                        separatorBuilder: (_, _) => const CardDivider(),
                         itemBuilder: (_, i) => _DeputyRow(filtered[i]),
                       ),
                     ),

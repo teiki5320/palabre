@@ -110,7 +110,7 @@ class PersonScreen extends ConsumerWidget {
               if (quiz.position(s.id, party.id) != null) ...[
                 Text(s.texte, style: const TextStyle(fontSize: 13, height: 1.3)),
                 PositionTile(party: quiz.party(party.id)!, position: quiz.position(s.id, party.id), dense: true),
-                const Hairline(),
+                const CardDivider(),
               ],
           ],
         ],
