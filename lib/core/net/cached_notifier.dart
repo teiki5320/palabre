@@ -39,8 +39,11 @@ abstract class CachedNotifier<T> extends AsyncNotifier<T> {
     return _fetchAndStore(store);
   }
 
+  /// Au-delà, on préfère dire « impossible de charger » que tourner à vide.
+  static const remoteTimeout = Duration(seconds: 20);
+
   Future<T> _fetchAndStore(CacheStore store) async {
-    final value = await fetchRemote();
+    final value = await fetchRemote().timeout(remoteTimeout);
     _offline = false;
     try {
       await store.put(cacheKey, encode(value));

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'database.dart';
@@ -11,13 +13,23 @@ abstract class CacheStore {
   Future<void> clear();
 }
 
+/// Le cache ne doit jamais bloquer l'écran : si la base locale ne répond pas
+/// dans le délai, on fait comme s'il n'y avait rien en cache.
 class DriftCacheStore implements CacheStore {
   DriftCacheStore(this._db);
   final AppDatabase _db;
 
+  static const timeout = Duration(seconds: 3);
+
   @override
   Future<Map<String, dynamic>?> get(String key) async {
-    final row = await _db.read(key);
+    final CacheEntry? row;
+    try {
+      row = await _db.read(key).timeout(timeout);
+    } catch (e) {
+      debugPrint('Cache local indisponible en lecture ($key) : $e');
+      return null;
+    }
     if (row == null) return null;
     try {
       return jsonDecode(row.json) as Map<String, dynamic>;
@@ -27,8 +39,13 @@ class DriftCacheStore implements CacheStore {
   }
 
   @override
-  Future<void> put(String key, Map<String, dynamic> value) =>
-      _db.write(key, jsonEncode(value));
+  Future<void> put(String key, Map<String, dynamic> value) async {
+    try {
+      await _db.write(key, jsonEncode(value)).timeout(timeout);
+    } catch (e) {
+      debugPrint('Cache local indisponible en écriture ($key) : $e');
+    }
+  }
 
   @override
   Future<void> clear() => _db.clear();
