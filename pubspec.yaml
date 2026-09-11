@@ -35,4 +35,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  # Plugins iOS via CocoaPods uniquement : Xcode Cloud exige sinon un
+  # Package.resolved commité pour le package Swift généré par Flutter.
+  disable-swift-package-manager: true
 
