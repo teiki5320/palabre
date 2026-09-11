@@ -628,11 +628,35 @@ abstract class AppLocalizations {
   /// **'Votre concordance'**
   String get quizResultsTitle;
 
-  /// No description provided for @quizResultsAll.
+  /// No description provided for @quizResultsSubtitle.
   ///
   /// In fr, this message translates to:
-  /// **'Tous les partis sont listés. Un classement complet est moins orienté qu\'un verdict unique.'**
-  String get quizResultsAll;
+  /// **'{n} réponses · calculé sur votre téléphone'**
+  String quizResultsSubtitle(int n);
+
+  /// No description provided for @quizResultsAllTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tous les partis, du plus proche au plus éloigné'**
+  String get quizResultsAllTitle;
+
+  /// No description provided for @quizResultsNote.
+  ///
+  /// In fr, this message translates to:
+  /// **'Un parti sans position sur une affirmation n\'est jamais deviné : il apparaît « n\'a pas pris position ». Chaque position renvoie à sa source.'**
+  String get quizResultsNote;
+
+  /// No description provided for @quizNotComputable.
+  ///
+  /// In fr, this message translates to:
+  /// **'non calculable'**
+  String get quizNotComputable;
+
+  /// No description provided for @quizDetailShort.
+  ///
+  /// In fr, this message translates to:
+  /// **'Détail par affirmation'**
+  String get quizDetailShort;
 
   /// No description provided for @quizConcordance.
   ///

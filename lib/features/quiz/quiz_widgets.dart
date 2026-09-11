@@ -56,18 +56,21 @@ class PositionTile extends StatelessWidget {
     final p = position;
     final pos = p?.position ?? Position.sansPosition;
     final st = p?.sourceType ?? SourceType.aucune;
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: dense ? 6 : 10),
+    final t = context.tokens;
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: dense ? 4 : 6),
+      padding: const EdgeInsets.fromLTRB(12, 10, 12, 4),
+      decoration: BoxDecoration(color: t.background, borderRadius: BorderRadius.circular(12)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              ColorDot(partyColor(context, party)),
+              ColorDot(partyColor(context, party), size: 10),
               const SizedBox(width: 8),
-              Expanded(child: Text(party.nom, style: const TextStyle(fontWeight: FontWeight.w500))),
+              Expanded(child: Text(party.nom, style: TextStyle(fontWeight: FontWeight.w700, color: t.ink))),
               const SizedBox(width: 8),
-              Text(positionLabel(context, pos), style: TextStyle(color: positionColor(context, pos), fontWeight: FontWeight.w600, fontSize: 13)),
+              Text(positionLabel(context, pos), style: TextStyle(color: positionColor(context, pos), fontWeight: FontWeight.w700, fontSize: 13)),
             ],
           ),
           const SizedBox(height: 4),
@@ -99,7 +102,7 @@ class PositionTile extends StatelessWidget {
               padding: const EdgeInsets.only(top: 6),
               child: Container(
                 padding: const EdgeInsets.only(left: 10),
-                decoration: BoxDecoration(border: Border(left: BorderSide(color: scheme.outlineVariant, width: 1))),
+                decoration: BoxDecoration(border: Border(left: BorderSide(color: t.line, width: 2))),
                 child: Text('« ${p.sourceExtrait} »', style: TextStyle(fontSize: 13, fontStyle: FontStyle.italic, color: scheme.onSurfaceVariant, height: 1.35)),
               ),
             ),

@@ -335,8 +335,23 @@ class AppLocalizationsWo extends AppLocalizations {
   String get quizResultsTitle => 'Votre concordance';
 
   @override
-  String get quizResultsAll =>
-      'Tous les partis sont listés. Un classement complet est moins orienté qu\'un verdict unique.';
+  String quizResultsSubtitle(int n) {
+    return '$n réponses · calculé sur votre téléphone';
+  }
+
+  @override
+  String get quizResultsAllTitle =>
+      'Tous les partis, du plus proche au plus éloigné';
+
+  @override
+  String get quizResultsNote =>
+      'Un parti sans position sur une affirmation n\'est jamais deviné : il apparaît « n\'a pas pris position ». Chaque position renvoie à sa source.';
+
+  @override
+  String get quizNotComputable => 'non calculable';
+
+  @override
+  String get quizDetailShort => 'Détail par affirmation';
 
   @override
   String quizConcordance(int pct) {

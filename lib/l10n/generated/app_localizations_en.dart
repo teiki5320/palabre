@@ -335,8 +335,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quizResultsTitle => 'Your match';
 
   @override
-  String get quizResultsAll =>
-      'All parties are listed. A full ranking is less biased than a single verdict.';
+  String quizResultsSubtitle(int n) {
+    return '$n answers · computed on your phone';
+  }
+
+  @override
+  String get quizResultsAllTitle => 'All parties, from closest to furthest';
+
+  @override
+  String get quizResultsNote =>
+      'A party with no position on a statement is never guessed: it shows as “no position taken”. Every position links to its source.';
+
+  @override
+  String get quizNotComputable => 'not computable';
+
+  @override
+  String get quizDetailShort => 'Detail by statement';
 
   @override
   String quizConcordance(int pct) {
