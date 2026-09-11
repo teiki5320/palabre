@@ -104,7 +104,7 @@ class _AssemblyTabState extends ConsumerState<AssemblyTab> {
                 onSelected: (v) => setState(() => _regionId = v),
               ),
               const SizedBox(width: 10),
-              Expanded(child: Text(l10n.asmResults(filtered.length), textAlign: TextAlign.end, style: PalabreType.note(t.onPrimary.withValues(alpha: 0.8)))),
+              Expanded(child: Text(l10n.asmResults(filtered.length), textAlign: TextAlign.end, style: PalabreType.note(t.onAssembly.withValues(alpha: 0.8)))),
             ],
           ),
         ],
@@ -143,6 +143,8 @@ class _AssemblyTabState extends ConsumerState<AssemblyTab> {
     }
 
     return BandScaffold(
+      color: t.assembly,
+      onColor: t.onAssembly,
       brand: true,
       eyebrow: eyebrow,
       title: l10n.tabAssembly,

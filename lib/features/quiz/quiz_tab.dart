@@ -144,6 +144,8 @@ class QuizTab extends ConsumerWidget {
     }
 
     return BandScaffold(
+      color: t.quiz,
+      onColor: t.onQuiz,
       brand: true,
       title: l10n.tabQuiz,
       eyebrow: q == null ? null : l10n.quizEstimate(q.statements.length),

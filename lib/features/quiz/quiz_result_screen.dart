@@ -69,6 +69,8 @@ class _QuizResultScreenState extends ConsumerState<QuizResultScreen> {
     final answered = session.answers.values.where((a) => a != Answer.passer).length;
 
     return BandScaffold(
+      color: t.quiz,
+      onColor: t.onQuiz,
       eyebrow: l10n.quizResultsSubtitle(answered),
       title: l10n.quizResultsAllTitle,
       children: [

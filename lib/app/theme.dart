@@ -18,6 +18,12 @@ class PalabreTokens extends ThemeExtension<PalabreTokens> {
     required this.muted,
     required this.line,
     required this.cardShadow,
+    required this.quiz,
+    required this.onQuiz,
+    required this.government,
+    required this.onGovernment,
+    required this.assembly,
+    required this.onAssembly,
   });
 
   /// Bandeau, onglet actif, liens, bouton principal.
@@ -49,6 +55,9 @@ class PalabreTokens extends ThemeExtension<PalabreTokens> {
   final Color line;
   final BoxShadow cardShadow;
 
+  /// Bandeaux des autres onglets : chaque partie de l'app a sa couleur.
+  final Color quiz, onQuiz, government, onGovernment, assembly, onAssembly;
+
   static const light = PalabreTokens(
     primary: Color(0xFF0F7F7C),
     onPrimary: Color(0xFFFFFFFF),
@@ -61,6 +70,12 @@ class PalabreTokens extends ThemeExtension<PalabreTokens> {
     muted: Color(0xFF5B7674),
     line: Color(0xFFD8E6E4),
     cardShadow: BoxShadow(offset: Offset(0, 10), blurRadius: 24, color: Color(0x1A0F3C3A)),
+    quiz: Color(0xFF6F2DA8),
+    onQuiz: Color(0xFFFFFFFF),
+    government: Color(0xFF2F4858),
+    onGovernment: Color(0xFFFFFFFF),
+    assembly: Color(0xFF1F4E79),
+    onAssembly: Color(0xFFFFFFFF),
   );
 
   static const dark = PalabreTokens(
@@ -75,6 +90,12 @@ class PalabreTokens extends ThemeExtension<PalabreTokens> {
     muted: Color(0xFF9DBBB8),
     line: Color(0xFF2D4F50),
     cardShadow: BoxShadow(offset: Offset(0, 10), blurRadius: 24, color: Color(0x59000000)),
+    quiz: Color(0xFFC08BF0),
+    onQuiz: Color(0xFF1E0A33),
+    government: Color(0xFF8FB4C8),
+    onGovernment: Color(0xFF0E1B22),
+    assembly: Color(0xFF7FB3E6),
+    onAssembly: Color(0xFF071A2B),
   );
 
   @override
@@ -90,6 +111,12 @@ class PalabreTokens extends ThemeExtension<PalabreTokens> {
     Color? muted,
     Color? line,
     BoxShadow? cardShadow,
+    Color? quiz,
+    Color? onQuiz,
+    Color? government,
+    Color? onGovernment,
+    Color? assembly,
+    Color? onAssembly,
   }) =>
       PalabreTokens(
         primary: primary ?? this.primary,
@@ -103,6 +130,12 @@ class PalabreTokens extends ThemeExtension<PalabreTokens> {
         muted: muted ?? this.muted,
         line: line ?? this.line,
         cardShadow: cardShadow ?? this.cardShadow,
+        quiz: quiz ?? this.quiz,
+        onQuiz: onQuiz ?? this.onQuiz,
+        government: government ?? this.government,
+        onGovernment: onGovernment ?? this.onGovernment,
+        assembly: assembly ?? this.assembly,
+        onAssembly: onAssembly ?? this.onAssembly,
       );
 
   @override
@@ -120,6 +153,12 @@ class PalabreTokens extends ThemeExtension<PalabreTokens> {
       muted: Color.lerp(muted, other.muted, t)!,
       line: Color.lerp(line, other.line, t)!,
       cardShadow: BoxShadow.lerp(cardShadow, other.cardShadow, t)!,
+      quiz: Color.lerp(quiz, other.quiz, t)!,
+      onQuiz: Color.lerp(onQuiz, other.onQuiz, t)!,
+      government: Color.lerp(government, other.government, t)!,
+      onGovernment: Color.lerp(onGovernment, other.onGovernment, t)!,
+      assembly: Color.lerp(assembly, other.assembly, t)!,
+      onAssembly: Color.lerp(onAssembly, other.onAssembly, t)!,
     );
   }
 }
@@ -247,8 +286,8 @@ class PalabreTheme {
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           elevation: 0,
-          backgroundColor: t.primary,
-          foregroundColor: t.onPrimary,
+          backgroundColor: t.accent,
+          foregroundColor: t.onAccent,
           disabledBackgroundColor: t.line,
           disabledForegroundColor: t.muted,
           textStyle: TextStyle(fontFamily: PalabreType.body, fontSize: 15, fontWeight: FontWeight.w700),

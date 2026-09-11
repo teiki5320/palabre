@@ -22,7 +22,13 @@ class BandScaffold extends StatelessWidget {
     this.body,
     this.onRefresh,
     this.bottom,
+    this.color,
+    this.onColor,
   }) : assert(children != null || body != null, 'children ou body');
+
+  /// Couleur du bandeau (par défaut la couleur principale) et de son texte.
+  final Color? color;
+  final Color? onColor;
 
   /// Titre du bandeau, en Sora.
   final String title;
@@ -62,7 +68,7 @@ class BandScaffold extends StatelessWidget {
 
   /// Largeurs maximales du contenu, téléphone et large.
   static const maxWidth = 680.0;
-  static const maxWidthWide = 1120.0;
+  static const maxWidthWide = 1240.0;
 
   static bool isWide(BuildContext context) => MediaQuery.sizeOf(context).width >= wideBreakpoint;
 
@@ -79,7 +85,7 @@ class BandScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = context.tokens;
     final wide = isWide(context);
-    final pad = EdgeInsets.fromLTRB(wide ? 24 : 16, 0, wide ? 24 : 16, 32);
+    final pad = EdgeInsets.fromLTRB(wide ? 32 : 16, 0, wide ? 32 : 16, 40);
     Widget content;
     if (body != null) {
       content = body!;
@@ -90,7 +96,7 @@ class BandScaffold extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(flex: 3, child: ListView(padding: const EdgeInsets.only(bottom: 32), children: _staggered(children!))),
-            const SizedBox(width: 24),
+            const SizedBox(width: 32),
             Expanded(flex: 2, child: ListView(padding: const EdgeInsets.only(bottom: 32), children: _staggered(sideChildren!, 2))),
           ],
         ),
@@ -102,15 +108,16 @@ class BandScaffold extends StatelessWidget {
       content = RefreshIndicator(onRefresh: onRefresh!, color: t.primary, backgroundColor: t.card, child: content);
     }
     content = BandScaffold.constrain(context, content);
+    final band = color ?? t.primary;
     return Scaffold(
       backgroundColor: t.background,
       body: Column(
         children: [
-          _Band(title: title, eyebrow: eyebrow, brand: brand, leading: leading, actions: actions, control: control),
+          _Band(title: title, eyebrow: eyebrow, brand: brand, leading: leading, actions: actions, control: control, color: band, onColor: onColor ?? t.onPrimary),
           Expanded(
             child: Stack(
               children: [
-                Positioned(top: 0, left: 0, right: 0, height: overlap, child: ColoredBox(color: t.primary)),
+                Positioned(top: 0, left: 0, right: 0, height: overlap, child: ColoredBox(color: band)),
                 Positioned.fill(child: content),
               ],
             ),
@@ -123,7 +130,9 @@ class BandScaffold extends StatelessWidget {
 }
 
 class _Band extends StatelessWidget {
-  const _Band({required this.title, this.eyebrow, required this.brand, this.leading, required this.actions, this.control});
+  const _Band({required this.title, this.eyebrow, required this.brand, this.leading, required this.actions, this.control, required this.color, required this.onColor});
+  final Color color;
+  final Color onColor;
   final String title;
   final String? eyebrow;
   final bool brand;
@@ -133,7 +142,6 @@ class _Band extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final t = context.tokens;
     final wide = BandScaffold.isWide(context);
     final canPop = leading == null && Navigator.of(context).canPop();
     final lead = leading ??
@@ -144,19 +152,20 @@ class _Band extends StatelessWidget {
                 onPressed: () => GoRouter.maybeOf(context) != null ? context.pop() : Navigator.of(context).pop(),
               )
             : null);
-    final topRow = lead != null || (brand && !wide) || actions.isNotEmpty;
+    final topRow = lead != null || brand || actions.isNotEmpty;
+    final on = onColor;
     return ColoredBox(
-      color: t.primary,
+      color: color,
       child: SafeArea(
         bottom: false,
         child: IconTheme(
-          data: IconThemeData(color: t.onPrimary, size: 24),
+          data: IconThemeData(color: on, size: 24),
           child: DefaultTextStyle(
-            style: TextStyle(fontFamily: PalabreType.body, color: t.onPrimary),
+            style: TextStyle(fontFamily: PalabreType.body, color: on),
             child: BandScaffold.constrain(
               context,
               Padding(
-                padding: EdgeInsets.fromLTRB(lead != null ? 6 : (wide ? 24 : 20), wide ? 10 : 6, wide ? 16 : 8, BandScaffold.overlap + 20),
+                padding: EdgeInsets.fromLTRB(lead != null ? 6 : (wide ? 32 : 20), wide ? 18 : 6, wide ? 24 : 8, BandScaffold.overlap + (wide ? 34 : 20)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -165,10 +174,10 @@ class _Band extends StatelessWidget {
                         children: [
                           ?lead,
                           Expanded(
-                            child: brand && !wide
+                            child: brand
                                 ? Padding(
                                     padding: EdgeInsets.only(left: lead != null ? 4 : 0, top: 8),
-                                    child: Text('Palabre', style: PalabreType.wordmark(t.onPrimary)),
+                                    child: Text('Palabre', style: PalabreType.wordmark(on)),
                                   )
                                 : const SizedBox.shrink(),
                           ),
@@ -190,10 +199,10 @@ class _Band extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             if (eyebrow != null && eyebrow!.isNotEmpty) ...[
-                              Text(eyebrow!.toUpperCase(), style: PalabreType.eyebrow(t.onPrimary.withValues(alpha: 0.85))),
+                              Text(eyebrow!.toUpperCase(), style: PalabreType.eyebrow(on.withValues(alpha: 0.85))),
                               const SizedBox(height: 6),
                             ],
-                            Text(title, style: PalabreType.title(t.onPrimary).copyWith(fontSize: wide ? 26 : 22)),
+                            Text(title, style: PalabreType.title(on).copyWith(fontSize: wide ? 26 : 22)),
                           ],
                         ),
                       ),
@@ -201,7 +210,7 @@ class _Band extends StatelessWidget {
                     if (control != null)
                       Padding(
                         padding: EdgeInsets.only(left: lead != null ? 14 : 0, right: 12, top: 14),
-                        child: ConstrainedBox(constraints: BoxConstraints(maxWidth: wide ? 640 : double.infinity), child: control),
+                        child: ConstrainedBox(constraints: BoxConstraints(maxWidth: wide ? 760 : double.infinity), child: control),
                       ),
                   ],
                 ),

@@ -57,15 +57,15 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
     }
 
     Widget cardBody(Statement st) => Container(
-          constraints: BoxConstraints(minHeight: wide ? 300 : 220),
-          padding: const EdgeInsets.all(20),
+          constraints: BoxConstraints(minHeight: wide ? 340 : 220),
+          padding: EdgeInsets.all(wide ? 28 : 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               if (st.theme != null) ThemePill(st.theme!),
               const SizedBox(height: 14),
-              Text(st.texte, style: PalabreType.question(t.ink).copyWith(fontSize: wide ? 24 : 20)),
+              Text(st.texte, style: PalabreType.question(t.ink).copyWith(fontSize: wide ? 26 : 20)),
               const SizedBox(height: 6),
             ],
           ),
@@ -138,6 +138,8 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
     );
 
     return BandScaffold(
+      color: t.quiz,
+      onColor: t.onQuiz,
       title: l10n.tabQuiz,
       eyebrow: l10n.quizSwipeHint,
       leading: IconButton(icon: const Icon(Icons.close), tooltip: l10n.close, onPressed: () => context.pop()),
@@ -148,35 +150,17 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
           child: Pill(label: l10n.quizProgress(index + 1, total), onBand: true),
         ),
       ],
-      control: PercentBar(fraction: (index + 1) / total, color: t.onPrimary, track: t.onPrimary.withValues(alpha: 0.25), height: 4),
-      body: wide
-          ? Padding(
-              padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(flex: 3, child: stack),
-                  const SizedBox(width: 32),
-                  Expanded(
-                    flex: 2,
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 40),
-                        buttons,
-                        const SizedBox(height: 26),
-                        importantRow,
-                        const SizedBox(height: 8),
-                        skip,
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            )
-          : ListView(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-              children: [stack, const SizedBox(height: 26), buttons, const SizedBox(height: 18), importantRow, const SizedBox(height: 6), skip],
-            ),
+      control: PercentBar(fraction: (index + 1) / total, color: t.onQuiz, track: t.onQuiz.withValues(alpha: 0.25), height: 4),
+      body: Align(
+        alignment: Alignment.topCenter,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: wide ? 760 : double.infinity),
+          child: ListView(
+            padding: EdgeInsets.fromLTRB(wide ? 24 : 16, 0, wide ? 24 : 16, 24),
+            children: [stack, SizedBox(height: wide ? 34 : 26), buttons, SizedBox(height: wide ? 24 : 18), importantRow, const SizedBox(height: 6), skip],
+          ),
+        ),
+      ),
     );
   }
 }

@@ -6,6 +6,7 @@ import '../core/prefs/theme_mode_provider.dart';
 import '../core/profile/profile.dart';
 import '../l10n/generated/app_localizations.dart';
 import 'locale_fallbacks.dart';
+import '../core/widgets/band_scaffold.dart';
 import 'router.dart';
 import 'theme.dart';
 
@@ -24,6 +25,13 @@ class PalabreApp extends ConsumerWidget {
       darkTheme: PalabreTheme.dark(),
       themeMode: themeMode,
       routerConfig: router,
+      // Sur iPad, tout l'affichage grandit d'un cran : texte, cartes, boutons.
+      builder: (context, child) {
+        final mq = MediaQuery.of(context);
+        final wide = mq.size.width >= BandScaffold.wideBreakpoint;
+        if (!wide) return child!;
+        return MediaQuery(data: mq.copyWith(textScaler: mq.textScaler.clamp(minScaleFactor: 1.18, maxScaleFactor: 2.0)), child: child!);
+      },
       locale: localeCode == null ? null : Locale(localeCode),
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: const [

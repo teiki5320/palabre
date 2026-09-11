@@ -74,6 +74,8 @@ class GovernmentTab extends ConsumerWidget {
     }
 
     return BandScaffold(
+      color: t.government,
+      onColor: t.onGovernment,
       brand: true,
       eyebrow: l10n.tabGovernment,
       title: title,
@@ -123,7 +125,7 @@ class GovernmentTab extends ConsumerWidget {
           children: [
             LayoutBuilder(
               builder: (context, c) {
-                final cols = bloc == null ? 1 : (c.maxWidth / 150).floor().clamp(3, 6);
+                final cols = bloc == null ? 1 : (c.maxWidth / 190).floor().clamp(3, 6);
                 final w = bloc == null ? c.maxWidth : (c.maxWidth - 12 * (cols - 1)) / cols;
                 return Wrap(
                   spacing: 12,
@@ -184,15 +186,15 @@ class _TimeSlider extends ConsumerWidget {
                     Positioned(
                       left: pad + usable * (m / max) - 3,
                       bottom: 4,
-                      child: Container(width: 6, height: 6, decoration: BoxDecoration(color: t.onPrimary.withValues(alpha: 0.7), shape: BoxShape.circle)),
+                      child: Container(width: 6, height: 6, decoration: BoxDecoration(color: t.onGovernment.withValues(alpha: 0.7), shape: BoxShape.circle)),
                     ),
                   SliderTheme(
                     data: SliderThemeData(
                       trackHeight: 4,
-                      activeTrackColor: t.onPrimary,
-                      inactiveTrackColor: t.onPrimary.withValues(alpha: 0.3),
-                      thumbColor: t.onPrimary,
-                      overlayColor: t.onPrimary.withValues(alpha: 0.15),
+                      activeTrackColor: t.onGovernment,
+                      inactiveTrackColor: t.onGovernment.withValues(alpha: 0.3),
+                      thumbColor: t.onGovernment,
+                      overlayColor: t.onGovernment.withValues(alpha: 0.15),
                       thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 9),
                       trackShape: const RoundedRectSliderTrackShape(),
                       padding: const EdgeInsets.symmetric(horizontal: pad),
@@ -212,11 +214,11 @@ class _TimeSlider extends ConsumerWidget {
         ),
         Row(
           children: [
-            Text(LocalTime.civilShort(min, context.localeName), style: PalabreType.note(t.onPrimary.withValues(alpha: 0.8))),
-            Expanded(child: Text(l10n.govSliderHint, textAlign: TextAlign.center, style: PalabreType.note(t.onPrimary.withValues(alpha: 0.7)))),
+            Text(LocalTime.civilShort(min, context.localeName), style: PalabreType.note(t.onGovernment.withValues(alpha: 0.8))),
+            Expanded(child: Text(l10n.govSliderHint, textAlign: TextAlign.center, style: PalabreType.note(t.onGovernment.withValues(alpha: 0.7)))),
             GestureDetector(
               onTap: () => ref.read(governmentDateProvider.notifier).set(today),
-              child: Text(l10n.govToday, style: PalabreType.note(t.onPrimary.withValues(alpha: 0.8)).copyWith(fontWeight: FontWeight.w700)),
+              child: Text(l10n.govToday, style: PalabreType.note(t.onGovernment.withValues(alpha: 0.8)).copyWith(fontWeight: FontWeight.w700)),
             ),
           ],
         ),
