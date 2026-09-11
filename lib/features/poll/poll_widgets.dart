@@ -10,13 +10,21 @@ import '../../core/widgets/widgets.dart';
 import 'poll_models.dart';
 import 'poll_providers.dart';
 
-/// Surtitre du bandeau : le statut en une ligne.
+/// Durée restante en clair : « 2 j 9 h » ou « 3 h 12 min ».
+String remainingLabel(BuildContext context, Duration d) {
+  final l10n = context.l10n;
+  if (d.inHours >= 24) return l10n.durationDaysHours(d.inDays, d.inHours % 24);
+  return l10n.durationHoursMinutes(d.inHours, d.inMinutes % 60);
+}
+
+/// Surtitre du bandeau : le statut en une ligne, avec le temps restant.
 String pollStatusLine(BuildContext context, WidgetRef ref, Poll poll) {
   final l10n = context.l10n;
   final lt = LocalTime(ref.watch(selectedCountryInfoProvider).fuseau);
+  final now = DateTime.now().toUtc();
   return switch (poll.status) {
-    PollStatus.ouvert => l10n.pollOpenUntil(lt.dateTime(poll.fermeture, context.localeName)),
-    PollStatus.programme => l10n.pollOpensAt(lt.dateTime(poll.ouverture, context.localeName)),
+    PollStatus.ouvert => l10n.pollClosesIn(remainingLabel(context, poll.fermeture.difference(now)), lt.dateTime(poll.fermeture, context.localeName)),
+    PollStatus.programme => l10n.pollOpensIn(remainingLabel(context, poll.ouverture.difference(now)), lt.dateTime(poll.ouverture, context.localeName)),
     _ => l10n.pollClosedAt(lt.date(poll.fermeture, context.localeName)),
   };
 }
@@ -82,20 +90,27 @@ class OptionRow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Material(
-        color: selected ? t.primarySoft : Colors.transparent,
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(12),
         child: InkWell(
           borderRadius: BorderRadius.circular(12),
           onTap: enabled ? onTap : null,
-          child: Container(
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 180),
+            curve: Curves.easeOut,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
             decoration: BoxDecoration(
+              color: selected ? t.primarySoft : Colors.transparent,
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: selected ? t.primary : t.line, width: selected ? 1.5 : 1),
             ),
             child: Row(
               children: [
-                Icon(selected ? Icons.check_circle : Icons.circle_outlined, size: 20, color: selected ? t.primary : (enabled ? t.muted : t.line)),
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 220),
+                  transitionBuilder: (c, a) => ScaleTransition(scale: CurvedAnimation(parent: a, curve: Curves.easeOutBack), child: c),
+                  child: Icon(selected ? Icons.check_circle : Icons.circle_outlined, key: ValueKey(selected), size: 20, color: selected ? t.primary : (enabled ? t.muted : t.line)),
+                ),
                 const SizedBox(width: 12),
                 Expanded(child: Text(label, style: TextStyle(color: fg, fontWeight: selected ? FontWeight.w700 : FontWeight.w600))),
               ],
@@ -157,6 +172,8 @@ class _VoteBoxState extends ConsumerState<VoteBox> {
         ),
         const SizedBox(height: 8),
         Text(l10n.pollVoteFinal, style: PalabreType.note(t.muted), textAlign: TextAlign.center),
+        const SizedBox(height: 10),
+        Center(child: Pill(label: l10n.pollAlreadyAnswered(widget.poll.repondants), icon: Icons.people_outline)),
       ],
     );
   }
@@ -204,7 +221,7 @@ class _ResultsViewState extends ConsumerState<ResultsView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(l10n.pollRespondents(r.repondants), style: PalabreType.cardTitle(t.ink)),
+        Row(children: [AnimatedNumber(value: r.repondants, style: PalabreType.big(t.ink)), const SizedBox(width: 8), Text(l10n.pollRespondents(r.repondants).replaceFirst(RegExp(r'^\d+\s*'), ''), style: PalabreType.cardTitle(t.ink))]),
         const SizedBox(height: 4),
         Text(r.isFinal ? l10n.pollResultsFinal : l10n.pollResultsProvisional, style: PalabreType.note(t.muted)),
         const SizedBox(height: 4),

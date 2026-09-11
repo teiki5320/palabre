@@ -54,10 +54,21 @@ class GovernmentTab extends ConsumerWidget {
           SoftCard(child: ErrorRetry(message: e is NotConfiguredException ? l10n.notConfigured : l10n.errorGeneric, onRetry: () => ref.invalidate(referenceProvider(code)))),
         ],
         data: (b) {
-          if (b.governments.isEmpty) return [SoftCard(child: NoticeBanner(text: l10n.govNoData))];
+          if (b.governments.isEmpty) return [SoftCard(child: EmptyState(icon: Icons.account_balance_outlined, title: l10n.govNoData, subtitle: l10n.govNoDataHint))];
           final composition = b.governmentAt(date);
-          if (composition == null) return [SoftCard(child: NoticeBanner(text: l10n.govNone))];
-          return _compositionCards(context, composition);
+          return [
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 320),
+              switchInCurve: Curves.easeOutCubic,
+              transitionBuilder: (child, a) => FadeTransition(opacity: a, child: SlideTransition(position: Tween(begin: const Offset(0, 0.03), end: Offset.zero).animate(a), child: child)),
+              layoutBuilder: (current, previous) => Stack(alignment: Alignment.topCenter, children: [...previous, ?current]),
+              child: Column(
+                key: ValueKey(composition?.government.id ?? -1),
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: composition == null ? [SoftCard(child: EmptyState(icon: Icons.history, title: l10n.govNone))] : _compositionCards(context, composition),
+              ),
+            ),
+          ];
         },
       );
     }
@@ -112,7 +123,7 @@ class GovernmentTab extends ConsumerWidget {
           children: [
             LayoutBuilder(
               builder: (context, c) {
-                final cols = bloc == null ? 1 : 3;
+                final cols = bloc == null ? 1 : (c.maxWidth / 150).floor().clamp(3, 6);
                 final w = bloc == null ? c.maxWidth : (c.maxWidth - 12 * (cols - 1)) / cols;
                 return Wrap(
                   spacing: 12,

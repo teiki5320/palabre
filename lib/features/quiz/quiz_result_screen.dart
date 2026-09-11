@@ -3,6 +3,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -29,6 +30,12 @@ class _QuizResultScreenState extends ConsumerState<QuizResultScreen> {
   final _shareKey = GlobalKey();
   bool _sharing = false;
   bool _showDetail = false;
+
+  @override
+  void initState() {
+    super.initState();
+    HapticFeedback.mediumImpact();
+  }
 
   Future<void> _share() async {
     setState(() => _sharing = true);
@@ -76,6 +83,8 @@ class _QuizResultScreenState extends ConsumerState<QuizResultScreen> {
             ],
           ),
         ),
+      ],
+      sideChildren: [
         Padding(
           padding: const EdgeInsets.fromLTRB(4, 0, 4, 14),
           child: Text(l10n.quizResultsNote, style: PalabreType.note(t.muted)),
@@ -152,7 +161,7 @@ class _PartyRow extends StatelessWidget {
             if (s.concordance == null)
               Text(l10n.quizNotComputable, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: t.muted))
             else
-              Text(l10n.quizConcordance(s.concordance!), style: PalabreType.big(t.ink)),
+              AnimatedNumber(value: s.concordance!, suffix: ' %', style: PalabreType.big(t.ink)),
           ],
         ),
         const SizedBox(height: 8),

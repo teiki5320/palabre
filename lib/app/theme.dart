@@ -69,11 +69,11 @@ class PalabreTokens extends ThemeExtension<PalabreTokens> {
     primarySoft: Color(0xFF1C3F3D),
     accent: Color(0xFFFF7A1A),
     onAccent: Color(0xFF2B1200),
-    background: Color(0xFF0E1D1C),
-    card: Color(0xFF173130),
+    background: Color(0xFF13272A),
+    card: Color(0xFF1C3A3C),
     ink: Color(0xFFEAF6F4),
-    muted: Color(0xFF94B3B0),
-    line: Color(0xFF264543),
+    muted: Color(0xFF9DBBB8),
+    line: Color(0xFF2D4F50),
     cardShadow: BoxShadow(offset: Offset(0, 10), blurRadius: 24, color: Color(0x59000000)),
   );
 

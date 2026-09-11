@@ -103,6 +103,8 @@ class PersonScreen extends ConsumerWidget {
             for (final m in mandates) _MandateRow(bundle: b, mandate: m),
           ],
         ),
+      ],
+      sideChildren: [
         if (affiliations.isNotEmpty)
           CardSection(title: l10n.personAffiliations, children: [for (final a in affiliations) _AffiliationRow(bundle: b, affiliation: a)]),
         if (career.isNotEmpty)

@@ -63,7 +63,7 @@ class _AssemblyTabState extends ConsumerState<AssemblyTab> {
         SoftCard(child: ErrorRetry(message: e is NotConfiguredException ? l10n.notConfigured : l10n.errorGeneric, onRetry: () => ref.invalidate(referenceProvider(code)))),
       ];
     } else if (legislature == null) {
-      children = [SoftCard(child: NoticeBanner(text: l10n.asmNoData))];
+      children = [SoftCard(child: EmptyState(icon: Icons.groups_outlined, title: l10n.asmNoData, subtitle: l10n.asmNoDataHint))];
     } else {
       final all = b.deputiesAt(day);
       final groups = all.map((d) => d.group).whereType<Organization>().toSet().toList()..sort((a, b) => a.nom.compareTo(b.nom));

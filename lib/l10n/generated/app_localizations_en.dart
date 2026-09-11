@@ -152,6 +152,42 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pollNoCurrent => 'No question this week.';
 
   @override
+  String get pollNoCurrentHint =>
+      'The next question opens on a Monday at 8 am.';
+
+  @override
+  String pollOpensIn(String duree, String date) {
+    return 'Opens in $duree · $date';
+  }
+
+  @override
+  String pollClosesIn(String duree, String date) {
+    return 'Closes in $duree · $date';
+  }
+
+  @override
+  String durationDaysHours(int d, int h) {
+    return '$d d $h h';
+  }
+
+  @override
+  String durationHoursMinutes(int h, int m) {
+    return '$h h $m min';
+  }
+
+  @override
+  String pollAlreadyAnswered(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n people have already answered',
+      one: '1 person has already answered',
+      zero: 'Be the first to answer',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get pollVote => 'Vote';
 
   @override
@@ -447,6 +483,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get govNoData => 'No government documented for this country.';
 
   @override
+  String get govNoDataHint =>
+      'Portfolios, decrees and their sources will appear here once documented.';
+
+  @override
   String get govHead => 'Head of government';
 
   @override
@@ -504,6 +544,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get asmNoData => 'Composition not available for this country.';
+
+  @override
+  String get asmNoDataHint =>
+      'Deputies, constituencies and groups will appear here once documented.';
 
   @override
   String get asmSubstitute => 'Substitute';

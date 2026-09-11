@@ -27,6 +27,7 @@ class OnboardingScreen extends ConsumerWidget {
             child: SafeArea(
               bottom: false,
               child: BandScaffold.constrain(
+                context,
                 Padding(
                   padding: const EdgeInsets.fromLTRB(22, 28, 22, BandScaffold.overlap + 26),
                   child: Column(
@@ -62,6 +63,7 @@ class OnboardingScreen extends ConsumerWidget {
                   child: ColoredBox(color: t.primary),
                 ),
                 BandScaffold.constrain(
+                  context,
                   ListView(
                     padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
                     children: const [SoftCard(child: ProfileForm(onboarding: true))],

@@ -104,6 +104,8 @@ class PartyScreen extends ConsumerWidget {
                 }),
             ],
           ),
+      ],
+      sideChildren: [
         CardSection(
           title: l10n.partyMembers,
           trailing: members.isEmpty ? null : Pill(label: '${members.length}'),

@@ -14,7 +14,7 @@ void main() {
     expect(light.accent, const Color(0xFFFF7A1A));
     expect(light.background, const Color(0xFFEFF6F5));
     expect(dark.primary, const Color(0xFF3ED0CB));
-    expect(dark.card, const Color(0xFF173130));
+    expect(dark.card, const Color(0xFF1C3A3C));
     expect(PalabreTheme.light().colorScheme.primary, light.primary);
     expect(PalabreTheme.light().scaffoldBackgroundColor, light.background);
     expect(PalabreTheme.light().textTheme.bodyMedium!.fontFamily, PalabreType.body);

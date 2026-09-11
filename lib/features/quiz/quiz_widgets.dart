@@ -213,3 +213,38 @@ class _ContestationSheetState extends ConsumerState<_ContestationSheet> {
     );
   }
 }
+
+/// Une couleur par thème d'affirmation : elle encode le thème, rien d'autre.
+Color themeColor(BuildContext context, String? theme) {
+  final t = context.tokens;
+  return switch ((theme ?? '').toLowerCase()) {
+    'institutions' => const Color(0xFF5C6BC0),
+    'justice' => const Color(0xFF7E57C2),
+    'economie' || 'économie' => const Color(0xFFD99A2B),
+    'agriculture' => const Color(0xFF7CB342),
+    'education' || 'éducation' => const Color(0xFF26A69A),
+    'sante' || 'santé' => const Color(0xFFEF5350),
+    'social' => const Color(0xFFEC407A),
+    'decentralisation' || 'décentralisation' => const Color(0xFF8D6E63),
+    'environnement' => const Color(0xFF43A047),
+    'securite' || 'sécurité' => const Color(0xFF546E7A),
+    'diaspora' => const Color(0xFF29B6F6),
+    'infrastructure' => const Color(0xFFD9654F),
+    _ => t.primary,
+  };
+}
+
+/// Pastille de thème, dans la couleur du thème.
+class ThemePill extends StatelessWidget {
+  const ThemePill(this.theme, {super.key});
+  final String theme;
+  @override
+  Widget build(BuildContext context) {
+    final c = themeColor(context, theme);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 6),
+      decoration: BoxDecoration(color: c.withValues(alpha: 0.16), borderRadius: BorderRadius.circular(999)),
+      child: Text(theme, style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: c)),
+    );
+  }
+}

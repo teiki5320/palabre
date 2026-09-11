@@ -76,7 +76,7 @@ class QuizTab extends ConsumerWidget {
                   method(Icons.phone_android_outlined, l10n.quizMethod3),
                   const SizedBox(height: 14),
                   if (q == null)
-                    Text(l10n.quizNone, style: TextStyle(color: t.muted, fontWeight: FontWeight.w600))
+                    EmptyState(icon: Icons.checklist_outlined, title: l10n.quizNone)
                   else ...[
                     Text('${q.titre} · ${l10n.quizStatements(q.statements.length)} · ${l10n.quizParties(q.parties.length)}', style: PalabreType.note(t.muted)),
                     const SizedBox(height: 12),

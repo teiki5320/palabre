@@ -13,6 +13,9 @@ void main() {
   setUpAll(tzdata.initializeTimeZones);
 
   testWidgets('onboarding puis onglet question', (tester) async {
+    tester.view.physicalSize = const Size(1170, 2532);
+    tester.view.devicePixelRatio = 3;
+    addTearDown(tester.view.reset);
     SharedPreferences.setMockInitialValues({PrefKeys.locale: 'fr'});
     final prefs = await SharedPreferences.getInstance();
     final cache = MemoryCacheStore();

@@ -334,6 +334,42 @@ abstract class AppLocalizations {
   /// **'Pas de question cette semaine.'**
   String get pollNoCurrent;
 
+  /// No description provided for @pollNoCurrentHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'La prochaine question arrive un lundi à 8 h.'**
+  String get pollNoCurrentHint;
+
+  /// No description provided for @pollOpensIn.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ouvre dans {duree} · {date}'**
+  String pollOpensIn(String duree, String date);
+
+  /// No description provided for @pollClosesIn.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ferme dans {duree} · {date}'**
+  String pollClosesIn(String duree, String date);
+
+  /// No description provided for @durationDaysHours.
+  ///
+  /// In fr, this message translates to:
+  /// **'{d} j {h} h'**
+  String durationDaysHours(int d, int h);
+
+  /// No description provided for @durationHoursMinutes.
+  ///
+  /// In fr, this message translates to:
+  /// **'{h} h {m} min'**
+  String durationHoursMinutes(int h, int m);
+
+  /// No description provided for @pollAlreadyAnswered.
+  ///
+  /// In fr, this message translates to:
+  /// **'{n, plural, =0{Soyez la première personne à répondre} =1{1 personne a déjà répondu} other{{n} personnes ont déjà répondu}}'**
+  String pollAlreadyAnswered(int n);
+
   /// No description provided for @pollVote.
   ///
   /// In fr, this message translates to:
@@ -784,6 +820,12 @@ abstract class AppLocalizations {
   /// **'Aucun gouvernement documenté pour ce pays.'**
   String get govNoData;
 
+  /// No description provided for @govNoDataHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Les portefeuilles, les décrets et leurs sources apparaîtront ici dès qu\'ils seront documentés.'**
+  String get govNoDataHint;
+
   /// No description provided for @govHead.
   ///
   /// In fr, this message translates to:
@@ -885,6 +927,12 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Composition non disponible pour ce pays.'**
   String get asmNoData;
+
+  /// No description provided for @asmNoDataHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Les députés, leurs circonscriptions et leurs groupes apparaîtront ici dès qu\'ils seront documentés.'**
+  String get asmNoDataHint;
 
   /// No description provided for @asmSubstitute.
   ///

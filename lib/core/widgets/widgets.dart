@@ -4,8 +4,10 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../app/locale_fallbacks.dart';
 import '../../app/theme.dart';
 import '../../l10n/generated/app_localizations.dart';
+import 'motion.dart';
 
 export 'band_scaffold.dart';
+export 'motion.dart';
 export 'soft_card.dart';
 
 extension L10nContext on BuildContext {
@@ -182,27 +184,32 @@ class ColorDot extends StatelessWidget {
       Container(width: size, height: size, decoration: BoxDecoration(color: color, shape: BoxShape.circle));
 }
 
-/// Barre horizontale pour un pourcentage.
+/// Barre horizontale pour un pourcentage, qui se remplit à l'affichage.
 class PercentBar extends StatelessWidget {
-  const PercentBar({super.key, required this.fraction, this.color, this.height = 6, this.track});
+  const PercentBar({super.key, required this.fraction, this.color, this.height = 6, this.track, this.animate = true});
   final double fraction;
   final Color? color;
   final Color? track;
   final double height;
+  final bool animate;
 
   @override
   Widget build(BuildContext context) {
     final t = context.tokens;
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(height / 2),
-      child: SizedBox(
-        height: height,
-        child: LinearProgressIndicator(
-          value: fraction.clamp(0, 1),
-          backgroundColor: track ?? t.line,
-          color: color ?? t.primary,
-        ),
-      ),
+    final target = fraction.clamp(0.0, 1.0);
+    Widget bar(double v) => ClipRRect(
+          borderRadius: BorderRadius.circular(height / 2),
+          child: SizedBox(
+            height: height,
+            child: LinearProgressIndicator(value: v, backgroundColor: track ?? t.line, color: color ?? t.primary),
+          ),
+        );
+    if (!animate || reduceMotion(context)) return bar(target);
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0, end: target),
+      duration: const Duration(milliseconds: 650),
+      curve: Curves.easeOutCubic,
+      builder: (_, v, _) => bar(v),
     );
   }
 }

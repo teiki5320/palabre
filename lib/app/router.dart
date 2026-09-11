@@ -30,6 +30,21 @@ class Routes {
   static String party(int id) => '/parti/$id';
 }
 
+/// Fondu croisé avec léger glissement pour les écrans poussés.
+CustomTransitionPage<void> fadePage(GoRouterState state, Widget child) => CustomTransitionPage(
+      key: state.pageKey,
+      child: child,
+      transitionDuration: const Duration(milliseconds: 260),
+      reverseTransitionDuration: const Duration(milliseconds: 200),
+      transitionsBuilder: (context, animation, secondary, child) {
+        final curved = CurvedAnimation(parent: animation, curve: Curves.easeOutCubic, reverseCurve: Curves.easeIn);
+        return FadeTransition(
+          opacity: curved,
+          child: SlideTransition(position: Tween(begin: const Offset(0, 0.04), end: Offset.zero).animate(curved), child: child),
+        );
+      },
+    );
+
 final routerProvider = Provider<GoRouter>((ref) {
   final onboardingDone = ref.watch(onboardingDoneProvider);
   return GoRouter(
@@ -42,11 +57,11 @@ final routerProvider = Provider<GoRouter>((ref) {
     },
     routes: [
       GoRoute(path: Routes.onboarding, builder: (_, _) => const OnboardingScreen()),
-      GoRoute(path: Routes.settings, builder: (_, _) => const SettingsScreen()),
-      GoRoute(path: '/personne/:id', builder: (_, s) => PersonScreen(personId: int.parse(s.pathParameters['id']!))),
-      GoRoute(path: '/parti/:id', builder: (_, s) => PartyScreen(orgId: int.parse(s.pathParameters['id']!))),
-      GoRoute(path: Routes.quizRun, builder: (_, _) => const QuizRunScreen()),
-      GoRoute(path: Routes.quizResult, builder: (_, _) => const QuizResultScreen()),
+      GoRoute(path: Routes.settings, pageBuilder: (_, s) => fadePage(s, const SettingsScreen())),
+      GoRoute(path: '/personne/:id', pageBuilder: (_, s) => fadePage(s, PersonScreen(personId: int.parse(s.pathParameters['id']!)))),
+      GoRoute(path: '/parti/:id', pageBuilder: (_, s) => fadePage(s, PartyScreen(orgId: int.parse(s.pathParameters['id']!)))),
+      GoRoute(path: Routes.quizRun, pageBuilder: (_, s) => fadePage(s, const QuizRunScreen())),
+      GoRoute(path: Routes.quizResult, pageBuilder: (_, s) => fadePage(s, const QuizResultScreen())),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => AppShell(navigationShell: shell),
         branches: [
@@ -55,7 +70,7 @@ final routerProvider = Provider<GoRouter>((ref) {
               path: Routes.question,
               builder: (_, _) => const PollTab(),
               routes: [
-                GoRoute(path: ':id', builder: (_, s) => PollDetailScreen(pollId: int.parse(s.pathParameters['id']!))),
+                GoRoute(path: ':id', pageBuilder: (_, s) => fadePage(s, PollDetailScreen(pollId: int.parse(s.pathParameters['id']!)))),
               ],
             ),
           ]),
