@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/prefs/theme_mode_provider.dart';
 import '../core/profile/profile.dart';
 import '../l10n/generated/app_localizations.dart';
 import 'locale_fallbacks.dart';
@@ -15,12 +16,13 @@ class PalabreApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     final localeCode = ref.watch(localeSettingProvider);
+    final themeMode = ref.watch(themeModeProvider);
     return MaterialApp.router(
       title: 'Palabre',
       debugShowCheckedModeBanner: false,
-      theme: PalabreTheme.dark(),
+      theme: PalabreTheme.light(),
       darkTheme: PalabreTheme.dark(),
-      themeMode: ThemeMode.dark,
+      themeMode: themeMode,
       routerConfig: router,
       locale: localeCode == null ? null : Locale(localeCode),
       supportedLocales: AppLocalizations.supportedLocales,

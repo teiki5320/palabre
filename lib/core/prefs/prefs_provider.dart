@@ -13,4 +13,6 @@ class PrefKeys {
   static const regionId = 'region_id';
   static const locale = 'locale';
   static const profileSynced = 'profile_synced';
+  static const themeMode = 'theme_mode';
+  static const profilePromptDone = 'profile_prompt_done';
 }
