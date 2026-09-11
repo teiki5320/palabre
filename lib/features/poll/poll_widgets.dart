@@ -204,14 +204,10 @@ class _ResultsViewState extends ConsumerState<ResultsView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Expanded(child: Text(l10n.pollRespondents(r.repondants), style: PalabreType.cardTitle(t.ink))),
-            Text(r.isFinal ? l10n.pollResultsFinal : l10n.pollResultsProvisional, style: PalabreType.note(t.muted), textAlign: TextAlign.end),
-          ],
-        ),
-        const SizedBox(height: 6),
+        Text(l10n.pollRespondents(r.repondants), style: PalabreType.cardTitle(t.ink)),
+        const SizedBox(height: 4),
+        Text(r.isFinal ? l10n.pollResultsFinal : l10n.pollResultsProvisional, style: PalabreType.note(t.muted)),
+        const SizedBox(height: 4),
         Text(l10n.pollSample(r.repondants, country.nom), style: PalabreType.note(t.muted)),
         if (mine != null) ...[
           const SizedBox(height: 10),
