@@ -3,87 +3,74 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/router.dart';
+import '../../app/theme.dart';
 import '../../core/country/country_models.dart';
 import '../../core/country/country_providers.dart';
 import '../../core/profile/profile.dart';
 import '../../core/widgets/widgets.dart';
 
-/// Deux écrans : le principe en une phrase, puis pays, tranche d'âge et
-/// région. Tout est facultatif sauf le pays.
-class OnboardingScreen extends ConsumerStatefulWidget {
+/// Un seul écran : le principe en une phrase et le pays. Tranche d'âge et
+/// région sont proposées plus tard, après le premier vote.
+class OnboardingScreen extends ConsumerWidget {
   const OnboardingScreen({super.key});
 
   @override
-  ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
-}
-
-class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
-  final _controller = PageController();
-  int _page = 0;
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: PageView(
-          controller: _controller,
-          physics: const NeverScrollableScrollPhysics(),
-          onPageChanged: (i) => setState(() => _page = i),
-          children: [
-            _PrinciplePage(onNext: () => _controller.nextPage(duration: const Duration(milliseconds: 250), curve: Curves.easeOut)),
-            const ProfileForm(onboarding: true),
-          ],
-        ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(bottom: 12),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [for (var i = 0; i < 2; i++) Padding(padding: const EdgeInsets.symmetric(horizontal: 3), child: ColorDot(i == _page ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outlineVariant, size: 6))],
-        ),
-      ),
-    );
-  }
-}
-
-class _PrinciplePage extends StatelessWidget {
-  const _PrinciplePage({required this.onNext});
-  final VoidCallback onNext;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final scheme = Theme.of(context).colorScheme;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(24, 48, 24, 24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    final t = context.tokens;
+    return Scaffold(
+      backgroundColor: t.background,
+      body: Column(
         children: [
-          Text('Palabre', style: TextStyle(fontSize: 13, letterSpacing: 2.5, fontWeight: FontWeight.w600, color: scheme.onSurfaceVariant)),
-          const SizedBox(height: 12),
-          Text(l10n.onboardingTitle, style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w700, height: 1.15)),
-          const SizedBox(height: 20),
-          Text(l10n.onboardingPrinciple, style: const TextStyle(fontSize: 18, height: 1.45)),
-          const SizedBox(height: 16),
-          Text(l10n.onboardingNoOpinion, style: TextStyle(fontSize: 15, height: 1.45, color: scheme.onSurfaceVariant)),
-          const Spacer(),
-          FilledButton(onPressed: onNext, child: Text(l10n.continueLabel)),
+          ColoredBox(
+            color: t.primary,
+            child: SafeArea(
+              bottom: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(22, 28, 22, BandScaffold.overlap + 26),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Palabre', style: PalabreType.wordmark(t.onPrimary)),
+                    const SizedBox(height: 26),
+                    Text(l10n.onboardingTitle, style: PalabreType.title(t.onPrimary).copyWith(fontSize: 28)),
+                    const SizedBox(height: 14),
+                    Text(l10n.onboardingPrinciple, style: TextStyle(fontSize: 15.5, height: 1.45, fontWeight: FontWeight.w500, color: t.onPrimary.withValues(alpha: 0.92))),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Stack(
+              children: [
+                Positioned(top: 0, left: 0, right: 0, height: BandScaffold.overlap, child: ColoredBox(color: t.primary)),
+                ListView(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+                  children: const [
+                    SoftCard(child: ProfileForm(onboarding: true)),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-/// Formulaire de profil, partagé entre l'onboarding et les paramètres.
+/// Formulaire de profil. En onboarding : le pays seul. Ailleurs : tranche
+/// d'âge et région, avec ou sans le pays. Tout est facultatif sauf le pays.
 class ProfileForm extends ConsumerStatefulWidget {
-  const ProfileForm({super.key, this.onboarding = false});
+  const ProfileForm({super.key, this.onboarding = false, this.showCountry = true, this.secondaryAction, this.onSaved, this.saveLabel});
   final bool onboarding;
+  final bool showCountry;
+
+  /// Rendu à côté du bouton d'enregistrement (« Plus tard »).
+  final Widget? secondaryAction;
+  final VoidCallback? onSaved;
+  final String? saveLabel;
 
   @override
   ConsumerState<ProfileForm> createState() => _ProfileFormState();
@@ -111,8 +98,12 @@ class _ProfileFormState extends ConsumerState<ProfileForm> {
     if (widget.onboarding) {
       await ref.read(onboardingDoneProvider.notifier).complete();
       if (mounted) context.go(Routes.question);
+      return;
+    }
+    setState(() => _busy = false);
+    if (widget.onSaved != null) {
+      widget.onSaved!();
     } else {
-      setState(() => _busy = false);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.l10n.settingsSaved)));
     }
   }
@@ -120,56 +111,74 @@ class _ProfileFormState extends ConsumerState<ProfileForm> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final scheme = Theme.of(context).colorScheme;
+    final t = context.tokens;
     final config = ref.watch(countryConfigOrFallbackProvider);
     final countries = config.countries.where((c) => c.actif).toList();
     if (!countries.any((c) => c.code == _country) && countries.isNotEmpty) _country = countries.first.code;
     final regions = config.regionsOf(_country);
     if (_regionId != null && !regions.any((r) => r.id == _regionId)) _regionId = null;
+    final showCountry = widget.onboarding || widget.showCountry;
+    final showDetails = !widget.onboarding;
 
-    return ListView(
-      padding: EdgeInsets.fromLTRB(24, widget.onboarding ? 48 : 8, 24, 24),
+    final saveButton = FilledButton(
+      onPressed: _busy ? null : _save,
+      child: _busy
+          ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
+          : Text(widget.saveLabel ?? (widget.onboarding ? l10n.start : l10n.save)),
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        if (widget.onboarding) ...[
-          Text(l10n.onboardingProfileTitle, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700, height: 1.2)),
-          const SizedBox(height: 12),
-          Text(l10n.onboardingProfileWhy(30), style: TextStyle(fontSize: 14, height: 1.45, color: scheme.onSurfaceVariant)),
-          const SizedBox(height: 28),
+        if (showCountry) ...[
+          DropdownButtonFormField<String>(
+            initialValue: countries.any((c) => c.code == _country) ? _country : null,
+            decoration: InputDecoration(labelText: l10n.fieldCountry),
+            items: [
+              for (final c in countries) DropdownMenuItem(value: c.code, child: Text(c.nom)),
+              if (countries.isEmpty) DropdownMenuItem(value: _country, child: Text(_country)),
+            ],
+            onChanged: (v) => setState(() {
+              _country = v ?? _country;
+              _regionId = null;
+            }),
+          ),
+          const SizedBox(height: 14),
         ],
-        DropdownButtonFormField<String>(
-          initialValue: countries.any((c) => c.code == _country) ? _country : null,
-          decoration: InputDecoration(labelText: l10n.fieldCountry),
-          items: [
-            for (final c in countries) DropdownMenuItem(value: c.code, child: Text(c.nom)),
-            if (countries.isEmpty) DropdownMenuItem(value: _country, child: Text(_country)),
-          ],
-          onChanged: (v) => setState(() {
-            _country = v ?? _country;
-            _regionId = null;
-          }),
-        ),
-        const SizedBox(height: 16),
-        DropdownButtonFormField<String?>(
-          initialValue: _age,
-          decoration: InputDecoration(labelText: l10n.fieldAge),
-          items: [
-            DropdownMenuItem(value: null, child: Text(l10n.notSpecified, style: TextStyle(color: scheme.onSurfaceVariant))),
-            for (final a in ageBrackets) DropdownMenuItem(value: a, child: Text(a)),
-          ],
-          onChanged: (v) => setState(() => _age = v),
-        ),
-        const SizedBox(height: 16),
-        DropdownButtonFormField<int?>(
-          initialValue: _regionId,
-          decoration: InputDecoration(labelText: l10n.fieldRegion),
-          items: [
-            DropdownMenuItem(value: null, child: Text(l10n.notSpecified, style: TextStyle(color: scheme.onSurfaceVariant))),
-            for (final r in regions) DropdownMenuItem(value: r.id, child: Text(r.nom)),
-          ],
-          onChanged: (v) => setState(() => _regionId = v),
-        ),
-        const SizedBox(height: 32),
-        FilledButton(onPressed: _busy ? null : _save, child: Text(widget.onboarding ? l10n.start : l10n.save)),
+        if (showDetails) ...[
+          DropdownButtonFormField<String?>(
+            initialValue: _age,
+            decoration: InputDecoration(labelText: l10n.fieldAge),
+            items: [
+              DropdownMenuItem(value: null, child: Text(l10n.notSpecified, style: TextStyle(color: t.muted))),
+              for (final a in ageBrackets) DropdownMenuItem(value: a, child: Text(a)),
+            ],
+            onChanged: (v) => setState(() => _age = v),
+          ),
+          const SizedBox(height: 14),
+          DropdownButtonFormField<int?>(
+            initialValue: _regionId,
+            decoration: InputDecoration(labelText: l10n.fieldRegion),
+            items: [
+              DropdownMenuItem(value: null, child: Text(l10n.notSpecified, style: TextStyle(color: t.muted))),
+              for (final r in regions) DropdownMenuItem(value: r.id, child: Text(r.nom)),
+            ],
+            onChanged: (v) => setState(() => _regionId = v),
+          ),
+          const SizedBox(height: 14),
+        ],
+        const SizedBox(height: 6),
+        if (widget.secondaryAction == null)
+          saveButton
+        else
+          Row(
+            children: [
+              Expanded(child: widget.secondaryAction!),
+              const SizedBox(width: 10),
+              Expanded(child: saveButton),
+            ],
+          ),
       ],
     );
   }

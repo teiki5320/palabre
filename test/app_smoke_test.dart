@@ -29,14 +29,15 @@ void main() {
     ));
     await tester.pumpAndSettle();
 
+    // Un seul écran : le principe et le pays.
     expect(find.text("L'arbre à palabres"), findsOneWidget);
-    await tester.tap(find.text('Continuer'));
-    await tester.pumpAndSettle();
     expect(find.text('Pays'), findsOneWidget);
+    expect(find.text("Tranche d'âge"), findsNothing);
     await tester.tap(find.text('Commencer'));
     await tester.pumpAndSettle();
 
     expect(prefs.getBool(PrefKeys.onboardingDone), isTrue);
+    expect(prefs.getString(PrefKeys.country), 'SN');
     // Sans serveur ni cache, l'onglet le dit plutôt que d'inventer.
     expect(find.textContaining('Serveur non configuré'), findsWidgets);
     expect(find.text('Réessayer'), findsOneWidget);

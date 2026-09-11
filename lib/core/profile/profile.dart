@@ -105,3 +105,16 @@ class LocaleSetting extends Notifier<String?> {
 }
 
 final localeSettingProvider = NotifierProvider<LocaleSetting, String?>(LocaleSetting.new);
+
+/// Carte « Affiner les résultats » déjà remplie ou refusée.
+class ProfilePromptDone extends Notifier<bool> {
+  @override
+  bool build() => ref.watch(sharedPrefsProvider).getBool(PrefKeys.profilePromptDone) ?? false;
+
+  Future<void> complete() async {
+    await ref.read(sharedPrefsProvider).setBool(PrefKeys.profilePromptDone, true);
+    state = true;
+  }
+}
+
+final profilePromptDoneProvider = NotifierProvider<ProfilePromptDone, bool>(ProfilePromptDone.new);
