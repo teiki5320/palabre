@@ -9,6 +9,11 @@ import '../../core/country/country_providers.dart';
 import '../../core/profile/profile.dart';
 import '../../core/widgets/widgets.dart';
 
+Widget _narrow(Widget child) => Align(
+      alignment: Alignment.topCenter,
+      child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: BandScaffold.maxWidth), child: child),
+    );
+
 /// Un seul écran : le principe en une phrase et le pays. Tranche d'âge et
 /// région sont proposées plus tard, après le premier vote.
 class OnboardingScreen extends ConsumerWidget {
@@ -26,8 +31,7 @@ class OnboardingScreen extends ConsumerWidget {
             color: t.primary,
             child: SafeArea(
               bottom: false,
-              child: BandScaffold.constrain(
-                context,
+              child: _narrow(
                 Padding(
                   padding: const EdgeInsets.fromLTRB(22, 28, 22, BandScaffold.overlap + 26),
                   child: Column(
@@ -62,8 +66,7 @@ class OnboardingScreen extends ConsumerWidget {
                   height: BandScaffold.overlap,
                   child: ColoredBox(color: t.primary),
                 ),
-                BandScaffold.constrain(
-                  context,
+                _narrow(
                   ListView(
                     padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
                     children: const [SoftCard(child: ProfileForm(onboarding: true))],
