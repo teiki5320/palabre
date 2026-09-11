@@ -26,17 +26,27 @@ class OnboardingScreen extends ConsumerWidget {
             color: t.primary,
             child: SafeArea(
               bottom: false,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(22, 28, 22, BandScaffold.overlap + 26),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Palabre', style: PalabreType.wordmark(t.onPrimary)),
-                    const SizedBox(height: 26),
-                    Text(l10n.onboardingTitle, style: PalabreType.title(t.onPrimary).copyWith(fontSize: 28)),
-                    const SizedBox(height: 14),
-                    Text(l10n.onboardingPrinciple, style: TextStyle(fontSize: 15.5, height: 1.45, fontWeight: FontWeight.w500, color: t.onPrimary.withValues(alpha: 0.92))),
-                  ],
+              child: BandScaffold.constrain(
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(22, 28, 22, BandScaffold.overlap + 26),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Palabre', style: PalabreType.wordmark(t.onPrimary)),
+                      const SizedBox(height: 26),
+                      Text(l10n.onboardingTitle, style: PalabreType.title(t.onPrimary).copyWith(fontSize: 28)),
+                      const SizedBox(height: 14),
+                      Text(
+                        l10n.onboardingPrinciple,
+                        style: TextStyle(
+                          fontSize: 15.5,
+                          height: 1.45,
+                          fontWeight: FontWeight.w500,
+                          color: t.onPrimary.withValues(alpha: 0.92),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -44,12 +54,18 @@ class OnboardingScreen extends ConsumerWidget {
           Expanded(
             child: Stack(
               children: [
-                Positioned(top: 0, left: 0, right: 0, height: BandScaffold.overlap, child: ColoredBox(color: t.primary)),
-                ListView(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
-                  children: const [
-                    SoftCard(child: ProfileForm(onboarding: true)),
-                  ],
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: BandScaffold.overlap,
+                  child: ColoredBox(color: t.primary),
+                ),
+                BandScaffold.constrain(
+                  ListView(
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+                    children: const [SoftCard(child: ProfileForm(onboarding: true))],
+                  ),
                 ),
               ],
             ),
@@ -151,7 +167,10 @@ class _ProfileFormState extends ConsumerState<ProfileForm> {
             initialValue: _age,
             decoration: InputDecoration(labelText: l10n.fieldAge),
             items: [
-              DropdownMenuItem(value: null, child: Text(l10n.notSpecified, style: TextStyle(color: t.muted))),
+              DropdownMenuItem(
+                value: null,
+                child: Text(l10n.notSpecified, style: TextStyle(color: t.muted)),
+              ),
               for (final a in ageBrackets) DropdownMenuItem(value: a, child: Text(a)),
             ],
             onChanged: (v) => setState(() => _age = v),
@@ -161,7 +180,10 @@ class _ProfileFormState extends ConsumerState<ProfileForm> {
             initialValue: _regionId,
             decoration: InputDecoration(labelText: l10n.fieldRegion),
             items: [
-              DropdownMenuItem(value: null, child: Text(l10n.notSpecified, style: TextStyle(color: t.muted))),
+              DropdownMenuItem(
+                value: null,
+                child: Text(l10n.notSpecified, style: TextStyle(color: t.muted)),
+              ),
               for (final r in regions) DropdownMenuItem(value: r.id, child: Text(r.nom)),
             ],
             onChanged: (v) => setState(() => _regionId = v),

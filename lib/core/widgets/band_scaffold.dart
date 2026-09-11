@@ -50,6 +50,18 @@ class BandScaffold extends StatelessWidget {
   /// Hauteur du chevauchement de la première carte sur le bandeau.
   static const overlap = 30.0;
 
+  /// Largeur maximale du contenu : sur iPad, les cartes restent lisibles au
+  /// centre au lieu de s'étirer d'un bord à l'autre.
+  static const maxWidth = 680.0;
+
+  static Widget constrain(Widget child) => Align(
+    alignment: Alignment.topCenter,
+    child: ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: maxWidth),
+      child: child,
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     final t = context.tokens;
@@ -57,6 +69,7 @@ class BandScaffold extends StatelessWidget {
     if (onRefresh != null) {
       content = RefreshIndicator(onRefresh: onRefresh!, color: t.primary, backgroundColor: t.card, child: content);
     }
+    content = BandScaffold.constrain(content);
     return Scaffold(
       backgroundColor: t.background,
       body: Column(
@@ -65,12 +78,18 @@ class BandScaffold extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-                Positioned(top: 0, left: 0, right: 0, height: overlap, child: ColoredBox(color: t.primary)),
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: overlap,
+                  child: ColoredBox(color: t.primary),
+                ),
                 Positioned.fill(child: content),
               ],
             ),
           ),
-          if (bottom != null) SafeArea(top: false, child: bottom!),
+          if (bottom != null) SafeArea(top: false, child: BandScaffold.constrain(bottom!)),
         ],
       ),
     );
@@ -90,7 +109,8 @@ class _Band extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = context.tokens;
     final canPop = leading == null && Navigator.of(context).canPop();
-    final lead = leading ??
+    final lead =
+        leading ??
         (canPop
             ? IconButton(
                 icon: const Icon(Icons.arrow_back),
@@ -107,41 +127,43 @@ class _Band extends StatelessWidget {
           data: IconThemeData(color: t.onPrimary, size: 24),
           child: DefaultTextStyle(
             style: TextStyle(fontFamily: PalabreType.body, color: t.onPrimary),
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(lead != null ? 6 : 20, 6, 8, BandScaffold.overlap + 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (topRow)
-                    Row(
-                      children: [
-                        ?lead,
-                        Expanded(
-                          child: brand
-                              ? Padding(
-                                  padding: EdgeInsets.only(left: lead != null ? 4 : 0, top: 8),
-                                  child: Text('Palabre', style: PalabreType.wordmark(t.onPrimary)),
-                                )
-                              : const SizedBox.shrink(),
-                        ),
-                        ...actions,
-                      ],
-                    ),
-                  Padding(
-                    padding: EdgeInsets.only(left: lead != null ? 14 : 0, right: 12, top: topRow ? 12 : 6),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (eyebrow != null && eyebrow!.isNotEmpty) ...[
-                          Text(eyebrow!.toUpperCase(), style: PalabreType.eyebrow(t.onPrimary.withValues(alpha: 0.85))),
-                          const SizedBox(height: 6),
+            child: BandScaffold.constrain(
+              Padding(
+                padding: EdgeInsets.fromLTRB(lead != null ? 6 : 20, 6, 8, BandScaffold.overlap + 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (topRow)
+                      Row(
+                        children: [
+                          ?lead,
+                          Expanded(
+                            child: brand
+                                ? Padding(
+                                    padding: EdgeInsets.only(left: lead != null ? 4 : 0, top: 8),
+                                    child: Text('Palabre', style: PalabreType.wordmark(t.onPrimary)),
+                                  )
+                                : const SizedBox.shrink(),
+                          ),
+                          ...actions,
                         ],
-                        Text(title, style: PalabreType.title(t.onPrimary)),
-                        if (control != null) Padding(padding: const EdgeInsets.only(top: 14), child: control),
-                      ],
+                      ),
+                    Padding(
+                      padding: EdgeInsets.only(left: lead != null ? 14 : 0, right: 12, top: topRow ? 12 : 6),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (eyebrow != null && eyebrow!.isNotEmpty) ...[
+                            Text(eyebrow!.toUpperCase(), style: PalabreType.eyebrow(t.onPrimary.withValues(alpha: 0.85))),
+                            const SizedBox(height: 6),
+                          ],
+                          Text(title, style: PalabreType.title(t.onPrimary)),
+                          if (control != null) Padding(padding: const EdgeInsets.only(top: 14), child: control),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -172,7 +194,10 @@ class BandSearchField extends StatelessWidget {
         fillColor: t.onPrimary.withValues(alpha: 0.18),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
         enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: t.onPrimary.withValues(alpha: 0.6))),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: t.onPrimary.withValues(alpha: 0.6)),
+        ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       ),
     );
