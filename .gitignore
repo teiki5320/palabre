@@ -1,0 +1,22 @@
+# Supabase
+supabase/.temp/
+supabase/.branches/
+.env
+.env.*
+!.env.example
+
+# Flutter / Dart (étape 2)
+.dart_tool/
+.packages
+build/
+*.iml
+.idea/
+.vscode/
+android/.gradle/
+android/local.properties
+ios/Pods/
+*.g.dart.bak
+
+# Divers
+*.log
+.DS_Store
