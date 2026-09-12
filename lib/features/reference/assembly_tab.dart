@@ -7,6 +7,7 @@ import '../../app/theme.dart';
 import '../../core/country/country_models.dart';
 import '../../core/country/country_providers.dart';
 import '../../core/net/cached_notifier.dart';
+import '../../core/ads/ads.dart';
 import '../../core/widgets/widgets.dart';
 import 'reference_models.dart';
 import 'reference_providers.dart';
@@ -150,6 +151,7 @@ class _AssemblyTabState extends ConsumerState<AssemblyTab> {
       title: l10n.tabAssembly,
       actions: const [SettingsAction()],
       control: control,
+      bottom: const AdBanner(),
       children: children,
     );
   }

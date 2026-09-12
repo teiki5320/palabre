@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest_10y.dart' as tzdata;
 
 import 'app/app.dart';
+import 'core/ads/ads.dart';
 import 'core/notifications/push_service.dart';
 import 'core/prefs/prefs_provider.dart';
 import 'core/profile/profile.dart';
@@ -30,4 +31,5 @@ Future<void> _afterFirstFrame(ProviderContainer container) async {
   await AuthBootstrap.ensureSession();
   await container.read(profileProvider.notifier).sync();
   await PushService.initialize(container);
+  await AdsService.initialize();
 }

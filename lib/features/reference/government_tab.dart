@@ -8,6 +8,7 @@ import '../../core/country/country_models.dart';
 import '../../core/country/country_providers.dart';
 import '../../core/net/cached_notifier.dart';
 import '../../core/time/local_time.dart';
+import '../../core/ads/ads.dart';
 import '../../core/widgets/widgets.dart';
 import 'reference_models.dart';
 import 'reference_providers.dart';
@@ -81,6 +82,7 @@ class GovernmentTab extends ConsumerWidget {
       title: title,
       actions: const [SettingsAction()],
       control: bundle == null || bundle.governments.isEmpty || suspended ? null : _TimeSlider(bundle: bundle, date: date),
+      bottom: const AdBanner(),
       children: children,
     );
   }
