@@ -76,6 +76,25 @@ Poids : les bibliothèques natives sont compressées dans l'APK
 est obfusqué. Le workflow CI échoue si un APK par architecture dépasse
 15 Mo. Conserver `build/symbols` pour dé-obfusquer les rapports de plantage.
 
+## 3 bis. Android — Google Play
+
+- Clé de téléversement : `android/app/upload-keystore.jks` + `android/key.properties` (ignorés par git),
+  mot de passe dans le trousseau macOS « Palabre Android upload keystore ». Sans ces fichiers (CI),
+  la release est signée avec la clé de debug.
+- Bundle signé pour la Play Console :
+
+```sh
+flutter build appbundle --release --obfuscate --split-debug-info=build/symbols \
+  --dart-define=SUPABASE_URL=https://kigaejkyzpehkoujzlyf.supabase.co \
+  --dart-define=SUPABASE_ANON_KEY="$(supabase projects api-keys --project-ref kigaejkyzpehkoujzlyf -o json | python3 -c 'import sys,json;print(next(k["api_key"] for k in json.load(sys.stdin) if k["name"]=="anon"))')"
+```
+
+  Fichier : `build/app/outputs/bundle/release/app-release.aab`. Incrémenter `version: x.y.z+N` dans
+  pubspec.yaml avant chaque envoi (N = versionCode).
+- Fiche, sécurité des données, classification : `docs/play-store.md`. Politique de confidentialité
+  publiée par GitHub Pages depuis `docs/site/` : https://teiki5320.github.io/palabre/site/confidentialite.html
+- Émulateur local : AVD `palabre` (Pixel 7, Android 16) — `flutter run -d emulator-5554 --dart-define=…`.
+
 ## 4. Xcode Cloud et TestFlight
 
 Le dépôt contient `ios/ci_scripts/ci_post_clone.sh`, exécuté
