@@ -1,0 +1,32 @@
+{
+  "commentaire": "Bénin, 10e législature : remplacements par les suppléants et présidence de l'Assemblée. Dates et sources reprises de assembly.json (changements, sources).",
+  "alias": {
+    "ASSOUMAN ALIMATOU SHADIYA": "Alimatou Shadiya ASSOUMAN"
+  },
+  "roles_supplementaires": [
+    {"id": 4, "type": "president_assemblee", "intitule": "Président de l'Assemblée nationale", "intitule_norm": "president_assemblee"}
+  ],
+  "cas": [
+    {
+      "depute": "AMADOU IDRISSOU",
+      "titulaire": {"nom": "BIO TCHANE ABDOULAYE", "debut": "2026-02-08", "fin": "2026-02-09", "motif_fin": "nomination_gouvernement", "source_url": "https://lanouvelletribune.info/2026/04/benin-bio-tchane-quitte-lassemblee-takou-et-assouma-suspendent-leur-mandat/"},
+      "suppleant": {"debut": "2026-04-15", "source_url": "https://lematinal.bj/10eme-legislature-trois-nouveaux-deputes-installes-a-lassemblee-nationale/"}
+    },
+    {
+      "depute": "KARIM TIDJANI MOUNIFA",
+      "titulaire": {"nom": "ASSOUMAN ALIMATOU SHADIYA", "debut": "2026-02-08", "fin": "2026-02-18", "motif_fin": "nomination_gouvernement", "source_url": "https://mediapartbenin.bj/article/5539/les-ministres-abdoulaye-bio-tchane-shadiya-alimatou-assouman-renoncent-leurs-sieges-parlementaires/"},
+      "suppleant": {"debut": "2026-04-15", "source_url": "https://lematinal.bj/10eme-legislature-trois-nouveaux-deputes-installes-a-lassemblee-nationale/"}
+    },
+    {
+      "depute": "ISSIFOU BOUBACAR",
+      "titulaire": {"nom": "TAKOU OROU HERMANN", "debut": "2026-02-08", "fin": "2026-04-15", "motif_fin": "demission", "source_url": "https://lematinal.bj/10eme-legislature-trois-nouveaux-deputes-installes-a-lassemblee-nationale/"},
+      "suppleant": {"debut": "2026-04-15", "source_url": "https://lematinal.bj/10eme-legislature-trois-nouveaux-deputes-installes-a-lassemblee-nationale/"},
+      "note": "Retrait qualifié de démission par Le Matinal, Bénin Web TV et Triomphe Mag, de « suspension temporaire » par La Nouvelle Tribune."
+    },
+    {
+      "depute": "SILIBI OLAWALE FRANÇOIS",
+      "titulaire": {"nom": "VLAVONOU GBEHOUNOU LOUIS", "debut": "2026-02-08", "fin": "2026-07-02", "motif_fin": "demission", "source_url": "https://www.banouto.bj/politique/article/20260706-demission-de-vlavonou-de-lassemblee-nationale-ce-quil-faut-savoir-sur-la-decision-de-lex-chef-du-parlement-beninois"},
+      "suppleant": {"debut": "2026-07-10", "source_url": "https://lematinal.bj/assemblee-nationale-francois-silibi-suppleant-de-louis-vlavonou-installe-dans-ses-fonctions/"}
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "titre": "Testez-vous · Bénin 2026",
+  "regles": "Une idée par affirmation, jamais une personne, pas de mot chargé ; on peut y répondre d'accord ou pas d'accord. Chaque position de parti vient d'une citation exacte d'un texte écrit ; sans texte explicite : non calculable.",
+  "affirmations": [
+    {
+      "ordre": 1,
+      "theme": "institutions",
+      "sens": "garder",
+      "texte": "La réforme du système partisan de 2018, qui a conduit au regroupement des partis, doit être maintenue telle quelle.",
+      "debat": null
+    },
+    {
+      "ordre": 2,
+      "theme": "institutions",
+      "sens": "garder",
+      "texte": "Le Sénat créé par la révision constitutionnelle de 2025 doit être conservé.",
+      "debat": "institutions-senat"
+    },
+    {
+      "ordre": 3,
+      "theme": "institutions",
+      "sens": "garder",
+      "texte": "Chaque circonscription électorale doit continuer à réserver un siège de député aux femmes.",
+      "debat": null
+    },
+    {
+      "ordre": 4,
+      "theme": "institutions",
+      "sens": "changer",
+      "texte": "Les Béninois vivant à l'étranger doivent élire leurs propres députés.",
+      "debat": null
+    },
+    {
+      "ordre": 5,
+      "theme": "institutions",
+      "sens": "changer",
+      "texte": "Un gouvernement d'union nationale doit être formé.",
+      "debat": null
+    },
+    {
+      "ordre": 6,
+      "theme": "institutions",
+      "sens": "garder",
+      "texte": "La loi qui reconnaît les chefferies traditionnelles doit être appliquée telle qu'elle a été votée.",
+      "debat": null
+    },
+    {
+      "ordre": 7,
+      "theme": "justice",
+      "sens": "garder",
+      "texte": "La CRIET, juridiction spéciale chargée des infractions économiques et du terrorisme, doit être maintenue.",
+      "debat": "justice-criet"
+    },
+    {
+      "ordre": 8,
+      "theme": "justice",
+      "sens": "changer",
+      "texte": "Les personnalités politiques condamnées ces dernières années doivent être libérées.",
+      "debat": "justice-grace-detenus-politiques"
+    },
+    {
+      "ordre": 9,
+      "theme": "libertes",
+      "sens": "garder",
+      "texte": "Les sanctions pénales prévues pour les délits de presse doivent être maintenues.",
+      "debat": null
+    },
+    {
+      "ordre": 10,
+      "theme": "libertes",
+      "sens": "garder",
+      "texte": "Le droit de grève doit rester encadré dans la santé et dans l'éducation.",
+      "debat": "libertes-droit-de-greve"
+    },
+    {
+      "ordre": 11,
+      "theme": "economie",
+      "sens": "changer",
+      "texte": "L'État doit laisser une place plus importante au secteur privé dans l'économie.",
+      "debat": null
+    },
+    {
+      "ordre": 12,
+      "theme": "economie",
+      "sens": "garder",
+      "texte": "Le port de Cotonou doit rester géré par un opérateur privé.",
+      "debat": null
+    },
+    {
+      "ordre": 13,
+      "theme": "economie",
+      "sens": "changer",
+      "texte": "Une part des marchés publics doit être réservée aux entreprises béninoises.",
+      "debat": null
+    },
+    {
+      "ordre": 14,
+      "theme": "economie",
+      "sens": "changer",
+      "texte": "Le secteur informel doit contribuer davantage à l'impôt.",
+      "debat": null
+    },
+    {
+      "ordre": 15,
+      "theme": "agriculture",
+      "sens": "changer",
+      "texte": "Les prix des produits agricoles d'exportation doivent être fixés avec les organisations de producteurs.",
+      "debat": null
+    },
+    {
+      "ordre": 16,
+      "theme": "education",
+      "sens": "changer",
+      "texte": "Les langues nationales doivent être enseignées à l'école.",
+      "debat": null
+    },
+    {
+      "ordre": 17,
+      "theme": "education",
+      "sens": "changer",
+      "texte": "Les aspirants au métier d'enseignant (AME) doivent être intégrés comme agents de l'État.",
+      "debat": "social-reversement-ame"
+    },
+    {
+      "ordre": 18,
+      "theme": "education",
+      "sens": "changer",
+      "texte": "La restauration, le transport et l'hébergement universitaires doivent être confiés au secteur privé.",
+      "debat": null
+    },
+    {
+      "ordre": 19,
+      "theme": "education",
+      "sens": "garder",
+      "texte": "Les écoles doivent continuer à appliquer l'approche par compétences.",
+      "debat": null
+    },
+    {
+      "ordre": 20,
+      "theme": "education",
+      "sens": "garder",
+      "texte": "Le Conseil national de l'éducation doit être maintenu.",
+      "debat": null
+    },
+    {
+      "ordre": 21,
+      "theme": "sante",
+      "sens": "changer",
+      "texte": "L'assurance maladie doit couvrir toute la population.",
+      "debat": "social-assurance-maladie-obligatoire"
+    },
+    {
+      "ordre": 22,
+      "theme": "sante",
+      "sens": "changer",
+      "texte": "Les nouveaux hôpitaux publics doivent être gérés par des opérateurs privés.",
+      "debat": null
+    },
+    {
+      "ordre": 23,
+      "theme": "emploi",
+      "sens": "garder",
+      "texte": "La loi de 2017 sur l'embauche doit être maintenue telle quelle.",
+      "debat": null
+    },
+    {
+      "ordre": 24,
+      "theme": "numerique",
+      "sens": "changer",
+      "texte": "Les données sensibles de l'État et des citoyens doivent être hébergées au Bénin ou sous le contrôle de l'État.",
+      "debat": null
+    },
+    {
+      "ordre": 25,
+      "theme": "securite",
+      "sens": "changer",
+      "texte": "Le budget de la défense doit augmenter progressivement au cours des dix prochaines années.",
+      "debat": null
+    }
+  ]
+}

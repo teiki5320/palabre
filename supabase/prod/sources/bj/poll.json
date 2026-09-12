@@ -1,0 +1,17 @@
+{
+  "semaine": "2026-09-21",
+  "question": "L'obligation faite aux employeurs privés de financer au moins 80 % de l'assurance maladie de leurs salariés vous paraît-elle une bonne mesure ?",
+  "contexte": "La loi de 2020 sur le programme ARCH rend l'assurance maladie obligatoire. Le décret du 29 octobre 2025 impose aux employeurs du secteur privé d'affilier leurs salariés et de financer au moins 80 % de la prime, avec un délai de mise en conformité de douze mois et une amende de 200 000 FCFA par salarié non couvert.",
+  "sources": [
+    {"titre": "La Marina BJ — Comment l'exécutif muscle l'assurance maladie obligatoire", "url": "https://lamarinabj.com/index.php/2025/12/02/au-benin-comment-lexecutif-muscle-lassurance-maladie-obligatoire-pour-passer-du-principe-a-la-contrainte/", "date": "2025-12-02"},
+    {"titre": "Gouvernement du Bénin — Assurance maladie obligatoire : syndicats, patronat et assureurs informés du décret d'application", "url": "https://www.gouv.bj/article/2309/assurance-maladie-obligatoire-syndicats-patronat-assureurs-informes-contenu-decret-application/", "date": "2023-07-18"}
+  ],
+  "options": [
+    {"ordre": 1, "libelle": "Plutôt une bonne mesure", "neutre": false},
+    {"ordre": 2, "libelle": "Bonne mesure, mais le délai est trop court", "neutre": false},
+    {"ordre": 3, "libelle": "Plutôt une mauvaise mesure", "neutre": false},
+    {"ordre": 4, "libelle": "Je ne connaissais pas cette mesure", "neutre": false},
+    {"ordre": 5, "libelle": "Sans avis", "neutre": true}
+  ],
+  "debat": "social-assurance-maladie-obligatoire"
+}
