@@ -1,0 +1,62 @@
+name: Question de la semaine
+
+on:
+  schedule:
+    - cron: '0 7 * * 0'   # dimanche 7 h UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Simulation : rien n’est écrit en base'
+        type: boolean
+        default: false
+      semaine:
+        description: 'Lundi visé (AAAA-MM-JJ), vide = prochain lundi'
+        type: string
+        default: ''
+      pays:
+        description: 'Codes pays séparés par des virgules, vide = tous les pays actifs'
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  question:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r scripts/question_semaine/requirements.txt
+      - name: Recherche, contrôles, relecture, publication
+        id: run
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          args=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then args="$args --dry-run"; fi
+          if [ -n "${{ inputs.semaine }}" ]; then args="$args --semaine ${{ inputs.semaine }}"; fi
+          if [ -n "${{ inputs.pays }}" ]; then args="$args --pays ${{ inputs.pays }}"; fi
+          python scripts/question_semaine/run.py --sortie sortie $args
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rapport
+          path: sortie/
+      - name: Issue de notification
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          semaine=$(python -c "import json;print(json.load(open('sortie/rapport.json'))['semaine'])" 2>/dev/null || echo "inconnue")
+          titre="Question de la semaine du $semaine"
+          if [ "${{ inputs.dry_run }}" = "true" ]; then titre="$titre (simulation)"; fi
+          if [ "${{ steps.run.outcome }}" != "success" ]; then titre="$titre — erreur"; fi
+          gh label create question-semaine --description "Question de la semaine automatique" --color 33357F 2>/dev/null || true
+          if [ -f sortie/rapport.md ]; then corps=sortie/rapport.md; else echo "Le script a échoué avant d'écrire un rapport : voir ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" > corps.md; corps=corps.md; fi
+          gh issue create --title "$titre" --label question-semaine --body-file "$corps"

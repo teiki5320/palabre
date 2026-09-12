@@ -1,0 +1,22 @@
+{
+  "SN": {
+    "nom": "Sénégal",
+    "medias": "APS (agence), Le Soleil, RTS, Sud Quotidien, Seneweb, Dakaractu, PressAfrik, Le Quotidien ; sites officiels : presidence.sn, primature.sn, sec.gouv.sn, assemblee-nationale.sn",
+    "prudence": "Rien de particulier au-delà des règles communes."
+  },
+  "BJ": {
+    "nom": "Bénin",
+    "medias": "La Nation, Banouto, 24 Haubenin, Bénin Web TV, La Nouvelle Tribune, SRTB, Fraternité, Le Matinal ; sites officiels : gouv.bj, sgg.gouv.bj (comptes rendus du Conseil des ministres), assemblee-nationale.bj",
+    "prudence": "Écarter les sujets judiciaires visant des personnes et les sujets de sécurité."
+  },
+  "CI": {
+    "nom": "Côte d'Ivoire",
+    "medias": "AIP (agence), Fraternité Matin, RTI, Linfodrome, Abidjan.net, Koaci, L'Intelligent d'Abidjan, Nord-Sud ; sites officiels : gouv.ci, presidence.ci",
+    "prudence": "Écarter les sujets judiciaires visant des personnes et les sujets de sécurité."
+  },
+  "TG": {
+    "nom": "Togo",
+    "medias": "Togo Presse, ATOP (agence), republiquetogolaise.com, presidenceduconseil.gouv.tg, iciLome, Togo First, Republicoftogo",
+    "prudence": "Prudence particulière : des arrestations liées à des manifestations et à des expressions en ligne ont eu lieu en 2025. Écarter tout sujet dont une réponse pourrait exposer un répondant : critique directe des institutions, manifestations, affaires judiciaires, sécurité. Privilégier la vie quotidienne et les politiques publiques (santé, école, prix, services)."
+  }
+}

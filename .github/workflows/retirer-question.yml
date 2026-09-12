@@ -1,0 +1,40 @@
+name: Retirer une question
+
+on:
+  workflow_dispatch:
+    inputs:
+      pays:
+        description: 'Code pays (SN, BJ, CI, TG…)'
+        type: string
+        required: true
+      semaine:
+        description: 'Lundi de la semaine (AAAA-MM-JJ)'
+        type: string
+        required: true
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  retirer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Repasser la question en brouillon
+        id: retirer
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python scripts/question_semaine/retirer.py "${{ inputs.pays }}" "${{ inputs.semaine }}" | tee resultat.txt
+      - name: Commenter l’issue de la semaine
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(gh issue list --label question-semaine --search "Question de la semaine du ${{ inputs.semaine }}" --json number --jq '.[0].number' 2>/dev/null || true)
+          msg="Retrait ${{ inputs.pays }} / ${{ inputs.semaine }} : ${{ steps.retirer.outcome }}. $(cat resultat.txt 2>/dev/null)"
+          if [ -n "$n" ]; then gh issue comment "$n" --body "$msg"; else echo "$msg"; fi
