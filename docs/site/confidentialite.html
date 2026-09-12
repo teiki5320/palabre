@@ -40,14 +40,18 @@ p.muted{color:var(--muted);font-size:14px}
 <tr><td>Réponses au questionnaire « Testez-vous »</td><td>Oui</td><td>Calculer votre concordance avec les textes des partis</td><td>Appareil uniquement, jamais envoyées</td></tr>
 <tr><td>Jeton de notification</td><td>Oui</td><td>Prévenir de l'ouverture d'une question, si vous acceptez les notifications</td><td>Serveur</td></tr>
 <tr><td>Préférences (thème, langue)</td><td>—</td><td>Affichage</td><td>Appareil uniquement</td></tr>
+<tr><td>Identifiant publicitaire de l'appareil</td><td>Selon vos réglages</td><td>Affichage d'annonces non personnalisées (voir « Publicité »)</td><td>Transmis à Google AdMob</td></tr>
 </table>
 <p>Aucune table ne relie un utilisateur à une orientation politique : votre résultat « Testez-vous » reste sur votre téléphone. Les résultats de sondage sont publiés uniquement sous forme agrégée.</p>
 
+<h2>Publicité</h2>
+<p>Palabre affiche une bannière publicitaire sur les écrans Gouvernement et Assemblée, jamais sur la question de la semaine ni sur « Testez-vous ». Les annonces sont fournies par Google AdMob et sont <b>non personnalisées</b> : elles ne dépendent ni de vos votes, ni de vos réponses, ni d'un profil d'intérêts. Les catégories politique et religion sont exclues. Pour afficher une annonce, le SDK AdMob reçoit des informations techniques sur l'appareil (modèle, langue, identifiant publicitaire si vous ne l'avez pas désactivé dans les réglages de votre téléphone, adresse IP). Google les traite selon sa <a href="https://policies.google.com/technologies/ads">politique publicitaire</a>. Là où la loi l'exige, un écran de consentement vous est présenté au premier lancement.</p>
+
 <h2>Ce qui n'est pas collecté</h2>
-<p>Pas de localisation GPS, pas de contacts, pas de publicité, pas de suivi publicitaire, pas d'outil d'analyse d'audience tiers, pas de revente de données.</p>
+<p>Pas de localisation GPS, pas de contacts, pas d'outil d'analyse d'audience tiers, pas de revente de données. Vos votes et vos réponses au questionnaire ne sont jamais transmis au réseau publicitaire.</p>
 
 <h2>Hébergement et sous-traitants</h2>
-<p>Les données serveur sont hébergées par Supabase (région Europe, Paris). Les notifications passent par Firebase Cloud Messaging (Google) ; seul un jeton technique d'appareil lui est confié. Les photos des personnalités proviennent de Wikimedia Commons, sous licence libre, avec leur crédit.</p>
+<p>Les données serveur sont hébergées par Supabase (région Europe, Paris). Les notifications passent par Firebase Cloud Messaging (Google) ; seul un jeton technique d'appareil lui est confié. La publicité est servie par Google AdMob (voir ci-dessus). Les photos des personnalités proviennent de Wikimedia Commons, sous licence libre, avec leur crédit.</p>
 
 <h2>Conservation et suppression</h2>
 <p>Les données restent liées à l'identifiant anonyme tant que l'application est installée. Désinstaller l'application supprime l'identifiant de l'appareil ; les votes déjà agrégés ne sont plus rattachables à personne. Pour demander l'effacement des données serveur liées à votre identifiant, écrivez au contact ci-dessus.</p>

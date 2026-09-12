@@ -1,6 +1,6 @@
 # Fiche Google Play — Palabre
 
-Textes et réponses à copier dans la Play Console. Identifiant : `sn.palabre.app`. Catégorie : Actualités et magazines. Gratuite, sans achat intégré, sans publicité.
+Textes et réponses à copier dans la Play Console. Identifiant : `sn.palabre.app`. Catégorie : Actualités et magazines. Gratuite, sans achat intégré, avec une bannière publicitaire non personnalisée (Gouvernement et Assemblée).
 
 ## Fiche (français)
 
@@ -20,7 +20,7 @@ Palabre présente la vie politique de votre pays de façon neutre : pas de score
 
 Pays couverts : Sénégal, Bénin, Côte d'Ivoire, Togo.
 
-Aucun compte, aucune adresse e-mail, aucune publicité, aucun suivi. Pays, tranche d'âge et région sont facultatifs et ne servent qu'à découper les résultats des sondages, jamais en dessous de 30 répondants.
+Aucun compte, aucune adresse e-mail, aucun suivi. Une seule bannière publicitaire, non personnalisée, sur les écrans de référence. Pays, tranche d'âge et région sont facultatifs et ne servent qu'à découper les résultats des sondages, jamais en dessous de 30 répondants.
 
 ## Liens
 
@@ -32,16 +32,17 @@ Aucun compte, aucune adresse e-mail, aucune publicité, aucun suivi. Pays, tranc
 
 | Question | Réponse |
 |---|---|
-| L'app collecte ou partage des données utilisateur ? | Oui (collecte), pas de partage |
+| L'app collecte ou partage des données utilisateur ? | Oui (collecte) ; partage : Oui, avec Google AdMob (publicité) |
 | Données chiffrées en transit ? | Oui (HTTPS) |
 | L'utilisateur peut demander la suppression ? | Oui (via le contact) |
 | Localisation approximative | Collectée, facultative, fonctionnalité de l'app (région administrative choisie par l'utilisateur, pas de GPS) |
 | Informations personnelles | Aucune (pas de nom, e-mail, téléphone) |
 | Infos démographiques : tranche d'âge | Collectée, facultative, fonctionnalité (découpe des résultats) |
 | Messages / contenu utilisateur : réponses aux sondages | Collectées, facultatives, fonctionnalité, reliées à un identifiant anonyme |
-| Identifiants d'appareil : jeton de notification | Collecté, facultatif, fonctionnalité (notifications) |
+| Identifiants d'appareil ou autres : jeton de notification, identifiant publicitaire | Collectés ; jeton : facultatif, fonctionnalité (notifications) ; identifiant publicitaire : partagé avec Google AdMob, finalité « Publicité ou marketing » |
 | Historique de navigation, contacts, photos, fichiers, santé, finances | Non collectés |
-| Analyse d'audience, publicité | Non |
+| Analyse d'audience | Non |
+| Publicité | Oui : SDK Google AdMob, annonces non personnalisées. Dans le formulaire, le SDK AdMob figure dans la liste des SDK reconnus : cocher AdMob, Google pré-remplit ses données. |
 
 ## Classification du contenu
 
@@ -53,7 +54,7 @@ Aucune connexion requise : cocher « Toutes les fonctionnalités sont accessible
 
 ## Publicités
 
-Aucune.
+Oui, l'application contient des annonces (bannière AdMob, non personnalisée). Les catégories politique et religion sont bloquées dans AdMob.
 
 ## Actualités
 
