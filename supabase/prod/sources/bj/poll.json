@@ -1,17 +1,57 @@
 {
   "semaine": "2026-09-21",
-  "question": "L'obligation faite aux employeurs privés de financer au moins 80 % de l'assurance maladie de leurs salariés vous paraît-elle une bonne mesure ?",
-  "contexte": "La loi de 2020 sur le programme ARCH rend l'assurance maladie obligatoire. Le décret du 29 octobre 2025 impose aux employeurs du secteur privé d'affilier leurs salariés et de financer au moins 80 % de la prime, avec un délai de mise en conformité de douze mois et une amende de 200 000 FCFA par salarié non couvert.",
+  "question": "Pour les cantines scolaires, quelle priorité vous paraît la plus importante cette année ?",
+  "contexte": "Le Conseil des ministres du 2 septembre 2026 a décidé de porter le nombre d'écoliers bénéficiaires des cantines scolaires dans les écoles publiques d'environ 1,4 million à 1,9 million, soit environ 500 000 enfants de plus. Le gouvernement a demandé que les cantines soient ouvertes partout dès le premier jour de classe et que les vivres soient conservés dans de bonnes conditions, sous la supervision de l'Agence nationale de l'alimentation et de la nutrition (Anan). L'année scolaire 2026-2027 commence le 14 septembre 2026.",
   "sources": [
-    {"titre": "La Marina BJ — Comment l'exécutif muscle l'assurance maladie obligatoire", "url": "https://lamarinabj.com/index.php/2025/12/02/au-benin-comment-lexecutif-muscle-lassurance-maladie-obligatoire-pour-passer-du-principe-a-la-contrainte/", "date": "2025-12-02"},
-    {"titre": "Gouvernement du Bénin — Assurance maladie obligatoire : syndicats, patronat et assureurs informés du décret d'application", "url": "https://www.gouv.bj/article/2309/assurance-maladie-obligatoire-syndicats-patronat-assureurs-informes-contenu-decret-application/", "date": "2023-07-18"}
+    {
+      "titre": "Compte rendu du Conseil des Ministres du 02 sept. 2026",
+      "url": "https://sgg.gouv.bj/cm/2026-09-02/",
+      "date": "2026-09-02"
+    },
+    {
+      "titre": "Les mesures phares du gouvernement pour l'éducation à la rentrée",
+      "url": "https://srtb.bj/les-mesures-phares-du-gouvernement-pour-leducation-a-la-rentree/",
+      "date": "2026-09-03"
+    },
+    {
+      "titre": "Cantines scolaires au Bénin : Les attentes du gouvernement pour la rentrée 2026-2027",
+      "url": "https://lematinal.bj/cantines-scolaires-au-benin-les-attentes-du-gouvernement-pour-la-rentree-2026-2027/",
+      "date": "2026-09-04"
+    },
+    {
+      "titre": "Rentrée au Bénin : 1,9 million d'écoliers visés par les cantines, que prévoir à la maison ?",
+      "url": "https://beninwebtv.com/rentree-au-benin-19-million-decoliers-vises-par-les-cantines-que-prevoir-a-la-maison",
+      "date": "2026-09-08"
+    }
   ],
   "options": [
-    {"ordre": 1, "libelle": "Plutôt une bonne mesure", "neutre": false},
-    {"ordre": 2, "libelle": "Bonne mesure, mais le délai est trop court", "neutre": false},
-    {"ordre": 3, "libelle": "Plutôt une mauvaise mesure", "neutre": false},
-    {"ordre": 4, "libelle": "Je ne connaissais pas cette mesure", "neutre": false},
-    {"ordre": 5, "libelle": "Sans avis", "neutre": true}
+    {
+      "ordre": 1,
+      "libelle": "Faire bénéficier encore plus d'écoliers",
+      "neutre": false
+    },
+    {
+      "ordre": 2,
+      "libelle": "Améliorer la qualité et la variété des repas",
+      "neutre": false
+    },
+    {
+      "ordre": 3,
+      "libelle": "Garantir que les cantines fonctionnent dès la rentrée et toute l'année",
+      "neutre": false
+    },
+    {
+      "ordre": 4,
+      "libelle": "Associer davantage les parents et les communautés au fonctionnement",
+      "neutre": false
+    },
+    {
+      "ordre": 5,
+      "libelle": "Sans avis",
+      "neutre": true
+    }
   ],
-  "debat": "social-assurance-maladie-obligatoire"
+  "fait": "Le 2 septembre 2026, le gouvernement a décidé d'étendre les cantines scolaires des écoles publiques d'environ 1,4 million à 1,9 million d'écoliers pour l'année 2026-2027, qui commence le 14 septembre.",
+  "points_d_attention": "Question de priorités, pas de satisfaction : elle n'oblige pas à juger l'action du gouvernement, ce qui limite la lecture partisane. La quatrième option (participation des parents et des communautés) n'est pas tirée des sources : c'est une option de débat, pas un fait. Quand la question ouvrira (21 septembre), les premiers retours sur le fonctionnement réel des cantines pourraient être publiés : vérifier l'actualité du 14 au 20 septembre et ajuster le contexte si besoin. Ne pas présenter le chiffre de 1,9 million comme atteint : c'est un objectif pour l'année.",
+  "recherche": "actu_bj.json (2026-09-01 à 2026-09-12)"
 }

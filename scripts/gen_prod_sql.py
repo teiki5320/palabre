@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Génère les scripts SQL de production à partir des fichiers JSON de recherche.
 
-Usage : gen_prod_sql.py [SN|BJ] [--out DOSSIER]
+Usage : gen_prod_sql.py [SN|BJ|CI|TG] [--out DOSSIER]
 
 Entrées (supabase/prod/sources, ou sources/<pays> hors Sénégal) : government.json,
 assembly.json, parties.json, quiz_statements.json, positions.json (facultatif).
 Sorties : 03_partis.sql, 04_gouvernement.sql, 05_assemblee.sql, 06_quiz.sql dans
 supabase/prod (Sénégal) ou supabase/prod/<pays>.
 
-Identifiants explicites, décalés par pays (Sénégal 0, Bénin 10 000) pour que
+Identifiants explicites, décalés par pays (Sénégal 0, Bénin 10 000, Côte d'Ivoire
+20 000, Togo 30 000) pour que
 les pays se chargent l'un après l'autre sans collision. Chaque ligne porte
 sa source. Rien n'est inventé : un champ absent reste NULL.
 """
@@ -24,6 +25,8 @@ CC = next((a.upper() for a in ARGS if not a.startswith('--') and a != OUT_ARG), 
 PAYS = {
     'SN': {'nom': 'Sénégal', 'offset': 0, 'sources': 'sources', 'sortie': ''},
     'BJ': {'nom': 'Bénin', 'offset': 10000, 'sources': 'sources/bj', 'sortie': 'bj'},
+    'CI': {'nom': "Côte d'Ivoire", 'offset': 20000, 'sources': 'sources/ci', 'sortie': 'ci'},
+    'TG': {'nom': 'Togo', 'offset': 30000, 'sources': 'sources/tg', 'sortie': 'tg'},
 }[CC]
 OFFSET = PAYS['offset']
 HERE = os.path.join(ROOT, 'supabase', 'prod', PAYS['sources'])
@@ -91,10 +94,13 @@ if CC == 'BJ':
         'Alibori': 'AL', 'Atacora': 'AK', 'Atlantique': 'AQ', 'Borgou': 'BO', 'Collines': 'CO', 'Couffo': 'KO',
         'Donga': 'DO', 'Littoral': 'LI', 'Mono': 'MO', 'Ouémé': 'OU', 'Plateau': 'PL', 'Zou': 'ZO',
     }
+elif CC in ('CI', 'TG'):
+    # Les recherches donnent directement le code ISO 3166-2 de la région (champ region_code).
+    DEPT_REGION = {}
 DEPT_BY_NORM = {norm(k): (k, v) for k, v in DEPT_REGION.items()}
 # Variantes d'orthographe rencontrées dans les sources.
 DEPT_BY_NORM.update({norm('Kouffo'): ('Couffo', 'KO')} if CC == 'BJ' else {norm('Birkilane'): ('Birkilane', 'KA'), norm('Ranérou Ferlo'): ('Ranérou Ferlo', 'MT'), norm('Ranerou-Ferlo'): ('Ranérou Ferlo', 'MT')})
-LIST_ALIASES = {'MOELE-BENIN': 'MOELE-Bénin'} if CC == 'BJ' else {'TAKKU WALLU SENEGAL': 'TWS', 'JAMM AK NJARIÑ': 'JAN', 'SAMM SA KADDU': 'SSK', 'PASTEF': 'PASTEF'}
+LIST_ALIASES = {'MOELE-BENIN': 'MOELE-Bénin'} if CC == 'BJ' else {} if CC in ('CI', 'TG') else {'TAKKU WALLU SENEGAL': 'TWS', 'JAMM AK NJARIÑ': 'JAN', 'SAMM SA KADDU': 'SSK', 'PASTEF': 'PASTEF'}
 
 # Blocs ministériels par mots-clés (premier qui correspond).
 BLOCS = [
@@ -274,7 +280,9 @@ def gen_assembly(ids, asm, parties):
         t = dep.get('type_circonscription') or 'departement'
         region = 'null'
         nom = key
-        if t == 'departement':
+        if dep.get('region_code'):
+            region = f"(select id from public.region where country_code = '{CC}' and code = '{dep['region_code']}')"
+        elif t == 'departement':
             hit = DEPT_BY_NORM.get(norm(dep.get('departement') or key))
             if hit:
                 code = hit[1]
@@ -345,7 +353,8 @@ def gen_assembly(ids, asm, parties):
             t = case['titulaire']
             tid = mandate(person_row(t['nom']), c, t['debut'], t.get('fin'), t.get('motif_fin'), t.get('source_url'))
             sp = case['suppleant']
-            mandate(pid, c, sp['debut'], sp.get('fin'), sp.get('motif_fin'), sp.get('source_url'), 'suppleant', tid)
+            # Remplaçant pris sur la liste ou élu à une élection partielle : titulaire à part entière.
+            mandate(pid, c, sp['debut'], sp.get('fin'), sp.get('motif_fin'), sp.get('source_url'), case.get('qualite', 'suppleant'), tid)
         grp = dep.get('groupe')
         if grp and grp in grp_ids and not grp.lower().startswith('non inscrit'):
             arows.append(f"  ({pid}, {grp_ids[grp]}, {q(leg['debut'])}, {q(src_groupes)})")

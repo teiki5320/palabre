@@ -1,0 +1,511 @@
+{
+  "partis": [
+    {
+      "nom": "Rassemblement des houphouëtistes pour la démocratie et la paix",
+      "sigle": "RHDP",
+      "type": "parti",
+      "fondation": "2018-07-16",
+      "dirigeant": {
+        "nom": "Alassane Ouattara",
+        "titre": "Président du parti"
+      },
+      "site": "https://www.rhdpofficiel.ci",
+      "wikipedia": "https://fr.wikipedia.org/wiki/Rassemblement_des_houphou%C3%ABtistes_pour_la_d%C3%A9mocratie_et_la_paix",
+      "couleur": "#F77F00",
+      "couleur_source": "Wikipédia FR, infobox du parti (« couleurs = #F77F00 Orange, blanc ») et Modèle:Infobox Parti politique ivoirien/couleurs (clé -RHDP) : https://fr.wikipedia.org/wiki/Mod%C3%A8le:Infobox_Parti_politique_ivoirien/couleurs",
+      "source_url": "https://fr.wikipedia.org/wiki/Rassemblement_des_houphou%C3%ABtistes_pour_la_d%C3%A9mocratie_et_la_paix",
+      "resultats": [
+        {
+          "election": "legislatives_2025",
+          "voix_pct": 61.96,
+          "sieges": 196,
+          "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_ivoiriennes_de_2025"
+        }
+      ],
+      "documents": [
+        {
+          "titre": "Notre Vision pour la Côte d'Ivoire (page web du parti, pas de PDF)",
+          "url": "https://www.rhdpofficiel.ci/parti/vision",
+          "date": null,
+          "type": "manifeste",
+          "pages": null,
+          "texte_local": "/private/tmp/claude-501/-Users-jeanperraudeau-Palabre/b949f525-b723-40a6-a721-62008fa7b30a/scratchpad/ci_raw/programmes/rhdp_notre_vision_page_web.txt"
+        }
+      ],
+      "note": "Coalition fondée le 18/05/2005, transformée en parti le 16/07/2018. Le programme présidentiel 2025 d'Alassane Ouattara est rattaché à l'entrée « Candidature Alassane Ouattara (présidentielle 2025) », pas au parti. Sièges : 197 aux résultats provisoires (CEI, 29/12/2025) ; 196 après l'annulation de deux circonscriptions par le Conseil constitutionnel, le RHDP ayant perdu les deux partielles du 21/02/2026."
+    },
+    {
+      "nom": "Parti démocratique de Côte d'Ivoire – Rassemblement démocratique africain",
+      "sigle": "PDCI-RDA",
+      "type": "parti",
+      "fondation": "1946-04-09",
+      "dirigeant": {
+        "nom": "Tidjane Thiam",
+        "titre": "Président du parti"
+      },
+      "site": "https://pdcirda.ci",
+      "wikipedia": "https://fr.wikipedia.org/wiki/Parti_d%C3%A9mocratique_de_C%C3%B4te_d%27Ivoire_%E2%80%93_Rassemblement_d%C3%A9mocratique_africain",
+      "couleur": "#0FAF32",
+      "couleur_source": "Wikipédia FR, infobox du parti (« couleurs = #0FAF32 Vert ») et Modèle:Infobox Parti politique ivoirien/couleurs (clé -PDCI) : https://fr.wikipedia.org/wiki/Mod%C3%A8le:Infobox_Parti_politique_ivoirien/couleurs",
+      "source_url": "https://afriksoir.net/pdci-tidjane-thiam-renforce-lappareil-executif-avec-de-nouvelles-nominations/",
+      "resultats": [
+        {
+          "election": "legislatives_2025",
+          "voix_pct": 11.96,
+          "sieges": 32,
+          "source_url": "https://rti.info/elections-legislatives-partielles-du-21-fevrier-2026-un-independant-simpose-dans-le-worodougou-le-pdci-rda-lemporte-a-toumodi/"
+        }
+      ],
+      "documents": [],
+      "note": "Aucun document programmatique écrit trouvé. La candidature présidentielle de Tidjane Thiam a été rejetée par le Conseil constitutionnel le 08/09/2025 : le parti n'avait pas de candidat. Sièges : 32 aux résultats provisoires ; 31 après l'annulation de Toumodi ; 32 de nouveau après la partielle du 21/02/2026 gagnée par Hervé Dominique Dié Alliali (PDCI-RDA). Le pourcentage ne compte pas la liste commune PDCI-RDA–FPI–ADCI de Yopougon (0,64 %, 0 siège) ni la candidature commune PDCI-RDA–EDS de Grand-Bassam (0,09 %, 0 siège)."
+    },
+    {
+      "nom": "Parti des peuples africains – Côte d'Ivoire",
+      "sigle": "PPA-CI",
+      "type": "parti",
+      "fondation": "2021-10-17",
+      "dirigeant": {
+        "nom": "Laurent Gbagbo",
+        "titre": "Président du parti (reconduit au congrès ordinaire de mai 2026)"
+      },
+      "site": "https://ppaci.ci",
+      "wikipedia": "https://fr.wikipedia.org/wiki/Parti_des_peuples_africains_%E2%80%93_C%C3%B4te_d%27Ivoire",
+      "couleur": null,
+      "couleur_source": null,
+      "source_url": "https://www.rfi.fr/fr/afrique/20260515-c%C3%B4te-d-ivoire-r%C3%A9uni-en-congr%C3%A8s-le-ppa-ci-reconduit-laurent-gbagbo-%C3%A0-sa-t%C3%AAte",
+      "resultats": [
+        {
+          "election": "legislatives_2025",
+          "voix_pct": null,
+          "sieges": 0,
+          "source_url": "https://www.rfi.fr/fr/afrique/20251107-c%C3%B4te-d-ivoire-le-ppa-ci-de-laurent-gbagbo-ne-participera-pas-aux-l%C3%A9gislatives-du-27-d%C3%A9cembre"
+        }
+      ],
+      "documents": [],
+      "note": "A boycotté les législatives de 2025 (sièges = 0 : aucun candidat du parti). Laurent Gbagbo, candidat du parti, a été déclaré inéligible et sa candidature présidentielle rejetée le 08/09/2025. « Pacte social » (sept engagements, vingt propositions) présenté par Laurent Gbagbo fin juin 2026, puis détaillé le 13/07/2026 (KOACI 03/07/2026, yeclo.com) ; aucun document écrit publié n'a été trouvé. Le site ppaci.ci renvoie une page de connexion protégée par mot de passe ou une erreur 404."
+    },
+    {
+      "nom": "Front populaire ivoirien",
+      "sigle": "FPI",
+      "type": "parti",
+      "fondation": "1982",
+      "dirigeant": {
+        "nom": "Pascal Affi N'Guessan",
+        "titre": "Président du parti"
+      },
+      "site": "https://www.fpi-ci.com",
+      "wikipedia": "https://fr.wikipedia.org/wiki/Front_populaire_ivoirien",
+      "couleur": "#0066CC",
+      "couleur_source": "Wikipédia FR, infobox du parti (« couleurs = #0066cc Bleu ») et Modèle:Infobox Parti politique ivoirien/couleurs (clé -FPI) : https://fr.wikipedia.org/wiki/Mod%C3%A8le:Infobox_Parti_politique_ivoirien/couleurs",
+      "source_url": "https://www.fpi-ci.com/",
+      "resultats": [
+        {
+          "election": "legislatives_2025",
+          "voix_pct": 0.48,
+          "sieges": 1,
+          "source_url": "https://www.aip.ci/302272/legislatives-2025-le-rhdp-remporte-155-circonscriptions-pour-197-sieges-le-pdci-rda-25-circonscriptions-32-sieges-les-independants-22-circonscriptions-23-sieges-un-siege-et-une-circonscription/"
+        }
+      ],
+      "documents": [
+        {
+          "titre": "Que proposons-nous ? – Les six piliers de la Renaissance (page « programme de gouvernement » du site du parti, pas de PDF)",
+          "url": "https://www.fpi-ci.com/programme-de-gouvernement",
+          "date": null,
+          "type": "programme",
+          "pages": null,
+          "texte_local": "/private/tmp/claude-501/-Users-jeanperraudeau-Palabre/b949f525-b723-40a6-a721-62008fa7b30a/scratchpad/ci_raw/programmes/fpi_que_proposons_nous_page_web.txt"
+        }
+      ],
+      "note": "La candidature présidentielle de Pascal Affi N'Guessan a été rejetée en septembre 2025. Page du programme sans date."
+    },
+    {
+      "nom": "Mouvement des générations capables",
+      "sigle": "MGC",
+      "type": "parti",
+      "fondation": "2022-08-20",
+      "dirigeant": {
+        "nom": "Simone Ehivet Gbagbo",
+        "titre": "Présidente du parti"
+      },
+      "site": null,
+      "wikipedia": "https://fr.wikipedia.org/wiki/Mouvement_des_g%C3%A9n%C3%A9rations_capables",
+      "couleur": null,
+      "couleur_source": null,
+      "source_url": "https://www.yeclo.com/simone-gbagbo-reorganise-le-mgc-pour-les-defis-de-lannee-2026",
+      "resultats": [
+        {
+          "election": "legislatives_2025",
+          "voix_pct": 0.13,
+          "sieges": 0,
+          "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_ivoiriennes_de_2025"
+        }
+      ],
+      "documents": [],
+      "note": "Mouvement lancé en septembre 2021, devenu parti le 20/08/2022. Le programme présidentiel 2025 de Simone Ehivet Gbagbo (document portant l'en-tête du MGC) est rattaché à l'entrée « Candidature Simone Ehivet Gbagbo (présidentielle 2025) », pas au parti. Aucun site officiel trouvé."
+    },
+    {
+      "nom": "Congrès démocratique",
+      "sigle": "CODE",
+      "type": "coalition",
+      "fondation": "2025-08-19",
+      "dirigeant": {
+        "nom": "Landry Seri",
+        "titre": "Porte-parole (lancement du 19 août 2025)"
+      },
+      "site": null,
+      "wikipedia": null,
+      "couleur": null,
+      "couleur_source": null,
+      "source_url": "https://news.abidjan.net/articles/743971/presidentielle-2025-des-partis-politiques-sunissent-derriere-jean-louis-billon-et-appellent-a-un-renouveau-democratique",
+      "resultats": [
+        {
+          "election": "legislatives_2025",
+          "voix_pct": 0.14,
+          "sieges": 0,
+          "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_ivoiriennes_de_2025"
+        }
+      ],
+      "documents": [],
+      "note": "Plateforme annoncée comme regroupant 18 partis et mouvements (8 présents au lancement), formée pour soutenir la candidature de Jean-Louis Billon. Le programme de Billon est rattaché à l'entrée « Candidature Jean-Louis Billon (présidentielle 2025) »."
+    },
+    {
+      "nom": "Groupement des partenaires politiques pour la paix",
+      "sigle": "GP-PAIX",
+      "type": "coalition",
+      "fondation": null,
+      "dirigeant": {
+        "nom": null,
+        "titre": null
+      },
+      "site": null,
+      "wikipedia": null,
+      "couleur": null,
+      "couleur_source": null,
+      "source_url": "https://ledemocrateplus.com/presidentielle-doctobre-2025-henriette-lagou-officiellement-designee-candidate-dune-coalition-de-4-partis-politiques/",
+      "resultats": [
+        {
+          "election": "legislatives_2025",
+          "voix_pct": 0.04,
+          "sieges": 0,
+          "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_ivoiriennes_de_2025"
+        }
+      ],
+      "documents": [],
+      "note": "Coalition de 4 partis selon Le Démocrate Plus (27/03/2025) : RPC-PAIX (présidé par Henriette Lagou), UDT-CI, NID et CNDCI ; le programme de sa candidate parle de « 12 partis politiques » (divergence). A désigné Henriette Lagou le 22/03/2025. Ne compte pas la candidature commune ADCI–GP-PAIX–VALEUR de Tiassalé (0,25 %, 0 siège). Aucun président de la coalition trouvé."
+    },
+    {
+      "nom": "Union pour la République",
+      "sigle": "UNPR",
+      "type": "parti",
+      "fondation": null,
+      "dirigeant": {
+        "nom": null,
+        "titre": null
+      },
+      "site": null,
+      "wikipedia": null,
+      "couleur": null,
+      "couleur_source": null,
+      "source_url": "https://www.aip.ci/302272/legislatives-2025-le-rhdp-remporte-155-circonscriptions-pour-197-sieges-le-pdci-rda-25-circonscriptions-32-sieges-les-independants-22-circonscriptions-23-sieges-un-siege-et-une-circonscription/",
+      "resultats": [
+        {
+          "election": "legislatives_2025",
+          "voix_pct": 0.09,
+          "sieges": 1,
+          "source_url": "https://www.aip.ci/302272/legislatives-2025-le-rhdp-remporte-155-circonscriptions-pour-197-sieges-le-pdci-rda-25-circonscriptions-32-sieges-les-independants-22-circonscriptions-23-sieges-un-siege-et-une-circonscription/"
+        }
+      ],
+      "documents": [],
+      "note": "Un siège aux législatives de 2025. Dirigeant, date de fondation et nom de l'élu non trouvés."
+    },
+    {
+      "nom": "Le Buffle – La victoire pour le développement",
+      "sigle": "Le Buffle",
+      "type": "parti",
+      "fondation": null,
+      "dirigeant": {
+        "nom": null,
+        "titre": null
+      },
+      "site": null,
+      "wikipedia": null,
+      "couleur": null,
+      "couleur_source": null,
+      "source_url": "https://www.aip.ci/302272/legislatives-2025-le-rhdp-remporte-155-circonscriptions-pour-197-sieges-le-pdci-rda-25-circonscriptions-32-sieges-les-independants-22-circonscriptions-23-sieges-un-siege-et-une-circonscription/",
+      "resultats": [
+        {
+          "election": "legislatives_2025",
+          "voix_pct": 0.04,
+          "sieges": 1,
+          "source_url": "https://www.aip.ci/302272/legislatives-2025-le-rhdp-remporte-155-circonscriptions-pour-197-sieges-le-pdci-rda-25-circonscriptions-32-sieges-les-independants-22-circonscriptions-23-sieges-un-siege-et-une-circonscription/"
+        }
+      ],
+      "documents": [],
+      "note": "Un siège aux législatives de 2025. Dirigeant, date de fondation et nom de l'élu non trouvés."
+    },
+    {
+      "nom": "Candidature Alassane Ouattara (présidentielle 2025)",
+      "sigle": "Ouattara-2025",
+      "type": "coalition",
+      "fondation": "2025-06-21",
+      "dirigeant": {
+        "nom": "Alassane Ouattara",
+        "titre": "Candidat"
+      },
+      "site": null,
+      "wikipedia": "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_ivoirienne_de_2025",
+      "couleur": null,
+      "couleur_source": null,
+      "source_url": "https://www.lefigaro.fr/international/cote-d-ivoire-alassane-ouattara-designe-candidat-a-la-presidentielle-par-son-parti-20250621",
+      "resultats": [
+        {
+          "election": "presidentielle_2025",
+          "voix_pct": 89.77,
+          "sieges": null,
+          "source_url": "https://www.conseil-constitutionnel.ci/sites/default/files/decision_2025-ep-007_du_04.11.2025.pdf"
+        }
+      ],
+      "documents": [
+        {
+          "titre": "ADO 2025 – Pour une grande Côte d'Ivoire ambitieuse & solidaire : projet de société 2026-2030 (hébergé par la RTI)",
+          "url": "https://rti.info/wp-content/uploads/2025/10/Programme_PR_11_10_2025.pdf",
+          "date": "2025-10-10",
+          "type": "projet_de_societe",
+          "pages": 64,
+          "texte_local": "/private/tmp/claude-501/-Users-jeanperraudeau-Palabre/b949f525-b723-40a6-a721-62008fa7b30a/scratchpad/ci_raw/programmes/ouattara_programme_2025.txt"
+        }
+      ],
+      "note": "Candidat désigné par le RHDP le 21/06/2025 ; candidature déclarée le 29/07/2025. Date du document = présentation officielle au Sofitel Hôtel Ivoire (rhdpofficiel.ci, événement du 10/10/2025) ; le PDF a été créé le 11/10/2025. Réélu au premier tour."
+    },
+    {
+      "nom": "Candidature Jean-Louis Billon (présidentielle 2025)",
+      "sigle": "Billon-2025",
+      "type": "coalition",
+      "fondation": "2025-08-19",
+      "dirigeant": {
+        "nom": "Jean-Louis Billon",
+        "titre": "Candidat"
+      },
+      "site": null,
+      "wikipedia": "https://fr.wikipedia.org/wiki/Jean-Louis_Billon",
+      "couleur": null,
+      "couleur_source": null,
+      "source_url": "https://news.abidjan.net/articles/743971/presidentielle-2025-des-partis-politiques-sunissent-derriere-jean-louis-billon-et-appellent-a-un-renouveau-democratique",
+      "resultats": [
+        {
+          "election": "presidentielle_2025",
+          "voix_pct": 3.09,
+          "sieges": null,
+          "source_url": "https://www.conseil-constitutionnel.ci/sites/default/files/decision_2025-ep-007_du_04.11.2025.pdf"
+        }
+      ],
+      "documents": [
+        {
+          "titre": "Projet de société JLB 2026-2030 – Une Nation réconciliée, prospère et souveraine (hébergé par la RTI)",
+          "url": "https://rti.info/wp-content/uploads/2025/10/Projet_de_Societe_JLB_2026-2030.pdf",
+          "date": "2025-10-10",
+          "type": "projet_de_societe",
+          "pages": 28,
+          "texte_local": "/private/tmp/claude-501/-Users-jeanperraudeau-Palabre/b949f525-b723-40a6-a721-62008fa7b30a/scratchpad/ci_raw/programmes/billon_projet_de_societe_2025.txt"
+        }
+      ],
+      "note": "Ancien cadre du PDCI-RDA, candidat du Congrès démocratique (CODE), sans investiture du PDCI (France 24, 22/08/2025). Date du document = date de création du PDF (aucune date de publication trouvée). Le premier téléchargement était tronqué ; le second est complet (51,6 Mo)."
+    },
+    {
+      "nom": "Candidature Simone Ehivet Gbagbo (présidentielle 2025)",
+      "sigle": "Ehivet-Gbagbo-2025",
+      "type": "coalition",
+      "fondation": "2024-11-30",
+      "dirigeant": {
+        "nom": "Simone Ehivet Gbagbo",
+        "titre": "Candidate"
+      },
+      "site": null,
+      "wikipedia": "https://fr.wikipedia.org/wiki/Simone_Gbagbo",
+      "couleur": null,
+      "couleur_source": null,
+      "source_url": "https://www.rfi.fr/fr/afrique/20241130-pr%C3%A9sidentielle-en-c%C3%B4te-d-ivoire-l-ex-premi%C3%A8re-dame-simone-ehivet-d%C3%A9sign%C3%A9e-candidate-par-son-parti",
+      "resultats": [
+        {
+          "election": "presidentielle_2025",
+          "voix_pct": 2.42,
+          "sieges": null,
+          "source_url": "https://www.conseil-constitutionnel.ci/sites/default/files/decision_2025-ep-007_du_04.11.2025.pdf"
+        }
+      ],
+      "documents": [
+        {
+          "titre": "Programme de Simone Ehivet Gbagbo – sept engagements (document à en-tête du MGC, hébergé par la RTI)",
+          "url": "https://rti.info/wp-content/uploads/2025/10/Simone-Ehivet-Gbagbo.pdf",
+          "date": "2025-09-25",
+          "type": "programme",
+          "pages": 37,
+          "texte_local": "/private/tmp/claude-501/-Users-jeanperraudeau-Palabre/b949f525-b723-40a6-a721-62008fa7b30a/scratchpad/ci_raw/programmes/simone_gbagbo_programme_2025.txt"
+        }
+      ],
+      "note": "Désignée candidate par le MGC fin novembre 2024. Date du document = date de création du PDF. 8 pages sur 37 n'ont pas de texte extractible (pages graphiques)."
+    },
+    {
+      "nom": "Candidature Ahoua Don Mello (présidentielle 2025)",
+      "sigle": "Don-Mello-2025",
+      "type": "coalition",
+      "fondation": "2025-07-31",
+      "dirigeant": {
+        "nom": "Ahoua Don Mello",
+        "titre": "Candidat indépendant"
+      },
+      "site": null,
+      "wikipedia": "https://fr.wikipedia.org/wiki/Ahoua_Don_Mello",
+      "couleur": null,
+      "couleur_source": null,
+      "source_url": "https://fr.wikipedia.org/wiki/Ahoua_Don_Mello",
+      "resultats": [
+        {
+          "election": "presidentielle_2025",
+          "voix_pct": 1.97,
+          "sieges": null,
+          "source_url": "https://www.conseil-constitutionnel.ci/sites/default/files/decision_2025-ep-007_du_04.11.2025.pdf"
+        }
+      ],
+      "documents": [
+        {
+          "titre": "La Côte d'Ivoire souveraine – 42 propositions pour la démocratie, la souveraineté et le panafricanisme dans un monde multipolaire (hébergé par la RTI)",
+          "url": "https://rti.info/wp-content/uploads/2025/10/PROGRAMME_ADM_42_PROPOSITIONS-4.pdf",
+          "date": "2025-10-10",
+          "type": "programme",
+          "pages": 31,
+          "texte_local": "/private/tmp/claude-501/-Users-jeanperraudeau-Palabre/b949f525-b723-40a6-a721-62008fa7b30a/scratchpad/ci_raw/programmes/don_mello_programme_2025.txt"
+        }
+      ],
+      "note": "Candidat indépendant : aucun parti ne l'a investi, donc aucune relation coalition_membre. Vice-président du PPA-CI jusqu'en 2025, il a présenté une candidature « de précaution » annoncée le 31/07/2025, sans investiture du PPA-CI, qui l'a radié en mai 2026. Date du document = date de création du PDF."
+    },
+    {
+      "nom": "Candidature Henriette Lagou Adjoua (présidentielle 2025)",
+      "sigle": "Lagou-2025",
+      "type": "coalition",
+      "fondation": "2025-03-22",
+      "dirigeant": {
+        "nom": "Henriette Lagou Adjoua",
+        "titre": "Candidate"
+      },
+      "site": null,
+      "wikipedia": "https://fr.wikipedia.org/wiki/Henriette_Lagou_Adjoua",
+      "couleur": null,
+      "couleur_source": null,
+      "source_url": "https://ledemocrateplus.com/presidentielle-doctobre-2025-henriette-lagou-officiellement-designee-candidate-dune-coalition-de-4-partis-politiques/",
+      "resultats": [
+        {
+          "election": "presidentielle_2025",
+          "voix_pct": 1.15,
+          "sieges": null,
+          "source_url": "https://www.conseil-constitutionnel.ci/sites/default/files/decision_2025-ep-007_du_04.11.2025.pdf"
+        }
+      ],
+      "documents": [
+        {
+          "titre": "Programme détaillé – Mme Lagou (hébergé par la RTI)",
+          "url": "https://rti.info/wp-content/uploads/2025/10/Programme-Detaille-Mme-LAGOU.pdf",
+          "date": "2025-10-17",
+          "type": "programme",
+          "pages": 14,
+          "texte_local": "/private/tmp/claude-501/-Users-jeanperraudeau-Palabre/b949f525-b723-40a6-a721-62008fa7b30a/scratchpad/ci_raw/programmes/lagou_programme_2025.txt"
+        }
+      ],
+      "note": "Présentée comme indépendante par Wikipédia FR, désignée par la coalition GP-PAIX le 22/03/2025. Date du document = date de création du PDF."
+    }
+  ],
+  "relations": [
+    {
+      "de": "RDR",
+      "vers": "RHDP",
+      "type": "fusion",
+      "date": "2018-07-16",
+      "source_url": "https://www.voaafrique.com/a/naissance-d-un-parti-unifi%C3%A9-du-pouvoir-en-c%C3%B4te-d-ivoire-/4484701.html"
+    },
+    {
+      "de": "UDPCI",
+      "vers": "RHDP",
+      "type": "absorption",
+      "date": "2022-09-09",
+      "source_url": "https://www.rfi.fr/fr/afrique/20220909-c%C3%B4te-d-ivoire-albert-toikeusse-mabri-fait-son-retour-au-sein-du-rhdp"
+    },
+    {
+      "de": "FPI",
+      "vers": "EDS",
+      "type": "scission",
+      "date": "2017-04-21",
+      "source_url": "https://fr.wikipedia.org/wiki/Ensemble_pour_la_d%C3%A9mocratie_et_la_souverainet%C3%A9"
+    },
+    {
+      "de": "EDS",
+      "vers": "PPA-CI",
+      "type": "fusion",
+      "date": "2021-10",
+      "source_url": "https://www.rfi.fr/fr/afrique/20221017-c%C3%B4te-d-ivoire-premi%C3%A8re-bougie-pour-le-ppa-ci-acteur-majeur-de-la-sc%C3%A8ne-politique"
+    },
+    {
+      "de": "FPI",
+      "vers": "PPA-CI",
+      "type": "scission",
+      "date": "2021-10-17",
+      "source_url": "https://fr.wikipedia.org/wiki/Parti_des_peuples_africains_%E2%80%93_C%C3%B4te_d%27Ivoire"
+    },
+    {
+      "de": "RHDP",
+      "vers": "Ouattara-2025",
+      "type": "coalition_membre",
+      "date": "2025-06-21",
+      "source_url": "https://www.lefigaro.fr/international/cote-d-ivoire-alassane-ouattara-designe-candidat-a-la-presidentielle-par-son-parti-20250621"
+    },
+    {
+      "de": "CODE",
+      "vers": "Billon-2025",
+      "type": "coalition_membre",
+      "date": "2025-08-19",
+      "source_url": "https://news.abidjan.net/articles/743971/presidentielle-2025-des-partis-politiques-sunissent-derriere-jean-louis-billon-et-appellent-a-un-renouveau-democratique"
+    },
+    {
+      "de": "MGC",
+      "vers": "Ehivet-Gbagbo-2025",
+      "type": "coalition_membre",
+      "date": "2024-11-30",
+      "source_url": "https://www.rfi.fr/fr/afrique/20241130-pr%C3%A9sidentielle-en-c%C3%B4te-d-ivoire-l-ex-premi%C3%A8re-dame-simone-ehivet-d%C3%A9sign%C3%A9e-candidate-par-son-parti"
+    },
+    {
+      "de": "GP-PAIX",
+      "vers": "Lagou-2025",
+      "type": "coalition_membre",
+      "date": "2025-03-22",
+      "source_url": "https://ledemocrateplus.com/presidentielle-doctobre-2025-henriette-lagou-officiellement-designee-candidate-dune-coalition-de-4-partis-politiques/"
+    },
+    {
+      "de": "RPC-PAIX",
+      "vers": "GP-PAIX",
+      "type": "coalition_membre",
+      "date": null,
+      "source_url": "https://ledemocrateplus.com/presidentielle-doctobre-2025-henriette-lagou-officiellement-designee-candidate-dune-coalition-de-4-partis-politiques/"
+    },
+    {
+      "de": "UDT-CI",
+      "vers": "GP-PAIX",
+      "type": "coalition_membre",
+      "date": null,
+      "source_url": "https://ledemocrateplus.com/presidentielle-doctobre-2025-henriette-lagou-officiellement-designee-candidate-dune-coalition-de-4-partis-politiques/"
+    },
+    {
+      "de": "NID",
+      "vers": "GP-PAIX",
+      "type": "coalition_membre",
+      "date": null,
+      "source_url": "https://ledemocrateplus.com/presidentielle-doctobre-2025-henriette-lagou-officiellement-designee-candidate-dune-coalition-de-4-partis-politiques/"
+    },
+    {
+      "de": "CNDCI",
+      "vers": "GP-PAIX",
+      "type": "coalition_membre",
+      "date": null,
+      "source_url": "https://ledemocrateplus.com/presidentielle-doctobre-2025-henriette-lagou-officiellement-designee-candidate-dune-coalition-de-4-partis-politiques/"
+    }
+  ],
+  "notes": "Contexte (vérifié au 12/09/2026). PRÉSIDENTIELLE DU 25/10/2025. Cinq candidatures retenues par le Conseil constitutionnel le 08/09/2025 (55 rejetées sur 60, dont celles de Laurent Gbagbo / PPA-CI, Tidjane Thiam / PDCI-RDA, Pascal Affi N'Guessan / FPI, Charles Blé Goudé, Guillaume Soro, Assalé Tiémoko / ADCI). Résultats définitifs (décision CI-2025-EP-007/04-11/CC/SG du 04/11/2025, identiques aux résultats provisoires de la CEI du 27/10/2025) : Ouattara 89,77 % (3 759 030 voix), Billon 3,09 % (129 493), Simone Ehivet Gbagbo 2,42 % (101 238), Don Mello 1,97 % (82 508), Lagou 1,15 % (48 261) ; votes blancs 1,56 %, comptés comme suffrages exprimés ; participation 50,10 % (Wikipédia FR, qui cite la décision). Les scores présidentiels sont inscrits uniquement sur les entrées « Candidature … », pas sur les partis. LÉGISLATIVES DU 27/12/2025 (255 sièges). Le PPA-CI a boycotté le scrutin. Résultats provisoires de la CEI (décision n°003/CEI/EDAN/CC du 29/12/2025 ; AIP) : RHDP 197, PDCI-RDA 32, indépendants 23, FPI 1, UNPR 1, Le Buffle 1 ; participation 35,04 %. Le Conseil constitutionnel a annulé deux circonscriptions (communiqué de la CEI du 09/01/2026, PDF scanné : https://cei.ci/wp-content/uploads/2026/01/Communique-CEI-relatif-a-la-proclamation-des-resultats-definitifs-EDAN2025.pdf) : n°021 Toumodi commune et n°204 Dualla et Massala. Wikipédia FR indique alors RHDP 196, PDCI-RDA 31, 2 sièges vacants. Partielles du 21/02/2026, résultats définitifs le 13/03/2026 (CEI) : Hervé Dominique Dié Alliali (PDCI-RDA) à Toumodi et Aboubacar Sidiky Dosso (indépendant) à Dualla et Massala, les deux contre des candidats du RHDP (RTI Info, KOACI). Répartition finale : RHDP 196, PDCI-RDA 32, indépendants 24, FPI 1, UNPR 1, Le Buffle 1. Divergence : une recherche a renvoyé « 198 sièges » pour le RHDP ; aucune source primaire ne le confirme, ce chiffre n'a pas été retenu. Les pourcentages de voix viennent du tableau Wikipédia FR, fondé sur les résultats provisoires nationaux de la CEI (suffrages valides 2 943 569). Indépendants : 22,30 % des voix, 24 sièges au final. 185 membres du RHDP se sont présentés en indépendants faute d'investiture (Le Monde, cité par Wikipédia) ; parmi les 22 cadres du PPA-CI candidats en indépendants, seul Stéphane Kipré a été élu. Autres listes sans élu : ADCI (Assalé Tiémoko) 0,40 % ; EDS 0,12 % ; AIDE 0,05 % ; UDP 0,04 %. DIRIGEANTS. RHDP : Alassane Ouattara, président. PDCI-RDA : Tidjane Thiam, président (nominations du 06/07/2026, Afrik Soir 10/07/2026) ; il avait renoncé à la présidence le 12/05/2025 en raison de procédures judiciaires, puis a été réélu au 9e congrès extraordinaire en mai 2025 (Wikipédia). PPA-CI : Laurent Gbagbo, reconduit au congrès de mai 2026 (RFI, 15/05/2026). FPI : Pascal Affi N'Guessan (site fpi-ci.com, messages du président de mai et septembre 2026). MGC : Simone Ehivet Gbagbo, qui a présenté la nouvelle direction le 25/04/2026 (yeclo.com) ; le parti a connu une vague de 107 démissions à partir de fin juin 2026 (AbidjanTV). CODE : Landry Seri, porte-parole au lancement ; aucun président trouvé. GP-PAIX, UNPR, Le Buffle : dirigeant inconnu. COULEURS. Codes hex tirés des infobox Wikipédia FR et du modèle « Infobox Parti politique ivoirien/couleurs » : RHDP #F77F00, PDCI #0FAF32, FPI #0066CC. PPA-CI et MGC n'ont pas de couleur dans leur infobox. Les couleurs #27439D (MGC) et #2B86BA (CODE) n'apparaissent que dans les cellules des tableaux de résultats Wikipédia, pas dans une infobox ni une charte : non retenues. DOCUMENTS. Les cinq programmes de candidats ont été téléchargés depuis les pages « Présidentielles 2025 » de la RTI (rti.info/presidentielles-2025/<candidat>/). Le texte est extractible avec pdftotext pour tous. Dates : présentation officielle pour Ouattara ; date de création du PDF pour les autres (aucune date de publication officielle trouvée). RTI héberge aussi « Bilan-GouvCI-2011-2025.pdf » (bilan gouvernemental, non programmatique, non retenu). RHDP : « Statuts et Règlement intérieur » listés sur rhdpofficiel.ci/mediatheque/textes, mais le lien de téléchargement renvoie vers la page de la médiathèque, et la seule capture web.archive.org (26/10/2025) est une redirection 302 : document non récupéré. PDCI-RDA : le site pdcirda.ci n'affiche que « 7 piliers de notre programme », qui sont des chantiers d'organisation interne (restructuration, communication, dispositif électoral…), pas un programme politique : non retenu. Thiam a évoqué un projet de société du parti et une « feuille de route » en quatre axes pour les candidats aux législatives (KOACI, 11/12/2025), sans document publié trouvé. PPA-CI : « Pacte social » annoncé sans document publié ; l'ancien « projet de société » de Gbagbo n'a pas été trouvé en ligne. FPI : la page « vision-politique » du site est un discours de vœux de janvier 2025, non programmatique : non retenue. PARTIS SANS DOCUMENT PROGRAMMATIQUE ÉCRIT : PDCI-RDA, PPA-CI, MGC (hors programme de sa candidate), CODE (hors programme de son candidat), GP-PAIX (hors programme de sa candidate), UNPR, Le Buffle. RELATIONS ET ALLIANCES (pas de type « alliance ») : Front commun PDCI-RDA / PPA-CI pour la présidentielle (déclaration de juin 2025, AIP ; marche annoncée le 26/09/2025). Accord FPI–RHDP en janvier 2023, rompu en septembre 2024 (RFI, 09/09/2024). Liste commune PDCI-RDA–FPI–ADCI à Yopougon et candidature commune PDCI-RDA–EDS à Grand-Bassam aux législatives. AJUNA : initiative d'Assalé Tiémoko et de Vincent Toh Bi Irié lancée le 26/06/2025. Simone Ehivet Gbagbo a lancé sa campagne avec le soutien de Charles Blé Goudé (Wikipédia). RDR→RHDP : le RDR n'est pas dans la liste des partis. L'UDPCI avait participé à la transformation du RHDP en parti en 2018, l'a quitté en août 2020, puis y est revenue en septembre 2022 par intégration à part entière (relation « absorption », RFI). EDS, issue du FPI (21/04/2017), a disparu dans le PPA-CI à sa création en octobre 2021. MGC : Wikipédia FR n'indique pas de parti d'origine exploitable (champ « scission de » renvoyant au MGC lui-même) : pas de relation. Les membres du GP-PAIX suivent Le Démocrate Plus (« RPC-PAIX », orthographié « RCP-PAIX » dans une note Wikipédia). Date d'adhésion inconnue (null). Le CODE a annoncé 18 membres sans liste vérifiée : pas de relation par membre. Liens : rti.info et cei.ci accessibles ; fratmat.info et apanews.net renvoient 403 aux requêtes automatisées ; la page Wikipédia « Congrès démocratique (Côte d'Ivoire) » n'existe pas."
+}

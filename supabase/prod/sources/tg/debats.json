@@ -1,0 +1,1569 @@
+{
+  "debats": [
+    {
+      "id": "institutions-regime-parlementaire",
+      "theme": "institutions",
+      "question": "Le Togo doit-il conserver le régime parlementaire instauré par la Constitution de 2024 ?",
+      "contexte": "Le 25 mars 2024, l'Assemblée nationale a adopté une nouvelle Constitution faisant passer le Togo d'un régime présidentiel à un régime parlementaire (Ve République), avec 89 voix pour, 1 contre et 1 abstention. Le texte, renvoyé en seconde lecture, a été adopté définitivement le 19 avril 2024 par des députés dont le mandat était arrivé à échéance ; la Conférence des évêques du Togo avait demandé de surseoir à sa promulgation. Une partie de l'opposition réclame depuis le retour à la Constitution de 1992.",
+      "periode": "2024-03 à 2026-03",
+      "arguments_pour": [
+        {
+          "argument": "Le passage au régime parlementaire vise à mettre fin à l'hyper-présidentialisme et à mieux équilibrer les pouvoirs.",
+          "porte_par": "Gouvernement togolais (position rapportée par France 24)",
+          "source_url": "https://www.france24.com/fr/afrique/20240430-le-togo-dans-l-expectative-apr%C3%A8s-des-%C3%A9lections-l%C3%A9gislatives-cruciales"
+        },
+        {
+          "argument": "Le chef de l'État est pratiquement désinvesti de ses pouvoirs au profit du président du Conseil des ministres, qui dirige effectivement le pays.",
+          "porte_par": "Tchitchao Tchalim, président de la commission des lois constitutionnelles de l'Assemblée nationale",
+          "source_url": "https://www.france24.com/fr/afrique/20240326-le-togo-adopte-une-nouvelle-constitution-le-parlement-%C3%A9lira-le-pr%C3%A9sident"
+        },
+        {
+          "argument": "La réforme rend les structures du pouvoir plus représentatives de la population togolaise.",
+          "porte_par": "UNIR (position rapportée par France 24)",
+          "source_url": "https://www.france24.com/fr/info-en-continu/20240429-togo-des-l%C3%A9gislatives-apr%C3%A8s-une-r%C3%A9forme-clivante-de-la-constitution"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "La Constitution a été adoptée de manière inacceptable et aurait dû, au minimum, être soumise à référendum.",
+          "porte_par": "Gérard Adja, secrétaire exécutif de la DMP",
+          "source_url": "https://www.france24.com/fr/afrique/20240430-le-togo-dans-l-expectative-apr%C3%A8s-des-%C3%A9lections-l%C3%A9gislatives-cruciales"
+        },
+        {
+          "argument": "Le texte, inconnu du peuple, a été voté par des députés dont le mandat avait expiré ; la promulgation aurait dû être suspendue au profit d'un dialogue politique inclusif.",
+          "porte_par": "Conférence des évêques du Togo",
+          "source_url": "https://www.koaci.com/article/2024/03/27/togo/politique/togo-preoccupations-et-requete-des-eveques-au-pr-gnassingbe-apres-ladoption-de-la-nouvelle-constitution_176790.html"
+        },
+        {
+          "argument": "La Constitution de 1992 révisée en 2019 prévoit l'élection du président de la République au suffrage universel direct ; la nouvelle Constitution doit être rejetée et une transition engagée.",
+          "porte_par": "Déclaration du 20 mars 2025 de 12 partis et organisations (dont CAR, CDPA, ADDI)",
+          "source_url": "https://togobreakingnews.info/partis-politiques-transition-politique/"
+        },
+        {
+          "argument": "Les opposants demandent le retour à la Constitution de 1992 et rejettent tout accord visant à entériner la rupture constitutionnelle de 2024.",
+          "porte_par": "Brigitte Kafui Adjamagbo-Johnson, coordinatrice de la DMP",
+          "source_url": "https://fr.allafrica.com/stories/202603160825.html"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "DMP",
+          "sens": "contre",
+          "citation": "adoptée de manière inacceptable et qui aurait, a minima, dû faire l'objet d'un référendum",
+          "auteur": "Gérard Adja, secrétaire exécutif de la DMP",
+          "date": "2024-04-30",
+          "source_url": "https://www.france24.com/fr/afrique/20240430-le-togo-dans-l-expectative-apr%C3%A8s-des-%C3%A9lections-l%C3%A9gislatives-cruciales"
+        },
+        {
+          "sigle": "DMP",
+          "sens": "contre",
+          "citation": "barrer la route à cette constitution",
+          "auteur": "Brigitte Kafui Adjamagbo-Johnson, coordinatrice de la DMP",
+          "date": "2025-03-20",
+          "source_url": "https://togobreakingnews.info/partis-politiques-transition-politique/"
+        },
+        {
+          "sigle": "DMP",
+          "sens": "contre",
+          "citation": "Rendez-nous notre constitution !",
+          "auteur": "Brigitte Kafui Adjamagbo-Johnson, coordinatrice de la DMP",
+          "date": "2026-03-16",
+          "source_url": "https://fr.allafrica.com/stories/202603160825.html"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Le Togo se dote d'une nouvelle constitution et passe à un régime parlementaire",
+          "media": "France 24",
+          "date": "2024-03-26",
+          "url": "https://www.france24.com/fr/afrique/20240326-le-togo-adopte-une-nouvelle-constitution-le-parlement-%C3%A9lira-le-pr%C3%A9sident"
+        },
+        {
+          "titre": "Togo : Préoccupations et requête des Evêques au PR Gnassingbé après l'adoption de la nouvelle Constitution",
+          "media": "KOACI",
+          "date": "2024-03-27",
+          "url": "https://www.koaci.com/article/2024/03/27/togo/politique/togo-preoccupations-et-requete-des-eveques-au-pr-gnassingbe-apres-ladoption-de-la-nouvelle-constitution_176790.html"
+        },
+        {
+          "titre": "Togo : des élections législatives décisives après une réforme clivante de la Constitution",
+          "media": "France 24 (AFP)",
+          "date": "2024-04-29",
+          "url": "https://www.france24.com/fr/info-en-continu/20240429-togo-des-l%C3%A9gislatives-apr%C3%A8s-une-r%C3%A9forme-clivante-de-la-constitution"
+        },
+        {
+          "titre": "Le Togo dans l'expectative après des élections législatives cruciales",
+          "media": "France 24",
+          "date": "2024-04-30",
+          "url": "https://www.france24.com/fr/afrique/20240430-le-togo-dans-l-expectative-apr%C3%A8s-des-%C3%A9lections-l%C3%A9gislatives-cruciales"
+        },
+        {
+          "titre": "Togo : 12 partis politiques et des OSC exigent une transition politique",
+          "media": "Togo Breaking News",
+          "date": "2025-03-20",
+          "url": "https://togobreakingnews.info/partis-politiques-transition-politique/"
+        },
+        {
+          "titre": "Togo: Adjamagbo-Johnson - 'L'exécutif doit démissionner'",
+          "media": "Togonews via AllAfrica",
+          "date": "2026-03-16",
+          "url": "https://fr.allafrica.com/stories/202603160825.html"
+        }
+      ],
+      "sensibilite": "Oui : les manifestations de juin 2025, dirigées notamment contre la révision constitutionnelle, ont fait au moins 7 morts et donné lieu à plus de 60 arrestations selon des organisations de la société civile (Africa Radio, 6 juillet 2025) ; Amnesty International relève au moins 81 arrestations les 5 et 6 juin 2025 (rapport annuel publié le 21 avril 2026). Sources : https://www.africaradio.com/actualite-110227-togo-des-associations-denoncent-une-censure-d-internet-apres-les-manifestations-de-juin ; https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026",
+      "encore_ouvert": true
+    },
+    {
+      "id": "institutions-election-president-congres",
+      "theme": "institutions",
+      "question": "Le président de la République doit-il être élu par le Parlement réuni en Congrès plutôt qu'au suffrage universel direct ?",
+      "contexte": "La Constitution de 2024 a supprimé l'élection du président de la République au suffrage universel direct : il est élu par l'Assemblée nationale et le Sénat réunis en Congrès et exerce un rôle essentiellement représentatif, le pouvoir exécutif revenant au président du Conseil. Le 3 mai 2025, Jean-Lucien Savi de Tové, figure historique de l'opposition, a été élu à l'unanimité des 150 votants.",
+      "periode": "2024-03 à 2025-05",
+      "arguments_pour": [
+        {
+          "argument": "Dans le nouveau régime parlementaire, le chef de l'État est désinvesti de ses pouvoirs au profit du président du Conseil des ministres, qui dirige effectivement le pays.",
+          "porte_par": "Tchitchao Tchalim, président de la commission des lois constitutionnelles de l'Assemblée nationale",
+          "source_url": "https://www.france24.com/fr/afrique/20240326-le-togo-adopte-une-nouvelle-constitution-le-parlement-%C3%A9lira-le-pr%C3%A9sident"
+        },
+        {
+          "argument": "Le changement de régime vise à mettre fin à l'hyper-présidentialisme.",
+          "porte_par": "Gouvernement togolais (position rapportée par France 24)",
+          "source_url": "https://www.france24.com/fr/afrique/20240430-le-togo-dans-l-expectative-apr%C3%A8s-des-%C3%A9lections-l%C3%A9gislatives-cruciales"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "La Constitution de 1992 révisée en 2019 dispose clairement que le président de la République est élu au suffrage universel direct ; toute modification de ce point aurait dû passer par un référendum.",
+          "porte_par": "Déclaration du 20 mars 2025 de 12 partis et organisations (dont CAR, CDPA, ADDI)",
+          "source_url": "https://togobreakingnews.info/partis-politiques-transition-politique/"
+        },
+        {
+          "argument": "La réforme, dont la suppression du suffrage universel direct, aurait dû au minimum faire l'objet d'un référendum.",
+          "porte_par": "Gérard Adja, secrétaire exécutif de la DMP",
+          "source_url": "https://www.france24.com/fr/afrique/20240430-le-togo-dans-l-expectative-apr%C3%A8s-des-%C3%A9lections-l%C3%A9gislatives-cruciales"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Le Togo se dote d'une nouvelle Constitution",
+          "media": "Anadolu (AA)",
+          "date": "2024-03-26",
+          "url": "https://www.aa.com.tr/fr/afrique/le-togo-se-dote-dune-nouvelle-constitution/3175399"
+        },
+        {
+          "titre": "Le Togo se dote d'une nouvelle constitution et passe à un régime parlementaire",
+          "media": "France 24",
+          "date": "2024-03-26",
+          "url": "https://www.france24.com/fr/afrique/20240326-le-togo-adopte-une-nouvelle-constitution-le-parlement-%C3%A9lira-le-pr%C3%A9sident"
+        },
+        {
+          "titre": "Togo : 12 partis politiques et des OSC exigent une transition politique",
+          "media": "Togo Breaking News",
+          "date": "2025-03-20",
+          "url": "https://togobreakingnews.info/partis-politiques-transition-politique/"
+        },
+        {
+          "titre": "Togo : l'ancien opposant Jean-Lucien Savi de Tové élu Président de la République",
+          "media": "Togo First",
+          "date": "2025-05-03",
+          "url": "https://www.togofirst.com/fr/politique/0305-16253-togo-l-ancien-opposant-jean-lucien-savi-de-tove-elu-president-de-la-republique"
+        }
+      ],
+      "sensibilite": "Oui : les manifestations de juin 2025, dirigées notamment contre la révision constitutionnelle, ont fait au moins 7 morts et donné lieu à plus de 60 arrestations selon des organisations de la société civile (Africa Radio, 6 juillet 2025) ; Amnesty International relève au moins 81 arrestations les 5 et 6 juin 2025 (rapport annuel publié le 21 avril 2026). Sources : https://www.africaradio.com/actualite-110227-togo-des-associations-denoncent-une-censure-d-internet-apres-les-manifestations-de-juin ; https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026",
+      "encore_ouvert": true
+    },
+    {
+      "id": "institutions-president-conseil-mandats",
+      "theme": "institutions",
+      "question": "Le nombre de mandats du président du Conseil doit-il être limité ?",
+      "contexte": "Sous la Constitution de 2024, le président du Conseil, chef du parti ou de la coalition majoritaire à l'Assemblée nationale, détient l'essentiel du pouvoir exécutif ; il est désigné pour six ans. Selon Afrique XXI, ce mandat n'est soumis à aucune limitation. Faure Gnassingbé, président de la République depuis 2005, exerce cette fonction depuis mai 2025.",
+      "periode": "2024-03 à 2026-09",
+      "arguments_pour": [
+        {
+          "argument": "Il faut une relecture concertée de la loi constitutionnelle n° 2024-005 afin de garantir la limitation effective des mandats.",
+          "porte_par": "Mouvement togolais pour la restauration (MTR), présidé par Kossi Wonouvo Gnagnon",
+          "source_url": "https://www.matinlibre.tg/reforme-constitutionnelle-au-togo-le-mtr-pose-trois-exigences-au-pouvoir-apres-la-decision-de-la-cedeao/"
+        },
+        {
+          "argument": "La réforme est une manœuvre orchestrée pour permettre la perpétuation d'un système.",
+          "porte_par": "David Dosseh, cité par Afrique XXI",
+          "source_url": "https://afriquexxi.info/Au-Togo-le-trompe-l-oeil-de-la-nouvelle-Constitution"
+        },
+        {
+          "argument": "La limitation des mandats prévue par la Constitution de 1992 doit s'appliquer à Faure Gnassingbé.",
+          "porte_par": "Brigitte Kafui Adjamagbo-Johnson, coordinatrice de la DMP",
+          "source_url": "https://fr.allafrica.com/stories/202603160825.html"
+        }
+      ],
+      "arguments_contre": [],
+      "positions_publiques": [
+        {
+          "sigle": "MTR",
+          "sens": "pour",
+          "citation": "afin de garantir la limitation effective des mandats",
+          "auteur": "Mouvement togolais pour la restauration (président : Kossi Wonouvo Gnagnon)",
+          "date": "2026-09-10",
+          "source_url": "https://www.matinlibre.tg/reforme-constitutionnelle-au-togo-le-mtr-pose-trois-exigences-au-pouvoir-apres-la-decision-de-la-cedeao/"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Le Togo change de constitution et devient un régime parlementaire !",
+          "media": "Togo First",
+          "date": "2024-03-26",
+          "url": "https://www.togofirst.com/fr/politique/2603-13721-le-togo-change-de-constitution-et-devient-un-regime-parlementaire"
+        },
+        {
+          "titre": "Togo: Adjamagbo-Johnson - 'L'exécutif doit démissionner'",
+          "media": "Togonews via AllAfrica",
+          "date": "2026-03-16",
+          "url": "https://fr.allafrica.com/stories/202603160825.html"
+        },
+        {
+          "titre": "Au Togo, le trompe-l'œil de la nouvelle Constitution",
+          "media": "Afrique XXI",
+          "date": "2026-09-02",
+          "url": "https://afriquexxi.info/Au-Togo-le-trompe-l-oeil-de-la-nouvelle-Constitution"
+        },
+        {
+          "titre": "Réforme constitutionnelle au Togo : le MTR pose trois exigences au pouvoir après la décision de la CEDEAO",
+          "media": "Matin Libre",
+          "date": "2026-09-10",
+          "url": "https://www.matinlibre.tg/reforme-constitutionnelle-au-togo-le-mtr-pose-trois-exigences-au-pouvoir-apres-la-decision-de-la-cedeao/"
+        }
+      ],
+      "sensibilite": "Oui : les manifestations de juin 2025, dirigées notamment contre la révision constitutionnelle, ont fait au moins 7 morts et donné lieu à plus de 60 arrestations selon des organisations de la société civile (Africa Radio, 6 juillet 2025) ; Amnesty International relève au moins 81 arrestations les 5 et 6 juin 2025 (rapport annuel publié le 21 avril 2026). Sources : https://www.africaradio.com/actualite-110227-togo-des-associations-denoncent-une-censure-d-internet-apres-les-manifestations-de-juin ; https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026",
+      "encore_ouvert": true
+    },
+    {
+      "id": "institutions-senat",
+      "theme": "institutions",
+      "question": "Le Togo doit-il avoir un Sénat dont une partie des membres est nommée plutôt qu'élue ?",
+      "contexte": "Prévu par la Constitution de 2024, le Sénat compte 61 membres : 41 élus au suffrage indirect et 20 nommés. Les premières sénatoriales, organisées le 15 février 2025, ont été boycottées par l'ANC, la DMP et les FDR. Barry Moussa Barqué a été élu président du Sénat le 2 avril 2025.",
+      "periode": "2024-12 à 2025-04",
+      "arguments_pour": [
+        {
+          "argument": "La mise en place du Sénat complète l'installation des institutions de la Ve République ; il s'agit d'une institution clé, notamment pour le travail législatif.",
+          "porte_par": "Samuel Gnanhoui, journaliste et analyste politique",
+          "source_url": "https://www.voaafrique.com/a/les-%C3%A9lections-s%C3%A9natoriales-du-15-f%C3%A9vrier-2025-un-tournant-pour-le-togo-selon-samuel-gnahoui/7975391.html"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "L'ANC rejette les élections sénatoriales, organisées dans le cadre d'une réforme constitutionnelle qu'elle conteste.",
+          "porte_par": "Alliance nationale pour le changement (ANC)",
+          "source_url": "https://www.africaradio.com/actualite-108442-au-togo-deux-partis-de-l-opposition-annoncent-leur-boycott-des-elections-senatoriales-du-2-fevrier-2025"
+        },
+        {
+          "argument": "La réforme qui crée le Sénat est illégitime et vise à maintenir Faure Gnassingbé au pouvoir.",
+          "porte_par": "ANC, FDR et DMP (position rapportée par VOA Afrique)",
+          "source_url": "https://www.voaafrique.com/a/les-%C3%A9lections-s%C3%A9natoriales-du-15-f%C3%A9vrier-2025-un-tournant-pour-le-togo-selon-samuel-gnahoui/7975391.html"
+        },
+        {
+          "argument": "Le mode de scrutin indirect, réservé aux conseillers municipaux et régionaux, limite la représentation de l'opposition.",
+          "porte_par": "Samuel Gnanhoui, journaliste et analyste politique",
+          "source_url": "https://www.voaafrique.com/a/les-%C3%A9lections-s%C3%A9natoriales-du-15-f%C3%A9vrier-2025-un-tournant-pour-le-togo-selon-samuel-gnahoui/7975391.html"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "ANC",
+          "sens": "contre",
+          "citation": "rejet ferme et délibéré des élections sénatoriales",
+          "auteur": "Alliance nationale pour le changement (communiqué)",
+          "date": "2024-12-16",
+          "source_url": "https://www.africaradio.com/actualite-108442-au-togo-deux-partis-de-l-opposition-annoncent-leur-boycott-des-elections-senatoriales-du-2-fevrier-2025"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Au Togo, deux partis de l'opposition annoncent leur boycott des élections sénatoriales du 2 février 2025",
+          "media": "Africa Radio",
+          "date": "2024-12-16",
+          "url": "https://www.africaradio.com/actualite-108442-au-togo-deux-partis-de-l-opposition-annoncent-leur-boycott-des-elections-senatoriales-du-2-fevrier-2025"
+        },
+        {
+          "titre": "Les élections sénatoriales de 2025, un tournant pour le Togo, selon Samuel Gnanhoui",
+          "media": "VOA Afrique",
+          "date": "2025-02-15",
+          "url": "https://www.voaafrique.com/a/les-%C3%A9lections-s%C3%A9natoriales-du-15-f%C3%A9vrier-2025-un-tournant-pour-le-togo-selon-samuel-gnahoui/7975391.html"
+        },
+        {
+          "titre": "Togo : le Sénat connaît son tout 1er Président, Barry Moussa Barqué",
+          "media": "Togo First",
+          "date": "2025-04-02",
+          "url": "https://www.togofirst.com/fr/politique/0204-16067-togo-le-senat-connait-son-tout-1er-president-barry-moussa-barque"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": true
+    },
+    {
+      "id": "institutions-legislatives-2024",
+      "theme": "institutions",
+      "question": "Les résultats des législatives d'avril 2024, qui ont attribué 108 sièges sur 113 à UNIR, reflètent-ils fidèlement le vote des électeurs ?",
+      "contexte": "Les législatives du 29 avril 2024 se sont tenues dix jours après l'adoption définitive de la nouvelle Constitution. La Cour constitutionnelle a confirmé le 13 mai 2024 l'attribution de 108 des 113 sièges à UNIR et de 5 sièges à des partis d'opposition, avec une participation de 61,76 %, et a rejeté l'ensemble des recours.",
+      "periode": "2024-04 à 2024-05",
+      "arguments_pour": [
+        {
+          "argument": "Dans l'ensemble, les opérations de vote se sont déroulées conformément au code électoral ; les recours ont été rejetés faute de preuves convaincantes.",
+          "porte_par": "Cour constitutionnelle (présidente : Djobo-Babakane Coulibaley)",
+          "source_url": "https://www.koaci.com/article/2024/05/13/togo/justice/togo-legislatives-la-cour-constitutionnelle-confirme-la-victoire-dunir-tous-les-recours-rejetes_177909.html"
+        },
+        {
+          "argument": "Le vote s'est déroulé dans une atmosphère de calme et de sérénité.",
+          "porte_par": "Gilbert Bawara, ministre de la Fonction publique",
+          "source_url": "https://www.france24.com/fr/afrique/20240430-le-togo-dans-l-expectative-apr%C3%A8s-des-%C3%A9lections-l%C3%A9gislatives-cruciales"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Le scrutin a été entaché de bourrages d'urnes et d'un « holdup électoral » du parti au pouvoir.",
+          "porte_par": "Partis d'opposition ayant déposé des recours (non nommés par l'agence)",
+          "source_url": "https://www.aa.com.tr/fr/afrique/togo-l%C3%A9gislatives-la-cour-constitutionnelle-confirme-les-108-si%C3%A8ges-pour-le-parti-au-pouvoir/3218567"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Togo / Législatives : La Cour constitutionnelle confirme les 108 sièges pour le parti au pouvoir",
+          "media": "Anadolu (AA)",
+          "date": "2024-05-13",
+          "url": "https://www.aa.com.tr/fr/afrique/togo-l%C3%A9gislatives-la-cour-constitutionnelle-confirme-les-108-si%C3%A8ges-pour-le-parti-au-pouvoir/3218567"
+        },
+        {
+          "titre": "Togo : Législatives, la Cour Constitutionnelle confirme la victoire d'UNIR, tous les recours rejetés",
+          "media": "KOACI",
+          "date": "2024-05-13",
+          "url": "https://www.koaci.com/article/2024/05/13/togo/justice/togo-legislatives-la-cour-constitutionnelle-confirme-la-victoire-dunir-tous-les-recours-rejetes_177909.html"
+        },
+        {
+          "titre": "Le Togo dans l'expectative après des élections législatives cruciales",
+          "media": "France 24",
+          "date": "2024-04-30",
+          "url": "https://www.france24.com/fr/afrique/20240430-le-togo-dans-l-expectative-apr%C3%A8s-des-%C3%A9lections-l%C3%A9gislatives-cruciales"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": false
+    },
+    {
+      "id": "institutions-transition-dialogue",
+      "theme": "institutions",
+      "question": "Le Togo doit-il ouvrir une période de transition politique plutôt que poursuivre le dialogue dans le Cadre permanent de concertation (CPC) ?",
+      "contexte": "Le Cadre permanent de concertation (CPC), instance de dialogue entre partis politiques placée auprès du ministère de l'Administration territoriale, a ouvert sa deuxième session de 2026 le 30 juin. La DMP et l'ANC ont boycotté ces travaux. Le 2 juillet 2026, la DMK, la DMP, la LDP et le front « Touche pas à ma Constitution » ont réclamé une transition politique inclusive.",
+      "periode": "2025-12 à 2026-07",
+      "arguments_pour": [
+        {
+          "argument": "Une période de transition politique inclusive doit permettre à toutes les forces vives de la Nation de se retrouver ; aucun nouveau dialogue organisé par le régime ne peut apporter de solution.",
+          "porte_par": "DMK, DMP, LDP et « Touche pas à ma Constitution » (déclaration)",
+          "source_url": "https://icilome.com/2026/07/togo-la-dmk-la-dmp-la-lpd-et-touche-pas-a-ma-constitution-reclament-une-transition-politique/"
+        },
+        {
+          "argument": "Une crise institutionnelle ne se règle pas par un ordre du jour administratif ; le pays veut une transition inclusive et refondatrice.",
+          "porte_par": "DMP",
+          "source_url": "https://www.newafrique.net/articles/qUBVT4aCJ4CaiptWDbu6"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Le CPC reste un instrument essentiel du dialogue politique et un espace d'échanges, de concertation et de propositions.",
+          "porte_par": "Colonel Awaté Hodabalo, ministre de l'Administration territoriale",
+          "source_url": "https://territoire.gouv.tg/ouverture-de-la-2eme-session-2026-du-cadre-permanent-de-concertation-cpc-les-acteurs-politiques-a-lecoute-des-defis-de-la-gouvernance-democratique/"
+        },
+        {
+          "argument": "Le CPC n'est pas un organe décisionnel mais un espace de dialogue chargé d'analyser les préoccupations des acteurs politiques.",
+          "porte_par": "Me Tchassona Traoré, président du CPC",
+          "source_url": "https://territoire.gouv.tg/ouverture-de-la-2eme-session-2026-du-cadre-permanent-de-concertation-cpc-les-acteurs-politiques-a-lecoute-des-defis-de-la-gouvernance-democratique/"
+        },
+        {
+          "argument": "Une concertation sincère entre les acteurs est nécessaire ; les autorités doivent intensifier les échanges avec les partis et la société civile.",
+          "porte_par": "Nouvel engagement togolais (NET)",
+          "source_url": "https://www.republicoftogo.com/toutes-les-rubriques/politique/le-net-prone-solidarite-dialogue-et-courage-politique"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "DMP",
+          "sens": "pour",
+          "citation": "Il veut une transition inclusive et refondatrice",
+          "auteur": "DMP (déclaration)",
+          "date": "2026-06-30",
+          "source_url": "https://www.newafrique.net/articles/qUBVT4aCJ4CaiptWDbu6"
+        },
+        {
+          "sigle": "DMK",
+          "sens": "pour",
+          "citation": "une période de transition politique inclusive",
+          "auteur": "Thomas Kokou Nsoukpoe, DMK (déclaration commune)",
+          "date": "2026-07-02",
+          "source_url": "https://icilome.com/2026/07/togo-la-dmk-la-dmp-la-lpd-et-touche-pas-a-ma-constitution-reclament-une-transition-politique/"
+        },
+        {
+          "sigle": "LDP",
+          "sens": "pour",
+          "citation": "une période de transition politique inclusive",
+          "auteur": "Tchagnaou Ouro-Akpo, LDP (déclaration commune)",
+          "date": "2026-07-02",
+          "source_url": "https://icilome.com/2026/07/togo-la-dmk-la-dmp-la-lpd-et-touche-pas-a-ma-constitution-reclament-une-transition-politique/"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Le NET prône solidarité, dialogue et courage politique",
+          "media": "République togolaise (republicoftogo.com)",
+          "date": "2025-12-31",
+          "url": "https://www.republicoftogo.com/toutes-les-rubriques/politique/le-net-prone-solidarite-dialogue-et-courage-politique"
+        },
+        {
+          "titre": "Togo - CPC : la DMP et l'ANC boycottent les travaux et réclament une transition politique inclusive",
+          "media": "New Afrique",
+          "date": "2026-06-30",
+          "url": "https://www.newafrique.net/articles/qUBVT4aCJ4CaiptWDbu6"
+        },
+        {
+          "titre": "Ouverture de la 2ème session 2026 du Cadre Permanent de Concertation (CPC)",
+          "media": "Ministère de l'Administration territoriale",
+          "date": "2026-06-30",
+          "url": "https://territoire.gouv.tg/ouverture-de-la-2eme-session-2026-du-cadre-permanent-de-concertation-cpc-les-acteurs-politiques-a-lecoute-des-defis-de-la-gouvernance-democratique/"
+        },
+        {
+          "titre": "Togo - La DMK, la DMP, la LPD et Touche pas à ma Constitution réclament une transition politique",
+          "media": "Icilome",
+          "date": "2026-07-02",
+          "url": "https://icilome.com/2026/07/togo-la-dmk-la-dmp-la-lpd-et-touche-pas-a-ma-constitution-reclament-une-transition-politique/"
+        }
+      ],
+      "sensibilite": "Oui : le 20 juin 2025, le ministère de l'Administration territoriale a averti qu'aucun appel à la désobéissance ne serait toléré (New Afrique) ; Amnesty International relève au moins 81 arrestations lors des manifestations des 5 et 6 juin 2025. Sources : https://www.newafrique.net/articles/2dKzBikD03NTHHdU3BbI ; https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026",
+      "encore_ouvert": true
+    },
+    {
+      "id": "justice-arret-cedeao-constitution",
+      "theme": "justice",
+      "question": "Le Togo doit-il revoir sa Constitution de 2024 à la suite de l'arrêt de la Cour de justice de la CEDEAO ?",
+      "contexte": "Saisie le 18 avril 2024 par la Ligue togolaise des droits de l'homme et douze autres requérants, la Cour de justice de la CEDEAO a jugé que la modification constitutionnelle du 25 mars 2024 constitue « un changement de gouvernement inconstitutionnel au sens de l'article 23 de la Charte africaine de la démocratie, des élections et de la gouvernance ». Elle a demandé au Togo de veiller à ce que toute réforme constitutionnelle future respecte ses obligations internationales. Le gouvernement conteste la compétence de la Cour ; l'arrêt est largement débattu depuis juin 2026.",
+      "periode": "2026-06 à 2026-09",
+      "arguments_pour": [
+        {
+          "argument": "L'arrêt confirme le caractère inconstitutionnel du changement de Constitution.",
+          "porte_par": "DMK, DMP, LDP et « Touche pas à ma Constitution » (déclaration)",
+          "source_url": "https://icilome.com/2026/07/togo-la-dmk-la-dmp-la-lpd-et-touche-pas-a-ma-constitution-reclament-une-transition-politique/"
+        },
+        {
+          "argument": "Le gouvernement devrait engager un processus de restauration de la légalité constitutionnelle dans un dialogue respectueux des décisions de justice communautaires.",
+          "porte_par": "Alliance nationale pour le changement (ANC)",
+          "source_url": "https://www.newafrique.net/articles/qUBVT4aCJ4CaiptWDbu6"
+        },
+        {
+          "argument": "La Ve République reste un coup de force tant qu'un consensus national n'est pas librement consenti ; une grande concertation nationale pour la refondation de la République est nécessaire.",
+          "porte_par": "Antoine Folly, délégué général de l'UDS-Togo",
+          "source_url": "https://icilome.com/2026/07/togo-apres-larret-de-la-cedeao-luds-togo-appelle-au-dialogue/"
+        },
+        {
+          "argument": "Le gouvernement doit reconnaître formellement les manquements constatés par la Cour et ouvrir des assises nationales de concertation.",
+          "porte_par": "Mouvement togolais pour la restauration (MTR)",
+          "source_url": "https://www.matinlibre.tg/reforme-constitutionnelle-au-togo-le-mtr-pose-trois-exigences-au-pouvoir-apres-la-decision-de-la-cedeao/"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "La Cour n'a aucune compétence de contrôle de constitutionnalité du droit interne ni titre à juger un pouvoir constituant national.",
+          "porte_par": "Gouvernement togolais (déclaration à l'agence Savoir News)",
+          "source_url": "https://www.afrikdepeche.tg/constitution-lome-fustige-larret-de-la-cedeao/"
+        },
+        {
+          "argument": "Aucune disposition de l'arrêt ne rend caduques les réformes engagées et aucune sanction automatique n'est prévue.",
+          "porte_par": "Kanka-Malik Natchaba, délégué national du Mouvement des jeunes d'UNIR",
+          "source_url": "https://lenouveaureporter.com/togo-arret-de-la-cour-de-justice-de-la-cedeao-unir-ecarte-toute-remise-en-cause-de-la-constitution/"
+        },
+        {
+          "argument": "La Cour n'a ni annulé la Constitution du 6 mai 2024 ni ordonné de transition.",
+          "porte_par": "Me Bertin K. Amegah-Atsyon, coordonnateur d'un réseau panafricain d'organisations de défense des droits de l'homme",
+          "source_url": "https://www.septentrional.tg/2026/09/04/des-osc-du-togo-denoncent-une-manoeuvre-de-diversion-de-lopposition-autour-de-larret-de-la-cour-de-justice-de-la-cedeao/"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "UNIR",
+          "sens": "contre",
+          "citation": "aucune disposition de l'arrêt ne rend caduques les réformes engagées",
+          "auteur": "Kanka-Malik Natchaba, délégué national du Mouvement des jeunes d'UNIR",
+          "date": "2026-09-01",
+          "source_url": "https://lenouveaureporter.com/togo-arret-de-la-cour-de-justice-de-la-cedeao-unir-ecarte-toute-remise-en-cause-de-la-constitution/"
+        },
+        {
+          "sigle": "ANC",
+          "sens": "pour",
+          "citation": "un véritable processus de restauration de la légalité constitutionnelle",
+          "auteur": "Alliance nationale pour le changement (déclaration)",
+          "date": "2026-06-30",
+          "source_url": "https://www.newafrique.net/articles/qUBVT4aCJ4CaiptWDbu6"
+        },
+        {
+          "sigle": "DMP",
+          "sens": "pour",
+          "citation": "l'arrêt de la Cour de Justice de la CEDEAO confirme le caractère inconstitutionnel du changement de Constitution",
+          "auteur": "Sambiri Targone, DMP (déclaration commune)",
+          "date": "2026-07-02",
+          "source_url": "https://icilome.com/2026/07/togo-la-dmk-la-dmp-la-lpd-et-touche-pas-a-ma-constitution-reclament-une-transition-politique/"
+        },
+        {
+          "sigle": "DMK",
+          "sens": "pour",
+          "citation": "l'arrêt de la Cour de Justice de la CEDEAO confirme le caractère inconstitutionnel du changement de Constitution",
+          "auteur": "Thomas Kokou Nsoukpoe, DMK (déclaration commune)",
+          "date": "2026-07-02",
+          "source_url": "https://icilome.com/2026/07/togo-la-dmk-la-dmp-la-lpd-et-touche-pas-a-ma-constitution-reclament-une-transition-politique/"
+        },
+        {
+          "sigle": "LDP",
+          "sens": "pour",
+          "citation": "l'arrêt de la Cour de Justice de la CEDEAO confirme le caractère inconstitutionnel du changement de Constitution",
+          "auteur": "Tchagnaou Ouro-Akpo, LDP (déclaration commune)",
+          "date": "2026-07-02",
+          "source_url": "https://icilome.com/2026/07/togo-la-dmk-la-dmp-la-lpd-et-touche-pas-a-ma-constitution-reclament-une-transition-politique/"
+        },
+        {
+          "sigle": "UDS-Togo",
+          "sens": "pour",
+          "citation": "une grande Concertation Nationale pour la Refondation de la République",
+          "auteur": "Antoine Folly, délégué général de l'UDS-Togo",
+          "date": "2026-07-01",
+          "source_url": "https://icilome.com/2026/07/togo-apres-larret-de-la-cedeao-luds-togo-appelle-au-dialogue/"
+        },
+        {
+          "sigle": "MTR",
+          "sens": "pour",
+          "citation": "initier une relecture concertée de la loi constitutionnelle n° 2024-005",
+          "auteur": "Mouvement togolais pour la restauration (président : Kossi Wonouvo Gnagnon)",
+          "date": "2026-09-10",
+          "source_url": "https://www.matinlibre.tg/reforme-constitutionnelle-au-togo-le-mtr-pose-trois-exigences-au-pouvoir-apres-la-decision-de-la-cedeao/"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Togo : La Cour de Justice de la CEDEAO déclare inconstitutionnelle « la Réforme constitutionnelle de mars 2024 »",
+          "media": "KOACI",
+          "date": "2026-06-23",
+          "url": "https://www.koaci.com/article/2026/06/23/togo/justice/togo-la-cour-de-justice-de-la-cedeao-declare-inconstitutionnelle-la-reforme-constitutionnelle-de-mars-2024_197892.html"
+        },
+        {
+          "titre": "Togo - Après l'arrêt de la CEDEAO, l'UDS-TOGO appelle au dialogue",
+          "media": "Icilome",
+          "date": "2026-07-01",
+          "url": "https://icilome.com/2026/07/togo-apres-larret-de-la-cedeao-luds-togo-appelle-au-dialogue/"
+        },
+        {
+          "titre": "Constitution : Lomé fustige l'arrêt de la Cedeao",
+          "media": "Afrikdepeche",
+          "date": "2026-07-31",
+          "url": "https://www.afrikdepeche.tg/constitution-lome-fustige-larret-de-la-cedeao/"
+        },
+        {
+          "titre": "Togo / Arrêt de la Cour de justice de la Cédéao: Unir écarte toute remise en cause de la Constitution",
+          "media": "Le Nouveau Reporter",
+          "date": "2026-09-01",
+          "url": "https://lenouveaureporter.com/togo-arret-de-la-cour-de-justice-de-la-cedeao-unir-ecarte-toute-remise-en-cause-de-la-constitution/"
+        },
+        {
+          "titre": "Des OSC du Togo dénoncent une « manœuvre de diversion » de l'opposition autour de l'arrêt de la Cour de justice de la CEDEAO",
+          "media": "Septentrional",
+          "date": "2026-09-04",
+          "url": "https://www.septentrional.tg/2026/09/04/des-osc-du-togo-denoncent-une-manoeuvre-de-diversion-de-lopposition-autour-de-larret-de-la-cour-de-justice-de-la-cedeao/"
+        },
+        {
+          "titre": "Réforme constitutionnelle au Togo : le MTR pose trois exigences au pouvoir après la décision de la CEDEAO",
+          "media": "Matin Libre",
+          "date": "2026-09-10",
+          "url": "https://www.matinlibre.tg/reforme-constitutionnelle-au-togo-le-mtr-pose-trois-exigences-au-pouvoir-apres-la-decision-de-la-cedeao/"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": true
+    },
+    {
+      "id": "justice-detenus-politiques",
+      "theme": "justice",
+      "question": "Les personnes que l'opposition qualifie de « détenus politiques » doivent-elles être libérées ?",
+      "contexte": "Fin décembre 2025, une grâce présidentielle a été accordée à 1 511 détenus, mesure saluée par Amnesty International. Le 5 janvier 2026, la DMK, la DMP, la LDP et le front « Touche pas à ma Constitution » ont affirmé que près de 70 détenus politiques restaient incarcérés ; le gouvernement affirme qu'il n'y a pas de détenus politiques au Togo. Début mai 2026, 13 détenus dont la mise en liberté provisoire avait été ordonnée le 18 février 2026 par la chambre d'instruction de la cour d'appel de Lomé étaient toujours en prison selon 27avril.com.",
+      "periode": "2025-12 à 2026-08",
+      "arguments_pour": [
+        {
+          "argument": "Près de 70 détenus politiques attendent d'être libérés après la grâce de décembre 2025.",
+          "porte_par": "DMK, DMP, LDP et « Touche pas à ma Constitution » (déclaration du 5 janvier 2026)",
+          "source_url": "https://www.koaci.com/article/2026/01/07/togo/politique/togo-lopposition-reclame-70-detenus-politiques-apres-la-liberation-de-1511-prisonniers_193424.html"
+        },
+        {
+          "argument": "Le maintien en détention de 13 personnes dont la libération provisoire a été ordonnée par la justice est dénoncé.",
+          "porte_par": "Kao Atcholi, président de l'Association des victimes de la torture au Togo (ASVITTO)",
+          "source_url": "https://www.27avril.com/blog/actualites/politiques/togo-liberes-depuis-plus-de-deux-mois-mais-toujours-en-prison-13-detenus-politiques-menacent-dentamer-une-greve-de-la-faim"
+        },
+        {
+          "argument": "Des personnes, dont le rappeur Aamron et l'ancienne ministre Marguerite Gnakadè, sont détenues pour avoir exprimé leur désaccord.",
+          "porte_par": "Amnesty International (rapport annuel 2026)",
+          "source_url": "https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Il n'y a pas de détenus politiques au Togo.",
+          "porte_par": "Gouvernement togolais (position constante rapportée par KOACI)",
+          "source_url": "https://www.koaci.com/article/2026/01/07/togo/politique/togo-lopposition-reclame-70-detenus-politiques-apres-la-liberation-de-1511-prisonniers_193424.html"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "DMP",
+          "sens": "pour",
+          "citation": "Près de 70 détenus politiques attendent impatiemment d'être libérés.",
+          "auteur": "DMP (déclaration commune)",
+          "date": "2026-01-05",
+          "source_url": "https://www.koaci.com/article/2026/01/07/togo/politique/togo-lopposition-reclame-70-detenus-politiques-apres-la-liberation-de-1511-prisonniers_193424.html"
+        },
+        {
+          "sigle": "DMK",
+          "sens": "pour",
+          "citation": "Près de 70 détenus politiques attendent impatiemment d'être libérés.",
+          "auteur": "DMK (déclaration commune)",
+          "date": "2026-01-05",
+          "source_url": "https://www.koaci.com/article/2026/01/07/togo/politique/togo-lopposition-reclame-70-detenus-politiques-apres-la-liberation-de-1511-prisonniers_193424.html"
+        },
+        {
+          "sigle": "LDP",
+          "sens": "pour",
+          "citation": "Près de 70 détenus politiques attendent impatiemment d'être libérés.",
+          "auteur": "LDP (déclaration commune)",
+          "date": "2026-01-05",
+          "source_url": "https://www.koaci.com/article/2026/01/07/togo/politique/togo-lopposition-reclame-70-detenus-politiques-apres-la-liberation-de-1511-prisonniers_193424.html"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Togo: Amnesty applaudit la libération de 1511 détenus",
+          "media": "Togonews via AllAfrica",
+          "date": "2026-01-02",
+          "url": "https://fr.allafrica.com/stories/202601020164.html"
+        },
+        {
+          "titre": "Togo : L'opposition réclame « 70 détenus politiques » après la libération de 1511 prisonniers",
+          "media": "KOACI",
+          "date": "2026-01-07",
+          "url": "https://www.koaci.com/article/2026/01/07/togo/politique/togo-lopposition-reclame-70-detenus-politiques-apres-la-liberation-de-1511-prisonniers_193424.html"
+        },
+        {
+          "titre": "Togo - Rapport annuel 2026",
+          "media": "Amnesty International Belgique",
+          "date": "2026-04-21",
+          "url": "https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026"
+        },
+        {
+          "titre": "Togo: Libérés depuis plus de deux mois, mais toujours en prison, 13 détenus politiques menacent d'entamer une grève de la faim",
+          "media": "27avril.com",
+          "date": "2026-05-04",
+          "url": "https://www.27avril.com/blog/actualites/politiques/togo-liberes-depuis-plus-de-deux-mois-mais-toujours-en-prison-13-detenus-politiques-menacent-dentamer-une-greve-de-la-faim"
+        },
+        {
+          "titre": "Togo : Marguerite Gnakadé en grève de la faim derrière les barreaux",
+          "media": "Journal du Togo",
+          "date": "2026-08-04",
+          "url": "https://www.journaldutogo.com/togo-marguerite-gnakade-greve-faim-detenus-politiques/"
+        }
+      ],
+      "sensibilite": "Oui : arrestation de l'ancienne ministre des Armées Marguerite Gnakadè (17 septembre 2025) et du rappeur Aamron (septembre 2025), poursuivis notamment pour incitation à la révolte (KOACI, 22 septembre 2025) ; grève de la faim en détention signalée en août 2026. Sources : https://www.koaci.com/article/2025/09/22/afrique/societe/togo-le-procureur-se-prononce-sur-les-arrestations-de-gnakade-et-daamron_190383.html ; https://www.journaldutogo.com/togo-marguerite-gnakade-greve-faim-detenus-politiques/",
+      "encore_ouvert": true
+    },
+    {
+      "id": "justice-poursuites-critiques",
+      "theme": "justice",
+      "question": "Des critiques publiques visant les dirigeants ou l'armée peuvent-elles justifier des poursuites pénales pour « incitation à la révolte » ou « fausses nouvelles » ?",
+      "contexte": "L'ancienne ministre des Armées Marguerite Gnakadè a été arrêtée à Lomé le 17 septembre 2025 et placée sous mandat de dépôt ; le procureur de la République Mawama Talaka lui reproche notamment l'incitation à la révolte contre l'autorité de l'État et la publication de fausses nouvelles de nature à ébranler le moral des armées. Le rappeur Aamron (Tchala Essowè Narcisse), déjà interné en hôpital psychiatrique en 2025, a été placé sous contrôle judiciaire le 19 septembre 2025. Marguerite Gnakadè a entamé une grève de la faim en détention fin juillet 2026.",
+      "periode": "2025-09 à 2026-08",
+      "arguments_pour": [
+        {
+          "argument": "Les faits reprochés relèvent de l'incitation à la révolte, de la diffusion de fausses nouvelles et du trouble aggravé à l'ordre public ; des contacts réguliers entre les deux personnes laisseraient entrevoir une activité subversive.",
+          "porte_par": "Mawama Talaka, procureur de la République",
+          "source_url": "https://www.koaci.com/article/2025/09/22/afrique/societe/togo-le-procureur-se-prononce-sur-les-arrestations-de-gnakade-et-daamron_190383.html"
+        },
+        {
+          "argument": "Aucun appel à la désobéissance ne sera toléré et les contrevenants s'exposent à des poursuites pénales.",
+          "porte_par": "Ministère de l'Administration territoriale (communiqué de juin 2025)",
+          "source_url": "https://www.newafrique.net/articles/2dKzBikD03NTHHdU3BbI"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Il s'agit de procès politiques ; les deux personnes et l'ensemble des détenus politiques doivent être libérés.",
+          "porte_par": "Partis politiques et organisations de la société civile (rapporté par KOACI)",
+          "source_url": "https://www.koaci.com/article/2025/09/22/afrique/societe/togo-le-procureur-se-prononce-sur-les-arrestations-de-gnakade-et-daamron_190383.html"
+        },
+        {
+          "argument": "Aamron et Marguerite Gnakadè figurent parmi les personnes détenues pour avoir exprimé leur désaccord ou critiqué la gouvernance.",
+          "porte_par": "Amnesty International (rapport annuel 2026)",
+          "source_url": "https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Togo : Le Procureur se prononce sur les arrestations de Gnakade et d'Aamron",
+          "media": "KOACI",
+          "date": "2025-09-22",
+          "url": "https://www.koaci.com/article/2025/09/22/afrique/societe/togo-le-procureur-se-prononce-sur-les-arrestations-de-gnakade-et-daamron_190383.html"
+        },
+        {
+          "titre": "Togo - Rapport annuel 2026",
+          "media": "Amnesty International Belgique",
+          "date": "2026-04-21",
+          "url": "https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026"
+        },
+        {
+          "titre": "Togo : Marguerite Gnakadé en grève de la faim derrière les barreaux",
+          "media": "Journal du Togo",
+          "date": "2026-08-04",
+          "url": "https://www.journaldutogo.com/togo-marguerite-gnakade-greve-faim-detenus-politiques/"
+        }
+      ],
+      "sensibilite": "Oui : arrestations et détention de personnalités critiques du pouvoir en 2025, détention toujours en cours en août 2026. Sources : https://www.koaci.com/article/2025/09/22/afrique/societe/togo-le-procureur-se-prononce-sur-les-arrestations-de-gnakade-et-daamron_190383.html ; https://www.journaldutogo.com/togo-marguerite-gnakade-greve-faim-detenus-politiques/",
+      "encore_ouvert": true
+    },
+    {
+      "id": "libertes-manifestations",
+      "theme": "libertes",
+      "question": "Les manifestations de rue doivent-elles être plus largement autorisées au Togo ?",
+      "contexte": "Les manifestations sont encadrées par la loi 2011-010, qui impose une déclaration écrite préalable, des horaires et interdit certains lieux. En juin 2025, des rassemblements à Lomé contre la vie chère, la hausse de l'électricité, des arrestations et la réforme constitutionnelle ont été réprimés ; des ONG font état d'au moins sept morts, et Amnesty International d'au moins 81 arrestations les 5 et 6 juin. En juillet 2026, plusieurs organisations d'opposition ont présenté la manifestation pacifique comme la voie à suivre.",
+      "periode": "2025-06 à 2026-07",
+      "arguments_pour": [
+        {
+          "argument": "Le Togo doit respecter ses engagements internationaux relatifs au droit et à la liberté de réunion et de manifestation et libérer les personnes arrêtées.",
+          "porte_par": "FIDH, LDH et Collectif des avocats pour la démocratie, l'état de droit et les droits de l'Homme",
+          "source_url": "https://www.fidh.org/fr/regions/afrique/togo/togo-pour-que-cesse-enfin-la-repression-sanglante-des-manifestant-es"
+        },
+        {
+          "argument": "Les forces de sécurité ont fait un usage excessif de la force contre des manifestants et des passants en juin 2025.",
+          "porte_par": "Amnesty International (rapport annuel 2026)",
+          "source_url": "https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026"
+        },
+        {
+          "argument": "La manifestation publique pacifique est présentée comme la seule voie pour mettre fin à la situation politique actuelle.",
+          "porte_par": "DMK, DMP, LDP et « Touche pas à ma Constitution » (déclaration)",
+          "source_url": "https://icilome.com/2026/07/togo-la-dmk-la-dmp-la-lpd-et-touche-pas-a-ma-constitution-reclament-une-transition-politique/"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Les manifestations doivent respecter les exigences légales pour préserver l'ordre public et la sécurité des personnes et des biens ; aucun appel à la désobéissance ne sera toléré.",
+          "porte_par": "Ministère de l'Administration territoriale",
+          "source_url": "https://www.newafrique.net/articles/2dKzBikD03NTHHdU3BbI"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Togo - Manifestations des 26-28 juin : le gouvernement insiste sur le respect des lois",
+          "media": "New Afrique",
+          "date": "2025-06-20",
+          "url": "https://www.newafrique.net/articles/2dKzBikD03NTHHdU3BbI"
+        },
+        {
+          "titre": "Togo : pour que cesse enfin la répression sanglante des manifestant·es",
+          "media": "FIDH",
+          "date": "2025-07-10",
+          "url": "https://www.fidh.org/fr/regions/afrique/togo/togo-pour-que-cesse-enfin-la-repression-sanglante-des-manifestant-es"
+        },
+        {
+          "titre": "Togo - Rapport annuel 2026",
+          "media": "Amnesty International Belgique",
+          "date": "2026-04-21",
+          "url": "https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026"
+        },
+        {
+          "titre": "Togo - La DMK, la DMP, la LPD et Touche pas à ma Constitution réclament une transition politique",
+          "media": "Icilome",
+          "date": "2026-07-02",
+          "url": "https://icilome.com/2026/07/togo-la-dmk-la-dmp-la-lpd-et-touche-pas-a-ma-constitution-reclament-une-transition-politique/"
+        }
+      ],
+      "sensibilite": "Oui : répression des manifestations de juin 2025 (au moins 7 morts selon des ONG, au moins 81 arrestations les 5 et 6 juin selon Amnesty). Sources : https://www.fidh.org/fr/regions/afrique/togo/togo-pour-que-cesse-enfin-la-repression-sanglante-des-manifestant-es ; https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026",
+      "encore_ouvert": true
+    },
+    {
+      "id": "libertes-medias-internationaux",
+      "theme": "libertes",
+      "question": "La Haute autorité de l'audiovisuel et de la communication (HAAC) doit-elle pouvoir suspendre la diffusion de médias internationaux comme RFI et France 24 ?",
+      "contexte": "Le 16 juin 2025, la HAAC a suspendu pour trois mois RFI et France 24, leur reprochant des manquements répétés à l'impartialité, à la rigueur et à la vérification des faits, sans citer d'exemples précis. Selon Amnesty International, les deux médias étaient toujours suspendus à la fin de 2025. Le 6 juin 2025, une correspondante de TV5 Monde avait été brièvement interpellée et contrainte d'effacer des vidéos de manifestations, selon le CPJ.",
+      "periode": "2025-06 à 2026-04",
+      "arguments_pour": [
+        {
+          "argument": "Les deux médias ont diffusé des contenus inexacts et biaisés portant atteinte à la stabilité des institutions républicaines et à l'image du pays.",
+          "porte_par": "Haute autorité de l'audiovisuel et de la communication (HAAC)",
+          "source_url": "https://mfwa.org/country-highlights/togo-rfi-et-france-24-suspendues-pendant-trois-mois/"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "La suspension est une forme de censure qui prive les citoyens togolais d'un accès à une information internationale indépendante.",
+          "porte_par": "Media Foundation for West Africa (MFWA)",
+          "source_url": "https://mfwa.org/country-highlights/togo-rfi-et-france-24-suspendues-pendant-trois-mois/"
+        },
+        {
+          "argument": "Le Togo suit une tendance ouest-africaine de censure de RFI et France 24 qui prive les citoyens de sources d'information importantes ; les deux médias doivent pouvoir reprendre leur diffusion.",
+          "porte_par": "Committee to Protect Journalists (CPJ)",
+          "source_url": "https://cpj.org/2025/06/france-24-and-rfi-broadcasters-suspended-in-togo-for-3-months/"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "France 24 and RFI broadcasters suspended in Togo for 3 months",
+          "media": "Committee to Protect Journalists",
+          "date": "2025-06-16",
+          "url": "https://cpj.org/2025/06/france-24-and-rfi-broadcasters-suspended-in-togo-for-3-months/"
+        },
+        {
+          "titre": "Togo : RFI et France 24 suspendues pendant trois mois",
+          "media": "Media Foundation for West Africa",
+          "date": "2025-06-16",
+          "url": "https://mfwa.org/country-highlights/togo-rfi-et-france-24-suspendues-pendant-trois-mois/"
+        },
+        {
+          "titre": "Togo - Rapport annuel 2026",
+          "media": "Amnesty International Belgique",
+          "date": "2026-04-21",
+          "url": "https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026"
+        }
+      ],
+      "sensibilite": "Oui : suspension de deux médias internationaux et interpellation d'une journaliste en juin 2025. Sources : https://cpj.org/2025/06/france-24-and-rfi-broadcasters-suspended-in-togo-for-3-months/ ; https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026",
+      "encore_ouvert": true
+    },
+    {
+      "id": "libertes-internet-reseaux-sociaux",
+      "theme": "libertes",
+      "question": "Les autorités doivent-elles pouvoir restreindre l'accès aux réseaux sociaux en période de tensions ?",
+      "contexte": "À partir du 26 juin 2025, pendant des manifestations, l'accès à plusieurs plateformes (dont Facebook, TikTok, Telegram et YouTube) a été restreint selon NetBlocks et des associations de consommateurs ; selon Amnesty International, l'accès à Internet a été perturbé de juin à septembre 2025. Le gouvernement et les opérateurs n'ont pas commenté ces restrictions auprès de l'AFP, mais le ministre de la Sécurité a défendu en juillet 2025 une régulation des réseaux sociaux. En 2020, la Cour de justice de la CEDEAO avait condamné le Togo pour des coupures d'Internet en 2017.",
+      "periode": "2025-06 à 2025-07",
+      "arguments_pour": [
+        {
+          "argument": "Le Togo n'est pas le premier pays à réguler les réseaux sociaux ; il le fait de manière responsable, avec l'obligation de protéger les jeunes, très présents lors des événements récents.",
+          "porte_par": "Calixte Madjoulba, ministre de la Sécurité",
+          "source_url": "https://lenouveaureporter.com/internet-au-togo-nous-ne-sommes-pas-le-premier-pays-du-monde-a-reguler-les-reseaux-sociaux-et-cest-en-toute-responsabilite-que-nous-le-faisons-calixte-madjoulba/"
+        },
+        {
+          "argument": "Des vidéos truquées et des images générées par intelligence artificielle circulant sur les réseaux sociaux menacent la cohésion sociale et la stabilité.",
+          "porte_par": "Gouvernement togolais (conférence de presse du 9 juillet 2025)",
+          "source_url": "https://www.togofirst.com/fr/securite/1007-16736-togo-le-gouvernement-appelle-a-la-vigilance-face-aux-manipulations-numeriques"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Les restrictions d'accès à Internet et aux réseaux sociaux constituent une entrave grave à la liberté d'expression.",
+          "porte_par": "Emmanuel Sogadji, président de la Ligue des consommateurs du Togo (LCT)",
+          "source_url": "https://www.africaradio.com/actualite-110227-togo-des-associations-denoncent-une-censure-d-internet-apres-les-manifestations-de-juin"
+        },
+        {
+          "argument": "Les coupures volontaires d'Internet violent la liberté d'expression et empêchent de documenter les violations des droits humains.",
+          "porte_par": "Amnesty International Togo et Bonaventure Mawuvi N'Coué (IM2DH), cités par Global Voices",
+          "source_url": "https://fr.globalvoices.org/2025/07/04/296353/"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Au Togo, restriction de l'internet durant les manifestations des 26, 27, et 28 juin",
+          "media": "Global Voices",
+          "date": "2025-07-04",
+          "url": "https://fr.globalvoices.org/2025/07/04/296353/"
+        },
+        {
+          "titre": "Togo : des associations dénoncent une censure d'internet après les manifestations de juin",
+          "media": "Africa Radio (AFP)",
+          "date": "2025-07-06",
+          "url": "https://www.africaradio.com/actualite-110227-togo-des-associations-denoncent-une-censure-d-internet-apres-les-manifestations-de-juin"
+        },
+        {
+          "titre": "Togo : le gouvernement appelle à la vigilance face aux manipulations numériques",
+          "media": "Togo First",
+          "date": "2025-07-10",
+          "url": "https://www.togofirst.com/fr/securite/1007-16736-togo-le-gouvernement-appelle-a-la-vigilance-face-aux-manipulations-numeriques"
+        },
+        {
+          "titre": "Internet au Togo : « Nous ne sommes pas le premier pays du monde à réguler les réseaux sociaux… », Calixte Madjoulba",
+          "media": "Le Nouveau Reporter",
+          "date": "2025-07-16",
+          "url": "https://lenouveaureporter.com/internet-au-togo-nous-ne-sommes-pas-le-premier-pays-du-monde-a-reguler-les-reseaux-sociaux-et-cest-en-toute-responsabilite-que-nous-le-faisons-calixte-madjoulba/"
+        }
+      ],
+      "sensibilite": "Oui : restrictions d'accès aux réseaux sociaux de juin à septembre 2025. Sources : https://www.africaradio.com/actualite-110227-togo-des-associations-denoncent-une-censure-d-internet-apres-les-manifestations-de-juin ; https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026",
+      "encore_ouvert": true
+    },
+    {
+      "id": "securite-etat-urgence-savanes",
+      "theme": "securite",
+      "question": "L'état d'urgence sécuritaire dans la région des Savanes doit-il continuer à être prorogé ?",
+      "contexte": "La région des Savanes, frontalière du Burkina Faso, est touchée par des attaques de groupes armés depuis novembre 2021. Le 27 février 2026, l'Assemblée nationale a prorogé de douze mois, à compter du 13 mars 2026, l'état d'urgence sécuritaire dans cette région ; il s'agit de la cinquième reconduction. Amnesty International fait état d'environ 60 morts dans des attaques entre janvier et août 2025.",
+      "periode": "2026-02 à 2026-03",
+      "arguments_pour": [
+        {
+          "argument": "La prorogation est une réponse adaptée à une menace évolutive et permet de renforcer les capacités de défense.",
+          "porte_par": "Gouvernement togolais (rapporté par Journal du Togo)",
+          "source_url": "https://www.journaldutogo.com/togo-prorogation-etat-urgence-savanes-debat-assemblee-2026/"
+        },
+        {
+          "argument": "La persistance de la menace dans le nord du pays justifie la reconduction.",
+          "porte_par": "Assemblée nationale (rapporté par Septentrional)",
+          "source_url": "https://www.septentrional.tg/2026/03/01/lassemblee-nationale-proroge-letat-durgence-securitaire-pour-12-mois-dans-les-savanes/"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Il faut vérifier que l'état d'urgence respecte les droits et libertés fondamentaux et que les moyens mobilisés produisent des résultats ; aucun représentant du gouvernement n'est venu répondre aux questions des députés en commission.",
+          "porte_par": "Kafui Adjamagbo-Johnson, députée DMP",
+          "source_url": "https://www.journaldutogo.com/togo-prorogation-etat-urgence-savanes-debat-assemblee-2026/"
+        },
+        {
+          "argument": "Le régime d'exception risque de devenir quasi permanent ; contrôles, restrictions de circulation et interdictions de rassemblement pèsent sur des activités agricoles et commerciales déjà fragiles.",
+          "porte_par": "François Bangane (L'Alternative, repris par 27avril.com)",
+          "source_url": "https://www.27avril.com/blog/culture-societe/societe/togo-limpact-de-la-prorogation-de-letat-durgence-dans-les-savanes-sur-les-libertes-publiques-et-le-tissu-socio-economique"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Togo : débat tendu sur la prorogation de l'état d'urgence dans les Savanes",
+          "media": "Journal du Togo",
+          "date": "2026-02-25",
+          "url": "https://www.journaldutogo.com/togo-prorogation-etat-urgence-savanes-debat-assemblee-2026/"
+        },
+        {
+          "titre": "Togo: L'impact de la prorogation de l'état d'urgence dans les Savanes sur les libertés publiques et le tissu socio-économique",
+          "media": "27avril.com",
+          "date": "2026-02-27",
+          "url": "https://www.27avril.com/blog/culture-societe/societe/togo-limpact-de-la-prorogation-de-letat-durgence-dans-les-savanes-sur-les-libertes-publiques-et-le-tissu-socio-economique"
+        },
+        {
+          "titre": "L'assemblée nationale proroge l'état d'urgence sécuritaire pour 12 mois dans les Savanes",
+          "media": "Septentrional",
+          "date": "2026-03-01",
+          "url": "https://www.septentrional.tg/2026/03/01/lassemblee-nationale-proroge-letat-durgence-securitaire-pour-12-mois-dans-les-savanes/"
+        },
+        {
+          "titre": "Togo - Rapport annuel 2026",
+          "media": "Amnesty International Belgique",
+          "date": "2026-04-21",
+          "url": "https://www.amnesty.be/infos/rapports-annuels/rapport-annuel-2025-2026/rapport-annuel-2026-afrique/article/togo-rapport-annuel-2026"
+        }
+      ],
+      "sensibilite": "Restrictions : contrôles renforcés, restrictions de circulation et interdictions ponctuelles de rassemblements dans la région des Savanes au titre de l'état d'urgence. Source : https://www.27avril.com/blog/culture-societe/societe/togo-limpact-de-la-prorogation-de-letat-durgence-dans-les-savanes-sur-les-libertes-publiques-et-le-tissu-socio-economique",
+      "encore_ouvert": true
+    },
+    {
+      "id": "securite-cooperation-militaire-russie",
+      "theme": "securite",
+      "question": "Le Togo doit-il renforcer sa coopération militaire avec la Russie ?",
+      "contexte": "Un accord-cadre de coopération militaire entre le Togo et la Russie, signé en 2025, prévoit des exercices conjoints, la formation de militaires togolais, l'échange de renseignements et une assistance médicale d'urgence. La Douma russe l'a ratifié le 7 octobre 2025. Ce rapprochement intervient dans un contexte d'attaques jihadistes dans la région des Savanes.",
+      "periode": "2025-07 à 2025-11",
+      "arguments_pour": [
+        {
+          "argument": "L'accord s'inscrit dans une stratégie de diversification des partenaires face à la recrudescence des attaques jihadistes dans le nord, tout en maintenant l'ancrage du Togo dans la CEDEAO.",
+          "porte_par": "Analyse de Togo First",
+          "source_url": "https://www.togofirst.com/fr/securite/2407-16819-russie-ca-se-precise-pour-la-ratification-d-un-accord-de-cooperation-militaire-avec-le-togo"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Les opérations de Wagner puis d'Africa Corps au Mali, au Burkina Faso et au Niger ont été marquées par une faible efficacité et de graves violations contre des civils ; l'accord pourrait servir davantage les objectifs géostratégiques russes dans le golfe de Guinée.",
+          "porte_par": "Fleur Kouadio, chroniqueuse (Connectionivoirienne)",
+          "source_url": "https://connectionivoirienne.net/2025/11/27/accord-militaire-togo-russie-cooperation-strategique-ou-pari-risque-pour-lome-chronique/"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Russie : ça se précise pour la ratification d'un accord de coopération militaire avec le Togo",
+          "media": "Togo First",
+          "date": "2025-07-24",
+          "url": "https://www.togofirst.com/fr/securite/2407-16819-russie-ca-se-precise-pour-la-ratification-d-un-accord-de-cooperation-militaire-avec-le-togo"
+        },
+        {
+          "titre": "Togo-Russie : Le Parlement russe ratifie l'accord de coopération militaire avec le Togo",
+          "media": "KOACI",
+          "date": "2025-10-10",
+          "url": "https://www.koaci.com/article/2025/10/10/afrique/politique/togo-russie-le-parlement-russe-ratifie-laccord-de-cooperation-militaire-avec-le-togo_190999.html"
+        },
+        {
+          "titre": "Accord militaire Togo–Russie: coopération stratégique ou pari risqué pour Lomé ? (Chronique)",
+          "media": "Connectionivoirienne",
+          "date": "2025-11-27",
+          "url": "https://connectionivoirienne.net/2025/11/27/accord-militaire-togo-russie-cooperation-strategique-ou-pari-risque-pour-lome-chronique/"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": true
+    },
+    {
+      "id": "regional-adhesion-aes",
+      "theme": "regional",
+      "question": "Le Togo doit-il rejoindre l'Alliance des États du Sahel (AES) ?",
+      "contexte": "L'AES regroupe le Mali, le Burkina Faso et le Niger, qui ont annoncé en janvier 2024 leur retrait de la CEDEAO. Le 16 janvier 2025, le ministre des Affaires étrangères Robert Dussey a déclaré qu'une adhésion du Togo n'était « pas impossible », la décision revenant au président de la République. Selon Togo First (mars 2024), plus de 90 % du trafic en transit du port de Lomé concerne les pays de l'AES.",
+      "periode": "2024-03 à 2025-02",
+      "arguments_pour": [
+        {
+          "argument": "Les populations togolaises seraient favorables à une entrée du Togo dans l'AES ; l'Afrique ne doit plus servir uniquement les grandes puissances.",
+          "porte_par": "Robert Dussey, ministre des Affaires étrangères",
+          "source_url": "https://www.voaafrique.com/a/le-togo-n-exclut-pas-de-rejoindre-l-alliance-des-etats-du-sahel/7939277.html"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Une adhésion exposerait le Togo aux restrictions occidentales visant les pays de l'AES, à un isolement au sein de la CEDEAO et à des conflits avec ses obligations envers l'UEMOA ; les avantages recherchés (sécurité, port, médiation) peuvent être obtenus sans adhésion.",
+          "porte_par": "Koffi Améssou Adaba, enseignant-chercheur en sociologie politique à l'Université de Lomé",
+          "source_url": "https://theconversation.com/adhesion-du-togo-a-lalliance-des-etats-du-sahel-un-pari-seme-dembuches-248560"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Burkina, Niger, Mali : plus de 90% du trafic en transit du port de Lomé dominé par les pays de l'AES",
+          "media": "Togo First",
+          "date": "2024-03-12",
+          "url": "https://www.togofirst.com/fr/logistique/1203-13635-burkina-niger-mali-plus-de-90-du-trafic-en-transit-du-port-de-lome-domine-par-les-pays-de-laes"
+        },
+        {
+          "titre": "Le Togo n'exclut pas de rejoindre l'Alliance des États du Sahel",
+          "media": "VOA Afrique",
+          "date": "2025-01-16",
+          "url": "https://www.voaafrique.com/a/le-togo-n-exclut-pas-de-rejoindre-l-alliance-des-etats-du-sahel/7939277.html"
+        },
+        {
+          "titre": "Adhésion du Togo à l'Alliance des Etats du Sahel: un pari semé d'embûches",
+          "media": "The Conversation",
+          "date": "2025-02-05",
+          "url": "https://theconversation.com/adhesion-du-togo-a-lalliance-des-etats-du-sahel-un-pari-seme-dembuches-248560"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": true
+    },
+    {
+      "id": "economie-prix-carburants",
+      "theme": "economie",
+      "question": "Les hausses des prix des carburants à la pompe décidées en 2026 étaient-elles nécessaires ?",
+      "contexte": "La loi de finances 2026 réduit l'enveloppe consacrée à la subvention des carburants d'environ 25 milliards FCFA (2025) à 14,2 milliards FCFA. Le litre de super sans plomb est passé de 680 à 725 FCFA le 27 mai 2026, puis à 817 FCFA le 11 septembre 2026. Le gouvernement invoque la hausse des cours du pétrole depuis fin février 2026 et le mécanisme d'ajustement automatique des prix.",
+      "periode": "2026-05 à 2026-09",
+      "arguments_pour": [
+        {
+          "argument": "Le baril de Brent est passé d'environ 70 à plus de 126 dollars avant de se stabiliser autour de 104 dollars ; avec une subvention réduite et un objectif de déficit limité à 3 % du PIB, l'État ne peut plus absorber la hausse.",
+          "porte_par": "Arrêté interministériel des ministres Badanam Patoki, Georges Essowè Barcola et Robert Koffi Messan Eklo (rapporté par Togo First)",
+          "source_url": "https://www.togofirst.com/fr/hydrocarbures/2605-19074-carburant-le-togo-ajuste-ses-prix-a-la-pompe-l-essence-monte-a-725-fcfa-le-litre"
+        },
+        {
+          "argument": "Les nouveaux prix résultent du mécanisme d'ajustement automatique qui tient compte de l'évolution des cours internationaux du pétrole.",
+          "porte_par": "Gouvernement togolais (rapporté par Afreepress)",
+          "source_url": "https://afreepress.net/togo-les-prix-des-carburants-repartent-a-la-hausse-le-super-a-817-fcfa/"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "La hausse est injustifiée : elle aurait été décidée avant le conflit au Moyen-Orient, alors que la vie chère écrase déjà les familles ; d'autres ressources pourraient être trouvées en luttant contre la corruption et la fuite des capitaux.",
+          "porte_par": "DMK, DMP, LDP et « Touche pas à ma Constitution » (déclaration du 25 mai 2026)",
+          "source_url": "https://icilome.com/2026/05/hausse-du-carburant-au-togo-lopposition-crie-a-la-manipulation-et-appelle-a-la-resistance/"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "DMP",
+          "sens": "contre",
+          "citation": "Non, les Togolais n'acceptent pas une augmentation injustifiée des prix du carburant",
+          "auteur": "Sambiri Targone, coordonnateur de la DMP (déclaration commune)",
+          "date": "2026-05-25",
+          "source_url": "https://icilome.com/2026/05/hausse-du-carburant-au-togo-lopposition-crie-a-la-manipulation-et-appelle-a-la-resistance/"
+        },
+        {
+          "sigle": "DMK",
+          "sens": "contre",
+          "citation": "Non, les Togolais n'acceptent pas une augmentation injustifiée des prix du carburant",
+          "auteur": "Thomas Kokou Nsoukpoe, superviseur général de la DMK-Originale (déclaration commune)",
+          "date": "2026-05-25",
+          "source_url": "https://icilome.com/2026/05/hausse-du-carburant-au-togo-lopposition-crie-a-la-manipulation-et-appelle-a-la-resistance/"
+        },
+        {
+          "sigle": "LDP",
+          "sens": "contre",
+          "citation": "Non, les Togolais n'acceptent pas une augmentation injustifiée des prix du carburant",
+          "auteur": "Tchagnaou Ouro-Akpo, président de la LDP (déclaration commune)",
+          "date": "2026-05-25",
+          "source_url": "https://icilome.com/2026/05/hausse-du-carburant-au-togo-lopposition-crie-a-la-manipulation-et-appelle-a-la-resistance/"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Hausse du carburant au Togo : l'opposition crie à la manipulation et appelle à la résistance",
+          "media": "Icilome",
+          "date": "2026-05-25",
+          "url": "https://icilome.com/2026/05/hausse-du-carburant-au-togo-lopposition-crie-a-la-manipulation-et-appelle-a-la-resistance/"
+        },
+        {
+          "titre": "Carburant : le Togo ajuste ses prix à la pompe, l'essence monte à 725 FCFA le litre",
+          "media": "Togo First",
+          "date": "2026-05-26",
+          "url": "https://www.togofirst.com/fr/hydrocarbures/2605-19074-carburant-le-togo-ajuste-ses-prix-a-la-pompe-l-essence-monte-a-725-fcfa-le-litre"
+        },
+        {
+          "titre": "Togo : les prix des carburants repartent à la hausse, le super sans plomb à 817 FCFA",
+          "media": "Afreepress",
+          "date": "2026-09-10",
+          "url": "https://afreepress.net/togo-les-prix-des-carburants-repartent-a-la-hausse-le-super-a-817-fcfa/"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": true
+    },
+    {
+      "id": "economie-programme-fmi-deficit",
+      "theme": "economie",
+      "question": "Le Togo doit-il ramener son déficit budgétaire à 3 % du PIB d'ici 2027, comme prévu dans son programme avec le FMI ?",
+      "contexte": "En mars 2024, le FMI a approuvé pour le Togo une facilité élargie de crédit d'environ 403 millions de dollars. En 2025, le déficit budgétaire est tombé à 3,2 % du PIB selon le FMI, et les autorités visent 3 % d'ici 2027. Le 29 juin 2026, le conseil d'administration du FMI a achevé les troisième et quatrième revues, jugeant appropriée une hausse temporaire du déficit en 2026 pour soutenir les populations vulnérables face au choc des prix des carburants.",
+      "periode": "2026-05 à 2026-06",
+      "arguments_pour": [
+        {
+          "argument": "L'assainissement des finances publiques reste indispensable pour préserver la viabilité de la dette ; il faut réduire les dépenses fiscales et élargir l'assiette de l'impôt sans délai.",
+          "porte_par": "Kenji Okamura, directeur général adjoint du FMI",
+          "source_url": "https://www.imf.org/fr/news/articles/2026/06/29/pr26230-togo-imf-completes-the-combined-3rd-and-4th-reviews-under-ecf-arrangement"
+        },
+        {
+          "argument": "L'objectif de déficit limité à 3 % du PIB ne permet plus à l'État d'absorber la hausse du coût des carburants par des subventions.",
+          "porte_par": "Arrêté interministériel sur les prix des carburants (rapporté par Togo First)",
+          "source_url": "https://www.togofirst.com/fr/hydrocarbures/2605-19074-carburant-le-togo-ajuste-ses-prix-a-la-pompe-l-essence-monte-a-725-fcfa-le-litre"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Plutôt que de faire peser l'effort sur les ménages, l'État pourrait dégager des ressources en luttant contre la corruption et en mettant fin à la fuite des capitaux.",
+          "porte_par": "DMK, DMP, LDP et « Touche pas à ma Constitution » (déclaration du 25 mai 2026)",
+          "source_url": "https://icilome.com/2026/05/hausse-du-carburant-au-togo-lopposition-crie-a-la-manipulation-et-appelle-a-la-resistance/"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Le FMI conclut un accord au niveau des services avec le Togo sur les troisième et quatrième revues conjointes au titre de la facilité élargie de crédit",
+          "media": "FMI",
+          "date": "2026-05-21",
+          "url": "https://www.imf.org/fr/news/articles/2026/05/21/pr26167-togo-imf-reaches-sla-with-togo-on-the-combined-3rd-and-4th-reviews-under-ecf-arrangement"
+        },
+        {
+          "titre": "Carburant : le Togo ajuste ses prix à la pompe, l'essence monte à 725 FCFA le litre",
+          "media": "Togo First",
+          "date": "2026-05-26",
+          "url": "https://www.togofirst.com/fr/hydrocarbures/2605-19074-carburant-le-togo-ajuste-ses-prix-a-la-pompe-l-essence-monte-a-725-fcfa-le-litre"
+        },
+        {
+          "titre": "Hausse du carburant au Togo : l'opposition crie à la manipulation et appelle à la résistance",
+          "media": "Icilome",
+          "date": "2026-05-25",
+          "url": "https://icilome.com/2026/05/hausse-du-carburant-au-togo-lopposition-crie-a-la-manipulation-et-appelle-a-la-resistance/"
+        },
+        {
+          "titre": "Le conseil d'administration du FMI achève les troisième et quatrième revues conjointes de l'accord au titre de la facilité élargie de crédit avec le Togo",
+          "media": "FMI",
+          "date": "2026-06-29",
+          "url": "https://www.imf.org/fr/news/articles/2026/06/29/pr26230-togo-imf-completes-the-combined-3rd-and-4th-reviews-under-ecf-arrangement"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": true
+    },
+    {
+      "id": "economie-zone-industrielle-adetikope",
+      "theme": "economie",
+      "question": "Le modèle de la Plateforme industrielle d'Adétikopé (PIA), zone industrielle en partenariat public-privé avec Arise IIP, doit-il être étendu ?",
+      "contexte": "La Plateforme industrielle d'Adétikopé, au nord de Lomé, a été lancée en 2021 dans le cadre d'un partenariat public-privé entre l'État togolais et Arise IIP. Selon son administrateur Idiola Sandah (juin 2026), elle compte 25 entreprises dont 12 opérationnelles, plus de 6 580 emplois directs et plus de 350 milliards FCFA d'investissements cumulés. En août 2024, L'Alternative rapportait des fermetures d'entrepôts et des baisses de salaires liées à la sous-traitance.",
+      "periode": "2024-08 à 2026-06",
+      "arguments_pour": [
+        {
+          "argument": "La PIA a créé plus de 6 580 emplois directs, dont 95 % pour des nationaux, et vise entre 15 000 et 20 000 emplois à l'horizon 2030.",
+          "porte_par": "Idiola Sandah, administrateur de la PIA",
+          "source_url": "https://www.republicoftogo.com/toutes-les-rubriques/eco-finance/une-ambition-decuplee-pour-la-decennie"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "D'anciens travailleurs font état de la fermeture de sept entrepôts de soja sur huit, de salaires réduits de moitié par le recours à des sous-traitants et d'écarts de rémunération avec des travailleurs étrangers ; la transformation locale promise ne serait pas au rendez-vous.",
+          "porte_par": "Anciens travailleurs de la PIA cités par L'Alternative",
+          "source_url": "https://lalternative.info/2024/08/03/togo-plateforme-industrielle-dadetikope-les-signaux-sont-au-rouge/"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Togo- Plateforme industrielle d'Adétikopé : les signaux sont au rouge",
+          "media": "L'Alternative",
+          "date": "2024-08-03",
+          "url": "https://lalternative.info/2024/08/03/togo-plateforme-industrielle-dadetikope-les-signaux-sont-au-rouge/"
+        },
+        {
+          "titre": "Une ambition décuplée pour la décennie",
+          "media": "République togolaise (republicoftogo.com)",
+          "date": "2026-06-11",
+          "url": "https://www.republicoftogo.com/toutes-les-rubriques/eco-finance/une-ambition-decuplee-pour-la-decennie"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": true
+    },
+    {
+      "id": "economie-port-lome-partenariat-russie",
+      "theme": "economie",
+      "question": "Le Togo doit-il développer des partenariats avec la Russie autour du port autonome de Lomé ?",
+      "contexte": "Le port autonome de Lomé est un débouché majeur pour les pays sahéliens enclavés : selon Togo First (mars 2024), plus de 90 % de son trafic en transit concerne le Burkina Faso, le Niger et le Mali. En avril 2026, le Togo et la Russie ont conclu un protocole d'entente visant à améliorer la circulation des marchandises et l'efficacité du transport via le port de Lomé.",
+      "periode": "2024-03 à 2026-04",
+      "arguments_pour": [
+        {
+          "argument": "Le protocole illustre la vitalité de la diplomatie togolaise et renforce le rôle de Lomé comme corridor vital pour les pays enclavés du Sahel.",
+          "porte_par": "Edem Kokou Tengue, ministre (rapporté par KOACI)",
+          "source_url": "https://www.koaci.com/article/2026/04/22/togo/societe/togo-port-de-lome-partenariat-strategique-avec-la-russie-percee-dune-strategie-de-moscou_196041.html"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Un accès russe au port de Lomé semble servir davantage les objectifs géostratégiques de la Russie dans le golfe de Guinée que les intérêts sécuritaires du Togo.",
+          "porte_par": "Fleur Kouadio, chroniqueuse (Connectionivoirienne)",
+          "source_url": "https://connectionivoirienne.net/2025/11/27/accord-militaire-togo-russie-cooperation-strategique-ou-pari-risque-pour-lome-chronique/"
+        },
+        {
+          "argument": "Des enquêtes journalistiques (Forbidden Stories, The Continent) ont documenté des campagnes d'influence russes visant le Togo en 2024.",
+          "porte_par": "Consortium de journalistes cité par KOACI",
+          "source_url": "https://www.koaci.com/article/2026/04/22/togo/societe/togo-port-de-lome-partenariat-strategique-avec-la-russie-percee-dune-strategie-de-moscou_196041.html"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Burkina, Niger, Mali : plus de 90% du trafic en transit du port de Lomé dominé par les pays de l'AES",
+          "media": "Togo First",
+          "date": "2024-03-12",
+          "url": "https://www.togofirst.com/fr/logistique/1203-13635-burkina-niger-mali-plus-de-90-du-trafic-en-transit-du-port-de-lome-domine-par-les-pays-de-laes"
+        },
+        {
+          "titre": "Accord militaire Togo–Russie: coopération stratégique ou pari risqué pour Lomé ? (Chronique)",
+          "media": "Connectionivoirienne",
+          "date": "2025-11-27",
+          "url": "https://connectionivoirienne.net/2025/11/27/accord-militaire-togo-russie-cooperation-strategique-ou-pari-risque-pour-lome-chronique/"
+        },
+        {
+          "titre": "Togo : Port de Lomé, partenariat stratégique avec la Russie, percée d'une stratégie de Moscou",
+          "media": "KOACI",
+          "date": "2026-04-22",
+          "url": "https://www.koaci.com/article/2026/04/22/togo/societe/togo-port-de-lome-partenariat-strategique-avec-la-russie-percee-dune-strategie-de-moscou_196041.html"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": true
+    },
+    {
+      "id": "energie-tarifs-electricite",
+      "theme": "energie",
+      "question": "La hausse des tarifs de l'électricité appliquée depuis mai 2025 était-elle nécessaire ?",
+      "contexte": "Un arrêté interministériel du 24 mars 2025 a relevé les tarifs de la Compagnie énergie électrique du Togo (CEET) d'environ 12,5 % en moyenne à partir du 15 mai 2025, en maintenant une tranche sociale. La hausse de l'électricité a figuré parmi les motifs des manifestations de juin 2025.",
+      "periode": "2025-05 à 2025-07",
+      "arguments_pour": [
+        {
+          "argument": "Le coût moyen de production a atteint 145 FCFA/kWh en 2024 alors que le tarif moyen appliqué restait gelé à 102 FCFA/kWh ; l'ajustement vise la viabilité financière de la CEET.",
+          "porte_par": "Ministère des Mines et des Ressources énergétiques",
+          "source_url": "https://www.togofirst.com/fr/energies/1505-16326-togo-les-prix-de-lelectricite-en-hausse-des-ce-mois-de-mai"
+        },
+        {
+          "argument": "Les consommateurs vulnérables restent protégés : les 30 premiers kWh demeurent à 60 FCFA/kWh pour les abonnés en post-paiement.",
+          "porte_par": "Gouvernement togolais (rapporté par KOACI)",
+          "source_url": "https://www.koaci.com/article/2025/05/15/afrique/societe/togo-reactions-multiformes-apres-la-hausse-de-125-des-frais-de-lelectricite-de-la-ceet_186877.html"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "La hausse a été décidée sans concertation préalable avec les acteurs concernés ; le gouvernement doit revoir la situation de manière urgente.",
+          "porte_par": "Ligue des consommateurs du Togo (LCT)",
+          "source_url": "https://www.koaci.com/article/2025/05/15/afrique/societe/togo-reactions-multiformes-apres-la-hausse-de-125-des-frais-de-lelectricite-de-la-ceet_186877.html"
+        },
+        {
+          "argument": "Les travailleurs font face à la vie chère et à une hausse de l'électricité sans négociation salariale.",
+          "porte_par": "Nadou Lawson-Oloukounle, coordinatrice générale de la Synergie des travailleurs du Togo (STT)",
+          "source_url": "https://www.koaci.com/article/2025/05/15/afrique/societe/togo-reactions-multiformes-apres-la-hausse-de-125-des-frais-de-lelectricite-de-la-ceet_186877.html"
+        },
+        {
+          "argument": "La hausse est brutale et socialement injuste.",
+          "porte_par": "DMP",
+          "source_url": "https://www.koaci.com/article/2025/05/15/afrique/societe/togo-reactions-multiformes-apres-la-hausse-de-125-des-frais-de-lelectricite-de-la-ceet_186877.html"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "DMP",
+          "sens": "contre",
+          "citation": "dit non à cette hausse brutale",
+          "auteur": "DMP (déclaration)",
+          "date": "2025-05-15",
+          "source_url": "https://www.koaci.com/article/2025/05/15/afrique/societe/togo-reactions-multiformes-apres-la-hausse-de-125-des-frais-de-lelectricite-de-la-ceet_186877.html"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Togo : les prix de l'électricité en hausse dès ce mois de mai",
+          "media": "Togo First",
+          "date": "2025-05-15",
+          "url": "https://www.togofirst.com/fr/energies/1505-16326-togo-les-prix-de-lelectricite-en-hausse-des-ce-mois-de-mai"
+        },
+        {
+          "titre": "Togo : Réactions multiformes après la hausse de 12,5 % des frais de l'électricité de la CEET",
+          "media": "KOACI",
+          "date": "2025-05-15",
+          "url": "https://www.koaci.com/article/2025/05/15/afrique/societe/togo-reactions-multiformes-apres-la-hausse-de-125-des-frais-de-lelectricite-de-la-ceet_186877.html"
+        },
+        {
+          "titre": "Togo : des associations dénoncent une censure d'internet après les manifestations de juin",
+          "media": "Africa Radio (AFP)",
+          "date": "2025-07-06",
+          "url": "https://www.africaradio.com/actualite-110227-togo-des-associations-denoncent-une-censure-d-internet-apres-les-manifestations-de-juin"
+        }
+      ],
+      "sensibilite": "Oui : la hausse de l'électricité figurait parmi les motifs des manifestations de juin 2025, qui ont fait au moins 7 morts et donné lieu à plus de 60 arrestations selon la société civile. Source : https://www.africaradio.com/actualite-110227-togo-des-associations-denoncent-une-censure-d-internet-apres-les-manifestations-de-juin",
+      "encore_ouvert": true
+    },
+    {
+      "id": "social-assurance-maladie-universelle",
+      "theme": "social",
+      "question": "L'assurance maladie universelle, financée par les cotisations des assurés, est-elle le bon moyen de garantir l'accès aux soins au Togo ?",
+      "contexte": "L'assurance maladie universelle (AMU) est entrée en vigueur le 1er janvier 2024, gérée par l'INAM et la CNSS. Depuis octobre 2025, elle est ouverte aux travailleurs indépendants et du secteur informel moyennant une cotisation de 10 000 FCFA par mois pour six bénéficiaires, avec un délai de carence de 90 jours. Selon une enquête Afrobaromètre publiée en septembre 2025, 11 % des Togolais déclarent bénéficier d'une couverture médicale.",
+      "periode": "2023-10 à 2025-10",
+      "arguments_pour": [
+        {
+          "argument": "L'AMU garantit un accès équitable aux soins de santé essentiels pour les différentes catégories de la population.",
+          "porte_par": "Gouvernement togolais (conseil des ministres, rapporté par Togo First)",
+          "source_url": "https://www.togofirst.com/fr/sante/0510-12657-assurance-maladie-universelle-panier-de-soins-taux-de-cotisation-lancement-au-1er-janvier-2024-au-togo-le-gouvernement-accelere"
+        },
+        {
+          "argument": "L'extension aux travailleurs non salariés est un impératif de justice sociale et un levier de développement durable.",
+          "porte_par": "Ingrid Awadé, directrice générale de la CNSS",
+          "source_url": "https://www.togofirst.com/fr/social/0810-17242-togo-l-assurance-maladie-universelle-s-elargit-aux-travailleurs-independants"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Le coût est le principal obstacle à l'adhésion à une assurance ; deux tiers des Togolais estiment que l'État doit garantir l'accès aux soins, y compris si cela implique des hausses d'impôts.",
+          "porte_par": "Afrobaromètre (enquête publiée le 22 septembre 2025)",
+          "source_url": "https://www.afrobarometer.org/publication/ad1050-la-majorite-des-togolais-sinquietent-de-lacces-aux-soins-de-sante/"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Assurance maladie universelle : panier de soins, taux de cotisation, lancement au 1er janvier 2024… au Togo, le gouvernement accélère",
+          "media": "Togo First",
+          "date": "2023-10-05",
+          "url": "https://www.togofirst.com/fr/sante/0510-12657-assurance-maladie-universelle-panier-de-soins-taux-de-cotisation-lancement-au-1er-janvier-2024-au-togo-le-gouvernement-accelere"
+        },
+        {
+          "titre": "AD1050 : La majorité des Togolais s'inquiètent de l'accès aux soins de santé",
+          "media": "Afrobaromètre",
+          "date": "2025-09-22",
+          "url": "https://www.afrobarometer.org/publication/ad1050-la-majorite-des-togolais-sinquietent-de-lacces-aux-soins-de-sante/"
+        },
+        {
+          "titre": "Togo : l'assurance maladie universelle s'élargit aux travailleurs indépendants",
+          "media": "Togo First",
+          "date": "2025-10-08",
+          "url": "https://www.togofirst.com/fr/social/0810-17242-togo-l-assurance-maladie-universelle-s-elargit-aux-travailleurs-independants"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": true
+    },
+    {
+      "id": "social-enseignants-licencies-set",
+      "theme": "social",
+      "question": "Les enseignants licenciés après les grèves du Syndicat des enseignants du Togo (SET) doivent-ils être réintégrés ?",
+      "contexte": "Après une grève du SET les 24 et 25 mars 2022 pour une indemnité de logement et l'intégration d'enseignants volontaires, le gouvernement a exclu 137 enseignants ; selon Amnesty International, les autorités avaient refusé d'enregistrer ce syndicat. Le 10 juillet 2024, la Cour de justice de la CEDEAO a condamné l'État togolais pour violation du droit au travail des requérants. En novembre 2024, le SET réclamait toujours la réintégration de 119 licenciés.",
+      "periode": "2022-03 à 2024-11",
+      "arguments_pour": [
+        {
+          "argument": "Les 119 enseignants licenciés doivent être réintégrés, conformément à la décision de la Cour de justice de la CEDEAO du 10 juillet 2024.",
+          "porte_par": "Syndicat des enseignants du Togo (SET), relayé par Amnesty International",
+          "source_url": "https://www.pressegauche.org/Togo-Refus-de-reconnaissance-du-Syndicat-des-enseignant-es-du-Togo-et"
+        },
+        {
+          "argument": "Les menaces et intimidations à l'endroit des enseignants ne feront qu'aggraver la situation.",
+          "porte_par": "Syndicat des enseignants du Togo (SET)",
+          "source_url": "https://www.koaci.com/article/2022/03/31/togo/societe/togo-education-137-enseignants-exclus-gouvernement-et-set-dos-a-dos_158866.html"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Les enseignants exclus ont eu des agissements et comportements répétitifs incompatibles avec les exigences de leur fonction.",
+          "porte_par": "Gilbert Bawara, ministre de la Fonction publique",
+          "source_url": "https://www.koaci.com/article/2022/03/31/togo/societe/togo-education-137-enseignants-exclus-gouvernement-et-set-dos-a-dos_158866.html"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Togo : Education, 137 enseignants exclus, gouvernement et SET dos à dos",
+          "media": "KOACI",
+          "date": "2022-03-31",
+          "url": "https://www.koaci.com/article/2022/03/31/togo/societe/togo-education-137-enseignants-exclus-gouvernement-et-set-dos-a-dos_158866.html"
+        },
+        {
+          "titre": "Togo. Refus de reconnaissance du Syndicat des enseignant·es du Togo et licenciement de grévistes",
+          "media": "Amnesty International (repris par Presse-toi à gauche)",
+          "date": "2024-11-26",
+          "url": "https://www.pressegauche.org/Togo-Refus-de-reconnaissance-du-Syndicat-des-enseignant-es-du-Togo-et"
+        }
+      ],
+      "sensibilite": "Oui : licenciements d'enseignants grévistes et arrestations de syndicalistes signalés en 2022 par le CIVICUS Monitor. Source : https://monitor.civicus.org/explore/teachers-strike-in-togo-over-100-teachers-dismissed-trade-unionists-arrested-5wz1/",
+      "encore_ouvert": true
+    },
+    {
+      "id": "decentralisation-ressources-communes",
+      "theme": "decentralisation",
+      "question": "L'État doit-il transférer davantage de compétences et de ressources aux communes, avec moins de tutelle préfectorale ?",
+      "contexte": "Le Togo compte 117 communes dont les conseils ont été renouvelés lors des municipales du 17 juillet 2025. Un bilan publié en novembre 2025 relève des transferts de compétences non accompagnés de ressources équivalentes et des tensions entre maires et préfets. Le gouvernement a mobilisé 35 milliards FCFA en 2026 pour les communes, conseils régionaux et gouvernorats.",
+      "periode": "2025-11 à 2026-02",
+      "arguments_pour": [
+        {
+          "argument": "Les transferts de compétences ne se sont pas toujours accompagnés d'un transfert équivalent de ressources, laissant des communes incapables d'entretenir leurs infrastructures sans appui extérieur.",
+          "porte_par": "Faîtière des communes du Togo (FCT)",
+          "source_url": "https://icilome.com/2025/11/decentralisation-au-togo-les-117-communes-passees-au-crible-les-difficultes-ou-couacs-dun-premier-mandat/"
+        },
+        {
+          "argument": "La tutelle préfectorale limite la marge de manœuvre des maires.",
+          "porte_par": "Des maires (cités par Icilome)",
+          "source_url": "https://icilome.com/2025/11/decentralisation-au-togo-les-117-communes-passees-au-crible-les-difficultes-ou-couacs-dun-premier-mandat/"
+        },
+        {
+          "argument": "Le financement doit permettre une gouvernance locale plus autonome, avec un transfert progressif des responsabilités de l'État vers les collectivités.",
+          "porte_par": "Ministère de l'Administration territoriale",
+          "source_url": "https://www.lacinquieme.tg/togo-pour-rendre-les-communes-et-regions-plus-autonomes-en-2026-35-milliards-fcfa-mobilises/"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "De nombreux élus locaux manquent d'expérience en administration publique, ce qui justifie l'accompagnement par la tutelle.",
+          "porte_par": "Des préfets (cités par Icilome)",
+          "source_url": "https://icilome.com/2025/11/decentralisation-au-togo-les-117-communes-passees-au-crible-les-difficultes-ou-couacs-dun-premier-mandat/"
+        },
+        {
+          "argument": "Des retards récurrents d'exécution budgétaire et une documentation insuffisante des marchés publics ont été constatés dans plusieurs communes.",
+          "porte_par": "Cour des comptes (citée par Icilome)",
+          "source_url": "https://icilome.com/2025/11/decentralisation-au-togo-les-117-communes-passees-au-crible-les-difficultes-ou-couacs-dun-premier-mandat/"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Décentralisation au Togo / Les 117 communes passées au crible : les difficultés ou couacs d'un premier mandat",
+          "media": "Icilome",
+          "date": "2025-11-25",
+          "url": "https://icilome.com/2025/11/decentralisation-au-togo-les-117-communes-passees-au-crible-les-difficultes-ou-couacs-dun-premier-mandat/"
+        },
+        {
+          "titre": "Togo : pour rendre les communes et régions plus autonomes en 2026, 35 milliards FCFA mobilisés",
+          "media": "La Cinquième",
+          "date": "2026-02-06",
+          "url": "https://www.lacinquieme.tg/togo-pour-rendre-les-communes-et-regions-plus-autonomes-en-2026-35-milliards-fcfa-mobilises/"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": true
+    },
+    {
+      "id": "foncier-littoral-grand-lome",
+      "theme": "foncier",
+      "question": "Les installations sur la plage du Grand Lomé doivent-elles être démolies pour libérer le domaine public maritime ?",
+      "contexte": "Depuis juin 2025, les autorités ont engagé des concertations avec les exploitants de bars et commerces installés sur le littoral du Grand Lomé, jugés en occupation irrégulière du domaine public. Après des échéances repoussées de février à mars puis juin 2026, un ultime délai de trois semaines a été accordé fin juillet 2026, les représentants des occupants ayant demandé un report au 4 janvier 2027. La phase de démolition des installations non retirées a été annoncée à partir du 1er septembre 2026.",
+      "periode": "2026-07 à 2026-09",
+      "arguments_pour": [
+        {
+          "argument": "Le domaine public constitue un patrimoine collectif qui ne peut être approprié en dehors des conditions légales.",
+          "porte_par": "Zouréhatou Kassah-Traoré, gouverneure du Grand Lomé",
+          "source_url": "https://afreepress.net/occupation-du-domaine-public-le-gouvernement-accorde-un-delai-de-trois-semaines-avant-les-deguerpissements-sur-le-littoral-du-grand-lome/"
+        },
+        {
+          "argument": "L'opération vise à restaurer le domaine public pour les générations actuelles et futures et à protéger l'environnement côtier.",
+          "porte_par": "Kossivi Agbodan, préfet",
+          "source_url": "https://afreepress.net/occupation-du-domaine-public-le-gouvernement-accorde-un-delai-de-trois-semaines-avant-les-deguerpissements-sur-le-littoral-du-grand-lome/"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Les établissements de plage ont créé des centaines d'emplois (744 dans la seule commune Golfe 1 depuis 2022) et contribuaient à la propreté et à la sécurité ; l'aménagement devrait se faire progressivement avec les occupants actuels, faute de projet de remplacement connu.",
+          "porte_par": "Honoré Adontui (Le Correcteur, repris par Icilome)",
+          "source_url": "https://icilome.com/2026/09/mechancete-gratuite-a-la-plage/"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Occupation du domaine public : le gouvernement accorde un délai de trois semaines avant les déguerpissements sur le littoral du Grand Lomé",
+          "media": "Afreepress",
+          "date": "2026-07-31",
+          "url": "https://afreepress.net/occupation-du-domaine-public-le-gouvernement-accorde-un-delai-de-trois-semaines-avant-les-deguerpissements-sur-le-littoral-du-grand-lome/"
+        },
+        {
+          "titre": "Plages de Lomé : place à la démolition dès ce 1er septembre pour les installations récalcitrantes",
+          "media": "Aux Nouvelles",
+          "date": "2026-08-31",
+          "url": "https://auxnouvelles.tg/2026/08/31/plages-de-lome-place-a-la-demolition-des-ce-1er-septembre-pour-les-installations-recalcitrantes/"
+        },
+        {
+          "titre": "Méchanceté gratuite à la Plage",
+          "media": "Icilome (Le Correcteur)",
+          "date": "2026-09-11",
+          "url": "https://icilome.com/2026/09/mechancete-gratuite-a-la-plage/"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": true
+    },
+    {
+      "id": "environnement-phosphates-riverains",
+      "theme": "environnement",
+      "question": "Les communautés riveraines de l'exploitation des phosphates doivent-elles être davantage indemnisées pour les atteintes à leur environnement et à leur santé ?",
+      "contexte": "Le phosphate, principale ressource minière du Togo, est extrait à Hahotoé-Kpogamé et traité à Kpémé par la Société nouvelle des phosphates du Togo (SNPT). Un reportage d'Afrique XXI (janvier 2024) fait état de pollution de puits et de sols par des métaux lourds et de problèmes de santé chez les riverains ; la SNPT n'a pas répondu aux questions du média. Depuis 2017, les sociétés minières doivent consacrer 0,75 % de leur chiffre d'affaires à des projets pour les communautés locales.",
+      "periode": "2024-01 à 2024-01",
+      "arguments_pour": [
+        {
+          "argument": "Les riverains perçoivent des compensations foncières très faibles (5 FCFA par mètre carré par an) et peu d'emplois stables, tout en subissant pollution et maladies.",
+          "porte_par": "Riverains de Kpémé et Hahotoé cités par Afrique XXI",
+          "source_url": "https://afriquexxi.info/Au-Togo-les-sacrifies-du-phosphate"
+        },
+        {
+          "argument": "Kpémé et Goumoukopé sont victimes de l'exploitation sans être dédommagées ; le principe pollueur-payeur et le consentement préalable, libre et éclairé doivent s'appliquer.",
+          "porte_par": "Centre pour la justice environnementale (CJE-Togo)",
+          "source_url": "https://cje-togo.org/les-prejudices-environnementaux-lies-a-lexploitation-du-phosphate-au-togo-cas-de-kpeme-et-goumoukope/"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Un mécanisme existe déjà : depuis 2017, les sociétés minières reversent 0,75 % de leur chiffre d'affaires à des projets socio-économiques pour les communautés, sous le contrôle de comités tripartites.",
+          "porte_par": "Réglementation minière en vigueur (citée par Afrique XXI)",
+          "source_url": "https://afriquexxi.info/Au-Togo-les-sacrifies-du-phosphate"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Au Togo, les sacrifiés du phosphate",
+          "media": "Afrique XXI",
+          "date": "2024-01-08",
+          "url": "https://afriquexxi.info/Au-Togo-les-sacrifies-du-phosphate"
+        },
+        {
+          "titre": "Les préjudices environnementaux liés à l'exploitation du phosphate au Togo : cas de Kpémé et Goumoukopé",
+          "media": "CJE-Togo",
+          "date": null,
+          "url": "https://cje-togo.org/les-prejudices-environnementaux-lies-a-lexploitation-du-phosphate-au-togo-cas-de-kpeme-et-goumoukope/"
+        }
+      ],
+      "sensibilite": null,
+      "encore_ouvert": true
+    }
+  ],
+  "notes": "Recherche effectuée le 2026-09-12 ; 25 débats retenus. Méthode : recherche web puis lecture automatisée des articles ; les citations des positions_publiques (et les passages entre guillemets) ont été extraites par un outil de lecture et doivent être relues sur la source avant publication. Les arguments sont reformulés sauf mention. Positions publiques limitées aux déclarations explicites attribuées à un parti ou à ses responsables ; aucune position n'a été déduite d'un vote. Déclarations communes : la même citation est rattachée à chaque parti signataire (DMK, DMP, LDP) ; « Touche pas à ma Constitution » est un front et n'a pas de position « sigle » propre. Sigles utilisés : UNIR, ANC, DMP (Dynamique pour la majorité du peuple, coalition), DMK (Dynamique Mgr Kpodzro, branche « Originale »), LDP (Lumière pour le développement dans la paix ; écrit « LPD » dans l'article d'Icilome du 2 juillet 2026), UDS-Togo, MTR ; aucun fichier tg/parties.json n'existait pour les aligner. UNIR : la seule position explicite retenue émane de Kanka-Malik Natchaba, délégué national du Mouvement des jeunes d'UNIR (organe du parti), et non de la direction nationale ; aucune citation explicite de la direction d'UNIR sur la Constitution n'a été trouvée dans le quota. Divergences de sources : (1) arrêt de la Cour de justice de la CEDEAO : Icilome cite l'arrêt ECW/CCJ/JUD/01/2026 du 29 janvier 2026, KOACI (23 juin 2026) indique « 29 janvier 2025 », probablement une coquille ; il a été largement relayé à partir de juin 2026, d'où la période retenue. (2) Mandat du président de la République : le texte voté le 25 mars 2024 prévoyait un mandat unique de six ans (AA, KOACI) ; lors de l'élection de mai 2025, Togo First mentionne un mandat de quatre ans ; le contexte du débat ne cite pas de durée. (3) Sénat : Africa Radio indique que les 20 sénateurs non élus sont nommés par le président du Conseil, Togo First par le chef de l'État ; la question dit seulement « nommés ». (4) Absence de limitation du mandat du président du Conseil : attestée par Afrique XXI (« Son mandat n'est soumis à aucune limitation ») ; une fiche KOACI de mars 2024 lue automatiquement semblait dire l'inverse et n'a pas été utilisée. La date de l'analyse d'Afrique XXI (2026-09-02) provient de la lecture automatisée et est à vérifier. Dates : pour Icilome/UDS-Togo (juillet 2026) seul le mois est connu, le jour 01 est conventionnel ; pour le CPJ et la MFWA, la date indiquée est celle de la décision de la HAAC (16 juin 2025) ; la page du CJE-Togo n'est pas datée (date null). Débat « président du Conseil » : aucun argument explicite en faveur de l'absence de limitation n'a été trouvé, la liste arguments_contre est vide. Le débat sur les enseignants du SET remonte à 2022 mais reste ouvert jusqu'en novembre 2024 (arrêt CEDEAO) ; sa situation en 2025-2026 n'a pas été vérifiée. encore_ouvert = question toujours contestée ou non tranchée dans les sources les plus récentes consultées ; pour l'AES, l'électricité, l'AMU et les phosphates, l'évolution en 2026 n'a pas été vérifiée. Thèmes non retenus faute de deux sources datées avec arguments attribués : découpage électoral (hausse de 91 à 113 sièges en 2024), franc CFA, fiscalité (loi de finances 2026), dette publique hors programme FMI, emploi des jeunes, SMIG et vie chère hors carburants, municipales 2025, érosion côtière, relations avec la CEDEAO hors arrêt de la Cour. Jeune Afrique, APAnews, l'Africa Center et une partie des pages AllAfrica/Assemblée nationale n'ont pas pu être lus (accès refusé) et ne sont pas cités."
+}

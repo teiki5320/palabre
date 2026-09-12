@@ -1,0 +1,396 @@
+{
+  "gouvernement": {
+    "nom": "Gouvernement Beugré Mambé II",
+    "debut": "2026-01-23",
+    "decret_ref": "Décret n° 2026-08 du 23 janvier 2026 portant nomination des Membres du Gouvernement",
+    "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+    "source_titre": "Communiqué de la Présidence de la République du 23 janvier 2026 (signature du décret n°2026-08 portant nomination des Membres du Gouvernement) | Présidence de la Côte d'Ivoire"
+  },
+  "chef_gouvernement": {
+    "nom": "Robert Beugré MAMBÉ",
+    "intitule": "Premier Ministre, Chef du Gouvernement",
+    "date_nomination": "2026-01-21",
+    "decret_ref": "Décret n° 2026-07 du 21 janvier 2026 portant nomination du Premier Ministre, Chef du Gouvernement",
+    "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-7/",
+    "note": "Le communiqué de la Présidence du 21 janvier 2026 annonce la signature du décret sans en donner le numéro. La référence « n° 2026-07 du 21 janvier 2026 » vient des visas du décret n° 2026-84 du 4 mars 2026 (https://www.psf.ci/sites/default/files/2026-05/DECRET%20N%C2%B0%202026-84%20PORTANT%20ATTRIBUTIONS%20DES%20MEMBRES%20DU%20GOUVERNEMENT%20%282%29-1.pdf) et d'un décret de nomination de préfets (https://media-files.abidjan.net/document/docs/document_x3h930ksooh.pdf). Graphies : « MAMBE » (communiqué du 21 janvier), « MAMBé » (communiqué du 23 janvier), « ROBERT BEUGRÉ MAMBÉ » (gouv.ci). Reconduction : KOACI (https://www.koaci.com/article/2026/01/21/cote-divoire/politique/cote-divoire-robert-beugre-mambe-reconduit-a-la-primature-apres-la-demission-du-gouvernement_193739.html) et FratMat (https://www.fratmat.info/article/2639498/politique/cote-divoire-robert-beugre-mambe-reconduit-au-poste-de-premier-ministre). D'après FratMat, il avait été nommé une première fois Premier ministre le 16 octobre 2023 et avait formé le gouvernement Mambé I le 17 octobre 2023. Il avait démissionné avec son gouvernement le 7 janvier 2026, puis expédié les affaires courantes. Il ne cumule aucun portefeuille dans Mambé II."
+  },
+  "ministres": [
+    {
+      "ordre": 1,
+      "nom": "Téné Birahima OUATTARA",
+      "civilite": "M.",
+      "intitule": "Vice-Premier Ministre, Ministre de la Défense",
+      "type": "ministre",
+      "bloc": "regalien",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Rang de Vice-Premier ministre (poste créé le 23 janvier 2026), placé avant les ministres d'État ; le schéma n'ayant pas de type « vice_premier_ministre », type = ministre. Était Ministre d'État, Ministre de la Défense dans Mambé I. Décret 2026-84, art. 2 : il assure l'intérim du Premier ministre en cas d'absence ou d'empêchement."
+    },
+    {
+      "ordre": 2,
+      "nom": "Anne Désirée OULOTO-LAMIZANA",
+      "civilite": "Mme",
+      "intitule": "Ministre d'État, Ministre de la Fonction Publique et de la Modernisation de l'Administration",
+      "type": "ministre_etat",
+      "bloc": "regalien",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true
+    },
+    {
+      "ordre": 3,
+      "nom": "Nialé KABA",
+      "civilite": "Mme",
+      "intitule": "Ministre d'État, Ministre des Affaires Étrangères et de la Coopération Internationale",
+      "type": "ministre_etat",
+      "bloc": "regalien",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Était Ministre de l'Économie, du Plan et du Développement dans Mambé I."
+    },
+    {
+      "ordre": 4,
+      "nom": "Jean Sansan KAMBILÉ",
+      "civilite": "M.",
+      "intitule": "Garde des Sceaux, Ministre de la Justice et des Droits de l'Homme",
+      "type": "ministre",
+      "bloc": "regalien",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true
+    },
+    {
+      "ordre": 5,
+      "nom": "Vagondo DIOMANDÉ",
+      "civilite": "M.",
+      "intitule": "Ministre de l'Intérieur et de la Sécurité",
+      "type": "ministre",
+      "bloc": "regalien",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Général ; le communiqué écrit « Gal. Vagondo DIOMANDÉ »."
+    },
+    {
+      "ordre": 6,
+      "nom": "Adama COULIBALY",
+      "civilite": "M.",
+      "intitule": "Ministre de l'Économie, des Finances et du Budget",
+      "type": "ministre",
+      "bloc": "economie",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Était Ministre des Finances et du Budget dans Mambé I. L'AIP écrit par erreur « Adama Koulibaly »."
+    },
+    {
+      "ordre": 7,
+      "nom": "Mamadou Sangafowa COULIBALY",
+      "civilite": "M.",
+      "intitule": "Ministre des Mines, du Pétrole et de l'Énergie",
+      "type": "ministre",
+      "bloc": "economie",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true
+    },
+    {
+      "ordre": 8,
+      "nom": "Bruno Nabagné KONÉ",
+      "civilite": "M.",
+      "intitule": "Ministre de l'Agriculture, du Développement Rural et des Productions Vivrières",
+      "type": "ministre",
+      "bloc": "economie",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Était Ministre de la Construction, du Logement et de l'Urbanisme dans Mambé I."
+    },
+    {
+      "ordre": 9,
+      "nom": "Amadou KONÉ",
+      "civilite": "M.",
+      "intitule": "Ministre des Transports et des Affaires Maritimes",
+      "type": "ministre",
+      "bloc": "infrastructure",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true
+    },
+    {
+      "ordre": 10,
+      "nom": "Amedé Koffi KOUAKOU",
+      "civilite": "M.",
+      "intitule": "Ministre de l'Hydraulique, de l'Assainissement et de la Salubrité",
+      "type": "ministre",
+      "bloc": "infrastructure",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Prénom : « Amedé » (communiqué de la Présidence, RTI, Wikipédia), « AMÉDÉ » (gouv.ci), « Amédé » (FratMat), « Amedée » (AIP), « Amédée » (KOACI). Était Ministre de l'Équipement et de l'Entretien routier dans Mambé I."
+    },
+    {
+      "ordre": 11,
+      "nom": "Mamadou TOURÉ",
+      "civilite": "M.",
+      "intitule": "Ministre de la Promotion de la Jeunesse, de l'Insertion Professionnelle et du Service Civique, Porte-Parole Adjoint du Gouvernement",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true
+    },
+    {
+      "ordre": 12,
+      "nom": "Pierre N'Gou DIMBA",
+      "civilite": "M.",
+      "intitule": "Ministre de la Santé, de l'Hygiène Publique et de la Couverture Maladie Universelle",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "« Pierre DIMBA » sur gouv.ci ; « Pierre Ngou Dimba » (AIP, FratMat)."
+    },
+    {
+      "ordre": 13,
+      "nom": "Moussa SANOGO",
+      "civilite": "M.",
+      "intitule": "Ministre de l'Urbanisme, du Logement et du Cadre de Vie",
+      "type": "ministre",
+      "bloc": "infrastructure",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Était Ministre du Patrimoine, du Portefeuille de l'État et des Entreprises publiques dans Mambé I."
+    },
+    {
+      "ordre": 14,
+      "nom": "Sidi Tiémoko TOURÉ",
+      "civilite": "M.",
+      "intitule": "Ministre des Ressources Animales et Halieutiques",
+      "type": "ministre",
+      "bloc": "economie",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true
+    },
+    {
+      "ordre": 15,
+      "nom": "Mariatou KONÉ",
+      "civilite": "Mme",
+      "intitule": "Ministre du Portefeuille de l'État et des Entreprises Publiques",
+      "type": "ministre",
+      "bloc": "economie",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Était Ministre de l'Éducation nationale et de l'Alphabétisation dans Mambé I. RTI écrit à tort « Ministre du Patrimoine, du Portefeuille de l'Etat… » ; l'article 16 du décret 2026-84 confirme « Ministre du Portefeuille de l'Etat et des Entreprises Publiques »."
+    },
+    {
+      "ordre": 16,
+      "nom": "Amadou COULIBALY",
+      "civilite": "M.",
+      "intitule": "Ministre de la Communication, Porte-Parole du Gouvernement",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "FratMat écrit par erreur « Amadou Koulibaly »."
+    },
+    {
+      "ordre": 17,
+      "nom": "Jacques Assahoré KONAN",
+      "civilite": "M.",
+      "intitule": "Ministre des Eaux et Forêts",
+      "type": "ministre",
+      "bloc": "infrastructure",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Était Ministre de l'Environnement, du Développement durable et de la Transition écologique dans Mambé I. L'AIP écrit « Assaoré ». Bloc infrastructure (environnement) : choix à arbitrer."
+    },
+    {
+      "ordre": 18,
+      "nom": "Ibrahim Kalil KONATÉ",
+      "civilite": "M.",
+      "intitule": "Ministre du Commerce, de l'Industrie et de l'Artisanat",
+      "type": "ministre",
+      "bloc": "economie",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Était Ministre de la Transition numérique et de la Digitalisation dans Mambé I. « Khalil » chez l'AIP, FratMat et Wikipédia."
+    },
+    {
+      "ordre": 19,
+      "nom": "Siandou FOFANA",
+      "civilite": "M.",
+      "intitule": "Ministre du Tourisme et des Loisirs",
+      "type": "ministre",
+      "bloc": "economie",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Bloc economie (tourisme) : choix à arbitrer."
+    },
+    {
+      "ordre": 20,
+      "nom": "Souleymane DIARRASSOUBA",
+      "civilite": "M.",
+      "intitule": "Ministre du Plan et du Développement",
+      "type": "ministre",
+      "bloc": "economie",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Était Ministre du Commerce et de l'Industrie dans Mambé I. FratMat écrit « Diarrasouba »."
+    },
+    {
+      "ordre": 21,
+      "nom": "Adama DIAWARA",
+      "civilite": "M.",
+      "intitule": "Ministre de l'Enseignement Supérieur et de la Recherche Scientifique",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true
+    },
+    {
+      "ordre": 22,
+      "nom": "Adama KAMARA",
+      "civilite": "M.",
+      "intitule": "Ministre de l'Emploi, de la Protection Sociale et de la Formation Professionnelle",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true
+    },
+    {
+      "ordre": 23,
+      "nom": "N'Guessan KOFFI",
+      "civilite": "M.",
+      "intitule": "Ministre de l'Éducation Nationale, de l'Alphabétisation et de l'Enseignement Technique",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Était Ministre de l'Enseignement technique, de la Formation professionnelle et de l'Apprentissage dans Mambé I (gouv.ci l'y nomme « KOFFI N'GUESSAN »)."
+    },
+    {
+      "ordre": 24,
+      "nom": "Yacouba Hien SIÉ",
+      "civilite": "M.",
+      "intitule": "Ministre des Infrastructures et de l'Entretien Routier",
+      "type": "ministre",
+      "bloc": "infrastructure",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": false,
+      "note": "Graphies : « Yacouba Hien SIÉ » (Présidence), « YACOUBA HIEN SIE » (gouv.ci), « Yacouba Hien-Sié » (AIP), « Yacouba HIEN-SIE » (RTI), « Yacouba Yien Sié » puis « Hien Yacouba Sié » (FratMat). Nouvel entrant."
+    },
+    {
+      "ordre": 25,
+      "nom": "Logboh Myss Belmonde DOGO",
+      "civilite": "Mme",
+      "intitule": "Ministre de la Cohésion Nationale, de la Solidarité et de la Lutte contre la Pauvreté",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "L'AIP (communiqué et décryptage) et FratMat écrivent « Cohésion sociale ». La Présidence, gouv.ci et RTI écrivent « Cohésion Nationale », confirmé par l'article 26 du décret 2026-84. « Logbo » dans le décryptage AIP."
+    },
+    {
+      "ordre": 26,
+      "nom": "Djibril OUATTARA",
+      "civilite": "M.",
+      "intitule": "Ministre de la Transition Numérique et de l'Innovation Technologique",
+      "type": "ministre",
+      "bloc": "infrastructure",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": false,
+      "note": "Nouvel entrant. « Djibrill » sur Wikipédia."
+    },
+    {
+      "ordre": 27,
+      "nom": "Nassénéba TOURÉ",
+      "civilite": "Mme",
+      "intitule": "Ministre de la Femme, de la Famille et de l'Enfant",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true
+    },
+    {
+      "ordre": 28,
+      "nom": "Françoise REMARCK",
+      "civilite": "Mme",
+      "intitule": "Ministre de la Culture et de la Francophonie",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true
+    },
+    {
+      "ordre": 29,
+      "nom": "Adjé Silas METCH",
+      "civilite": "M.",
+      "intitule": "Ministre des Sports",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Était Ministre délégué auprès du Premier Ministre, Ministre des Sports et du Cadre de Vie, chargé des Sports et du Cadre de Vie dans Mambé I."
+    },
+    {
+      "ordre": 30,
+      "nom": "Abou BAMBA",
+      "civilite": "M.",
+      "intitule": "Ministre de l'Environnement et de la Transition Écologique",
+      "type": "ministre",
+      "bloc": "infrastructure",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": false,
+      "note": "Nouvel entrant."
+    },
+    {
+      "ordre": 31,
+      "nom": "Célestin Serey DOH",
+      "civilite": "M.",
+      "intitule": "Ministre Délégué auprès du Ministre des Transports et des Affaires Maritimes, chargé des Affaires Maritimes",
+      "type": "ministre_delegue",
+      "bloc": "infrastructure",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "reconduit = true d'après le décryptage AIP (« reste rattaché auprès du ministre des Transports… ») et la liste des 5 entrants (AIP, FratMat), où il ne figure pas. Il est pourtant ABSENT de la composition Mambé I publiée sur gouv.ci (https://www.gouv.ci/ancien-gouvernement/29) : non vérifié sur un texte officiel. RTI abrège en « auprès du Ministre des Transports, chargé des Affaires Maritimes ». Graphies : Sérey-Doh (AIP), SÉREY DOH (gouv.ci)."
+    },
+    {
+      "ordre": 32,
+      "nom": "Adama DOSSO",
+      "civilite": "M.",
+      "intitule": "Ministre Délégué auprès du Ministre d'État, Ministre des Affaires Étrangères et de la Coopération Internationale, chargé de l'Intégration Africaine et des Ivoiriens de l'Extérieur",
+      "type": "ministre_delegue",
+      "bloc": "regalien",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": true,
+      "note": "Ministre délégué chargé de l'Intégration africaine et des Ivoiriens de l'extérieur depuis juillet 2025, où il succède à Wautabouna Ouattara (gouv.ci, anciens gouvernements I et II)."
+    },
+    {
+      "ordre": 33,
+      "nom": "Jean-Louis MOULOT",
+      "civilite": "M.",
+      "intitule": "Ministre Délégué auprès du Ministre de l'Éducation Nationale, de l'Alphabétisation et de l'Enseignement Technique, chargé de l'Enseignement Technique",
+      "type": "ministre_delegue",
+      "bloc": "social",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": false,
+      "note": "Nouvel entrant."
+    },
+    {
+      "ordre": 34,
+      "nom": "Bernard Kini COMOÉ",
+      "civilite": "M.",
+      "intitule": "Ministre Délégué auprès du Ministre de l'Agriculture, du Développement Rural et des Productions Vivrières, chargé des Productions Vivrières",
+      "type": "ministre_delegue",
+      "bloc": "economie",
+      "source_url": "https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/",
+      "reconduit": false,
+      "note": "Nouvel entrant. « Kini-Komoé » chez l'AIP."
+    },
+    {
+      "ordre": 35,
+      "nom": "Roger Charlemagne DAH",
+      "civilite": "M.",
+      "intitule": "Secrétaire Général du Gouvernement",
+      "type": "secretaire_general",
+      "bloc": "regalien",
+      "source_url": "https://www.psf.ci/sites/default/files/2026-05/DECRET%20N%C2%B0%202026-84%20PORTANT%20ATTRIBUTIONS%20DES%20MEMBRES%20DU%20GOUVERNEMENT%20%282%29-1.pdf",
+      "reconduit": null,
+      "note": "PAS membre du Gouvernement : absent du communiqué du décret 2026-08. Cité uniquement comme signataire de la mention « Copie certifiée conforme à l'original » du décret 2026-84 (page 60 du PDF), avec la qualité « Magistrat Hors Hiérarchie ». Date et acte de nomination non trouvés ; rang protocolaire non vérifié ; reconduit = null. Placé en ordre 35, hors ordre protocolaire."
+    }
+  ],
+  "remaniements": [],
+  "notes": "SOURCE PRINCIPALE : le texte du décret n° 2026-08 du 23 janvier 2026 portant nomination des Membres du Gouvernement n'a pas été trouvé (ni au Journal officiel ni sur gouv.ci ou presidence.ci). Les intitulés reprennent donc le communiqué officiel de la Présidence du 23 janvier 2026, signé par la Secrétaire générale Masséré TOURÉ-KONÉ, qui énumère les nominations de ce décret (https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-8/). Seules modifications : apostrophes typographiques remplacées par des apostrophes droites, deux-points finaux retirés, « Gal. » retiré du nom de Vagondo Diomandé, numéro « 2. » isolé devant Mme Ouloto-Lamizana ignoré, et « MAMBé » du communiqué corrigé en « MAMBÉ » (graphie de gouv.ci). RÉFÉRENCES DES DÉCRETS : les numéros 2026-07 (Premier ministre, 21 janvier 2026) et 2026-08 (membres, 23 janvier 2026) sont confirmés par les visas de deux actes officiels. Le premier est le décret n° 2026-84 du 4 mars 2026 portant attributions des Membres du Gouvernement : copie scannée certifiée conforme, publiée par l'UGP-PSF (https://www.psf.ci/sites/default/files/2026-05/DECRET%20N%C2%B0%202026-84%20PORTANT%20ATTRIBUTIONS%20DES%20MEMBRES%20DU%20GOUVERNEMENT%20%282%29-1.pdf). Le second est un décret de nomination de préfets publié par Abidjan.net (https://media-files.abidjan.net/document/docs/document_x3h930ksooh.pdf). DEUX SOURCES CONCORDANTES ET PLUS : même liste de 34 noms, dans le même ordre, sur le communiqué de la Présidence, la page officielle https://www.gouv.ci/gouvernement (« GOUVERNEMENT ROBERT BEUGRÉ MAMBÉ DU 23 JANVIER 2026 », toujours affichée le 12 septembre 2026), l'AIP (https://www.aip.ci/309741/…), FratMat (https://www.fratmat.info/article/2639536/…), RTI Info (https://rti.info/composition-du-nouveau-gouvernement-mambe-ii-de-la-republique-de-cote-divoire-ce-vendredi-23-janvier-2026/) et Wikipédia FR (« Gouvernement Beugré Mambé II », dont l'ordre diffère). CONTRÔLE PAR LE DÉCRET 2026-84 (PDF scanné, pages lues : 1-2, 25-26, 37-40, 45-46, 59-60) : les articles suivent le même ordre protocolaire (article n = ordre n-1, l'article 1 visant le Premier ministre). Les titres des articles 2, 3, 15, 16, 25, 26, 27, 32, 33 et 34 concordent avec le communiqué, à la casse et aux accents près (« Etat », « Etrangères », « vice-Premier Ministre »). Les autres articles n'ont pas été lus. Anomalie du décret 2026-84 : l'en-tête de l'article 33 porte bien « Ministre délégué auprès du Ministre d'Etat, Ministre des Affaires Etrangères et de la Coopération Internationale », mais le paragraphe suivant reprend l'ancien intitulé « Ministre des Affaires Etrangères, de l'Intégration Africaine et des Ivoiriens de l'Extérieur ». Page 25 du décret : une section « Au titre de la Gestion du Patrimoine » précède l'article 15. Elle appartient vraisemblablement à l'article 14 (Urbanisme, Logement et Cadre de vie ; en-tête non lu), ce qui est cohérent avec la disparition de « Patrimoine » du portefeuille de Mariatou Koné. DIVERGENCES D'INTITULÉS DANS LA PRESSE : « Cohésion sociale » (AIP, FratMat) au lieu de « Cohésion Nationale » ; « Ministre du Patrimoine, du Portefeuille de l'Etat… » (RTI) ; « délégué auprès du Ministre des Transports » sans « et des Affaires Maritimes » (RTI) ; « Ministre du Tourisme » (Wikipédia). Le communiqué de la Présidence et le décret 2026-84 font foi. Les graphies des noms divergent aussi : voir le champ « note » de chaque membre. COMPOSITION : 34 membres en plus du Premier ministre : 1 Vice-Premier ministre, 2 ministres d'État, 27 ministres et 4 ministres délégués. FratMat compte « 30 ministres pleins et quatre ministres délégués » en y incluant le VPM et les ministres d'État. 6 femmes : Ouloto-Lamizana, Kaba, M. Koné, Dogo, N. Touré, Remarck. AUCUN SECRÉTAIRE D'ÉTAT : le communiqué n'en nomme aucun. Le Secrétaire général du Gouvernement (ordre 35) n'est pas membre du Gouvernement. Le Premier ministre ne cumule aucun portefeuille : dans Mambé I, il était aussi Ministre des Sports et du Cadre de vie. Les Sports vont désormais à M. Metch et le Cadre de vie au ministère de l'Urbanisme. NON-MEMBRES NOMMÉS LE 26 JANVIER 2026 (communiqué, https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-9/) : « au titre du Gouvernement », Ibrahim CISSÉ BACONGO (Ministre, Gouverneur du District Autonome d'Abidjan) et Augustin Abdoulaye THIAM HOUPHOUËT (Ministre, Gouverneur du District Autonome de Yamoussoukro). Ils ne figurent pas dans le décret 2026-08. Le communiqué du 7 janvier 2026 traite par deux décrets distincts les membres du Gouvernement et les Ministres-Gouverneurs, et l'article 1 du décret 2026-84 les distingue aussi. Ils ne sont donc pas inclus. « au titre de la Présidence », ministres d'État et ministres conseillers, dont les sortants Kobenan Kouassi Adjoumani, Bouaké Fofana et Laurent Tchagba (voir aussi l'AIP, https://www.aip.ci/310669/…) : ils ne sont pas membres du Gouvernement. RECONDUITS : comparaison avec la composition Mambé I publiée sur gouv.ci (https://www.gouv.ci/ancien-gouvernement/29, version avec Adama Dosso) et avec le décryptage de l'AIP (https://www.aip.ci/309745/…). Résultat : 29 reconduits (dont plusieurs changent de portefeuille) et 5 entrants (Hien Sié, D. Ouattara, Bamba, Moulot, Comoé), comme chez FratMat et l'AIP. 4 sortants : Kobenan Kouassi Adjoumani, Kacou Houadja Léon Adom (« HOUAJA » sur gouv.ci), Bouaké Fofana, Laurent Tchagba. Réserve : Célestin Serey Doh est absent de la page gouv.ci de Mambé I, bien que l'AIP le dise maintenu (voir sa note). FratMat indique 33 ministres pour Mambé I alors que gouv.ci n'en liste que 30 plus le PM : la page gouv.ci est donc probablement incomplète. BLOCS (choix à arbitrer) : Hydraulique et Assainissement, Eaux et Forêts, Environnement, Transition numérique, Transports et Affaires maritimes, et le délégué aux Affaires maritimes en infrastructure ; Tourisme et Loisirs, Ressources animales, Portefeuille de l'État et Plan en economie ; Emploi et Formation professionnelle en social ; délégué à l'Intégration africaine et aux Ivoiriens de l'extérieur en regalien ; délégué aux Productions vivrières en economie. REMANIEMENTS : aucun entre le 23 janvier et le 12 septembre 2026. Vérifications faites : la page https://www.gouv.ci/gouvernement affiche toujours la composition du 23 janvier 2026 le 12 septembre 2026 ; tous les communiqués de la Présidence postérieurs, lus un par un (26 janvier, 12 février, 10 mars, 7 mai, 14 juin et 28 août 2026), ne contiennent aucune nomination ou fin de fonctions de membre du Gouvernement ; les communiqués du Conseil national de sécurité (12 février, 23 juillet) n'ont pas été ouverts ; Wikipédia FR ne signale aucun changement (article consulté le 12 septembre 2026) ; une recherche web n'a trouvé aucun remaniement. Le Journal officiel et les comptes rendus des Conseils des ministres n'ont pas été dépouillés un par un. CONTEXTE : le 7 janvier 2026, après les législatives du 27 décembre 2025, le PM a présenté sa démission et celle du Gouvernement, acceptée par le Président (https://www.presidence.ci/communiques-presidence/communique-de-la-presidence-de-la-republique-6/). Robert Beugré Mambé a été reconduit le 21 janvier 2026 (communiqué -7) et le gouvernement nommé le 23 janvier 2026. Premier Conseil des ministres : samedi 24 janvier 2026."
+}

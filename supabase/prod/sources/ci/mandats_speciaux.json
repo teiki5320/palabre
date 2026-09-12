@@ -1,0 +1,632 @@
+{
+  "commentaire": "CI : remplacements tirés de assembly.json (changements), présidence de l'Assemblée ; alias entre graphies du gouvernement et de l'Assemblée. Alias limités aux députés sortis pour nomination au gouvernement (un ministre ne siège pas : un député en exercice homonyme n'est pas rattaché).",
+  "alias": {
+    "FOFANA SIANDOU": "Siandou FOFANA",
+    "COULIBALY ADAMA": "Adama COULIBALY",
+    "OULOTO ANNE DESIREE": "Anne Désirée OULOTO-LAMIZANA",
+    "OUATTARA TENE BIRAHIMA": "Téné Birahima OUATTARA",
+    "KAMARA ADAMA": "Adama KAMARA",
+    "KONE NABAGNE BRUNO": "Bruno Nabagné KONÉ",
+    "SIE HIEN": "Yacouba Hien SIÉ",
+    "SANOGO MOUSSA": "Moussa SANOGO",
+    "KABA NIALE": "Nialé KABA",
+    "DIARRASSOUBA SOULEYMANE": "Souleymane DIARRASSOUBA",
+    "MAMBE BEUGRE ROBERT": "Robert Beugré MAMBÉ",
+    "SEREY DOH CELESTIN": "Célestin Serey DOH",
+    "TOURE MAMADOU": "Mamadou TOURÉ",
+    "METCH ADJE SILAS": "Adjé Silas METCH",
+    "COULIBALY MAMADOU SANGAFOWA": "Mamadou Sangafowa COULIBALY",
+    "KONATE IBRAHIM KALIL": "Ibrahim Kalil KONATÉ",
+    "DIMBA N'GOU PIERRE": "Pierre N'Gou DIMBA",
+    "AMADOU COULIBALY": "Amadou COULIBALY",
+    "KOUAKOU KOFFI AMEDE": "Amedé Koffi KOUAKOU",
+    "KONE AMADOU": "Amadou KONÉ",
+    "KONE MARIATOU": "Mariatou KONÉ",
+    "ASSAHORE KONAN JACQUES": "Jacques Assahoré KONAN"
+  },
+  "alias_ambigus_non_retenus": {
+    "DOGO LOGBO MYSS BELMONDE": []
+  },
+  "roles_supplementaires": [
+    {
+      "id": 4,
+      "type": "president_assemblee",
+      "intitule": "Président de l'Assemblée nationale",
+      "intitule_norm": "president_assemblee"
+    }
+  ],
+  "cas": [
+    {
+      "depute": "N'CHO ATCHAPO MARTIAL",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "DIMBA N'GOU PIERRE",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. DIMBA N'GOU PIERRE (RHDP, circ. 002) : Ministre de la Santé, de l'Hygiène publique et de la Couverture maladie universelle. Son suppléant N'CHO ATCHAPO MARTIAL exerce le mandat."
+    },
+    {
+      "depute": "BAMBA ABOU",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "SANOGO MOUSSA",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. SANOGO MOUSSA (RHDP, circ. 013) : Ministre de l'Urbanisme, du Logement et du Cadre de vie. Son suppléant BAMBA ABOU exerce le mandat."
+    },
+    {
+      "depute": "FOFANA KARIM",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "KONE MARIATOU",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. KONE MARIATOU (RHDP, circ. 015) : Ministre du Portefeuille de l'État et des Entreprises publiques. Son suppléant FOFANA KARIM exerce le mandat."
+    },
+    {
+      "depute": "DEMBELE EPSE DIARRA NAGANA SALIMATA",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "KONE NABAGNE BRUNO",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. KONE NABAGNE BRUNO (RHDP, circ. 016) : Ministre de l'Agriculture, du Développement rural et des Productions vivrières. Son suppléant DEMBELE EPSE DIARRA NAGANA SALIMATA exerce le mandat."
+    },
+    {
+      "depute": "DAH SANSAN TILKOUETE",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "KABA NIALE",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. KABA NIALE (RHDP, circ. 028) : Ministre d'État, ministre des Affaires étrangères et de la Coopération internationale. Son suppléant DAH SANSAN TILKOUETE exerce le mandat."
+    },
+    {
+      "depute": "KAHIBA LAMBERT",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "OULOTO ANNE DESIREE",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. OULOTO ANNE DESIREE (RHDP, circ. 037) : Ministre d'État, ministre de la Fonction publique et de la Modernisation de l'administration. Son suppléant KAHIBA LAMBERT exerce le mandat."
+    },
+    {
+      "depute": "KONE HAMED",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "OUATTARA TENE BIRAHIMA",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. OUATTARA TENE BIRAHIMA (RHDP, circ. 038) : Vice-Premier ministre, ministre de la Défense. Son suppléant KONE HAMED exerce le mandat."
+    },
+    {
+      "depute": "GBROU ALOBOUE",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "MAMBE BEUGRE ROBERT",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. MAMBE BEUGRE ROBERT (RHDP, circ. 050) : Premier ministre (gouvernement Mambé II, décret n°2026-08 du 23 janvier 2026). Son suppléant GBROU ALOBOUE exerce le mandat."
+    },
+    {
+      "depute": "OUATTARA YAYA",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "DIARRASSOUBA SOULEYMANE",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. DIARRASSOUBA SOULEYMANE (RHDP, circ. 053) : Ministre du Plan et du Développement. Son suppléant OUATTARA YAYA exerce le mandat."
+    },
+    {
+      "depute": "KOUMOIN KONAN RENE",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "ASSAHORE KONAN JACQUES",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. ASSAHORE KONAN JACQUES (RHDP, circ. 059) : Ministre des Eaux et Forêts. Son suppléant KOUMOIN KONAN RENE exerce le mandat."
+    },
+    {
+      "depute": "SILUE PEGABILA",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "KONE AMADOU",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. KONE AMADOU (RHDP, circ. 060) : Ministre des Transports et des Affaires maritimes. Son suppléant SILUE PEGABILA exerce le mandat."
+    },
+    {
+      "depute": "DIOMANDE KAFOBA",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "DOGO LOGBO MYSS BELMONDE",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. DOGO LOGBO MYSS BELMONDE (RHDP, circ. 068) : Ministre de la Cohésion sociale, de la Solidarité et de la Lutte contre la pauvreté. Son suppléant DIOMANDE KAFOBA exerce le mandat."
+    },
+    {
+      "depute": "DOUAN MONET NOEL",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "SEREY DOH CELESTIN",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. SEREY DOH CELESTIN (RHDP, circ. 086) : Ministre délégué chargé des Affaires maritimes. Son suppléant DOUAN MONET NOEL exerce le mandat."
+    },
+    {
+      "depute": "COULIBALY ADAMA",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "KONATE IBRAHIM KALIL",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. KONATE IBRAHIM KALIL (RHDP, circ. 094) : Ministre du Commerce, de l'Industrie et de l'Artisanat. Son suppléant COULIBALY ADAMA exerce le mandat."
+    },
+    {
+      "depute": "COULIBALY MOHAMED",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "TOURE MAMADOU",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. TOURE MAMADOU (RHDP, circ. 100) : Ministre de la Promotion de la jeunesse, de l'Insertion professionnelle et du Service civique. Son suppléant COULIBALY MOHAMED exerce le mandat."
+    },
+    {
+      "depute": "TOUNGARA MAMADOU",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "FOFANA SIANDOU",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. FOFANA SIANDOU (RHDP, circ. 116) : Ministre du Tourisme et des Loisirs. Son suppléant TOUNGARA MAMADOU exerce le mandat."
+    },
+    {
+      "depute": "SAVANE YACOUBA",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "KAMARA ADAMA",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. KAMARA ADAMA (RHDP, circ. 123) : Ministre de l'Emploi, de la Protection sociale et de la Formation professionnelle. Son suppléant SAVANE YACOUBA exerce le mandat."
+    },
+    {
+      "depute": "ALLANGBA KOUAKOU MERMOZ",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "KOUAKOU KOFFI AMEDE",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. KOUAKOU KOFFI AMEDE (RHDP, circ. 125) : Ministre de l'Hydraulique, de l'Assainissement et de la Salubrité. Son suppléant ALLANGBA KOUAKOU MERMOZ exerce le mandat."
+    },
+    {
+      "depute": "N'GUESSAN KOFFI GEOFFROY",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "COULIBALY ADAMA",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. COULIBALY ADAMA (RHDP, circ. 160) : Ministre de l'Économie, des Finances et du Budget. Son suppléant N'GUESSAN KOFFI GEOFFROY exerce le mandat."
+    },
+    {
+      "depute": "EMILE SORHO",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "AMADOU COULIBALY",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. AMADOU COULIBALY (RHDP, circ. 170) : Ministre de la Communication, porte-parole du gouvernement (« Amadou Coulibaly » dans L'Intelligent, « Amadou Koulibaly » dans le décret publié par Fraternité Matin). Son suppléant EMILE SORHO exerce le mandat."
+    },
+    {
+      "depute": "OUATTARA MAMADOU",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "COULIBALY MAMADOU SANGAFOWA",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. COULIBALY MAMADOU SANGAFOWA (RHDP, circ. 171) : Ministre des Mines, du Pétrole et de l'Énergie. Son suppléant OUATTARA MAMADOU exerce le mandat."
+    },
+    {
+      "depute": "KOUAO DJADJI BLAISE",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "SIE HIEN",
+        "debut": "2026-01-17",
+        "fin": "2026-01-23",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-01-23",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. SIE HIEN (RHDP, circ. 181) : Ministre des Infrastructures et de l'Entretien routier (« Hien Sié » dans L'Intelligent, « Yacouba Yien Sié » dans le décret). Son suppléant KOUAO DJADJI BLAISE exerce le mandat."
+    },
+    {
+      "depute": "OUATTARA ABDRAMANE",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "IBRAHIMA CISSE",
+        "debut": "2026-01-17",
+        "fin": "2026-01-28",
+        "motif_fin": "autre",
+        "source_url": "https://www.gouv.ci/uploads/publications/176967685313.pdf"
+      },
+      "suppleant": {
+        "debut": "2026-01-28",
+        "source_url": "https://www.gouv.ci/uploads/publications/176967685313.pdf"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. IBRAHIMA CISSE (RHDP, circ. 042) : Ministre-gouverneur du District autonome d'Abidjan (incompatibilité, décret n°2021-275 du 9 juin 2021 cité par la revue de presse du gouvernement). Son suppléant OUATTARA ABDRAMANE exerce le mandat. Déclaration d'empêchement et transmission des attributs à son suppléant le 28 janvier 2026 ("
+    },
+    {
+      "depute": "TCHOTCHOH ESSOH GASTON",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "METCH ADJE SILAS",
+        "debut": "2026-01-17",
+        "fin": "2026-01-28",
+        "motif_fin": "nomination_gouvernement",
+        "source_url": "https://www.fratmat.info/article/2639654/politique/assemblee-nationale-le-ministre-adje-silas-metch-passe-officiellement-le-relais-a-son-suppleant"
+      },
+      "suppleant": {
+        "debut": "2026-01-28",
+        "source_url": "https://www.fratmat.info/article/2639654/politique/assemblee-nationale-le-ministre-adje-silas-metch-passe-officiellement-le-relais-a-son-suppleant"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. METCH ADJE SILAS (RHDP, circ. 083) : Ministre des Sports. Son suppléant TCHOTCHOH ESSOH GASTON exerce le mandat. Remise de la déclaration d'empêchement et des attributs de député à son suppléant le 28 janvier 2026."
+    },
+    {
+      "depute": "CISSE TIEMOKO",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "TCHAGBA BOUGUI LAURENT",
+        "debut": "2026-01-17",
+        "fin": "2026-02-08",
+        "motif_fin": "autre",
+        "source_url": "https://fr.allafrica.com/stories/202602090730.html"
+      },
+      "suppleant": {
+        "debut": "2026-02-08",
+        "source_url": "https://fr.allafrica.com/stories/202602090730.html"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. TCHAGBA BOUGUI LAURENT (RHDP, circ. 043) : Ministre-conseiller à la Présidence de la République (sorti du gouvernement le 23 janvier 2026). Son suppléant CISSE TIEMOKO exerce le mandat. Transmission des attributs de député à son suppléant Cissé Tiémoko le 8 février 2026 (Fraternité Matin via allAfrica). Absent de la liste de"
+    },
+    {
+      "depute": "KOFFI DIBY BEATRICE",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "KOFFI NGORAN JUSTIN",
+        "debut": "2026-01-17",
+        "fin": "2026-02-13",
+        "motif_fin": "autre",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-02-13",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. KOFFI NGORAN JUSTIN (RHDP, circ. 051) : Directeur général de l'ARRE (incompatibilité). Son suppléant KOFFI DIBY BEATRICE exerce le mandat. Date exacte non publiée (date de l'article)."
+    },
+    {
+      "depute": "DIBY AFFOUE THERESE",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "THIAM AUGUSTIN HOUPHOUET ABDOULAYE",
+        "debut": "2026-01-17",
+        "fin": "2026-02-13",
+        "motif_fin": "autre",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-02-13",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. THIAM AUGUSTIN HOUPHOUET ABDOULAYE (RHDP, circ. 053) : Ministre-gouverneur du District autonome de Yamoussoukro. Son suppléant DIBY AFFOUE THERESE exerce le mandat. Date exacte non publiée (date de l'article)."
+    },
+    {
+      "depute": "CISSE MAMERY",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "SIDIBE NOUMORY",
+        "debut": "2026-01-17",
+        "fin": "2026-02-13",
+        "motif_fin": "autre",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-02-13",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. SIDIBE NOUMORY (RHDP, circ. 055) : Directeur général de CI-ENERGIES (incompatibilité). Son suppléant CISSE MAMERY exerce le mandat. Date exacte non publiée (date de l'article)."
+    },
+    {
+      "depute": "KOFFI KOUASSI RAYMOND",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "KOUAKOU-HABONOUAN LOUIS",
+        "debut": "2026-01-17",
+        "fin": "2026-02-13",
+        "motif_fin": "autre",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-02-13",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. KOUAKOU-HABONOUAN LOUIS (RHDP, circ. 061) : Président du conseil d'administration de l'ONEP (incompatibilité). Son suppléant KOFFI KOUASSI RAYMOND exerce le mandat. Date exacte non publiée (date de l'article)."
+    },
+    {
+      "depute": "YAO KOFFI MOUROUFIE PATRICE",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "MAIZAN KOFFI NOEL",
+        "debut": "2026-01-17",
+        "fin": "2026-02-13",
+        "motif_fin": "autre",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-02-13",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. MAIZAN KOFFI NOEL (RHDP, circ. 073) : Directeur général du FGA (incompatibilité). Son suppléant YAO KOFFI MOUROUFIE PATRICE exerce le mandat. Date exacte non publiée (date de l'article)."
+    },
+    {
+      "depute": "TOURE YAYA",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "CAMARA POGABAHA THOMAS",
+        "debut": "2026-01-17",
+        "fin": "2026-02-13",
+        "motif_fin": "autre",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-02-13",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. CAMARA POGABAHA THOMAS (RHDP, circ. 096) : Président du conseil d'administration du FER (incompatibilité). Son suppléant TOURE YAYA exerce le mandat. Date exacte non publiée (date de l'article)."
+    },
+    {
+      "depute": "OUATTARA KARIM",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "KONE TIEMOKO MEYLIET",
+        "debut": "2026-01-17",
+        "fin": "2026-02-13",
+        "motif_fin": "autre",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-02-13",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. KONE TIEMOKO MEYLIET (RHDP, circ. 098) : Vice-président de la République. Son suppléant OUATTARA KARIM exerce le mandat. Cède son siège « dès l'ouverture de la session ordinaire » ; date exacte non publiée (date de l'article)."
+    },
+    {
+      "depute": "ABOURLAY AWASSA ABDOUL RACID",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "KOUASSI KOUASSI JEAN CLAUDE",
+        "debut": "2026-01-17",
+        "fin": "2026-02-13",
+        "motif_fin": "autre",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-02-13",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. KOUASSI KOUASSI JEAN CLAUDE (RHDP, circ. 113) : Directeur général du LBTP (incompatibilité). Son suppléant ABOURLAY AWASSA ABDOUL RACID exerce le mandat. Date exacte non publiée (date de l'article)."
+    },
+    {
+      "depute": "SANON KOFFI MARCEL",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "ASSI JEAN-LUC",
+        "debut": "2026-01-17",
+        "fin": "2026-02-13",
+        "motif_fin": "autre",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-02-13",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. ASSI JEAN-LUC (RHDP, circ. 145) : Président du conseil d'administration de la SODEMI (incompatibilité). Son suppléant SANON KOFFI MARCEL exerce le mandat. L'article écrit « Jean-Claude Assi » ; le titulaire de la circonscription 145 est ASSI JEAN-LUC et le suppléant cité (Sanon Koffi Marcel) est bien le sien sur la liste CEI"
+    },
+    {
+      "depute": "COULIBALY SITA",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "ANOBLE MIEZAN FELIX",
+        "debut": "2026-01-17",
+        "fin": "2026-02-13",
+        "motif_fin": "autre",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-02-13",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. ANOBLE MIEZAN FELIX (RHDP, circ. 175) : Président du conseil d'administration du Conseil hévéa, coco et palmier à huile (incompatibilité). Son suppléant COULIBALY SITA exerce le mandat. Date exacte non publiée (date de l'article)."
+    },
+    {
+      "depute": "KONE YACOUBA",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "DIOMANDE MAMADOU",
+        "debut": "2026-01-17",
+        "fin": "2026-02-13",
+        "motif_fin": "autre",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "suppleant": {
+        "debut": "2026-02-13",
+        "source_url": "https://www.lintelligentdabidjan.info/news/cote-divoire-ils-ne-siegent-pas-dans-lhemicycle-voici-les-36-deputes-titulaires-frappes-par-lincompatibilite/"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. DIOMANDE MAMADOU (RHDP, circ. 202) : Directeur général de la SOGEDI (incompatibilité). Son suppléant KONE YACOUBA exerce le mandat. Date exacte non publiée (date de l'article)."
+    },
+    {
+      "depute": "DAGARE DASSAUD ANGE ROMAIN",
+      "qualite": "suppleant",
+      "titulaire": {
+        "nom": "YACE JEAN-MARC",
+        "debut": "2026-01-17",
+        "fin": "2026-04-08",
+        "motif_fin": "autre",
+        "source_url": "https://www.fratmat.info/article/2641167/politique/cocody-jean-marc-yace-passe-le-relais-parlementaire-a-son-suppleant-ange-dagaret-dassaud"
+      },
+      "suppleant": {
+        "debut": "2026-04-08",
+        "source_url": "https://www.fratmat.info/article/2641167/politique/cocody-jean-marc-yace-passe-le-relais-parlementaire-a-son-suppleant-ange-dagaret-dassaud"
+      },
+      "note": "Date de début du remplaçant : date du changement rapportée par la source. YACE JEAN-MARC (PDCI-RDA, circ. 041) : Consul honoraire des États-Unis du Mexique (incompatibilité) ; reste maire de Cocody. Son suppléant DAGARE DASSAUD ANGE ROMAIN exerce le mandat. Transmission des attributs de député à son suppléant le 8 avril 2026 (« Ange Romain Dagaret Dassaud » dans la presse ; « DAGARE DASSAUD ANGE R"
+    }
+  ]
+}

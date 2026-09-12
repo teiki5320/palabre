@@ -4,6 +4,8 @@
 -- sur le projet de production. Une question par semaine, par pays.
 --
 -- Rappels de rédaction :
+--   - question d'actualité : un fait rapporté dans les jours qui précèdent la
+--     semaine, avec au moins deux sources datées de cette période ;
 --   - formulation neutre, une seule question ;
 --   - contexte factuel de 2 à 3 phrases, chaque fait sourcé ;
 --   - trois options minimum, dont une neutre ;

@@ -1,0 +1,181 @@
+{
+  "titre": "Testez-vous · Côte d'Ivoire 2026",
+  "regles": "Une idée par affirmation, jamais une personne, pas de mot chargé ; on peut y répondre d'accord ou pas d'accord. Chaque position vient d'une citation exacte d'un texte écrit ; sans texte explicite : non calculable.",
+  "affirmations": [
+    {
+      "ordre": 1,
+      "theme": "institutions",
+      "sens": "garder",
+      "texte": "Le découpage électoral actuel doit être conservé.",
+      "debat": null
+    },
+    {
+      "ordre": 2,
+      "theme": "institutions",
+      "sens": "garder",
+      "texte": "La Commission électorale indépendante (CEI) doit garder son organisation actuelle.",
+      "debat": null
+    },
+    {
+      "ordre": 3,
+      "theme": "institutions",
+      "sens": "garder",
+      "texte": "La Constitution de 2016 doit rester en vigueur.",
+      "debat": null
+    },
+    {
+      "ordre": 4,
+      "theme": "institutions",
+      "sens": "changer",
+      "texte": "L'État doit transférer davantage de compétences et de ressources aux collectivités locales.",
+      "debat": null
+    },
+    {
+      "ordre": 5,
+      "theme": "institutions",
+      "sens": "garder",
+      "texte": "Les administrations centrales doivent rester principalement à Abidjan.",
+      "debat": null
+    },
+    {
+      "ordre": 6,
+      "theme": "institutions",
+      "sens": "garder",
+      "texte": "Aucun quota de femmes ne doit être imposé dans la composition du gouvernement.",
+      "debat": null
+    },
+    {
+      "ordre": 7,
+      "theme": "justice",
+      "sens": "changer",
+      "texte": "Une loi d'amnistie générale doit libérer les prisonniers civils, militaires et politiques.",
+      "debat": null
+    },
+    {
+      "ordre": 8,
+      "theme": "regional",
+      "sens": "garder",
+      "texte": "Les accords de défense entre la Côte d'Ivoire et la France doivent être maintenus.",
+      "debat": null
+    },
+    {
+      "ordre": 9,
+      "theme": "regional",
+      "sens": "garder",
+      "texte": "Les accords monétaires qui lient le franc CFA à la France doivent être maintenus.",
+      "debat": null
+    },
+    {
+      "ordre": 10,
+      "theme": "economie",
+      "sens": "changer",
+      "texte": "Les entreprises ivoiriennes doivent être protégées dans les secteurs clés de l'économie.",
+      "debat": null
+    },
+    {
+      "ordre": 11,
+      "theme": "economie",
+      "sens": "changer",
+      "texte": "L'État doit contrôler les secteurs stratégiques de l'économie.",
+      "debat": null
+    },
+    {
+      "ordre": 12,
+      "theme": "economie",
+      "sens": "garder",
+      "texte": "Le niveau actuel des impôts par rapport à la richesse nationale doit être maintenu.",
+      "debat": null
+    },
+    {
+      "ordre": 13,
+      "theme": "economie",
+      "sens": "changer",
+      "texte": "La dette publique doit baisser par rapport à la richesse nationale.",
+      "debat": null
+    },
+    {
+      "ordre": 14,
+      "theme": "economie",
+      "sens": "garder",
+      "texte": "Les contrats miniers en cours doivent être maintenus tels qu'ils ont été signés.",
+      "debat": null
+    },
+    {
+      "ordre": 15,
+      "theme": "agriculture",
+      "sens": "changer",
+      "texte": "Une part plus importante du cacao doit être transformée en Côte d'Ivoire.",
+      "debat": null
+    },
+    {
+      "ordre": 16,
+      "theme": "sante",
+      "sens": "changer",
+      "texte": "La couverture maladie universelle doit couvrir toute la population.",
+      "debat": null
+    },
+    {
+      "ordre": 17,
+      "theme": "sante",
+      "sens": "changer",
+      "texte": "Les soins de base doivent être gratuits pour les femmes enceintes et les enfants de moins de 5 ans.",
+      "debat": null
+    },
+    {
+      "ordre": 18,
+      "theme": "education",
+      "sens": "changer",
+      "texte": "Les langues ivoiriennes doivent être enseignées dès l'école primaire.",
+      "debat": null
+    },
+    {
+      "ordre": 19,
+      "theme": "education",
+      "sens": "changer",
+      "texte": "L'école doit être réellement gratuite pour tous les enfants.",
+      "debat": null
+    },
+    {
+      "ordre": 20,
+      "theme": "education",
+      "sens": "garder",
+      "texte": "Les présidents d'université doivent continuer à être nommés.",
+      "debat": null
+    },
+    {
+      "ordre": 21,
+      "theme": "emploi",
+      "sens": "changer",
+      "texte": "Les personnes qui perdent leur emploi doivent recevoir une allocation chômage.",
+      "debat": null
+    },
+    {
+      "ordre": 22,
+      "theme": "foncier",
+      "sens": "changer",
+      "texte": "Les terres doivent être délimitées et dotées de titres de propriété à grande échelle.",
+      "debat": null
+    },
+    {
+      "ordre": 23,
+      "theme": "environnement",
+      "sens": "changer",
+      "texte": "La répression de l'orpaillage clandestin doit être intensifiée sur tout le territoire.",
+      "debat": null
+    },
+    {
+      "ordre": 24,
+      "theme": "energie",
+      "sens": "changer",
+      "texte": "Le prix de l'électricité doit baisser.",
+      "debat": null
+    },
+    {
+      "ordre": 25,
+      "theme": "institutions",
+      "sens": "garder",
+      "texte": "Le nombre actuel de régions doit être conservé.",
+      "debat": null
+    }
+  ]
+}

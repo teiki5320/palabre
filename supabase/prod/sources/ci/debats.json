@@ -1,0 +1,1313 @@
+{
+  "debats": [
+    {
+      "id": "institutions-quatrieme-mandat",
+      "theme": "institutions",
+      "question": "Alassane Ouattara pouvait-il, au regard de la Constitution, être candidat à l'élection présidentielle d'octobre 2025 ?",
+      "contexte": "Alassane Ouattara, élu en 2010 et 2015 puis en 2020, a annoncé fin juillet 2025 sa candidature à la présidentielle du 25 octobre 2025. La Constitution de 2016, qui a instauré la Troisième République, limite à deux le nombre de mandats ; selon le camp présidentiel, le Conseil constitutionnel a estimé en 2020 que cette nouvelle Constitution remettait le compteur des mandats à zéro. Le 8 septembre 2025, le Conseil constitutionnel a retenu sa candidature parmi cinq dossiers.",
+      "periode": "2025-07 à 2025-10",
+      "arguments_pour": [
+        {
+          "argument": "La Constitution de 2016 a ouvert une nouvelle République et, selon l'avis rendu par le Conseil constitutionnel en 2020, a remis le compteur des mandats à zéro ; la candidature de 2025 est donc recevable.",
+          "porte_par": "Camp d'Alassane Ouattara, s'appuyant sur la décision du Conseil constitutionnel de 2020",
+          "source_url": "https://www.africaradio.com/actualite-110742-cote-d-ivoire-60-candidatures-deposees-qui-sont-les-candidats-a-l-election-presidentielle"
+        },
+        {
+          "argument": "La candidature vise à poursuivre « le chemin de paix, de stabilité et de développement ».",
+          "porte_par": "Alassane Ouattara, président de la République",
+          "source_url": "https://www.africaradio.com/actualite-110742-cote-d-ivoire-60-candidatures-deposees-qui-sont-les-candidats-a-l-election-presidentielle"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Un quatrième mandat constituerait un nouveau passage en force et une seconde violation de la loi fondamentale, menaçant la paix sociale et la stabilité institutionnelle.",
+          "porte_par": "Simon Doho, président du groupe parlementaire du PDCI-RDA",
+          "source_url": "https://www.aip.ci/228017/cote-divoire-aip-le-pdci-rda-rejette-un-4e-mandat-a-alassane-ouattara/"
+        },
+        {
+          "argument": "La Constitution limite le président à deux mandats ; le mandat obtenu en 2020 était déjà inconstitutionnel et une quatrième candidature serait illégale.",
+          "porte_par": "Laurent Gbagbo, président du PPA-CI",
+          "source_url": "https://www.aa.com.tr/fr/afrique/c%C3%B4te-d-ivoire-laurent-gbagbo-soppose-%C3%A0-un-quatri%C3%A8me-mandat-de-ouattara/3661641"
+        },
+        {
+          "argument": "Le scrutin, après l'exclusion de candidats de l'opposition, se réduirait à un plébiscite pour un quatrième mandat qualifié d'anticonstitutionnel.",
+          "porte_par": "Tidjane Thiam, président du PDCI-RDA",
+          "source_url": "https://www.france24.com/fr/info-en-continu/20250908-c%C3%B4te-d-ivoire-le-conseil-constitutionnel-rejette-les-candidatures-de-tidjane-thiam-et-laurent-gbagbo-%C3%A0-la-pr%C3%A9sidentielle"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "PDCI-RDA",
+          "sens": "contre",
+          "citation": "L'annonce d'un quatrième mandat consacre un nouveau passage en force, c'est-à-dire une seconde violation de la loi fondamentale",
+          "auteur": "Simon Doho, président du groupe parlementaire du PDCI-RDA",
+          "date": "2025-07-31",
+          "source_url": "https://www.aip.ci/228017/cote-divoire-aip-le-pdci-rda-rejette-un-4e-mandat-a-alassane-ouattara/"
+        },
+        {
+          "sigle": "PPA-CI",
+          "sens": "contre",
+          "citation": "Je voudrais que vous alliez lui dire qu'il ne fera pas de quatrième mandat",
+          "auteur": "Laurent Gbagbo, président du PPA-CI",
+          "date": "2025-08-17",
+          "source_url": "https://www.aa.com.tr/fr/afrique/c%C3%B4te-d-ivoire-laurent-gbagbo-soppose-%C3%A0-un-quatri%C3%A8me-mandat-de-ouattara/3661641"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Côte d'Ivoire – AIP/ Le PDCI-RDA rejette un 4e mandat d'Alassane Ouattara",
+          "media": "Agence ivoirienne de presse (AIP)",
+          "date": "2025-07-31",
+          "url": "https://www.aip.ci/228017/cote-divoire-aip-le-pdci-rda-rejette-un-4e-mandat-a-alassane-ouattara/"
+        },
+        {
+          "titre": "Côte d'Ivoire : Laurent Gbagbo s'oppose à un quatrième mandat de Ouattara",
+          "media": "Anadolu Agency (AA)",
+          "date": "2025-08-17",
+          "url": "https://www.aa.com.tr/fr/afrique/c%C3%B4te-d-ivoire-laurent-gbagbo-soppose-%C3%A0-un-quatri%C3%A8me-mandat-de-ouattara/3661641"
+        },
+        {
+          "titre": "Côte d'Ivoire. 60 candidatures déposées : qui sont les candidats à l'élection présidentielle ?",
+          "media": "Africa Radio",
+          "date": "2025-08-27",
+          "url": "https://www.africaradio.com/actualite-110742-cote-d-ivoire-60-candidatures-deposees-qui-sont-les-candidats-a-l-election-presidentielle"
+        },
+        {
+          "titre": "Présidentielle en Côte d'Ivoire : les candidatures de Tidjane Thiam et Laurent Gbagbo rejetées",
+          "media": "France 24 (AFP)",
+          "date": "2025-09-08",
+          "url": "https://www.france24.com/fr/info-en-continu/20250908-c%C3%B4te-d-ivoire-le-conseil-constitutionnel-rejette-les-candidatures-de-tidjane-thiam-et-laurent-gbagbo-%C3%A0-la-pr%C3%A9sidentielle"
+        }
+      ],
+      "encore_ouvert": false
+    },
+    {
+      "id": "institutions-exclusion-candidats",
+      "theme": "institutions",
+      "question": "Une personne qui ne figure pas sur la liste électorale doit-elle être exclue de l'élection présidentielle, comme l'ont été Laurent Gbagbo et Tidjane Thiam en 2025 ?",
+      "contexte": "Le 8 septembre 2025, le Conseil constitutionnel a retenu 5 des 60 candidatures déposées pour la présidentielle du 25 octobre 2025. Les candidatures de Laurent Gbagbo (PPA-CI) et de Tidjane Thiam (PDCI-RDA) ont été déclarées irrecevables faute d'inscription sur la liste électorale ; celle de Pascal Affi N'Guessan (FPI) l'a été pour parrainages insuffisants. Laurent Gbagbo avait été radié à la suite d'une condamnation judiciaire, Tidjane Thiam en avril 2025 pour une question de nationalité.",
+      "periode": "2025-04 à 2025-09",
+      "arguments_pour": [
+        {
+          "argument": "La qualité d'électeur, attestée par l'inscription sur la liste électorale, est une condition d'éligibilité que le Conseil exige de façon constante ; les litiges d'inscription relèvent de la commission électorale et des tribunaux, non du Conseil constitutionnel.",
+          "porte_par": "Conseil constitutionnel (présidente Chantal Nanaba Camara)",
+          "source_url": "https://news.abidjan.net/articles/744359/presidentielle-2025-les-candidatures-des-opposants-gbagbo-thiam-et-affi-rejetees-par-le-conseil-constitutionnel-officiel"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Les Ivoiriens attendaient du Conseil qu'il défende leur droit de choisir leur président par les urnes ; l'exclusion transforme le scrutin en plébiscite du président sortant.",
+          "porte_par": "Tidjane Thiam, président du PDCI-RDA",
+          "source_url": "https://www.france24.com/fr/info-en-continu/20250908-c%C3%B4te-d-ivoire-le-conseil-constitutionnel-rejette-les-candidatures-de-tidjane-thiam-et-laurent-gbagbo-%C3%A0-la-pr%C3%A9sidentielle"
+        },
+        {
+          "argument": "L'exclusion des principales candidatures d'opposition relève d'une instrumentalisation judiciaire et s'ajoute à l'absence de dialogue politique, justifiant une médiation de l'ONU.",
+          "porte_par": "Direction du PDCI-RDA",
+          "source_url": "https://fr.allafrica.com/stories/202509230678.html"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "PDCI-RDA",
+          "sens": "contre",
+          "citation": "un véritable plébiscite organisé du président sortant, pour un quatrième mandat anticonstitutionnel",
+          "auteur": "Tidjane Thiam, président du PDCI-RDA",
+          "date": "2025-09-08",
+          "source_url": "https://www.france24.com/fr/info-en-continu/20250908-c%C3%B4te-d-ivoire-le-conseil-constitutionnel-rejette-les-candidatures-de-tidjane-thiam-et-laurent-gbagbo-%C3%A0-la-pr%C3%A9sidentielle"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Présidentielle 2025: les candidatures des opposants Gbagbo, Thiam et Affi rejetées par le Conseil Constitutionnel (Officiel)",
+          "media": "Abidjan.net",
+          "date": "2025-09-08",
+          "url": "https://news.abidjan.net/articles/744359/presidentielle-2025-les-candidatures-des-opposants-gbagbo-thiam-et-affi-rejetees-par-le-conseil-constitutionnel-officiel"
+        },
+        {
+          "titre": "Présidentielle en Côte d'Ivoire : les candidatures de Tidjane Thiam et Laurent Gbagbo rejetées",
+          "media": "France 24 (AFP)",
+          "date": "2025-09-08",
+          "url": "https://www.france24.com/fr/info-en-continu/20250908-c%C3%B4te-d-ivoire-le-conseil-constitutionnel-rejette-les-candidatures-de-tidjane-thiam-et-laurent-gbagbo-%C3%A0-la-pr%C3%A9sidentielle"
+        },
+        {
+          "titre": "Cote d'Ivoire: Dialogue politique - Le Pdci-Rda appelle à une médiation urgente de l'Onu",
+          "media": "Fraternité Matin (via allAfrica)",
+          "date": "2025-09-23",
+          "url": "https://fr.allafrica.com/stories/202509230678.html"
+        }
+      ],
+      "encore_ouvert": false
+    },
+    {
+      "id": "institutions-radiation-thiam-nationalite",
+      "theme": "institutions",
+      "question": "La radiation de Tidjane Thiam de la liste électorale en avril 2025, en application de l'article 48 du code de la nationalité, était-elle justifiée ?",
+      "contexte": "L'article 48 du code de la nationalité ivoirienne prévoit que « perd la nationalité ivoirienne l'Ivoirien majeur qui acquiert volontairement une nationalité étrangère ». Tidjane Thiam, qui avait acquis la nationalité française en 1987, en a été libéré par décret en mars 2025 à sa demande. Le 22 avril 2025, un tribunal d'Abidjan a estimé qu'il avait perdu la nationalité ivoirienne en devenant français et a ordonné sa radiation de la liste électorale, ce qui a conduit au rejet de sa candidature à la présidentielle.",
+      "periode": "2025-02 à 2025-09",
+      "arguments_pour": [
+        {
+          "argument": "En acquérant la nationalité française, Tidjane Thiam a perdu la nationalité ivoirienne, ce qui justifie sa radiation de la liste électorale (délibéré rapporté par son avocat).",
+          "porte_par": "Tribunal d'Abidjan, saisi par des requérants",
+          "source_url": "https://www.france24.com/fr/afrique/20250422-c%C3%B4te-ivoire-opposant-tidjane-thiam-exclu-course-pr%C3%A9sidentielle-radi%C3%A9-liste-%C3%A9lectorale-politique-africaine"
+        },
+        {
+          "argument": "La Constitution exige que les candidats à la présidentielle soient exclusivement de nationalité ivoirienne ; la double nationalité constituait un obstacle.",
+          "porte_par": "Contestataires de la candidature de Tidjane Thiam (selon Anadolu)",
+          "source_url": "https://www.aa.com.tr/fr/afrique/la-france-lib%C3%A8re-l-opposant-ivoirien-tidjane-thiam-de-la-nationalit%C3%A9-francaise-sur-sa-demande/3515771"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "La décision constitue un « déni de justice indigne d'une démocratie » et une radiation injuste.",
+          "porte_par": "Tidjane Thiam, président du PDCI-RDA",
+          "source_url": "https://www.france24.com/fr/afrique/20250422-c%C3%B4te-ivoire-opposant-tidjane-thiam-exclu-course-pr%C3%A9sidentielle-radi%C3%A9-liste-%C3%A9lectorale-politique-africaine"
+        },
+        {
+          "argument": "Contester sa nationalité est une insulte au pays et relève d'une manipulation du pouvoir.",
+          "porte_par": "Tidjane Thiam, président du PDCI-RDA",
+          "source_url": "https://www.aa.com.tr/fr/afrique/la-france-lib%C3%A8re-l-opposant-ivoirien-tidjane-thiam-de-la-nationalit%C3%A9-francaise-sur-sa-demande/3515771"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "PDCI-RDA",
+          "sens": "contre",
+          "citation": "Je n'accepterai pas cette radiation qui est injuste, injustifiée et incompréhensible",
+          "auteur": "Tidjane Thiam, président du PDCI-RDA",
+          "date": "2025-04-22",
+          "source_url": "https://www.france24.com/fr/afrique/20250422-c%C3%B4te-ivoire-opposant-tidjane-thiam-exclu-course-pr%C3%A9sidentielle-radi%C3%A9-liste-%C3%A9lectorale-politique-africaine"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "La France libère l'opposant ivoirien Tidjane Thiam de la nationalité française, sur sa demande",
+          "media": "Anadolu Agency (AA)",
+          "date": "2025-03-20",
+          "url": "https://www.aa.com.tr/fr/afrique/la-france-lib%C3%A8re-l-opposant-ivoirien-tidjane-thiam-de-la-nationalit%C3%A9-francaise-sur-sa-demande/3515771"
+        },
+        {
+          "titre": "Côte d'Ivoire : l'opposant Tidjane Thiam écarté par la justice de la course à la présidentielle",
+          "media": "France 24",
+          "date": "2025-04-22",
+          "url": "https://www.france24.com/fr/afrique/20250422-c%C3%B4te-ivoire-opposant-tidjane-thiam-exclu-course-pr%C3%A9sidentielle-radi%C3%A9-liste-%C3%A9lectorale-politique-africaine"
+        },
+        {
+          "titre": "Présidentielle 2025: les candidatures des opposants Gbagbo, Thiam et Affi rejetées par le Conseil Constitutionnel (Officiel)",
+          "media": "Abidjan.net",
+          "date": "2025-09-08",
+          "url": "https://news.abidjan.net/articles/744359/presidentielle-2025-les-candidatures-des-opposants-gbagbo-thiam-et-affi-rejetees-par-le-conseil-constitutionnel-officiel"
+        }
+      ],
+      "encore_ouvert": false
+    },
+    {
+      "id": "institutions-parrainage-citoyen",
+      "theme": "institutions",
+      "question": "Les candidats à l'élection présidentielle doivent-ils continuer à recueillir le parrainage d'au moins 1 % des électeurs dans au moins la moitié des régions et districts autonomes ?",
+      "contexte": "Pour la présidentielle de 2025, chaque candidat devait réunir le soutien d'au moins 1 % des électeurs dans au moins 17 des 33 régions ou districts autonomes, entre le 1er juillet et le 26 août 2025, sous l'encadrement de la Commission électorale indépendante. Le 8 septembre 2025, le Conseil constitutionnel a rejeté la candidature de Pascal Affi N'Guessan (FPI) pour parrainages insuffisants et relevé des parrainages invalides dans le dossier de Laurent Gbagbo.",
+      "periode": "2025-07 à 2025-09",
+      "arguments_pour": [
+        {
+          "argument": "Le parrainage citoyen sert d'outil de présélection destiné à écarter les candidatures les moins sérieuses.",
+          "porte_par": "Justification du dispositif, telle que présentée par France 24",
+          "source_url": "https://www.france24.com/fr/afrique/20250814-pr%C3%A9sidentielle-c%C3%B4te-ivoire-%C3%A9tapes-calendrier-%C3%A9lectoral"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Le parrainage freine l'émergence de nouveaux profils issus de la société civile.",
+          "porte_par": "Critiques du dispositif rapportées par France 24",
+          "source_url": "https://www.france24.com/fr/afrique/20250814-pr%C3%A9sidentielle-c%C3%B4te-ivoire-%C3%A9tapes-calendrier-%C3%A9lectoral"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Présidentielle en Côte d'Ivoire : les grandes étapes du scrutin d'octobre 2025",
+          "media": "France 24",
+          "date": "2025-08-14",
+          "url": "https://www.france24.com/fr/afrique/20250814-pr%C3%A9sidentielle-c%C3%B4te-ivoire-%C3%A9tapes-calendrier-%C3%A9lectoral"
+        },
+        {
+          "titre": "Présidentielle 2025: les candidatures des opposants Gbagbo, Thiam et Affi rejetées par le Conseil Constitutionnel (Officiel)",
+          "media": "Abidjan.net",
+          "date": "2025-09-08",
+          "url": "https://news.abidjan.net/articles/744359/presidentielle-2025-les-candidatures-des-opposants-gbagbo-thiam-et-affi-rejetees-par-le-conseil-constitutionnel-officiel"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "institutions-nouvel-organe-electoral",
+      "theme": "institutions",
+      "question": "Le nouvel organe chargé des élections, qui doit remplacer la Commission électorale indépendante (CEI), doit-il être composé uniquement de personnalités sans appartenance politique ?",
+      "contexte": "Le 6 mai 2026, le Conseil des ministres a adopté une ordonnance dissolvant la CEI, en invoquant les réserves et critiques dont elle a fait l'objet ; le gouvernement annonce un « nouveau mécanisme de gestion des élections ». Des partis d'opposition préparent une proposition commune ; selon Africtelegraph, ils souhaitent notamment que la désignation des membres échappe au contrôle exclusif de l'exécutif. En septembre 2026, le gouvernement indique que la révision de la liste électorale attend la désignation de ce nouvel organe.",
+      "periode": "2026-05 à 2026-09",
+      "arguments_pour": [
+        {
+          "argument": "Seul un organe véritablement et totalement indépendant, composé de personnalités intègres sans appartenance partisane, peut garantir des élections crédibles ; la réforme aurait dû intervenir avant la présidentielle de 2025.",
+          "porte_par": "Mouvement des générations capables (MGC), parti présidé par Simone Ehivet Gbagbo",
+          "source_url": "https://www.koaci.com/article/2026/05/07/cote-divoire/politique/cote-divoire-dissolution-de-la-cei-simone-gbagbo-propose-la-mise-en-place-dun-organe-electoral-veritablement-et-totalement-independant_196441.html"
+        },
+        {
+          "argument": "La dissolution reconnaît implicitement la crise de confiance autour de la CEI ; le futur organe doit exclure l'influence des partis politiques.",
+          "porte_par": "COJEP",
+          "source_url": "https://news.abidjan.net/articles/747864/cote-divoire-le-cojep-salue-la-dissolution-de-la-cei-et-appelle-a-un-organe-electoral-veritablement-independant"
+        },
+        {
+          "argument": "Un « Haut Conseil électif » de onze conseillers permanents, n'ayant jamais été affiliés à un parti et issus notamment des confessions religieuses, des organisations de défense des droits humains, du barreau et des médias, garantirait l'indépendance vis-à-vis de l'exécutif.",
+          "porte_par": "Projet de partis d'opposition rapporté par KOACI",
+          "source_url": "https://www.koaci.com/article/2026/06/09/cote-divoire/politique/cote-divoire-apres-la-dissolution-de-la-cei-lopposition-ivoirienne-dessine-les-contours-dun-nouvel-organe-electoral_197379.html"
+        }
+      ],
+      "arguments_contre": [],
+      "positions_publiques": [
+        {
+          "sigle": "MGC",
+          "sens": "pour",
+          "citation": "un organe électoral véritablement et totalement indépendant, composé de personnalités reconnues pour leur intégrité, sans appartenance partisane",
+          "auteur": "Mouvement des générations capables (Simone Ehivet Gbagbo)",
+          "date": "2026-05-07",
+          "source_url": "https://www.koaci.com/article/2026/05/07/cote-divoire/politique/cote-divoire-dissolution-de-la-cei-simone-gbagbo-propose-la-mise-en-place-dun-organe-electoral-veritablement-et-totalement-independant_196441.html"
+        },
+        {
+          "sigle": "COJEP",
+          "sens": "pour",
+          "citation": "excluant l'influence des partis politiques",
+          "auteur": "COJEP (déclaration du parti)",
+          "date": "2026-05-07",
+          "source_url": "https://news.abidjan.net/articles/747864/cote-divoire-le-cojep-salue-la-dissolution-de-la-cei-et-appelle-a-un-organe-electoral-veritablement-independant"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Organisation et supervision des élections : le gouvernement ivoirien dissout la Commission électorale indépendante (CEI)",
+          "media": "Abidjan.net",
+          "date": "2026-05-06",
+          "url": "https://news.abidjan.net/articles/747848/organisation-et-supervision-des-elections-le-gouvernement-ivoirien-dissout-la-commission-electorale-independante-cei"
+        },
+        {
+          "titre": "Côte d'Ivoire : Dissolution de la CEI, Simone Gbagbo propose la mise en place d'un organe électoral véritablement et totalement indépendant",
+          "media": "KOACI",
+          "date": "2026-05-07",
+          "url": "https://www.koaci.com/article/2026/05/07/cote-divoire/politique/cote-divoire-dissolution-de-la-cei-simone-gbagbo-propose-la-mise-en-place-dun-organe-electoral-veritablement-et-totalement-independant_196441.html"
+        },
+        {
+          "titre": "Côte d'Ivoire : le COJEP salue la dissolution de la CEI et appelle à un organe électoral « véritablement indépendant »",
+          "media": "Abidjan.net",
+          "date": "2026-05-07",
+          "url": "https://news.abidjan.net/articles/747864/cote-divoire-le-cojep-salue-la-dissolution-de-la-cei-et-appelle-a-un-organe-electoral-veritablement-independant"
+        },
+        {
+          "titre": "Côte d'Ivoire : l'opposition pose ses conditions après la dissolution de la CEI",
+          "media": "Africtelegraph",
+          "date": "2026-05-08",
+          "url": "https://africtelegraph.com/blog/cote-divoire-lopposition-pose-ses-conditions-apres-la-dissolution-de-la-cei/"
+        },
+        {
+          "titre": "Côte d'Ivoire : Après la dissolution de la CEI, l'opposition ivoirienne dessine les contours d'un nouvel organe électoral",
+          "media": "KOACI",
+          "date": "2026-06-09",
+          "url": "https://www.koaci.com/article/2026/06/09/cote-divoire/politique/cote-divoire-apres-la-dissolution-de-la-cei-lopposition-ivoirienne-dessine-les-contours-dun-nouvel-organe-electoral_197379.html"
+        },
+        {
+          "titre": "Côte d'Ivoire : l'opposition veut peser sur la nouvelle Commission électorale",
+          "media": "France 24",
+          "date": "2026-09-11",
+          "url": "https://www.france24.com/fr/vid%C3%A9o/20260911-c%C3%B4te-d-ivoire-l-opposition-veut-peser-sur-la-nouvelle-commission-%C3%A9lectorale"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "institutions-revision-liste-electorale",
+      "theme": "institutions",
+      "question": "La liste électorale aurait-elle dû être révisée avant l'élection présidentielle d'octobre 2025 ?",
+      "contexte": "En juin 2025, le président de la CEI a annoncé qu'aucune nouvelle révision de la liste électorale n'aurait lieu avant la présidentielle ; la liste comptait 8 727 431 inscrits, dont 715 006 nouveaux. Plusieurs responsables d'opposition, dont Laurent Gbagbo et Tidjane Thiam, n'y figuraient pas. En septembre 2026, après la dissolution de la CEI, le gouvernement a indiqué que la révision annuelle prévue par la loi dépendrait de la mise en place du nouvel organe électoral.",
+      "periode": "2025-06 à 2026-09",
+      "arguments_pour": [
+        {
+          "argument": "Le refus de la commission électorale de réviser la liste électorale fait partie des violations qui dégradent la situation politique et justifient une médiation de l'ONU.",
+          "porte_par": "Direction du PDCI-RDA (septembre 2025)",
+          "source_url": "https://fr.allafrica.com/stories/202509230678.html"
+        },
+        {
+          "argument": "Une révision complète de la liste électorale fait partie des conditions d'élections crédibles, avec un organe indépendant et un découpage électoral équitable.",
+          "porte_par": "Mouvement des générations capables (MGC), mai 2026",
+          "source_url": "https://www.koaci.com/article/2026/05/07/cote-divoire/politique/cote-divoire-dissolution-de-la-cei-simone-gbagbo-propose-la-mise-en-place-dun-organe-electoral-veritablement-et-totalement-independant_196441.html"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Une nouvelle révision aurait compromis la tenue de la présidentielle à la date constitutionnelle ; la CEI a intégré les jeunes majeurs au 29 février 2025 et appelle au respect des règles et des institutions.",
+          "porte_par": "Ibrahime Coulibaly-Kuibiert, président de la CEI",
+          "source_url": "https://news.abidjan.net/articles/742179/cote-divoire-il-ny-aura-pas-de-revision-de-la-liste-electorale-avant-lelection-presidentielle-coulibaly-kuibiert"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Côte d'Ivoire : « Il n'y aura pas de révision de la liste électorale avant l'élection présidentielle » (Coulibaly-Kuibiert)",
+          "media": "Abidjan.net",
+          "date": "2025-06-02",
+          "url": "https://news.abidjan.net/articles/742179/cote-divoire-il-ny-aura-pas-de-revision-de-la-liste-electorale-avant-lelection-presidentielle-coulibaly-kuibiert"
+        },
+        {
+          "titre": "Cote d'Ivoire: Dialogue politique - Le Pdci-Rda appelle à une médiation urgente de l'Onu",
+          "media": "Fraternité Matin (via allAfrica)",
+          "date": "2025-09-23",
+          "url": "https://fr.allafrica.com/stories/202509230678.html"
+        },
+        {
+          "titre": "Côte d'Ivoire : Dissolution de la CEI, Simone Gbagbo propose la mise en place d'un organe électoral véritablement et totalement indépendant",
+          "media": "KOACI",
+          "date": "2026-05-07",
+          "url": "https://www.koaci.com/article/2026/05/07/cote-divoire/politique/cote-divoire-dissolution-de-la-cei-simone-gbagbo-propose-la-mise-en-place-dun-organe-electoral-veritablement-et-totalement-independant_196441.html"
+        },
+        {
+          "titre": "Révision de la liste électorale en 2026 : la réponse du gouvernement",
+          "media": "Nord-Sud",
+          "date": "2026-09-09",
+          "url": "https://www.nordsud.info/revision-de-la-liste-electorale-en-2026-la-reponse-du-gouvernement/"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "institutions-boycott-legislatives-2025",
+      "theme": "institutions",
+      "question": "Les partis d'opposition devaient-ils participer aux élections législatives du 27 décembre 2025 ?",
+      "contexte": "Début novembre 2025, le PPA-CI de Laurent Gbagbo a annoncé qu'il ne participerait pas aux législatives du 27 décembre 2025. Le PDCI-RDA de Tidjane Thiam a décidé d'y prendre part, se séparant sur ce point de son ancien allié au sein du Front commun. Le GPS de Guillaume Soro s'est associé au boycott.",
+      "periode": "2025-11 à 2025-12",
+      "arguments_pour": [
+        {
+          "argument": "Malgré des conditions jugées imparfaites, la mobilisation des électeurs peut permettre de l'emporter.",
+          "porte_par": "Tidjane Thiam, président du PDCI-RDA",
+          "source_url": "https://afriksoir.net/legislatives-2025-ppa-ci-gps-boycottent-pdci/"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Les conditions d'élections crédibles ne sont pas réunies et l'environnement socio-politique, marqué selon le parti par la répression et le harcèlement judiciaire, n'y est pas propice.",
+          "porte_par": "PPA-CI",
+          "source_url": "https://fr.allafrica.com/stories/202511070120.html"
+        },
+        {
+          "argument": "Le processus électoral est marqué par la fraude, l'exclusion et la confiscation du suffrage ; une réforme préalable de la commission électorale est nécessaire.",
+          "porte_par": "PPA-CI",
+          "source_url": "https://afriksoir.net/legislatives-2025-ppa-ci-gps-boycottent-pdci/"
+        },
+        {
+          "argument": "Les conditions d'un scrutin crédible ne sont pas remplies.",
+          "porte_par": "GPS (Générations et peuples solidaires), parti de Guillaume Soro",
+          "source_url": "https://afriksoir.net/legislatives-2025-ppa-ci-gps-boycottent-pdci/"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "PDCI-RDA",
+          "sens": "pour",
+          "citation": "Rendez-vous le 27 décembre ! La victoire est à notre portée",
+          "auteur": "Tidjane Thiam, président du PDCI-RDA",
+          "date": "2025-11-15",
+          "source_url": "https://afriksoir.net/legislatives-2025-ppa-ci-gps-boycottent-pdci/"
+        },
+        {
+          "sigle": "PPA-CI",
+          "sens": "contre",
+          "citation": "Les conditions d'élections crédibles ne sont pas réunies",
+          "auteur": "PPA-CI (annonce du parti présidé par Laurent Gbagbo)",
+          "date": "2025-11-07",
+          "source_url": "https://fr.allafrica.com/stories/202511070120.html"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Cote d'Ivoire: Le PPA-CI de Laurent Gbagbo ne participera pas aux législatives du 27 décembre",
+          "media": "RFI (via allAfrica)",
+          "date": "2025-11-07",
+          "url": "https://fr.allafrica.com/stories/202511070120.html"
+        },
+        {
+          "titre": "Législatives 2025 : PPA-CI et GPS boycottent, le PDCI s'isole, l'unité introuvable",
+          "media": "Afrik Soir",
+          "date": "2025-11-15",
+          "url": "https://afriksoir.net/legislatives-2025-ppa-ci-gps-boycottent-pdci/"
+        }
+      ],
+      "encore_ouvert": false
+    },
+    {
+      "id": "libertes-interdiction-marches-2025",
+      "theme": "libertes",
+      "question": "Les autorités avaient-elles raison d'interdire les marches de l'opposition organisées avant l'élection présidentielle d'octobre 2025 ?",
+      "contexte": "Par un arrêté du 2 octobre 2025, le préfet d'Abidjan a interdit la marche que le Front commun PPA-CI – PDCI-RDA prévoyait le 4 octobre. Le Front commun l'a reportée au 11 octobre ; ce jour-là, la police a dispersé les manifestants à Abidjan. Le 16 octobre, le procureur de la République a annoncé l'interpellation d'environ 700 personnes.",
+      "periode": "2025-10 à 2025-10",
+      "arguments_pour": [
+        {
+          "argument": "L'interdiction vise à éviter tout trouble à l'ordre public et à garantir la sécurité des habitants de la ville.",
+          "porte_par": "Préfecture d'Abidjan (secrétaire général de la préfecture)",
+          "source_url": "https://www.koaci.com/article/2025/10/02/cote-divoire/politique/cote-divoire-le-prefet-dabidjan-interdit-la-marche-du-front-commun-ppa-cipdci-du-04-octobre_190752.html"
+        },
+        {
+          "argument": "Le parquet annonce des réquisitions sévères contre les personnes interpellées et invite à ne pas s'exposer « pour des hommes politiques cachés ».",
+          "porte_par": "Koné Braman Oumar, procureur de la République",
+          "source_url": "https://news.abidjan.net/articles/745284/cote-divoire-apres-la-marche-interdite-du-front-commun-pdci-ppa-ci-le-procureur-de-la-republique-annonce-linterpellation-denviron-700-personnes"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "La marche avait été déclarée dans les formes légales le 29 septembre 2025 ; son interdiction porte gravement atteinte aux libertés publiques.",
+          "porte_par": "Front commun PPA-CI – PDCI-RDA (communiqué signé par Sébastien Dano Djédjé et Noël Akossi Bendjo)",
+          "source_url": "https://afriksoir.net/marche-4-octobre-interdite-le-front-commun-ppa-ci-pdci-rda-reporte-au-11-octobre-2025/"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "PPA-CI",
+          "sens": "contre",
+          "citation": "Nous dénonçons avec fermeté cette décision qui constitue une atteinte grave aux libertés publiques",
+          "auteur": "Sébastien Dano Djédjé, président exécutif du PPA-CI (cosignataire du communiqué du Front commun)",
+          "date": "2025-10-03",
+          "source_url": "https://afriksoir.net/marche-4-octobre-interdite-le-front-commun-ppa-ci-pdci-rda-reporte-au-11-octobre-2025/"
+        },
+        {
+          "sigle": "PDCI-RDA",
+          "sens": "contre",
+          "citation": "Nous dénonçons avec fermeté cette décision qui constitue une atteinte grave aux libertés publiques",
+          "auteur": "Noël Akossi Bendjo, coordinateur général du PDCI-RDA (cosignataire du communiqué du Front commun)",
+          "date": "2025-10-03",
+          "source_url": "https://afriksoir.net/marche-4-octobre-interdite-le-front-commun-ppa-ci-pdci-rda-reporte-au-11-octobre-2025/"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Côte d'Ivoire : Le préfet d'Abidjan interdit la marche du front commun PPA-CI/PDCI du 04 octobre",
+          "media": "KOACI",
+          "date": "2025-10-02",
+          "url": "https://www.koaci.com/article/2025/10/02/cote-divoire/politique/cote-divoire-le-prefet-dabidjan-interdit-la-marche-du-front-commun-ppa-cipdci-du-04-octobre_190752.html"
+        },
+        {
+          "titre": "Marche du 4 octobre interdite : le Front commun PPA-CI – PDCI-RDA reporte au 11 octobre 2025",
+          "media": "Afrik Soir",
+          "date": "2025-10-03",
+          "url": "https://afriksoir.net/marche-4-octobre-interdite-le-front-commun-ppa-ci-pdci-rda-reporte-au-11-octobre-2025/"
+        },
+        {
+          "titre": "Côte d'Ivoire/ Après la marche interdite du Front Commun PDCI-PPA-CI : le procureur de la République annonce l'interpellation d'environ 700 personnes",
+          "media": "Abidjan.net",
+          "date": "2025-10-16",
+          "url": "https://news.abidjan.net/articles/745284/cote-divoire-apres-la-marche-interdite-du-front-commun-pdci-ppa-ci-le-procureur-de-la-republique-annonce-linterpellation-denviron-700-personnes"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "libertes-liberation-detenus-2025",
+      "theme": "libertes",
+      "question": "Les militants et cyberactivistes d'opposition détenus depuis la période électorale de 2025 doivent-ils être libérés ?",
+      "contexte": "Après la marche interdite du 11 octobre 2025, environ 700 personnes ont été interpellées. Des cyberactivistes proches de l'opposition ont été arrêtés, dont Ibrahim Zigui, condamné en mai 2026 à cinq ans de prison pour « provocation à l'insurrection et troubles à l'ordre public » puis placé en liberté provisoire par la cour d'appel le 6 juillet 2026. Le 6 août 2026, le président Ouattara a signé des mesures de grâce et de remise de peine pour 4 661 détenus condamnés pour des infractions mineures.",
+      "periode": "2025-10 à 2026-08",
+      "arguments_pour": [
+        {
+          "argument": "Une initiative de soutien juridique, humanitaire et social aux « prisonniers d'opinion » liés aux manifestations contre le quatrième mandat est un engagement en faveur de l'État de droit.",
+          "porte_par": "Justin Koné Katinan, président du Conseil stratégique du PPA-CI",
+          "source_url": "https://fr.allafrica.com/stories/202512060091.html"
+        },
+        {
+          "argument": "Les militants emprisonnés, dont Ibrahim Zigui, doivent être libérés (demande formulée lors d'un meeting le 16 mai 2026).",
+          "porte_par": "Laurent Gbagbo, président du PPA-CI",
+          "source_url": "https://info.fr/cote-ivoire-cyberactiviste-ibrahim-zigui-libere-apres-10-mois/"
+        },
+        {
+          "argument": "Les arrestations de cyberactivistes s'apparentent à une chasse politique contre des voix qui refusent le musellement du débat public.",
+          "porte_par": "PDCI-RDA (communiqué)",
+          "source_url": "https://www.lavenir.ci/politique/13144-le-pdci-rda-denonce-une-traque-politique-de-ses-proches"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Les personnes interpellées lors de la marche interdite doivent répondre de leurs actes ; le parquet annonce des réquisitions sévères.",
+          "porte_par": "Koné Braman Oumar, procureur de la République",
+          "source_url": "https://news.abidjan.net/articles/745284/cote-divoire-apres-la-marche-interdite-du-front-commun-pdci-ppa-ci-le-procureur-de-la-republique-annonce-linterpellation-denviron-700-personnes"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "PPA-CI",
+          "sens": "pour",
+          "citation": "L'Ilpo constitue à la fois un acte de solidarité humaine et un engagement politique fort en faveur de l'État de droit",
+          "auteur": "Justin Koné Katinan, président du Conseil stratégique du PPA-CI, présentant l'Initiative pour la libération des prisonniers d'opinion",
+          "date": "2025-12-04",
+          "source_url": "https://fr.allafrica.com/stories/202512060091.html"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Côte d'Ivoire/ Après la marche interdite du Front Commun PDCI-PPA-CI : le procureur de la République annonce l'interpellation d'environ 700 personnes",
+          "media": "Abidjan.net",
+          "date": "2025-10-16",
+          "url": "https://news.abidjan.net/articles/745284/cote-divoire-apres-la-marche-interdite-du-front-commun-pdci-ppa-ci-le-procureur-de-la-republique-annonce-linterpellation-denviron-700-personnes"
+        },
+        {
+          "titre": "Le PDCI-RDA dénonce une \"traque politique\" de ses proches",
+          "media": "L'Avenir",
+          "date": "2025-11-13",
+          "url": "https://www.lavenir.ci/politique/13144-le-pdci-rda-denonce-une-traque-politique-de-ses-proches"
+        },
+        {
+          "titre": "Afrique: Initiative pour la libération des prisonniers d'opinion - Le PPA-CI sonne la mobilisation",
+          "media": "Fraternité Matin (via allAfrica)",
+          "date": "2025-12-04",
+          "url": "https://fr.allafrica.com/stories/202512060091.html"
+        },
+        {
+          "titre": "Côte d'Ivoire : le cyberactiviste Ibrahim Zigui libéré après 10 mois",
+          "media": "info.fr",
+          "date": "2026-07-06",
+          "url": "https://info.fr/cote-ivoire-cyberactiviste-ibrahim-zigui-libere-apres-10-mois/"
+        },
+        {
+          "titre": "Côte d'Ivoire : Alassane Ouattara annonce la libération de 4 661 détenus",
+          "media": "Guinee360",
+          "date": "2026-08-07",
+          "url": "https://www.guinee360.com/07/08/2026/cote-divoire-alassane-ouattara-annonce-la-liberation-de-4-661-detenus"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "justice-reinscription-gbagbo",
+      "theme": "justice",
+      "question": "Laurent Gbagbo, condamné en Côte d'Ivoire dans l'affaire du « braquage » de la BCEAO puis gracié, doit-il retrouver ses droits civiques et être réinscrit sur la liste électorale ?",
+      "contexte": "Acquitté par la Cour pénale internationale, Laurent Gbagbo reste condamné en Côte d'Ivoire à 20 ans de prison dans l'affaire du « braquage » de la BCEAO de 2011. La grâce présidentielle dont il a bénéficié n'a pas levé sa privation de droits civiques et politiques, et il ne figure pas sur la liste électorale de 2023. En juin 2024, une loi d'amnistie qui aurait pu concerner notamment Laurent Gbagbo, Guillaume Soro et Charles Blé Goudé faisait l'objet de spéculations sans être annoncée ; en septembre 2025, sa candidature à la présidentielle a été rejetée faute d'inscription.",
+      "periode": "2023-05 à 2025-09",
+      "arguments_pour": [
+        {
+          "argument": "L'absence de Laurent Gbagbo de la liste électorale est une provocation, alors que la Cour africaine des droits de l'homme a ordonné à la Côte d'Ivoire de l'y inscrire.",
+          "porte_par": "Koné Katinan, porte-parole du PPA-CI (mai 2023)",
+          "source_url": "https://www.aa.com.tr/fr/afrique/radiation-de-gbagbo-de-la-liste-%C3%A9lectorale-le-ppa-ci-d%C3%A9nonce-une-provocation-/2903582"
+        },
+        {
+          "argument": "La radiation est une violation flagrante du code électoral par la CEI, et il est inadmissible d'imputer à l'ancien président les faits de braquage de la BCEAO.",
+          "porte_par": "PPA-CI",
+          "source_url": "https://fr.africanews.com/2023/05/29/cote-divoire-le-ppa-ci-veut-inscrire-gbagbo-sur-la-liste-electorale/"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "La CEI ne s'acharne pas sur Laurent Gbagbo : elle applique la loi, la condamnation entraînant la privation des droits civiques malgré la grâce.",
+          "porte_par": "Ibrahime Coulibaly-Kuibiert, président de la CEI",
+          "source_url": "https://www.aa.com.tr/fr/afrique/radiation-de-gbagbo-de-la-liste-%C3%A9lectorale-le-ppa-ci-d%C3%A9nonce-une-provocation-/2903582"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "PPA-CI",
+          "sens": "pour",
+          "citation": "C'est une provocation",
+          "auteur": "Koné Katinan, porte-parole du PPA-CI, à propos de la non-inscription de Laurent Gbagbo",
+          "date": "2023-05-22",
+          "source_url": "https://www.aa.com.tr/fr/afrique/radiation-de-gbagbo-de-la-liste-%C3%A9lectorale-le-ppa-ci-d%C3%A9nonce-une-provocation-/2903582"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Radiation de Gbagbo de la liste électorale : Le PPA-CI dénonce « une provocation »",
+          "media": "Anadolu Agency (AA)",
+          "date": "2023-05-22",
+          "url": "https://www.aa.com.tr/fr/afrique/radiation-de-gbagbo-de-la-liste-%C3%A9lectorale-le-ppa-ci-d%C3%A9nonce-une-provocation-/2903582"
+        },
+        {
+          "titre": "Cote d'Ivoire : le PPA-CI veut inscrire Gbagbo sur la liste électorale",
+          "media": "Africanews",
+          "date": "2023-05-29",
+          "url": "https://fr.africanews.com/2023/05/29/cote-divoire-le-ppa-ci-veut-inscrire-gbagbo-sur-la-liste-electorale/"
+        },
+        {
+          "titre": "Cote d'Ivoire: Annonce de sa candidature pour 2025 et loi d'amnistie - Ouattara drible partisans et l'opposition",
+          "media": "allAfrica",
+          "date": "2024-06-18",
+          "url": "https://fr.allafrica.com/stories/202406180579.html"
+        },
+        {
+          "titre": "Présidentielle 2025: les candidatures des opposants Gbagbo, Thiam et Affi rejetées par le Conseil Constitutionnel (Officiel)",
+          "media": "Abidjan.net",
+          "date": "2025-09-08",
+          "url": "https://news.abidjan.net/articles/744359/presidentielle-2025-les-candidatures-des-opposants-gbagbo-thiam-et-affi-rejetees-par-le-conseil-constitutionnel-officiel"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "economie-prix-garanti-cacao",
+      "theme": "economie",
+      "question": "L'État doit-il soutenir le prix garanti du cacao payé aux planteurs par des subventions publiques lorsque les cours mondiaux baissent ?",
+      "contexte": "Le 1er octobre 2025, Alassane Ouattara a fixé le prix bord champ du cacao à un record de 2 800 FCFA/kg pour la campagne principale 2025-2026. Après la chute des cours mondiaux, le prix de la campagne intermédiaire a été ramené à 1 200 FCFA/kg en mars 2026, avec une subvention publique de 231 milliards de FCFA. Le prix de 1 200 FCFA/kg est reconduit pour la campagne 2026-2027.",
+      "periode": "2025-10 à 2026-09",
+      "arguments_pour": [
+        {
+          "argument": "Sans l'intervention de l'État et l'activation des mécanismes de soutien, le prix payé aux producteurs aurait pu tomber à 900 FCFA/kg.",
+          "porte_par": "Siaka Diakité, président de l'Organisation interprofessionnelle agricole (OIA) café-cacao",
+          "source_url": "https://www.koaci.com/article/2026/03/08/cote-divoire/societe/cote-divoire-soutien-a-la-filiere-cacao-loia-salue-linjection-de-231-milliards-fcfa-par-letat-pour-le-maintien-du-prix-a-1200-fcfakg_194933.html"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Le prix doit être un « prix de vérité » correspondant aux recettes des ventes déjà réalisées, afin de préserver la soutenabilité financière et d'éviter un recours massif aux subventions publiques.",
+          "porte_par": "Gouvernement ivoirien (orientation rapportée par KOACI, août 2026)",
+          "source_url": "https://www.koaci.com/article/2026/08/31/cote-divoire/economie/cote-divoire-cacao-le-kilo-pourrait-passer-a-1-000-fcfa-pour-la-campagne-2026-2027-le-gouvernement-entre-prudence-et-pression-des-producteurs_200064.html"
+        },
+        {
+          "argument": "Même sophistiqué, le système de stabilisation des prix ne peut pas échapper aux retournements extrêmes du marché mondial tant que le pays exporte surtout des fèves brutes.",
+          "porte_par": "Rapport AfroInvest (cité par Financial Afrik)",
+          "source_url": "https://www.financialafrik.com/2026/06/08/cacao-ivoirien-comment-le-prix-record-annonce-par-ouattara-sest-transforme-en-piege-economique-rapport-afroinvest/"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Cote d'Ivoire: Alassane Ouattara annonce aux planteurs ivoiriens la hausse du prix d'achat du cacao",
+          "media": "RFI (via allAfrica)",
+          "date": "2025-10-02",
+          "url": "https://fr.allafrica.com/stories/202510020191.html"
+        },
+        {
+          "titre": "Côte d'Ivoire : Soutien à la filière cacao, l'OIA salue l'injection de 231 milliards FCFA par l'État pour le maintien du prix à 1200 FCFA/Kg",
+          "media": "KOACI",
+          "date": "2026-03-08",
+          "url": "https://www.koaci.com/article/2026/03/08/cote-divoire/societe/cote-divoire-soutien-a-la-filiere-cacao-loia-salue-linjection-de-231-milliards-fcfa-par-letat-pour-le-maintien-du-prix-a-1200-fcfakg_194933.html"
+        },
+        {
+          "titre": "Cacao ivoirien : comment le prix record annoncé par Ouattara s'est transformé en piège économique (Rapport AfroInvest)",
+          "media": "Financial Afrik",
+          "date": "2026-06-08",
+          "url": "https://www.financialafrik.com/2026/06/08/cacao-ivoirien-comment-le-prix-record-annonce-par-ouattara-sest-transforme-en-piege-economique-rapport-afroinvest/"
+        },
+        {
+          "titre": "Côte d'Ivoire : Cacao, le kilo pourrait passer à 1 000 FCFA pour la campagne 2026-2027, le gouvernement entre prudence et pression des producteurs",
+          "media": "KOACI",
+          "date": "2026-08-31",
+          "url": "https://www.koaci.com/article/2026/08/31/cote-divoire/economie/cote-divoire-cacao-le-kilo-pourrait-passer-a-1-000-fcfa-pour-la-campagne-2026-2027-le-gouvernement-entre-prudence-et-pression-des-producteurs_200064.html"
+        },
+        {
+          "titre": "Prix du cacao à 1 200 FCFA en Côte d'Ivoire : Face à la colère des producteurs, la CNOPA-CI prône l'apaisement",
+          "media": "Afrik Soir",
+          "date": "2026-09-06",
+          "url": "https://afriksoir.net/prix-du-cacao-a-1-200-fcfa-en-cote-divoire-face-a-la-colere-des-producteurs-la-cnopa-ci-prone-lapaisement/"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "economie-stocks-cacao-2800",
+      "theme": "economie",
+      "question": "Le cacao livré ou stocké pendant la campagne principale 2025-2026 doit-il être payé aux producteurs au prix de 2 800 FCFA/kg ?",
+      "contexte": "Après la chute des cours mondiaux fin 2025, des exportateurs ont renoncé à des contrats et environ 200 000 tonnes de cacao se sont accumulées dans les ports d'Abidjan et de San Pedro, selon un rapport AfroInvest. Des producteurs détiennent des reçus d'achat non soldés couvrant octobre à décembre 2025. Le Conseil du café-cacao a mené un programme de rachat exceptionnel de 100 000 tonnes, qu'il a déclaré terminé en août 2026.",
+      "periode": "2026-04 à 2026-08",
+      "arguments_pour": [
+        {
+          "argument": "Les coopératives doivent payer 2 800 FCFA/kg aux producteurs détenteurs de reçus non soldés, alors que certaines ont pu vendre leur cacao à 2 900 FCFA/kg prix usine.",
+          "porte_par": "Idriss Coulibaly, producteur à Divo, président du conseil d'administration de la coopérative SCOOPSAB",
+          "source_url": "https://www.koaci.com/article/2026/04/30/afrique/societe/cote-divoire-idriss-coulibaly-administrateur-producteur-de-cafe-cacao-a-divo-pca-de-scoopsab-demande-aux-cooperatives-de-payer-les-2800-fcfa-kg-aux-producteurs_196267.html"
+        },
+        {
+          "argument": "Les volumes restants sont des invendus de la campagne principale et le rachat à 2 800 FCFA/kg doit être prolongé.",
+          "porte_par": "Coopératives et responsables syndicaux (selon KOACI)",
+          "source_url": "https://www.koaci.com/article/2026/08/05/cote-divoire/economie/cote-divoire-cacao-le-conseil-tourne-definitivement-la-page-du-rachat-exceptionnel-des-100-000-tonnes-et-rejette-les-nouvelles-revendications_199273.html"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Le programme de rachat de 100 000 tonnes est terminé, il n'a jamais été question de racheter toute la production, et ce cacao aurait dû être commercialisé pendant la campagne intermédiaire au prix de 1 200 FCFA/kg ; les revendications sont « sans fondement ».",
+          "porte_par": "Conseil du café-cacao",
+          "source_url": "https://www.koaci.com/article/2026/08/05/cote-divoire/economie/cote-divoire-cacao-le-conseil-tourne-definitivement-la-page-du-rachat-exceptionnel-des-100-000-tonnes-et-rejette-les-nouvelles-revendications_199273.html"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Côte d'Ivoire : Idriss Coulibaly, Administrateur, Producteur de café-Cacao à Divo, PCA de SCOOPSAB demande aux Coopératives de payer les 2800 FCFA/kg aux producteurs",
+          "media": "KOACI",
+          "date": "2026-04-30",
+          "url": "https://www.koaci.com/article/2026/04/30/afrique/societe/cote-divoire-idriss-coulibaly-administrateur-producteur-de-cafe-cacao-a-divo-pca-de-scoopsab-demande-aux-cooperatives-de-payer-les-2800-fcfa-kg-aux-producteurs_196267.html"
+        },
+        {
+          "titre": "Cacao ivoirien : comment le prix record annoncé par Ouattara s'est transformé en piège économique (Rapport AfroInvest)",
+          "media": "Financial Afrik",
+          "date": "2026-06-08",
+          "url": "https://www.financialafrik.com/2026/06/08/cacao-ivoirien-comment-le-prix-record-annonce-par-ouattara-sest-transforme-en-piege-economique-rapport-afroinvest/"
+        },
+        {
+          "titre": "Côte d'Ivoire : Cacao, le Conseil tourne définitivement la page du rachat exceptionnel des 100 000 tonnes et rejette les nouvelles revendications",
+          "media": "KOACI",
+          "date": "2026-08-05",
+          "url": "https://www.koaci.com/article/2026/08/05/cote-divoire/economie/cote-divoire-cacao-le-conseil-tourne-definitivement-la-page-du-rachat-exceptionnel-des-100-000-tonnes-et-rejette-les-nouvelles-revendications_199273.html"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "economie-prix-anacarde",
+      "theme": "economie",
+      "question": "Le prix plancher bord champ de l'anacarde (noix de cajou) doit-il être relevé au-dessus de 400 FCFA/kg ?",
+      "contexte": "Le 6 février 2026, le ministre de l'Agriculture a fixé à 400 FCFA/kg le prix bord champ de l'anacarde pour la campagne 2026, contre 425 FCFA/kg en 2025. Le prix était présenté comme révisable à la hausse d'ici fin avril si le marché se redressait. Le taux de transformation locale de l'anacarde est passé de moins de 7 % en 2014 à plus de 36 % dix ans plus tard.",
+      "periode": "2026-02 à 2026-07",
+      "arguments_pour": [
+        {
+          "argument": "Un prix qui recule à chaque variation du dollar fragilise le revenu des planteurs et l'objectif de transformation locale.",
+          "porte_par": "Analyse publiée par Scoop Afrique",
+          "source_url": "https://www.scoop-afrique.com/articles/anacarde-le-prix-bord-champ-2026-recule-a-400-fcfa-la-cote-d-ivoire-teste-sa-resilience"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Le prix tient compte du contexte économique international, de l'évolution du marché mondial, des résultats des campagnes précédentes et de la nécessité de protéger les producteurs.",
+          "porte_par": "Koné Nabagné Bruno, ministre de l'Agriculture, du Développement rural et des Productions vivrières",
+          "source_url": "https://www.aip.ci/316084/cote-divoire-aip-le-prix-bord-champ-de-lanacarde-fixe-a-400-fcfa-kg-pour-la-campagne-2026-ministre/"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Côte d'Ivoire-AIP/ Le prix bord champ de l'anacarde fixé à 400 FCFA/kg pour la campagne 2026 (Ministre)",
+          "media": "Agence ivoirienne de presse (AIP)",
+          "date": "2026-02-06",
+          "url": "https://www.aip.ci/316084/cote-divoire-aip-le-prix-bord-champ-de-lanacarde-fixe-a-400-fcfa-kg-pour-la-campagne-2026-ministre/"
+        },
+        {
+          "titre": "Anacarde : le prix 2026 recule à 400 FCFA en Côte d'Ivoire",
+          "media": "Scoop Afrique",
+          "date": "2026-07-27",
+          "url": "https://www.scoop-afrique.com/articles/anacarde-le-prix-bord-champ-2026-recule-a-400-fcfa-la-cote-d-ivoire-teste-sa-resilience"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "economie-controle-loyers",
+      "theme": "economie",
+      "question": "L'État doit-il renforcer le contrôle des loyers et des conditions de location imposées par les bailleurs ?",
+      "contexte": "La réglementation limite à deux mois de caution et deux mois d'avance les sommes exigibles à l'entrée dans un logement. En 2026, des locataires d'Abidjan affirment que ces plafonds ne sont pas respectés dans la pratique. Une grande partie des locations se fait sans contrat écrit.",
+      "periode": "2026-02 à 2026-08",
+      "arguments_pour": [
+        {
+          "argument": "Le gouvernement doit mettre en place une brigade de contrôle et vérifier les contrats dans les quartiers.",
+          "porte_par": "Locataires d'Abidjan interrogés (Ange Pacôme, Guéhi Chantale)",
+          "source_url": "https://afrique.le360.ma/societe/cote-divoire-flambee-des-loyers-les-demandeurs-de-logement-ne-savent-plus-a-quel-toit-se-vouer_JYOTVPZYXJECFHI3GWJ5GIF7ME/"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Dans une économie libérale, la location relève de transactions entre privés ; si un locataire accepte de payer plus que ce que prévoit la décision gouvernementale et ne porte pas plainte, l'État dispose de peu de moyens d'agir.",
+          "porte_par": "Ministre de la Communication, porte-parole du gouvernement",
+          "source_url": "https://www.koaci.com/article/2026/03/04/cote-divoire/societe/cote-divoire-cherte-des-loyers-le-gouvernement-appelle-au-respect-des-plafonds-legaux-et-a-la-responsabilite-des-citoyens_194828.html"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Coût élevé du loyer en Côte d'Ivoire : Les bailleurs pointent l'Etat du doigt",
+          "media": "Afrik Soir",
+          "date": "2026-02-04",
+          "url": "https://afriksoir.net/cout-eleve-loyer-cote-divoire-bailleurs-pointent-etat-doigt-ivoiriens-prix-loyer/"
+        },
+        {
+          "titre": "Côte d'Ivoire : Cherté des loyers, le gouvernement appelle au respect des plafonds légaux et à la responsabilité des citoyens",
+          "media": "KOACI",
+          "date": "2026-03-04",
+          "url": "https://www.koaci.com/article/2026/03/04/cote-divoire/societe/cote-divoire-cherte-des-loyers-le-gouvernement-appelle-au-respect-des-plafonds-legaux-et-a-la-responsabilite-des-citoyens_194828.html"
+        },
+        {
+          "titre": "Côte d'Ivoire. Flambée des loyers: les demandeurs de logement ne savent plus à quel toit se vouer",
+          "media": "Le360 Afrique",
+          "date": "2026-08-15",
+          "url": "https://afrique.le360.ma/societe/cote-divoire-flambee-des-loyers-les-demandeurs-de-logement-ne-savent-plus-a-quel-toit-se-vouer_JYOTVPZYXJECFHI3GWJ5GIF7ME/"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "economie-eco-franc-cfa",
+      "theme": "economie",
+      "question": "La Côte d'Ivoire doit-elle quitter le franc CFA pour adopter l'ECO, la monnaie unique de la CEDEAO dont le lancement est prévu en 2027 ?",
+      "contexte": "La CEDEAO prévoit de lancer l'ECO en 2027 ; selon Afrimag, une première phase pourrait réunir des pays hors de la zone franc (Nigeria, Ghana, Liberia, Sierra Leone, Guinée, Gambie). Le 19 juillet 2026 à Freetown, la CEDEAO a désigné Alassane Ouattara pour conduire le processus de lancement de l'ECO. La Côte d'Ivoire pèse environ 40 % du PIB de l'UEMOA, dont les pays utilisent le franc CFA.",
+      "periode": "2026-02 à 2026-07",
+      "arguments_pour": [
+        {
+          "argument": "L'ECO suppose de rompre avec la garantie du Trésor français sur le franc CFA ; sa réussite dépend du contrôle des réserves d'or par une banque centrale fédérale, de la suppression des liens de dépendance financière externe et de référendums dans chaque État membre.",
+          "porte_par": "Ahoua Don Mello, ancien ministre, candidat à la présidentielle de 2025",
+          "source_url": "https://www.yessouan.ci/Monnaie-unique-ECO-Ahoua-Don-Mello-interpelle-Alassane-Ouattara_a9046.html"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Rejoindre rapidement un ensemble monétaire plus hétérogène risquerait de diluer le rôle moteur de la Côte d'Ivoire dans l'UEMOA et de l'exposer aux turbulences d'économies dépendantes des matières premières, comme le Nigeria.",
+          "porte_par": "Analyse publiée par Afrimag sur la position ivoirienne",
+          "source_url": "https://afrimag.net/monrovia-eco-2027-la-cedeao-prete-a-lancer-sa-monnaie-unique-sans-la-zone-cfa/"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Monrovia | Eco 2027 : la CEDEAO prête à lancer sa monnaie unique… sans la zone CFA ?",
+          "media": "Afrimag",
+          "date": "2026-02-18",
+          "url": "https://afrimag.net/monrovia-eco-2027-la-cedeao-prete-a-lancer-sa-monnaie-unique-sans-la-zone-cfa/"
+        },
+        {
+          "titre": "Monnaie unique ECO 2027 : Ahoua Don Mello interpelle Ouattara",
+          "media": "Yessouan",
+          "date": "2026-07-24",
+          "url": "https://www.yessouan.ci/Monnaie-unique-ECO-Ahoua-Don-Mello-interpelle-Alassane-Ouattara_a9046.html"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "social-revalorisation-smig",
+      "theme": "social",
+      "question": "Le salaire minimum interprofessionnel garanti (SMIG), fixé à 75 000 FCFA par mois depuis 2023, doit-il être relevé ?",
+      "contexte": "Le SMIG est passé de 60 000 à 75 000 FCFA en 2023, à l'issue de concertations entre le patronat et les centrales syndicales, après une annonce du président de la République en août 2022. Lors de la fête du Travail du 1er mai 2025, plusieurs centrales syndicales ont jugé ce niveau insuffisant face au coût de la vie.",
+      "periode": "2022-11 à 2025-05",
+      "arguments_pour": [
+        {
+          "argument": "Tout en reconnaissant l'effort ayant porté le SMIG à 75 000 FCFA, les revenus minimums garantis restent insuffisants face à la cherté persistante de la vie.",
+          "porte_par": "Centrales syndicales Dignité, Humanisme et Union générale des travailleurs de Côte d'Ivoire (UGTCI)",
+          "source_url": "https://www.aip.ci/cote-divoire-aip-fete-du-travail-2025-la-revalorisation-du-smag-et-du-smig-au-coeur-des-discours-syndicaux-a-aboisso/"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Le montant de 75 000 FCFA a été calculé sur la base de l'indice harmonisé des prix à la consommation de l'Institut national de la statistique (janvier 2014 à juin 2022), à l'issue de concertations entre patronat et syndicats.",
+          "porte_par": "Décision de revalorisation issue des concertations patronat-syndicats (novembre 2022)",
+          "source_url": "https://www.sikafinance.com/marches/cote-divoire-le-smig-augmente-a-75-000-fcfa_37970"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Côte d'Ivoire : Le SMIG augmente à 75 000 FCFA",
+          "media": "Sika Finance",
+          "date": "2022-11-24",
+          "url": "https://www.sikafinance.com/marches/cote-divoire-le-smig-augmente-a-75-000-fcfa_37970"
+        },
+        {
+          "titre": "Côte d'Ivoire–AIP / Fête du travail 2025: la revalorisation du SMAG et du SMIG au cœur des discours syndicaux à Aboisso",
+          "media": "Agence ivoirienne de presse (AIP)",
+          "date": "2025-05-01",
+          "url": "https://www.aip.ci/cote-divoire-aip-fete-du-travail-2025-la-revalorisation-du-smag-et-du-smig-au-coeur-des-discours-syndicaux-a-aboisso/"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "social-couverture-maladie-universelle",
+      "theme": "social",
+      "question": "La couverture maladie universelle (CMU), dont l'enrôlement est exigé pour certaines démarches administratives, répond-elle aux besoins de soins de la population ?",
+      "contexte": "La CMU est financée par une cotisation de 1 000 FCFA par mois et par personne ; l'enrôlement est exigé pour accéder à certains services administratifs. Le gouvernement a annoncé en juillet 2025 plus de 20 millions d'enrôlés, soit les deux tiers de la population, mais moins de 4 % ont utilisé leur carte en 2025 selon les chiffres officiels cités par l'AFP. L'opération « CMU zéro cotisation », lancée de mai à août 2025, a été prolongée jusqu'au 31 décembre 2025 par décision du président de la République.",
+      "periode": "2025-05 à 2025-12",
+      "arguments_pour": [
+        {
+          "argument": "L'enrôlement connaît une « évolution fulgurante », avec plus de 20 millions d'assurés.",
+          "porte_par": "Ahmed Diomandé, directeur général adjoint de la Caisse nationale d'assurance maladie (CNAM)",
+          "source_url": "https://www.france24.com/fr/info-en-continu/20250829-la-c%C3%B4te-d-ivoire-tente-d-imposer-la-couverture-maladie-universelle-dans-la-difficult%C3%A9"
+        },
+        {
+          "argument": "La prolongation de la gratuité de la cotisation vise à garantir l'accès de la population à des soins de santé de qualité.",
+          "porte_par": "Présidence de la République et CNAM",
+          "source_url": "https://news.abidjan.net/articles/744814/couverture-maladie-universelle-tout-savoir-sur-la-cmu-zero-cotisation-ce-mardi-30-septembre-2025"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Beaucoup s'enrôlent sans utiliser leur carte, et la plupart des malades se plaignent que de nombreux soins et médicaments ne sont pas couverts.",
+          "porte_par": "Dr Wilfried Abo, médecin",
+          "source_url": "https://www.france24.com/fr/info-en-continu/20250829-la-c%C3%B4te-d-ivoire-tente-d-imposer-la-couverture-maladie-universelle-dans-la-difficult%C3%A9"
+        },
+        {
+          "argument": "L'offre de soins proposée n'est pas adaptée aux besoins.",
+          "porte_par": "Firmin Kra, docteur en socio-anthropologie",
+          "source_url": "https://www.france24.com/fr/info-en-continu/20250829-la-c%C3%B4te-d-ivoire-tente-d-imposer-la-couverture-maladie-universelle-dans-la-difficult%C3%A9"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "La Côte d'Ivoire tente d'imposer la couverture maladie universelle dans la difficulté",
+          "media": "France 24 (AFP)",
+          "date": "2025-08-29",
+          "url": "https://www.france24.com/fr/info-en-continu/20250829-la-c%C3%B4te-d-ivoire-tente-d-imposer-la-couverture-maladie-universelle-dans-la-difficult%C3%A9"
+        },
+        {
+          "titre": "Couverture Maladie Universelle : Tout savoir sur la « CMU Zéro Cotisation » ce mardi 30 septembre 2025",
+          "media": "Abidjan.net",
+          "date": "2025-09-29",
+          "url": "https://news.abidjan.net/articles/744814/couverture-maladie-universelle-tout-savoir-sur-la-cmu-zero-cotisation-ce-mardi-30-septembre-2025"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "social-deguerpissements-abidjan",
+      "theme": "social",
+      "question": "Les habitants de quartiers précaires doivent-ils se voir proposer un relogement avant la démolition de leurs habitations ?",
+      "contexte": "Depuis janvier 2024, plusieurs quartiers précaires d'Abidjan (Gesco, Boribana, Banco 1, Abattoir) ont été démolis ; selon Amnesty International, des dizaines de milliers de personnes ont été expulsées dans le cadre d'un plan portant sur 176 sites annoncé le 26 février 2024. Le gouvernement a annoncé en mars 2024 une allocation de 250 000 FCFA par ménage, une aide à la construction d'un million de FCFA par famille et l'accès à des parcelles de 75 à 100 m² par bail.",
+      "periode": "2024-01 à 2026-06",
+      "arguments_pour": [
+        {
+          "argument": "Les expulsions ont eu lieu sans consultation véritable ni préavis adéquat, sans relogement ni indemnisation pour des milliers de familles, avec des enfants privés d'école.",
+          "porte_par": "Amnesty International",
+          "source_url": "https://www.amnesty.be/infos/actualites/article/cote-ivoire-familles-attente-mesures-soutien-expulsions-forcees"
+        },
+        {
+          "argument": "Un programme national de relogement et de logement social doit garantir qu'aucune famille ne soit privée d'abri sans solution alternative proposée au préalable.",
+          "porte_par": "Mouvement des générations capables (MGC), parti présidé par Simone Ehivet Gbagbo",
+          "source_url": "https://www.lavenir.ci/politique/15247-deguerpissement-a-abidjan-simone-gbagbo-pointe-la-politique-du-logement-et-la-gestion-du-foncier-du-doigt"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Une trentaine de quartiers précaires sont situés en zones exposées aux inondations et glissements de terrain, qui ont causé plus de 340 morts depuis 2005 ; les aides financières visent à éviter que les ménages se réinstallent sur de nouveaux sites à risque.",
+          "porte_par": "Amadou Coulibaly, porte-parole du gouvernement",
+          "source_url": "https://www.voaafrique.com/a/aides-au-relogement-apr%C3%A8s-des-expulsions-massives-%C3%A0-abidjan/7526209.html"
+        }
+      ],
+      "positions_publiques": [
+        {
+          "sigle": "MGC",
+          "sens": "pour",
+          "citation": "un véritable programme national de relogement et de logement social garantissant qu'aucune famille ne soit privée d'abri sans qu'une solution alternative crédible et digne ne lui soit proposée au préalable",
+          "auteur": "Mouvement des générations capables (Simone Ehivet Gbagbo)",
+          "date": "2026-06-17",
+          "source_url": "https://www.lavenir.ci/politique/15247-deguerpissement-a-abidjan-simone-gbagbo-pointe-la-politique-du-logement-et-la-gestion-du-foncier-du-doigt"
+        }
+      ],
+      "sources": [
+        {
+          "titre": "Aides au relogement après des expulsions massives à Abidjan",
+          "media": "VOA Afrique",
+          "date": "2024-03-13",
+          "url": "https://www.voaafrique.com/a/aides-au-relogement-apr%C3%A8s-des-expulsions-massives-%C3%A0-abidjan/7526209.html"
+        },
+        {
+          "titre": "Côte d'Ivoire, des familles toujours en attente de mesures de soutien après les expulsions forcées",
+          "media": "Amnesty International Belgique",
+          "date": "2024-08-14",
+          "url": "https://www.amnesty.be/infos/actualites/article/cote-ivoire-familles-attente-mesures-soutien-expulsions-forcees"
+        },
+        {
+          "titre": "Déguerpissement à Abidjan : Simone Gbagbo pointe la politique du logement et la gestion du foncier du doigt",
+          "media": "L'Avenir",
+          "date": "2026-06-17",
+          "url": "https://www.lavenir.ci/politique/15247-deguerpissement-a-abidjan-simone-gbagbo-pointe-la-politique-du-logement-et-la-gestion-du-foncier-du-doigt"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "social-prime-enseignants",
+      "theme": "social",
+      "question": "Les enseignants doivent-ils obtenir une prime trimestrielle spécifique sans attendre une solution d'ensemble pour tous les fonctionnaires ?",
+      "contexte": "Les syndicats d'enseignants réclament depuis 2024 une prime d'incitation trimestrielle. Une grève lancée le 3 avril 2025 a été suspendue le 10 avril, après la reprise du dialogue et l'annonce d'un atelier les 17, 18 et 19 avril ; les syndicats demandaient aussi la libération d'enseignants incarcérés et la levée des sanctions salariales. Le 1er mai 2025, des centrales syndicales ont de nouveau demandé la levée de ces sanctions.",
+      "periode": "2025-04 à 2025-05",
+      "arguments_pour": [
+        {
+          "argument": "Les enseignants réclament une prime d'incitation trimestrielle et la levée de toutes les sanctions liées à la grève, y compris les prélèvements sur salaires.",
+          "porte_par": "Syndicats d'enseignants (assemblée générale du 10 avril 2025)",
+          "source_url": "https://www.africaradio.com/actualite-109318-cote-d-ivoire-les-enseignants-suspendent-leur-mot-d-ordre-de-greve"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "La question des primes concerne bien d'autres corporations que l'enseignement ; le gouvernement ne veut pas régler les problèmes de façon partielle et veut les inscrire dans un cadre global, la revendication des enseignants étant évaluée autour de 400 milliards de FCFA.",
+          "porte_par": "Amadou Coulibaly, ministre de la Communication, porte-parole du gouvernement",
+          "source_url": "https://news.educarriere.ci/news-41668-greve-des-enseignants-relativement-aux-primes-le-gouvernement-salue-la-reprise-du-dialogue-devant-aboutir-a-une-solution-globale-pour-tous-les-fonctio.html"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Grève des enseignants relativement aux primes : le gouvernement salue la reprise du dialogue devant aboutir à une solution globale pour tous les fonctionnaires concernés",
+          "media": "Educarriere",
+          "date": "2025-04-09",
+          "url": "https://news.educarriere.ci/news-41668-greve-des-enseignants-relativement-aux-primes-le-gouvernement-salue-la-reprise-du-dialogue-devant-aboutir-a-une-solution-globale-pour-tous-les-fonctio.html"
+        },
+        {
+          "titre": "Côte d'Ivoire : les enseignants suspendent leur mot d'ordre de grève",
+          "media": "Africa Radio",
+          "date": "2025-04-10",
+          "url": "https://www.africaradio.com/actualite-109318-cote-d-ivoire-les-enseignants-suspendent-leur-mot-d-ordre-de-greve"
+        },
+        {
+          "titre": "Côte d'Ivoire–AIP / Fête du travail 2025: la revalorisation du SMAG et du SMIG au cœur des discours syndicaux à Aboisso",
+          "media": "Agence ivoirienne de presse (AIP)",
+          "date": "2025-05-01",
+          "url": "https://www.aip.ci/cote-divoire-aip-fete-du-travail-2025-la-revalorisation-du-smag-et-du-smig-au-coeur-des-discours-syndicaux-a-aboisso/"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "energie-tarifs-electricite",
+      "theme": "energie",
+      "question": "La hausse des tarifs de l'électricité appliquée en 2023 et 2024 pour réduire le déficit du secteur était-elle justifiée ?",
+      "contexte": "Le tarif de l'électricité a augmenté de 10 % le 1er juillet 2023 pour 11 % des abonnés, puis de 10 % le 1er janvier 2024 pour les 89 % d'abonnés jusque-là épargnés ; le prix moyen du kWh est passé de 79 à 87 FCFA pour un coût de revient moyen de 89 FCFA. Le déficit financier du secteur était évalué à 127 milliards de FCFA fin 2023. En 2024, des consommateurs ont dénoncé sur les réseaux sociaux la forte hausse de leurs factures.",
+      "periode": "2023-07 à 2024-05",
+      "arguments_pour": [
+        {
+          "argument": "La hausse est nécessaire pour l'équilibre financier du secteur, confronté à une perte d'exploitation estimée à 161 milliards de FCFA en 2023, à la hausse du coût des combustibles (75 % de la production est thermique) et aux prix du gaz naturel.",
+          "porte_par": "Mamadou Sangafowa Coulibaly, ministre des Mines, du Pétrole et de l'Énergie",
+          "source_url": "https://www.sikafinance.com/marches/cote-d-ivoire-hausse-des-prix-de-l-electricite-des-le-1er-janvier-pour-garantir-l-equilibre-financier-du-secteur_44134"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Des factures au tarif social ont fortement augmenté à habitudes de consommation égales ; l'État devrait vérifier la fiabilité des compteurs avec le régulateur ANARÉ et protéger les consommateurs face à des hausses jugées abusives.",
+          "porte_par": "Consommateurs et membres de la société civile (dont Serif Tall, cité par Pulse)",
+          "source_url": "https://www.pulse.ci/article/les-ivoiriens-protestent-contre-laugmentation-des-factures-delectricite-2024090513084609588"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Côte d'Ivoire : Hausse des prix de l'électricité dès le 1er janvier pour garantir l'équilibre financier du secteur",
+          "media": "Sika Finance",
+          "date": "2023-12-27",
+          "url": "https://www.sikafinance.com/marches/cote-d-ivoire-hausse-des-prix-de-l-electricite-des-le-1er-janvier-pour-garantir-l-equilibre-financier-du-secteur_44134"
+        },
+        {
+          "titre": "Les ivoiriens protestent contre l'augmentation des factures d'électricité",
+          "media": "Pulse Côte d'Ivoire",
+          "date": "2024-05-08",
+          "url": "https://www.pulse.ci/article/les-ivoiriens-protestent-contre-laugmentation-des-factures-delectricite-2024090513084609588"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "environnement-orpaillage-mesures-exception",
+      "theme": "environnement",
+      "question": "Faut-il recourir à des mesures d'exception, comme un moratoire général sur l'exploitation de l'or ou un état d'urgence environnemental, pour lutter contre l'orpaillage clandestin ?",
+      "contexte": "L'orpaillage clandestin touche plusieurs régions du centre, du nord et de l'ouest ; l'usage non contrôlé du mercure et du cyanure pollue les sols et les nappes, et les pertes économiques sont estimées à plusieurs centaines de milliards de FCFA. En septembre 2026, le secrétaire exécutif du Conseil national de sécurité a présenté un plan fondé sur un contrôle permanent du territoire, avec un objectif d'éradication en six mois. En août 2026, un député a proposé un moratoire de cinq ans sur toute exploitation de l'or.",
+      "periode": "2025-11 à 2026-09",
+      "arguments_pour": [
+        {
+          "argument": "Un moratoire de cinq ans sur toute exploitation de l'or, légale comme illégale, permettrait de remettre au centre du débat le financement et les circuits d'écoulement de l'or.",
+          "porte_par": "Léandre Koffi, député (proposition du 19 août 2026)",
+          "source_url": "https://www.village-justice.com/articles/lutte-juridique-contre-orpaillage-clandestin-cote-ivoire-faut-declarer-etat,58764.html"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "La Constitution de 2016 ne prévoit pas de régime d'exception lié à l'environnement ; le problème tient à la mise en œuvre des pouvoirs existants, et les régimes d'exception tendent à durer au-delà de leur objet. Une stratégie graduée est préférable.",
+          "porte_par": "Williams Ahite, docteur en droit privé",
+          "source_url": "https://www.village-justice.com/articles/lutte-juridique-contre-orpaillage-clandestin-cote-ivoire-faut-declarer-etat,58764.html"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Orpaillage clandestin en Côte d'Ivoire : cinq chiffres pour comprendre l'ampleur d'un défi environnemental",
+          "media": "Pulse Côte d'Ivoire",
+          "date": "2026-03-05",
+          "url": "https://www.pulse.ci/article/orpaillage-clandestin-en-cote-divoire-cinq-chiffres-pour-comprendre-lampleur-dun-defi-environnemental-2026030516224111673"
+        },
+        {
+          "titre": "La lutte juridique contre l'orpaillage clandestin en Côte d'Ivoire. Faut-il déclarer l'état d'urgence environnemental ?",
+          "media": "Village de la Justice",
+          "date": "2026-08-26",
+          "url": "https://www.village-justice.com/articles/lutte-juridique-contre-orpaillage-clandestin-cote-ivoire-faut-declarer-etat,58764.html"
+        },
+        {
+          "titre": "Orpaillage illégal en Côte d'Ivoire : « Aucun territoire ne doit échapper à l'autorité de l'État » (Fidèle Sarassoro)",
+          "media": "Afrik Soir",
+          "date": "2026-09-11",
+          "url": "https://afriksoir.net/orpaillage-illegal-en-cotte-divoire-aucun-territoire-ne-doit-echapper-a-lautorite-de-letat-fidele-sarassoro/"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "environnement-reglement-europeen-deforestation",
+      "theme": "environnement",
+      "question": "Les exigences européennes imposant un cacao « zéro déforestation » traçable jusqu'à la parcelle sont-elles une bonne chose pour la filière ivoirienne ?",
+      "contexte": "Le règlement européen sur la déforestation (RDUE) impose aux exportateurs vers l'Union européenne de démontrer que leurs produits ne proviennent pas de terres déboisées après le 31 décembre 2020, avec géolocalisation des parcelles. La Côte d'Ivoire a perdu 80 à 90 % de son couvert forestier en six décennies, dont environ 45 % attribués au cacao selon Mongabay. En septembre 2025, les autorités ivoiriennes ont présenté une carte des aires protégées et une carte d'occupation des terres de 2020.",
+      "periode": "2025-09 à 2026-04",
+      "arguments_pour": [
+        {
+          "argument": "Le gouvernement et les acteurs de la filière préparent activement le secteur pour garantir un cacao exempt de déforestation, entièrement traçable et conforme aux lois ivoiriennes.",
+          "porte_par": "N'Guessan Koffi Rodrigues, représentant du ministre ivoirien concerné",
+          "source_url": "https://news.abidjan.net/articles/744525/filiere-cacao-la-cote-divoire-sengage-a-repondre-aux-exigences-europeennes-sur-la-deforestation"
+        },
+        {
+          "argument": "La bonne volonté ne suffit pas : des mesures concrètes sont indispensables.",
+          "porte_par": "Marc Gossman, Union européenne",
+          "source_url": "https://news.abidjan.net/articles/744525/filiere-cacao-la-cote-divoire-sengage-a-repondre-aux-exigences-europeennes-sur-la-deforestation"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "La géolocalisation des parcelles, l'adoption de pratiques durables et la sécurisation foncière exigent des investissements importants, difficiles à supporter pour les petits exploitants.",
+          "porte_par": "Rapport FIT for FAIR (cité par Mongabay)",
+          "source_url": "https://fr.mongabay.com/2026/04/cote-divoire-quand-le-reglement-europeen-sur-la-deforestation-bouleverse-la-filiere-cacao/"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Filière Cacao : la Côte d'Ivoire s'engage à répondre aux exigences européennes sur la déforestation",
+          "media": "Abidjan.net",
+          "date": "2025-09-16",
+          "url": "https://news.abidjan.net/articles/744525/filiere-cacao-la-cote-divoire-sengage-a-repondre-aux-exigences-europeennes-sur-la-deforestation"
+        },
+        {
+          "titre": "Côte d'Ivoire : Quand le Règlement européen sur la déforestation bouleverse la filière cacao",
+          "media": "Mongabay",
+          "date": "2026-04-02",
+          "url": "https://fr.mongabay.com/2026/04/cote-divoire-quand-le-reglement-europeen-sur-la-deforestation-bouleverse-la-filiere-cacao/"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "foncier-forets-classees",
+      "theme": "foncier",
+      "question": "Les planteurs installés dans les forêts classées doivent-ils en être expulsés ?",
+      "contexte": "Le Conseil du café-cacao a annoncé en 2024 qu'à partir de janvier 2025, le cacao produit dans les forêts classées ne pourrait plus être commercialisé, et invité les planteurs à l'agroforesterie (25 à 40 arbres par hectare). En septembre 2024, le gouvernement a suspendu une opération de déguerpissement dans la forêt classée de Bouaflé, après que 12 des 42 campements identifiés ont été touchés. En mars 2025, un déguerpissement a été annoncé dans la forêt classée de Dakpadou, où vivent selon les occupants 2 500 familles.",
+      "periode": "2024-03 à 2025-03",
+      "arguments_pour": [
+        {
+          "argument": "La protection de l'environnement et la restauration du couvert forestier sont prioritaires ; ceux qui occupent illégalement des terres ne peuvent pas demander à y être rétablis.",
+          "porte_par": "Laurent Tchagba, ministre des Eaux et Forêts",
+          "source_url": "https://fr.allafrica.com/stories/202409240045.html"
+        },
+        {
+          "argument": "La Côte d'Ivoire s'est engagée dans l'agroforesterie pour protéger son couvert forestier, sans lequel la culture du cacao ne peut prospérer.",
+          "porte_par": "Ello Kouassi Evariste, délégué régional du Conseil du café-cacao (Lôh-Djiboua)",
+          "source_url": "https://news.abidjan.net/articles/729913/la-cote-divoire-decide-de-larret-de-la-vente-du-cacao-produit-des-forets-classees-a-partir-de-2025"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Une approche humanitaire est nécessaire : les familles vivent sur place depuis vingt ans et proposent de rester en pratiquant l'agroforesterie, ou d'être indemnisées, avec un délai de cinq à six ans.",
+          "porte_par": "Fehiaka Jean Thomas, porte-parole du chef de terre de Dakpadou",
+          "source_url": "https://www.koaci.com/article/2025/03/06/cote-divoire/societe/cote-divoire-deguerpissement-annonce-dans-la-foret-classee-de-dakpadou-gbokle-les-occupants-plaident-pour-une-approche-humanitaire_185030.html"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "La Côte d'Ivoire décide de l'arrêt de la vente du cacao produit des forêts classées à partir de 2025",
+          "media": "Abidjan.net (AIP)",
+          "date": "2024-03-26",
+          "url": "https://news.abidjan.net/articles/729913/la-cote-divoire-decide-de-larret-de-la-vente-du-cacao-produit-des-forets-classees-a-partir-de-2025"
+        },
+        {
+          "titre": "Cote d'Ivoire: Déguerpissement de la forêt classée de Bouaflé - Le gouvernement suspend l'opération",
+          "media": "allAfrica",
+          "date": "2024-09-24",
+          "url": "https://fr.allafrica.com/stories/202409240045.html"
+        },
+        {
+          "titre": "Côte d'Ivoire : Déguerpissement annoncé dans la forêt classée de Dakpadou (Gboklê), les occupants plaident pour une approche humanitaire",
+          "media": "KOACI",
+          "date": "2025-03-06",
+          "url": "https://www.koaci.com/article/2025/03/06/cote-divoire/societe/cote-divoire-deguerpissement-annonce-dans-la-foret-classee-de-dakpadou-gbokle-les-occupants-plaident-pour-une-approche-humanitaire_185030.html"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "securite-nord-tensions-frontiere",
+      "theme": "securite",
+      "question": "La crise sécuritaire au Burkina Faso voisin est-elle à l'origine de la montée des tensions communautaires dans le nord de la Côte d'Ivoire ?",
+      "contexte": "Depuis 2021, environ 70 000 personnes fuyant les violences au Burkina Faso ont été accueillies dans le nord-est, principalement dans le Bounkani ; la Côte d'Ivoire ne les qualifie pas de réfugiés. En avril 2024, le ministre de l'Intérieur a annoncé le rapatriement de près de 55 000 d'entre elles. Dans la nuit du 24 au 25 août 2025, quatre villageois ont été tués près de la frontière, dans un contexte de relations tendues entre Abidjan et Ouagadougou et de démarcation frontalière suspendue.",
+      "periode": "2024-04 à 2025-10",
+      "arguments_pour": [
+        {
+          "argument": "La poussée de l'extrémisme violent au Burkina Faso dégrade l'équilibre social des régions frontalières.",
+          "porte_par": "Lassina Diarra, universitaire, directeur de l'AILCT",
+          "source_url": "https://afriquexxi.info/Dans-le-nord-de-la-Cote-d-Ivoire-les-tensions-communautaires-s-echauffent"
+        },
+        {
+          "argument": "La tension politique entre les deux pays a des conséquences réelles dans une zone où la frontière est mal délimitée ; un minimum de coopération doit être maintenu pour éviter l'escalade.",
+          "porte_par": "Arthur Banga, chercheur spécialiste des questions de défense à l'université Félix-Houphouët-Boigny",
+          "source_url": "https://www.africaradio.com/actualite-110797-frontiere-cote-d-ivoire-burkina-faso-la-tension-politique-a-des-consequences-reelles-dans-une-zone-ou-la-frontiere-est-mal-delimitee"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Les problèmes entre éleveurs et agriculteurs ont toujours existé ; ils ne sont ni nouveaux ni politiques.",
+          "porte_par": "Mamadou Touré, porte-parole adjoint du gouvernement",
+          "source_url": "https://afriquexxi.info/Dans-le-nord-de-la-Cote-d-Ivoire-les-tensions-communautaires-s-echauffent"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Cote d'Ivoire: Gestion des réfugiés dans le nord - Rapatriement de 55 000 réfugiés burkinabè dès juin 2024",
+          "media": "allAfrica",
+          "date": "2024-04-25",
+          "url": "https://fr.allafrica.com/stories/202404250571.html"
+        },
+        {
+          "titre": "Frontière Côte d'Ivoire-Burkina Faso : \"La tension politique a des conséquences réelles dans une zone où la frontière est mal délimitée\"",
+          "media": "Africa Radio",
+          "date": "2025-09-01",
+          "url": "https://www.africaradio.com/actualite-110797-frontiere-cote-d-ivoire-burkina-faso-la-tension-politique-a-des-consequences-reelles-dans-une-zone-ou-la-frontiere-est-mal-delimitee"
+        },
+        {
+          "titre": "Dans le nord de la Côte d'Ivoire, les tensions communautaires s'échauffent - Reportage 2/2",
+          "media": "Afrique XXI",
+          "date": "2025-10-10",
+          "url": "https://afriquexxi.info/Dans-le-nord-de-la-Cote-d-Ivoire-les-tensions-communautaires-s-echauffent"
+        }
+      ],
+      "encore_ouvert": true
+    },
+    {
+      "id": "autre-videoverbalisation-routiere",
+      "theme": "autre",
+      "question": "Le système de vidéo-verbalisation des infractions routières doit-il être assoupli (baisse des amendes, plafonnement mensuel, sensibilisation avant sanction) ?",
+      "contexte": "Des caméras de vidéo-verbalisation sanctionnent les infractions routières à Abidjan, avec des amendes notifiées par message. En 2026, des automobilistes et transporteurs dénoncent l'accumulation d'amendes, certains propriétaires de véhicules évoquant des montants cumulés jusqu'à deux millions de FCFA. L'opérateur Quipux Afrique indique qu'une procédure de réclamation existe auprès de la Police spéciale de la sécurité routière.",
+      "periode": "2025-04 à 2026-03",
+      "arguments_pour": [
+        {
+          "argument": "Le cumul des amendes pèse lourdement sur les revenus des chauffeurs, qui demandent une baisse des montants et une meilleure communication sur les règles.",
+          "porte_par": "Chauffeurs de taxi et transporteurs (dont Koné Djakaridja et Diallo Aboubakar, cités par Le360 Afrique)",
+          "source_url": "https://afrique.le360.ma/societe/cote-divoire-des-amendes-allant-jusqua-2-millions-de-fcfa-la-videoverbalisation-routiere-a-mauvaise_BHVPSMNAIJCLPPSSDSL3YRSF5U/"
+        },
+        {
+          "argument": "Il faut une procédure de contestation rapide, privilégier la sensibilisation avant les sanctions lourdes, plafonner les amendes mensuelles et associer usagers et transporteurs aux réformes.",
+          "porte_par": "Automobilistes interrogés par Lebanco",
+          "source_url": "https://www.lebanco.net/news/50910-cote-divoire-video-verbalisation-abus-sanctions-sans-recours-arnaques-selon-des-usagers.html"
+        }
+      ],
+      "arguments_contre": [
+        {
+          "argument": "Les usagers disposent d'une voie de réclamation (Police spéciale de la sécurité routière, courriel, numéro 1302) et la réclamation suspend le paiement de l'amende.",
+          "porte_par": "Ibrahima Koné, directeur général de Quipux Afrique",
+          "source_url": "https://www.lebanco.net/news/50910-cote-divoire-video-verbalisation-abus-sanctions-sans-recours-arnaques-selon-des-usagers.html"
+        }
+      ],
+      "positions_publiques": [],
+      "sources": [
+        {
+          "titre": "Côte d'Ivoire. Vidéo verbalisation : « abus, sanctions sans recours, arnaques » selon des usagers",
+          "media": "Lebanco",
+          "date": "2026-01-10",
+          "url": "https://www.lebanco.net/news/50910-cote-divoire-video-verbalisation-abus-sanctions-sans-recours-arnaques-selon-des-usagers.html"
+        },
+        {
+          "titre": "Côte d'Ivoire. Des amendes allant jusqu'à 2 millions de FCFA: la vidéoverbalisation routière a mauvaise presse",
+          "media": "Le360 Afrique",
+          "date": "2026-03-21",
+          "url": "https://afrique.le360.ma/societe/cote-divoire-des-amendes-allant-jusqua-2-millions-de-fcfa-la-videoverbalisation-routiere-a-mauvaise_BHVPSMNAIJCLPPSSDSL3YRSF5U/"
+        }
+      ],
+      "encore_ouvert": true
+    }
+  ],
+  "notes": "Recherche effectuée le 2026-09-12. 25 débats retenus. Méthode : recherche web puis lecture automatisée des articles ; les citations des positions_publiques et les passages entre guillemets ont été extraits par un outil de lecture qui résume les pages et doivent être relus mot pour mot sur la source avant publication (plusieurs pages ont d'abord été rendues traduites en anglais, puis relues en demandant le texte français original). Les arguments sont reformulés sauf mention. Positions publiques limitées aux déclarations explicites de partis ou de leurs dirigeants officiels ; sigles utilisés : PDCI-RDA, PPA-CI, MGC, COJEP (aucun fichier parties.json n'existe encore pour la Côte d'Ivoire, sigles à aligner). Choix de prudence : la réaction de Sébastien Dano Djédjé (PPA-CI) au rejet des candidatures (« Nous comptions sur la bonne foi et la technicité du Conseil constitutionnel pour dire le droit ») n'est pas comptée comme position explicite ; le communiqué du PDCI-RDA dénonçant l'arrestation de cyberactivistes est retenu comme argument mais pas comme position sur leur libération ; les déclarations d'Ahoua Don Mello ne sont pas rattachées à un parti (fonction partisane non vérifiée) ; le parti du député Léandre Koffi n'a pas été vérifié ; aucune position explicite du RHDP n'a pu être lue directement (les articles citant son porte-parole Kobenan Kouassi Adjoumani sur Afrique sur 7 et APAnews étaient inaccessibles). Points signalés : (1) institutions-nouvel-organe-electoral n'a aucun argument contre attribuable trouvé ; (2) institutions-parrainage-citoyen attribue ses arguments à la présentation du dispositif par France 24, faute de déclaration nominative lisible (l'article de 7info citant Pascal Affi N'Guessan sur le parrainage renvoyait une erreur 404) ; (3) economie-prix-anacarde (argument pour) et economie-eco-franc-cfa (argument contre) reposent sur des analyses de médias (Scoop Afrique, Afrimag), non sur des acteurs nommés ; (4) social-revalorisation-smig : l'argument contre est la justification de la décision de novembre 2022, antérieure à la période 2023-2026 ; (5) l'article du 2023-05-22 (AA) situe la grâce de Laurent Gbagbo en 2021 et celui d'Africanews (2023-05-29) « l'année précédente » : l'année n'est pas indiquée dans le contexte ; (6) la date de Scoop Afrique (2026-07-27) est celle affichée par la page, bien que l'article porte sur une annonce de février 2026 ; (7) une page d'Africa24 affirmant que les élections seraient confiées au ministère de l'Intérieur n'a pas été retenue, cette information n'apparaissant ni dans Abidjan.net ni dans l'AIP. encore_ouvert = la question reste contestée ou non tranchée dans les sources les plus récentes consultées. Thèmes non retenus faute de deux sources datées avec arguments attribués des deux côtés : décentralisation (seule une proposition du PPA-CI d'août 2026 sur l'autonomie financière des collectivités a été trouvée, Afrik Soir), Sénat, vice-présidence, dette publique (aucune critique attribuée trouvée ; défense du ministre du Plan Souleymane Diarrassouba, KOACI 2026-07-20), liberté de la presse, emploi des jeunes et accès à la fonction publique (une seule source, Connectionivoirienne 2026-04-16), fiscalité du secteur informel, affaire du détournement présumé à la DGI (une seule source), retour des exilés dont Guillaume Soro (réaction gouvernementale non lisible). Sources inaccessibles non citées : Jeune Afrique, APAnews, Afrique sur 7, Capmad, Agence Ecofin, CINEWS, finances.gouv.ci, La Dépêche d'Abidjan. Quota de recherches web largement utilisé (environ 47 recherches)."
+}

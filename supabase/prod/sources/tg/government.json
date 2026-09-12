@@ -1,0 +1,323 @@
+{
+  "gouvernement": {
+    "nom": "Premier gouvernement de la Cinquième République (gouvernement Gnassingbé)",
+    "debut": "2025-10-08",
+    "decret_ref": "Décret du Président du Conseil signé le 8 octobre 2025 fixant la composition du gouvernement (numéro et publication au Journal officiel non trouvés)",
+    "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+    "source_titre": "Premier gouvernement de la Cinquième République : une nouvelle ère institutionnelle placée sous le signe de l’innovation | Présidence du Conseil (8 octobre 2025)"
+  },
+  "chef_gouvernement": {
+    "nom": "Faure Essozimna GNASSINGBÉ",
+    "intitule": "Président du Conseil",
+    "date_nomination": "2025-05-03",
+    "decret_ref": "Pas de décret : désignation de plein droit comme chef du parti majoritaire (art. 47 de la Constitution du 6 mai 2024). UNIR a transmis son nom au bureau de l'Assemblée nationale le 30 avril 2025. La désignation a été annoncée en séance plénière de l'Assemblée nationale le 3 mai 2025, et le serment prêté le même jour devant la Cour constitutionnelle.",
+    "source_url": "https://presidenceduconseil.gouv.tg/2025/05/03/renouveau-institutionnel-au-togo-faure-essozimna-gnassingbe-investi-president-du-conseil/",
+    "note": "Titre officiel : « Président du Conseil » (Constitution du 6 mai 2024, art. 47, cité par republiquetogolaise.tg ; signature du décret du 8 octobre 2025). « Président du Conseil des ministres » est une formule de presse (Togo First, Wikipédia). La Présidence du Conseil le présente comme « chef du gouvernement ». Désignation : https://www.republiquetogolaise.tg/politique/0305-10622-faure-essozimna-gnassingbe-officiellement-designe-president-du-conseil. Il ne détient aucun portefeuille nominatif ; les ministères de la Défense nationale, de la Fonction publique, du Travail et du Dialogue social sont « rattachés à la Présidence du Conseil », comme l'étaient les Transports jusqu'au 23 janvier 2026. Graphie : « GNASSINGBE » au trombinoscope officiel, « GNASSINGBÉ » sur son compte X officiel. Le gouvernement Tomégah-Dogbé III a démissionné le 2 mai 2025 (Togo First, cité par Wikipédia) et a expédié les affaires courantes jusqu'au 8 octobre 2025."
+  },
+  "president_republique": {
+    "nom": "Jean-Lucien Kwassi Lanyo SAVI DE TOVÉ",
+    "date_election": "2025-05-03",
+    "source_url": "https://www.republiquetogolaise.tg/politique/0305-10624-jean-lucien-savi-de-tove-elu-president-de-la-republique",
+    "note": "Rôle constitutionnel, non membre du gouvernement. Élu le 3 mai 2025 par le Parlement réuni en Congrès (Assemblée nationale et Sénat) : candidat unique proposé par UNIR, élu à l'unanimité des 150 votants, à 86 ans (republiquetogolaise.tg). Chef de l'État et symbole de l'unité nationale, aux fonctions essentiellement protocolaires ; Jeune Afrique le qualifie de « président de la République sans pouvoir ». Serment prêté devant le Congrès le 4 mai 2025 selon un résumé de recherche web s'appuyant sur Jeune Afrique et Agence Ecofin ; non vérifié sur une source primaire."
+  },
+  "ministres": [
+    {
+      "ordre": 1,
+      "nom": "Kodjo Sévon-Tépé ADEDZE",
+      "civilite": "M.",
+      "intitule": "Ministre de l’aménagement du territoire, de l’urbanisme et de l’habitat",
+      "type": "ministre",
+      "bloc": "infrastructure",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": false
+    },
+    {
+      "ordre": 2,
+      "nom": "Gilbert BAWARA",
+      "civilite": "M.",
+      "intitule": "Ministre des relations avec le parlement et les Institutions",
+      "type": "ministre",
+      "bloc": "regalien",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 3,
+      "nom": "Essowè Georges BARCOLA",
+      "civilite": "M.",
+      "intitule": "Ministre des finances et du budget",
+      "type": "ministre",
+      "bloc": "economie",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 4,
+      "nom": "Cina LAWSON",
+      "civilite": "Mme",
+      "intitule": "Ministre de l’efficacité du service public et de la transformation numérique",
+      "type": "ministre",
+      "bloc": "infrastructure",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 5,
+      "nom": "Robert Komlan Edo DUSSEY",
+      "civilite": "M.",
+      "intitule": "Ministre des affaires étrangères, de la coopération, de l’intégration africaine et des togolais de l’extérieur",
+      "type": "ministre",
+      "bloc": "regalien",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 6,
+      "nom": "Antoine Lékpa GBEGBENI",
+      "civilite": "M.",
+      "intitule": "Ministre de l’agriculture, de la pêche, des ressources animales et de la souveraineté alimentaire",
+      "type": "ministre",
+      "bloc": "economie",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 7,
+      "nom": "Hodabalo AWATE",
+      "civilite": "M.",
+      "intitule": "Ministre de l’administration territoriale, de la gouvernance locale et des affaires coutumières",
+      "type": "ministre",
+      "bloc": "regalien",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 8,
+      "nom": "Komla Dodzi KOKOROKO",
+      "civilite": "M.",
+      "intitule": "Ministre de l’environnement, des ressources forestières, de la protection côtière et du changement climatique",
+      "type": "ministre",
+      "bloc": "infrastructure",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 9,
+      "nom": "Mama OMOROU",
+      "civilite": "M.",
+      "intitule": "Ministre de l’Education nationale",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": false
+    },
+    {
+      "ordre": 10,
+      "nom": "Yawa KOUIGAN",
+      "civilite": "Mme",
+      "intitule": "Ministre de la communication",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 11,
+      "nom": "Mazamesso ASSIH",
+      "civilite": "Mme",
+      "intitule": "Ministre du développement à la base et de l’économie sociale et solidaire",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 12,
+      "nom": "Calixte Batossie MADJOULBA",
+      "civilite": "M.",
+      "intitule": "Ministre de la sécurité",
+      "type": "ministre",
+      "bloc": "regalien",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 13,
+      "nom": "Jean-Marie Koffi TESSI",
+      "civilite": "M.",
+      "intitule": "Ministre de la santé, de l’hygiène publique, de la couverture sanitaire universelle et des assurances",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 14,
+      "nom": "Badanam PATOKI",
+      "civilite": "M.",
+      "intitule": "Ministre de l’économie et de la veille stratégique",
+      "type": "ministre",
+      "bloc": "economie",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": false
+    },
+    {
+      "ordre": 15,
+      "nom": "Pacôme ADJOUROUVI",
+      "civilite": "M.",
+      "intitule": "Garde des Sceaux, ministre de la justice et des droits humains",
+      "type": "ministre",
+      "bloc": "regalien",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 16,
+      "nom": "Isaac TCHIAKPE",
+      "civilite": "M.",
+      "intitule": "Ministre du tourisme, de la culture et des arts",
+      "type": "ministre",
+      "bloc": "economie",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 17,
+      "nom": "Martine Moni SANKAREDJA",
+      "civilite": "Mme",
+      "intitule": "Ministre des solidarités, du genre, de la famille et de la protection de l’enfance",
+      "type": "ministre",
+      "bloc": "social",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": false
+    },
+    {
+      "ordre": 18,
+      "nom": "Komlan Luku KADJÉ",
+      "civilite": "M.",
+      "intitule": "Ministre des Transports, du Désenclavement et des Pistes rurales",
+      "type": "ministre",
+      "bloc": "infrastructure",
+      "source_url": "https://presidenceduconseil.gouv.tg/2026/01/23/deux-nouvelles-nominations-au-sein-du-gouvernement-togolais/",
+      "reconduit": false
+    },
+    {
+      "ordre": 19,
+      "nom": "Sani YAYA",
+      "civilite": "M.",
+      "intitule": "Ministre délégué auprès du ministre de l’aménagement du territoire chargé des travaux publics et des infrastructures",
+      "type": "ministre_delegue",
+      "bloc": "infrastructure",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 20,
+      "nom": "Arthur Lilas TRIMUA",
+      "civilite": "M.",
+      "intitule": "Ministre délégué auprès du ministre de l’Economie et de la Veille stratégique, chargé de la promotion des investissements et de la souveraineté économique",
+      "type": "ministre_delegue",
+      "bloc": "economie",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/11/09/nomination-dun-nouveau-ministre-charge-de-la-promotion-des-investissements/",
+      "reconduit": false
+    },
+    {
+      "ordre": 21,
+      "nom": "Koami GOMADO",
+      "civilite": "M.",
+      "intitule": "Ministre délégué auprès du ministre de l’aménagement du territoire, chargé du développement local",
+      "type": "ministre_delegue",
+      "bloc": "regalien",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 22,
+      "nom": "Robert Koffi Messan EKLO",
+      "civilite": "M.",
+      "intitule": "Ministre délégué auprès du ministre de l’économie, chargé de l’énergie et des ressources minières",
+      "type": "ministre_delegue",
+      "bloc": "economie",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 23,
+      "nom": "Tchin DARRE",
+      "civilite": "M.",
+      "intitule": "Ministre délégué auprès du ministre de la Santé",
+      "type": "ministre_delegue",
+      "bloc": "social",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 24,
+      "nom": "Abdul-Fahd FOFANA",
+      "civilite": "M.",
+      "intitule": "Ministre délégué auprès du ministre du développement à la base et de l’économie sociale et solidaire, chargé de la jeunesse et des sports",
+      "type": "ministre_delegue",
+      "bloc": "social",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": true
+    },
+    {
+      "ordre": 25,
+      "nom": "Séna ALIPUI",
+      "civilite": "M.",
+      "intitule": "Ministre délégué auprès du ministre de l’aménagement du territoire chargé de l’eau et de l’assainissement",
+      "type": "ministre_delegue",
+      "bloc": "infrastructure",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": false
+    },
+    {
+      "ordre": 26,
+      "nom": "Yackoley Kokou JOHNSON",
+      "civilite": "M.",
+      "intitule": "Ministre délégué auprès du ministre des affaires étrangères et de la coopération, chargé de la coopération et des togolais de l’extérieur",
+      "type": "ministre_delegue",
+      "bloc": "regalien",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": false
+    },
+    {
+      "ordre": 27,
+      "nom": "Gado TCHANGBEDJI",
+      "civilite": "M.",
+      "intitule": "Ministre délégué auprès du ministre de l’éducation nationale, chargé de l’enseignement supérieur et de la recherche scientifique",
+      "type": "ministre_delegue",
+      "bloc": "social",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/",
+      "reconduit": false
+    },
+    {
+      "ordre": 28,
+      "nom": "Edem Kokou TENGUE",
+      "civilite": "M.",
+      "intitule": "Ministre délégué auprès du ministre des Transports, du Désenclavement et des pistes rurales, chargé de l’Economie maritime",
+      "type": "ministre_delegue",
+      "bloc": "economie",
+      "source_url": "https://presidenceduconseil.gouv.tg/2026/01/23/deux-nouvelles-nominations-au-sein-du-gouvernement-togolais/",
+      "reconduit": true
+    }
+  ],
+  "remaniements": [
+    {
+      "date": "2025-11-09",
+      "description": "Décret du 9 novembre 2025 : Arthur Lilas TRIMUA est nommé « ministre délégué auprès du ministre de l’Economie et de la Veille stratégique, chargé de la promotion des investissements et de la souveraineté économique ». Il remplace Manuella Modoukpè SANTOS, ministre déléguée chargée de la promotion des investissements, de l’industrie et de la souveraineté économique depuis le 8 octobre 2025 ; l'industrie disparaît de l'intitulé. Le remplacement est tiré de Wikipédia FR et du trombinoscope officiel : le communiqué de la Présidence ne nomme pas Santos.",
+      "source_url": "https://presidenceduconseil.gouv.tg/2025/11/09/nomination-dun-nouveau-ministre-charge-de-la-promotion-des-investissements/"
+    },
+    {
+      "date": "2025-11-25",
+      "description": "Départ de Kossi TENOU, ministre délégué auprès du ministre de l’économie, chargé du commerce et du contrôle qualité : le Conseil des ministres de l’UMOA le désigne président de l’AMF-UMOA. Ni décret de fin de fonctions ni successeur trouvés ; depuis décembre 2025, le ministre de l’Économie Badanam Patoki conduit les activités du ministère délégué au commerce (commerce.gouv.tg). La date retenue est celle de l'annonce UMOA ; la date effective de sortie du gouvernement est inconnue.",
+      "source_url": "https://www.togofirst.com/fr/gouvernance-economique/2611-17641-kossi-tenou-prend-la-tete-de-l-amf-uemoa-en-remplacement-de-badanam-patoki"
+    },
+    {
+      "date": "2026-01-23",
+      "description": "Décrets du 23 janvier 2026 : Komlan Luku KADJÉ devient Ministre des Transports, du Désenclavement et des Pistes rurales, portefeuille jusque-là rattaché à la Présidence du Conseil ; Edem Kokou TENGUE devient Ministre délégué auprès du ministre des Transports, du Désenclavement et des pistes rurales, chargé de l’Economie maritime. Passations de service le 26 janvier 2026 : Sani Yaya a remis les pistes rurales, Richard Gbalgueboa Kangbeni l'économie maritime (ATOP, https://atop.tg/121344-2/). Confirmé par republiquetogolaise.tg (https://www.republiquetogolaise.tg/politique/2401-11533-transports-desenclavement-economie-maritime-nouvelles-nominations-au-gouvernement) et par Republicoftogo, pour qui « l’équipe gouvernementale est désormais au complet ».",
+      "source_url": "https://presidenceduconseil.gouv.tg/2026/01/23/deux-nouvelles-nominations-au-sein-du-gouvernement-togolais/"
+    }
+  ],
+  "notes": "SOURCE RETENUE : texte du décret du 8 octobre 2025 (numéro, visas, Journal officiel) introuvable en ligne. Source la plus proche : la liste officielle numérotée 1 à 27 publiée le même jour par la Présidence du Conseil (https://presidenceduconseil.gouv.tg/2025/10/08/premier-gouvernement-de-la-cinquieme-republique-une-nouvelle-ere-institutionnelle-placee-sous-le-signe-de-linnovation/), dont une copie PDF (https://droit-et-politique-en-afrique.info/wp-content/uploads/2025/10/Composition-du-Gouvernement-du-Togo-Decret-du-8-octobre-2025.pdf) a été lue page par page. Intitulés recopiés mot pour mot, sans les numéros, avec les majuscules irrégulières de l'original (« l’Education nationale » sans accent, « le parlement et les Institutions », « ministre de la Santé »). Titres retirés des noms : « Colonel » (Awate, Madjoulba), « Professeur » (Dussey, Kokoroko, Darre, Tchangbedji), « Maitre » (Adjourouvi). Civilité tirée de « Monsieur/Madame » ou de l'accord « nommé/nommée » dans les dépêches ATOP. CONCORDANCE AU 8 OCTOBRE 2025 : la même liste de 27 noms (17 ministres + 10 ministres délégués), dans le même ordre, se retrouve sur le portail officiel republiquetogolaise.tg (https://www.republiquetogolaise.tg/politique/0910-11140-le-togo-a-un-nouveau-gouvernement ; l'adresse .com renvoie 404 depuis curl), chez Togo First (https://www.togofirst.com/fr/politique/0910-17252-togo-un-nouveau-gouvernement-pour-inaugurer-la-ve-republique-entre-continuite-et-reajustements), à l'ATOP (https://atop.tg/27-ministres-composent-le-premier-gouvernement-de-la-5%E1%B5%89-republique/) et chez KOACI. La presse et republiquetogolaise capitalisent chaque mot et abrègent parfois : KOACI écrit « Aménagement du territoire et de l’Urbanisme » sans l'Habitat, et « Contrôle de la qualité » ; Togo First omet « Garde des Sceaux ». COMPOSITION EN VIGUEUR AU 12 SEPTEMBRE 2026 : 28 membres, soit 18 ministres et 10 ministres délégués. Elle diffère des 27 du décret sur trois points : (1) Arthur Lilas TRIMUA remplace Manuella Modoukpè SANTOS (rang 19), par décret du 9 novembre 2025 ; (2) Kossi TENOU (rang 26) a quitté le gouvernement ; (3) Komlan Luku KADJÉ et Edem Kokou TENGUE ont été nommés par décrets du 23 janvier 2026. Aucun ministre d'État ni secrétaire d'État. Femmes : 5 dans le décret (Lawson, Kouigan, Assih, Sankaredja, Santos), 4 aujourd'hui. ORDRE : rangs 1 à 17 = ordre du décret ; rang 18 = Kadjé (ministre de plein exercice nommé en 2026), placé après les ministres du décret ; ensuite les ministres délégués dans l'ordre du décret (Trimua au rang de Santos, Tenou retiré) et Tengue en dernier. Choix éditorial : aucun ordre protocolaire officiel mis à jour n'a été publié. DIVERGENCES DE DÉCOMPTE : Togo First (24 janvier 2026, https://www.togofirst.com/fr/gouvernance-economique/2401-18059-gouvernement-togolais-komlan-loukou-kadje-nomme-aux-transports-edem-tengue-de-retour-a-l-economie-maritime) annonce « 29 membres, 18 ministres de plein exercice et 11 ministres délégués », ce qui revient à compter encore Kossi Tenou. Le trombinoscope officiel (https://www.republiquetogolaise.tg/trombinoscope, consulté le 12 septembre 2026) donne 27 noms « au titre du Gouvernement » : Trimua, Kadje et Tengue y figurent, Santos et Tenou n'y figurent plus, mais Gado TCHANGBEDJI manque aussi. Tchangbedji est maintenu, car cette omission paraît être un oubli : l'ATOP le cite comme ministre délégué en exercice le 17 juin 2026 (https://atop.tg/education-76-098-candidats-a-la-conquete-du-bac-2/) puis en août-septembre 2026 (https://atop.tg/kloto-education-a-la-lutte-contre-la-corruption-la-haplucia-soumet-neuf-manuels-pedagogiques-a-validation/), de même que edusup.gouv.tg le 12 août 2026. Wikipédia FR (« Gouvernement Gnassingbé ») affiche encore 27 ministres ; elle signale Trimua mais ignore le départ de Tenou et l'arrivée de Kadjé et Tengue. KOSSI TENOU (départ non établi par un acte officiel) : selon Togo First (26 novembre 2025, https://www.togofirst.com/fr/gouvernance-economique/2611-17641-kossi-tenou-prend-la-tete-de-l-amf-uemoa-en-remplacement-de-badanam-patoki), le Conseil des ministres de l'UMOA l'a désigné le 25 novembre 2025 à la tête de l'AMF-UMOA, où il remplace Badanam Patoki. Ni décret de fin de fonctions ni successeur comme ministre délégué au commerce trouvés. Trois indices de départ : sur commerce.gouv.tg, sa dernière activité de ministre délégué date du 29 novembre 2025 ; depuis le 26 décembre 2025, c'est le ministre Badanam PATOKI qui y conduit les activités ; il ne figure plus au trombinoscope officiel. Le portefeuille « commerce et contrôle qualité » paraît donc exercé par le ministre de l'Économie, sans texte qui le confirme. INTITULÉ TRIMUA : selon le résumé du décret du 9 novembre 2025 publié par la Présidence du Conseil, il est ministre délégué « auprès du ministre de l’Economie et de la Veille stratégique, chargé de la promotion des investissements et de la souveraineté économique » : l'industrie ne figure plus dans l'intitulé. Le compte rendu du Conseil des ministres du 8 juillet 2026 le confirme (« ministre délégué chargé de la promotion des investissements et de la souveraineté économique »). Wikipédia FR lui attribue à tort l'intitulé complet de Santos. La Présidence ne mentionne pas explicitement le départ de Santos ; le remplacement est affirmé par Wikipédia FR (citant Le Courrier stratégique) et confirmé par le trombinoscope officiel. GRAPHIES DIVERGENTES (le JSON suit la Présidence du Conseil sauf mention) : « Marna OMOROU » chez la Présidence est une coquille manifeste ; le JSON retient « Mama OMOROU », graphie de republiquetogolaise, du trombinoscope, de Togo First et de l'ATOP. Autres variantes : Sevon-Tépé / Sévon-Tépé ; Edo / Edoh DUSSEY ; Lékpa / Lekpa ; Komla / Komlan Dodzi KOKOROKO (republiquetogolaise, trombinoscope) ; Koffi / Kofi TESSI ; Koami (Présidence) / Koamy GOMADO (republiquetogolaise, KOACI, trombinoscope), « Joseph Koamy Gbloèkpo » selon Wikipédia ; Robert Koffi Messan / Robert Kofi Mensah EKLO (republiquetogolaise) ; Modoukpè / Modukpe SANTOS ; DARRE / Darré ; Yackoley / Yakoley / Yakole JOHNSON ; Gado TCHANGBEDJI / « Jean Luc Gado » (KOACI, erreur) ; TCHIAKPE / Tsiakpe (KOACI) ; « Komlan Luku Kadjé » (Présidence du Conseil, ATOP) / « Komlan Loukou-Kadjé » (Togo First, Republicoftogo) / « Komlan Kadje » (republiquetogolaise) ; TENGUE / Tengué (ATOP). Tchin Darré apparaît sous la forme « Prof Tiem Daré » dans le décret du 20 août 2024. RECONDUITS : comparaison avec la dernière composition officielle du gouvernement précédent (Tomégah-Dogbé III, nommé le 20 août 2024, https://www.republiquetogolaise.tg/politique/2108-9599-transition-composition-du-nouveau-gouvernement) ; d'éventuels ajustements entre août 2024 et la démission du 2 mai 2025 n'ont pas été vérifiés. true pour Bawara, Barcola, Lawson, Dussey, Gbegbeni, Awate, Kokoroko, Kouigan, Assih, Madjoulba, Tessi, Adjourouvi, Tchiakpe, Yaya, Gomado, Eklo, Darre, Fofana, Tengue ; plusieurs ont changé de portefeuille. Cas limite, Edem Kokou Tengue : en 2024, il figurait « au titre des Ministres à la Présidence de la République » ; du 13 octobre 2025 au 23 janvier 2026, il était ministre conseiller du Président du Conseil, fonction extérieure au gouvernement ; il est compté reconduit parce qu'il figure dans la liste de 2024. Nouveaux : Adedze (président de l'Assemblée nationale en mai 2025 selon republiquetogolaise), Omorou, Patoki, Sankaredja, Alipui, Johnson, Tchangbedji, Trimua, Kadjé. Kadjé avait été ministre des Travaux publics et des Transports en 2009 (Togo First) et Tengue avait dirigé l'Économie maritime de 2020 à 2024 (republiquetogolaise), avant le gouvernement précédent. QUI EST MEMBRE : sont comptés les 27 noms du décret du 8 octobre 2025 et les personnes nommées ensuite par décret « au sein du gouvernement ». NON comptés : (a) Stanislas Bamouni BABA, « Ministre, Secrétaire Général du gouvernement » (décret du 3 septembre 2025, https://presidenceduconseil.gouv.tg/2025/09/03/le-president-du-conseil-nomme-un-nouveau-secretaire-general-du-gouvernement/) : absent de la liste du décret et du trombinoscope « au titre du Gouvernement », bien que Wikipédia FR le range parmi les ministères ; (b) les personnes que le trombinoscope place « au titre de la Présidence du Conseil » : Sandra Ablamba JOHNSON, le général Damehame YARK (« Ministre, Directeur de Cabinet du Président du Conseil ») et Pascal Akoussoulèlou BODJONA (« Ministre Conseiller »), ces deux derniers nommés le 13 octobre 2025 (https://www.republiquetogolaise.tg/politique/1310-11156-gouvernement-nouvelles-nominations). MINISTÈRES RATTACHÉS À LA PRÉSIDENCE DU CONSEIL : le décret dispose que « Les ministères de la Défense nationale, de la fonction publique, du travail, du dialogue social et des transports sont rattachés à la Présidence du Conseil » (republiquetogolaise et Togo First écrivent « Fonction publique et Dialogue social » et « Travail »). Les Transports ont un ministre depuis le 23 janvier 2026. Le Président du Conseil n'est désigné nulle part comme ministre de ces départements ; il ne figure donc pas dans « ministres ». POINT NON ÉLUCIDÉ : le compte rendu du Conseil des ministres du 4 août 2026 (https://presidenceduconseil.gouv.tg/2026/08/05/les-grandes-decisions-du-conseil-des-ministres-du-04-aout-2026/) mentionne une communication « présentée par le ministre de la fonction publique, du travail et du dialogue social », sans le nommer. Aucun décret de nomination trouvé, malgré des recherches sur l'API du site presidenceduconseil.gouv.tg, sur l'ATOP, sur fonctionpublique.gouv.tg (page « Ministre » vide) et sur le web. togo.gouv.tg n'a pas pu être lu : contenu chargé en JavaScript. BLOCS (choix à arbitrer) : rang 4, Efficacité du service public et Transformation numérique → infrastructure, comme la transformation digitale au Bénin (la fonction publique relèverait de regalien) ; rang 8, Environnement et Protection côtière → infrastructure (pourrait relever de social) ; rang 16, Tourisme, Culture et Arts → economie (la culture relèverait de social) ; rang 21, Développement local → regalien, comme la décentralisation au Bénin ; rang 22, Énergie et Ressources minières → economie ; rang 28, Économie maritime → economie (pourrait relever d'infrastructure) ; rang 10, Communication → social. VÉRIFICATION DES REMANIEMENTS jusqu'au 12 septembre 2026 : articles de presidenceduconseil.gouv.tg passés en revue via son API WordPress (recherches « gouvernement », « nommé ministre », « ministre délégué », « remplac », « intérim », « fin aux fonctions », Tenou, Trimua, Santos, Tengue). Seuls actes ministériels trouvés : ceux du 9 novembre 2025 et du 23 janvier 2026. Comptes rendus des Conseils des ministres lus : 15 novembre, 17, 24 et 30 décembre 2025 ; 2, 19 et 25 février, 11 mars, 1er avril, 6 mai, 26 juin, 8 juillet, 30 juillet, 4 août, 26 août et 7 septembre 2026. Ils ne contiennent que des nominations administratives (préfets, secrétaires généraux, directeurs de cabinet, universités). Journal officiel non consulté."
+}
