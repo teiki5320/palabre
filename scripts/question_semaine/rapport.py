@@ -12,10 +12,10 @@ def _sujet_md(s):
     return '\n'.join(lignes)
 
 
-def rendre_rapport(lundi, resultats, url_retrait, dry_run=False):
+def rendre_rapport(lundi, resultats, dry_run=False):
     titre = f"Question de la semaine du {lundi.isoformat()}"
     out = [f"# {titre}", '', 'Les questions publiées ouvrent lundi à 8 h, heure locale de chaque pays.',
-           f"Pour retirer une question avant l’ouverture : lancer [retirer-question]({url_retrait}) avec le pays et la semaine `{lundi.isoformat()}`.", '']
+           f"Pour retirer une question avant l’ouverture, sur le Mac : `python3 scripts/question_semaine/retirer.py PAYS {lundi.isoformat()}` (ou le demander à Claude Code).", '']
     if dry_run:
         out += ['> Simulation : rien n’a été écrit en base.', '']
     for r in resultats:

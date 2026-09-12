@@ -118,13 +118,13 @@ class Rapport(unittest.TestCase):
             {'pays': 'TG', 'nom': 'Togo', 'statut': 'aucun', 'raison': 'le relecteur n’a retenu aucun sujet', 'rejets': []},
             {'pays': 'CI', 'nom': "Côte d'Ivoire", 'statut': 'erreur', 'raison': 'API indisponible', 'rejets': []},
         ]
-        md = rendre_rapport(LUNDI, resultats, 'https://github.com/x/y/actions/workflows/retirer-question.yml', dry_run=False)
+        md = rendre_rapport(LUNDI, resultats, dry_run=False)
         self.assertIn('Bénin', md)
         self.assertIn('Sans avis', md)
         self.assertIn('sgg.gouv.bj', md)
         self.assertIn('Togo', md)
         self.assertIn('API indisponible', md)
-        self.assertIn('retirer-question', md)
+        self.assertIn('retirer.py', md)
         self.assertIn('2026-09-21', md)
 
 

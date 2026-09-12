@@ -1,7 +1,26 @@
 # Question de la semaine automatique — conception
 
 Date : 2026-09-12. Décisions prises avec le propriétaire : publication automatique, notification par
-issue GitHub, exécution dans GitHub Actions le dimanche matin.
+issue GitHub, exécution le dimanche matin. Révision du même jour : **pas d'API Claude et rien à payer** ;
+la recherche est faite par une tâche planifiée Claude Code sur le Mac du propriétaire (abonnement),
+la publication passe par le CLI Supabase déjà relié au projet, l'issue est créée avec `gh`. Les sections
+« GitHub Actions », « secrets » et « appels API » ci-dessous sont remplacées par cette révision.
+
+## Révision : tâche planifiée Claude Code
+
+- Tâche `question-semaine` (dossier `~/.claude/scheduled-tasks/`), chaque dimanche à 8 h heure de Paris.
+  L'app Claude doit être ouverte ; sinon la tâche tourne à l'ouverture suivante.
+- La tâche fait la recherche d'actualité pays par pays (prompt § 7 de `docs/prompts/recherche-pays.md`,
+  fiche `scripts/question_semaine/pays.json`), écrit `{code: [sujets]}` avec son choix en premier, puis
+  lance `scripts/question_semaine/run.py --sujets … --publier`, qui applique les contrôles automatiques
+  (fonctions pures testées), écrit `supabase/prod/<pays>/questions/<lundi>.sql` et l'exécute avec
+  `supabase db query --linked`. La relecture indépendante est faite par la tâche elle-même avant
+  d'écrire le fichier (même grille que § Relecture).
+- La tâche crée l'issue GitHub avec `gh issue create` (corps = `rapport.md`), commite et pousse les SQL.
+- Retrait : `python3 scripts/question_semaine/retirer.py PAYS AAAA-MM-JJ` sur le Mac, ou le demander à
+  Claude Code ; refusé si le sondage est déjà ouvert.
+- CI : les tests unitaires et le pipeline hors ligne sur une fixture, sans clé ni réseau vers Supabase.
+
 
 ## Objectif
 

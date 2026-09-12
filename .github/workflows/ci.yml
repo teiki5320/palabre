@@ -38,7 +38,7 @@ jobs:
         working-directory: scripts/question_semaine
       - name: Pipeline hors ligne sur une fixture
         run: |
-          python scripts/question_semaine/run.py --pays BJ --semaine 2026-09-21 --jour 2026-09-12 --fixture scripts/question_semaine/fixture_bj.json --sortie /tmp/qs --dry-run
+          python scripts/question_semaine/run.py --sujets scripts/question_semaine/fixture_bj.json --pays BJ --semaine 2026-09-21 --jour 2026-09-12 --sortie /tmp/qs
           python -c "import json,sys; r=json.load(open('/tmp/qs/rapport.json'))['resultats'][0]; sys.exit(0 if r['statut']=='publie' else 'la fixture devrait donner un sujet retenu : '+r.get('raison',''))"
 
   flutter:
