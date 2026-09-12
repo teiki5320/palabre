@@ -322,6 +322,7 @@ def gen_assembly(ids, asm, parties):
         mrows.append(f"  ({mid[0]}, {pid}, {role}, {c if c is not None else 'null'}, {q(debut)}, {d(fin)}, {q(motif)}, {q(source or src)}, {q(qualite)}, {remplace if remplace else 'null'}, 'presse' if False else 'journal_officiel')".replace("'presse' if False else 'journal_officiel'", "'journal_officiel'" if source is None else "'presse'"))
         return mid[0]
 
+    cas_appliques = set()
     for dep in asm['deputes']:
         pid = person_row(dep['nom'])
         c = cons[dep['circonscription'].strip()]
@@ -346,9 +347,11 @@ def gen_assembly(ids, asm, parties):
                 if seg.get('suppleant'):
                     sp = seg['suppleant']
                     mandate(person_row(sp['nom']), c, sp['debut'], sp.get('fin'), sp.get('motif_fin'), sp.get('source_url'), 'suppleant', tid)
-            if case.get('presidence'):
+            # La présidence est un mandat unique, même si la personne figure sur deux listes.
+            if case.get('presidence') and dep['nom'] not in cas_appliques:
                 pr = case['presidence']
                 mandate(pid, None, pr['debut'], pr.get('fin'), pr.get('motif_fin'), pr.get('source_url'), role=o(4))
+            cas_appliques.add(dep['nom'])
         else:
             t = case['titulaire']
             tid = mandate(person_row(t['nom']), c, t['debut'], t.get('fin'), t.get('motif_fin'), t.get('source_url'))
