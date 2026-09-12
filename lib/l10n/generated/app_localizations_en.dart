@@ -264,15 +264,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get quizIntro =>
-      'You answer the same statements that were put to the parties. A match score is then computed, party by party, source by source.';
+      'You take a stand on specific statements. Your answers are then compared with the parties\' positions, party by party, source by source.';
 
   @override
   String get quizMethod1 =>
-      'Parties received the same questionnaire. Three source levels: direct answer, public document, none.';
+      'Party positions come from their written texts (manifestos, platforms), with an exact quote and a link. A direct answer from a party would be labelled as such.';
 
   @override
   String get quizMethod2 =>
-      'A party that did not answer appears as “no position taken”. Nothing is extrapolated.';
+      'Without an explicit text, nothing is extrapolated: the party shows as “no position taken” and the statement is left out of its score.';
 
   @override
   String get quizMethod3 =>

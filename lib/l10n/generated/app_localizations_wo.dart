@@ -264,15 +264,15 @@ class AppLocalizationsWo extends AppLocalizations {
 
   @override
   String get quizIntro =>
-      'Vous répondez aux mêmes affirmations que celles posées aux partis. On calcule ensuite une concordance, parti par parti, source par source.';
+      'Vous vous positionnez sur des affirmations précises. Vos réponses sont ensuite comparées aux positions des partis, parti par parti, source par source.';
 
   @override
   String get quizMethod1 =>
-      'Les partis ont reçu le même questionnaire. Trois niveaux de source : réponse directe, document public, aucune.';
+      'Les positions des partis viennent de leurs textes écrits (programmes, projets de société), avec citation exacte et lien. Une réponse directe d\'un parti serait signalée comme telle.';
 
   @override
   String get quizMethod2 =>
-      'Un parti qui n\'a pas répondu apparaît comme « n\'a pas pris position ». Rien n\'est extrapolé.';
+      'Sans texte explicite, rien n\'est extrapolé : le parti apparaît « n\'a pas pris position » et l\'affirmation sort de son calcul.';
 
   @override
   String get quizMethod3 =>

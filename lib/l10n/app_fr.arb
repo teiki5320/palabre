@@ -85,9 +85,9 @@
   "pollLinkedPerson": "Personne concernée",
   "pollLinkedOrg": "Institution concernée",
 
-  "quizIntro": "Vous répondez aux mêmes affirmations que celles posées aux partis. On calcule ensuite une concordance, parti par parti, source par source.",
-  "quizMethod1": "Les partis ont reçu le même questionnaire. Trois niveaux de source : réponse directe, document public, aucune.",
-  "quizMethod2": "Un parti qui n'a pas répondu apparaît comme « n'a pas pris position ». Rien n'est extrapolé.",
+  "quizIntro": "Vous vous positionnez sur des affirmations précises. Vos réponses sont ensuite comparées aux positions des partis, parti par parti, source par source.",
+  "quizMethod1": "Les positions des partis viennent de leurs textes écrits (programmes, projets de société), avec citation exacte et lien. Une réponse directe d'un parti serait signalée comme telle.",
+  "quizMethod2": "Sans texte explicite, rien n'est extrapolé : le parti apparaît « n'a pas pris position » et l'affirmation sort de son calcul.",
   "quizMethod3": "Votre résultat est calculé sur votre téléphone et n'est jamais envoyé.",
   "quizStatements": "{n} affirmations",
   "@quizStatements": {"placeholders": {"n": {"type": "int"}}},

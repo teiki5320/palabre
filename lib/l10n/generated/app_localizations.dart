@@ -487,19 +487,19 @@ abstract class AppLocalizations {
   /// No description provided for @quizIntro.
   ///
   /// In fr, this message translates to:
-  /// **'Vous répondez aux mêmes affirmations que celles posées aux partis. On calcule ensuite une concordance, parti par parti, source par source.'**
+  /// **'Vous vous positionnez sur des affirmations précises. Vos réponses sont ensuite comparées aux positions des partis, parti par parti, source par source.'**
   String get quizIntro;
 
   /// No description provided for @quizMethod1.
   ///
   /// In fr, this message translates to:
-  /// **'Les partis ont reçu le même questionnaire. Trois niveaux de source : réponse directe, document public, aucune.'**
+  /// **'Les positions des partis viennent de leurs textes écrits (programmes, projets de société), avec citation exacte et lien. Une réponse directe d\'un parti serait signalée comme telle.'**
   String get quizMethod1;
 
   /// No description provided for @quizMethod2.
   ///
   /// In fr, this message translates to:
-  /// **'Un parti qui n\'a pas répondu apparaît comme « n\'a pas pris position ». Rien n\'est extrapolé.'**
+  /// **'Sans texte explicite, rien n\'est extrapolé : le parti apparaît « n\'a pas pris position » et l\'affirmation sort de son calcul.'**
   String get quizMethod2;
 
   /// No description provided for @quizMethod3.
