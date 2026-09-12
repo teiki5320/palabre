@@ -181,6 +181,8 @@ class _DeputyRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final t = context.tokens;
+    // Les initiales prennent la couleur du parti ; à défaut celle du groupe.
+    final avatarColor = parseHexColor(d.party?.couleur) ?? color;
     return InkWell(
       borderRadius: BorderRadius.circular(12),
       onTap: () => context.push(Routes.person(d.person.id)),
@@ -188,7 +190,7 @@ class _DeputyRow extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 4),
         child: Row(
           children: [
-            PersonAvatar(nom: d.person.nom, photoUrl: d.person.photoUrl, size: 40, color: color),
+            PersonAvatar(nom: d.person.nom, photoUrl: d.person.photoUrl, size: 40, color: avatarColor),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
