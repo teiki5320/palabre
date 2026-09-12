@@ -90,7 +90,9 @@
       "president": "ATCHOLI Aklesso",
       "source_url": "https://assemblee-nationale.tg/groupe-parlementaires/unir/",
       "source_president": "https://icilome.com/2025/04/togo-lassemblee-nationale-adopte-un-projet-de-loi-relatif-au-renseignement/",
-      "note": "86 = nombre de députés nommés sur la page du groupe (8 pages, consultée le 2026-09-12). Cette page est incomplète : 22 des 108 députés UNIR de la liste officielle n'y figurent pas, dont les 14 remplaçants installés le 28 octobre 2025 et 8 titulaires d'origine (ADOYI, KANGBENI, KLOUTSE, MIVEDOR, OURO-SAMA, TCHEDE ISSA, TOMEGAH-DOGBE, TSOLENYANU). L'effectif réel du groupe n'est publié par aucune source trouvée. Président du groupe : Aklesso Atcholi (iciLome, 5 avril 2025)."
+      "note": "86 = nombre de députés nommés sur la page du groupe (8 pages, consultée le 2026-09-12). Cette page est incomplète : 22 des 108 députés UNIR de la liste officielle n'y figurent pas, dont les 14 remplaçants installés le 28 octobre 2025 et 8 titulaires d'origine (ADOYI, KANGBENI, KLOUTSE, MIVEDOR, OURO-SAMA, TCHEDE ISSA, TOMEGAH-DOGBE, TSOLENYANU). L'effectif réel du groupe n'est publié par aucune source trouvée. Président du groupe : Aklesso Atcholi (iciLome, 5 avril 2025).",
+      "couleur": "#009ADA",
+      "couleur_source": "couleur du parti UNIR (parties.json)"
     },
     {
       "nom": "Non inscrits",

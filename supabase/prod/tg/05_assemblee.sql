@@ -13,7 +13,7 @@ insert into public.organization (id, country_code, type, nom, sigle, source_url)
   (30016, 'TG', 'assemblee', 'Assemblée nationale', 'AN', 'https://actu-togo.tg/2024/05/22/togo-lassemblee-nationale-les-deputes-de-la-7e-legislature-entrent-en-fonction/');
 
 insert into public.organization (id, country_code, type, nom, sigle, couleur, parent_id, source_url) values
-  (30017, 'TG', 'groupe_parlementaire', 'Union pour la République', 'UNIR', null, 30016, 'https://assemblee-nationale.tg/groupe-parlementaires/unir/');
+  (30017, 'TG', 'groupe_parlementaire', 'Union pour la République', 'UNIR', '#009ADA', 30016, 'https://assemblee-nationale.tg/groupe-parlementaires/unir/');
 
 insert into public.constituency (id, country_code, legislature_id, nom, type, sieges, region_id) values
   (30001, 'TG', 30001, 'AGOE NYIVE', 'departement', 6, (select id from public.region where country_code = 'TG' and code = 'M')),

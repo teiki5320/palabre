@@ -13,8 +13,8 @@ insert into public.organization (id, country_code, type, nom, sigle, source_url)
   (20016, 'CI', 'assemblee', 'Assemblée nationale', 'AN', 'https://www.assnat.ci/?patrick-achi-elu-9%E1%B5%89-president-de-l-assemblee-nationale-de-cote-d-ivoire=');
 
 insert into public.organization (id, country_code, type, nom, sigle, couleur, parent_id, source_url) values
-  (20017, 'CI', 'groupe_parlementaire', 'Groupe parlementaire du Rassemblement des Houphouétistes pour la Démocratie et la Paix (RHDP)', 'RHDP', null, 20016, 'https://www.assnat.ci/?liste-des-groupes-parlementaires'),
-  (20018, 'CI', 'groupe_parlementaire', 'Groupe parlementaire du Parti Démocratique de Côte d''Ivoire (PDCI)', 'PDCI', null, 20016, 'https://www.assnat.ci/?liste-des-groupes-parlementaires'),
+  (20017, 'CI', 'groupe_parlementaire', 'Groupe parlementaire du Rassemblement des Houphouétistes pour la Démocratie et la Paix (RHDP)', 'RHDP', '#F77F00', 20016, 'https://www.assnat.ci/?liste-des-groupes-parlementaires'),
+  (20018, 'CI', 'groupe_parlementaire', 'Groupe parlementaire du Parti Démocratique de Côte d''Ivoire (PDCI)', 'PDCI', '#0FAF32', 20016, 'https://www.assnat.ci/?liste-des-groupes-parlementaires'),
   (20019, 'CI', 'groupe_parlementaire', 'Groupe parlementaire Solidarité', 'Solidarité', null, 20016, 'https://www.assnat.ci/?liste-des-groupes-parlementaires'),
   (20020, 'CI', 'groupe_parlementaire', 'Groupe parlementaire Agir', 'Agir', null, 20016, 'https://www.assnat.ci/?liste-des-groupes-parlementaires');
 

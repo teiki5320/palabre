@@ -163,7 +163,9 @@
       "president": "ADAMA KONE",
       "source_url": "https://www.assnat.ci/?liste-des-groupes-parlementaires",
       "source_sieges": "https://www.koaci.com/article/2026/02/05/cote-divoire/politique/cote-divoire-assemblee-nationale-le-nouveau-bureau-definitif-elu-3-groupes-parlementaires-officiellement-constitues-et-17-deputes-non-encore-inscrits_194111.html",
-      "note": "Effectif de 196 à la constitution officielle des groupes le 5 février 2026 (KOACI). Effectif actuel non publié."
+      "note": "Effectif de 196 à la constitution officielle des groupes le 5 février 2026 (KOACI). Effectif actuel non publié.",
+      "couleur": "#F77F00",
+      "couleur_source": "couleur du parti RHDP (parties.json)"
     },
     {
       "nom": "Groupe parlementaire du Parti Démocratique de Côte d'Ivoire (PDCI)",
@@ -172,7 +174,9 @@
       "president": "BLESSY CHRYSOSTOME",
       "source_url": "https://www.assnat.ci/?liste-des-groupes-parlementaires",
       "source_sieges": "https://www.koaci.com/article/2026/02/05/cote-divoire/politique/cote-divoire-assemblee-nationale-le-nouveau-bureau-definitif-elu-3-groupes-parlementaires-officiellement-constitues-et-17-deputes-non-encore-inscrits_194111.html",
-      "note": "Effectif de 28 au 5 février 2026 (KOACI), alors que le PDCI-RDA comptait 31 élus installés (32 depuis mars 2026). Écart non expliqué par les sources. Président : « Me. BLESSY CHRYSOSTOME » (assnat.ci), BLESSY JEAN-CHRYSOSTOME sur la liste des députés, circonscription 056."
+      "note": "Effectif de 28 au 5 février 2026 (KOACI), alors que le PDCI-RDA comptait 31 élus installés (32 depuis mars 2026). Écart non expliqué par les sources. Président : « Me. BLESSY CHRYSOSTOME » (assnat.ci), BLESSY JEAN-CHRYSOSTOME sur la liste des députés, circonscription 056.",
+      "couleur": "#0FAF32",
+      "couleur_source": "couleur du parti PDCI-RDA (parties.json)"
     },
     {
       "nom": "Groupe parlementaire Solidarité",
