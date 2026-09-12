@@ -55,3 +55,4 @@ ios/Pods/
 migrate_working_dir/
 supabase/.branches/
 supabase/.temp/
+.tmp/
