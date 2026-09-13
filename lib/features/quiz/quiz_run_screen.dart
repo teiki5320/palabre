@@ -13,8 +13,8 @@ import 'quiz_providers.dart';
 import 'swipe_card.dart';
 
 /// Une affirmation par carte : on glisse à droite (d'accord), à gauche (pas
-/// d'accord) ou vers le haut (neutre). Jusqu'à cinq affirmations « importantes
-/// pour moi », qui comptent double. Style affiche : carte bordée, ombre dure.
+/// d'accord) ou vers le haut (neutre). Rien d'autre à l'écran. Style affiche :
+/// carte bordée, ombre dure.
 class QuizRunScreen extends ConsumerStatefulWidget {
   const QuizRunScreen({super.key});
 
@@ -43,7 +43,6 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
     final total = quiz.statements.length;
     final index = session.index.clamp(0, total - 1);
     final s = quiz.statements[index];
-    final important = session.important.contains(s.id);
     final notifier = ref.read(quizSessionProvider.notifier);
     final wide = BandScaffold.isWide(context);
 
@@ -55,13 +54,6 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
         notifier.goTo(index + 1);
       }
     }
-
-    void toggleImportant() {
-      if (!notifier.toggleImportant(s.id)) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.quizImportantLimit(QuizEngine.maxImportant))));
-      }
-    }
-
 
     Widget backCard() => Transform.translate(
           offset: const Offset(0, 10),
@@ -116,33 +108,6 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
       ],
     );
 
-    Widget hint(IconData icon, String label) => Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 16, color: t.muted),
-            const SizedBox(width: 4),
-            Text(label, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: t.muted)),
-          ],
-        );
-    final hints = Wrap(
-      alignment: WrapAlignment.center,
-      spacing: 18,
-      runSpacing: 6,
-      children: [
-        hint(Icons.arrow_back, l10n.quizDisagree),
-        hint(Icons.arrow_upward, l10n.quizNeutral),
-        hint(Icons.arrow_forward, l10n.quizAgree),
-      ],
-    );
-    final importantChip = Pill(
-      key: const ValueKey('answer-important'),
-      label: l10n.quizImportant,
-      icon: important ? Icons.star : Icons.star_outline,
-      selected: important,
-      color: t.accent,
-      onTap: toggleImportant,
-    );
-
     final counter = Text.rich(
       TextSpan(
         style: TextStyle(fontFamily: PalabreType.display, fontSize: 15, fontWeight: FontWeight.w800, color: t.ink),
@@ -176,31 +141,17 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
         ],
       ),
       // Pas de liste défilante : le geste vers le haut doit rester à la carte.
-      // La carte prend toute la hauteur libre, moins les commandes du bas.
+      // Rien d'autre à l'écran : la carte, centrée, prend toute la place.
       body: Align(
         alignment: Alignment.topCenter,
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: wide ? 760 : double.infinity),
           child: LayoutBuilder(builder: (context, c) {
-            const commandes = 170.0;
-            final cardHeight = (c.maxHeight - 40 - commandes).clamp(300.0, 680.0);
-            return Padding(
-              padding: EdgeInsets.fromLTRB(wide ? 32 : BandScaffold.side, 20, wide ? 32 : BandScaffold.side, 8),
-              child: Column(
-                children: [
-                  SizedBox(height: cardHeight, child: stack(cardHeight)),
-                  const Spacer(),
-                  hints,
-                  const SizedBox(height: 12),
-                  importantChip,
-                  const SizedBox(height: 2),
-                  Text(l10n.quizImportantCount(session.important.length, QuizEngine.maxImportant), style: PalabreType.note(t.muted)),
-                  TextButton(
-                    style: TextButton.styleFrom(foregroundColor: t.muted, visualDensity: VisualDensity.compact),
-                    onPressed: () => _controller.fling(Answer.passer),
-                    child: Text(l10n.quizSkipStatement),
-                  ),
-                ],
+            final cardHeight = (c.maxHeight - 56).clamp(300.0, 700.0);
+            return Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: wide ? 32 : BandScaffold.side),
+                child: SizedBox(height: cardHeight, child: stack(cardHeight)),
               ),
             );
           }),

@@ -303,13 +303,7 @@ class AppLocalizationsWo extends AppLocalizations {
   String get quizLastResult => 'Votre dernier résultat';
 
   @override
-  String get quizSwipeHint => 'Glissez la carte, ou touchez un bouton';
-
-  @override
   String get quizMethodTitle => 'Comment ça marche';
-
-  @override
-  String get quizSkipStatement => 'Passer cette affirmation';
 
   @override
   String get quizNone => 'Aucun questionnaire publié pour ce pays.';
@@ -322,19 +316,6 @@ class AppLocalizationsWo extends AppLocalizations {
 
   @override
   String get quizNeutral => 'Diggante';
-
-  @override
-  String get quizImportant => 'Am solo ci man';
-
-  @override
-  String quizImportantLimit(int n) {
-    return 'Vous pouvez marquer $n affirmations au maximum.';
-  }
-
-  @override
-  String quizImportantCount(int n, int max) {
-    return '$n sur $max marquées, elles comptent double';
-  }
 
   @override
   String quizProgress(int current, int total) {

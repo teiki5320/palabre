@@ -66,16 +66,14 @@ final currentQuizProvider = Provider<AsyncValue<QuizBundle?>>((ref) {
 /// serveur ni sur le disque. Fermer l'app efface tout.
 @immutable
 class QuizSession {
-  const QuizSession({this.quizId, this.answers = const {}, this.important = const {}, this.index = 0});
+  const QuizSession({this.quizId, this.answers = const {}, this.index = 0});
   final int? quizId;
   final Map<int, Answer> answers;
-  final Set<int> important;
   final int index;
 
-  QuizSession copyWith({int? quizId, Map<int, Answer>? answers, Set<int>? important, int? index}) => QuizSession(
+  QuizSession copyWith({int? quizId, Map<int, Answer>? answers, int? index}) => QuizSession(
         quizId: quizId ?? this.quizId,
         answers: answers ?? this.answers,
-        important: important ?? this.important,
         index: index ?? this.index,
       );
 
@@ -95,19 +93,6 @@ class QuizSessionNotifier extends Notifier<QuizSession> {
   void answer(int statementId, Answer a) =>
       state = state.copyWith(answers: {...state.answers, statementId: a});
 
-  /// Retourne false si la limite est atteinte.
-  bool toggleImportant(int statementId) {
-    final set = {...state.important};
-    if (set.contains(statementId)) {
-      set.remove(statementId);
-    } else {
-      if (set.length >= QuizEngine.maxImportant) return false;
-      set.add(statementId);
-    }
-    state = state.copyWith(important: set);
-    return true;
-  }
-
   void goTo(int index) => state = state.copyWith(index: index);
 }
 
@@ -118,7 +103,7 @@ final quizScoresProvider = Provider<List<PartyScore>>((ref) {
   final quiz = ref.watch(currentQuizProvider).value;
   final session = ref.watch(quizSessionProvider);
   if (quiz == null || session.quizId != quiz.id) return const [];
-  return QuizEngine.compute(quiz, session.answers, session.important);
+  return QuizEngine.compute(quiz, session.answers);
 });
 
 /// Droit de correction : dépôt d'une contestation, pièce à l'appui.

@@ -55,7 +55,7 @@ Future<ProviderContainer> _openQuiz(WidgetTester tester, QuizBundle quiz) async 
 void main() {
   setUpAll(tzdata.initializeTimeZones);
 
-  testWidgets('balayage à droite, à gauche, vers le haut, passer', (tester) async {
+  testWidgets('balayage à droite, à gauche, vers le haut', (tester) async {
     final container = await _openQuiz(tester, _quiz(3));
     expect(find.byKey(const ValueKey('statement-card-10')), findsOneWidget);
     expect(find.text('1/3', findRichText: true), findsOneWidget);
@@ -77,9 +77,9 @@ void main() {
     expect(container.read(quizSessionProvider).answers[11], Answer.desaccord);
     expect(find.byKey(const ValueKey('statement-card-12')), findsOneWidget);
 
-    await tester.tap(find.text('Passer cette affirmation'));
+    await tester.drag(find.byKey(const ValueKey('statement-card-12')), const Offset(0, -260));
     await tester.pumpAndSettle();
-    expect(container.read(quizSessionProvider).answers[12], Answer.passer);
+    expect(container.read(quizSessionProvider).answers[12], Answer.neutre);
     expect(find.byKey(const ValueKey('statement-card-12')), findsNothing);
   });
 
@@ -89,20 +89,5 @@ void main() {
     await tester.pumpAndSettle();
     expect(container.read(quizSessionProvider).answers[10], Answer.neutre);
     expect(find.byKey(const ValueKey('statement-card-11')), findsOneWidget);
-  });
-
-  testWidgets("l'interrupteur « important » se bloque à cinq", (tester) async {
-    final container = await _openQuiz(tester, _quiz(6));
-    for (var i = 0; i < 5; i++) {
-      await tester.tap(find.byKey(const ValueKey('answer-important')));
-      await tester.pumpAndSettle();
-      await tester.drag(find.byKey(ValueKey('statement-card-${10 + i}')), const Offset(320, 0));
-      await tester.pumpAndSettle();
-    }
-    expect(container.read(quizSessionProvider).important.length, 5);
-    await tester.tap(find.byKey(const ValueKey('answer-important')));
-    await tester.pumpAndSettle();
-    expect(container.read(quizSessionProvider).important.length, 5);
-    expect(find.text('Vous pouvez marquer 5 affirmations au maximum.'), findsOneWidget);
   });
 }

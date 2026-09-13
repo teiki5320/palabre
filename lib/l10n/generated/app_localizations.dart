@@ -544,23 +544,11 @@ abstract class AppLocalizations {
   /// **'Votre dernier résultat'**
   String get quizLastResult;
 
-  /// No description provided for @quizSwipeHint.
-  ///
-  /// In fr, this message translates to:
-  /// **'Glissez la carte, ou touchez un bouton'**
-  String get quizSwipeHint;
-
   /// No description provided for @quizMethodTitle.
   ///
   /// In fr, this message translates to:
   /// **'Comment ça marche'**
   String get quizMethodTitle;
-
-  /// No description provided for @quizSkipStatement.
-  ///
-  /// In fr, this message translates to:
-  /// **'Passer cette affirmation'**
-  String get quizSkipStatement;
 
   /// No description provided for @quizNone.
   ///
@@ -585,24 +573,6 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Neutre'**
   String get quizNeutral;
-
-  /// No description provided for @quizImportant.
-  ///
-  /// In fr, this message translates to:
-  /// **'Important pour moi'**
-  String get quizImportant;
-
-  /// No description provided for @quizImportantLimit.
-  ///
-  /// In fr, this message translates to:
-  /// **'Vous pouvez marquer {n} affirmations au maximum.'**
-  String quizImportantLimit(int n);
-
-  /// No description provided for @quizImportantCount.
-  ///
-  /// In fr, this message translates to:
-  /// **'{n} sur {max} marquées, elles comptent double'**
-  String quizImportantCount(int n, int max);
 
   /// No description provided for @quizProgress.
   ///

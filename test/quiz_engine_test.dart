@@ -44,7 +44,7 @@ void main() {
 
   group('concordance', () {
     test('tous les partis listés, du plus concordant au moins concordant', () {
-      final scores = QuizEngine.compute(_quiz(), {10: Answer.accord, 11: Answer.accord, 12: Answer.desaccord}, {});
+      final scores = QuizEngine.compute(_quiz(), {10: Answer.accord, 11: Answer.accord, 12: Answer.desaccord});
       expect(scores.map((s) => s.party.nom), ['Alpha', 'Bêta', 'Gamma']);
       expect(scores[0].concordance, 100);
       // Bêta : 0 + 0.5 + 1 sur 3 → 50 %
@@ -55,25 +55,15 @@ void main() {
       expect(scores[2].sansPosition, 3);
     });
 
-    test('une affirmation importante compte double', () {
-      final sans = QuizEngine.compute(_quiz(), {10: Answer.accord, 12: Answer.accord}, {});
-      final avec = QuizEngine.compute(_quiz(), {10: Answer.accord, 12: Answer.accord}, {10});
-      final alphaSans = sans.firstWhere((s) => s.party.id == 1);
-      final alphaAvec = avec.firstWhere((s) => s.party.id == 1);
-      // Alpha : accord sur s1 (1), désaccord sur s3 contre accord (0) → 50 % ; pondéré 2:1 → 67 %
-      expect(alphaSans.concordance, 50);
-      expect(alphaAvec.concordance, 67);
-    });
-
     test('une réponse passée est ignorée dans le dénominateur', () {
-      final scores = QuizEngine.compute(_quiz(), {10: Answer.accord, 11: Answer.passer, 12: Answer.passer}, {});
+      final scores = QuizEngine.compute(_quiz(), {10: Answer.accord, 11: Answer.passer, 12: Answer.passer});
       final alpha = scores.firstWhere((s) => s.party.id == 1);
       expect(alpha.compared, 1);
       expect(alpha.concordance, 100);
     });
 
     test('aucune réponse : personne n\'est calculable', () {
-      final scores = QuizEngine.compute(_quiz(), {}, {});
+      final scores = QuizEngine.compute(_quiz(), {});
       expect(scores.length, 3);
       expect(scores.every((s) => s.concordance == null), isTrue);
     });

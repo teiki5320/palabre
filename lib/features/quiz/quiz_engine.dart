@@ -2,14 +2,13 @@ import 'quiz_models.dart';
 
 /// Comparaison d'une affirmation : ta réponse contre celle d'un parti.
 class StatementMatch {
-  const StatementMatch({required this.statement, required this.answer, required this.position, required this.score, required this.weight});
+  const StatementMatch({required this.statement, required this.answer, required this.position, required this.score});
   final Statement statement;
   final Answer? answer;
   final PartyPosition? position;
 
   /// 1 = même position, 0.5 = l'un neutre l'autre non, 0 = opposés, null = non comparable.
   final double? score;
-  final int weight;
 }
 
 class PartyScore {
@@ -25,7 +24,6 @@ class PartyScore {
 
 /// Le score est calculé ici, sur le téléphone, et n'est jamais envoyé.
 class QuizEngine {
-  static const maxImportant = 5;
 
   static double? scoreOf(Answer answer, Position position) {
     if (answer == Answer.passer || position == Position.sansPosition) return null;
@@ -38,7 +36,7 @@ class QuizEngine {
 
   /// Tous les partis sont listés, du plus concordant au moins concordant ;
   /// les partis non calculables en fin de liste.
-  static List<PartyScore> compute(QuizBundle quiz, Map<int, Answer> answers, Set<int> important) {
+  static List<PartyScore> compute(QuizBundle quiz, Map<int, Answer> answers) {
     final out = <PartyScore>[];
     for (final party in quiz.parties) {
       double num = 0;
@@ -49,18 +47,17 @@ class QuizEngine {
       for (final s in quiz.statements) {
         final a = answers[s.id];
         final p = quiz.position(s.id, party.id);
-        final w = important.contains(s.id) ? 2 : 1;
         double? sc;
         if (a != null && p != null) {
           sc = scoreOf(a, p.position);
           if (a != Answer.passer && p.position == Position.sansPosition) sans++;
           if (sc != null) {
-            num += sc * w;
-            den += w;
+            num += sc;
+            den += 1;
             compared++;
           }
         }
-        matches.add(StatementMatch(statement: s, answer: a, position: p, score: sc, weight: w));
+        matches.add(StatementMatch(statement: s, answer: a, position: p, score: sc));
       }
       out.add(PartyScore(
         party: party,

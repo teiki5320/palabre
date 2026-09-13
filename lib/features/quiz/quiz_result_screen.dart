@@ -187,22 +187,13 @@ class _StatementDetail extends StatelessWidget {
     final l10n = context.l10n;
     final t = context.tokens;
     final answer = session.answers[statement.id];
-    final important = session.important.contains(statement.id);
     return ExpansionTile(
       tilePadding: const EdgeInsets.symmetric(horizontal: 8),
       childrenPadding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
       title: Text('${statement.ordre}. ${statement.texte}', style: TextStyle(fontSize: 14, height: 1.3, fontWeight: FontWeight.w600, color: t.ink)),
       subtitle: Padding(
         padding: const EdgeInsets.only(top: 4),
-        child: Row(
-          children: [
-            Text('${l10n.quizYou} : ${answerLabel(context, answer)}', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: t.primary)),
-            if (important) ...[
-              const SizedBox(width: 8),
-              Icon(Icons.star_rounded, size: 16, color: t.accent),
-            ],
-          ],
-        ),
+        child: Text('${l10n.quizYou} : ${answerLabel(context, answer)}', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: t.primary)),
       ),
       children: [
         for (final s in scores) PositionTile(party: s.party, position: quiz.position(statement.id, s.party.id), dense: true),

@@ -303,13 +303,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quizLastResult => 'Your last result';
 
   @override
-  String get quizSwipeHint => 'Swipe the card, or tap a button';
-
-  @override
   String get quizMethodTitle => 'How it works';
-
-  @override
-  String get quizSkipStatement => 'Skip this statement';
 
   @override
   String get quizNone => 'No published questionnaire for this country.';
@@ -322,19 +316,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get quizNeutral => 'Neutral';
-
-  @override
-  String get quizImportant => 'Important to me';
-
-  @override
-  String quizImportantLimit(int n) {
-    return 'You can mark at most $n statements.';
-  }
-
-  @override
-  String quizImportantCount(int n, int max) {
-    return '$n of $max marked, they count double';
-  }
 
   @override
   String quizProgress(int current, int total) {
