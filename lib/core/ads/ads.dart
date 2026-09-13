@@ -89,8 +89,8 @@ class _AdBannerState extends ConsumerState<AdBanner> {
 
   Future<void> _maybeLoad() async {
     if (!mounted || !AdsService.ready.value || _ad != null || _width == null) return;
-    // Format ancré standard (~50-60 px de haut), pas le grand format : la bannière reste discrète.
-    final size = await AdSize.getAnchoredAdaptiveBannerAdSize(Orientation.portrait, _width!) ?? AdSize.banner;
+    // Bannière standard 320×50, centrée : discrète, et le seul format non déprécié hors « grand » adaptatif.
+    const size = AdSize.banner;
     if (!mounted) return;
     _ad = BannerAd(
       adUnitId: AdsConfig.banner,
