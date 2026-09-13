@@ -292,9 +292,10 @@ class _SwipeDemoState extends State<SwipeDemo> {
         if (still || _phase < 0) {
           return Stack(alignment: Alignment.center, children: [back, miniCard(dx: 26, angle: 0.08, stamp: stampFor(0, 1))]);
         }
+        // Coupée aux bords : la carte sort du cadre sans déborder sur le reste de l'écran.
         return Stack(
           alignment: Alignment.center,
-          clipBehavior: Clip.none,
+          clipBehavior: Clip.hardEdge,
           children: [
             back,
             TweenAnimationBuilder<double>(
