@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../../app/theme.dart';
 import '../country/country_providers.dart';
 
 /// Publicité : une seule bannière, annonces non personnalisées, uniquement sur
@@ -88,7 +89,8 @@ class _AdBannerState extends ConsumerState<AdBanner> {
 
   Future<void> _maybeLoad() async {
     if (!mounted || !AdsService.ready.value || _ad != null || _width == null) return;
-    final size = await AdSize.getLargeAnchoredAdaptiveBannerAdSize(_width!) ?? AdSize.banner;
+    // Format ancré standard (~50-60 px de haut), pas le grand format : la bannière reste discrète.
+    final size = await AdSize.getAnchoredAdaptiveBannerAdSize(Orientation.portrait, _width!) ?? AdSize.banner;
     if (!mounted) return;
     _ad = BannerAd(
       adUnitId: AdsConfig.banner,
@@ -117,8 +119,9 @@ class _AdBannerState extends ConsumerState<AdBanner> {
     if (config.appConfig['publicite'] == 'off') return const SizedBox.shrink();
     final ad = _ad;
     if (ad == null || !_loaded) return const SizedBox.shrink();
-    return ColoredBox(
-      color: Theme.of(context).colorScheme.surface,
+    final t = context.tokens;
+    return Container(
+      decoration: BoxDecoration(color: t.card, border: Border(top: BorderSide(color: t.border, width: 2))),
       child: SizedBox(width: double.infinity, height: ad.size.height.toDouble(), child: Center(child: SizedBox(width: ad.size.width.toDouble(), height: ad.size.height.toDouble(), child: AdWidget(ad: ad)))),
     );
   }
