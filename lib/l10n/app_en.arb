@@ -87,6 +87,7 @@
   "@quizEstimate": {"placeholders": {"n": {"type": "int"}}},
   "quizLastResult": "Your last result",
   "quizSwipeHint": "Swipe the card, or tap a button",
+  "quizMethodTitle": "How it works",
   "quizSkipStatement": "Skip this statement",
   "quizNone": "No published questionnaire for this country.",
   "quizAgree": "Agree",

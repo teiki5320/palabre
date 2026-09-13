@@ -12,9 +12,9 @@ import 'quiz_models.dart';
 import 'quiz_providers.dart';
 import 'swipe_card.dart';
 
-/// Une affirmation par carte : on glisse, ou on touche un bouton. Jusqu'à
-/// cinq affirmations « importantes pour moi », qui comptent double. Style
-/// affiche : carte bordée, ombre dure 6/6, quatre cercles de réponse.
+/// Une affirmation par carte : on glisse à droite (d'accord), à gauche (pas
+/// d'accord) ou vers le haut (neutre). Jusqu'à cinq affirmations « importantes
+/// pour moi », qui comptent double. Style affiche : carte bordée, ombre dure.
 class QuizRunScreen extends ConsumerStatefulWidget {
   const QuizRunScreen({super.key});
 
@@ -62,7 +62,6 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
       }
     }
 
-    final cardHeight = (MediaQuery.sizeOf(context).height * 0.42).clamp(340.0, 560.0);
 
     Widget backCard() => Transform.translate(
           offset: const Offset(0, 10),
@@ -77,66 +76,71 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
           ),
         );
 
-    Widget frontCard(Statement st) => Container(
-          constraints: BoxConstraints(minHeight: cardHeight),
+    Widget frontCard(Statement st, double cardHeight) => Container(
+          height: cardHeight,
           decoration: BoxDecoration(color: t.card, borderRadius: BorderRadius.circular(22), border: Border.all(color: t.border, width: 2)),
           padding: const EdgeInsets.all(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
             children: [
               Row(children: [if (st.theme != null) Pill(label: st.theme!, color: t.quiz)]),
-              const SizedBox(height: 16),
-              Text(st.texte, style: PalabreType.question(t.ink).copyWith(fontSize: wide ? 28 : (st.texte.length > 90 ? 23 : 26))),
-              const SizedBox(height: 18),
-              Container(
-                padding: const EdgeInsets.only(top: 12),
-                decoration: BoxDecoration(border: Border(top: BorderSide(color: t.line, width: 1.5))),
-                child: Text(l10n.quizMethod2, style: TextStyle(fontSize: 12.5, height: 1.45, fontWeight: FontWeight.w500, color: t.muted)),
+              const SizedBox(height: 20),
+              Expanded(
+                child: Center(
+                  child: Text(st.texte, style: PalabreType.question(t.ink).copyWith(fontSize: wide ? 30 : (st.texte.length > 120 ? 23 : st.texte.length > 80 ? 26 : 28))),
+                ),
               ),
             ],
           ),
         );
 
     // La carte du dessus donne sa taille à la pile ; la carte arrière la suit.
-    final stack = Stack(
+    Widget stack(double cardHeight) => Stack(
       clipBehavior: Clip.none,
       children: [
         if (index + 1 < total) Positioned.fill(child: backCard()),
-        Transform.translate(
-          offset: const Offset(8, 0),
-          child: Transform.rotate(
-            angle: 2 * math.pi / 180,
-            child: SwipeCard(
-              key: ValueKey('statement-card-${s.id}'),
-              controller: _controller,
-              onAnswer: onAnswer,
-              agreeLabel: l10n.quizAgree,
-              disagreeLabel: l10n.quizDisagree,
-              stampColor: t.quiz,
-              onStampColor: t.onQuiz,
-              child: _CardEntrance(
-                key: ValueKey('entrance-${s.id}'),
-                child: HardShadow(offset: 6, radius: 22, color: t.isDark ? t.quiz : t.hardShadow, child: frontCard(s)),
-              ),
-            ),
+        SwipeCard(
+          key: ValueKey('statement-card-${s.id}'),
+          controller: _controller,
+          onAnswer: onAnswer,
+          agreeLabel: l10n.quizAgree,
+          disagreeLabel: l10n.quizDisagree,
+          neutralLabel: l10n.quizNeutral,
+          stampColor: t.quiz,
+          onStampColor: t.onQuiz,
+          child: _CardEntrance(
+            key: ValueKey('entrance-${s.id}'),
+            child: HardShadow(offset: 6, radius: 22, color: t.isDark ? t.quiz : t.hardShadow, child: frontCard(s, cardHeight)),
           ),
         ),
       ],
     );
 
-    final buttons = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+    Widget hint(IconData icon, String label) => Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 16, color: t.muted),
+            const SizedBox(width: 4),
+            Text(label, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: t.muted)),
+          ],
+        );
+    final hints = Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 18,
+      runSpacing: 6,
       children: [
-        _Circle(key: const ValueKey('answer-desaccord'), icon: Icons.close, label: l10n.quizDisagree, bg: t.card, fg: t.ink, onTap: () => _controller.fling(Answer.desaccord)),
-        const SizedBox(width: 14),
-        _Circle(key: const ValueKey('answer-neutre'), icon: Icons.remove, label: l10n.quizNeutral, bg: t.card, fg: t.ink, onTap: () => _controller.fling(Answer.neutre)),
-        const SizedBox(width: 14),
-        _Circle(key: const ValueKey('answer-accord'), icon: Icons.check, label: l10n.quizAgree, bg: t.quiz, fg: t.onQuiz, shadow: t.isDark ? t.ink : null, onTap: () => _controller.fling(Answer.accord)),
-        const SizedBox(width: 14),
-        _Circle(key: const ValueKey('answer-important'), icon: important ? Icons.star : Icons.star_outline, label: l10n.quizImportant.split(' ').first, bg: t.accent, fg: t.onAccent, onTap: toggleImportant, selected: important),
+        hint(Icons.arrow_back, l10n.quizDisagree),
+        hint(Icons.arrow_upward, l10n.quizNeutral),
+        hint(Icons.arrow_forward, l10n.quizAgree),
       ],
+    );
+    final importantChip = Pill(
+      key: const ValueKey('answer-important'),
+      label: l10n.quizImportant,
+      icon: important ? Icons.star : Icons.star_outline,
+      selected: important,
+      color: t.accent,
+      onTap: toggleImportant,
     );
 
     final counter = Text.rich(
@@ -171,28 +175,35 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
           ],
         ],
       ),
+      // Pas de liste défilante : le geste vers le haut doit rester à la carte.
+      // La carte prend toute la hauteur libre, moins les commandes du bas.
       body: Align(
         alignment: Alignment.topCenter,
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: wide ? 760 : double.infinity),
-          child: ListView(
-            padding: EdgeInsets.fromLTRB(wide ? 32 : BandScaffold.side, 26, wide ? 32 : BandScaffold.side, 24),
-            children: [
-              stack,
-              const SizedBox(height: 28),
-              buttons,
-              const SizedBox(height: 8),
-              Center(child: Text(l10n.quizImportantCount(session.important.length, QuizEngine.maxImportant), style: PalabreType.note(t.muted))),
-              const SizedBox(height: 6),
-              Center(
-                child: TextButton(
-                  style: TextButton.styleFrom(foregroundColor: t.muted),
-                  onPressed: () => _controller.fling(Answer.passer),
-                  child: Text(l10n.quizSkipStatement),
-                ),
+          child: LayoutBuilder(builder: (context, c) {
+            const commandes = 170.0;
+            final cardHeight = (c.maxHeight - 40 - commandes).clamp(300.0, 680.0);
+            return Padding(
+              padding: EdgeInsets.fromLTRB(wide ? 32 : BandScaffold.side, 20, wide ? 32 : BandScaffold.side, 8),
+              child: Column(
+                children: [
+                  SizedBox(height: cardHeight, child: stack(cardHeight)),
+                  const Spacer(),
+                  hints,
+                  const SizedBox(height: 12),
+                  importantChip,
+                  const SizedBox(height: 2),
+                  Text(l10n.quizImportantCount(session.important.length, QuizEngine.maxImportant), style: PalabreType.note(t.muted)),
+                  TextButton(
+                    style: TextButton.styleFrom(foregroundColor: t.muted, visualDensity: VisualDensity.compact),
+                    onPressed: () => _controller.fling(Answer.passer),
+                    child: Text(l10n.quizSkipStatement),
+                  ),
+                ],
               ),
-            ],
-          ),
+            );
+          }),
         ),
       ),
     );
@@ -216,50 +227,6 @@ class _CardEntrance extends StatelessWidget {
         child: Transform.scale(scale: 0.96 + 0.04 * v, child: Opacity(opacity: v.clamp(0, 1), child: child)),
       ),
       child: child,
-    );
-  }
-}
-
-/// Cercle de réponse 62 px : bord 2 px, ombre dure 3/3, label dessous.
-class _Circle extends StatelessWidget {
-  const _Circle({super.key, required this.icon, required this.label, required this.bg, required this.fg, required this.onTap, this.shadow, this.selected = false});
-  final IconData icon;
-  final String label;
-  final Color bg;
-  final Color fg;
-  final Color? shadow;
-  final VoidCallback onTap;
-  final bool selected;
-
-  @override
-  Widget build(BuildContext context) {
-    final t = context.tokens;
-    return SizedBox(
-      width: 68,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Semantics(
-            button: true,
-            label: label,
-            selected: selected,
-            child: HardShadow(
-              offset: 3,
-              color: shadow,
-              shape: BoxShape.circle,
-              onTap: onTap,
-              child: Container(
-                width: 62,
-                height: 62,
-                decoration: BoxDecoration(color: bg, shape: BoxShape.circle, border: Border.all(color: t.border, width: 2)),
-                child: Icon(icon, size: 28, color: fg, weight: 600),
-              ),
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(label, maxLines: 2, textAlign: TextAlign.center, style: TextStyle(fontSize: 11, height: 1.15, fontWeight: FontWeight.w700, color: t.muted)),
-        ],
-      ),
     );
   }
 }

@@ -20,8 +20,9 @@ class SwipeController extends ChangeNotifier {
   }
 }
 
-/// Une carte que l'on glisse à droite (d'accord) ou à gauche (pas d'accord).
-/// Le balayage est un raccourci : les boutons suffisent toujours.
+/// Une carte que l'on glisse à droite (d'accord), à gauche (pas d'accord) ou
+/// vers le haut (neutre). Le geste est le seul mode de réponse ; « passer »
+/// et « important » restent des commandes à part.
 class SwipeCard extends StatefulWidget {
   const SwipeCard({
     required Key key,
@@ -32,7 +33,10 @@ class SwipeCard extends StatefulWidget {
     required this.disagreeLabel,
     this.stampColor,
     this.onStampColor,
+    this.neutralLabel = 'Neutre',
   }) : super(key: key);
+
+  final String neutralLabel;
 
   /// Couleur de l'étiquette de swipe (défaut : couleur principale).
   final Color? stampColor;
@@ -44,8 +48,10 @@ class SwipeCard extends StatefulWidget {
   final String agreeLabel;
   final String disagreeLabel;
 
-  /// Fraction de la largeur au-delà de laquelle le geste vaut réponse.
+  /// Fraction de la largeur (ou de la hauteur, vers le haut) au-delà de
+  /// laquelle le geste vaut réponse.
   static const threshold = 0.35;
+  static const thresholdUp = 0.22;
 
   @override
   State<SwipeCard> createState() => _SwipeCardState();
@@ -99,6 +105,7 @@ class _SwipeCardState extends State<SwipeCard> with SingleTickerProviderStateMix
     final target = switch (a) {
       Answer.accord => Offset(w * 1.4, _drag.dy),
       Answer.desaccord => Offset(-w * 1.4, _drag.dy),
+      Answer.neutre => Offset(_drag.dx, -h * 1.3),
       _ => Offset(_drag.dx, h * 0.6),
     };
     _tween = Tween(begin: _drag, end: target).animate(CurvedAnimation(parent: _anim, curve: Curves.easeIn));
@@ -119,14 +126,19 @@ class _SwipeCardState extends State<SwipeCard> with SingleTickerProviderStateMix
 
   void _onUpdate(DragUpdateDetails d) {
     if (_exiting != null || _anim.isAnimating) return;
-    setState(() => _drag += Offset(d.delta.dx, d.delta.dy * 0.15));
+    // Vers le haut : mouvement libre ; vers le bas : freiné, rien ne s'y joue.
+    final dy = _drag.dy + d.delta.dy;
+    setState(() => _drag = Offset(_drag.dx + d.delta.dx, dy < 0 ? dy : dy * 0.15));
   }
 
   void _onEnd(DragEndDetails d) {
     if (_exiting != null) return;
     final limit = _size.width * SwipeCard.threshold;
-    if (_drag.dx.abs() > limit) {
+    final limitUp = _size.height * SwipeCard.thresholdUp;
+    if (_drag.dx.abs() > limit && _drag.dx.abs() >= -_drag.dy) {
       _exit(_drag.dx > 0 ? Answer.accord : Answer.desaccord);
+    } else if (-_drag.dy > limitUp) {
+      _exit(Answer.neutre);
     } else {
       _spring();
     }
@@ -138,14 +150,16 @@ class _SwipeCardState extends State<SwipeCard> with SingleTickerProviderStateMix
     return LayoutBuilder(builder: (context, constraints) {
       if (constraints.hasBoundedWidth) _size = Size(constraints.maxWidth, constraints.hasBoundedHeight ? constraints.maxHeight : _size.height);
       // Étiquette : opacité proportionnelle au glissement, 80 px pour être pleine.
-      final agree = (_drag.dx / 80).clamp(0.0, 1.0);
-      final disagree = (-_drag.dx / 80).clamp(0.0, 1.0);
+      final vertical = -_drag.dy > _drag.dx.abs();
+      final agree = vertical ? 0.0 : (_drag.dx / 80).clamp(0.0, 1.0);
+      final disagree = vertical ? 0.0 : (-_drag.dx / 80).clamp(0.0, 1.0);
+      final neutral = vertical ? (-_drag.dy / 80).clamp(0.0, 1.0) : 0.0;
       final stampBg = widget.stampColor ?? t.primary;
       final stampFg = widget.onStampColor ?? t.onPrimary;
-      final fading = _exiting == Answer.neutre || _exiting == Answer.passer;
+      final fading = _exiting == Answer.passer;
       return GestureDetector(
-        onHorizontalDragUpdate: _onUpdate,
-        onHorizontalDragEnd: _onEnd,
+        onPanUpdate: _onUpdate,
+        onPanEnd: _onEnd,
         child: Transform.translate(
           offset: _drag,
           child: Transform.rotate(
@@ -161,7 +175,7 @@ class _SwipeCardState extends State<SwipeCard> with SingleTickerProviderStateMix
                     child: IgnorePointer(
                       child: Opacity(
                         opacity: agree,
-                        child: _Stamp(label: widget.agreeLabel, bg: stampBg, fg: stampFg),
+                        child: SwipeStamp(label: widget.agreeLabel, bg: stampBg, fg: stampFg),
                       ),
                     ),
                   ),
@@ -171,7 +185,18 @@ class _SwipeCardState extends State<SwipeCard> with SingleTickerProviderStateMix
                     child: IgnorePointer(
                       child: Opacity(
                         opacity: disagree,
-                        child: _Stamp(label: widget.disagreeLabel, bg: t.ink, fg: t.card),
+                        child: SwipeStamp(label: widget.disagreeLabel, bg: t.ink, fg: t.card),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 22,
+                    left: 0,
+                    right: 0,
+                    child: IgnorePointer(
+                      child: Opacity(
+                        opacity: neutral,
+                        child: Center(child: SwipeStamp(label: widget.neutralLabel, bg: t.card, fg: t.ink, outlined: true)),
                       ),
                     ),
                   ),
@@ -185,17 +210,19 @@ class _SwipeCardState extends State<SwipeCard> with SingleTickerProviderStateMix
   }
 }
 
-class _Stamp extends StatelessWidget {
-  const _Stamp({required this.label, required this.bg, required this.fg});
+/// Étiquette de balayage, réutilisée par la démonstration de l'onglet.
+class SwipeStamp extends StatelessWidget {
+  const SwipeStamp({super.key, required this.label, required this.bg, required this.fg, this.outlined = false});
   final String label;
   final Color bg;
   final Color fg;
+  final bool outlined;
   @override
   Widget build(BuildContext context) => Transform.rotate(
         angle: -6 * 3.14159 / 180,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(6)),
+          decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(6), border: outlined ? Border.all(color: fg, width: 2) : null),
           child: Text(label.toUpperCase(), style: TextStyle(fontFamily: PalabreType.display, fontSize: 12, fontWeight: FontWeight.w800, letterSpacing: 0.5, color: fg)),
         ),
       );

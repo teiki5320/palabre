@@ -550,6 +550,12 @@ abstract class AppLocalizations {
   /// **'Glissez la carte, ou touchez un bouton'**
   String get quizSwipeHint;
 
+  /// No description provided for @quizMethodTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Comment ça marche'**
+  String get quizMethodTitle;
+
   /// No description provided for @quizSkipStatement.
   ///
   /// In fr, this message translates to:

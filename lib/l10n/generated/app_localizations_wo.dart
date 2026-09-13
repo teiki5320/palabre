@@ -306,6 +306,9 @@ class AppLocalizationsWo extends AppLocalizations {
   String get quizSwipeHint => 'Glissez la carte, ou touchez un bouton';
 
   @override
+  String get quizMethodTitle => 'Comment ça marche';
+
+  @override
   String get quizSkipStatement => 'Passer cette affirmation';
 
   @override

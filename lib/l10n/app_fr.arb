@@ -99,6 +99,7 @@
   "@quizEstimate": {"placeholders": {"n": {"type": "int"}}},
   "quizLastResult": "Votre dernier résultat",
   "quizSwipeHint": "Glissez la carte, ou touchez un bouton",
+  "quizMethodTitle": "Comment ça marche",
   "quizSkipStatement": "Passer cette affirmation",
   "quizNone": "Aucun questionnaire publié pour ce pays.",
   "quizAgree": "D'accord",

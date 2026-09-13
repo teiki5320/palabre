@@ -55,7 +55,7 @@ Future<ProviderContainer> _openQuiz(WidgetTester tester, QuizBundle quiz) async 
 void main() {
   setUpAll(tzdata.initializeTimeZones);
 
-  testWidgets('balayage à droite, bouton pas d\'accord, passer', (tester) async {
+  testWidgets('balayage à droite, à gauche, vers le haut, passer', (tester) async {
     final container = await _openQuiz(tester, _quiz(3));
     expect(find.byKey(const ValueKey('statement-card-10')), findsOneWidget);
     expect(find.text('1/3', findRichText: true), findsOneWidget);
@@ -72,7 +72,7 @@ void main() {
     expect(find.byKey(const ValueKey('statement-card-11')), findsOneWidget);
     expect(find.text('2/3', findRichText: true), findsOneWidget);
 
-    await tester.tap(find.byKey(const ValueKey('answer-desaccord')));
+    await tester.drag(find.byKey(const ValueKey('statement-card-11')), const Offset(-320, 0));
     await tester.pumpAndSettle();
     expect(container.read(quizSessionProvider).answers[11], Answer.desaccord);
     expect(find.byKey(const ValueKey('statement-card-12')), findsOneWidget);
@@ -83,12 +83,20 @@ void main() {
     expect(find.byKey(const ValueKey('statement-card-12')), findsNothing);
   });
 
+  testWidgets('balayage vers le haut = neutre', (tester) async {
+    final container = await _openQuiz(tester, _quiz(2));
+    await tester.drag(find.byKey(const ValueKey('statement-card-10')), const Offset(0, -260));
+    await tester.pumpAndSettle();
+    expect(container.read(quizSessionProvider).answers[10], Answer.neutre);
+    expect(find.byKey(const ValueKey('statement-card-11')), findsOneWidget);
+  });
+
   testWidgets("l'interrupteur « important » se bloque à cinq", (tester) async {
     final container = await _openQuiz(tester, _quiz(6));
     for (var i = 0; i < 5; i++) {
       await tester.tap(find.byKey(const ValueKey('answer-important')));
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const ValueKey('answer-accord')));
+      await tester.drag(find.byKey(ValueKey('statement-card-${10 + i}')), const Offset(320, 0));
       await tester.pumpAndSettle();
     }
     expect(container.read(quizSessionProvider).important.length, 5);
