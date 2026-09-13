@@ -7,7 +7,6 @@ import 'package:go_router/go_router.dart';
 import '../../app/router.dart';
 import '../../app/theme.dart';
 import '../../core/widgets/widgets.dart';
-import 'quiz_engine.dart';
 import 'quiz_models.dart';
 import 'quiz_providers.dart';
 import 'swipe_card.dart';
@@ -147,7 +146,7 @@ class _QuizRunScreenState extends ConsumerState<QuizRunScreen> {
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: wide ? 760 : double.infinity),
           child: LayoutBuilder(builder: (context, c) {
-            final cardHeight = (c.maxHeight - 56).clamp(300.0, 700.0);
+            final cardHeight = (c.maxHeight - 76).clamp(300.0, 700.0);
             return Center(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: wide ? 32 : BandScaffold.side),
