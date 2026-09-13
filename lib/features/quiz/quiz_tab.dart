@@ -252,16 +252,17 @@ class _SwipeDemoState extends State<SwipeDemo> {
     final labels = [l10n.quizAgree, l10n.quizDisagree, l10n.quizNeutral];
     final dirs = [const Offset(1, 0), const Offset(-1, 0), const Offset(0, -1)];
     return SizedBox(
-      height: 190,
+      height: 250,
       child: LayoutBuilder(builder: (context, c) {
         final w = c.maxWidth;
+        final cw = (w * 0.74).clamp(200.0, 360.0);
         Widget miniCard({double dx = 0, double dy = 0, double angle = 0, Widget? stamp}) => Transform.translate(
               offset: Offset(dx, dy),
               child: Transform.rotate(
                 angle: angle,
                 child: Container(
-                  width: w * 0.62,
-                  height: 160,
+                  width: cw,
+                  height: 210,
                   padding: const EdgeInsets.all(14),
                   decoration: BoxDecoration(color: t.card, borderRadius: BorderRadius.circular(18), border: Border.all(color: t.border, width: 2), boxShadow: [PalabreTokens.hard(t.isDark ? t.quiz : t.hardShadow, 4)]),
                   child: Stack(children: [
@@ -270,7 +271,7 @@ class _SwipeDemoState extends State<SwipeDemo> {
                       children: [
                         Container(width: 64, height: 16, decoration: BoxDecoration(border: Border.all(color: t.quiz, width: 1.5), borderRadius: BorderRadius.circular(8))),
                         const SizedBox(height: 14),
-                        for (final f in [0.9, 0.75, 0.55]) Padding(padding: const EdgeInsets.only(bottom: 8), child: Container(width: (w * 0.62 - 28) * f, height: 10, decoration: BoxDecoration(color: t.track, borderRadius: BorderRadius.circular(3)))),
+                        for (final f in [0.9, 0.75, 0.85, 0.5]) Padding(padding: const EdgeInsets.only(bottom: 10), child: Container(width: (cw - 28) * f, height: 11, decoration: BoxDecoration(color: t.track, borderRadius: BorderRadius.circular(3)))),
                       ],
                     ),
                     if (stamp != null) Positioned(top: 0, right: 0, left: 0, child: stamp),
@@ -288,9 +289,10 @@ class _SwipeDemoState extends State<SwipeDemo> {
           return Opacity(opacity: opacity, child: Align(alignment: phase == 2 ? Alignment.topCenter : Alignment.topRight, child: s));
         }
 
-        final back = Transform.rotate(angle: -3 * 3.14159 / 180, child: Opacity(opacity: t.isDark ? 0.6 : 1, child: miniCard(dy: 8)));
+        // Carte arrière légèrement décalée derrière ; carte avant exactement au centre.
+        final back = Transform.rotate(angle: -3 * 3.14159 / 180, child: Opacity(opacity: t.isDark ? 0.6 : 1, child: miniCard(dx: -4, dy: 10)));
         if (still || _phase < 0) {
-          return Stack(alignment: Alignment.center, children: [back, miniCard(dx: 26, angle: 0.08, stamp: stampFor(0, 1))]);
+          return Stack(alignment: Alignment.center, children: [back, miniCard(stamp: stampFor(0, 1))]);
         }
         // Coupée aux bords : la carte sort du cadre sans déborder sur le reste de l'écran.
         return Stack(
@@ -309,7 +311,7 @@ class _SwipeDemoState extends State<SwipeDemo> {
                 final eased = Curves.easeInCubic.transform(p);
                 final d = dirs[_phase];
                 final dx = d.dx * eased * w * 0.9;
-                final dy = d.dy * eased * 220;
+                final dy = d.dy * eased * 280;
                 final opacity = (p * 3).clamp(0.0, 1.0);
                 return Opacity(
                   opacity: v > 0.9 ? ((1 - v) / 0.1).clamp(0.0, 1.0) : 1,
