@@ -11,7 +11,14 @@ class AppPresident extends StatelessWidget {
     return MaterialApp(
       title: 'Palabre',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true, colorSchemeSeed: const Color(0xFFE9B44C), brightness: Brightness.dark),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: const Color(0xFFE9B44C),
+        brightness: Brightness.dark,
+        // La nuit du jeu, la même que celle des cartes et du logo : sans ça,
+        // Material teinte le fond en brun et le logo se détache en rectangle.
+        scaffoldBackgroundColor: const Color(0xFF14131A),
+      ),
       home: const AccueilEcran(),
     );
   }
