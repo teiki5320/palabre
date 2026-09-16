@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// Coquille de l'application. La navigation sera ajoutée avec les écrans.
+import 'ecrans/accueil.dart';
+
+/// L'application : un thème sombre, et l'accueil pour commencer.
 class AppPresident extends StatelessWidget {
   const AppPresident({super.key});
 
@@ -10,7 +12,7 @@ class AppPresident extends StatelessWidget {
       title: 'Président pour 100 jours',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: const Color(0xFFE9B44C), brightness: Brightness.dark),
-      home: const Scaffold(body: Center(child: Text('Président'))),
+      home: const AccueilEcran(),
     );
   }
 }
