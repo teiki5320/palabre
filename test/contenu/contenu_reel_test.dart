@@ -27,10 +27,18 @@ void main() {
     expect(contenu.cartes.length, greaterThanOrEqualTo(50));
   });
 
-  test('cinq parcours sont ouverts et cinq sont verrouilles', () {
+  test('quatre parcours sont ouverts et six sont verrouilles', () {
     expect(contenu.parcours.length, 10);
-    expect(contenu.parcours.where((p) => p.ouvertDesLeDebut).length, 5);
-    expect(contenu.parcours.where((p) => !p.ouvertDesLeDebut).length, 5);
+    expect(contenu.parcours.where((p) => p.ouvertDesLeDebut).length, 4);
+    expect(contenu.parcours.where((p) => !p.ouvertDesLeDebut).length, 6);
+  });
+
+  test('la galerie alterne un homme, une femme', () {
+    final genres = contenu.parcours.map((p) => p.femme).toList();
+    for (var i = 1; i < genres.length; i++) {
+      expect(genres[i], isNot(genres[i - 1]),
+          reason: 'deux parcours du même genre se suivent en position ${i + 1}');
+    }
   });
 
   test('les parcours verrouilles portent une condition typee', () {

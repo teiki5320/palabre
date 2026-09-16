@@ -152,18 +152,24 @@ void main() {
     expect(find.text('Nouvelle partie'), findsNothing);
   });
 
-  testWidgets('avec un mandat en cours, on peut changer de parcours sans passer par le menu',
-      (tester) async {
+  testWidgets('un mandat en cours remplace la galerie par le mandat lui-meme', (tester) async {
     final etat = EtatPartie(parcours: 'general_parcours', nomJoueur: 'Awa', jauges: Jauges.milieu, jour: 12);
     SharedPreferences.setMockInitialValues({'partie_en_cours': jsonEncode(versJson(etat))});
     await montre(tester);
 
-    // La sortie est visible sur l ecran, pas seulement dans le menu.
-    expect(find.text('Choisir un autre parcours'), findsOneWidget);
-    await tester.tap(find.text('Choisir un autre parcours'));
-    await tester.pumpAndSettle();
-    // Le meme avertissement que depuis le menu.
-    expect(find.textContaining('Vous en êtes au jour 12'), findsOneWidget);
+    // Ce qu on incarne, et ou on en est.
+    expect(find.text('VOTRE MANDAT'), findsOneWidget);
+    expect(find.text('Awa'), findsOneWidget);
+    expect(find.textContaining('jour 12'), findsWidgets);
+    expect(find.text('Reprendre le jour 12'), findsOneWidget);
+
+    // Et rien du choix de parcours : ni les autres portraits, ni les
+    // vignettes, ni le compteur, ni le formulaire.
+    expect(find.text('QUI ÉTIEZ-VOUS AVANT ?'), findsNothing);
+    expect(find.byKey(const ValueKey('vignette-professeure')), findsNothing);
+    expect(find.text('1 / 3'), findsNothing);
+    expect(find.byType(TextField), findsNothing);
+    expect(find.text('Prendre mes fonctions'), findsNothing);
   });
 
   testWidgets('nouvelle partie previent de ce qu on perd, puis rend le formulaire', (tester) async {

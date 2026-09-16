@@ -145,10 +145,7 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
         ),
         actions: [
           TextButton(onPressed: () => Navigator.of(context).pop(false), child: const Text('Annuler')),
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: const Text('Abandonner'),
-          ),
+          TextButton(onPressed: () => Navigator.of(context).pop(true), child: const Text('Abandonner')),
         ],
       ),
     );
@@ -192,7 +189,96 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
             // marges — les vignettes vivent désormais sur le portrait. Sans
             // cette mesure, la zone image prend ses 76 % coûte que coûte et
             // pousse le bouton hors de l'écran.
-            final basNecessaire = (formulaire ? 52.0 + 10 + 56 : 48.0 + 44) + 18 + 30;
+            // Pendant un mandat, il n'y a rien à choisir : l'écran montre
+            // celui qu'on incarne et où en sont ses jauges, et rien d'autre.
+            // Montrer une galerie qu'on ne peut pas utiliser donnerait
+            // l'impression que le jeu refuse d'obéir.
+            if (!formulaire) {
+              final enCours = _enCours!;
+              final sien = c.parcoursParId(enCours.parcours);
+              return SafeArea(
+                top: false,
+                child: LayoutBuilder(
+                  builder: (context, contraintes) {
+                    final hauteurImage = math.min(
+                      taille.height * (courte ? 0.74 : 0.84),
+                      contraintes.maxHeight - (48.0 + 18 + 30),
+                    );
+                    return Column(
+                      children: [
+                        SizedBox(
+                          height: hauteurImage,
+                          width: double.infinity,
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              if (sien != null) _PortraitParcours(parcours: sien, verrouille: false),
+                              _BarreHaute(onMenu: _ouvreMenu),
+                              Positioned(
+                                left: 0,
+                                right: 0,
+                                bottom: 0,
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(22, 0, 22, 22),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text('VOTRE MANDAT', style: Textes.surtitre),
+                                      const SizedBox(height: 6),
+                                      Text(
+                                        enCours.nomJoueur,
+                                        style: courte ? Textes.nomParcoursCourt : Textes.nomParcours,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      const SizedBox(height: 6),
+                                      Text(
+                                        '${sien?.titre ?? ''} · jour ${enCours.jour}',
+                                        style: Textes.sousTitre,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      const SizedBox(height: 18),
+                                      _JaugesDepart(
+                                        depart: enCours.jauges,
+                                        verrouille: false,
+                                        souligneLaPlusHaute: false,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(22, 18, 22, 30),
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: OutlinedButton(
+                                  onPressed: () async {
+                                    ref.read(sessionProvider.notifier).reprend(enCours);
+                                    await Navigator.of(context)
+                                        .push(MaterialPageRoute(builder: (_) => const PartieEcran()));
+                                    await _relisSauvegarde();
+                                  },
+                                  child: Text('Reprendre le jour ${enCours.jour}'),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              );
+            }
+
+            final basNecessaire = 52.0 + 10 + 56 + 18 + 30;
 
             return SafeArea(
               top: false,
@@ -218,50 +304,7 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                                   _PortraitParcours(parcours: p, verrouille: !debloque(p)),
                               ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(26, 60, 26, 0),
-                              // La marque à gauche, le menu exactement au
-                              // milieu, le compteur de parcours à droite : les
-                              // deux côtés ont la même largeur, donc le bouton
-                              // du milieu est vraiment centré.
-                              // Hauteur bornée : un Align sans facteur de
-                              // taille remplit tout ce qu'on lui donne, et la
-                              // barre se centrerait au milieu du portrait.
-                              child: Align(
-                                alignment: Alignment.topCenter,
-                                child: SizedBox(
-                                  height: 48,
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Image.asset(
-                                            'assets/icone/marque.png',
-                                            height: 44,
-                                            errorBuilder: (_, __, ___) => const SizedBox(height: 44),
-                                          ),
-                                        ),
-                                      ),
-                                      IconButton(
-                                        tooltip: 'Menu',
-                                        icon: Icon(Icons.menu, color: Couleurs.creme.withValues(alpha: .8)),
-                                        onPressed: _ouvreMenu,
-                                      ),
-                                      Expanded(
-                                        child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Text(
-                                            '${choisi + 1} / ${parcours.length}',
-                                            style: Textes.surtitre,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                            _BarreHaute(compteur: '${choisi + 1} / ${parcours.length}', onMenu: _ouvreMenu),
                             Positioned(
                               left: 0,
                               right: 0,
@@ -343,62 +386,32 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                             padding: const EdgeInsets.fromLTRB(22, 18, 22, 30),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
-                              // Un mandat en cours se reprend ; on ne propose
-                              // pas d'en commencer un autre par-dessus. Pour
-                              // cela, « Nouvelle partie » dans le menu.
-                              children: formulaire
-                                  ? [
-                                      TextField(
-                                        controller: _nom,
-                                        onChanged: (_) => setState(() {}),
-                                        decoration: const InputDecoration(hintText: 'Votre nom'),
-                                      ),
-                                      const SizedBox(height: 10),
-                                      AnimatedOpacity(
-                                        duration: const Duration(milliseconds: 160),
-                                        opacity: pret ? 1 : .6,
-                                        child: FilledButton(
-                                          onPressed: !pret
-                                              ? null
-                                              : () async {
-                                                  final p = c.parcoursParId(actuel.id)!;
-                                                  ref
-                                                      .read(sessionProvider.notifier)
-                                                      .demarre(parcours: p, nom: _nom.text.trim());
-                                                  await Navigator.of(context).push(
-                                                    MaterialPageRoute(builder: (_) => const PartieEcran()),
-                                                  );
-                                                  await _relisSauvegarde();
-                                                },
-                                          child: const Text('Prendre mes fonctions'),
-                                        ),
-                                      ),
-                                    ]
-                                  : [
-                                      OutlinedButton(
-                                        onPressed: () async {
-                                          ref.read(sessionProvider.notifier).reprend(_enCours!);
-                                          await Navigator.of(context)
-                                              .push(MaterialPageRoute(builder: (_) => const PartieEcran()));
-                                          await _relisSauvegarde();
-                                        },
-                                        child: Text('Reprendre le jour ${_enCours!.jour}'),
-                                      ),
-                                      // La sortie doit se voir : enterrée dans
-                                      // le menu, personne ne la trouve, et
-                                      // l'écran a l'air de refuser qu'on change
-                                      // de parcours.
-                                      TextButton(
-                                        onPressed: _demandeNouvellePartie,
-                                        child: Text(
-                                          'Choisir un autre parcours',
-                                          style: Textes.rappel.copyWith(
-                                            color: Couleurs.creme.withValues(alpha: .65),
-                                            letterSpacing: .2,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                              children: [
+                                TextField(
+                                  controller: _nom,
+                                  onChanged: (_) => setState(() {}),
+                                  decoration: const InputDecoration(hintText: 'Votre nom'),
+                                ),
+                                const SizedBox(height: 10),
+                                AnimatedOpacity(
+                                  duration: const Duration(milliseconds: 160),
+                                  opacity: pret ? 1 : .6,
+                                  child: FilledButton(
+                                    onPressed: !pret
+                                        ? null
+                                        : () async {
+                                            final p = c.parcoursParId(actuel.id)!;
+                                            ref
+                                                .read(sessionProvider.notifier)
+                                                .demarre(parcours: p, nom: _nom.text.trim());
+                                            await Navigator.of(context)
+                                                .push(MaterialPageRoute(builder: (_) => const PartieEcran()));
+                                            await _relisSauvegarde();
+                                          },
+                                    child: const Text('Prendre mes fonctions'),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -409,6 +422,56 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
               ),
             );
           },
+        ),
+      ),
+    );
+  }
+}
+
+/// La barre haute posée sur le portrait : la marque à gauche, le menu
+/// exactement au milieu, et à droite le compteur de parcours — absent quand
+/// il n'y a rien à compter, c'est-à-dire pendant un mandat.
+class _BarreHaute extends StatelessWidget {
+  const _BarreHaute({required this.onMenu, this.compteur});
+
+  final VoidCallback onMenu;
+  final String? compteur;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(26, 60, 26, 0),
+      // Hauteur bornée : un Align sans facteur de taille remplit tout ce
+      // qu'on lui donne, et la barre se centrerait au milieu du portrait.
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: SizedBox(
+          height: 48,
+          child: Row(
+            children: [
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Image.asset(
+                    'assets/icone/marque.png',
+                    height: 44,
+                    errorBuilder: (_, __, ___) => const SizedBox(height: 44),
+                  ),
+                ),
+              ),
+              IconButton(
+                tooltip: 'Menu',
+                icon: Icon(Icons.menu, color: Couleurs.creme.withValues(alpha: .8)),
+                onPressed: onMenu,
+              ),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(compteur ?? '', style: Textes.surtitre),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -521,10 +584,20 @@ class _IdentiteParcours extends StatelessWidget {
 /// Les quatre jauges de depart du parcours ; la plus haute ressort en or,
 /// sauf parcours verrouille ou toutes restent en retrait.
 class _JaugesDepart extends StatelessWidget {
-  const _JaugesDepart({super.key, required this.depart, required this.verrouille});
+  const _JaugesDepart({
+    super.key,
+    required this.depart,
+    required this.verrouille,
+    this.souligneLaPlusHaute = true,
+  });
 
   final Jauges depart;
   final bool verrouille;
+
+  /// Au choix du parcours, la jauge dominante en or dit le style de mandat.
+  /// Sur un mandat en cours, elle ne dirait rien d'utile : c'est celle qui
+  /// s'effondre qui compte, et l'écran de jeu s'en charge.
+  final bool souligneLaPlusHaute;
 
   @override
   Widget build(BuildContext context) {
@@ -537,7 +610,7 @@ class _JaugesDepart extends StatelessWidget {
       children: [
         for (final j in Jauge.values) ...[
           if (j != Jauge.values.first) const SizedBox(width: 10),
-          Expanded(child: _colonneJauge(j, en: !verrouille && j == plusHaute)),
+          Expanded(child: _colonneJauge(j, en: souligneLaPlusHaute && !verrouille && j == plusHaute)),
         ],
       ],
     );
