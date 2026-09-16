@@ -58,7 +58,19 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
       body: SafeArea(
         child: Column(
           children: [
-            _LigneJauges(jauges: session.etat.jauges, effets: reponse?.effets ?? const {}),
+            _LigneJauges(
+              jauges: session.etat.jauges,
+              // Ce que la réponse fera vraiment, régime et mandat compris :
+              // montrer l'effet brut mentirait au joueur au moment précis où
+              // il décide.
+              effets: reponse == null
+                  ? const {}
+                  : effetsReels(
+                      effets: reponse.effets,
+                      style: session.etat.style,
+                      mandat: session.etat.mandat,
+                    ),
+            ),
             _LigneJour(jour: session.etat.jour, mandat: session.etat.mandat),
             Expanded(
               // La carte qui part ne doit pas passer devant les jauges.

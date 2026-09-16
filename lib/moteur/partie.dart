@@ -18,10 +18,53 @@ Map<Jauge, int> amplifie(Map<Jauge, int> effets, int mandat) {
   };
 }
 
+/// Les jauges que le régime favorise quand le mandat penche d'un côté.
+/// Une république tient par le peuple et par une armée qui reste à sa
+/// place ; une dictature tient par l'argent et par une presse qui dit ce
+/// qu'on lui souffle. Ce que l'un ménage, l'autre l'abîme.
+const _favoriteesRepublique = {Jauge.peuple, Jauge.armee};
+const _favoriteesDictature = {Jauge.caisses, Jauge.presse};
+
+/// Ce que le régime change à une décision. Le mandat ne pousse jamais une
+/// jauge tout seul — un bonus quotidien finirait par la coller au plafond,
+/// qui tue autant que le plancher. Il change seulement ce que coûte ou
+/// rapporte chaque choix : au bout de l'axe, les jauges du camp encaissent
+/// moitié moins et gagnent moitié plus, celles d'en face l'inverse.
+Map<Jauge, int> selonRegime(Map<Jauge, int> effets, int style) {
+  final ecart = style - 50;
+  if (ecart == 0) return effets;
+  final intensite = (ecart.abs() / 50).clamp(0.0, 1.0);
+  final favorisees = ecart > 0 ? _favoriteesDictature : _favoriteesRepublique;
+  return {
+    for (final e in effets.entries)
+      e.key: () {
+        final bienVue = favorisees.contains(e.key);
+        final gain = e.value > 0;
+        // Un gain sur une jauge du camp compte plus, une perte compte
+        // moins ; sur une jauge d'en face, c'est exactement l'inverse.
+        final facteur = bienVue == gain ? 1 + 0.5 * intensite : 1 - 0.5 * intensite;
+        final v = (e.value * facteur).round();
+        // Un effet ne disparaît jamais complètement : il reste au moins un
+        // point, sinon une décision n'aurait plus aucune conséquence.
+        return v == 0 ? (e.value > 0 ? 1 : -1) : v;
+      }(),
+  };
+}
+
+/// Ce qu'une réponse fait vraiment, régime et mandat compris. C'est ce que
+/// l'écran montre pendant le geste, et ce que le moteur applique : le joueur
+/// ne doit jamais voir un chiffre différent de celui qu'il va subir.
+Map<Jauge, int> effetsReels({
+  required Map<Jauge, int> effets,
+  required int style,
+  required int mandat,
+}) =>
+    amplifie(selonRegime(effets, style), mandat);
+
 /// Applique une réponse et rend l'état du lendemain.
 EtatPartie repond({required EtatPartie etat, required Carte carte, required Cote cote}) {
   final reponse = cote == Cote.gauche ? carte.gauche : carte.droite;
-  final effets = amplifie(reponse.effets, etat.mandat);
+  final effets = effetsReels(effets: reponse.effets, style: etat.style, mandat: etat.mandat);
 
   final drapeaux = {...etat.drapeaux, ...reponse.drapeaux};
   final vues = {...etat.vues, carte.id};

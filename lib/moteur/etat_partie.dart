@@ -3,9 +3,10 @@ import 'modeles.dart';
 
 /// Tout ce qui décrit un mandat en cours. Immuable : chaque réponse rend un
 /// nouvel état, ce qui permet de rejouer et de tester une partie pas à pas.
-/// On entre en fonction élu : le mandat commence du côté de la république,
-/// sans y être tout à fait.
-const int styleDepart = 20;
+/// Le mandat commence au milieu de l'axe : ni vertueux ni corrompu, un État
+/// ordinaire. C'est aussi le point où le régime ne change rien aux
+/// décisions — il ne pèse que si le joueur l'a fait pencher.
+const int styleDepart = 50;
 
 class EtatPartie {
   const EtatPartie({
