@@ -2,3 +2,5 @@
 .superpowers/
 .claude/
 .DS_Store
+android/key.properties
+*.jks
