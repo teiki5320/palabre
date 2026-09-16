@@ -192,6 +192,27 @@ List<String> valide(Contenu c) {
     if (!clesFins.add(cle)) problemes.add('fins : deux fins pour le même cas « $cle »');
   }
 
+  // La carte d'ouverture : une seule, et jouable par tout le monde au tout
+  // premier jour. Sinon, des joueurs commenceraient sans prêter serment.
+  final ouvertures = c.cartes.where((carte) => carte.ouverture).toList();
+  if (ouvertures.length > 1) {
+    final ids = ouvertures.map((carte) => carte.id).join(', ');
+    problemes.add('cartes : plusieurs cartes d\'ouverture (« $ids »), une seule est possible');
+  }
+  for (final carte in ouvertures) {
+    final ou = 'carte ${carte.id}';
+    final cond = carte.conditions;
+    if (cond.jourMin > 1) problemes.add('$ou : ouverture, mais jour_min après le premier jour');
+    if (cond.mandatMin > 1) problemes.add('$ou : ouverture, mais mandat_min après le premier mandat');
+    if (cond.parcours.isNotEmpty) {
+      problemes.add('$ou : ouverture réservée à certains parcours, les autres commenceraient sans');
+    }
+    if (cond.drapeauxRequis.isNotEmpty) {
+      problemes.add('$ou : ouverture conditionnée à un drapeau, qu\'aucune réponse n\'a encore posé');
+    }
+    if (carte.chaine != null) problemes.add('$ou : ouverture prise dans une chaîne');
+  }
+
   if (c.parcours.where((p) => p.ouvertDesLeDebut).isEmpty) {
     problemes.add('parcours : aucun parcours ouvert dès le début');
   }

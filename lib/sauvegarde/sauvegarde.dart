@@ -16,6 +16,7 @@ import '../moteur/progression.dart';
 class Sauvegarde {
   static const _cle = 'partie_en_cours';
   static const _cleProgression = 'progression';
+  static const _cleIntro = 'intro_vue';
 
   static Future<void> enregistre(EtatPartie etat) async {
     try {
@@ -50,6 +51,27 @@ class Sauvegarde {
       await prefs.remove(_cle);
     } catch (_) {
       // Rien à faire.
+    }
+  }
+
+  /// L'intro ne se montre qu'au tout premier lancement. En cas de stockage
+  /// indisponible on répond « déjà vue » : mieux vaut sauter une explication
+  /// que la réimposer à chaque ouverture.
+  static Future<bool> introVue() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      return prefs.getBool(_cleIntro) ?? false;
+    } catch (_) {
+      return true;
+    }
+  }
+
+  static Future<void> noteIntroVue() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool(_cleIntro, true);
+    } catch (_) {
+      // Rien à faire : au pire, l'intro se remontrera une fois.
     }
   }
 

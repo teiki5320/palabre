@@ -20,6 +20,15 @@ Carte? choisitCarte({required List<Carte> paquet, required EtatPartie etat, requ
   }
   if (jouables.isEmpty) return null;
 
+  // On prête serment avant de gouverner : au tout premier jour d'un premier
+  // mandat, la carte d'ouverture passe avant tout le reste. Aux mandats
+  // suivants elle ne revient pas — on ne rejure pas ce qu'on a déjà juré.
+  if (etat.jour == 1 && etat.mandat == 1) {
+    for (final c in jouables) {
+      if (c.ouverture) return c;
+    }
+  }
+
   // Une histoire commencée passe avant une situation ordinaire : seule une
   // suite de chaîne (rang > 1) est prioritaire, pas la carte de rang 1 qui
   // l'ouvre, qui sort comme une carte ordinaire, au hasard pondéré.

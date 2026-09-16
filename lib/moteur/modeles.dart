@@ -110,6 +110,7 @@ class Carte {
     this.poids = 1,
     this.chaine,
     this.repetable = false,
+    this.ouverture = false,
   });
 
   final String id;
@@ -125,6 +126,11 @@ class Carte {
   final Chaine? chaine;
   final bool repetable;
 
+  /// La carte qui ouvre un premier mandat : la prestation de serment. Elle
+  /// passe avant toutes les autres au premier jour, et une seule carte du
+  /// contenu peut la porter.
+  final bool ouverture;
+
   factory Carte.depuisJson(Map<String, dynamic> j) => Carte(
         id: j['id'] as String,
         personnage: j['personnage'] as String,
@@ -136,6 +142,7 @@ class Carte {
         poids: ((j['poids'] as num?) ?? 1).toInt(),
         chaine: j['chaine'] == null ? null : Chaine.depuisJson(j['chaine'] as Map<String, dynamic>),
         repetable: (j['repetable'] as bool?) ?? false,
+        ouverture: (j['ouverture'] as bool?) ?? false,
       );
 }
 
