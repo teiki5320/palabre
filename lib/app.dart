@@ -9,7 +9,7 @@ class AppPresident extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Président pour 100 jours',
+      title: 'Palabre',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: const Color(0xFFE9B44C), brightness: Brightness.dark),
       home: const AccueilEcran(),

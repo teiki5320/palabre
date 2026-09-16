@@ -32,5 +32,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/contenu/
+    - assets/icone/
     - assets/images/personnages/
     - assets/images/fins/

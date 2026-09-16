@@ -55,13 +55,21 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(22, 22, 22, 6),
-                  child: Text('Président pour 100 jours',
-                      style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800, height: 1.1)),
+                // Le logo porte le nom du jeu ; le sous-titre dit ce qu'on y fait.
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(22, 10, 22, 0),
+                  child: Image.asset('assets/icone/logo.png',
+                      height: 170, fit: BoxFit.contain, alignment: Alignment.centerLeft,
+                      errorBuilder: (_, __, ___) => const Text('Palabre',
+                          style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800))),
                 ),
                 const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 22),
+                  padding: EdgeInsets.fromLTRB(22, 0, 22, 2),
+                  child: Text('Président pour 100 jours',
+                      style: TextStyle(fontSize: 15, letterSpacing: .3, color: Color(0xFFE9B44C))),
+                ),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(22, 10, 22, 0),
                   child: Text('Qui étiez-vous avant ?', style: TextStyle(color: Colors.white70)),
                 ),
                 Expanded(
