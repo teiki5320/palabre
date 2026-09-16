@@ -12,6 +12,7 @@ Contenu contenuLivre() {
     personnages: lis('personnages'),
     parcours: lis('parcours'),
     fins: lis('fins'),
+    exploits: lis('exploits'),
   );
 }
 
@@ -29,6 +30,17 @@ void main() {
   test('deux parcours sont ouverts et deux sont verrouilles', () {
     expect(contenu.parcours.where((p) => p.ouvertDesLeDebut).length, 2);
     expect(contenu.parcours.where((p) => !p.ouvertDesLeDebut).length, 2);
+  });
+
+  test('les deux parcours verrouilles portent une condition typee', () {
+    for (final p in contenu.parcours.where((p) => !p.ouvertDesLeDebut)) {
+      expect(p.condition, isNotNull, reason: '${p.id} resterait verrouille pour toujours');
+    }
+  });
+
+  test('huit exploits sont definis, chacun avec un identifiant unique', () {
+    expect(contenu.exploits.length, 8);
+    expect(contenu.exploits.map((e) => e.id).toSet().length, 8);
   });
 
   test('un mandat joue au hasard dure entre dix et vingt-deux jours', () {

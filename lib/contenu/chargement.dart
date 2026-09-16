@@ -20,8 +20,8 @@ class Contenu {
   final List<Parcours> parcours;
   final List<Fin> fins;
 
-  /// Chargés par la tâche qui écrit `assets/contenu/exploits.json` ; vide
-  /// par défaut pour ne pas casser les appels existants de [depuisChaines].
+  /// Vide par défaut pour ne pas casser les appels existants de
+  /// [depuisChaines] qui ne passent pas ce paramètre.
   final List<Exploit> exploits;
 
   static List<Map<String, dynamic>> _liste(String source) =>
@@ -51,6 +51,7 @@ class Contenu {
       personnages: await lis('personnages'),
       parcours: await lis('parcours'),
       fins: await lis('fins'),
+      exploits: await lis('exploits'),
     );
   }
 

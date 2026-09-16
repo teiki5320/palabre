@@ -1,3 +1,5 @@
+import '../moteur/condition.dart';
+import '../moteur/denouement.dart';
 import '../moteur/jauges.dart';
 import 'chargement.dart';
 
@@ -35,6 +37,7 @@ List<String> valide(Contenu c) {
   final vus = <String>{};
   final drapeauxPoses = <String>{};
   final idsParcours = {for (final p in c.parcours) p.id};
+  final idsFins = {for (final f in c.fins) f.id};
 
   for (final carte in c.cartes) {
     for (final r in [carte.gauche, carte.droite]) {
@@ -106,6 +109,39 @@ List<String> valide(Contenu c) {
     for (final mot in _interdits) {
       if (texte.contains(' $mot ')) problemes.add('$ou : mot interdit « $mot »');
     }
+
+    if (!parcours.ouvertDesLeDebut) {
+      final condition = parcours.condition;
+      if (condition == null) {
+        // Sans condition typée, ce parcours verrouillé ne se débloquera
+        // jamais : bilan() n'ouvre jamais un parcours dans ce cas.
+        problemes.add('$ou : sans condition typée, restera verrouillé pour toujours');
+      } else {
+        problemes.addAll(_problemesCondition(ou, condition, idsFins));
+      }
+    }
+  }
+
+  final idsExploits = <String>{};
+  for (final exploit in c.exploits) {
+    final ou = 'exploit ${exploit.id}';
+
+    if (!idsExploits.add(exploit.id)) problemes.add('$ou : identifiant en double');
+    if (exploit.titre.trim().isEmpty) problemes.add('$ou : sans titre');
+
+    if (exploit.condition.estVide) {
+      // Une condition vide est toujours remplie : cet exploit se
+      // débloquerait au premier mandat venu, sans que personne comprenne
+      // pourquoi.
+      problemes.add('$ou : sans condition, se débloquerait au premier mandat venu');
+    } else {
+      problemes.addAll(_problemesCondition(ou, exploit.condition, idsFins));
+    }
+
+    final texteExploit = _mots('${exploit.titre} ${exploit.description}');
+    for (final mot in _interdits) {
+      if (texteExploit.contains(' $mot ')) problemes.add('$ou : mot interdit « $mot »');
+    }
   }
 
   // Les chaînes doivent aller de 1 à n, sans trou ni doublon.
@@ -138,6 +174,29 @@ List<String> valide(Contenu c) {
     problemes.add('parcours : aucun parcours ouvert dès le début');
   }
 
+  return problemes;
+}
+
+/// Contrôles communs aux conditions d'exploit et de parcours : une jauge
+/// dont le plancher dépasse le plafond, des jours au-delà de la durée du
+/// mandat, ou une fin qui n'existe pas dans `fins.json` — dans tous les cas
+/// une condition qui ne pourra jamais être remplie.
+List<String> _problemesCondition(String ou, Condition condition, Set<String> idsFins) {
+  final problemes = <String>[];
+  for (final jauge in Jauge.values) {
+    final min = condition.jaugesMin[jauge];
+    final max = condition.jaugesMax[jauge];
+    if (min != null && max != null && min > max) {
+      problemes.add('$ou : condition impossible sur ${jauge.name}');
+    }
+  }
+  if (condition.joursMin > dureeMandatPrototype) {
+    problemes.add('$ou : condition impossible, jours_min au-delà de la durée du mandat');
+  }
+  final fin = condition.fin;
+  if (fin != null && !idsFins.contains(fin)) {
+    problemes.add('$ou : condition citant une fin inconnue « $fin »');
+  }
   return problemes;
 }
 

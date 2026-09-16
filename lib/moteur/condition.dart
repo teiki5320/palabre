@@ -57,6 +57,19 @@ class Condition {
   final List<String> drapeauxRequis;
   final List<String> drapeauxInterdits;
 
+  /// Vraie quand aucun champ ne contraint quoi que ce soit : cette condition
+  /// est donc toujours remplie. Sert au contrôle de contenu, qui refuse un
+  /// exploit dans ce cas — il se débloquerait au premier mandat venu, sans
+  /// que personne ne comprenne pourquoi.
+  bool get estVide =>
+      jaugesMin.isEmpty &&
+      jaugesMax.isEmpty &&
+      joursMin <= 1 &&
+      mandatMin <= 1 &&
+      fin == null &&
+      drapeauxRequis.isEmpty &&
+      drapeauxInterdits.isEmpty;
+
   factory Condition.depuisJson(Map<String, dynamic>? j) {
     if (j == null) return const Condition();
     final jaugesMin = <Jauge, int>{};

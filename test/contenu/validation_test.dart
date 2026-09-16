@@ -20,8 +20,16 @@ String carte({
     '"gauche":{"libelle":"$libelleGauche","effets":$effetsGauche},'
     '"droite":{"libelle":"Oui","effets":{"armee":10}}$extra}';
 
-Contenu contenuAvec(String cartes, {String parcours = parcours, String fins = fins}) =>
-    Contenu.depuisChaines(cartes: '[$cartes]', personnages: personnages, parcours: parcours, fins: fins);
+String exploit({
+  String id = 'ex',
+  String titre = 'Un exploit',
+  String description = 'Une description qui sert d indice.',
+  String condition = '{"jours_min":30}',
+}) =>
+    '{"id":"$id","titre":"$titre","description":"$description","condition":$condition}';
+
+Contenu contenuAvec(String cartes, {String parcours = parcours, String fins = fins, String exploits = '[]'}) =>
+    Contenu.depuisChaines(cartes: '[$cartes]', personnages: personnages, parcours: parcours, fins: fins, exploits: exploits);
 
 void main() {
   test('un contenu correct ne remonte aucun probleme', () {
@@ -146,5 +154,68 @@ void main() {
     final parcoursFermes = '[{"id":"general_parcours","nom":"L ancien general","titre":"Monsieur le President","femme":false,'
         '"depart":{"peuple":40,"armee":70,"caisses":50,"presse":40},"condition_deblocage":"Avoir au moins 50 en armee"}]';
     expect(valide(contenuAvec(carte(), parcours: parcoursFermes)).join(), contains('ouvert'));
+  });
+
+  test('deux exploits avec le meme identifiant', () {
+    final e = '[${exploit(id: "ex")},${exploit(id: "ex")}]';
+    expect(valide(contenuAvec(carte(), exploits: e)).join(), contains('identifiant'));
+  });
+
+  test('un exploit sans titre', () {
+    final e = '[${exploit(titre: "")}]';
+    expect(valide(contenuAvec(carte(), exploits: e)).join(), contains('titre'));
+  });
+
+  test('un exploit sans condition se debloquerait au premier mandat venu', () {
+    final e = '[${exploit(condition: "{}")}]';
+    expect(valide(contenuAvec(carte(), exploits: e)).join(), contains('condition'));
+  });
+
+  test('une condition d exploit impossible a remplir sur une jauge', () {
+    final e = '[${exploit(condition: '{"peuple_min":80,"peuple_max":50}')}]';
+    expect(valide(contenuAvec(carte(), exploits: e)).join(), contains('impossible'));
+  });
+
+  test('une condition d exploit avec des jours au dela de la duree du mandat', () {
+    final e = '[${exploit(condition: '{"jours_min":40}')}]';
+    expect(valide(contenuAvec(carte(), exploits: e)).join(), contains('impossible'));
+  });
+
+  test('une condition d exploit citant une fin inconnue', () {
+    final e = '[${exploit(condition: '{"fin":"fin_fantome"}')}]';
+    expect(valide(contenuAvec(carte(), exploits: e)).join(), contains('inconnue'));
+  });
+
+  test('un mot interdit dans le titre d un exploit est signale', () {
+    final e = '[${exploit(titre: "Un exploit a Dakar")}]';
+    expect(valide(contenuAvec(carte(), exploits: e)).join(), contains('interdit'));
+  });
+
+  test('un mot interdit dans la description d un exploit est signale', () {
+    final e = '[${exploit(description: "Se faire remarquer a Lagos")}]';
+    expect(valide(contenuAvec(carte(), exploits: e)).join(), contains('interdit'));
+  });
+
+  test('un parcours verrouille sans condition typee reste ferme pour toujours', () {
+    final parcoursSansCondition = '[{"id":"musicienne","nom":"La star","titre":"Madame la Presidente","femme":true,'
+        '"depart":{"peuple":75,"armee":35,"caisses":45,"presse":60},'
+        '"condition_deblocage":"Finir un mandat avec le peuple au dessus de 80"}]';
+    expect(valide(contenuAvec(carte(), parcours: parcoursSansCondition)).join(), contains('condition'));
+  });
+
+  test('une condition de parcours impossible a remplir est signalee', () {
+    final parcoursImpossible = '[{"id":"musicienne","nom":"La star","titre":"Madame la Presidente","femme":true,'
+        '"depart":{"peuple":75,"armee":35,"caisses":45,"presse":60},'
+        '"condition_deblocage":"Finir un mandat avec le peuple au dessus de 80",'
+        '"condition":{"peuple_min":90,"peuple_max":50}}]';
+    expect(valide(contenuAvec(carte(), parcours: parcoursImpossible)).join(), contains('impossible'));
+  });
+
+  test('une condition de parcours citant une fin inconnue est signalee', () {
+    final parcoursFinInconnue = '[{"id":"putschiste","nom":"Le putschiste","titre":"Monsieur le President","femme":false,'
+        '"depart":{"peuple":35,"armee":80,"caisses":50,"presse":30},'
+        '"condition_deblocage":"Se faire renverser par l armee",'
+        '"condition":{"fin":"fin_fantome"}}]';
+    expect(valide(contenuAvec(carte(), parcours: parcoursFinInconnue)).join(), contains('inconnue'));
   });
 }
