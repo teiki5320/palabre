@@ -4,14 +4,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../moteur/etat_partie.dart';
 import '../moteur/jauges.dart';
+import '../moteur/progression.dart';
 
-/// La partie en cours, gardée sur l'appareil. Rien ne part sur le réseau.
+/// La partie en cours et la progression, gardées sur l'appareil. Rien ne
+/// part sur le réseau.
 ///
 /// Chaque méthode avale ses propres erreurs : une sauvegarde abîmée ou un
 /// stockage indisponible (disque plein, environnement de test sans plugin)
-/// ne doit jamais empêcher de jouer.
+/// ne doit jamais empêcher de jouer. Les deux sauvegardes vivent sous des
+/// clés distinctes et indépendantes : effacer l'une ne touche jamais l'autre.
 class Sauvegarde {
   static const _cle = 'partie_en_cours';
+  static const _cleProgression = 'progression';
 
   static Future<void> enregistre(EtatPartie etat) async {
     try {
@@ -46,6 +50,33 @@ class Sauvegarde {
       await prefs.remove(_cle);
     } catch (_) {
       // Rien à faire.
+    }
+  }
+
+  static Future<void> enregistreProgression(Progression p) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_cleProgression, jsonEncode(progressionVersJson(p)));
+    } catch (_) {
+      // Rien à faire : on ne bloque jamais la partie pour une sauvegarde ratée.
+    }
+  }
+
+  /// Rend la progression enregistrée, ou une progression neuve s'il n'y en a
+  /// pas, si elle est illisible, ou si le stockage est indisponible.
+  static Future<Progression> lisProgression() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final brut = prefs.getString(_cleProgression);
+      if (brut == null) return Progression.neuve();
+      try {
+        return progressionDepuisJson(jsonDecode(brut) as Map<String, dynamic>);
+      } catch (_) {
+        await prefs.remove(_cleProgression);
+        return Progression.neuve();
+      }
+    } catch (_) {
+      return Progression.neuve();
     }
   }
 }
@@ -86,3 +117,19 @@ EtatPartie depuisJson(Map<String, dynamic> j) {
     chainesJour: ((j['chaines_jour'] as Map?) ?? const {}).map((k, v) => MapEntry(k as String, (v as num).toInt())),
   );
 }
+
+Map<String, dynamic> progressionVersJson(Progression p) => {
+      'parcours_debloques': p.parcoursDebloques.toList(),
+      'exploits': p.exploits.toList(),
+      'fins_decouvertes': p.finsDecouvertes.toList(),
+      'mandats_joues': p.mandatsJoues,
+      'meilleur_jour': p.meilleurJour,
+    };
+
+Progression progressionDepuisJson(Map<String, dynamic> j) => Progression(
+      parcoursDebloques: ((j['parcours_debloques'] as List?) ?? const []).cast<String>().toSet(),
+      exploits: ((j['exploits'] as List?) ?? const []).cast<String>().toSet(),
+      finsDecouvertes: ((j['fins_decouvertes'] as List?) ?? const []).cast<String>().toSet(),
+      mandatsJoues: (j['mandats_joues'] as num).toInt(),
+      meilleurJour: (j['meilleur_jour'] as num).toInt(),
+    );
