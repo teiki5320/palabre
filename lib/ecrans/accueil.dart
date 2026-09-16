@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -96,160 +98,187 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
 
             final taille = MediaQuery.sizeOf(context);
             final courte = taille.height < _hauteurEcranCourt;
-            final hauteurImage = taille.height * (courte ? 0.60 : 0.68);
+
+            // Ce que le bas réclame vraiment : les vignettes, le champ, le
+            // bouton, et « Reprendre » quand une partie est en cours. Sans
+            // cette mesure, la zone image prend ses 68 % coûte que coûte et
+            // pousse « Prendre mes fonctions » hors de l'écran.
+            final basNecessaire = 64.0 + 16 + (_enCours != null ? 58 : 0) + 52 + 10 + 56 + 18 + 30;
 
             return SafeArea(
               top: false,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: hauteurImage,
-                    width: double.infinity,
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        PageView(
-                          controller: _page,
-                          onPageChanged: (i) => setState(() => _choisi = i),
+              child: LayoutBuilder(
+                builder: (context, contraintes) {
+                  final hauteurImage = math.min(
+                    taille.height * (courte ? 0.60 : 0.68),
+                    contraintes.maxHeight - basNecessaire,
+                  );
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: hauteurImage,
+                        width: double.infinity,
+                        child: Stack(
+                          fit: StackFit.expand,
                           children: [
-                            for (final p in parcours) _PortraitParcours(parcours: p, verrouille: !debloque(p)),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(26, 60, 26, 0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/icone/icone.png',
-                                height: 44,
-                                errorBuilder: (_, __, ___) => const SizedBox(height: 44),
-                              ),
-                              const Spacer(),
-                              Text('${choisi + 1} / ${parcours.length}', style: Textes.surtitre),
-                              const SizedBox(width: 10),
-                              IconButton(
-                                tooltip: 'Exploits et fins',
-                                icon: Icon(Icons.emoji_events_outlined, color: Couleurs.creme.withValues(alpha: .65)),
-                                onPressed: () async {
-                                  await Navigator.of(context)
-                                      .push(MaterialPageRoute(builder: (_) => const CollectionEcran()));
-                                  await _relisSauvegarde();
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          bottom: 0,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(22, 0, 22, 22),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
+                            PageView(
+                              controller: _page,
+                              onPageChanged: (i) => setState(() => _choisi = i),
                               children: [
-                                AnimatedSwitcher(
-                                  duration: const Duration(milliseconds: 220),
-                                  switchInCurve: Curves.easeOut,
-                                  switchOutCurve: Curves.easeOut,
-                                  transitionBuilder: (child, animation) => FadeTransition(
-                                    opacity: animation,
-                                    child: AnimatedBuilder(
-                                      animation: animation,
-                                      builder: (context, enfant) =>
-                                          Transform.translate(offset: Offset(0, (1 - animation.value) * 8), child: enfant),
-                                      child: child,
-                                    ),
-                                  ),
-                                  child: _IdentiteParcours(
-                                    key: ValueKey(actuel.id),
-                                    parcours: actuel,
-                                    verrouille: verrouille,
-                                    courte: courte,
-                                  ),
-                                ),
-                                const SizedBox(height: 16),
-                                AnimatedSwitcher(
-                                  duration: const Duration(milliseconds: 220),
-                                  switchInCurve: Curves.easeOut,
-                                  switchOutCurve: Curves.easeOut,
-                                  transitionBuilder: (child, animation) => FadeTransition(
-                                    opacity: animation,
-                                    child: AnimatedBuilder(
-                                      animation: animation,
-                                      builder: (context, enfant) =>
-                                          Transform.translate(offset: Offset(0, (1 - animation.value) * 8), child: enfant),
-                                      child: child,
-                                    ),
-                                  ),
-                                  child: _JaugesDepart(key: ValueKey(actuel.id), depart: actuel.depart, verrouille: verrouille),
-                                ),
+                                for (final p in parcours)
+                                  _PortraitParcours(parcours: p, verrouille: !debloque(p)),
                               ],
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.fromLTRB(22, 18, 22, 30),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          _VignettesParcours(
-                            parcours: parcours,
-                            actuel: choisi,
-                            debloque: debloque,
-                            onTap: (i) => _page.animateToPage(
-                              i,
-                              duration: const Duration(milliseconds: 260),
-                              curve: Curves.easeOut,
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          if (_enCours != null)
                             Padding(
-                              padding: const EdgeInsets.only(bottom: 10),
-                              child: OutlinedButton(
-                                onPressed: () async {
-                                  ref.read(sessionProvider.notifier).reprend(_enCours!);
-                                  await Navigator.of(context)
-                                      .push(MaterialPageRoute(builder: (_) => const PartieEcran()));
-                                  await _relisSauvegarde();
-                                },
-                                child: Text('Reprendre le jour ${_enCours!.jour}'),
+                              padding: const EdgeInsets.fromLTRB(26, 60, 26, 0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    'assets/icone/marque.png',
+                                    height: 44,
+                                    errorBuilder: (_, __, ___) => const SizedBox(height: 44),
+                                  ),
+                                  const Spacer(),
+                                  Text('${choisi + 1} / ${parcours.length}', style: Textes.surtitre),
+                                  const SizedBox(width: 10),
+                                  IconButton(
+                                    tooltip: 'Exploits et fins',
+                                    icon: Icon(
+                                      Icons.emoji_events_outlined,
+                                      color: Couleurs.creme.withValues(alpha: .65),
+                                    ),
+                                    onPressed: () async {
+                                      await Navigator.of(context)
+                                          .push(MaterialPageRoute(builder: (_) => const CollectionEcran()));
+                                      await _relisSauvegarde();
+                                    },
+                                  ),
+                                ],
                               ),
                             ),
-                          TextField(
-                            controller: _nom,
-                            onChanged: (_) => setState(() {}),
-                            decoration: const InputDecoration(hintText: 'Votre nom'),
-                          ),
-                          const SizedBox(height: 10),
-                          AnimatedOpacity(
-                            duration: const Duration(milliseconds: 160),
-                            opacity: pret ? 1 : .6,
-                            child: FilledButton(
-                              onPressed: !pret
-                                  ? null
-                                  : () async {
-                                      final p = c.parcoursParId(actuel.id)!;
-                                      ref.read(sessionProvider.notifier).demarre(parcours: p, nom: _nom.text.trim());
+                            Positioned(
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(22, 0, 22, 22),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    AnimatedSwitcher(
+                                      duration: const Duration(milliseconds: 220),
+                                      switchInCurve: Curves.easeOut,
+                                      switchOutCurve: Curves.easeOut,
+                                      transitionBuilder: (child, animation) => FadeTransition(
+                                        opacity: animation,
+                                        child: AnimatedBuilder(
+                                          animation: animation,
+                                          builder: (context, enfant) => Transform.translate(
+                                            offset: Offset(0, (1 - animation.value) * 8),
+                                            child: enfant,
+                                          ),
+                                          child: child,
+                                        ),
+                                      ),
+                                      child: _IdentiteParcours(
+                                        key: ValueKey(actuel.id),
+                                        parcours: actuel,
+                                        verrouille: verrouille,
+                                        courte: courte,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 16),
+                                    AnimatedSwitcher(
+                                      duration: const Duration(milliseconds: 220),
+                                      switchInCurve: Curves.easeOut,
+                                      switchOutCurve: Curves.easeOut,
+                                      transitionBuilder: (child, animation) => FadeTransition(
+                                        opacity: animation,
+                                        child: AnimatedBuilder(
+                                          animation: animation,
+                                          builder: (context, enfant) => Transform.translate(
+                                            offset: Offset(0, (1 - animation.value) * 8),
+                                            child: enfant,
+                                          ),
+                                          child: child,
+                                        ),
+                                      ),
+                                      child: _JaugesDepart(
+                                        key: ValueKey(actuel.id),
+                                        depart: actuel.depart,
+                                        verrouille: verrouille,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.fromLTRB(22, 18, 22, 30),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              _VignettesParcours(
+                                parcours: parcours,
+                                actuel: choisi,
+                                debloque: debloque,
+                                onTap: (i) => _page.animateToPage(
+                                  i,
+                                  duration: const Duration(milliseconds: 260),
+                                  curve: Curves.easeOut,
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+                              if (_enCours != null)
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: OutlinedButton(
+                                    onPressed: () async {
+                                      ref.read(sessionProvider.notifier).reprend(_enCours!);
                                       await Navigator.of(context)
                                           .push(MaterialPageRoute(builder: (_) => const PartieEcran()));
                                       await _relisSauvegarde();
                                     },
-                              child: const Text('Prendre mes fonctions'),
-                            ),
+                                    child: Text('Reprendre le jour ${_enCours!.jour}'),
+                                  ),
+                                ),
+                              TextField(
+                                controller: _nom,
+                                onChanged: (_) => setState(() {}),
+                                decoration: const InputDecoration(hintText: 'Votre nom'),
+                              ),
+                              const SizedBox(height: 10),
+                              AnimatedOpacity(
+                                duration: const Duration(milliseconds: 160),
+                                opacity: pret ? 1 : .6,
+                                child: FilledButton(
+                                  onPressed: !pret
+                                      ? null
+                                      : () async {
+                                          final p = c.parcoursParId(actuel.id)!;
+                                          ref
+                                              .read(sessionProvider.notifier)
+                                              .demarre(parcours: p, nom: _nom.text.trim());
+                                          await Navigator.of(context)
+                                              .push(MaterialPageRoute(builder: (_) => const PartieEcran()));
+                                          await _relisSauvegarde();
+                                        },
+                                  child: const Text('Prendre mes fonctions'),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                ],
+                    ],
+                  );
+                },
               ),
             );
           },
@@ -279,7 +308,10 @@ class _PortraitParcours extends StatelessWidget {
       fit: StackFit.expand,
       children: [
         verrouille
-            ? Opacity(opacity: .55, child: ColorFiltered(colorFilter: _grise, child: image))
+            ? Opacity(
+                opacity: .55,
+                child: ColorFiltered(colorFilter: _grise, child: image),
+              )
             : image,
         DecoratedBox(
           decoration: BoxDecoration(
@@ -304,7 +336,12 @@ class _PortraitParcours extends StatelessWidget {
 /// Surtitre, nom du parcours, et sous-titre — ou, verrouille, la condition
 /// de deblocage a la place du sous-titre.
 class _IdentiteParcours extends StatelessWidget {
-  const _IdentiteParcours({super.key, required this.parcours, required this.verrouille, required this.courte});
+  const _IdentiteParcours({
+    super.key,
+    required this.parcours,
+    required this.verrouille,
+    required this.courte,
+  });
 
   final Parcours parcours;
   final bool verrouille;
@@ -384,7 +421,10 @@ class _JaugesDepart extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(j.nom.toUpperCase(), style: couleur == null ? Textes.nomJauge : Textes.nomJauge.copyWith(color: couleur)),
+        Text(
+          j.nom.toUpperCase(),
+          style: couleur == null ? Textes.nomJauge : Textes.nomJauge.copyWith(color: couleur),
+        ),
         const SizedBox(height: 6),
         ClipRRect(
           borderRadius: BorderRadius.circular(2),
@@ -392,11 +432,16 @@ class _JaugesDepart extends StatelessWidget {
             height: 4,
             child: Stack(
               children: [
-                const DecoratedBox(decoration: BoxDecoration(color: Couleurs.bordure)),
-                FractionallySizedBox(
-                  widthFactor: (depart.valeur(j) / 100).clamp(0, 1),
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(color: couleur ?? Couleurs.creme),
+                // Positioned.fill des deux cotes : dans une Stack, une boite
+                // decoree sans enfant se dimensionne a zero et la barre
+                // disparait. Et le remplissage part de la gauche, pas du
+                // centre, qui est le defaut de FractionallySizedBox.
+                const Positioned.fill(child: ColoredBox(color: Couleurs.bordure)),
+                Positioned.fill(
+                  child: FractionallySizedBox(
+                    alignment: Alignment.centerLeft,
+                    widthFactor: (depart.valeur(j) / 100).clamp(0, 1),
+                    child: ColoredBox(color: couleur ?? Couleurs.creme),
                   ),
                 ),
               ],
@@ -442,7 +487,12 @@ class _VignettesParcours extends StatelessWidget {
 }
 
 class _Vignette extends StatelessWidget {
-  const _Vignette({required this.parcours, required this.courante, required this.verrouille, required this.onTap});
+  const _Vignette({
+    required this.parcours,
+    required this.courante,
+    required this.verrouille,
+    required this.onTap,
+  });
 
   final Parcours parcours;
   final bool courante;
@@ -463,14 +513,20 @@ class _Vignette extends StatelessWidget {
     Widget contenu = ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: verrouille
-          ? Opacity(opacity: .40, child: ColorFiltered(colorFilter: _grise, child: image))
+          ? Opacity(
+              opacity: .40,
+              child: ColorFiltered(colorFilter: _grise, child: image),
+            )
           : Opacity(opacity: courante ? 1 : .70, child: image),
     );
 
     if (verrouille) {
       contenu = Stack(
         alignment: Alignment.center,
-        children: [contenu, const Icon(Icons.lock_outline, size: 14, color: Couleurs.or)],
+        children: [
+          contenu,
+          const Icon(Icons.lock_outline, size: 14, color: Couleurs.or),
+        ],
       );
     }
 
@@ -482,10 +538,10 @@ class _Vignette extends StatelessWidget {
         padding: const EdgeInsets.all(2),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: courante && !verrouille ? Couleurs.or : Colors.transparent,
-            width: 2,
-          ),
+          // La bordure dit « vous regardez celui-ci », le cadenas dit « il est
+          // ferme » : un parcours verrouille garde donc sa bordure, sinon on
+          // ne sait plus a quelle page on est.
+          border: Border.all(color: courante ? Couleurs.or : Colors.transparent, width: 2),
         ),
         child: contenu,
       ),
