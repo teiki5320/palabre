@@ -15,6 +15,7 @@ void main() {
               key: const ValueKey('carte'),
               onReponse: reponses.add,
               onIntention: intentions.add,
+              onSortie: () {},
               libelleGauche: 'Non',
               libelleDroite: 'Oui',
               enfant: const Text('La solde a du retard'),
@@ -63,12 +64,58 @@ void main() {
     await tester.pumpAndSettle();
   });
 
+  testWidgets('au-dela du seuil la carte freine sous le doigt', (tester) async {
+    await montre(tester, [], []);
+    final geste = await tester.startGesture(tester.getCenter(find.text('La solde a du retard')));
+    await geste.moveBy(const Offset(200, 0));
+    await tester.pump();
+
+    // Carte large de 300 : le seuil est a 105. Les 95 restants ne comptent
+    // que pour 60 %, soit 105 + 57 = 162 au lieu de 200.
+    final translation = tester
+        .widget<Transform>(
+            find.descendant(of: find.byType(GestureDetector), matching: find.byType(Transform)).first)
+        .transform
+        .getTranslation()
+        .x;
+    expect(translation, closeTo(162, 0.5));
+
+    await geste.up();
+    await tester.pumpAndSettle();
+  });
+
+  testWidgets('le depart de la carte est annonce avant la reponse', (tester) async {
+    final ordre = <String>[];
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: SizedBox(
+            width: 300,
+            height: 400,
+            child: CarteGlissante(
+              key: const ValueKey('carte'),
+              onReponse: (_) => ordre.add('reponse'),
+              onIntention: (_) {},
+              onSortie: () => ordre.add('sortie'),
+              libelleGauche: 'Non',
+              libelleDroite: 'Oui',
+              enfant: const Text('La solde a du retard'),
+            ),
+          ),
+        ),
+      ),
+    ));
+    await tester.drag(find.text('La solde a du retard'), const Offset(200, 0));
+    await tester.pumpAndSettle();
+    expect(ordre, ['sortie', 'reponse']);
+  });
+
   testWidgets('les libelles apparaissent pendant le geste', (tester) async {
     await montre(tester, [], []);
     final geste = await tester.startGesture(tester.getCenter(find.text('La solde a du retard')));
     await geste.moveBy(const Offset(80, 0));
     await tester.pump();
-    expect(find.text('Oui'), findsOneWidget);
+    expect(find.text('OUI'), findsOneWidget);
     await geste.up();
     await tester.pumpAndSettle();
   });
