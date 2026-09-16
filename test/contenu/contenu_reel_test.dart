@@ -65,10 +65,25 @@ void main() {
     }
   });
 
+  // Une carte réservée à un parcours ne sort évidemment pas quand on en joue
+  // un autre : il faut donc jouer les dix, et longuement, pour savoir si une
+  // carte est vraiment inatteignable. Les mandats durent cent jours ici,
+  // parce que certaines cartes ne se débloquent que tard.
   test('aucune carte n est ecrite pour rien', () {
-    final m = simule(contenu: contenu, parcours: 'general_parcours', strategie: Strategie.auHasard, parties: 5000);
-    final ailleurs = simule(contenu: contenu, parcours: 'professeure', strategie: Strategie.equilibree, parties: 5000);
-    final jamais = m.cartesJamaisVues.intersection(ailleurs.cartesJamaisVues);
+    var jamais = contenu.cartes.map((c) => c.id).toSet();
+    for (final p in contenu.parcours) {
+      for (final strategie in Strategie.values) {
+        final m = simule(
+          contenu: contenu,
+          parcours: p.id,
+          strategie: strategie,
+          parties: 600,
+          duree: 100,
+        );
+        jamais = jamais.intersection(m.cartesJamaisVues);
+        if (jamais.isEmpty) return;
+      }
+    }
     expect(jamais, isEmpty, reason: 'cartes jamais tirées : ${jamais.join(", ")}');
   });
 

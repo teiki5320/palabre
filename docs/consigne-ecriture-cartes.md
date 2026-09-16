@@ -70,9 +70,26 @@ Pas de religion nommée, pas d'ethnie nommée, pas de parti réel.
 - `effets` : de 1 à 3 jauges par réponse, valeurs entre −20 et 20, jamais 0.
   Les deux réponses doivent avoir des effets, et des effets différents.
 - `style` (facultatif) : de −10 à 10, **seulement si la carte parle du
-  régime** — censurer, écouter, museler, truquer poussent vers la dictature ;
-  rendre des comptes, accepter un contre-pouvoir, laisser parler ramènent vers
-  la république. La plupart des cartes n'en ont pas.
+  régime**. La plupart des cartes n'en ont pas.
+
+  **Le signe se trompe facilement, alors lisez ce tableau avant d'en écrire un.**
+  L'axe va de 0 (république) à 100 (dictature). Un `style` **positif pousse vers
+  la dictature**, un `style` **négatif ramène vers la république**.
+
+  | Ce que fait la réponse | Signe | Exemple |
+  |---|---|---|
+  | museler, censurer, saisir, bloquer | **positif** | « Saisie du tirage » `+8` |
+  | écouter, surveiller, ficher | **positif** | « Écoutez » `+10` |
+  | enterrer une affaire, protéger un proche | **positif** | « Dossier fermé » `+8` |
+  | truquer, maquiller, démentir un fait vrai | **positif** | « On maquille » `+8` |
+  | laisser publier, laisser parler, laisser manifester | **négatif** | « Qu'il publie » `−6` |
+  | laisser un juge juger, rouvrir une affaire | **négatif** | « Qu'on le juge » `−8` |
+  | rendre des comptes, accepter un contrôle | **négatif** | « J'y vais » `−6` |
+  | dire la vérité quand elle coûte | **négatif** | « Le vrai chiffre » `−6` |
+
+  Vérification de bon sens : **si la réponse ferait plaisir à un dictateur, le
+  signe est positif.** Deux rédacteurs sur six se sont trompés sur ce point ;
+  relisez chacune de vos cartes à style avec cette phrase en tête.
 
 ### Champs facultatifs
 
