@@ -165,6 +165,7 @@ class Parcours {
     required this.titre,
     required this.femme,
     required this.depart,
+    this.accroche = '',
     this.conditionDeblocage,
     this.condition,
   });
@@ -176,6 +177,11 @@ class Parcours {
   final String titre;
   final bool femme;
   final Jauges depart;
+
+  /// Une ligne de caractère, affichée sous le nom au choix du parcours :
+  /// ce que le pays pense de vous avant même que vous ayez décidé quoi que
+  /// ce soit. Vide si le contenu n'en donne pas.
+  final String accroche;
 
   /// Texte affiché sur un parcours verrouillé ; null si ouvert dès le début.
   final String? conditionDeblocage;
@@ -198,6 +204,7 @@ class Parcours {
         caisses: (d['caisses'] as num).toInt(),
         presse: (d['presse'] as num).toInt(),
       ),
+      accroche: j['accroche'] as String? ?? '',
       conditionDeblocage: j['condition_deblocage'] as String?,
       condition: j['condition'] == null ? null : Condition.depuisJson(j['condition'] as Map<String, dynamic>),
     );

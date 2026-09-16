@@ -4,6 +4,7 @@ import 'package:president/contenu/validation.dart';
 
 const personnages = '[{"id":"general","nom":"Le General","titre":"Chef d etat-major"}]';
 const parcours = '[{"id":"general_parcours","nom":"L ancien general","titre":"Monsieur le President","femme":false,'
+    '"accroche":"L armee vous suit, la presse se mefie.",'
     '"depart":{"peuple":40,"armee":70,"caisses":50,"presse":40}}]';
 const fins = '[{"id":"election_gagnee","jauge":null,"vers_le_haut":true,"titre":"Reelu","texte":"t","image":"i"},'
     '{"id":"election_perdue","jauge":null,"vers_le_haut":false,"titre":"Battu","texte":"t","image":"i"}]';
@@ -45,7 +46,28 @@ void main() {
   });
 
   test('un texte trop long', () {
-    expect(valide(contenuAvec(carte(texte: 'x' * 141))).join(), contains('140'));
+    expect(valide(contenuAvec(carte(texte: 'x' * 151))).join(), contains('150'));
+  });
+
+  test('un texte court qui devient trop long une fois habille', () {
+    // 140 caracteres bruts, mais la marque {titre} en vaut vingt de plus.
+    final long = 'x' * 133 + ' {titre}';
+    expect(long.length, lessThanOrEqualTo(141));
+    // 133 + l espace + les vingt caracteres de « Madame la Presidente ».
+    expect(valide(contenuAvec(carte(texte: long))).join(), contains('154 caractères'));
+  });
+
+  test('un parcours sans accroche', () {
+    final sansAccroche = '[{"id":"general_parcours","nom":"L ancien general","titre":"Monsieur le President",'
+        '"femme":false,"depart":{"peuple":40,"armee":70,"caisses":50,"presse":40}}]';
+    expect(valide(contenuAvec(carte(), parcours: sansAccroche)).join(), contains('accroche'));
+  });
+
+  test('une accroche trop longue', () {
+    final trop = '[{"id":"general_parcours","nom":"L ancien general","titre":"Monsieur le President",'
+        '"femme":false,"accroche":"${'x' * 61}",'
+        '"depart":{"peuple":40,"armee":70,"caisses":50,"presse":40}}]';
+    expect(valide(contenuAvec(carte(), parcours: trop)).join(), contains('60'));
   });
 
   test('un libelle trop long', () {

@@ -12,6 +12,12 @@ const _interdits = [
   'dakar', 'abidjan', 'lome', 'cotonou', 'bamako', 'ouagadougou', 'accra', 'lagos',
 ];
 
+/// Le titre le plus long que `habille()` puisse poser dans un texte de carte,
+/// et un nom de joueur généreux : c'est contre eux qu'on mesure la longueur,
+/// pas contre le texte brut.
+const _titreLePlusLong = 'Madame la Présidente';
+const _nomLePlusLong = 'Rakotobearison';
+
 /// Minuscules, sans accents, un seul mot par espace, encadré d'espaces pour
 /// pouvoir chercher un mot entier. Le trait d'union disparaît (« Séné-gal »
 /// devient « senegal »), l'apostrophe devient une espace (« l'ONU » devient
@@ -52,7 +58,15 @@ List<String> valide(Contenu c) {
     if (!c.personnages.containsKey(carte.personnage)) {
       problemes.add('$ou : personnage inconnu « ${carte.personnage} »');
     }
-    if (carte.texte.length > 140) problemes.add('$ou : texte de ${carte.texte.length} caractères, 140 au plus');
+    // Mesuré une fois les marques remplacées : « {titre} » vaut jusqu'à
+    // vingt caractères, et c'est ce texte-là qui doit tenir sur la carte
+    // sans masquer le portrait.
+    final habille = carte.texte
+        .replaceAll('{titre}', _titreLePlusLong)
+        .replaceAll('{nom}', _nomLePlusLong);
+    if (habille.length > 150) {
+      problemes.add('$ou : texte de ${habille.length} caractères une fois habillé, 150 au plus');
+    }
     if (carte.poids < 1) problemes.add('$ou : poids inférieur à 1');
 
     for (final r in [carte.gauche, carte.droite]) {
@@ -105,9 +119,17 @@ List<String> valide(Contenu c) {
 
   for (final parcours in c.parcours) {
     final ou = 'parcours ${parcours.id}';
-    final texte = _mots('${parcours.nom} ${parcours.conditionDeblocage ?? ""}');
+    final texte = _mots('${parcours.nom} ${parcours.accroche} ${parcours.conditionDeblocage ?? ""}');
     for (final mot in _interdits) {
       if (texte.contains(' $mot ')) problemes.add('$ou : mot interdit « $mot »');
+    }
+
+    // Sans accroche, le choix du parcours n'affiche qu'un titre de fonction
+    // et ne dit rien de qui on était.
+    if (parcours.accroche.trim().isEmpty) {
+      problemes.add('$ou : sans accroche');
+    } else if (parcours.accroche.length > 60) {
+      problemes.add('$ou : accroche de ${parcours.accroche.length} caractères, 60 au plus');
     }
 
     if (!parcours.ouvertDesLeDebut) {

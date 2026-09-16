@@ -36,3 +36,18 @@ flutter:
     - assets/images/personnages/
     - assets/images/parcours/
     - assets/images/fins/
+  fonts:
+    - family: Bricolage
+      fonts:
+        - asset: assets/polices/BricolageGrotesque-Bold.ttf
+          weight: 700
+        - asset: assets/polices/BricolageGrotesque-ExtraBold.ttf
+          weight: 800
+    - family: PublicSans
+      fonts:
+        - asset: assets/polices/PublicSans-Regular.ttf
+          weight: 400
+        - asset: assets/polices/PublicSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/polices/PublicSans-Bold.ttf
+          weight: 700
