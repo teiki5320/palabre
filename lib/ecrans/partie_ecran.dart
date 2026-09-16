@@ -142,7 +142,7 @@ class _LigneJour extends StatelessWidget {
           Text('JOUR $jour', style: Textes.jour),
           const SizedBox(width: 8),
           Text(
-            mandat > 1 ? 'second mandat' : 'élection au jour $dureeMandatPrototype',
+            mandat > 1 ? 'second mandat' : 'élection au jour $dureeMandat',
             style: Textes.echeance,
           ),
         ],

@@ -2,9 +2,9 @@ import 'etat_partie.dart';
 import 'jauges.dart';
 import 'modeles.dart';
 
-/// Durée d'un mandat dans le prototype. Le lancement passera à 100, quand il
-/// y aura assez de cartes pour tenir cent jours sans se répéter.
-const int dureeMandatPrototype = 30;
+/// Durée d'un mandat : cent jours, comme le titre le promet. Mesuré sur
+/// 296 cartes, le paquet tient sans jamais s'épuiser.
+const int dureeMandat = 100;
 
 enum TypeDenouement { chute, electionGagnee, electionPerdue }
 
@@ -22,7 +22,7 @@ class Denouement {
 }
 
 /// Rend le dénouement si le mandat s'arrête, null s'il continue.
-Denouement? evalue(EtatPartie etat, {int duree = dureeMandatPrototype}) {
+Denouement? evalue(EtatPartie etat, {int duree = dureeMandat}) {
   final fautive = etat.jauges.extreme();
   if (fautive != null) {
     return Denouement(

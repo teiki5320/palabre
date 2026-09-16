@@ -39,7 +39,7 @@ Mesures simule({
   required Strategie strategie,
   int parties = 1000,
   int graine = 1,
-  int duree = dureeMandatPrototype,
+  int duree = dureeMandat,
 }) {
   final alea = Random(graine);
   final depart = contenu.parcoursParId(parcours);

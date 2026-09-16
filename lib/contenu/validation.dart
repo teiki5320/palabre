@@ -285,7 +285,7 @@ List<String> _problemesCondition(String ou, Condition condition, Set<String> ids
       problemes.add('$ou : condition impossible sur ${jauge.name}');
     }
   }
-  if (condition.joursMin > dureeMandatPrototype) {
+  if (condition.joursMin > dureeMandat) {
     problemes.add('$ou : condition impossible, jours_min au-delà de la durée du mandat');
   }
   final fin = condition.fin;

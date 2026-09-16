@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
 import 'package:president/contenu/validation.dart';
+import 'package:president/moteur/denouement.dart';
 
 const personnages = '[{"id":"general","nom":"Le General","titre":"Chef d etat-major"}]';
 const parcours = '[{"id":"general_parcours","nom":"L ancien general","titre":"Monsieur le President","femme":false,'
@@ -220,7 +221,7 @@ void main() {
   });
 
   test('une condition d exploit avec des jours au dela de la duree du mandat', () {
-    final e = '[${exploit(condition: '{"jours_min":40}')}]';
+    final e = '[${exploit(condition: '{"jours_min":${dureeMandat + 10}}')}]';
     expect(valide(contenuAvec(carte(), exploits: e)).join(), contains('impossible'));
   });
 

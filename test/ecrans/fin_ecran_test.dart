@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
 import 'package:president/ecrans/fin_ecran.dart';
 import 'package:president/ecrans/session.dart';
+import 'package:president/moteur/denouement.dart';
 import 'package:president/moteur/etat_partie.dart';
 import 'package:president/moteur/jauges.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -53,18 +54,18 @@ const etatChute = EtatPartie(
   jour: 12,
 );
 
-const etatReelu = EtatPartie(
+final etatReelu = EtatPartie(
   parcours: 'general_parcours',
   nomJoueur: 'Awa',
   jauges: Jauges(peuple: 60, armee: 50, caisses: 50, presse: 60),
-  jour: 31,
+  jour: dureeMandat + 1,
 );
 
-const etatBattu = EtatPartie(
+final etatBattu = EtatPartie(
   parcours: 'general_parcours',
   nomJoueur: 'Awa',
   jauges: Jauges(peuple: 30, armee: 50, caisses: 50, presse: 30),
-  jour: 31,
+  jour: dureeMandat + 1,
 );
 
 /// Le conteneur est monté à la main : on prépare la session AVANT le premier

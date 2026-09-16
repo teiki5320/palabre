@@ -29,11 +29,11 @@ Contenu contenuDEssai() => Contenu.depuisChaines(
           '"condition":{"jours_min":30}}]',
     );
 
-const etatReelu = EtatPartie(
+final etatReelu = EtatPartie(
   parcours: 'general_parcours',
   nomJoueur: 'Awa',
   jauges: Jauges(peuple: 60, armee: 60, caisses: 60, presse: 60),
-  jour: 31,
+  jour: dureeMandat + 1,
   mandat: 1,
   drapeaux: {'un_drapeau'},
   vues: {'c1'},
@@ -48,11 +48,11 @@ const etatChute = EtatPartie(
   jour: 5,
 );
 
-const etatBattu = EtatPartie(
+final etatBattu = EtatPartie(
   parcours: 'general_parcours',
   nomJoueur: 'Awa',
   jauges: Jauges(peuple: 30, armee: 50, caisses: 50, presse: 30),
-  jour: 31,
+  jour: dureeMandat + 1,
 );
 
 void main() {

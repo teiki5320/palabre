@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
 import 'package:president/ecrans/partie_ecran.dart';
 import 'package:president/ecrans/session.dart';
+import 'package:president/moteur/denouement.dart';
 import 'package:president/ecrans/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -145,7 +146,7 @@ void main() {
 
   testWidgets('l echeance du mandat est annoncee a cote du jour', (tester) async {
     await lance(tester);
-    expect(find.text('élection au jour 30'), findsOneWidget);
+    expect(find.text('élection au jour $dureeMandat'), findsOneWidget);
   });
 
   testWidgets('une jauge au bord du gouffre est signalee sans chiffre', (tester) async {

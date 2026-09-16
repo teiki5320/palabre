@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
 import 'package:president/contenu/validation.dart';
+import 'package:president/moteur/denouement.dart';
 import 'package:president/moteur/simulation.dart';
 
 Contenu contenuLivre() {
@@ -52,16 +53,26 @@ void main() {
     expect(contenu.exploits.map((e) => e.id).toSet().length, 8);
   });
 
-  // La fourchette est large parce que l'écart de difficulté entre parcours
-  // est voulu : l'ancien international part à 85 de peuple, tout près du
-  // seuil mortel, et tombe vers 14 jours ; la technocrate part au calme et
-  // tient vers 23. Ce que ce test attrape, c'est un parcours qui s'effondre
-  // en quelques jours ou qu'aucune carte ne met jamais en danger.
-  test('un mandat joue au hasard dure entre dix et vingt-cinq jours', () {
+  // Jouer au hasard ne doit jamais mener bien loin : un joueur qui répond
+  // sans réfléchir n'atteint pas la moitié du mandat. Ce que ce test attrape, c'est un parcours qui
+  // s'effondre en quelques jours, ou qu'aucune carte ne met jamais en
+  // danger. L'écart entre parcours, lui, est voulu.
+  test('un mandat joue au hasard n atteint jamais la moitie', () {
     for (final p in contenu.parcours.where((p) => p.ouvertDesLeDebut)) {
       final m = simule(contenu: contenu, parcours: p.id, strategie: Strategie.auHasard, parties: 2000);
-      expect(m.joursMoyens, greaterThan(10), reason: '${p.id} : mandats trop courts (${m.joursMoyens})');
-      expect(m.joursMoyens, lessThan(25), reason: '${p.id} : mandats trop longs (${m.joursMoyens})');
+      expect(m.joursMoyens, greaterThan(12), reason: '${p.id} : mandats trop courts (${m.joursMoyens})');
+      expect(m.joursMoyens, lessThan(dureeMandat / 2),
+          reason: '${p.id} : mandats trop longs (${m.joursMoyens})');
+    }
+  });
+
+  // Et jouer attentivement doit permettre d'aller au bout : c'est l'autre
+  // bord de la fourchette, celui qu'on oublie de tester.
+  test('un mandat joue prudemment atteint l election', () {
+    for (final p in contenu.parcours.where((p) => p.ouvertDesLeDebut)) {
+      final m = simule(contenu: contenu, parcours: p.id, strategie: Strategie.equilibree, parties: 1000);
+      expect(m.joursMoyens, greaterThan(dureeMandat * 0.7),
+          reason: '${p.id} : même en jouant bien, on n\'arrive pas au bout (${m.joursMoyens})');
     }
   });
 
