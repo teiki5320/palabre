@@ -10,6 +10,7 @@ class BilanMandat {
     required this.jour,
     required this.mandat,
     this.finId,
+    this.finFamille,
     this.drapeaux = const {},
     required this.parcours,
   });
@@ -21,6 +22,11 @@ class BilanMandat {
   /// Identifiant de la [Fin] écrite qui correspond au dénouement, ou null si
   /// le contenu ne la fournit pas.
   final String? finId;
+
+  /// Le dénouement dont la fin est une variante (voir [Fin.famille]). Une
+  /// condition qui exige « election_gagnee » est remplie par n'importe quelle
+  /// réélection, dans les règles ou seul candidat.
+  final String? finFamille;
 
   final Set<String> drapeaux;
   final String parcours;
@@ -100,7 +106,7 @@ class Condition {
     for (final e in jaugesMax.entries) {
       if (b.jauges.valeur(e.key) > e.value) return false;
     }
-    if (fin != null && b.finId != fin) return false;
+    if (fin != null && b.finId != fin && b.finFamille != fin) return false;
     for (final d in drapeauxRequis) {
       if (!b.drapeaux.contains(d)) return false;
     }

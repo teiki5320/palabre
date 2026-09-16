@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:president/moteur/condition.dart';
 import 'package:president/moteur/jauges.dart';
+import 'package:president/moteur/modeles.dart';
 
 BilanMandat bilan({
   Jauges? jauges,
@@ -20,6 +21,7 @@ BilanMandat bilan({
     );
 
 void main() {
+  famillesDeFin();
   test('une condition vide est toujours remplie', () {
     expect(const Condition().remplie(bilan()), isTrue);
   });
@@ -87,5 +89,42 @@ void main() {
 
   test('depuisJson(null) rend une condition vide, toujours remplie', () {
     expect(Condition.depuisJson(null).remplie(bilan()), isTrue);
+  });
+}
+
+/// Les fins dedoublees par le regime restent, pour une condition, la meme
+/// fin : etre reelu, c est etre reelu.
+void famillesDeFin() {
+  test('une reelection seul candidat remplit la condition « election_gagnee »', () {
+    const c = Condition(fin: 'election_gagnee');
+    final seul = BilanMandat(
+      parcours: 'p',
+      jauges: Jauges.milieu,
+      jour: 101,
+      mandat: 1,
+      finId: 'election_gagnee_seul',
+      finFamille: 'election_gagnee',
+    );
+    expect(c.remplie(seul), isTrue);
+
+    // Et une fin d une autre famille ne la remplit pas.
+    final battu = BilanMandat(
+      parcours: 'p',
+      jauges: Jauges.milieu,
+      jour: 101,
+      mandat: 1,
+      finId: 'election_perdue_comptee',
+      finFamille: 'election_perdue',
+    );
+    expect(c.remplie(battu), isFalse);
+  });
+
+  test('la famille d une fin est l identifiant de sa fin de base', () {
+    const seul = Fin(id: 'election_gagnee_seul', jauge: null, versLeHaut: true,
+        titre: 't', texte: 't', image: 'i', styleMin: 72);
+    expect(seul.famille, 'election_gagnee');
+    const coup = Fin(id: 'armee_bas_tyran', jauge: Jauge.armee, versLeHaut: false,
+        titre: 't', texte: 't', image: 'i');
+    expect(coup.famille, 'armee_bas');
   });
 }

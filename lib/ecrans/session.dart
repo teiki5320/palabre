@@ -129,6 +129,7 @@ class SessionNotifier extends Notifier<Session?> {
         jour: etat.jour,
         mandat: etat.mandat,
         finId: fin?.id,
+        finFamille: fin?.famille,
         drapeaux: etat.drapeaux,
         parcours: etat.parcours,
       ),

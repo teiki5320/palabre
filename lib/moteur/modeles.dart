@@ -305,6 +305,15 @@ class Fin {
   /// avant une fin générale.
   int get precision => styleMax - styleMin;
 
+  /// Le dénouement dont cette fin est une variante : `election_gagnee`,
+  /// `election_perdue`, `armee_bas`, `presse_haut`… Ce sont les identifiants
+  /// des fins de base, et c'est ce qu'une condition d'exploit ou de parcours
+  /// veut dire quand elle exige une fin : être réélu, pas être réélu d'une
+  /// manière précise. Sans cela, « Seul candidat » ne débloquerait rien.
+  String get famille => jauge == null
+      ? (versLeHaut ? 'election_gagnee' : 'election_perdue')
+      : '${jauge!.name}_${versLeHaut ? "haut" : "bas"}';
+
   /// La jauge fautive, ou null pour les fins d'élection.
   final Jauge? jauge;
 
