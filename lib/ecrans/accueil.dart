@@ -57,9 +57,9 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
               children: [
                 // Le logo porte le nom du jeu ; le sous-titre dit ce qu'on y fait.
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 10, 22, 0),
+                  padding: const EdgeInsets.fromLTRB(22, 4, 22, 0),
                   child: Image.asset('assets/icone/logo.png',
-                      height: 170, fit: BoxFit.contain, alignment: Alignment.centerLeft,
+                      height: 108, fit: BoxFit.contain, alignment: Alignment.centerLeft,
                       errorBuilder: (_, __, ___) => const Text('Palabre',
                           style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800))),
                 ),
