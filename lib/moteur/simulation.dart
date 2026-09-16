@@ -66,7 +66,7 @@ Mesures simule({
       etat = repond(
         etat: etat,
         carte: carte,
-        cote: _choisit(strategie, etat, carte, alea),
+        cote: _choisit(strategie, etat, carte, alea, depart.atout),
         atout: depart.atout,
       );
     }
@@ -81,17 +81,22 @@ Mesures simule({
   );
 }
 
-Cote _choisit(Strategie s, EtatPartie etat, Carte carte, Random alea) => switch (s) {
+Cote _choisit(Strategie s, EtatPartie etat, Carte carte, Random alea, Atout? atout) => switch (s) {
       Strategie.toujoursGauche => Cote.gauche,
       Strategie.toujoursDroite => Cote.droite,
       Strategie.auHasard => alea.nextBool() ? Cote.gauche : Cote.droite,
-      Strategie.equilibree => _versLeCentre(etat, carte),
+      Strategie.equilibree => _versLeCentre(etat, carte, atout),
     };
 
-/// Joue le côté qui laisse les jauges le plus près du centre.
-Cote _versLeCentre(EtatPartie etat, Carte carte) {
+/// Joue le côté qui laisse les jauges le plus près du centre — en jugeant sur
+/// les effets réels, régime, mandat et atout compris, c'est-à-dire sur ce que
+/// l'écran montre au joueur. Juger sur les effets bruts, c'est simuler un
+/// joueur aveugle, et tout l'équilibrage mesuré avec lui est faux.
+Cote _versLeCentre(EtatPartie etat, Carte carte, Atout? atout) {
   int ecart(Reponse r) {
-    final apres = etat.jauges.applique(r.effets);
+    final apres = etat.jauges.applique(
+      effetsReels(effets: r.effets, style: etat.style, mandat: etat.mandat, atout: atout),
+    );
     return Jauge.values.fold(0, (s, j) => s + (apres.valeur(j) - 50).abs());
   }
 

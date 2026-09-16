@@ -15,12 +15,12 @@ String carte({
   String personnage = 'general',
   String texte = 'Une phrase courte.',
   String libelleGauche = 'Non',
-  String effetsGauche = '{"armee":-10}',
+  String effetsGauche = '{"armee":-10,"caisses":6}',
   String extra = '',
 }) =>
     '{"id":"$id","personnage":"$personnage","humeur":"neutre","texte":"$texte",'
     '"gauche":{"libelle":"$libelleGauche","effets":$effetsGauche},'
-    '"droite":{"libelle":"Oui","effets":{"armee":10}}$extra}';
+    '"droite":{"libelle":"Oui","effets":{"armee":10,"caisses":-6}}$extra}';
 
 String exploit({
   String id = 'ex',
@@ -69,6 +69,17 @@ void main() {
         '"femme":false,"accroche":"${'x' * 61}",'
         '"depart":{"peuple":40,"armee":70,"caisses":50,"presse":40}}]';
     expect(valide(contenuAvec(carte(), parcours: trop)).join(), contains('60'));
+  });
+
+  test('une reponse qui domine l autre sur toutes les jauges', () {
+    // Droite gagne plus et perd moins partout : il n y a pas de choix.
+    final c = carte(effetsGauche: '{"armee":-10,"caisses":-8}');
+    expect(valide(contenuAvec(c)).join(), contains('domine'));
+  });
+
+  test('un vrai dilemme passe la regle de dominance', () {
+    // Gauche perd de l armee mais gagne des caisses : chacun a son prix.
+    expect(valide(contenuAvec(carte())), isEmpty);
   });
 
   test('un libelle trop long', () {

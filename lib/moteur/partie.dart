@@ -74,8 +74,13 @@ Map<Jauge, int> effetsReels({
   required int style,
   required int mandat,
   Atout? atout,
-}) =>
-    selonAtout(amplifie(selonRegime(effets, style), mandat), atout);
+}) {
+  final reels = selonAtout(amplifie(selonRegime(effets, style), mandat), atout);
+  // Borné ici, en sortie, et nulle part ailleurs : le régime seul pouvait
+  // porter un effet à 30 au premier mandat, alors que l'amplification du
+  // second le ramenait à 20 — le second mandat frappait moins fort.
+  return {for (final e in reels.entries) e.key: e.value.clamp(-20, 20)};
+}
 
 /// Applique une réponse et rend l'état du lendemain.
 EtatPartie repond({

@@ -155,6 +155,6 @@ Progression progressionDepuisJson(Map<String, dynamic> j) => Progression(
       parcoursDebloques: ((j['parcours_debloques'] as List?) ?? const []).cast<String>().toSet(),
       exploits: ((j['exploits'] as List?) ?? const []).cast<String>().toSet(),
       finsDecouvertes: ((j['fins_decouvertes'] as List?) ?? const []).cast<String>().toSet(),
-      mandatsJoues: (j['mandats_joues'] as num).toInt(),
-      meilleurJour: (j['meilleur_jour'] as num).toInt(),
+      mandatsJoues: ((j['mandats_joues'] as num?) ?? 0).toInt(),
+      meilleurJour: ((j['meilleur_jour'] as num?) ?? 0).toInt(),
     );

@@ -65,14 +65,14 @@ void main() {
   });
 
   test('un exploit dont la condition est remplie entre dans la progression et les nouveautes', () {
-    final resultat = bilan(avant: Progression.neuve(), mandat: faits(jour: 30), contenu: contenu());
+    final resultat = bilan(avant: Progression.neuve(), mandat: faits(jour: 31), contenu: contenu());
     expect(resultat.progression.exploits, contains('tenir_jusqu_au_bout'));
     expect(resultat.nouveautes.exploits.map((e) => e.id), contains('tenir_jusqu_au_bout'));
   });
 
   test('le meme exploit au mandat suivant n est plus une nouveaute', () {
-    final premier = bilan(avant: Progression.neuve(), mandat: faits(jour: 30), contenu: contenu());
-    final second = bilan(avant: premier.progression, mandat: faits(jour: 30, mandat: 2), contenu: contenu());
+    final premier = bilan(avant: Progression.neuve(), mandat: faits(jour: 31), contenu: contenu());
+    final second = bilan(avant: premier.progression, mandat: faits(jour: 31, mandat: 2), contenu: contenu());
     expect(second.progression.exploits, contains('tenir_jusqu_au_bout'));
     expect(second.nouveautes.exploits, isEmpty);
   });
@@ -113,7 +113,7 @@ void main() {
   });
 
   test('meilleurJour garde le maximum meme si le mandat suivant est plus court', () {
-    final premier = bilan(avant: Progression.neuve(), mandat: faits(jour: 30), contenu: contenu());
+    final premier = bilan(avant: Progression.neuve(), mandat: faits(jour: 31), contenu: contenu());
     expect(premier.progression.meilleurJour, 30);
     final second = bilan(avant: premier.progression, mandat: faits(jour: 12, mandat: 2), contenu: contenu());
     expect(second.progression.meilleurJour, 30);

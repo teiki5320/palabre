@@ -390,7 +390,12 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                                 TextField(
                                   controller: _nom,
                                   onChanged: (_) => setState(() {}),
-                                  decoration: const InputDecoration(hintText: 'Votre nom'),
+                                  // La validation mesure les textes de carte
+                                  // contre un nom de quatorze caractères ;
+                                  // vingt-quatre laisse de la marge sans
+                                  // permettre de déborder la carte.
+                                  maxLength: 24,
+                                  decoration: const InputDecoration(hintText: 'Votre nom', counterText: ''),
                                 ),
                                 const SizedBox(height: 10),
                                 AnimatedOpacity(
@@ -769,6 +774,9 @@ class _Vignette extends StatelessWidget {
       height: 64,
       fit: BoxFit.cover,
       alignment: const Alignment(0, -0.5),
+      // Décodée à sa taille d'affichage : dix vignettes en pleine définition
+      // pèseraient 43 Mo en mémoire pour 52 × 64 points.
+      cacheWidth: 160,
       errorBuilder: (_, __, ___) => Container(width: 52, height: 64, color: Couleurs.aplat),
     );
 

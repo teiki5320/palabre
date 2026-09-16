@@ -99,7 +99,10 @@ class Condition {
 
   bool remplie(BilanMandat b) {
     if (b.mandat < mandatMin) return false;
-    if (b.jour < joursMin) return false;
+    // `jour` est le premier jour non joué : on a tenu `jour - 1` jours, et
+    // c'est ce que l'écran affiche. Comparer `jour` ferait gagner « tenir
+    // cent jours » en s'effondrant au quatre-vingt-dix-neuvième.
+    if (b.jour - 1 < joursMin) return false;
     for (final e in jaugesMin.entries) {
       if (b.jauges.valeur(e.key) < e.value) return false;
     }

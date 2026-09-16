@@ -84,7 +84,12 @@ class SessionNotifier extends Notifier<Session?> {
   void mandatSuivant() {
     final s = state;
     if (s == null || s.denouement?.type != TypeDenouement.electionGagnee) return;
-    final parcours = _contenu.parcoursParId(s.etat.parcours)!;
+    // Un mandat qui s'est terminé sans qu'un jour ait été joué (paquet
+    // vide) ne donne pas droit au suivant : sinon trois appuis font trois
+    // mandats, et « La longévité du pouvoir » avec.
+    if (s.etat.jour <= 1) return;
+    final parcours = _contenu.parcoursParId(s.etat.parcours);
+    if (parcours == null) return;
     final etat = EtatPartie(
       parcours: s.etat.parcours,
       nomJoueur: s.etat.nomJoueur,
@@ -101,12 +106,24 @@ class SessionNotifier extends Notifier<Session?> {
     if (d != null) return _termine(etat, d);
     final carte = choisitCarte(paquet: _contenu.cartes, etat: etat, alea: _alea);
     if (carte == null) {
-      // Plus aucune carte jouable : on clôt le mandat comme une élection.
+      // Plus aucune carte jouable : une panne de contenu, pas une fin de
+      // mandat. On clôt comme une élection pour que l'écran ait quelque
+      // chose à dire, mais si pas un seul jour n'a été joué, il n'y a rien
+      // à mettre au bilan — ni mandat compté, ni exploit décroché sur les
+      // jauges de départ, ni progression réécrite.
       final faute = Denouement(
         type: (etat.jauges.peuple + etat.jauges.presse) / 2 > 50
             ? TypeDenouement.electionGagnee
             : TypeDenouement.electionPerdue,
       );
+      if (etat.jour <= 1) {
+        Sauvegarde.efface();
+        return Session(
+          etat: etat,
+          denouement: faute,
+          fin: choisitFin(faute, _contenu.fins, style: etat.style),
+        );
+      }
       return _termine(etat, faute);
     }
     Sauvegarde.enregistre(etat);
@@ -121,7 +138,12 @@ class SessionNotifier extends Notifier<Session?> {
     Sauvegarde.efface(); // le mandat est fini, il n'y a plus rien à reprendre
     final fin = choisitFin(denouement, _contenu.fins, style: etat.style);
 
-    final avant = ref.read(progressionProvider).value ?? Progression.neuve();
+    // Si la progression n'a pas encore été lue du disque, on calcule le
+    // bilan contre une progression neuve pour que l'écran de fin ait quelque
+    // chose à annoncer — mais on ne l'écrit surtout pas : ce serait écraser
+    // tout ce que le joueur a débloqué par du vide.
+    final chargee = ref.read(progressionProvider).value;
+    final avant = chargee ?? Progression.neuve();
     final resultat = bilan(
       avant: avant,
       mandat: BilanMandat(
@@ -135,7 +157,7 @@ class SessionNotifier extends Notifier<Session?> {
       ),
       contenu: _contenu,
     );
-    Sauvegarde.enregistreProgression(resultat.progression);
+    if (chargee != null) Sauvegarde.enregistreProgression(resultat.progression);
     ref.invalidate(progressionProvider); // pour que la fin et la collection voient la nouvelle progression
 
     return Session(etat: etat, denouement: denouement, fin: fin, nouveautes: resultat.nouveautes);

@@ -40,8 +40,9 @@ void main() {
   });
 
   test('le nombre de jours minimum est respecte', () {
-    expect(const Condition(joursMin: 30).remplie(bilan(jour: 30)), isTrue);
-    expect(const Condition(joursMin: 30).remplie(bilan(jour: 29)), isFalse);
+    // `jour` est le premier jour non joue : au jour 31, on a tenu 30 jours.
+    expect(const Condition(joursMin: 30).remplie(bilan(jour: 31)), isTrue);
+    expect(const Condition(joursMin: 30).remplie(bilan(jour: 30)), isFalse);
   });
 
   test('le mandat minimum est respecte', () {

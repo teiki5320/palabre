@@ -9,7 +9,7 @@ const _interdits = [
   'senegal', 'benin', 'cote d ivoire', 'ivoirien', 'togo', 'mali', 'niger', 'nigeria',
   'ghana', 'burkina', 'guinee', 'cameroun', 'tchad', 'france', 'francais', 'paris',
   'fmi', 'banque mondiale', 'onu', 'union africaine', 'cedeao', 'union europeenne',
-  'cfa', 'bceao', 'uemoa',
+  'cfa', 'bceao', 'uemoa', 'franc', 'francs',
   'dakar', 'abidjan', 'lome', 'cotonou', 'bamako', 'ouagadougou', 'accra', 'lagos',
 ];
 
@@ -83,6 +83,18 @@ List<String> valide(Contenu c) {
         if (e.value == 0) problemes.add('$ou : effet nul sur ${e.key.name}');
         if (e.value < -20 || e.value > 20) problemes.add('$ou : effet ${e.value} hors des bornes −20 à 20');
       }
+    }
+
+    // Un vrai dilemme, ou rien. Si une réponse gagne plus et perd moins que
+    // l'autre sur toutes les jauges, le joueur qui a compris glisse toujours
+    // du même côté, et la carte ne vaut rien. Un drapeau ou un déplacement
+    // de régime ne rachètent pas la dominance : le joueur ne voit ni l'un ni
+    // l'autre pendant le geste, seules les jauges s'illuminent.
+    final domination = _domine(carte.gauche, carte.droite)
+        ? 'gauche'
+        : (_domine(carte.droite, carte.gauche) ? 'droite' : null);
+    if (domination != null) {
+      problemes.add('$ou : la réponse de $domination domine l\'autre sur toutes les jauges, il n\'y a pas de choix');
     }
 
     final cond = carte.conditions;
@@ -270,6 +282,19 @@ List<String> valide(Contenu c) {
   }
 
   return problemes;
+}
+
+/// Vrai si `a` vaut au moins `b` sur chaque jauge, et strictement plus sur
+/// au moins une. Une jauge que la réponse ne touche pas compte pour zéro.
+bool _domine(Reponse a, Reponse b) {
+  var strictementMieux = false;
+  for (final j in Jauge.values) {
+    final va = a.effets[j] ?? 0;
+    final vb = b.effets[j] ?? 0;
+    if (va < vb) return false;
+    if (va > vb) strictementMieux = true;
+  }
+  return strictementMieux;
 }
 
 /// Contrôles communs aux conditions d'exploit et de parcours : une jauge

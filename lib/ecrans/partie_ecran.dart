@@ -95,7 +95,11 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                       ),
                       Positioned.fill(
                         child: CarteGlissante(
-                          key: ValueKey(carte.id),
+                          // Le jour fait partie de la clé : une carte répétable
+                          // tirée deux jours de suite doit être une carte neuve
+                          // pour Flutter, sinon il garde l'état « sortie » de la
+                          // veille et plus aucun geste ne répond.
+                          key: ValueKey('${session.etat.jour}_${carte.id}'),
                           libelleGauche: carte.gauche.libelle,
                           libelleDroite: carte.droite.libelle,
                           onIntention: (c) => setState(() => _intention = c),

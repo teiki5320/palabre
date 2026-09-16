@@ -123,7 +123,9 @@ class Nouveautes {
     exploits: exploitsAcquis,
     finsDecouvertes: finsDecouvertes,
     mandatsJoues: avant.mandatsJoues + 1,
-    meilleurJour: mandat.jour > avant.meilleurJour ? mandat.jour : avant.meilleurJour,
+    // Le jour du bilan est le premier jour non joue : on a tenu un jour de
+      // moins, et c'est ce que l'ecran affiche et ce que les conditions comptent.
+      meilleurJour: (mandat.jour - 1) > avant.meilleurJour ? (mandat.jour - 1) : avant.meilleurJour,
   );
 
   final nouveautes = Nouveautes(
