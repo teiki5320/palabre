@@ -22,8 +22,8 @@ class _IntroEcranState extends State<IntroEcran> {
   static const _panneaux = [
     (
       titre: 'Vous venez d\'être élu président.',
-      texte: 'Un pays qui n\'existe pas, des caisses qui existent trop peu, '
-          'et tout le monde qui veut vous voir demain matin.',
+      texte: 'Un palais, des caisses presque vides, et tout le monde qui '
+          'veut vous voir demain matin.',
     ),
     (
       titre: 'Chaque jour, quelqu\'un entre.',

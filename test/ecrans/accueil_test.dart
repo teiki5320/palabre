@@ -152,6 +152,20 @@ void main() {
     expect(find.text('Nouvelle partie'), findsNothing);
   });
 
+  testWidgets('avec un mandat en cours, on peut changer de parcours sans passer par le menu',
+      (tester) async {
+    final etat = EtatPartie(parcours: 'general_parcours', nomJoueur: 'Awa', jauges: Jauges.milieu, jour: 12);
+    SharedPreferences.setMockInitialValues({'partie_en_cours': jsonEncode(versJson(etat))});
+    await montre(tester);
+
+    // La sortie est visible sur l ecran, pas seulement dans le menu.
+    expect(find.text('Choisir un autre parcours'), findsOneWidget);
+    await tester.tap(find.text('Choisir un autre parcours'));
+    await tester.pumpAndSettle();
+    // Le meme avertissement que depuis le menu.
+    expect(find.textContaining('Vous en êtes au jour 12'), findsOneWidget);
+  });
+
   testWidgets('nouvelle partie previent de ce qu on perd, puis rend le formulaire', (tester) async {
     final etat = EtatPartie(parcours: 'general_parcours', nomJoueur: 'Awa', jauges: Jauges.milieu, jour: 12);
     SharedPreferences.setMockInitialValues({'partie_en_cours': jsonEncode(versJson(etat))});
@@ -174,7 +188,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Nouvelle partie'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Choisir un autre parcours'));
+    await tester.tap(find.text('Abandonner'));
     await tester.pumpAndSettle();
 
     expect(find.text('Reprendre le jour 12'), findsNothing);
@@ -190,7 +204,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Nouvelle partie'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Choisir un autre parcours'));
+    await tester.tap(find.text('Abandonner'));
     await tester.pumpAndSettle();
 
     // Rien n est efface tant que le joueur n a pas pris ses fonctions :

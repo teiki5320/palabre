@@ -147,7 +147,7 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
           TextButton(onPressed: () => Navigator.of(context).pop(false), child: const Text('Annuler')),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
-            child: const Text('Choisir un autre parcours'),
+            child: const Text('Abandonner'),
           ),
         ],
       ),
@@ -192,7 +192,7 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
             // marges — les vignettes vivent désormais sur le portrait. Sans
             // cette mesure, la zone image prend ses 76 % coûte que coûte et
             // pousse le bouton hors de l'écran.
-            final basNecessaire = (formulaire ? 52.0 + 10 + 56 : 48.0) + 18 + 30;
+            final basNecessaire = (formulaire ? 52.0 + 10 + 56 : 48.0 + 44) + 18 + 30;
 
             return SafeArea(
               top: false,
@@ -383,6 +383,20 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                                           await _relisSauvegarde();
                                         },
                                         child: Text('Reprendre le jour ${_enCours!.jour}'),
+                                      ),
+                                      // La sortie doit se voir : enterrée dans
+                                      // le menu, personne ne la trouve, et
+                                      // l'écran a l'air de refuser qu'on change
+                                      // de parcours.
+                                      TextButton(
+                                        onPressed: _demandeNouvellePartie,
+                                        child: Text(
+                                          'Choisir un autre parcours',
+                                          style: Textes.rappel.copyWith(
+                                            color: Couleurs.creme.withValues(alpha: .65),
+                                            letterSpacing: .2,
+                                          ),
+                                        ),
                                       ),
                                     ],
                             ),
