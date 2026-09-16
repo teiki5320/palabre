@@ -1,5 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:president/moteur/denouement.dart';
+import 'package:president/moteur/etat_partie.dart';
 import 'package:president/moteur/jauges.dart';
+import 'package:president/moteur/modeles.dart';
 import 'package:president/moteur/partie.dart';
 
 void main() {
@@ -45,9 +48,66 @@ void main() {
     expect(r[Jauge.caisses], -1);
   });
 
+  auDela();
+
   test('le regime s applique avant l amplification du mandat', () {
     // Au mandat 2 tout est multiplie par 1,25, apres le regime.
     final r = effetsReels(effets: const {Jauge.caisses: 10}, style: 100, mandat: 2);
     expect(r[Jauge.caisses], 19); // 10 -> 15 -> 18,75 -> 19
+  });
+}
+
+/// Le régime décide aussi de ce qu'on vous propose, et de ce qu'on vous
+/// racontera à la fin.
+void auDela() {
+  test('une carte reservee a un regime ne sort pas ailleurs', () {
+    final carte = Carte(
+      id: 'liste',
+      personnage: 'general',
+      humeur: Humeur.neutre,
+      texte: 't',
+      conditions: const Conditions(styleMin: 70),
+      gauche: const Reponse(libelle: 'g', effets: {Jauge.armee: 1}),
+      droite: const Reponse(libelle: 'd', effets: {Jauge.armee: -1}),
+    );
+    EtatPartie etat(int style) => EtatPartie(
+          parcours: 'p',
+          nomJoueur: 'A',
+          jauges: Jauges.milieu,
+          style: style,
+        );
+    expect(carte.conditions.satisfaites(etat(50)), isFalse);
+    expect(carte.conditions.satisfaites(etat(69)), isFalse);
+    expect(carte.conditions.satisfaites(etat(70)), isTrue);
+  });
+
+  test('a score egal, le regime departage la fin', () {
+    const large = Fin(
+      id: 'election_gagnee',
+      jauge: null,
+      versLeHaut: true,
+      titre: 'Réélu',
+      texte: 't',
+      image: 'i',
+    );
+    const etroite = Fin(
+      id: 'election_gagnee_seul',
+      jauge: null,
+      versLeHaut: true,
+      titre: 'Seul candidat',
+      texte: 't',
+      image: 'i',
+      styleMin: 72,
+    );
+    const gagnee = Denouement(type: TypeDenouement.electionGagnee);
+    // L ordre de la liste ne doit rien changer : c est la precision qui
+    // tranche, pas la place dans le JSON.
+    for (final fins in [
+      [large, etroite],
+      [etroite, large],
+    ]) {
+      expect(choisitFin(gagnee, fins, style: 50)!.id, 'election_gagnee');
+      expect(choisitFin(gagnee, fins, style: 80)!.id, 'election_gagnee_seul');
+    }
   });
 }

@@ -67,6 +67,8 @@ class Conditions {
     this.drapeauxRequis = const [],
     this.drapeauxInterdits = const [],
     this.parcours = const [],
+    this.styleMin = 0,
+    this.styleMax = 100,
   });
 
   final int mandatMin;
@@ -84,6 +86,12 @@ class Conditions {
 
   /// Parcours autorisés ; vide signifie « tous ».
   final List<String> parcours;
+
+  /// Où doit en être le régime pour que la carte ait un sens. Le chef des
+  /// renseignements ne vient pas voir un démocrate ; le président de
+  /// l'Assemblée ne convoque plus personne quand il n'y a plus d'Assemblée.
+  final int styleMin;
+  final int styleMax;
 
   factory Conditions.depuisJson(Map<String, dynamic>? j) {
     if (j == null) return const Conditions();
@@ -104,6 +112,8 @@ class Conditions {
       drapeauxRequis: _textes(j['drapeaux_requis']),
       drapeauxInterdits: _textes(j['drapeaux_interdits']),
       parcours: _textes(j['parcours']),
+      styleMin: ((j['style_min'] as num?) ?? 0).toInt(),
+      styleMax: ((j['style_max'] as num?) ?? 100).toInt(),
     );
   }
 }
@@ -243,7 +253,21 @@ class Fin {
     required this.titre,
     required this.texte,
     required this.image,
+    this.styleMin = 0,
+    this.styleMax = 100,
   });
+
+  /// Le régime auquel cette fin appartient. Réélu dans un pays où l'on
+  /// pouvait voter contre vous n'est pas réélu parce qu'il ne restait
+  /// personne en face : même score, épilogue différent. Une fin qui couvre
+  /// tout l'axe sert de repli quand aucune fin précise ne convient.
+  final int styleMin;
+  final int styleMax;
+
+  /// De combien l'axe doit pencher pour que cette fin l'emporte : plus la
+  /// fourchette est étroite, plus la fin est précise, et plus elle passe
+  /// avant une fin générale.
+  int get precision => styleMax - styleMin;
 
   /// La jauge fautive, ou null pour les fins d'élection.
   final Jauge? jauge;
@@ -262,5 +286,7 @@ class Fin {
         titre: j['titre'] as String,
         texte: j['texte'] as String,
         image: j['image'] as String,
+        styleMin: ((j['style_min'] as num?) ?? 0).toInt(),
+        styleMax: ((j['style_max'] as num?) ?? 100).toInt(),
       );
 }

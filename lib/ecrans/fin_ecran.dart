@@ -4,39 +4,47 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../moteur/denouement.dart';
 import '../moteur/progression.dart';
 import 'session.dart';
+import 'theme.dart';
 
 /// Les widgets de la zone « Vous avez débloqué » : un exploit par ligne avec
 /// son titre et sa description, un parcours débloqué par ligne avec son
 /// nom. Une liste à concaténer dans la colonne, jamais un widget seul, pour
 /// que l'appelant puisse ne rien insérer du tout quand il n'y a rien.
 List<Widget> _nouveautes(Nouveautes nouveautes) => [
-      const SizedBox(height: 22),
-      const Text(
-        'Vous avez débloqué',
-        style:
-            TextStyle(color: Color(0xFFE9B44C), letterSpacing: 1.2, fontWeight: FontWeight.w800, fontSize: 13),
-      ),
-      const SizedBox(height: 10),
-      for (final exploit in nouveautes.exploits)
-        Padding(
-          padding: const EdgeInsets.only(bottom: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(exploit.titre,
-                  style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w700)),
-              const SizedBox(height: 2),
-              Text(exploit.description, style: const TextStyle(color: Color(0xFFE3D9C9), fontSize: 13, height: 1.3)),
-            ],
+  const SizedBox(height: 22),
+  Text('Vous avez débloqué', style: Textes.surtitre.copyWith(fontSize: 13, letterSpacing: 1.2)),
+  const SizedBox(height: 10),
+  for (final exploit in nouveautes.exploits)
+    Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            exploit.titre,
+            style: Textes.sousTitre.copyWith(
+              color: Couleurs.creme,
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+            ),
           ),
-        ),
-      for (final parcours in nouveautes.parcours)
-        Padding(
-          padding: const EdgeInsets.only(bottom: 10),
-          child: Text('Nouveau parcours : ${parcours.nom}',
-              style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w700)),
-        ),
-    ];
+          const SizedBox(height: 2),
+          Text(
+            exploit.description,
+            style: Textes.sousTitre.copyWith(color: Couleurs.cremeDoux, fontSize: 13, height: 1.3),
+          ),
+        ],
+      ),
+    ),
+  for (final parcours in nouveautes.parcours)
+    Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Text(
+        'Nouveau parcours : ${parcours.nom}',
+        style: Textes.sousTitre.copyWith(color: Couleurs.creme, fontSize: 15, fontWeight: FontWeight.w700),
+      ),
+    ),
+];
 
 /// Ce qu'on voit quand le mandat s'arrête : la fin écrite, les jours tenus,
 /// et l'invitation à recommencer.
@@ -60,10 +68,10 @@ class FinEcran extends ConsumerWidget {
             Image.asset(
               'assets/images/${fin.image}',
               fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => Container(color: const Color(0xFF1A1620)),
+              errorBuilder: (_, __, ___) => Container(color: Couleurs.nuitClair),
             )
           else
-            Container(color: const Color(0xFF1A1620)),
+            Container(color: Couleurs.nuitClair),
           Container(color: Colors.black.withValues(alpha: 0.55)),
           SafeArea(
             child: LayoutBuilder(
@@ -80,25 +88,24 @@ class FinEcran extends ConsumerWidget {
                       children: [
                         Text(
                           gagnee ? 'RÉÉLU' : 'FIN DU MANDAT',
-                          style: const TextStyle(
-                              color: Color(0xFFE9B44C), letterSpacing: 2.5, fontWeight: FontWeight.w800, fontSize: 12),
+                          style: Textes.surtitre.copyWith(fontSize: 12, letterSpacing: 2.5),
                         ),
                         const SizedBox(height: 10),
                         Text(
                           fin?.titre ?? "Le mandat s'arrête",
-                          style:
-                              const TextStyle(color: Colors.white, fontSize: 30, height: 1.1, fontWeight: FontWeight.w800),
+                          style: Textes.nomParcoursCourt.copyWith(fontSize: 30, height: 1.1),
                         ),
                         const SizedBox(height: 14),
                         Text(
                           fin?.texte ?? '',
-                          style: const TextStyle(color: Color(0xFFE3D9C9), fontSize: 16, height: 1.4),
+                          style: Textes.sousTitre.copyWith(
+                            color: Couleurs.cremeDoux,
+                            fontSize: 16,
+                            height: 1.4,
+                          ),
                         ),
                         const SizedBox(height: 18),
-                        Text(
-                          'Vous avez tenu $jours jours.',
-                          style: const TextStyle(color: Colors.white70, fontSize: 15),
-                        ),
+                        Text('Vous avez tenu $jours jours.', style: Textes.sousTitre.copyWith(fontSize: 15)),
                         // Rien du tout quand il n'y a rien : ni titre, ni
                         // espace, sous peine de laisser un trou orphelin.
                         // Une fin inédite n'entre pas dans ce compte : elle

@@ -147,11 +147,32 @@ void main() {
     expect(valide(contenuAvec(carte(), fins: sansPerdue)).join(), contains('perdue'));
   });
 
-  test('deux fins pour le meme cas', () {
+  test('deux fins pour le meme cas au meme endroit de l axe', () {
     final avecDoublons = '[{"id":"election_gagnee","jauge":null,"vers_le_haut":true,"titre":"Reelu","texte":"t","image":"i"},'
         '{"id":"election_gagnee_bis","jauge":null,"vers_le_haut":true,"titre":"Reelu bis","texte":"t","image":"i"},'
         '{"id":"election_perdue","jauge":null,"vers_le_haut":false,"titre":"Battu","texte":"t","image":"i"}]';
-    expect(valide(contenuAvec(carte(), fins: avecDoublons)).join(), contains('deux fins'));
+    expect(valide(contenuAvec(carte(), fins: avecDoublons)).join(), contains('se disputent'));
+  });
+
+  test('deux fins pour le meme cas que le regime departage', () {
+    // Une fin large sert de repli a une fin etroite qu elle contient :
+    // reelu, et reelu seul candidat.
+    final departagees =
+        '[{"id":"election_gagnee","jauge":null,"vers_le_haut":true,"titre":"Reelu","texte":"t","image":"i"},'
+        '{"id":"election_gagnee_seul","jauge":null,"vers_le_haut":true,"style_min":72,'
+        '"titre":"Seul candidat","texte":"t","image":"i"},'
+        '{"id":"election_perdue","jauge":null,"vers_le_haut":false,"titre":"Battu","texte":"t","image":"i"}]';
+    expect(valide(contenuAvec(carte(), fins: departagees)), isEmpty);
+  });
+
+  test('deux fins qui se chevauchent a moitie', () {
+    // Ni l une ni l autre ne tranche : entre 60 et 70, on ne saurait pas.
+    final moitie =
+        '[{"id":"election_gagnee","jauge":null,"vers_le_haut":true,"style_max":70,"titre":"Reelu","texte":"t","image":"i"},'
+        '{"id":"election_gagnee_seul","jauge":null,"vers_le_haut":true,"style_min":60,'
+        '"titre":"Seul candidat","texte":"t","image":"i"},'
+        '{"id":"election_perdue","jauge":null,"vers_le_haut":false,"titre":"Battu","texte":"t","image":"i"}]';
+    expect(valide(contenuAvec(carte(), fins: moitie)).join(), contains('se disputent'));
   });
 
   test('un mot interdit dans le titre d une fin est signale', () {

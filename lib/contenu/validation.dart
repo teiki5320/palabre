@@ -1,6 +1,7 @@
 import '../moteur/condition.dart';
 import '../moteur/denouement.dart';
 import '../moteur/jauges.dart';
+import '../moteur/modeles.dart';
 import 'chargement.dart';
 
 /// Mots qui n'ont rien à faire dans un jeu situé dans un pays imaginaire.
@@ -191,10 +192,39 @@ List<String> valide(Contenu c) {
   if (!aGagnee) problemes.add('fins : il manque la fin d élection gagnée');
   if (!aPerdue) problemes.add('fins : il manque la fin d élection perdue');
 
+  // Deux fins pour le même dénouement sont permises si le régime les
+  // départage : réélu dans les règles et réélu seul candidat sont le même
+  // score et deux histoires. Une fin large sert de repli à une fin étroite
+  // qu'elle contient. Ce qui reste interdit, c'est deux fins qui se
+  // chevauchent sans que l'une tranche : le choix serait arbitraire.
+  final finsParCas = <String, List<Fin>>{};
+  for (final f in c.fins) {
+    final cle = '${f.jauge?.name ?? "election"}_${f.versLeHaut}';
+    finsParCas.putIfAbsent(cle, () => []).add(f);
+  }
+  for (final e in finsParCas.entries) {
+    final liste = e.value;
+    for (var i = 0; i < liste.length; i++) {
+      for (var k = i + 1; k < liste.length; k++) {
+        final a = liste[i];
+        final b = liste[k];
+        final seChevauchent = a.styleMin <= b.styleMax && b.styleMin <= a.styleMax;
+        final aContientB = a.styleMin <= b.styleMin && a.styleMax >= b.styleMax && a.precision > b.precision;
+        final bContientA = b.styleMin <= a.styleMin && b.styleMax >= a.styleMax && b.precision > a.precision;
+        if (seChevauchent && !aContientB && !bContientA) {
+          problemes.add(
+            'fins : « ${a.id} » et « ${b.id} » se disputent le cas « ${e.key} » '
+            'sans que le régime les départage',
+          );
+        }
+      }
+    }
+  }
+
   final clesFins = <String>{};
   for (final f in c.fins) {
     final cle = '${f.jauge?.name ?? "election"}_${f.versLeHaut}';
-    if (!clesFins.add(cle)) problemes.add('fins : deux fins pour le même cas « $cle »');
+    clesFins.add(cle);
   }
 
   // La carte d'ouverture : une seule, et jouable par tout le monde au tout

@@ -39,17 +39,20 @@ Denouement? evalue(EtatPartie etat, {int duree = dureeMandatPrototype}) {
 }
 
 /// La fin écrite qui correspond au dénouement, ou null si le contenu ne la
-/// fournit pas encore.
-Fin? choisitFin(Denouement d, List<Fin> fins) {
-  for (final f in fins) {
-    switch (d.type) {
-      case TypeDenouement.chute:
-        if (f.jauge == d.jauge && f.versLeHaut == d.versLeHaut) return f;
-      case TypeDenouement.electionGagnee:
-        if (f.jauge == null && f.versLeHaut) return f;
-      case TypeDenouement.electionPerdue:
-        if (f.jauge == null && !f.versLeHaut) return f;
-    }
+/// fournit pas encore. À dénouement égal, c'est le régime qui départage :
+/// la fin la plus précise l'emporte, et une fin couvrant tout l'axe reste
+/// le repli quand aucune ne colle.
+Fin? choisitFin(Denouement d, List<Fin> fins, {int style = styleDepart}) {
+  bool correspond(Fin f) => switch (d.type) {
+        TypeDenouement.chute => f.jauge == d.jauge && f.versLeHaut == d.versLeHaut,
+        TypeDenouement.electionGagnee => f.jauge == null && f.versLeHaut,
+        TypeDenouement.electionPerdue => f.jauge == null && !f.versLeHaut,
+      };
+
+  final candidates = fins.where(correspond).toList()
+    ..sort((a, b) => a.precision.compareTo(b.precision));
+  for (final f in candidates) {
+    if (style >= f.styleMin && style <= f.styleMax) return f;
   }
   return null;
 }

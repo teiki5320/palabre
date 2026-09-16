@@ -114,7 +114,7 @@ class SessionNotifier extends Notifier<Session?> {
   /// plusieurs fois et de réécrire la progression en boucle.
   Session _termine(EtatPartie etat, Denouement denouement) {
     Sauvegarde.efface(); // le mandat est fini, il n'y a plus rien à reprendre
-    final fin = choisitFin(denouement, _contenu.fins);
+    final fin = choisitFin(denouement, _contenu.fins, style: etat.style);
 
     final avant = ref.read(progressionProvider).value ?? Progression.neuve();
     final resultat = bilan(

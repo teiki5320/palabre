@@ -6,9 +6,10 @@ import '../moteur/jauges.dart';
 import '../moteur/modeles.dart';
 import '../moteur/progression.dart';
 import 'session.dart';
+import 'theme.dart';
 
-const _or = Color(0xFFE9B44C);
-const _creme = Color(0xFFE3D9C9);
+const _or = Couleurs.or;
+const _creme = Couleurs.cremeDoux;
 
 /// L'écran de collection : les exploits gagnés et les fins découvertes,
 /// dans un seul endroit, atteint depuis l'accueil. Ce qui n'est pas encore
@@ -84,12 +85,12 @@ class _TitreSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(bottom: 10),
-        child: Text(
-          texte,
-          style: const TextStyle(color: _or, letterSpacing: 1.2, fontWeight: FontWeight.w800, fontSize: 13),
-        ),
-      );
+    padding: const EdgeInsets.only(bottom: 10),
+    child: Text(
+      texte,
+      style: const TextStyle(color: _or, letterSpacing: 1.2, fontWeight: FontWeight.w800, fontSize: 13),
+    ),
+  );
 }
 
 class _LigneExploit extends StatelessWidget {
@@ -110,7 +111,10 @@ class _LigneExploit extends StatelessWidget {
             // Le titre ne s'affiche que quand l'exploit est acquis : le
             // laisser voir avant, même grisé, en dirait déjà trop.
             if (obtenu)
-              Text(exploit.titre, style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w700)),
+              Text(
+                exploit.titre,
+                style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w700),
+              ),
             if (obtenu) const SizedBox(height: 2),
             Text(exploit.description, style: const TextStyle(color: _creme, fontSize: 13, height: 1.3)),
           ],
