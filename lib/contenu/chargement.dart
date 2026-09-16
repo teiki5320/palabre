@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 import '../moteur/modeles.dart';
+import '../moteur/progression.dart';
 
 /// Tout le contenu du jeu, lu une fois au démarrage.
 class Contenu {
@@ -11,12 +12,17 @@ class Contenu {
     required this.personnages,
     required this.parcours,
     required this.fins,
+    this.exploits = const [],
   });
 
   final List<Carte> cartes;
   final Map<String, Personnage> personnages;
   final List<Parcours> parcours;
   final List<Fin> fins;
+
+  /// Chargés par la tâche qui écrit `assets/contenu/exploits.json` ; vide
+  /// par défaut pour ne pas casser les appels existants de [depuisChaines].
+  final List<Exploit> exploits;
 
   static List<Map<String, dynamic>> _liste(String source) =>
       (jsonDecode(source) as List).cast<Map<String, dynamic>>();
@@ -26,6 +32,7 @@ class Contenu {
     required String personnages,
     required String parcours,
     required String fins,
+    String exploits = '',
   }) {
     final gens = [for (final j in _liste(personnages)) Personnage.depuisJson(j)];
     return Contenu(
@@ -33,6 +40,7 @@ class Contenu {
       personnages: {for (final p in gens) p.id: p},
       parcours: [for (final j in _liste(parcours)) Parcours.depuisJson(j)],
       fins: [for (final j in _liste(fins)) Fin.depuisJson(j)],
+      exploits: exploits.isEmpty ? const [] : [for (final j in _liste(exploits)) Exploit.depuisJson(j)],
     );
   }
 

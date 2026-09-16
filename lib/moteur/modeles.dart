@@ -1,3 +1,4 @@
+import 'condition.dart';
 import 'jauges.dart';
 
 /// Les trois expressions disponibles pour chaque personnage.
@@ -165,6 +166,7 @@ class Parcours {
     required this.femme,
     required this.depart,
     this.conditionDeblocage,
+    this.condition,
   });
 
   final String id;
@@ -177,6 +179,11 @@ class Parcours {
 
   /// Texte affiché sur un parcours verrouillé ; null si ouvert dès le début.
   final String? conditionDeblocage;
+
+  /// Condition typée du déblocage ; null si absente. Une condition vide
+  /// étant toujours remplie, `null` (et non une `Condition` par défaut) est
+  /// ce qui garde un parcours verrouillé pour toujours tant qu'elle manque.
+  final Condition? condition;
 
   factory Parcours.depuisJson(Map<String, dynamic> j) {
     final d = j['depart'] as Map<String, dynamic>;
@@ -192,6 +199,7 @@ class Parcours {
         presse: (d['presse'] as num).toInt(),
       ),
       conditionDeblocage: j['condition_deblocage'] as String?,
+      condition: j['condition'] == null ? null : Condition.depuisJson(j['condition'] as Map<String, dynamic>),
     );
   }
 
