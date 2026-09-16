@@ -121,3 +121,17 @@ EtatPartie repond({
     hier: carte.id,
   );
 }
+
+/// Le mandat suivant, après une réélection. Le pays se souvient : le régime
+/// qu'on a installé et ce qu'on a fait restent, seules les jauges repartent
+/// du départ du parcours. C'est ce qui permet aux cartes du second mandat
+/// de revenir sur le premier.
+EtatPartie mandatSuivant(EtatPartie etat, Parcours parcours) => EtatPartie(
+      parcours: etat.parcours,
+      nomJoueur: etat.nomJoueur,
+      jauges: parcours.depart,
+      jour: 1,
+      mandat: etat.mandat + 1,
+      style: etat.style,
+      drapeaux: etat.drapeaux,
+    );

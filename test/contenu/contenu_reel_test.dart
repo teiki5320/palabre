@@ -89,6 +89,7 @@ void main() {
           parcours: p.id,
           strategie: strategie,
           parties: 600,
+          mandats: 2,
           duree: 100,
         );
         jamais = jamais.intersection(m.cartesJamaisVues);

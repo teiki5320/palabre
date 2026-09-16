@@ -40,6 +40,7 @@ Mesures simule({
   int parties = 1000,
   int graine = 1,
   int duree = dureeMandat,
+  int mandats = 1,
 }) {
   final alea = Random(graine);
   final depart = contenu.parcoursParId(parcours);
@@ -54,6 +55,12 @@ Mesures simule({
     while (true) {
       final fin = evalue(etat, duree: duree);
       if (fin != null) {
+        // Réélu avec un mandat de plus à jouer : on enchaîne, comme l'écran.
+        if (fin.type == TypeDenouement.electionGagnee && etat.mandat < mandats) {
+          totalJours += etat.jour - 1;
+          etat = mandatSuivant(etat, depart);
+          continue;
+        }
         denouements.update(fin.type.name, (v) => v + 1, ifAbsent: () => 1);
         break;
       }

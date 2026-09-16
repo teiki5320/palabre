@@ -202,17 +202,21 @@ List<String> valide(Contenu c) {
     }
   }
 
-  // Les chaînes doivent aller de 1 à n, sans trou ni doublon.
+  // Les chaînes doivent aller de 1 à n, sans trou : un rang manquant arrête
+  // l'histoire pour toujours. Deux cartes peuvent en revanche partager un
+  // rang quand elles s'excluent — la fin autoritaire et la fin républicaine
+  // de la même affaire, que le régime départage. Le tirage en jouera une, et
+  // la chaîne avancera pareil.
   final rangs = <String, List<int>>{};
   for (final carte in c.cartes) {
     final ch = carte.chaine;
     if (ch != null) rangs.putIfAbsent(ch.id, () => []).add(ch.rang);
   }
   for (final e in rangs.entries) {
-    final attendus = [for (var i = 1; i <= e.value.length; i++) i];
-    final tries = [...e.value]..sort();
-    if (!_memeListe(tries, attendus)) {
-      problemes.add('chaîne ${e.key} : rangs ${tries.join(", ")}, attendus ${attendus.join(", ")}');
+    final distincts = [...{...e.value}]..sort();
+    final attendus = [for (var i = 1; i <= distincts.length; i++) i];
+    if (!_memeListe(distincts, attendus)) {
+      problemes.add('chaîne ${e.key} : rangs ${distincts.join(", ")}, attendus ${attendus.join(", ")}');
     }
   }
 
