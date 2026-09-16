@@ -124,6 +124,24 @@ void main() {
     expect(valide(contenuAvec(carte(), fins: avecDoublons)).join(), contains('deux fins'));
   });
 
+  test('un mot interdit dans le titre d une fin est signale', () {
+    final finsAvecPays = '[{"id":"election_gagnee","jauge":null,"vers_le_haut":true,"titre":"Reelu a Dakar",'
+        '"texte":"t","image":"i"},'
+        '{"id":"election_perdue","jauge":null,"vers_le_haut":false,"titre":"Battu","texte":"t","image":"i"}]';
+    expect(valide(contenuAvec(carte(), fins: finsAvecPays)).join(), contains('interdit'));
+  });
+
+  test('un mot interdit dans le nom d un personnage est signale', () {
+    const personnagesAvecPays = '[{"id":"general","nom":"Le General de Lagos","titre":"Chef d etat-major"}]';
+    final c = Contenu.depuisChaines(
+      cartes: '[${carte()}]',
+      personnages: personnagesAvecPays,
+      parcours: parcours,
+      fins: fins,
+    );
+    expect(valide(c).join(), contains('interdit'));
+  });
+
   test('aucun parcours ouvert des le debut', () {
     final parcoursFermes = '[{"id":"general_parcours","nom":"L ancien general","titre":"Monsieur le President","femme":false,'
         '"depart":{"peuple":40,"armee":70,"caisses":50,"presse":40},"condition_deblocage":"Avoir au moins 50 en armee"}]';

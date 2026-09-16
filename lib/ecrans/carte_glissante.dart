@@ -72,6 +72,13 @@ class _CarteGlissanteState extends State<CarteGlissante> with SingleTickerProvid
     }
   }
 
+  void _annule() {
+    if (_sorti) return;
+    _annonce(null);
+    _retour = Tween<double>(begin: _dx, end: 0).animate(CurvedAnimation(parent: _anim, curve: Curves.easeOut));
+    _anim.forward(from: 0);
+  }
+
   void _lache(DragEndDetails d) {
     if (_sorti) return;
     final part = _dx.abs() / _largeur;
@@ -98,6 +105,7 @@ class _CarteGlissanteState extends State<CarteGlissante> with SingleTickerProvid
       return GestureDetector(
         onPanUpdate: _bouge,
         onPanEnd: _lache,
+        onPanCancel: _annule,
         child: Transform.translate(
           offset: Offset(_dx, 0),
           child: Transform.rotate(

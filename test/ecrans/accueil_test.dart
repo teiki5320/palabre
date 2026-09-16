@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
 import 'package:president/ecrans/accueil.dart';
 import 'package:president/ecrans/session.dart';
+import 'package:president/moteur/etat_partie.dart';
+import 'package:president/moteur/jauges.dart';
+import 'package:president/sauvegarde/sauvegarde.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Contenu contenuDEssai() => Contenu.depuisChaines(
@@ -65,5 +70,17 @@ void main() {
     await tester.pump();
     final bouton = tester.widget<FilledButton>(find.widgetWithText(FilledButton, 'Prendre mes fonctions'));
     expect(bouton.onPressed, isNotNull);
+  });
+
+  testWidgets('une sauvegarde presente affiche le bouton reprendre', (tester) async {
+    final etat = EtatPartie(parcours: 'general_parcours', nomJoueur: 'Awa', jauges: Jauges.milieu, jour: 12);
+    SharedPreferences.setMockInitialValues({'partie_en_cours': jsonEncode(versJson(etat))});
+    await montre(tester);
+    expect(find.text('Reprendre le jour 12'), findsOneWidget);
+  });
+
+  testWidgets('sans sauvegarde le bouton reprendre n apparait pas', (tester) async {
+    await montre(tester);
+    expect(find.textContaining('Reprendre le jour'), findsNothing);
   });
 }

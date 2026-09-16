@@ -23,9 +23,15 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
   @override
   void initState() {
     super.initState();
-    Sauvegarde.lis().then((e) {
-      if (mounted) setState(() => _enCours = e);
-    });
+    _relisSauvegarde();
+  }
+
+  /// Relit la sauvegarde sur l'appareil. À rappeler chaque fois que l'accueil
+  /// redevient visible : une partie peut avoir été perdue ou quittée entre
+  /// temps, et le bouton « Reprendre » doit refléter l'état réel.
+  Future<void> _relisSauvegarde() async {
+    final e = await Sauvegarde.lis();
+    if (mounted) setState(() => _enCours = e);
   }
 
   @override
@@ -82,11 +88,12 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                           child: SizedBox(
                             width: double.infinity,
                             child: OutlinedButton(
-                              onPressed: () {
+                              onPressed: () async {
                                 ref.read(sessionProvider.notifier).reprend(_enCours!);
-                                Navigator.of(context).push(
+                                await Navigator.of(context).push(
                                   MaterialPageRoute(builder: (_) => const PartieEcran()),
                                 );
+                                await _relisSauvegarde();
                               },
                               child: Text('Reprendre le jour ${_enCours!.jour}'),
                             ),
@@ -106,12 +113,13 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                         child: FilledButton(
                           onPressed: !pret
                               ? null
-                              : () {
+                              : () async {
                                   final p = c.parcoursParId(_choisi!)!;
                                   ref.read(sessionProvider.notifier).demarre(parcours: p, nom: _nom.text.trim());
-                                  Navigator.of(context).push(
+                                  await Navigator.of(context).push(
                                     MaterialPageRoute(builder: (_) => const PartieEcran()),
                                   );
+                                  await _relisSauvegarde();
                                 },
                           child: const Text('Prendre mes fonctions'),
                         ),

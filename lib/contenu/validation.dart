@@ -6,6 +6,8 @@ const _interdits = [
   'senegal', 'benin', 'cote d ivoire', 'ivoirien', 'togo', 'mali', 'niger', 'nigeria',
   'ghana', 'burkina', 'guinee', 'cameroun', 'tchad', 'france', 'francais', 'paris',
   'fmi', 'banque mondiale', 'onu', 'union africaine', 'cedeao', 'union europeenne',
+  'cfa', 'bceao', 'uemoa',
+  'dakar', 'abidjan', 'lome', 'cotonou', 'bamako', 'ouagadougou', 'accra', 'lagos',
 ];
 
 /// Minuscules, sans accents, un seul mot par espace, encadré d'espaces pour
@@ -19,7 +21,7 @@ String _mots(String s) {
   for (var i = 0; i < avec.length; i++) {
     r = r.replaceAll(avec[i], sans[i]);
   }
-  r = r.replaceAll(RegExp("[-‑–—]"), '');
+  r = r.replaceAll(RegExp("[-‑–—‒―−]"), '');
   r = r.replaceAll(RegExp("[^a-z0-9]"), ' ');
   final mots = r.split(RegExp(r'\s+')).where((m) => m.isNotEmpty);
   return ' ${mots.join(' ')} ';
@@ -77,6 +79,30 @@ List<String> valide(Contenu c) {
     }
 
     final texte = _mots('${carte.texte} ${carte.gauche.libelle} ${carte.droite.libelle}');
+    for (final mot in _interdits) {
+      if (texte.contains(' $mot ')) problemes.add('$ou : mot interdit « $mot »');
+    }
+  }
+
+  for (final fin in c.fins) {
+    final ou = 'fin ${fin.id}';
+    final texte = _mots('${fin.titre} ${fin.texte}');
+    for (final mot in _interdits) {
+      if (texte.contains(' $mot ')) problemes.add('$ou : mot interdit « $mot »');
+    }
+  }
+
+  for (final personnage in c.personnages.values) {
+    final ou = 'personnage ${personnage.id}';
+    final texte = _mots('${personnage.nom} ${personnage.titre}');
+    for (final mot in _interdits) {
+      if (texte.contains(' $mot ')) problemes.add('$ou : mot interdit « $mot »');
+    }
+  }
+
+  for (final parcours in c.parcours) {
+    final ou = 'parcours ${parcours.id}';
+    final texte = _mots('${parcours.nom} ${parcours.conditionDeblocage ?? ""}');
     for (final mot in _interdits) {
       if (texte.contains(' $mot ')) problemes.add('$ou : mot interdit « $mot »');
     }

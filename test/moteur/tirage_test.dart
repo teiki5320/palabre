@@ -63,6 +63,15 @@ void main() {
     expect(tiree!.id, 'suite');
   });
 
+  test('une carte de rang 1 qui ouvre une chaine ne passe pas devant une carte ordinaire', () {
+    final paquet = [
+      carte('ordinaire', poids: 50),
+      carte('ouverture', chaine: const Chaine(id: 'solde', rang: 1)),
+    ];
+    final tiree = choisitCarte(paquet: paquet, etat: etat(), alea: Random(7));
+    expect(tiree!.id, 'ordinaire');
+  });
+
   test('un maillon hors sequence est ecarte', () {
     final paquet = [
       carte('ordinaire'),

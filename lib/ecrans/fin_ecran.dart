@@ -51,7 +51,7 @@ class FinEcran extends ConsumerWidget {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          fin?.titre ?? 'Le mandat s arrête',
+                          fin?.titre ?? "Le mandat s'arrête",
                           style:
                               const TextStyle(color: Colors.white, fontSize: 30, height: 1.1, fontWeight: FontWeight.w800),
                         ),

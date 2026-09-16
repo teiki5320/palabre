@@ -20,8 +20,10 @@ Carte? choisitCarte({required List<Carte> paquet, required EtatPartie etat, requ
   }
   if (jouables.isEmpty) return null;
 
-  // Une histoire commencée passe avant une situation ordinaire.
-  final maillons = jouables.where((c) => c.chaine != null).toList();
+  // Une histoire commencée passe avant une situation ordinaire : seule une
+  // suite de chaîne (rang > 1) est prioritaire, pas la carte de rang 1 qui
+  // l'ouvre, qui sort comme une carte ordinaire, au hasard pondéré.
+  final maillons = jouables.where((c) => (c.chaine?.rang ?? 0) > 1).toList();
   return _tirePondere(maillons.isNotEmpty ? maillons : jouables, alea);
 }
 
