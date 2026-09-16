@@ -147,11 +147,13 @@ void main() {
       expect(bouton.onPressed, isNotNull);
     });
 
-    testWidgets('un bouton discret mene a la collection', (tester) async {
+    testWidgets('le menu de la barre haute mene a la collection', (tester) async {
       await montreAccueil(tester);
-      expect(find.byType(IconButton), findsOneWidget);
+      expect(find.byIcon(Icons.menu), findsOneWidget);
 
-      await tester.tap(find.byType(IconButton));
+      await tester.tap(find.byIcon(Icons.menu));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Collection'));
       await tester.pumpAndSettle();
       expect(find.byType(CollectionEcran), findsOneWidget);
     });

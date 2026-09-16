@@ -131,11 +131,72 @@ void main() {
     expect(find.text('Awa'), findsOneWidget);
   });
 
-  testWidgets('une sauvegarde presente affiche le bouton reprendre', (tester) async {
+  testWidgets('une sauvegarde presente affiche le bouton reprendre, et lui seul', (tester) async {
     final etat = EtatPartie(parcours: 'general_parcours', nomJoueur: 'Awa', jauges: Jauges.milieu, jour: 12);
     SharedPreferences.setMockInitialValues({'partie_en_cours': jsonEncode(versJson(etat))});
     await montre(tester);
     expect(find.text('Reprendre le jour 12'), findsOneWidget);
+    // On ne commence pas un mandat par-dessus un autre : le formulaire
+    // n apparait pas tant qu une partie est en cours.
+    expect(find.byType(TextField), findsNothing);
+    expect(find.text('Prendre mes fonctions'), findsNothing);
+  });
+
+  testWidgets('sans partie en cours, le menu ne propose pas de nouvelle partie', (tester) async {
+    await montre(tester);
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+    expect(find.text('Collection'), findsOneWidget);
+    // L accueil est deja l ecran d une nouvelle partie : l entree n aurait
+    // rien a faire.
+    expect(find.text('Nouvelle partie'), findsNothing);
+  });
+
+  testWidgets('nouvelle partie previent de ce qu on perd, puis rend le formulaire', (tester) async {
+    final etat = EtatPartie(parcours: 'general_parcours', nomJoueur: 'Awa', jauges: Jauges.milieu, jour: 12);
+    SharedPreferences.setMockInitialValues({'partie_en_cours': jsonEncode(versJson(etat))});
+    await montre(tester);
+
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Nouvelle partie'));
+    await tester.pumpAndSettle();
+
+    // Le jour perdu est nomme dans l avertissement, et rien n a encore change.
+    expect(find.textContaining('Vous en etes au jour 12'.replaceAll('etes', 'êtes')), findsOneWidget);
+    await tester.tap(find.text('Annuler'));
+    await tester.pumpAndSettle();
+    expect(find.text('Reprendre le jour 12'), findsOneWidget);
+    expect(find.byType(TextField), findsNothing);
+
+    // Confirme, l accueil repasse au formulaire.
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Nouvelle partie'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Choisir un autre parcours'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Reprendre le jour 12'), findsNothing);
+    expect(find.byType(TextField), findsOneWidget);
+    expect(find.text('Prendre mes fonctions'), findsOneWidget);
+  });
+
+  testWidgets('la sauvegarde survit a une nouvelle partie non commencee', (tester) async {
+    final etat = EtatPartie(parcours: 'general_parcours', nomJoueur: 'Awa', jauges: Jauges.milieu, jour: 12);
+    SharedPreferences.setMockInitialValues({'partie_en_cours': jsonEncode(versJson(etat))});
+    await montre(tester);
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Nouvelle partie'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Choisir un autre parcours'));
+    await tester.pumpAndSettle();
+
+    // Rien n est efface tant que le joueur n a pas pris ses fonctions :
+    // quitter l ecran et revenir doit retrouver le mandat.
+    final garde = await Sauvegarde.lis();
+    expect(garde?.jour, 12);
   });
 
   testWidgets('sans sauvegarde le bouton reprendre n apparait pas', (tester) async {
