@@ -56,7 +56,8 @@ List<String> valide(Contenu c) {
     final ou = 'carte ${carte.id}';
 
     if (!vus.add(carte.id)) problemes.add('$ou : identifiant en double');
-    if (!c.personnages.containsKey(carte.personnage)) {
+    final conjointConnu = c.personnages.containsKey('epoux') && c.personnages.containsKey('epouse');
+    if (!c.personnages.containsKey(carte.personnage) && !(carte.personnage == Contenu.conjoint && conjointConnu)) {
       problemes.add('$ou : personnage inconnu « ${carte.personnage} »');
     }
     // Mesuré une fois les marques remplacées : « {titre} » vaut jusqu'à
@@ -248,12 +249,6 @@ List<String> valide(Contenu c) {
         }
       }
     }
-  }
-
-  final clesFins = <String>{};
-  for (final f in c.fins) {
-    final cle = '${f.jauge?.name ?? "election"}_${f.versLeHaut}';
-    clesFins.add(cle);
   }
 
   // La carte d'ouverture : une seule, et jouable par tout le monde au tout

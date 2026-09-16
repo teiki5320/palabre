@@ -20,6 +20,7 @@ class EtatPartie {
     this.vues = const {},
     this.chainesRang = const {},
     this.chainesJour = const {},
+    this.hier,
   });
 
   final String parcours;
@@ -45,6 +46,10 @@ class EtatPartie {
   /// Chaîne -> jour du dernier rang joué.
   final Map<String, int> chainesJour;
 
+  /// La carte d'hier, pour que le tirage n'envoie pas la même personne
+  /// deux jours de suite ; null au premier jour.
+  final String? hier;
+
   EtatPartie copie({
     Jauges? jauges,
     int? jour,
@@ -54,6 +59,7 @@ class EtatPartie {
     Set<String>? vues,
     Map<String, int>? chainesRang,
     Map<String, int>? chainesJour,
+    String? hier,
   }) =>
       EtatPartie(
         parcours: parcours,
@@ -66,6 +72,7 @@ class EtatPartie {
         vues: vues ?? this.vues,
         chainesRang: chainesRang ?? this.chainesRang,
         chainesJour: chainesJour ?? this.chainesJour,
+        hier: hier ?? this.hier,
       );
 }
 

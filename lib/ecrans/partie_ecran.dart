@@ -45,8 +45,8 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
 
     final contenu = ref.watch(contenuProvider).requireValue;
     final carte = session.carte!;
-    final personnage = contenu.personnages[carte.personnage];
     final parcours = contenu.parcoursParId(session.etat.parcours);
+    final personnage = contenu.personnageDe(carte, parcours);
     final titre = parcours?.titre ?? 'Monsieur le Président';
     final reponse = switch (_intention) {
       Cote.gauche => carte.gauche,
@@ -129,7 +129,8 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
   }
 }
 
-/// « JOUR 12 », et ce vers quoi le mandat va.
+/// « JOUR 12 », et ce vers quoi le mandat va. À gauche, la sortie : la
+/// partie est sauvegardée à chaque réponse, on la retrouve à l'accueil.
 class _LigneJour extends StatelessWidget {
   const _LigneJour({required this.jour, required this.mandat});
 
@@ -139,17 +140,34 @@ class _LigneJour extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 6),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('JOUR $jour', style: Textes.jour),
-          const SizedBox(width: 8),
-          Text(
-            mandat > 1 ? 'second mandat' : 'élection au jour $dureeMandat',
-            style: Textes.echeance,
-          ),
-        ],
+      padding: const EdgeInsets.fromLTRB(4, 0, 4, 6),
+      child: SizedBox(
+        height: 40,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('JOUR $jour', style: Textes.jour),
+                const SizedBox(width: 8),
+                Text(
+                  mandat > 1 ? 'second mandat' : 'élection au jour $dureeMandat',
+                  style: Textes.echeance,
+                ),
+              ],
+            ),
+            Positioned(
+              left: 0,
+              child: IconButton(
+                tooltip: 'Quitter, la partie est gardée',
+                icon: const Icon(Icons.west, size: 20),
+                color: Couleurs.cremeDoux,
+                onPressed: () => Navigator.of(context).maybePop(),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

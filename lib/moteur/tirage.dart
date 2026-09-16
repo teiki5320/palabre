@@ -33,7 +33,25 @@ Carte? choisitCarte({required List<Carte> paquet, required EtatPartie etat, requ
   // suite de chaîne (rang > 1) est prioritaire, pas la carte de rang 1 qui
   // l'ouvre, qui sort comme une carte ordinaire, au hasard pondéré.
   final maillons = jouables.where((c) => (c.chaine?.rang ?? 0) > 1).toList();
-  return _tirePondere(maillons.isNotEmpty ? maillons : jouables, alea);
+  if (maillons.isNotEmpty) return _tirePondere(maillons, alea);
+
+  // Pas la même personne deux jours de suite, ni le début d'une histoire
+  // le lendemain d'une autre du même nom — sauf s'il ne reste rien d'autre.
+  // Une suite de chaîne n'est pas concernée : c'est la même personne qui
+  // revient, et c'est voulu.
+  final hier = etat.hier == null ? null : _parId(paquet, etat.hier!);
+  if (hier != null) {
+    final autres = jouables.where((c) => c.personnage != hier.personnage && (c.chaine == null || hier.chaine == null || c.chaine!.id != hier.chaine!.id)).toList();
+    if (autres.isNotEmpty) return _tirePondere(autres, alea);
+  }
+  return _tirePondere(jouables, alea);
+}
+
+Carte? _parId(List<Carte> paquet, String id) {
+  for (final c in paquet) {
+    if (c.id == id) return c;
+  }
+  return null;
 }
 
 Carte _tirePondere(List<Carte> cartes, Random alea) {

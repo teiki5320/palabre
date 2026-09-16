@@ -17,6 +17,17 @@ class Contenu {
 
   final List<Carte> cartes;
   final Map<String, Personnage> personnages;
+
+  /// Identifiant que les cartes emploient pour l'époux ou l'épouse du
+  /// joueur : il n'existe pas dans le fichier des personnages, il se résout
+  /// selon le parcours — une présidente a un époux, un président une épouse.
+  static const conjoint = 'conjoint';
+
+  /// Qui parle sur cette carte, pour ce joueur.
+  Personnage? personnageDe(Carte carte, Parcours? parcours) {
+    if (carte.personnage != conjoint) return personnages[carte.personnage];
+    return personnages[(parcours?.femme ?? false) ? 'epoux' : 'epouse'];
+  }
   final List<Parcours> parcours;
   final List<Fin> fins;
 

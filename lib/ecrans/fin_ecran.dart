@@ -115,27 +115,26 @@ class FinEcran extends ConsumerWidget {
                           ..._nouveautes(session.nouveautes),
                         const SizedBox(height: 26),
                         if (gagnee)
-                          Row(
+                          // Empilés : côte à côte, « Continuer, deuxième
+                          // mandat » s'étalait sur trois lignes.
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              Expanded(
-                                child: OutlinedButton(
-                                  onPressed: () {
-                                    ref.read(sessionProvider.notifier).arrete();
-                                    Navigator.of(context).popUntil((r) => r.isFirst);
-                                  },
-                                  child: const Text('Reprendre ses fonctions'),
-                                ),
+                              OutlinedButton(
+                                onPressed: () {
+                                  ref.read(sessionProvider.notifier).arrete();
+                                  Navigator.of(context).popUntil((r) => r.isFirst);
+                                },
+                                child: const Text('Reprendre ses fonctions'),
                               ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: FilledButton(
-                                  // Rien à naviguer : l'écran de jeu affiche
-                                  // déjà FinEcran conditionnellement, il se
-                                  // remontre tout seul dès que la session
-                                  // n'est plus terminée.
-                                  onPressed: () => ref.read(sessionProvider.notifier).mandatSuivant(),
-                                  child: const Text('Continuer, deuxième mandat'),
-                                ),
+                              const SizedBox(height: 10),
+                              FilledButton(
+                                // Rien à naviguer : l'écran de jeu affiche
+                                // déjà FinEcran conditionnellement, il se
+                                // remontre tout seul dès que la session
+                                // n'est plus terminée.
+                                onPressed: () => ref.read(sessionProvider.notifier).mandatSuivant(),
+                                child: const Text('Continuer, deuxième mandat'),
                               ),
                             ],
                           )

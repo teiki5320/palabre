@@ -90,12 +90,17 @@ class SessionNotifier extends Notifier<Session?> {
     if (s.etat.jour <= 1) return;
     final parcours = _contenu.parcoursParId(s.etat.parcours);
     if (parcours == null) return;
+    // Le pays se souvient : le régime qu'on a installé et ce qu'on a fait
+    // restent, seules les jauges repartent du départ du parcours. C'est ce
+    // qui permet aux cartes du second mandat de revenir sur le premier.
     final etat = EtatPartie(
       parcours: s.etat.parcours,
       nomJoueur: s.etat.nomJoueur,
       jauges: parcours.depart,
       jour: 1,
       mandat: s.etat.mandat + 1,
+      style: s.etat.style,
+      drapeaux: s.etat.drapeaux,
     );
     state = _prochaine(etat);
   }

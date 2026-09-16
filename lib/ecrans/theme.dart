@@ -26,7 +26,6 @@ abstract final class Couleurs {
   static const aplat = Color(0xFF26222E);
 
   /// Separateurs.
-  static const trait = Color(0x14FFFFFF);
 
   /// Bordures et fond d'une jauge au repos.
   static const bordure = Color(0x2EFFFFFF);

@@ -6,9 +6,9 @@ import 'package:president/moteur/jauges.dart';
 import 'package:president/moteur/modeles.dart';
 import 'package:president/moteur/tirage.dart';
 
-Carte carte(String id, {Conditions? conditions, int poids = 1, Chaine? chaine, bool repetable = false}) => Carte(
+Carte carte(String id, {Conditions? conditions, int poids = 1, Chaine? chaine, bool repetable = false, String personnage = 'general'}) => Carte(
       id: id,
-      personnage: 'general',
+      personnage: personnage,
       humeur: Humeur.neutre,
       texte: 'texte',
       gauche: const Reponse(libelle: 'non', effets: {Jauge.armee: -5}),
@@ -19,8 +19,9 @@ Carte carte(String id, {Conditions? conditions, int poids = 1, Chaine? chaine, b
       repetable: repetable,
     );
 
-EtatPartie etat({int jour = 5, Set<String> vues = const {}, Map<String, int> rangs = const {}, Map<String, int> jours = const {}}) =>
+EtatPartie etat({int jour = 5, Set<String> vues = const {}, Map<String, int> rangs = const {}, Map<String, int> jours = const {}, String? hier}) =>
     EtatPartie(
+      hier: hier,
       parcours: 'general',
       nomJoueur: 'Awa',
       jauges: Jauges.milieu,
@@ -111,5 +112,43 @@ void main() {
     }
 
     expect(serie(3), serie(3));
+  });
+
+  group('hier', () {
+    test('la personne d hier ne revient pas le lendemain', () {
+      final paquet = [carte('a'), carte('b'), carte('c', personnage: 'marchande')];
+      for (var g = 0; g < 30; g++) {
+        final c = choisitCarte(paquet: paquet, etat: etat(vues: {'a'}, hier: 'a'), alea: Random(g));
+        expect(c!.id, 'c');
+      }
+    });
+
+    test('le debut d une histoire ne suit pas une carte de la meme histoire', () {
+      final paquet = [
+        carte('a', chaine: const Chaine(id: 'x', rang: 1)),
+        carte('b', chaine: const Chaine(id: 'x', rang: 1), personnage: 'maire'),
+        carte('c', personnage: 'marchande'),
+      ];
+      for (var g = 0; g < 30; g++) {
+        final c = choisitCarte(paquet: paquet, etat: etat(vues: {'a'}, hier: 'a'), alea: Random(g));
+        expect(c!.id, 'c');
+      }
+    });
+
+    test('s il ne reste que la personne d hier, elle revient', () {
+      final paquet = [carte('a'), carte('b')];
+      final c = choisitCarte(paquet: paquet, etat: etat(vues: {'a'}, hier: 'a'), alea: Random(1));
+      expect(c!.id, 'b');
+    });
+
+    test('une suite d histoire revient le lendemain meme si c est la meme personne', () {
+      final paquet = [
+        carte('a', chaine: const Chaine(id: 'x', rang: 1)),
+        carte('a2', chaine: const Chaine(id: 'x', rang: 2, delaiMin: 1)),
+        carte('c', personnage: 'marchande'),
+      ];
+      final c = choisitCarte(paquet: paquet, etat: etat(vues: {'a'}, hier: 'a', rangs: {'x': 1}, jours: {'x': 4}), alea: Random(1));
+      expect(c!.id, 'a2');
+    });
   });
 }

@@ -136,6 +136,7 @@ void main() {
 
     container.read(sessionProvider.notifier).reprend(etatReelu, graine: 1);
     expect(container.read(sessionProvider)!.terminee, isTrue);
+    final avant = container.read(sessionProvider)!.etat;
 
     container.read(sessionProvider.notifier).mandatSuivant();
 
@@ -149,7 +150,8 @@ void main() {
     expect(suite.etat.jauges.armee, 70);
     expect(suite.etat.jauges.caisses, 50);
     expect(suite.etat.jauges.presse, 40);
-    expect(suite.etat.drapeaux, isEmpty);
+    expect(suite.etat.drapeaux, avant.drapeaux);
+    expect(suite.etat.style, avant.style);
     expect(suite.etat.vues, isEmpty);
     expect(suite.etat.chainesRang, isEmpty);
     expect(suite.etat.chainesJour, isEmpty);

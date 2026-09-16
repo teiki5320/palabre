@@ -118,5 +118,6 @@ EtatPartie repond({
     vues: vues,
     chainesRang: chainesRang,
     chainesJour: chainesJour,
+    hier: carte.id,
   );
 }

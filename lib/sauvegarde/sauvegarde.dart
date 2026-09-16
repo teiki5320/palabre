@@ -119,6 +119,7 @@ Map<String, dynamic> versJson(EtatPartie e) => {
       'vues': e.vues.toList(),
       'chaines_rang': e.chainesRang,
       'chaines_jour': e.chainesJour,
+      'hier': e.hier,
     };
 
 EtatPartie depuisJson(Map<String, dynamic> j) {
@@ -140,6 +141,7 @@ EtatPartie depuisJson(Map<String, dynamic> j) {
     vues: ((j['vues'] as List?) ?? const []).cast<String>().toSet(),
     chainesRang: ((j['chaines_rang'] as Map?) ?? const {}).map((k, v) => MapEntry(k as String, (v as num).toInt())),
     chainesJour: ((j['chaines_jour'] as Map?) ?? const {}).map((k, v) => MapEntry(k as String, (v as num).toInt())),
+    hier: j['hier'] as String?,
   );
 }
 

@@ -37,6 +37,11 @@ void main() {
     expect(e.vues, contains('general_solde_1'));
   });
 
+  test('la carte jouee devient celle d hier', () {
+    final apres = repond(etat: depart(), carte: carteSolde, cote: Cote.gauche);
+    expect(apres.hier, carteSolde.id);
+  });
+
   test('la chaine memorise son rang et son jour', () {
     final e = repond(etat: depart(), carte: carteSolde, cote: Cote.droite);
     expect(e.chainesRang['solde'], 1);

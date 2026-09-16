@@ -121,7 +121,9 @@ class _CarteGlissanteState extends State<CarteGlissante> with SingleTickerProvid
     final cote = _dx > 0 ? Cote.droite : Cote.gauche;
     final depart = _decalage;
     _sorti = true;
-    _annonce(null);
+    // L'intention reste annoncée pendant la sortie : le joueur voit encore
+    // ce qu'il vient de décider tant que la carte est à l'écran. C'est
+    // l'écran qui l'efface, une fois la réponse appliquée.
     HapticFeedback.selectionClick();
     widget.onSortie();
     _dx = depart;
