@@ -69,12 +69,16 @@ class SessionNotifier extends Notifier<Session?> {
 
   void arrete() => state = null;
 
-  /// Enchaîne un second mandat après une réélection (ou toute autre fin) :
-  /// jour 1, mandat suivant, jauges remises au départ du parcours, rien de
-  /// l'ancien mandat — ni drapeau, ni carte vue, ni chaîne entamée.
+  /// Enchaîne un second mandat après une réélection, et seulement après une
+  /// réélection : c'est ici, et nulle part ailleurs, que la règle est
+  /// vérifiée. Un écran mal écrit peut appeler cette méthode après une
+  /// chute ou une élection perdue ; elle ne fait alors rien, plutôt que de
+  /// faire confiance à l'écran pour ne pas se tromper. Jour 1, mandat
+  /// suivant, jauges remises au départ du parcours, rien de l'ancien mandat
+  /// — ni drapeau, ni carte vue, ni chaîne entamée.
   void mandatSuivant() {
     final s = state;
-    if (s == null || !s.terminee) return;
+    if (s == null || s.denouement?.type != TypeDenouement.electionGagnee) return;
     final parcours = _contenu.parcoursParId(s.etat.parcours)!;
     final etat = EtatPartie(
       parcours: s.etat.parcours,

@@ -2,7 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../moteur/denouement.dart';
+import '../moteur/progression.dart';
 import 'session.dart';
+
+/// Les widgets de la zone « Vous avez débloqué » : un exploit par ligne avec
+/// son titre et sa description, un parcours débloqué par ligne avec son
+/// nom. Une liste à concaténer dans la colonne, jamais un widget seul, pour
+/// que l'appelant puisse ne rien insérer du tout quand il n'y a rien.
+List<Widget> _nouveautes(Nouveautes nouveautes) => [
+      const SizedBox(height: 22),
+      const Text(
+        'Vous avez débloqué',
+        style:
+            TextStyle(color: Color(0xFFE9B44C), letterSpacing: 1.2, fontWeight: FontWeight.w800, fontSize: 13),
+      ),
+      const SizedBox(height: 10),
+      for (final exploit in nouveautes.exploits)
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(exploit.titre,
+                  style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w700)),
+              const SizedBox(height: 2),
+              Text(exploit.description, style: const TextStyle(color: Color(0xFFE3D9C9), fontSize: 13, height: 1.3)),
+            ],
+          ),
+        ),
+      for (final parcours in nouveautes.parcours)
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Text('Nouveau parcours : ${parcours.nom}',
+              style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w700)),
+        ),
+    ];
 
 /// Ce qu'on voit quand le mandat s'arrête : la fin écrite, les jours tenus,
 /// et l'invitation à recommencer.
@@ -65,17 +99,50 @@ class FinEcran extends ConsumerWidget {
                           'Vous avez tenu $jours jours.',
                           style: const TextStyle(color: Colors.white70, fontSize: 15),
                         ),
+                        // Rien du tout quand il n'y a rien : ni titre, ni
+                        // espace, sous peine de laisser un trou orphelin.
+                        // Une fin inédite n'entre pas dans ce compte : elle
+                        // est déjà annoncée par le titre et le texte
+                        // au-dessus, ce n'est pas à cette zone de la répéter.
+                        if (session.nouveautes.exploits.isNotEmpty || session.nouveautes.parcours.isNotEmpty)
+                          ..._nouveautes(session.nouveautes),
                         const SizedBox(height: 26),
-                        SizedBox(
-                          width: double.infinity,
-                          child: FilledButton(
-                            onPressed: () {
-                              ref.read(sessionProvider.notifier).arrete();
-                              Navigator.of(context).popUntil((r) => r.isFirst);
-                            },
-                            child: const Text('Reprendre ses fonctions'),
+                        if (gagnee)
+                          Row(
+                            children: [
+                              Expanded(
+                                child: OutlinedButton(
+                                  onPressed: () {
+                                    ref.read(sessionProvider.notifier).arrete();
+                                    Navigator.of(context).popUntil((r) => r.isFirst);
+                                  },
+                                  child: const Text('Reprendre ses fonctions'),
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: FilledButton(
+                                  // Rien à naviguer : l'écran de jeu affiche
+                                  // déjà FinEcran conditionnellement, il se
+                                  // remontre tout seul dès que la session
+                                  // n'est plus terminée.
+                                  onPressed: () => ref.read(sessionProvider.notifier).mandatSuivant(),
+                                  child: const Text('Continuer, deuxième mandat'),
+                                ),
+                              ),
+                            ],
+                          )
+                        else
+                          SizedBox(
+                            width: double.infinity,
+                            child: FilledButton(
+                              onPressed: () {
+                                ref.read(sessionProvider.notifier).arrete();
+                                Navigator.of(context).popUntil((r) => r.isFirst);
+                              },
+                              child: const Text('Reprendre ses fonctions'),
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   ),

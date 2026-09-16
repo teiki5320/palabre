@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
 import 'package:president/ecrans/session.dart';
+import 'package:president/moteur/denouement.dart';
 import 'package:president/moteur/etat_partie.dart';
 import 'package:president/moteur/jauges.dart';
 import 'package:president/moteur/progression.dart';
@@ -45,6 +46,13 @@ const etatChute = EtatPartie(
   nomJoueur: 'Awa',
   jauges: Jauges(peuple: 50, armee: 0, caisses: 50, presse: 50),
   jour: 5,
+);
+
+const etatBattu = EtatPartie(
+  parcours: 'general_parcours',
+  nomJoueur: 'Awa',
+  jauges: Jauges(peuple: 30, armee: 50, caisses: 50, presse: 30),
+  jour: 31,
 );
 
 void main() {
@@ -164,6 +172,42 @@ void main() {
         );
     final avant = container.read(sessionProvider);
     expect(avant!.terminee, isFalse);
+
+    container.read(sessionProvider.notifier).mandatSuivant();
+
+    expect(container.read(sessionProvider), same(avant));
+  });
+
+  test(
+      'mandatSuivant ne fait rien si le mandat s est termine par une chute : '
+      'c est au moteur de refuser, pas a l ecran de s en souvenir', () async {
+    final contenu = contenuDEssai();
+    final container = ProviderContainer(overrides: [contenuProvider.overrideWith((ref) => contenu)]);
+    addTearDown(container.dispose);
+    await container.read(contenuProvider.future);
+    await container.read(progressionProvider.future);
+
+    container.read(sessionProvider.notifier).reprend(etatChute, graine: 1);
+    final avant = container.read(sessionProvider);
+    expect(avant!.terminee, isTrue);
+    expect(avant.denouement!.type, TypeDenouement.chute);
+
+    container.read(sessionProvider.notifier).mandatSuivant();
+
+    expect(container.read(sessionProvider), same(avant));
+  });
+
+  test('mandatSuivant ne fait rien si le mandat s est termine par une election perdue', () async {
+    final contenu = contenuDEssai();
+    final container = ProviderContainer(overrides: [contenuProvider.overrideWith((ref) => contenu)]);
+    addTearDown(container.dispose);
+    await container.read(contenuProvider.future);
+    await container.read(progressionProvider.future);
+
+    container.read(sessionProvider.notifier).reprend(etatBattu, graine: 1);
+    final avant = container.read(sessionProvider);
+    expect(avant!.terminee, isTrue);
+    expect(avant.denouement!.type, TypeDenouement.electionPerdue);
 
     container.read(sessionProvider.notifier).mandatSuivant();
 
