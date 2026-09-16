@@ -51,20 +51,46 @@ Map<Jauge, int> selonRegime(Map<Jauge, int> effets, int style) {
   };
 }
 
-/// Ce qu'une réponse fait vraiment, régime et mandat compris. C'est ce que
-/// l'écran montre pendant le geste, et ce que le moteur applique : le joueur
-/// ne doit jamais voir un chiffre différent de celui qu'il va subir.
+/// L'atout du parcours amortit sa jauge dans les deux sens : elle gagne
+/// moins et perd moins, donc elle reste loin des deux bords, et les deux
+/// bords tuent. Il s'applique en dernier, sur le chiffre que le joueur va
+/// réellement subir.
+Map<Jauge, int> selonAtout(Map<Jauge, int> effets, Atout? atout) {
+  if (atout == null) return effets;
+  final mouvement = effets[atout.jauge];
+  if (mouvement == null) return effets;
+  final amorti = (mouvement * atout.part).round();
+  // Un effet ne disparaît jamais tout à fait : une décision garde toujours
+  // une conséquence, même sur la jauge que le parcours protège.
+  return {...effets, atout.jauge: amorti == 0 ? (mouvement > 0 ? 1 : -1) : amorti};
+}
+
+/// Ce qu'une réponse fait vraiment : régime, mandat et atout compris. C'est
+/// ce que l'écran montre pendant le geste, et ce que le moteur applique —
+/// le joueur ne doit jamais voir un chiffre différent de celui qu'il va
+/// subir.
 Map<Jauge, int> effetsReels({
   required Map<Jauge, int> effets,
   required int style,
   required int mandat,
+  Atout? atout,
 }) =>
-    amplifie(selonRegime(effets, style), mandat);
+    selonAtout(amplifie(selonRegime(effets, style), mandat), atout);
 
 /// Applique une réponse et rend l'état du lendemain.
-EtatPartie repond({required EtatPartie etat, required Carte carte, required Cote cote}) {
+EtatPartie repond({
+  required EtatPartie etat,
+  required Carte carte,
+  required Cote cote,
+  Atout? atout,
+}) {
   final reponse = cote == Cote.gauche ? carte.gauche : carte.droite;
-  final effets = effetsReels(effets: reponse.effets, style: etat.style, mandat: etat.mandat);
+  final effets = effetsReels(
+    effets: reponse.effets,
+    style: etat.style,
+    mandat: etat.mandat,
+    atout: atout,
+  );
 
   final drapeaux = {...etat.drapeaux, ...reponse.drapeaux};
   final vues = {...etat.vues, carte.id};

@@ -49,6 +49,7 @@ void main() {
   });
 
   auDela();
+  atouts();
 
   test('le regime s applique avant l amplification du mandat', () {
     // Au mandat 2 tout est multiplie par 1,25, apres le regime.
@@ -109,5 +110,46 @@ void auDela() {
       expect(choisitFin(gagnee, fins, style: 50)!.id, 'election_gagnee');
       expect(choisitFin(gagnee, fins, style: 80)!.id, 'election_gagnee_seul');
     }
+  });
+}
+
+/// L'atout d'un parcours débloqué.
+void atouts() {
+  const atout = Atout(jauge: Jauge.peuple, part: 0.5, texte: 'Le peuple pardonne.');
+
+  test('l atout amortit dans les deux sens', () {
+    // Amortir seulement les pertes serait pire que rien pour un parcours qui
+    // demarre haut : il serait pousse vers le plafond, qui tue autant que le
+    // plancher.
+    final r = selonAtout(const {Jauge.peuple: 10, Jauge.armee: 10}, atout);
+    expect(r[Jauge.peuple], 5);
+    expect(r[Jauge.armee], 10, reason: 'les autres jauges ne sont pas touchees');
+
+    final perte = selonAtout(const {Jauge.peuple: -10}, atout);
+    expect(perte[Jauge.peuple], -5);
+  });
+
+  test('l atout ne fait jamais disparaitre une consequence', () {
+    final r = selonAtout(const {Jauge.peuple: 1}, atout);
+    expect(r[Jauge.peuple], 1);
+    final p = selonAtout(const {Jauge.peuple: -1}, atout);
+    expect(p[Jauge.peuple], -1);
+  });
+
+  test('sans atout, rien ne change', () {
+    const effets = {Jauge.peuple: 7};
+    expect(selonAtout(effets, null), effets);
+  });
+
+  test('l atout s applique apres le regime et le mandat', () {
+    // 10 -> regime au bout de l axe x1,5 -> 15 -> mandat 2 x1,25 -> 19
+    // -> atout x0,5 -> 10 (arrondi de 9,5).
+    final r = effetsReels(
+      effets: const {Jauge.caisses: 10},
+      style: 100,
+      mandat: 2,
+      atout: const Atout(jauge: Jauge.caisses, part: 0.5, texte: 't'),
+    );
+    expect(r[Jauge.caisses], 10);
   });
 }

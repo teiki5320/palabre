@@ -576,6 +576,27 @@ class _IdentiteParcours extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         sousTitre,
+        // L'atout se montre verrouillé comme déverrouillé : verrouillé, il
+        // dit ce qu'on gagne à le débloquer ; déverrouillé, il rappelle ce
+        // qu'on a de plus que les autres.
+        if (parcours.atout != null) ...[
+          const SizedBox(height: 8),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.shield_outlined, size: 15, color: Couleurs.or),
+              const SizedBox(width: 6),
+              Flexible(
+                child: Text(
+                  parcours.atout!.texte,
+                  style: Textes.sousTitre.copyWith(color: Couleurs.or, fontSize: 13),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ],
       ],
     );
   }

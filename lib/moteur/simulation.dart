@@ -63,7 +63,12 @@ Mesures simule({
         break;
       }
       vuesPartout.add(carte.id);
-      etat = repond(etat: etat, carte: carte, cote: _choisit(strategie, etat, carte, alea));
+      etat = repond(
+        etat: etat,
+        carte: carte,
+        cote: _choisit(strategie, etat, carte, alea),
+        atout: depart.atout,
+      );
     }
     totalJours += etat.jour - 1;
   }

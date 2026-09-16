@@ -186,6 +186,36 @@ class Personnage {
 }
 
 /// Qui le joueur était avant d'être élu.
+/// Ce qu'un parcours donne de plus, et qu'aucun autre n'a. C'est la vraie
+/// récompense d'un parcours débloqué : partir de plus haut ne sert à rien,
+/// puisque ce qui tue est la proximité d'un bord, pas le total.
+///
+/// Un atout amortit une jauge **dans les deux sens** : elle gagne moins et
+/// perd moins. C'est ce qui la garde loin des deux bords, et les deux bords
+/// tuent. N'amortir que les pertes serait pire que rien pour un parcours qui
+/// démarre haut : l'ancien international, à 80 de peuple, serait poussé vers
+/// le plafond par son propre atout.
+class Atout {
+  const Atout({required this.jauge, required this.part, required this.texte});
+
+  /// La jauge protégée.
+  final Jauge jauge;
+
+  /// Ce qui reste d'un mouvement sur cette jauge, gain comme perte : 0,5 le
+  /// divise par deux. L'atout ancre la jauge, il ne la dope pas.
+  final double part;
+
+  /// Une phrase courte, affichée au choix du parcours : sans elle, l'atout
+  /// serait invisible et ne donnerait envie de rien.
+  final String texte;
+
+  factory Atout.depuisJson(Map<String, dynamic> j) => Atout(
+        jauge: Jauge.values.byName(j['jauge'] as String),
+        part: ((j['part'] as num?) ?? 0.5).toDouble(),
+        texte: j['texte'] as String,
+      );
+}
+
 class Parcours {
   const Parcours({
     required this.id,
@@ -196,6 +226,7 @@ class Parcours {
     this.accroche = '',
     this.conditionDeblocage,
     this.condition,
+    this.atout,
   });
 
   final String id;
@@ -213,6 +244,10 @@ class Parcours {
 
   /// Texte affiché sur un parcours verrouillé ; null si ouvert dès le début.
   final String? conditionDeblocage;
+
+  /// Ce que ce parcours donne de plus ; null pour les parcours ouverts, qui
+  /// n'ont rien eu à gagner.
+  final Atout? atout;
 
   /// Condition typée du déblocage ; null si absente. Une condition vide
   /// étant toujours remplie, `null` (et non une `Condition` par défaut) est
@@ -235,6 +270,7 @@ class Parcours {
       accroche: j['accroche'] as String? ?? '',
       conditionDeblocage: j['condition_deblocage'] as String?,
       condition: j['condition'] == null ? null : Condition.depuisJson(j['condition'] as Map<String, dynamic>),
+      atout: j['atout'] == null ? null : Atout.depuisJson(j['atout'] as Map<String, dynamic>),
     );
   }
 

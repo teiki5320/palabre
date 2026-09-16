@@ -64,7 +64,12 @@ class SessionNotifier extends Notifier<Session?> {
   void repondA(Cote cote) {
     final s = state;
     if (s == null || s.carte == null || s.terminee) return;
-    state = _prochaine(repond(etat: s.etat, carte: s.carte!, cote: cote));
+    state = _prochaine(repond(
+      etat: s.etat,
+      carte: s.carte!,
+      cote: cote,
+      atout: _contenu.parcoursParId(s.etat.parcours)?.atout,
+    ));
   }
 
   void arrete() => state = null;

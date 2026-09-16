@@ -69,6 +69,7 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                       effets: reponse.effets,
                       style: session.etat.style,
                       mandat: session.etat.mandat,
+                      atout: parcours?.atout,
                     ),
             ),
             _LigneJour(jour: session.etat.jour, mandat: session.etat.mandat),

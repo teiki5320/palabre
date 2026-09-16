@@ -138,6 +138,23 @@ List<String> valide(Contenu c) {
       problemes.add('$ou : accroche de ${parcours.accroche.length} caractères, 60 au plus');
     }
 
+    // L'atout est la récompense d'un parcours débloqué : un parcours ouvert
+    // dès le début n'a rien eu à gagner, et un parcours verrouillé sans
+    // atout ne donnerait envie de rien.
+    final atout = parcours.atout;
+    if (parcours.ouvertDesLeDebut && atout != null) {
+      problemes.add('$ou : ouvert dès le début, mais porte un atout');
+    }
+    if (!parcours.ouvertDesLeDebut && atout == null) {
+      problemes.add('$ou : verrouillé sans atout, rien ne récompense le déblocage');
+    }
+    if (atout != null && (atout.part <= 0 || atout.part >= 1)) {
+      problemes.add('$ou : atout de part ${atout.part}, il faut entre 0 et 1 exclus');
+    }
+    if (atout != null && atout.texte.trim().isEmpty) {
+      problemes.add('$ou : atout sans texte, il serait invisible');
+    }
+
     if (!parcours.ouvertDesLeDebut) {
       final condition = parcours.condition;
       if (condition == null) {
