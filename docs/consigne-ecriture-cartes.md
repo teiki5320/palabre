@@ -1,0 +1,108 @@
+# Écrire des cartes pour Palabre
+
+Consigne durable. Toute personne — humaine ou non — qui écrit des cartes lit
+ce document d'abord.
+
+## Le jeu en trois phrases
+
+Vous êtes président d'un pays d'Afrique de l'Ouest **qui n'est nommé nulle
+part et n'existe pas**. Chaque jour, quelqu'un entre dans votre bureau avec un
+problème et deux issues. Vous glissez sa carte à gauche ou à droite, et quatre
+jauges bougent.
+
+## Les quatre jauges
+
+| Jauge | Ce qu'elle mesure | Elle tombe à 0 | Elle monte à 100 |
+|---|---|---|---|
+| `peuple` | ce que la rue pense de vous | l'avenue vous chasse | on vous croit providentiel, puis on vous en veut |
+| `armee` | ce que la caserne pense de vous | le palais est pris | l'armée gouverne à votre place |
+| `caisses` | l'état des finances | les guichets ferment | un trésor et plus rien d'autre |
+| `presse` | ce qu'on écrit sur vous | démoli en première page | plus personne ne vous informe |
+
+**Les deux bouts tuent.** Une carte qui ne fait que du bien est une mauvaise
+carte : toute réponse doit coûter quelque chose à quelqu'un.
+
+## Le ton
+
+Fond sérieux, personnages hauts en couleur, absurde occasionnel. On ne
+ricane pas de l'Afrique de l'Ouest : on écrit une politique réelle, avec ses
+arbitrages impossibles, ses fidélités encombrantes et ses petites lâchetés.
+Le comique vient de la situation, jamais de la caricature.
+
+Le joueur est vouvoyé et appelé `{titre}` (« Monsieur le Président » ou
+« Madame la Présidente ») ; `{nom}` est le nom qu'il s'est donné. Les deux
+marques sont remplacées à l'affichage.
+
+## Ce qu'on n'écrit jamais
+
+Aucun pays, ville, monnaie, institution ou personnalité réels. Le contrôle
+automatique refuse entre autres : les noms de pays d'Afrique de l'Ouest, la
+France, Paris, le FMI, la Banque mondiale, l'ONU, l'Union africaine, la
+CEDEAO, l'Union européenne, le franc CFA, la BCEAO, l'UEMOA, et les grandes
+villes de la région. Écrivez « la capitale », « le nord », « les bailleurs »,
+« la monnaie ».
+
+Pas de religion nommée, pas d'ethnie nommée, pas de parti réel.
+
+## La forme d'une carte
+
+```json
+{
+  "id": "douane_port_nuit",
+  "personnage": "ministre",
+  "humeur": "fache",
+  "texte": "{titre}, le port travaille la nuit sans que rien n'entre dans les caisses. Je peux envoyer quelqu'un. Il ne reviendra pas content.",
+  "gauche": {"libelle": "Envoyez-le", "effets": {"caisses": 8, "armee": -6}},
+  "droite": {"libelle": "Laissez le port", "effets": {"caisses": -5, "peuple": 3}}
+}
+```
+
+### Les règles que le contrôle automatique vérifie
+
+- `id` : unique, sans accent, en minuscules, mots séparés par `_`.
+- `personnage` : un identifiant de `assets/contenu/personnages.json`.
+- `humeur` : `neutre`, `fache` ou `content`. Toujours renseignée, et choisie
+  pour la carte — un ministre qui annonce une bonne nouvelle est `content`.
+- `texte` : **150 caractères au plus une fois `{titre}` remplacé** par
+  « Madame la Présidente », qui en vaut vingt. Deux phrases au plus.
+- `libelle` : **18 caractères au plus.** C'est un verbe ou un groupe court,
+  pas une phrase. Les deux libellés d'une carte doivent s'opposer clairement.
+- `effets` : de 1 à 3 jauges par réponse, valeurs entre −20 et 20, jamais 0.
+  Les deux réponses doivent avoir des effets, et des effets différents.
+- `style` (facultatif) : de −10 à 10, **seulement si la carte parle du
+  régime** — censurer, écouter, museler, truquer poussent vers la dictature ;
+  rendre des comptes, accepter un contre-pouvoir, laisser parler ramènent vers
+  la république. La plupart des cartes n'en ont pas.
+
+### Champs facultatifs
+
+- `poids` : 3 pour une carte qu'on veut voir souvent, 1 par défaut.
+- `repetable` : `true` pour une carte qui peut revenir dans le même mandat.
+- `conditions` : `jour_min`, `jour_max`, `mandat_min`, `parcours`,
+  `peuple_min`, `peuple_max` (idem pour les autres jauges), `style_min`,
+  `style_max`, `drapeaux_requis`, `drapeaux_interdits`.
+- `chaine` : `{"id": "affaire_x", "rang": 1, "delai_min": 3}` pour une
+  histoire en plusieurs cartes. Les rangs se suivent sans trou.
+- `drapeaux` sur une réponse : une marque que d'autres cartes exigeront.
+
+## Ce qui fait une bonne carte
+
+1. **Un vrai dilemme.** Si une réponse est évidemment meilleure, la carte est
+   ratée. Les deux doivent faire mal quelque part.
+2. **Une voix.** Le ministre des Finances ne parle pas comme la marchande. On
+   doit reconnaître qui parle sans lire son titre.
+3. **Du concret.** « Les infrastructures sont insuffisantes » ne vaut rien.
+   « Le pont du marché est fermé depuis un an, les camions font le tour par le
+   fleuve » vaut quelque chose.
+4. **Un coût différé quand c'est possible.** Les meilleures cartes se paient
+   trois jours plus tard, par une chaîne.
+5. **Pas de morale.** Le jeu ne dit jamais au joueur qu'il a bien ou mal fait.
+
+## Vérifier son travail
+
+```bash
+flutter test test/contenu/
+```
+
+Le contrôle du contenu refuse une carte mal formée et dit pourquoi. Aucune
+carte n'entre dans le jeu sans passer ce test.
