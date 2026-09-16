@@ -1,1 +1,12 @@
-[]
+[
+  {"id":"general_parcours","nom":"L'ancien général","titre":"Monsieur le Président","femme":false,
+   "depart":{"peuple":40,"armee":70,"caisses":50,"presse":40}},
+  {"id":"professeure","nom":"La professeure d'université","titre":"Madame la Présidente","femme":true,
+   "depart":{"peuple":55,"armee":40,"caisses":45,"presse":65}},
+  {"id":"musicienne","nom":"La star de la musique","titre":"Madame la Présidente","femme":true,
+   "depart":{"peuple":75,"armee":35,"caisses":45,"presse":60},
+   "condition_deblocage":"Finir un mandat avec le peuple au-dessus de 80"},
+  {"id":"putschiste","nom":"L'ancien putschiste","titre":"Monsieur le Président","femme":false,
+   "depart":{"peuple":35,"armee":80,"caisses":50,"presse":30},
+   "condition_deblocage":"Se faire renverser par l'armée"}
+]

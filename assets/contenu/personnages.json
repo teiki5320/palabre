@@ -1,1 +1,6 @@
-[]
+[
+  {"id":"ministre","nom":"Le ministre des Finances","titre":"Ministre des Finances"},
+  {"id":"general","nom":"Le général","titre":"Chef d'état-major"},
+  {"id":"redactrice","nom":"La rédactrice en chef","titre":"Rédactrice en chef"},
+  {"id":"marchande","nom":"La marchande","titre":"Présidente des commerçantes"}
+]

@@ -84,3 +84,4 @@ lib/generated_plugin_registrant.dart
 # Secrets et clés Android
 android/key.properties
 *.jks
+.tmp/
