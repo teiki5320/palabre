@@ -99,18 +99,19 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
             final taille = MediaQuery.sizeOf(context);
             final courte = taille.height < _hauteurEcranCourt;
 
-            // Ce que le bas réclame vraiment : les vignettes, le champ, le
-            // bouton, et « Reprendre » quand une partie est en cours. Sans
-            // cette mesure, la zone image prend ses 68 % coûte que coûte et
-            // pousse « Prendre mes fonctions » hors de l'écran.
-            final basNecessaire = 64.0 + 16 + (_enCours != null ? 58 : 0) + 52 + 10 + 56 + 18 + 30;
+            // Ce qui reste sous le portrait : « Reprendre » s'il y a lieu, le
+            // champ, le bouton, et les marges — les vignettes vivent
+            // désormais sur le portrait. Sans cette mesure, la zone image
+            // prend ses 76 % coûte que coûte et pousse « Prendre mes
+            // fonctions » hors de l'écran.
+            final basNecessaire = (_enCours != null ? 58.0 : 0.0) + 52 + 10 + 56 + 18 + 30;
 
             return SafeArea(
               top: false,
               child: LayoutBuilder(
                 builder: (context, contraintes) {
                   final hauteurImage = math.min(
-                    taille.height * (courte ? 0.60 : 0.68),
+                    taille.height * (courte ? 0.68 : 0.76),
                     contraintes.maxHeight - basNecessaire,
                   );
                   return Column(
@@ -211,6 +212,17 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                                         verrouille: verrouille,
                                       ),
                                     ),
+                                    const SizedBox(height: 18),
+                                    _VignettesParcours(
+                                      parcours: parcours,
+                                      actuel: choisi,
+                                      debloque: debloque,
+                                      onTap: (i) => _page.animateToPage(
+                                        i,
+                                        duration: const Duration(milliseconds: 260),
+                                        curve: Curves.easeOut,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -224,17 +236,6 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              _VignettesParcours(
-                                parcours: parcours,
-                                actuel: choisi,
-                                debloque: debloque,
-                                onTap: (i) => _page.animateToPage(
-                                  i,
-                                  duration: const Duration(milliseconds: 260),
-                                  curve: Curves.easeOut,
-                                ),
-                              ),
-                              const SizedBox(height: 16),
                               if (_enCours != null)
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 10),
@@ -318,7 +319,7 @@ class _PortraitParcours extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              stops: const [0, .22, .42, .66],
+              stops: const [0, .22, .42, 1],
               colors: [
                 Couleurs.nuit.withValues(alpha: .55),
                 Colors.transparent,
