@@ -1,18 +1,12 @@
 [
-  {"id":"general_parcours","nom":"L'ancien général","titre":"Monsieur le Président","femme":false,
-   "accroche":"L'armée vous suit, la presse se méfie.",
-   "depart":{"peuple":40,"armee":70,"caisses":50,"presse":40}},
-  {"id":"professeure","nom":"La professeure d'université","titre":"Madame la Présidente","femme":true,
-   "accroche":"Le pays vous lit, l'armée vous ignore.",
-   "depart":{"peuple":55,"armee":40,"caisses":45,"presse":65}},
-  {"id":"musicienne","nom":"La star de la musique","titre":"Madame la Présidente","femme":true,
-   "accroche":"Le peuple vous adore, la caserne vous attend.",
-   "depart":{"peuple":75,"armee":35,"caisses":45,"presse":60},
-   "condition_deblocage":"Finir un mandat avec le peuple au-dessus de 80",
-   "condition":{"peuple_min":80}},
-  {"id":"putschiste","nom":"L'ancien putschiste","titre":"Monsieur le Président","femme":false,
-   "accroche":"La caserne est à vous, personne d'autre.",
-   "depart":{"peuple":35,"armee":80,"caisses":50,"presse":30},
-   "condition_deblocage":"Se faire renverser par l'armée",
-   "condition":{"fin":"armee_bas"}}
+  {"id": "general_parcours", "nom": "L'ancien général", "titre": "Monsieur le Président", "femme": false, "accroche": "L'armée vous suit, la presse se méfie.", "depart": {"peuple": 40, "armee": 70, "caisses": 50, "presse": 40}},
+  {"id": "professeure", "nom": "La professeure d'université", "titre": "Madame la Présidente", "femme": true, "accroche": "Le pays vous lit, l'armée vous ignore.", "depart": {"peuple": 55, "armee": 40, "caisses": 45, "presse": 65}},
+  {"id": "femme_affaires", "nom": "La femme d'affaires", "titre": "Madame la Présidente", "femme": true, "accroche": "Les caisses vous connaissent, la rue beaucoup moins.", "depart": {"peuple": 40, "armee": 45, "caisses": 70, "presse": 50}},
+  {"id": "syndicaliste", "nom": "Le syndicaliste", "titre": "Monsieur le Président", "femme": false, "accroche": "La rue est à vous, les caisses sont vides.", "depart": {"peuple": 70, "armee": 40, "caisses": 35, "presse": 55}},
+  {"id": "footballeur", "nom": "L'ancien international", "titre": "Monsieur le Président", "femme": false, "accroche": "Le pays vous adore. Gouverner est un autre sport.", "depart": {"peuple": 85, "armee": 40, "caisses": 30, "presse": 45}},
+  {"id": "musicienne", "nom": "La star de la musique", "titre": "Madame la Présidente", "femme": true, "accroche": "Le peuple vous adore, la caserne vous attend.", "depart": {"peuple": 75, "armee": 35, "caisses": 45, "presse": 60}, "condition_deblocage": "Finir un mandat avec le peuple au-dessus de 80", "condition": {"peuple_min": 80}},
+  {"id": "putschiste", "nom": "L'ancien putschiste", "titre": "Monsieur le Président", "femme": false, "accroche": "La caserne est à vous, personne d'autre.", "depart": {"peuple": 35, "armee": 80, "caisses": 50, "presse": 30}, "condition_deblocage": "Se faire renverser par l'armée", "condition": {"fin": "armee_bas"}},
+  {"id": "fille_president", "nom": "La fille de l'ancien président", "titre": "Madame la Présidente", "femme": true, "accroche": "On vous attend au tournant, comme votre père.", "depart": {"peuple": 50, "armee": 60, "caisses": 60, "presse": 35}, "condition_deblocage": "Être réélu une fois", "condition": {"fin": "election_gagnee"}},
+  {"id": "technocrate", "nom": "La technocrate", "titre": "Madame la Présidente", "femme": true, "accroche": "Vous avez lu le dossier. Eux, non.", "depart": {"peuple": 40, "armee": 45, "caisses": 65, "presse": 55}, "condition_deblocage": "Finir un mandat avec les caisses au-dessus de 80", "condition": {"caisses_min": 80}},
+  {"id": "militante", "nom": "La militante", "titre": "Madame la Présidente", "femme": true, "accroche": "Les écrans sont à vous, la caserne vous guette.", "depart": {"peuple": 60, "armee": 25, "caisses": 35, "presse": 80}, "condition_deblocage": "Finir un mandat avec la presse au-dessus de 75", "condition": {"presse_min": 75}}
 ]

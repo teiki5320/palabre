@@ -568,7 +568,7 @@ class _JaugesDepart extends StatelessWidget {
 
 /// La rangee de vignettes : un rectangle par parcours, celui qu'on regarde
 /// souligne d'un trait or, les autres selon leur etat.
-class _VignettesParcours extends StatelessWidget {
+class _VignettesParcours extends StatefulWidget {
   const _VignettesParcours({
     required this.parcours,
     required this.actuel,
@@ -581,20 +581,61 @@ class _VignettesParcours extends StatelessWidget {
   final bool Function(Parcours) debloque;
   final void Function(int) onTap;
 
+  /// Largeur d'une vignette bordure comprise, plus l'écart qui la suit : de
+  /// quoi placer la tirette sur la bonne vignette.
+  static const double pas = 52 + 4 + 4 + 10;
+
+  @override
+  State<_VignettesParcours> createState() => _VignettesParcoursState();
+}
+
+class _VignettesParcoursState extends State<_VignettesParcours> {
+  final _defilement = ScrollController();
+
+  @override
+  void didUpdateWidget(_VignettesParcours ancien) {
+    super.didUpdateWidget(ancien);
+    if (ancien.actuel != widget.actuel) _amene(widget.actuel);
+  }
+
+  @override
+  void dispose() {
+    _defilement.dispose();
+    super.dispose();
+  }
+
+  /// Amène la vignette choisie au milieu de la tirette : à dix parcours, la
+  /// rangée est plus large que l'écran et celle qu'on regarde peut être
+  /// hors de vue.
+  void _amene(int i) {
+    if (!_defilement.hasClients) return;
+    final large = _defilement.position.viewportDimension;
+    final vise = _VignettesParcours.pas * i - (large - _VignettesParcours.pas) / 2;
+    _defilement.animateTo(
+      vise.clamp(0.0, _defilement.position.maxScrollExtent),
+      duration: const Duration(milliseconds: 260),
+      curve: Curves.easeOut,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        for (var i = 0; i < parcours.length; i++) ...[
-          if (i != 0) const SizedBox(width: 10),
-          _Vignette(
-            parcours: parcours[i],
-            courante: i == actuel,
-            verrouille: !debloque(parcours[i]),
-            onTap: () => onTap(i),
-          ),
+    return SingleChildScrollView(
+      controller: _defilement,
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          for (var i = 0; i < widget.parcours.length; i++) ...[
+            if (i != 0) const SizedBox(width: 10),
+            _Vignette(
+              parcours: widget.parcours[i],
+              courante: i == widget.actuel,
+              verrouille: !widget.debloque(widget.parcours[i]),
+              onTap: () => widget.onTap(i),
+            ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }

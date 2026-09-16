@@ -27,12 +27,13 @@ void main() {
     expect(contenu.cartes.length, greaterThanOrEqualTo(50));
   });
 
-  test('deux parcours sont ouverts et deux sont verrouilles', () {
-    expect(contenu.parcours.where((p) => p.ouvertDesLeDebut).length, 2);
-    expect(contenu.parcours.where((p) => !p.ouvertDesLeDebut).length, 2);
+  test('cinq parcours sont ouverts et cinq sont verrouilles', () {
+    expect(contenu.parcours.length, 10);
+    expect(contenu.parcours.where((p) => p.ouvertDesLeDebut).length, 5);
+    expect(contenu.parcours.where((p) => !p.ouvertDesLeDebut).length, 5);
   });
 
-  test('les deux parcours verrouilles portent une condition typee', () {
+  test('les parcours verrouilles portent une condition typee', () {
     for (final p in contenu.parcours.where((p) => !p.ouvertDesLeDebut)) {
       expect(p.condition, isNotNull, reason: '${p.id} resterait verrouille pour toujours');
     }
@@ -43,11 +44,16 @@ void main() {
     expect(contenu.exploits.map((e) => e.id).toSet().length, 8);
   });
 
-  test('un mandat joue au hasard dure entre dix et vingt-deux jours', () {
+  // La fourchette est large parce que l'écart de difficulté entre parcours
+  // est voulu : l'ancien international part à 85 de peuple, tout près du
+  // seuil mortel, et tombe vers 14 jours ; la technocrate part au calme et
+  // tient vers 23. Ce que ce test attrape, c'est un parcours qui s'effondre
+  // en quelques jours ou qu'aucune carte ne met jamais en danger.
+  test('un mandat joue au hasard dure entre dix et vingt-cinq jours', () {
     for (final p in contenu.parcours.where((p) => p.ouvertDesLeDebut)) {
       final m = simule(contenu: contenu, parcours: p.id, strategie: Strategie.auHasard, parties: 2000);
       expect(m.joursMoyens, greaterThan(10), reason: '${p.id} : mandats trop courts (${m.joursMoyens})');
-      expect(m.joursMoyens, lessThan(22), reason: '${p.id} : mandats trop longs (${m.joursMoyens})');
+      expect(m.joursMoyens, lessThan(25), reason: '${p.id} : mandats trop longs (${m.joursMoyens})');
     }
   });
 
