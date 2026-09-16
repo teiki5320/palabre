@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../moteur/etat_partie.dart';
 import '../moteur/modeles.dart';
+import '../sauvegarde/sauvegarde.dart';
 import 'partie_ecran.dart';
 import 'session.dart';
 
@@ -16,6 +18,15 @@ class AccueilEcran extends ConsumerStatefulWidget {
 class _AccueilEcranState extends ConsumerState<AccueilEcran> {
   final _nom = TextEditingController();
   String? _choisi;
+  EtatPartie? _enCours;
+
+  @override
+  void initState() {
+    super.initState();
+    Sauvegarde.lis().then((e) {
+      if (mounted) setState(() => _enCours = e);
+    });
+  }
 
   @override
   void dispose() {
@@ -65,6 +76,22 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                   padding: const EdgeInsets.fromLTRB(18, 0, 18, 18),
                   child: Column(
                     children: [
+                      if (_enCours != null)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: OutlinedButton(
+                              onPressed: () {
+                                ref.read(sessionProvider.notifier).reprend(_enCours!);
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (_) => const PartieEcran()),
+                                );
+                              },
+                              child: Text('Reprendre le jour ${_enCours!.jour}'),
+                            ),
+                          ),
+                        ),
                       TextField(
                         controller: _nom,
                         onChanged: (_) => setState(() {}),

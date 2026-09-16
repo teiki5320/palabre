@@ -9,6 +9,7 @@ import '../moteur/etat_partie.dart';
 import '../moteur/modeles.dart';
 import '../moteur/partie.dart';
 import '../moteur/tirage.dart';
+import '../sauvegarde/sauvegarde.dart';
 
 /// Le contenu du jeu, lu une seule fois au lancement.
 final contenuProvider = FutureProvider<Contenu>((ref) => Contenu.depuisAssets(rootBundle));
@@ -59,11 +60,13 @@ class SessionNotifier extends Notifier<Session?> {
   Session _prochaine(EtatPartie etat) {
     final d = evalue(etat);
     if (d != null) {
+      Sauvegarde.efface(); // le mandat est fini, il n'y a plus rien à reprendre
       return Session(etat: etat, denouement: d, fin: choisitFin(d, _contenu.fins));
     }
     final carte = choisitCarte(paquet: _contenu.cartes, etat: etat, alea: _alea);
     if (carte == null) {
       // Plus aucune carte jouable : on clôt le mandat comme une élection.
+      Sauvegarde.efface();
       final faute = Denouement(
         type: (etat.jauges.peuple + etat.jauges.presse) / 2 > 50
             ? TypeDenouement.electionGagnee
@@ -71,6 +74,7 @@ class SessionNotifier extends Notifier<Session?> {
       );
       return Session(etat: etat, denouement: faute, fin: choisitFin(faute, _contenu.fins));
     }
+    Sauvegarde.enregistre(etat);
     return Session(etat: etat, carte: carte);
   }
 }

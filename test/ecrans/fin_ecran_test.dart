@@ -6,6 +6,7 @@ import 'package:president/ecrans/fin_ecran.dart';
 import 'package:president/ecrans/session.dart';
 import 'package:president/moteur/etat_partie.dart';
 import 'package:president/moteur/jauges.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Contenu contenuDEssai() => Contenu.depuisChaines(
       cartes: '[]',
@@ -43,6 +44,8 @@ Future<ProviderContainer> montre(WidgetTester tester) async {
 }
 
 void main() {
+  setUp(() => SharedPreferences.setMockInitialValues({}));
+
   testWidgets('la fin montre son titre, son texte et les jours tenus', (tester) async {
     await montre(tester);
     expect(find.text('Le palais est pris'), findsOneWidget);

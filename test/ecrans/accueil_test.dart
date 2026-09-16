@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
 import 'package:president/ecrans/accueil.dart';
 import 'package:president/ecrans/session.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Contenu contenuDEssai() => Contenu.depuisChaines(
       cartes: '[{"id":"c1","personnage":"general","humeur":"neutre","texte":"La solde a du retard.",'
@@ -33,6 +34,8 @@ Future<void> montre(WidgetTester tester) async {
 }
 
 void main() {
+  setUp(() => SharedPreferences.setMockInitialValues({}));
+
   testWidgets('les parcours ouverts et verrouilles sont distingues', (tester) async {
     await montre(tester);
     expect(find.text('L ancien general'), findsOneWidget);

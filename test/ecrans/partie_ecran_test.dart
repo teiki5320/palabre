@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
 import 'package:president/ecrans/partie_ecran.dart';
 import 'package:president/ecrans/session.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Contenu contenuDEssai() => Contenu.depuisChaines(
       cartes: '['
@@ -47,6 +48,8 @@ Future<void> lance(WidgetTester tester) async {
 }
 
 void main() {
+  setUp(() => SharedPreferences.setMockInitialValues({}));
+
   testWidgets('la partie affiche le jour, les jauges et une carte', (tester) async {
     await lance(tester);
     expect(find.text('Jour 1'), findsOneWidget);
