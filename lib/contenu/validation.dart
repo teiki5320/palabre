@@ -8,14 +8,21 @@ const _interdits = [
   'fmi', 'banque mondiale', 'onu', 'union africaine', 'cedeao', 'union europeenne',
 ];
 
-String _sansAccents(String s) {
+/// Minuscules, sans accents, un seul mot par espace, encadré d'espaces pour
+/// pouvoir chercher un mot entier. Le trait d'union disparaît (« Séné-gal »
+/// devient « senegal »), l'apostrophe devient une espace (« l'ONU » devient
+/// « l onu ») : ni l'un ni l'autre ne doit permettre d'échapper au filtre.
+String _mots(String s) {
   const avec = 'àâäéèêëîïôöùûüç';
   const sans = 'aaaeeeeiioouuuc';
   var r = s.toLowerCase();
   for (var i = 0; i < avec.length; i++) {
     r = r.replaceAll(avec[i], sans[i]);
   }
-  return r.replaceAll(RegExp(r"[^a-z0-9 ]"), ' ');
+  r = r.replaceAll(RegExp("[-‑–—]"), '');
+  r = r.replaceAll(RegExp("[^a-z0-9]"), ' ');
+  final mots = r.split(RegExp(r'\s+')).where((m) => m.isNotEmpty);
+  return ' ${mots.join(' ')} ';
 }
 
 /// Passe tout le contenu en revue et rend la liste des problèmes trouvés.
@@ -69,9 +76,9 @@ List<String> valide(Contenu c) {
       if (!idsParcours.contains(p)) problemes.add('$ou : parcours inconnu « $p »');
     }
 
-    final texte = _sansAccents('${carte.texte} ${carte.gauche.libelle} ${carte.droite.libelle}');
+    final texte = _mots('${carte.texte} ${carte.gauche.libelle} ${carte.droite.libelle}');
     for (final mot in _interdits) {
-      if (texte.contains(mot)) problemes.add('$ou : mot interdit « $mot »');
+      if (texte.contains(' $mot ')) problemes.add('$ou : mot interdit « $mot »');
     }
   }
 

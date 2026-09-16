@@ -20,7 +20,7 @@ String carte({
     '"gauche":{"libelle":"$libelleGauche","effets":$effetsGauche},'
     '"droite":{"libelle":"Oui","effets":{"armee":10}}$extra}';
 
-Contenu contenuAvec(String cartes) =>
+Contenu contenuAvec(String cartes, {String parcours = parcours, String fins = fins}) =>
     Contenu.depuisChaines(cartes: '[$cartes]', personnages: personnages, parcours: parcours, fins: fins);
 
 void main() {
@@ -75,5 +75,58 @@ void main() {
   test('un parcours inconnu dans les conditions', () {
     final c = carte(extra: ',"conditions":{"parcours":["pilote"]}');
     expect(valide(contenuAvec(c)).join(), contains('pilote'));
+  });
+
+  test('un texte legitime contenant monument malin et benigne', () {
+    final c = carte(texte: 'Un monument est inauguré, le geste est bénigne, malin.');
+    expect(valide(contenuAvec(c)), isEmpty);
+  });
+
+  test('une phrase avec Senegal avec trait d union', () {
+    final c = carte(texte: 'Le Séné-gal nous observe.');
+    expect(valide(contenuAvec(c)).join(), contains('interdit'));
+  });
+
+  test('une phrase avec ONU et apostrophe', () {
+    final c = carte(texte: "L'ONU s'inquiète.");
+    expect(valide(contenuAvec(c)).join(), contains('interdit'));
+  });
+
+  test('un poids inferieur a 1', () {
+    final c = carte(extra: ',"poids":0');
+    expect(valide(contenuAvec(c)).join(), contains('poids'));
+  });
+
+  test('une reponse touche plus de trois jauges', () {
+    final c = carte(effetsGauche: '{"armee":10,"peuple":-5,"caisses":5,"presse":3}');
+    expect(valide(contenuAvec(c)).join(), contains('jauges'));
+  });
+
+  test('un effet nul', () {
+    final c = carte(effetsGauche: '{"armee":0}');
+    expect(valide(contenuAvec(c)).join(), contains('nul'));
+  });
+
+  test('il manque la fin d election gagnee', () {
+    final sansGagnee = '[{"id":"election_perdue","jauge":null,"vers_le_haut":false,"titre":"Battu","texte":"t","image":"i"}]';
+    expect(valide(contenuAvec(carte(), fins: sansGagnee)).join(), contains('gagnée'));
+  });
+
+  test('il manque la fin d election perdue', () {
+    final sansPerdue = '[{"id":"election_gagnee","jauge":null,"vers_le_haut":true,"titre":"Reelu","texte":"t","image":"i"}]';
+    expect(valide(contenuAvec(carte(), fins: sansPerdue)).join(), contains('perdue'));
+  });
+
+  test('deux fins pour le meme cas', () {
+    final avecDoublons = '[{"id":"election_gagnee","jauge":null,"vers_le_haut":true,"titre":"Reelu","texte":"t","image":"i"},'
+        '{"id":"election_gagnee_bis","jauge":null,"vers_le_haut":true,"titre":"Reelu bis","texte":"t","image":"i"},'
+        '{"id":"election_perdue","jauge":null,"vers_le_haut":false,"titre":"Battu","texte":"t","image":"i"}]';
+    expect(valide(contenuAvec(carte(), fins: avecDoublons)).join(), contains('deux fins'));
+  });
+
+  test('aucun parcours ouvert des le debut', () {
+    final parcoursFermes = '[{"id":"general_parcours","nom":"L ancien general","titre":"Monsieur le President","femme":false,'
+        '"depart":{"peuple":40,"armee":70,"caisses":50,"presse":40},"condition_deblocage":"Avoir au moins 50 en armee"}]';
+    expect(valide(contenuAvec(carte(), parcours: parcoursFermes)).join(), contains('ouvert'));
   });
 }
