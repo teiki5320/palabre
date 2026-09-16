@@ -167,6 +167,29 @@ class _CarteParcours extends StatelessWidget {
           ),
           child: Row(
             children: [
+              // Le visage de celui qu'on était : c'est lui qu'on choisit, pas une ligne de texte.
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: ColorFiltered(
+                  colorFilter: verrouille
+                      ? const ColorFilter.matrix(<double>[
+                          0.2126, 0.7152, 0.0722, 0, 0,
+                          0.2126, 0.7152, 0.0722, 0, 0,
+                          0.2126, 0.7152, 0.0722, 0, 0,
+                          0, 0, 0, 1, 0,
+                        ])
+                      : const ColorFilter.mode(Colors.transparent, BlendMode.dst),
+                  child: Image.asset(
+                    parcours.image,
+                    width: 64,
+                    height: 80,
+                    fit: BoxFit.cover,
+                    alignment: const Alignment(0, -0.25),
+                    errorBuilder: (_, __, ___) => Container(width: 64, height: 80, color: const Color(0xFF26222E)),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 14),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

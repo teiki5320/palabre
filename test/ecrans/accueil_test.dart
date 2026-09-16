@@ -30,6 +30,13 @@ Contenu contenuDEssai() => Contenu.depuisChaines(
     );
 
 Future<void> montre(WidgetTester tester) async {
+  // Un écran assez grand pour que les quatre parcours tiennent sans défilement :
+  // la liste ne construit que ce qui est visible, et les tests portent sur le
+  // dernier parcours, celui qui est verrouillé.
+  tester.view.physicalSize = const Size(1000, 2200);
+  tester.view.devicePixelRatio = 1;
+  addTearDown(tester.view.reset);
+
   final contenu = contenuDEssai();
   await tester.pumpWidget(ProviderScope(
     overrides: [contenuProvider.overrideWith((ref) => contenu)],

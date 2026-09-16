@@ -204,6 +204,9 @@ class Parcours {
   }
 
   bool get ouvertDesLeDebut => conditionDeblocage == null;
+
+  /// Portrait de celui qu'on était avant d'être élu.
+  String get image => 'assets/images/parcours/$id.jpg';
 }
 
 /// Comment un mandat se termine.
