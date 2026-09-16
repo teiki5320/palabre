@@ -137,13 +137,6 @@ class _LigneJauges extends StatelessWidget {
   final Jauges jauges;
   final Set<Jauge> concernees;
 
-  static const _noms = {
-    Jauge.peuple: 'Peuple',
-    Jauge.armee: 'Armée',
-    Jauge.caisses: 'Caisses',
-    Jauge.presse: 'Presse',
-  };
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -158,7 +151,7 @@ class _LigneJauges extends StatelessWidget {
                   key: ValueKey('jauge_${j.name}'),
                   children: [
                     Text(
-                      _noms[j]!,
+                      j.nom,
                       style: TextStyle(
                         fontSize: 10,
                         letterSpacing: .6,

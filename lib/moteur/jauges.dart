@@ -43,3 +43,14 @@ class Jauges {
   @override
   String toString() => 'Jauges(P$peuple A$armee C$caisses Pr$presse)';
 }
+
+/// Le nom affiché d'une jauge, jamais son chiffre — utilisé aussi bien
+/// pendant la partie que dans la collection.
+extension NomDeJauge on Jauge {
+  String get nom => switch (this) {
+        Jauge.peuple => 'Peuple',
+        Jauge.armee => 'Armée',
+        Jauge.caisses => 'Caisses',
+        Jauge.presse => 'Presse',
+      };
+}

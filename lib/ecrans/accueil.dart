@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../moteur/etat_partie.dart';
 import '../moteur/modeles.dart';
+import '../moteur/progression.dart';
 import '../sauvegarde/sauvegarde.dart';
+import 'collection_ecran.dart';
 import 'partie_ecran.dart';
 import 'session.dart';
 
@@ -28,8 +30,12 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
 
   /// Relit la sauvegarde sur l'appareil. À rappeler chaque fois que l'accueil
   /// redevient visible : une partie peut avoir été perdue ou quittée entre
-  /// temps, et le bouton « Reprendre » doit refléter l'état réel.
+  /// temps, et le bouton « Reprendre » doit refléter l'état réel. La
+  /// progression est invalidée au même endroit, pour que la liste des
+  /// parcours reflète aussitôt ce qu'un mandat qui vient de finir a
+  /// débloqué.
   Future<void> _relisSauvegarde() async {
+    ref.invalidate(progressionProvider);
     final e = await Sauvegarde.lis();
     if (mounted) setState(() => _enCours = e);
   }
@@ -43,6 +49,7 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
   @override
   Widget build(BuildContext context) {
     final contenu = ref.watch(contenuProvider);
+    final progression = ref.watch(progressionProvider).value ?? Progression.neuve();
 
     return Scaffold(
       body: SafeArea(
@@ -52,16 +59,37 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
           data: (c) {
             final parcours = c.parcours;
             final pret = _choisi != null && _nom.text.trim().isNotEmpty;
+            bool debloque(Parcours p) => p.ouvertDesLeDebut || progression.parcoursDebloques.contains(p.id);
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Le logo porte le nom du jeu ; le sous-titre dit ce qu'on y fait.
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 4, 22, 0),
-                  child: Image.asset('assets/icone/logo.png',
-                      height: 108, fit: BoxFit.contain, alignment: Alignment.centerLeft,
-                      errorBuilder: (_, __, ___) => const Text('Palabre',
-                          style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800))),
+                Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(22, 4, 22, 0),
+                      child: Image.asset('assets/icone/logo.png',
+                          height: 108, fit: BoxFit.contain, alignment: Alignment.centerLeft,
+                          errorBuilder: (_, __, ___) => const Text('Palabre',
+                              style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800))),
+                    ),
+                    // Discret : une icône, en haut à droite, pour ne pas
+                    // voler la place des portraits ni du logo.
+                    Positioned(
+                      top: 0,
+                      right: 8,
+                      child: IconButton(
+                        tooltip: 'Exploits et fins',
+                        icon: const Icon(Icons.emoji_events_outlined),
+                        onPressed: () async {
+                          await Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) => const CollectionEcran()),
+                          );
+                          await _relisSauvegarde();
+                        },
+                      ),
+                    ),
+                  ],
                 ),
                 const Padding(
                   padding: EdgeInsets.fromLTRB(22, 0, 22, 2),
@@ -80,8 +108,9 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                     itemBuilder: (_, i) => _CarteParcours(
                       parcours: parcours[i],
                       choisi: _choisi == parcours[i].id,
+                      debloque: debloque(parcours[i]),
                       onTap: () => setState(() {
-                        _choisi = parcours[i].ouvertDesLeDebut ? parcours[i].id : null;
+                        _choisi = debloque(parcours[i]) ? parcours[i].id : null;
                       }),
                     ),
                   ),
@@ -145,15 +174,19 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
 }
 
 class _CarteParcours extends StatelessWidget {
-  const _CarteParcours({required this.parcours, required this.choisi, required this.onTap});
+  const _CarteParcours({required this.parcours, required this.choisi, required this.debloque, required this.onTap});
 
   final Parcours parcours;
   final bool choisi;
+
+  /// true si le parcours est jouable : ouvert dès le début, ou débloqué par
+  /// la progression du joueur.
+  final bool debloque;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    final verrouille = !parcours.ouvertDesLeDebut;
+    final verrouille = !debloque;
     return Opacity(
       opacity: verrouille ? 0.45 : 1,
       child: InkWell(
