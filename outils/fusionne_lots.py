@@ -2,7 +2,8 @@
 
 Refuse un lot qui ferait doublon d'identifiant, et laisse le contrôle du
 dépôt (flutter test test/contenu/) juger le reste : il est plus sévère que
-les scripts des rédacteurs.
+les scripts des rédacteurs. Un lot versé est déplacé dans .tmp/lots/verses/
+pour ne pas être fusionné deux fois.
 """
 import json
 import pathlib
@@ -28,6 +29,9 @@ for lot in lots:
     connus |= set(interne)
     ajoutees += len(nouvelles)
     print(f"{lot.name} : {len(nouvelles)} cartes")
+    verses = lot.parent / 'verses'
+    verses.mkdir(exist_ok=True)
+    lot.rename(verses / lot.name)
 
 cartes_json.write_text(
     '[\n' + ',\n'.join('  ' + json.dumps(c, ensure_ascii=False) for c in cartes) + '\n]\n'
