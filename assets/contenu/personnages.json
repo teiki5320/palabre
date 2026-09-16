@@ -3,5 +3,11 @@
   {"id": "general", "nom": "Le général", "titre": "Chef d'état-major"},
   {"id": "redactrice", "nom": "La rédactrice en chef", "titre": "Rédactrice en chef"},
   {"id": "marchande", "nom": "La marchande", "titre": "Présidente des commerçantes"},
-  {"id": "doyen", "nom": "Le doyen de la Cour", "titre": "Doyen de la Cour constitutionnelle"}
+  {"id": "doyen", "nom": "Le doyen de la Cour", "titre": "Doyen de la Cour"},
+  {"id": "renseignements", "nom": "Le chef des renseignements", "titre": "Chef des renseignements"},
+  {"id": "chef", "nom": "Le chef traditionnel", "titre": "Chef traditionnel"},
+  {"id": "sante", "nom": "La ministre de la Santé", "titre": "Ministre de la Santé"},
+  {"id": "maire", "nom": "Le maire de la capitale", "titre": "Maire de la capitale"},
+  {"id": "cabinet", "nom": "La directrice de cabinet", "titre": "Directrice de cabinet"},
+  {"id": "emissaire", "nom": "L'émissaire", "titre": "Émissaire du fonds"}
 ]
