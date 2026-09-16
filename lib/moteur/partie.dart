@@ -37,6 +37,9 @@ EtatPartie repond({required EtatPartie etat, required Carte carte, required Cote
   return etat.copie(
     jauges: etat.jauges.applique(effets),
     jour: etat.jour + 1,
+    // L'axe du régime ne s'amplifie pas au fil des mandats : un abus de
+    // pouvoir est un abus de pouvoir, qu'il soit le premier ou le dixième.
+    style: (etat.style + reponse.style).clamp(0, 100),
     drapeaux: drapeaux,
     vues: vues,
     chainesRang: chainesRang,

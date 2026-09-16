@@ -3,6 +3,10 @@ import 'modeles.dart';
 
 /// Tout ce qui décrit un mandat en cours. Immuable : chaque réponse rend un
 /// nouvel état, ce qui permet de rejouer et de tester une partie pas à pas.
+/// On entre en fonction élu : le mandat commence du côté de la république,
+/// sans y être tout à fait.
+const int styleDepart = 20;
+
 class EtatPartie {
   const EtatPartie({
     required this.parcours,
@@ -10,6 +14,7 @@ class EtatPartie {
     required this.jauges,
     this.jour = 1,
     this.mandat = 1,
+    this.style = styleDepart,
     this.drapeaux = const {},
     this.vues = const {},
     this.chainesRang = const {},
@@ -21,6 +26,11 @@ class EtatPartie {
   final Jauges jauges;
   final int jour;
   final int mandat;
+
+  /// Où en est le mandat entre la république et la dictature, de 0 à 100.
+  /// Ce n'est pas une jauge : aucun des deux bouts ne tue. C'est le chemin
+  /// qu'on a pris sans jamais le décider d'un coup, et ce que la fin dira.
+  final int style;
 
   /// Marques laissées par les réponses précédentes.
   final Set<String> drapeaux;
@@ -38,6 +48,7 @@ class EtatPartie {
     Jauges? jauges,
     int? jour,
     int? mandat,
+    int? style,
     Set<String>? drapeaux,
     Set<String>? vues,
     Map<String, int>? chainesRang,
@@ -49,6 +60,7 @@ class EtatPartie {
         jauges: jauges ?? this.jauges,
         jour: jour ?? this.jour,
         mandat: mandat ?? this.mandat,
+        style: style ?? this.style,
         drapeaux: drapeaux ?? this.drapeaux,
         vues: vues ?? this.vues,
         chainesRang: chainesRang ?? this.chainesRang,

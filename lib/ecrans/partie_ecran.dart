@@ -26,8 +26,10 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
   /// Le passage de la carte suivante de l'arrière-plan au premier plan. Il
   /// démarre au départ de la carte du jour et se remet à zéro d'un coup quand
   /// la nouvelle carte est montée : la doublure est alors de nouveau derrière.
-  late final AnimationController _doublure =
-      AnimationController(vsync: this, duration: CarteGlissante.sortie);
+  late final AnimationController _doublure = AnimationController(
+    vsync: this,
+    duration: CarteGlissante.sortie,
+  );
 
   @override
   void dispose() {
@@ -102,11 +104,7 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                 ),
               ),
             ),
-            _LibellesRappeles(
-              gauche: carte.gauche.libelle,
-              droite: carte.droite.libelle,
-              vise: _intention,
-            ),
+            _AxeRegime(style: session.etat.style, vise: reponse?.style ?? 0),
           ],
         ),
       ),
@@ -220,56 +218,95 @@ class _Carte extends StatelessWidget {
   }
 }
 
-/// Les deux réponses rappelées sous la carte. Celle qu'on vise passe en or.
-class _LibellesRappeles extends StatelessWidget {
-  const _LibellesRappeles({required this.gauche, required this.droite, required this.vise});
+/// L'axe du régime, sous la carte. Ce n'est pas une jauge : aucun bout ne
+/// tue, et il ne montre pas de chiffre. Il dit seulement de quel côté le
+/// mandat penche, et il penche sans qu'on l'ait jamais décidé d'un coup.
+class _AxeRegime extends StatelessWidget {
+  const _AxeRegime({required this.style, required this.vise});
 
-  final String gauche;
-  final String droite;
-  final Cote? vise;
+  final int style;
+
+  /// Ce que la réponse pressentie déplacerait, ou zéro si elle ne dit rien
+  /// du régime — ce qui est le cas de la plupart des décisions.
+  final int vise;
 
   @override
   Widget build(BuildContext context) {
+    final apres = (style + vise).clamp(0, 100);
+    final penche = vise != 0;
     return Padding(
       padding: const EdgeInsets.fromLTRB(30, 0, 30, 34),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
         children: [
-          Flexible(child: _Rappel(texte: gauche, cote: Cote.gauche, actif: vise == Cote.gauche)),
-          const SizedBox(width: 16),
-          Flexible(child: _Rappel(texte: droite, cote: Cote.droite, actif: vise == Cote.droite)),
-        ],
-      ),
-    );
-  }
-}
-
-class _Rappel extends StatelessWidget {
-  const _Rappel({required this.texte, required this.cote, required this.actif});
-
-  final String texte;
-  final Cote cote;
-  final bool actif;
-
-  @override
-  Widget build(BuildContext context) {
-    final style = actif ? Textes.rappel.copyWith(color: Couleurs.or) : Textes.rappel;
-    // Les flèches passent par les icônes : ← et → n'existent pas dans les
-    // polices embarquées, et chaque plateforme en substituerait une autre.
-    final fleche = Icon(
-      cote == Cote.gauche ? Icons.west : Icons.east,
-      size: 14,
-      color: style.color,
-    );
-    return AnimatedDefaultTextStyle(
-      duration: const Duration(milliseconds: 160),
-      style: style,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (cote == Cote.gauche) ...[fleche, const SizedBox(width: 6)],
-          Flexible(child: Text(texte.toUpperCase(), overflow: TextOverflow.ellipsis)),
-          if (cote == Cote.droite) ...[const SizedBox(width: 6), fleche],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              AnimatedDefaultTextStyle(
+                duration: const Duration(milliseconds: 160),
+                style: vise < 0 ? Textes.nomJauge.copyWith(color: Couleurs.or) : Textes.nomJauge,
+                child: const Text('RÉPUBLIQUE'),
+              ),
+              AnimatedDefaultTextStyle(
+                duration: const Duration(milliseconds: 160),
+                style: vise > 0 ? Textes.nomJauge.copyWith(color: Couleurs.or) : Textes.nomJauge,
+                child: const Text('DICTATURE'),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          SizedBox(
+            height: 14,
+            child: LayoutBuilder(
+              builder: (context, c) {
+                final large = c.maxWidth;
+                double x(int v) => large * v.clamp(0, 100) / 100;
+                final debut = vise < 0 ? apres : style;
+                final fin = vise < 0 ? style : apres;
+                return Stack(
+                  alignment: Alignment.center,
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      height: 2,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: .14),
+                        borderRadius: BorderRadius.circular(1),
+                      ),
+                    ),
+                    // Le chemin que la réponse ferait faire.
+                    if (penche && fin > debut)
+                      Positioned(
+                        left: x(debut),
+                        width: x(fin) - x(debut),
+                        child: Container(
+                          height: 4,
+                          decoration: BoxDecoration(
+                            color: Couleurs.or.withValues(alpha: .45),
+                            borderRadius: BorderRadius.circular(2),
+                          ),
+                        ),
+                      ),
+                    // Où l'on en est : un curseur, pas un remplissage. Un axe
+                    // ne se remplit pas, on se déplace dessus.
+                    AnimatedPositioned(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeOut,
+                      left: x(style) - 5,
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 160),
+                        width: 10,
+                        height: penche ? 14 : 10,
+                        decoration: BoxDecoration(
+                          color: penche ? Couleurs.or : Couleurs.creme,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -302,9 +339,9 @@ class _LigneJaugesState extends State<_LigneJauges> with SingleTickerProviderSta
   );
 
   bool get _danger => Jauge.values.any((j) {
-        final v = widget.jauges.valeur(j);
-        return v <= _LigneJauges.bas || v >= _LigneJauges.haut;
-      });
+    final v = widget.jauges.valeur(j);
+    return v <= _LigneJauges.bas || v >= _LigneJauges.haut;
+  });
 
   /// Le battement ne tourne que tant qu'une jauge est au bord. Sans cette
   /// garde il tournerait toute la partie, pour rien.
@@ -405,63 +442,65 @@ class _Jauge extends StatelessWidget {
         const SizedBox(height: 4),
         SizedBox(
           height: 14,
-          child: LayoutBuilder(builder: (context, c) {
-            final large = c.maxWidth;
-            double x(int v) => large * v.clamp(0, 100) / 100;
-            final apres = (valeur + (effet ?? 0)).clamp(0, 100);
-            final debut = effet != null && effet! < 0 ? apres : valeur;
-            final fin = effet != null && effet! < 0 ? valeur : apres;
+          child: LayoutBuilder(
+            builder: (context, c) {
+              final large = c.maxWidth;
+              double x(int v) => large * v.clamp(0, 100) / 100;
+              final apres = (valeur + (effet ?? 0)).clamp(0, 100);
+              final debut = effet != null && effet! < 0 ? apres : valeur;
+              final fin = effet != null && effet! < 0 ? valeur : apres;
 
-            return Stack(
-              alignment: Alignment.center,
-              clipBehavior: Clip.none,
-              children: [
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 160),
-                  curve: Curves.easeOut,
-                  height: _hauteur,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: .14),
-                    borderRadius: BorderRadius.circular(_hauteur / 2),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: AnimatedContainer(
-                    key: ValueKey('barre_${jauge.name}'),
-                    duration: const Duration(milliseconds: 300),
+              return Stack(
+                alignment: Alignment.center,
+                clipBehavior: Clip.none,
+                children: [
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 160),
                     curve: Curves.easeOut,
                     height: _hauteur,
-                    width: x(valeur),
                     decoration: BoxDecoration(
-                      color: remplissage,
+                      color: Colors.white.withValues(alpha: .14),
                       borderRadius: BorderRadius.circular(_hauteur / 2),
                     ),
                   ),
-                ),
-                // Le fantôme : la part que la réponse ferait gagner ou perdre.
-                if (_concernee && fin > debut)
-                  Positioned(
-                    left: x(debut),
-                    width: x(fin) - x(debut),
-                    child: Container(
-                      height: _aggrave ? 6 : 4,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: AnimatedContainer(
+                      key: ValueKey('barre_${jauge.name}'),
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeOut,
+                      height: _hauteur,
+                      width: x(valeur),
                       decoration: BoxDecoration(
-                        color: _aggrave ? Couleurs.or : Couleurs.or.withValues(alpha: .45),
-                        borderRadius: BorderRadius.circular(_aggrave ? 4 : 2),
+                        color: remplissage,
+                        borderRadius: BorderRadius.circular(_hauteur / 2),
                       ),
                     ),
                   ),
-                // Pour une perte, une marque au niveau d'aujourd'hui : on voit
-                // d'où l'on part autant que là où l'on tombe.
-                if (_concernee && effet! < 0)
-                  Positioned(
-                    left: x(valeur) - 1,
-                    child: Container(width: 2, height: 14, color: Couleurs.or),
-                  ),
-              ],
-            );
-          }),
+                  // Le fantôme : la part que la réponse ferait gagner ou perdre.
+                  if (_concernee && fin > debut)
+                    Positioned(
+                      left: x(debut),
+                      width: x(fin) - x(debut),
+                      child: Container(
+                        height: _aggrave ? 6 : 4,
+                        decoration: BoxDecoration(
+                          color: _aggrave ? Couleurs.or : Couleurs.or.withValues(alpha: .45),
+                          borderRadius: BorderRadius.circular(_aggrave ? 4 : 2),
+                        ),
+                      ),
+                    ),
+                  // Pour une perte, une marque au niveau d'aujourd'hui : on voit
+                  // d'où l'on part autant que là où l'on tombe.
+                  if (_concernee && effet! < 0)
+                    Positioned(
+                      left: x(valeur) - 1,
+                      child: Container(width: 2, height: 14, color: Couleurs.or),
+                    ),
+                ],
+              );
+            },
+          ),
         ),
         const SizedBox(height: 3),
         AnimatedOpacity(

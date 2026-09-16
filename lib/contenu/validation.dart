@@ -73,6 +73,11 @@ List<String> valide(Contenu c) {
       if (r.libelle.length > 18) problemes.add('$ou : libellé « ${r.libelle} » de ${r.libelle.length} caractères, 18 au plus');
       if (r.effets.isEmpty) problemes.add('$ou : une réponse sans effet');
       if (r.effets.length > 3) problemes.add('$ou : une réponse touche ${r.effets.length} jauges, 3 au plus');
+      // L'axe du régime se déplace par petits pas : une seule décision ne
+      // fait pas une dictature, c'est la somme qui compte.
+      if (r.style < -10 || r.style > 10) {
+        problemes.add('$ou : déplacement de régime ${r.style} hors des bornes −10 à 10');
+      }
       for (final e in r.effets.entries) {
         if (e.value == 0) problemes.add('$ou : effet nul sur ${e.key.name}');
         if (e.value < -20 || e.value > 20) problemes.add('$ou : effet ${e.value} hors des bornes −20 à 20');

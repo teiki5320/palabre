@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 Contenu contenuDEssai() => Contenu.depuisChaines(
       cartes: '['
           '{"id":"c1","personnage":"general","humeur":"neutre","texte":"{nom}, la solde a du retard.",'
-          '"gauche":{"libelle":"Patientez","effets":{"armee":-10}},'
+          '"gauche":{"libelle":"Patientez","effets":{"armee":-10},"style":6},'
           '"droite":{"libelle":"On paie","effets":{"armee":10,"caisses":-10}}},'
           '{"id":"c2","personnage":"general","humeur":"neutre","texte":"Les casernes murmurent.",'
           '"gauche":{"libelle":"Ignorer","effets":{"armee":-5}},'
@@ -116,10 +116,31 @@ void main() {
     await tester.pumpAndSettle();
   });
 
-  testWidgets('les deux reponses sont rappelees sous la carte', (tester) async {
+  testWidgets('l axe du regime remplace le rappel des reponses', (tester) async {
     await lance(tester);
-    expect(find.text('PATIENTEZ'), findsOneWidget);
-    expect(find.text('ON PAIE'), findsOneWidget);
+    // Les libelles ne sont plus repetes sous la carte : l etiquette les dit
+    // deja pendant le geste, et la place sert maintenant au regime.
+    expect(find.text('PATIENTEZ'), findsNothing);
+    expect(find.text('ON PAIE'), findsNothing);
+    expect(find.text('RÉPUBLIQUE'), findsOneWidget);
+    expect(find.text('DICTATURE'), findsOneWidget);
+  });
+
+  testWidgets('une reponse autoritaire pousse le curseur vers la dictature', (tester) async {
+    await lance(tester);
+    final avant = ProviderScope.containerOf(
+      tester.element(find.byType(PartieEcran)),
+    ).read(sessionProvider)!.etat.style;
+
+    // « On paie » ne dit rien du regime ; c est « Patientez » qui porte
+    // le style dans le contenu d essai.
+    await tester.drag(find.textContaining('solde'), const Offset(-400, 0));
+    await tester.pumpAndSettle();
+
+    final apres = ProviderScope.containerOf(
+      tester.element(find.byType(PartieEcran)),
+    ).read(sessionProvider)!.etat.style;
+    expect(apres, avant + 6);
   });
 
   testWidgets('l echeance du mandat est annoncee a cote du jour', (tester) async {
@@ -133,7 +154,7 @@ void main() {
     final contenu = Contenu.depuisChaines(
       cartes: '['
           '{"id":"c1","personnage":"general","humeur":"neutre","texte":"La solde a du retard.",'
-          '"gauche":{"libelle":"Patientez","effets":{"armee":-10}},'
+          '"gauche":{"libelle":"Patientez","effets":{"armee":-10},"style":6},'
           '"droite":{"libelle":"On paie","effets":{"armee":10,"caisses":-10}}}'
           ']',
       personnages: '[{"id":"general","nom":"Le General","titre":"Chef d etat-major"}]',

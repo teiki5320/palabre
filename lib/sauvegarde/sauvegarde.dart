@@ -114,6 +114,7 @@ Map<String, dynamic> versJson(EtatPartie e) => {
       },
       'jour': e.jour,
       'mandat': e.mandat,
+      'style': e.style,
       'drapeaux': e.drapeaux.toList(),
       'vues': e.vues.toList(),
       'chaines_rang': e.chainesRang,
@@ -133,6 +134,8 @@ EtatPartie depuisJson(Map<String, dynamic> j) {
     ),
     jour: (j['jour'] as num).toInt(),
     mandat: (j['mandat'] as num).toInt(),
+    // Une sauvegarde d'avant l'axe du régime repart du début de l'axe.
+    style: ((j['style'] as num?) ?? styleDepart).toInt(),
     drapeaux: ((j['drapeaux'] as List?) ?? const []).cast<String>().toSet(),
     vues: ((j['vues'] as List?) ?? const []).cast<String>().toSet(),
     chainesRang: ((j['chaines_rang'] as Map?) ?? const {}).map((k, v) => MapEntry(k as String, (v as num).toInt())),

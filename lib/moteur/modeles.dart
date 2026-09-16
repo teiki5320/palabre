@@ -13,10 +13,20 @@ List<String> _textes(dynamic source) => ((source as List?) ?? const []).cast<Str
 
 /// Une des deux réponses possibles à une carte.
 class Reponse {
-  const Reponse({required this.libelle, required this.effets, this.drapeaux = const []});
+  const Reponse({
+    required this.libelle,
+    required this.effets,
+    this.drapeaux = const [],
+    this.style = 0,
+  });
 
   final String libelle;
   final Map<Jauge, int> effets;
+
+  /// Ce que la réponse déplace sur l'axe république — dictature. Positif
+  /// vers la dictature, négatif vers la république, zéro pour la plupart des
+  /// décisions, qui ne disent rien du régime.
+  final int style;
 
   /// Marques posées dans la partie, que d'autres cartes pourront exiger.
   final List<String> drapeaux;
@@ -25,6 +35,7 @@ class Reponse {
         libelle: j['libelle'] as String,
         effets: _effets(j['effets'] as Map<String, dynamic>?),
         drapeaux: _textes(j['drapeaux']),
+        style: ((j['style'] as num?) ?? 0).toInt(),
       );
 }
 
