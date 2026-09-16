@@ -117,9 +117,9 @@ void main() {
   group('Accueil et deblocage par la progression', () {
     testWidgets('un parcours verrouille reste verrouille sans progression', (tester) async {
       await montreAccueil(tester);
+      await tester.tap(find.byKey(const ValueKey('vignette-putschiste')));
+      await tester.pumpAndSettle();
       expect(find.text('Se faire renverser par l armee'), findsOneWidget);
-      await tester.tap(find.text('L ancien putschiste'));
-      await tester.pump();
       await tester.enterText(find.byType(TextField), 'Awa');
       await tester.pump();
       final bouton = tester.widget<FilledButton>(find.widgetWithText(FilledButton, 'Prendre mes fonctions'));
@@ -139,8 +139,8 @@ void main() {
       expect(find.text('Se faire renverser par l armee'), findsNothing);
       expect(find.byIcon(Icons.lock_outline), findsNothing);
 
-      await tester.tap(find.text('L ancien putschiste'));
-      await tester.pump();
+      await tester.tap(find.byKey(const ValueKey('vignette-putschiste')));
+      await tester.pumpAndSettle();
       await tester.enterText(find.byType(TextField), 'Awa');
       await tester.pump();
       final bouton = tester.widget<FilledButton>(find.widgetWithText(FilledButton, 'Prendre mes fonctions'));
