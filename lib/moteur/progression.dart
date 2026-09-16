@@ -114,7 +114,9 @@ class Nouveautes {
 
   final finId = mandat.finId;
   final finInedite = finId != null && !avant.finsDecouvertes.contains(finId);
-  final finsDecouvertes = finId == null ? avant.finsDecouvertes : {...avant.finsDecouvertes, finId};
+  // Toujours une copie, même sans fin identifiée : la progression rendue ne
+  // doit jamais partager un ensemble mutable avec celle qu'on lui a passée.
+  final finsDecouvertes = finId == null ? {...avant.finsDecouvertes} : {...avant.finsDecouvertes, finId};
 
   final progression = avant.copie(
     parcoursDebloques: parcoursDebloques,

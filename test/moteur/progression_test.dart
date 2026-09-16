@@ -128,4 +128,28 @@ void main() {
     final resultat = bilan(avant: avant, mandat: faits(jour: 5, mandat: 4), contenu: contenu());
     expect(resultat.nouveautes.rienDeNeuf, isTrue);
   });
+
+  test('les ensembles de la progression rendue ne partagent jamais la reference de ceux d avant', () {
+    final avant = Progression.neuve().copie(
+      parcoursDebloques: {'musicienne'},
+      exploits: {'tenir_jusqu_au_bout'},
+      finsDecouvertes: {'election_gagnee'},
+    );
+    // jour 5 et jauges au milieu : ni l'exploit ni le parcours ne se
+    // debloquent ici, et aucune fin n'est identifiee (finId: null) - c'est
+    // justement le cas qui laissait passer un ensemble partage.
+    final resultat = bilan(avant: avant, mandat: faits(jour: 5), contenu: contenu());
+
+    expect(identical(resultat.progression.parcoursDebloques, avant.parcoursDebloques), isFalse);
+    expect(identical(resultat.progression.exploits, avant.exploits), isFalse);
+    expect(identical(resultat.progression.finsDecouvertes, avant.finsDecouvertes), isFalse);
+
+    resultat.progression.parcoursDebloques.add('putschiste');
+    resultat.progression.exploits.add('un_autre_exploit');
+    resultat.progression.finsDecouvertes.add('armee_bas');
+
+    expect(avant.parcoursDebloques, {'musicienne'});
+    expect(avant.exploits, {'tenir_jusqu_au_bout'});
+    expect(avant.finsDecouvertes, {'election_gagnee'});
+  });
 }
