@@ -1,0 +1,4 @@
+# Outils de session, jamais versionnés
+.superpowers/
+.claude/
+.DS_Store
