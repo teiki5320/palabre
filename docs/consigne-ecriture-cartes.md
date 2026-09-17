@@ -123,3 +123,50 @@ flutter test test/contenu/
 
 Le contrôle du contenu refuse une carte mal formée et dit pourquoi. Aucune
 carte n'entre dans le jeu sans passer ce test.
+
+## Ce que l'autorité achète (doctrine du régime, septembre 2026)
+
+Mesure faite sur le sac livré : la réponse autoritaire valait en moyenne
+−5,4 au total des jauges, la républicaine +3,4, et l'autoritaire n'était la
+moins chère que dans 15 cas sur 160. Autrement dit la dictature était une
+amende, pas un chemin — la moitié de l'axe ne servait qu'à perdre. Ce qui
+suit corrige ce déséquilibre. **Il ne s'agit pas de rendre la dictature
+bonne, mais de la rendre chère autrement.**
+
+### L'autorité achète trois choses, et les paie en presse
+
+1. **De l'ordre.** Quand le désordre est dans la carte — émeute, grève
+   sauvage, pillage, barrage bloqué, rumeur qui enfle — la réponse ferme
+   **gagne du peuple**, pas l'inverse : une partie du pays veut qu'on
+   calme la rue, et le dit. Ne faites perdre du peuple à la répression que
+   lorsqu'elle frappe des gens qu'on reconnaît (un quartier, des femmes du
+   marché, des étudiants nommés). Réprimer l'anonyme rassure ; réprimer le
+   voisin révolte.
+2. **De l'argent.** Saisir, confisquer, taxer sans passer par l'Assemblée,
+   classer un audit, reprendre une concession, cesser d'indemniser : la
+   voie autoritaire est la voie riche. C'est elle qui doit remplir les
+   caisses quand la voie régulière les vide.
+3. **Du temps.** Décider sans consulter fait avancer le chantier, la
+   route, la loi. Consulter coûte des jours et de l'argent.
+
+Ce qu'elle paie, toujours : **la presse**, et souvent l'extérieur (les
+bailleurs, les voisins). C'est le prix unique et lisible de l'autorité.
+
+### Et la liberté coûte, elle aussi
+
+Une réponse républicaine n'est pas gratuite. Elle doit perdre quelque part :
+- **laisser publier, laisser parler** fâche la caserne (l'officier se sent
+  exposé) ;
+- **laisser un juge juger** coûte des caisses (indemnités, procédures) et
+  de l'armée quand l'accusé porte l'uniforme ;
+- **consulter, concerter, respecter la procédure** coûte des caisses et
+  laisse le désordre durer un peu : le peuple s'impatiente ;
+- **rendre des comptes** coûte du peuple quand les comptes sont mauvais.
+
+### La règle chiffrée
+
+Sur une carte qui oppose une réponse autoritaire à une réponse
+républicaine, les deux totaux doivent rester **à cinq points l'un de
+l'autre**. Si l'autoritaire fait −8, la républicaine ne fait pas +6 : elle
+fait −4 ou −3. L'un n'est jamais le bon choix et l'autre le mauvais ; ce
+sont deux façons de payer.
