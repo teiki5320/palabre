@@ -80,76 +80,82 @@ class FinEcran extends ConsumerWidget {
               builder: (context, contraintes) => SingleChildScrollView(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(minHeight: contraintes.maxHeight),
-                  child: Padding(
-                    padding: const EdgeInsets.all(26),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          gagnee ? 'RÉÉLU' : 'FIN DU MANDAT',
-                          style: Textes.surtitre.copyWith(fontSize: 12, letterSpacing: 2.5),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          fin?.titre ?? "Le mandat s'arrête",
-                          style: Textes.nomParcoursCourt.copyWith(fontSize: 30, height: 1.1),
-                        ),
-                        const SizedBox(height: 14),
-                        Text(
-                          fin?.texte ?? '',
-                          style: Textes.sousTitre.copyWith(
-                            color: Couleurs.cremeDoux,
-                            fontSize: 16,
-                            height: 1.4,
+                  child: Cadre(
+                    enfant: Padding(
+                      padding: const EdgeInsets.all(26),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            gagnee ? 'RÉÉLU' : 'FIN DU MANDAT',
+                            style: Textes.surtitre.copyWith(fontSize: 12, letterSpacing: 2.5),
                           ),
-                        ),
-                        const SizedBox(height: 18),
-                        Text('Vous avez tenu $jours jours.', style: Textes.sousTitre.copyWith(fontSize: 15)),
-                        // Rien du tout quand il n'y a rien : ni titre, ni
-                        // espace, sous peine de laisser un trou orphelin.
-                        // Une fin inédite n'entre pas dans ce compte : elle
-                        // est déjà annoncée par le titre et le texte
-                        // au-dessus, ce n'est pas à cette zone de la répéter.
-                        if (session.nouveautes.exploits.isNotEmpty || session.nouveautes.parcours.isNotEmpty)
-                          ..._nouveautes(session.nouveautes),
-                        const SizedBox(height: 26),
-                        if (gagnee)
-                          // Empilés : côte à côte, « Continuer, deuxième
-                          // mandat » s'étalait sur trois lignes.
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              OutlinedButton(
+                          const SizedBox(height: 10),
+                          Text(
+                            fin?.titre ?? "Le mandat s'arrête",
+                            style: Textes.nomParcoursCourt.copyWith(fontSize: 30, height: 1.1),
+                          ),
+                          const SizedBox(height: 14),
+                          Text(
+                            fin?.texte ?? '',
+                            style: Textes.sousTitre.copyWith(
+                              color: Couleurs.cremeDoux,
+                              fontSize: 16,
+                              height: 1.4,
+                            ),
+                          ),
+                          const SizedBox(height: 18),
+                          Text(
+                            'Vous avez tenu $jours jours.',
+                            style: Textes.sousTitre.copyWith(fontSize: 15),
+                          ),
+                          // Rien du tout quand il n'y a rien : ni titre, ni
+                          // espace, sous peine de laisser un trou orphelin.
+                          // Une fin inédite n'entre pas dans ce compte : elle
+                          // est déjà annoncée par le titre et le texte
+                          // au-dessus, ce n'est pas à cette zone de la répéter.
+                          if (session.nouveautes.exploits.isNotEmpty ||
+                              session.nouveautes.parcours.isNotEmpty)
+                            ..._nouveautes(session.nouveautes),
+                          const SizedBox(height: 26),
+                          if (gagnee)
+                            // Empilés : côte à côte, « Continuer, deuxième
+                            // mandat » s'étalait sur trois lignes.
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                OutlinedButton(
+                                  onPressed: () {
+                                    ref.read(sessionProvider.notifier).arrete();
+                                    Navigator.of(context).popUntil((r) => r.isFirst);
+                                  },
+                                  child: const Text('Reprendre ses fonctions'),
+                                ),
+                                const SizedBox(height: 10),
+                                FilledButton(
+                                  // Rien à naviguer : l'écran de jeu affiche
+                                  // déjà FinEcran conditionnellement, il se
+                                  // remontre tout seul dès que la session
+                                  // n'est plus terminée.
+                                  onPressed: () => ref.read(sessionProvider.notifier).mandatSuivant(),
+                                  child: const Text('Continuer, deuxième mandat'),
+                                ),
+                              ],
+                            )
+                          else
+                            SizedBox(
+                              width: double.infinity,
+                              child: FilledButton(
                                 onPressed: () {
                                   ref.read(sessionProvider.notifier).arrete();
                                   Navigator.of(context).popUntil((r) => r.isFirst);
                                 },
                                 child: const Text('Reprendre ses fonctions'),
                               ),
-                              const SizedBox(height: 10),
-                              FilledButton(
-                                // Rien à naviguer : l'écran de jeu affiche
-                                // déjà FinEcran conditionnellement, il se
-                                // remontre tout seul dès que la session
-                                // n'est plus terminée.
-                                onPressed: () => ref.read(sessionProvider.notifier).mandatSuivant(),
-                                child: const Text('Continuer, deuxième mandat'),
-                              ),
-                            ],
-                          )
-                        else
-                          SizedBox(
-                            width: double.infinity,
-                            child: FilledButton(
-                              onPressed: () {
-                                ref.read(sessionProvider.notifier).arrete();
-                                Navigator.of(context).popUntil((r) => r.isFirst);
-                              },
-                              child: const Text('Reprendre ses fonctions'),
                             ),
-                          ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

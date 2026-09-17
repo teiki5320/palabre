@@ -26,7 +26,13 @@ final progressionProvider = FutureProvider<Progression>((ref) => Sauvegarde.lisP
 /// Ce que l'écran a besoin de savoir : où en est la partie, quelle carte est
 /// devant le joueur, et comment le mandat s'est terminé le cas échéant.
 class Session {
-  const Session({required this.etat, this.carte, this.denouement, this.fin, this.nouveautes = const Nouveautes()});
+  const Session({
+    required this.etat,
+    this.carte,
+    this.denouement,
+    this.fin,
+    this.nouveautes = const Nouveautes(),
+  });
 
   final EtatPartie etat;
   final Carte? carte;
@@ -65,12 +71,14 @@ class SessionNotifier extends Notifier<Session?> {
   void repondA(Cote cote) {
     final s = state;
     if (s == null || s.carte == null || s.terminee) return;
-    state = _prochaine(repond(
-      etat: s.etat,
-      carte: s.carte!,
-      cote: cote,
-      atout: _contenu.parcoursParId(s.etat.parcours)?.atout,
-    ));
+    state = _prochaine(
+      repond(
+        etat: s.etat,
+        carte: s.carte!,
+        cote: cote,
+        atout: _contenu.parcoursParId(s.etat.parcours)?.atout,
+      ),
+    );
   }
 
   void arrete() => state = null;

@@ -56,73 +56,75 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            _LigneJauges(
-              jauges: session.etat.jauges,
-              // Ce que la réponse fera vraiment, régime et mandat compris :
-              // montrer l'effet brut mentirait au joueur au moment précis où
-              // il décide.
-              effets: reponse == null
-                  ? const {}
-                  : effetsReels(
-                      effets: reponse.effets,
-                      style: session.etat.style,
-                      mandat: session.etat.mandat,
-                      atout: parcours?.atout,
-                    ),
-            ),
-            _LigneJour(jour: session.etat.jour, mandat: session.etat.mandat),
-            Expanded(
-              // La carte qui part ne doit pas passer devant les jauges.
-              child: ClipRect(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 12, 22, 24),
-                  child: Stack(
-                    children: [
-                      Positioned.fill(
-                        child: AnimatedBuilder(
-                          animation: _doublure,
-                          builder: (context, enfant) {
-                            final t = Curves.easeOut.transform(_doublure.value);
-                            return Transform.translate(
-                              offset: Offset(0, 10 * (1 - t)),
-                              child: Transform.scale(scale: .96 + .04 * t, child: enfant),
-                            );
-                          },
-                          child: const _Doublure(),
-                        ),
+        child: Cadre(
+          enfant: Column(
+            children: [
+              _LigneJauges(
+                jauges: session.etat.jauges,
+                // Ce que la réponse fera vraiment, régime et mandat compris :
+                // montrer l'effet brut mentirait au joueur au moment précis où
+                // il décide.
+                effets: reponse == null
+                    ? const {}
+                    : effetsReels(
+                        effets: reponse.effets,
+                        style: session.etat.style,
+                        mandat: session.etat.mandat,
+                        atout: parcours?.atout,
                       ),
-                      Positioned.fill(
-                        child: CarteGlissante(
-                          // Le jour fait partie de la clé : une carte répétable
-                          // tirée deux jours de suite doit être une carte neuve
-                          // pour Flutter, sinon il garde l'état « sortie » de la
-                          // veille et plus aucun geste ne répond.
-                          key: ValueKey('${session.etat.jour}_${carte.id}'),
-                          libelleGauche: carte.gauche.libelle,
-                          libelleDroite: carte.droite.libelle,
-                          onIntention: (c) => setState(() => _intention = c),
-                          onSortie: () => _doublure.forward(from: 0),
-                          onReponse: (c) {
-                            setState(() => _intention = null);
-                            _doublure.value = 0;
-                            ref.read(sessionProvider.notifier).repondA(c);
-                          },
-                          enfant: _Carte(
-                            personnage: personnage,
-                            humeur: carte.humeur,
-                            texte: habille(carte.texte, nom: session.etat.nomJoueur, titre: titre),
+              ),
+              _LigneJour(jour: session.etat.jour, mandat: session.etat.mandat),
+              Expanded(
+                // La carte qui part ne doit pas passer devant les jauges.
+                child: ClipRect(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(22, 12, 22, 24),
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          child: AnimatedBuilder(
+                            animation: _doublure,
+                            builder: (context, enfant) {
+                              final t = Curves.easeOut.transform(_doublure.value);
+                              return Transform.translate(
+                                offset: Offset(0, 10 * (1 - t)),
+                                child: Transform.scale(scale: .96 + .04 * t, child: enfant),
+                              );
+                            },
+                            child: const _Doublure(),
                           ),
                         ),
-                      ),
-                    ],
+                        Positioned.fill(
+                          child: CarteGlissante(
+                            // Le jour fait partie de la clé : une carte répétable
+                            // tirée deux jours de suite doit être une carte neuve
+                            // pour Flutter, sinon il garde l'état « sortie » de la
+                            // veille et plus aucun geste ne répond.
+                            key: ValueKey('${session.etat.jour}_${carte.id}'),
+                            libelleGauche: carte.gauche.libelle,
+                            libelleDroite: carte.droite.libelle,
+                            onIntention: (c) => setState(() => _intention = c),
+                            onSortie: () => _doublure.forward(from: 0),
+                            onReponse: (c) {
+                              setState(() => _intention = null);
+                              _doublure.value = 0;
+                              ref.read(sessionProvider.notifier).repondA(c);
+                            },
+                            enfant: _Carte(
+                              personnage: personnage,
+                              humeur: carte.humeur,
+                              texte: habille(carte.texte, nom: session.etat.nomJoueur, titre: titre),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            _AxeRegime(style: session.etat.style, vise: reponse?.style ?? 0),
-          ],
+              _AxeRegime(style: session.etat.style, vise: reponse?.style ?? 0),
+            ],
+          ),
         ),
       ),
     );
@@ -151,10 +153,7 @@ class _LigneJour extends StatelessWidget {
               children: [
                 Text('JOUR $jour', style: Textes.jour),
                 const SizedBox(width: 8),
-                Text(
-                  mandat > 1 ? 'second mandat' : 'élection au jour $dureeMandat',
-                  style: Textes.echeance,
-                ),
+                Text(mandat > 1 ? 'second mandat' : 'élection au jour $dureeMandat', style: Textes.echeance),
               ],
             ),
             Positioned(

@@ -103,7 +103,10 @@ class _CarteGlissanteState extends State<CarteGlissante> with SingleTickerProvid
   void _ramene() {
     _annonce(null);
     _anim.duration = CarteGlissante.retour;
-    _course = Tween<double>(begin: _dx, end: 0).animate(CurvedAnimation(parent: _anim, curve: Curves.easeOut));
+    _course = Tween<double>(
+      begin: _dx,
+      end: 0,
+    ).animate(CurvedAnimation(parent: _anim, curve: Curves.easeOut));
     _anim.forward(from: 0);
   }
 
@@ -128,49 +131,53 @@ class _CarteGlissanteState extends State<CarteGlissante> with SingleTickerProvid
     widget.onSortie();
     _dx = depart;
     _anim.duration = CarteGlissante.sortie;
-    _course = Tween<double>(begin: depart, end: _largeur * 1.5 * (cote == Cote.droite ? 1 : -1))
-        .animate(CurvedAnimation(parent: _anim, curve: Curves.easeIn));
+    _course = Tween<double>(
+      begin: depart,
+      end: _largeur * 1.5 * (cote == Cote.droite ? 1 : -1),
+    ).animate(CurvedAnimation(parent: _anim, curve: Curves.easeIn));
     _anim.forward(from: 0).whenComplete(() => widget.onReponse(cote));
   }
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, c) {
-      _largeur = c.maxWidth;
-      final decalage = _decalage;
-      final angle = (decalage / _largeur).clamp(-1.0, 1.0) * 0.18;
-      final visible = _dx.abs() / _largeur >= CarteGlissante.seuilIntention;
-      return GestureDetector(
-        onPanUpdate: _bouge,
-        onPanEnd: _lache,
-        onPanCancel: _annule,
-        child: Transform.translate(
-          offset: Offset(decalage, 0),
-          child: Transform.rotate(
-            // Le pivot est sous la carte : elle bascule comme une carte tenue
-            // en main, pas comme une image qui tourne sur elle-même.
-            angle: angle,
-            alignment: const Alignment(0, 1.2),
-            child: Stack(
-              children: [
-                Positioned.fill(child: widget.enfant),
-                if (visible)
-                  Positioned(
-                    top: 18,
-                    left: _dx > 0 ? 18 : null,
-                    right: _dx > 0 ? null : 18,
-                    // L'étiquette reste droite pendant que la carte bascule.
-                    child: Transform.rotate(
-                      angle: -angle,
-                      child: _Etiquette(texte: _dx > 0 ? widget.libelleDroite : widget.libelleGauche),
+    return LayoutBuilder(
+      builder: (context, c) {
+        _largeur = c.maxWidth;
+        final decalage = _decalage;
+        final angle = (decalage / _largeur).clamp(-1.0, 1.0) * 0.18;
+        final visible = _dx.abs() / _largeur >= CarteGlissante.seuilIntention;
+        return GestureDetector(
+          onPanUpdate: _bouge,
+          onPanEnd: _lache,
+          onPanCancel: _annule,
+          child: Transform.translate(
+            offset: Offset(decalage, 0),
+            child: Transform.rotate(
+              // Le pivot est sous la carte : elle bascule comme une carte tenue
+              // en main, pas comme une image qui tourne sur elle-même.
+              angle: angle,
+              alignment: const Alignment(0, 1.2),
+              child: Stack(
+                children: [
+                  Positioned.fill(child: widget.enfant),
+                  if (visible)
+                    Positioned(
+                      top: 18,
+                      left: _dx > 0 ? 18 : null,
+                      right: _dx > 0 ? null : 18,
+                      // L'étiquette reste droite pendant que la carte bascule.
+                      child: Transform.rotate(
+                        angle: -angle,
+                        child: _Etiquette(texte: _dx > 0 ? widget.libelleDroite : widget.libelleGauche),
+                      ),
                     ),
-                  ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }
 

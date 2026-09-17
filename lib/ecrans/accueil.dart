@@ -218,34 +218,36 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                                 left: 0,
                                 right: 0,
                                 bottom: 0,
-                                child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(22, 0, 22, 22),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text('VOTRE MANDAT', style: Textes.surtitre),
-                                      const SizedBox(height: 6),
-                                      Text(
-                                        enCours.nomJoueur,
-                                        style: courte ? Textes.nomParcoursCourt : Textes.nomParcours,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      const SizedBox(height: 6),
-                                      Text(
-                                        '${sien?.titre ?? ''} · jour ${enCours.jour}',
-                                        style: Textes.sousTitre,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      const SizedBox(height: 18),
-                                      _JaugesDepart(
-                                        depart: enCours.jauges,
-                                        verrouille: false,
-                                        souligneLaPlusHaute: false,
-                                      ),
-                                    ],
+                                child: Cadre(
+                                  enfant: Padding(
+                                    padding: const EdgeInsets.fromLTRB(22, 0, 22, 22),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text('VOTRE MANDAT', style: Textes.surtitre),
+                                        const SizedBox(height: 6),
+                                        Text(
+                                          enCours.nomJoueur,
+                                          style: courte ? Textes.nomParcoursCourt : Textes.nomParcours,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        const SizedBox(height: 6),
+                                        Text(
+                                          '${sien?.titre ?? ''} · jour ${enCours.jour}',
+                                          style: Textes.sousTitre,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        const SizedBox(height: 18),
+                                        _JaugesDepart(
+                                          depart: enCours.jauges,
+                                          verrouille: false,
+                                          souligneLaPlusHaute: false,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -254,18 +256,20 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                         ),
                         Expanded(
                           child: Center(
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(22, 18, 22, 30),
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: OutlinedButton(
-                                  onPressed: () async {
-                                    ref.read(sessionProvider.notifier).reprend(enCours);
-                                    await Navigator.of(context)
-                                        .push(MaterialPageRoute(builder: (_) => const PartieEcran()));
-                                    await _relisSauvegarde();
-                                  },
-                                  child: Text('Reprendre le jour ${enCours.jour}'),
+                            child: Cadre(
+                              enfant: Padding(
+                                padding: const EdgeInsets.fromLTRB(22, 18, 22, 30),
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: OutlinedButton(
+                                    onPressed: () async {
+                                      ref.read(sessionProvider.notifier).reprend(enCours);
+                                      await Navigator.of(context)
+                                          .push(MaterialPageRoute(builder: (_) => const PartieEcran()));
+                                      await _relisSauvegarde();
+                                    },
+                                    child: Text('Reprendre le jour ${enCours.jour}'),
+                                  ),
                                 ),
                               ),
                             ),
@@ -309,68 +313,70 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                               left: 0,
                               right: 0,
                               bottom: 0,
-                              child: Padding(
-                                padding: const EdgeInsets.fromLTRB(22, 0, 22, 22),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    AnimatedSwitcher(
-                                      duration: const Duration(milliseconds: 220),
-                                      switchInCurve: Curves.easeOut,
-                                      switchOutCurve: Curves.easeOut,
-                                      transitionBuilder: (child, animation) => FadeTransition(
-                                        opacity: animation,
-                                        child: AnimatedBuilder(
-                                          animation: animation,
-                                          builder: (context, enfant) => Transform.translate(
-                                            offset: Offset(0, (1 - animation.value) * 8),
-                                            child: enfant,
+                              child: Cadre(
+                                enfant: Padding(
+                                  padding: const EdgeInsets.fromLTRB(22, 0, 22, 22),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      AnimatedSwitcher(
+                                        duration: const Duration(milliseconds: 220),
+                                        switchInCurve: Curves.easeOut,
+                                        switchOutCurve: Curves.easeOut,
+                                        transitionBuilder: (child, animation) => FadeTransition(
+                                          opacity: animation,
+                                          child: AnimatedBuilder(
+                                            animation: animation,
+                                            builder: (context, enfant) => Transform.translate(
+                                              offset: Offset(0, (1 - animation.value) * 8),
+                                              child: enfant,
+                                            ),
+                                            child: child,
                                           ),
-                                          child: child,
+                                        ),
+                                        child: _IdentiteParcours(
+                                          key: ValueKey(actuel.id),
+                                          parcours: actuel,
+                                          verrouille: verrouille,
+                                          courte: courte,
                                         ),
                                       ),
-                                      child: _IdentiteParcours(
-                                        key: ValueKey(actuel.id),
-                                        parcours: actuel,
-                                        verrouille: verrouille,
-                                        courte: courte,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 16),
-                                    AnimatedSwitcher(
-                                      duration: const Duration(milliseconds: 220),
-                                      switchInCurve: Curves.easeOut,
-                                      switchOutCurve: Curves.easeOut,
-                                      transitionBuilder: (child, animation) => FadeTransition(
-                                        opacity: animation,
-                                        child: AnimatedBuilder(
-                                          animation: animation,
-                                          builder: (context, enfant) => Transform.translate(
-                                            offset: Offset(0, (1 - animation.value) * 8),
-                                            child: enfant,
+                                      const SizedBox(height: 16),
+                                      AnimatedSwitcher(
+                                        duration: const Duration(milliseconds: 220),
+                                        switchInCurve: Curves.easeOut,
+                                        switchOutCurve: Curves.easeOut,
+                                        transitionBuilder: (child, animation) => FadeTransition(
+                                          opacity: animation,
+                                          child: AnimatedBuilder(
+                                            animation: animation,
+                                            builder: (context, enfant) => Transform.translate(
+                                              offset: Offset(0, (1 - animation.value) * 8),
+                                              child: enfant,
+                                            ),
+                                            child: child,
                                           ),
-                                          child: child,
+                                        ),
+                                        child: _JaugesDepart(
+                                          key: ValueKey(actuel.id),
+                                          depart: actuel.depart,
+                                          verrouille: verrouille,
                                         ),
                                       ),
-                                      child: _JaugesDepart(
-                                        key: ValueKey(actuel.id),
-                                        depart: actuel.depart,
-                                        verrouille: verrouille,
+                                      const SizedBox(height: 18),
+                                      _VignettesParcours(
+                                        parcours: parcours,
+                                        actuel: choisi,
+                                        debloque: debloque,
+                                        onTap: (i) => _page.animateToPage(
+                                          i,
+                                          duration: const Duration(milliseconds: 260),
+                                          curve: Curves.easeOut,
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(height: 18),
-                                    _VignettesParcours(
-                                      parcours: parcours,
-                                      actuel: choisi,
-                                      debloque: debloque,
-                                      onTap: (i) => _page.animateToPage(
-                                        i,
-                                        duration: const Duration(milliseconds: 260),
-                                        curve: Curves.easeOut,
-                                      ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -382,41 +388,44 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                         // reprise, le bloc tomberait sinon tout en haut et
                         // laisserait un grand vide sous lui.
                         child: Center(
-                          child: SingleChildScrollView(
-                            padding: const EdgeInsets.fromLTRB(22, 18, 22, 30),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                TextField(
-                                  controller: _nom,
-                                  onChanged: (_) => setState(() {}),
-                                  // La validation mesure les textes de carte
-                                  // contre un nom de quatorze caractères ;
-                                  // vingt-quatre laisse de la marge sans
-                                  // permettre de déborder la carte.
-                                  maxLength: 24,
-                                  decoration: const InputDecoration(hintText: 'Votre nom', counterText: ''),
-                                ),
-                                const SizedBox(height: 10),
-                                AnimatedOpacity(
-                                  duration: const Duration(milliseconds: 160),
-                                  opacity: pret ? 1 : .6,
-                                  child: FilledButton(
-                                    onPressed: !pret
-                                        ? null
-                                        : () async {
-                                            final p = c.parcoursParId(actuel.id)!;
-                                            ref
-                                                .read(sessionProvider.notifier)
-                                                .demarre(parcours: p, nom: _nom.text.trim());
-                                            await Navigator.of(context)
-                                                .push(MaterialPageRoute(builder: (_) => const PartieEcran()));
-                                            await _relisSauvegarde();
-                                          },
-                                    child: const Text('Prendre mes fonctions'),
+                          child: Cadre(
+                            enfant: SingleChildScrollView(
+                              padding: const EdgeInsets.fromLTRB(22, 18, 22, 30),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  TextField(
+                                    controller: _nom,
+                                    onChanged: (_) => setState(() {}),
+                                    // La validation mesure les textes de carte
+                                    // contre un nom de quatorze caractères ;
+                                    // vingt-quatre laisse de la marge sans
+                                    // permettre de déborder la carte.
+                                    maxLength: 24,
+                                    decoration: const InputDecoration(hintText: 'Votre nom', counterText: ''),
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(height: 10),
+                                  AnimatedOpacity(
+                                    duration: const Duration(milliseconds: 160),
+                                    opacity: pret ? 1 : .6,
+                                    child: FilledButton(
+                                      onPressed: !pret
+                                          ? null
+                                          : () async {
+                                              final p = c.parcoursParId(actuel.id)!;
+                                              ref
+                                                  .read(sessionProvider.notifier)
+                                                  .demarre(parcours: p, nom: _nom.text.trim());
+                                              await Navigator.of(
+                                                context,
+                                              ).push(MaterialPageRoute(builder: (_) => const PartieEcran()));
+                                              await _relisSauvegarde();
+                                            },
+                                      child: const Text('Prendre mes fonctions'),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -448,34 +457,36 @@ class _BarreHaute extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(26, 60, 26, 0),
       // Hauteur bornée : un Align sans facteur de taille remplit tout ce
       // qu'on lui donne, et la barre se centrerait au milieu du portrait.
-      child: Align(
-        alignment: Alignment.topCenter,
-        child: SizedBox(
-          height: 48,
-          child: Row(
-            children: [
-              Expanded(
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Image.asset(
-                    'assets/icone/marque.png',
-                    height: 44,
-                    errorBuilder: (_, __, ___) => const SizedBox(height: 44),
+      child: Cadre(
+        enfant: Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+            height: 48,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Image.asset(
+                      'assets/icone/marque.png',
+                      height: 44,
+                      errorBuilder: (_, __, ___) => const SizedBox(height: 44),
+                    ),
                   ),
                 ),
-              ),
-              IconButton(
-                tooltip: 'Menu',
-                icon: Icon(Icons.menu, color: Couleurs.creme.withValues(alpha: .8)),
-                onPressed: onMenu,
-              ),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(compteur ?? '', style: Textes.surtitre),
+                IconButton(
+                  tooltip: 'Menu',
+                  icon: Icon(Icons.menu, color: Couleurs.creme.withValues(alpha: .8)),
+                  onPressed: onMenu,
                 ),
-              ),
-            ],
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(compteur ?? '', style: Textes.surtitre),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

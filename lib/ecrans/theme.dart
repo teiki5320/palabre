@@ -110,11 +110,7 @@ abstract final class Textes {
   );
 
   /// « election au jour 30 », a cote du jour.
-  static const echeance = TextStyle(
-    fontFamily: Polices.corps,
-    fontSize: 11,
-    color: Color(0x66F6EFE4),
-  );
+  static const echeance = TextStyle(fontFamily: Polices.corps, fontSize: 11, color: Color(0x66F6EFE4));
 
   /// Le titre du personnage, en haut du bandeau d'une carte.
   static const titrePersonnage = TextStyle(
@@ -217,6 +213,36 @@ ThemeData theme() {
         borderRadius: BorderRadius.circular(rayon),
         borderSide: const BorderSide(color: Couleurs.or, width: 1.5),
       ),
+    ),
+  );
+}
+
+/// Ce que le jeu occupe au plus, en largeur. Sur un téléphone, rien ne
+/// change : l'écran est plus étroit que ça. Sur une tablette, la maquette
+/// cesse de s'étirer — les portraits et les fonds restent en plein cadre,
+/// mais les jauges, la carte et les boutons gardent la taille où on les a
+/// dessinés, centrés. Un bouton large de huit cents pixels ne se prend pas
+/// en main, il se traverse.
+const double largeurMax = 560;
+
+/// Vrai quand on joue sur un grand écran : la typographie peut respirer,
+/// on n'est plus au chausse-pied.
+bool grandEcran(BuildContext context) => MediaQuery.sizeOf(context).shortestSide >= 600;
+
+/// Le contenu au centre, borné en largeur. À poser autour de tout ce qui se
+/// lit ou se touche ; jamais autour d'une image de fond, qui doit couvrir.
+class Cadre extends StatelessWidget {
+  const Cadre({super.key, required this.enfant, this.largeur = largeurMax});
+
+  final Widget enfant;
+  final double largeur;
+
+  @override
+  Widget build(BuildContext context) => Align(
+    alignment: Alignment.topCenter,
+    child: ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: largeur),
+      child: enfant,
     ),
   );
 }

@@ -49,31 +49,33 @@ class _Collection extends StatelessWidget {
     final exploitsObtenus = contenu.exploits.where((e) => progression.exploits.contains(e.id)).length;
     final finsDecouvertes = contenu.fins.where((f) => progression.finsDecouvertes.contains(f.id)).length;
 
-    return Column(
-      children: [
-        Expanded(
-          child: ListView(
-            padding: const EdgeInsets.fromLTRB(18, 18, 18, 8),
-            children: [
-              const _TitreSection('Exploits'),
-              for (final exploit in contenu.exploits)
-                _LigneExploit(exploit: exploit, obtenu: progression.exploits.contains(exploit.id)),
-              const SizedBox(height: 22),
-              const _TitreSection('Fins'),
-              for (final fin in contenu.fins)
-                _LigneFin(fin: fin, decouverte: progression.finsDecouvertes.contains(fin.id)),
-            ],
+    return Cadre(
+      enfant: Column(
+        children: [
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.fromLTRB(18, 18, 18, 8),
+              children: [
+                const _TitreSection('Exploits'),
+                for (final exploit in contenu.exploits)
+                  _LigneExploit(exploit: exploit, obtenu: progression.exploits.contains(exploit.id)),
+                const SizedBox(height: 22),
+                const _TitreSection('Fins'),
+                for (final fin in contenu.fins)
+                  _LigneFin(fin: fin, decouverte: progression.finsDecouvertes.contains(fin.id)),
+              ],
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(18, 8, 18, 18),
-          child: Text(
-            '$exploitsObtenus exploit${exploitsObtenus > 1 ? 's' : ''} sur ${contenu.exploits.length} · '
-            '$finsDecouvertes fin${finsDecouvertes > 1 ? 's' : ''} sur ${contenu.fins.length}',
-            style: const TextStyle(color: Colors.white70, fontSize: 13),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(18, 8, 18, 18),
+            child: Text(
+              '$exploitsObtenus exploit${exploitsObtenus > 1 ? 's' : ''} sur ${contenu.exploits.length} · '
+              '$finsDecouvertes fin${finsDecouvertes > 1 ? 's' : ''} sur ${contenu.fins.length}',
+              style: const TextStyle(color: Colors.white70, fontSize: 13),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

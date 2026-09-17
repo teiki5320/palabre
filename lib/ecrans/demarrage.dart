@@ -32,9 +32,11 @@ class _DemarrageState extends State<Demarrage> {
     final vue = _introVue;
     if (vue == null) return const Scaffold(backgroundColor: Couleurs.nuit, body: SizedBox.shrink());
     if (vue) return const AccueilEcran();
-    return IntroEcran(onFini: () {
-      Sauvegarde.noteIntroVue();
-      setState(() => _introVue = true);
-    });
+    return IntroEcran(
+      onFini: () {
+        Sauvegarde.noteIntroVue();
+        setState(() => _introVue = true);
+      },
+    );
   }
 }
