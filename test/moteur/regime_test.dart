@@ -18,27 +18,27 @@ void main() {
   });
 
   test('vers la dictature, les caisses et la presse encaissent mieux', () {
-    // Au bout de l axe : gain du camp x1,5, perte du camp x0,5, et
+    // Au bout de l axe : gain du camp x1,3, perte du camp x0,7, et
     // l inverse pour les jauges d en face.
     final r = selonRegime(decision, 100);
-    expect(r[Jauge.caisses], 15); // gain favorise
-    expect(r[Jauge.presse], -5); // perte amortie
-    expect(r[Jauge.peuple], 5); // gain rogne
-    expect(r[Jauge.armee], -15); // perte aggravee
+    expect(r[Jauge.caisses], 13); // gain favorise
+    expect(r[Jauge.presse], -7); // perte amortie
+    expect(r[Jauge.peuple], 7); // gain rogne
+    expect(r[Jauge.armee], -13); // perte aggravee
   });
 
   test('vers la republique, le peuple et l armee encaissent mieux', () {
     final r = selonRegime(decision, 0);
-    expect(r[Jauge.peuple], 15);
-    expect(r[Jauge.armee], -5);
-    expect(r[Jauge.caisses], 5);
-    expect(r[Jauge.presse], -15);
+    expect(r[Jauge.peuple], 13);
+    expect(r[Jauge.armee], -7);
+    expect(r[Jauge.caisses], 7);
+    expect(r[Jauge.presse], -13);
   });
 
   test('a mi-chemin, l effet est de moitie', () {
     final r = selonRegime(decision, 75);
-    expect(r[Jauge.caisses], 13); // 10 x 1,25
-    expect(r[Jauge.peuple], 8); // 10 x 0,75
+    expect(r[Jauge.caisses], 12); // 10 x 1,15
+    expect(r[Jauge.peuple], 9); // 10 x 0,85
   });
 
   test('une decision ne perd jamais toute consequence', () {
@@ -54,7 +54,7 @@ void main() {
   test('le regime s applique avant l amplification du mandat', () {
     // Au mandat 2 tout est multiplie par 1,25, apres le regime.
     final r = effetsReels(effets: const {Jauge.caisses: 10}, style: 100, mandat: 2);
-    expect(r[Jauge.caisses], 19); // 10 -> 15 -> 18,75 -> 19
+    expect(r[Jauge.caisses], 16); // 10 -> 13 -> 16,25 -> 16
   });
 }
 
@@ -142,14 +142,14 @@ void atouts() {
   });
 
   test('l atout s applique apres le regime et le mandat', () {
-    // 10 -> regime au bout de l axe x1,5 -> 15 -> mandat 2 x1,25 -> 19
-    // -> atout x0,5 -> 10 (arrondi de 9,5).
+    // 10 -> regime au bout de l axe x1,3 -> 13 -> mandat 2 x1,25 -> 16
+    // -> atout x0,5 -> 8.
     final r = effetsReels(
       effets: const {Jauge.caisses: 10},
       style: 100,
       mandat: 2,
       atout: const Atout(jauge: Jauge.caisses, part: 0.5, texte: 't'),
     );
-    expect(r[Jauge.caisses], 10);
+    expect(r[Jauge.caisses], 8);
   });
 }

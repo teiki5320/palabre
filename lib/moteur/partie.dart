@@ -30,6 +30,12 @@ const _favoriteesDictature = {Jauge.caisses, Jauge.presse};
 /// qui tue autant que le plancher. Il change seulement ce que coûte ou
 /// rapporte chaque choix : au bout de l'axe, les jauges du camp encaissent
 /// moitié moins et gagnent moitié plus, celles d'en face l'inverse.
+/// Ce que le régime ajoute ou retire à un effet, au bout de l'axe. À un
+/// demi, un républicain aimé du peuple était renversé pour l'avoir trop
+/// été dans une partie sur deux ; à trois dixièmes, le bord reste un danger
+/// qu'on voit venir.
+const double regimePoids = 0.3;
+
 Map<Jauge, int> selonRegime(Map<Jauge, int> effets, int style) {
   final ecart = style - 50;
   if (ecart == 0) return effets;
@@ -42,7 +48,7 @@ Map<Jauge, int> selonRegime(Map<Jauge, int> effets, int style) {
         final gain = e.value > 0;
         // Un gain sur une jauge du camp compte plus, une perte compte
         // moins ; sur une jauge d'en face, c'est exactement l'inverse.
-        final facteur = bienVue == gain ? 1 + 0.5 * intensite : 1 - 0.5 * intensite;
+        final facteur = bienVue == gain ? 1 + regimePoids * intensite : 1 - regimePoids * intensite;
         final v = (e.value * facteur).round();
         // Un effet ne disparaît jamais complètement : il reste au moins un
         // point, sinon une décision n'aurait plus aucune conséquence.
@@ -123,8 +129,8 @@ EtatPartie repond({
 }
 
 /// Le mandat suivant, après une réélection. Le pays se souvient : le régime
-/// qu'on a installé et ce qu'on a fait restent, seules les jauges repartent
-/// du départ du parcours. C'est ce qui permet aux cartes du second mandat
+/// qu'on a installé, ce qu'on a fait et ce qu'on a déjà vu restent, seules
+/// les jauges repartent du départ du parcours. C'est ce qui permet aux cartes du second mandat
 /// de revenir sur le premier.
 EtatPartie mandatSuivant(EtatPartie etat, Parcours parcours) => EtatPartie(
       parcours: etat.parcours,
@@ -134,4 +140,9 @@ EtatPartie mandatSuivant(EtatPartie etat, Parcours parcours) => EtatPartie(
       mandat: etat.mandat + 1,
       style: etat.style,
       drapeaux: etat.drapeaux,
+      // Les cartes jouées ne reviennent pas : un second mandat est fait de
+      // ce qu'on n'a pas encore vu, et une histoire en cours reprend où
+      // elle en était — son délai est réputé écoulé.
+      vues: etat.vues,
+      chainesRang: etat.chainesRang,
     );

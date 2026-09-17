@@ -15,7 +15,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// second mandat ne se termine pas tout seul, faute de carte), et un
 /// exploit qui se debloque en tenant jusqu au bout du mandat.
 Contenu contenuDEssai() => Contenu.depuisChaines(
-      cartes: '[{"id":"c1","personnage":"general","humeur":"neutre","texte":"Une phrase.",'
+      cartes: '[{"id":"c1","repetable":true,"personnage":"general","humeur":"neutre","texte":"Une phrase.",'
           '"gauche":{"libelle":"A","effets":{"armee":1}},'
           '"droite":{"libelle":"B","effets":{"armee":-1}}}]',
       personnages: '[{"id":"general","nom":"Le General","titre":"Chef d etat-major"}]',
@@ -127,7 +127,7 @@ void main() {
 
   test(
       'mandatSuivant repart au jour 1, mandat suivant, avec les jauges de '
-      'depart du parcours et rien de l ancien mandat', () async {
+      'depart du parcours ; le regime, les drapeaux et les cartes vues restent', () async {
     final contenu = contenuDEssai();
     final container = ProviderContainer(overrides: [contenuProvider.overrideWith((ref) => contenu)]);
     addTearDown(container.dispose);
@@ -152,8 +152,8 @@ void main() {
     expect(suite.etat.jauges.presse, 40);
     expect(suite.etat.drapeaux, avant.drapeaux);
     expect(suite.etat.style, avant.style);
-    expect(suite.etat.vues, isEmpty);
-    expect(suite.etat.chainesRang, isEmpty);
+    expect(suite.etat.vues, avant.vues);
+    expect(suite.etat.chainesRang, avant.chainesRang);
     expect(suite.etat.chainesJour, isEmpty);
     // Les nouveautes du mandat qui vient de finir ne s appliquent plus au
     // second mandat, qui commence tout juste.
