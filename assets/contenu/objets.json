@@ -1,0 +1,202 @@
+[
+  {
+    "id": "ventilateur",
+    "piece": "bureau",
+    "nom": "Le ventilateur de plafond",
+    "description": "Il tourne au-dessus du bureau. La première chose du palais qui bouge toute seule.",
+    "prix": 4,
+    "natures": ["decor"]
+  },
+  {
+    "id": "fauteuil_cuir",
+    "piece": "bureau",
+    "nom": "Le fauteuil de cuir",
+    "description": "Derrière le bureau. Il se craquellera d'un mandat à l'autre.",
+    "prix": 5,
+    "natures": ["decor"]
+  },
+  {
+    "id": "poste_radio",
+    "piece": "bureau",
+    "nom": "Le poste à ondes courtes",
+    "description": "Pour entendre ce qu'on dit de vous ailleurs, et que personne ne vous répète.",
+    "prix": 6,
+    "natures": ["contenu"]
+  },
+  {
+    "id": "portrait_officiel",
+    "piece": "bureau",
+    "nom": "Le portrait officiel",
+    "description": "Votre visage au mur de votre propre bureau. On s'y habitue vite.",
+    "prix": 7,
+    "natures": ["decor"],
+    "style_achat": 4
+  },
+  {
+    "id": "bibliotheque",
+    "piece": "bureau",
+    "nom": "La bibliothèque",
+    "description": "Elle se remplit d'un livre par mandat joué. La remplir prendra une vie.",
+    "prix": 8,
+    "natures": ["decor"]
+  },
+  {
+    "id": "telephone_rouge",
+    "piece": "bureau",
+    "nom": "Le téléphone rouge",
+    "description": "Une ligne directe avec le voisin. Elle sonne dans les deux sens.",
+    "prix": 9,
+    "natures": ["contenu"]
+  },
+  {
+    "id": "climatiseur",
+    "piece": "bureau",
+    "nom": "Le climatiseur",
+    "description": "La saison sèche cesse d'être une épreuve. Pour vous.",
+    "prix": 10,
+    "natures": ["contenu", "bonus"]
+  },
+  {
+    "id": "coffre_fort",
+    "piece": "bureau",
+    "nom": "Le coffre-fort",
+    "description": "Dix points mis de côté. Le jour où les caisses seront vides, il s'ouvrira une fois.",
+    "prix": 14,
+    "natures": ["bonus"]
+  },
+
+  {
+    "id": "jardinieres",
+    "piece": "balcon",
+    "nom": "Les jardinières",
+    "description": "Sur la rambarde. Elles fanent quand les caisses baissent.",
+    "prix": 4,
+    "natures": ["decor"]
+  },
+  {
+    "id": "pupitre",
+    "piece": "balcon",
+    "nom": "Le pupitre et les micros",
+    "description": "De quoi parler à la place depuis chez soi.",
+    "prix": 6,
+    "natures": ["contenu"]
+  },
+  {
+    "id": "sono",
+    "piece": "balcon",
+    "nom": "La sono de l'avenue",
+    "description": "La place vous entend. Qu'elle le veuille ou non.",
+    "prix": 9,
+    "natures": ["contenu"]
+  },
+  {
+    "id": "vitrage",
+    "piece": "balcon",
+    "nom": "Le vitrage pare-balles",
+    "description": "Le jour où le palais sera pris, vous aurez le choix de rester.",
+    "prix": 16,
+    "natures": ["contenu"]
+  },
+
+  {
+    "id": "enceinte",
+    "piece": "chambre",
+    "nom": "L'enceinte",
+    "description": "Ce qu'on écoute le soir en dit plus long qu'un discours.",
+    "prix": 4,
+    "natures": ["contenu"]
+  },
+  {
+    "id": "fauteuil_lecture",
+    "piece": "chambre",
+    "nom": "Le fauteuil de lecture",
+    "description": "Près de la baie. Personne ne s'y assoit jamais très longtemps.",
+    "prix": 5,
+    "natures": ["decor"]
+  },
+  {
+    "id": "miroir",
+    "piece": "chambre",
+    "nom": "Le miroir en pied",
+    "description": "Vous vous y voyez tel que le mandat vous laisse.",
+    "prix": 6,
+    "natures": ["decor"]
+  },
+  {
+    "id": "coffret",
+    "piece": "chambre",
+    "nom": "Le coffret à bijoux",
+    "description": "Un cadeau qui ne se discute pas, et qui ne s'oublie pas non plus.",
+    "prix": 12,
+    "natures": ["contenu", "bonus"]
+  },
+
+  {
+    "id": "velo",
+    "piece": "garage",
+    "nom": "Le vélo du président",
+    "description": "Le moins cher du palais. Son trophée est le plus difficile.",
+    "prix": 3,
+    "natures": ["decor"]
+  },
+  {
+    "id": "quatre_quatre",
+    "piece": "garage",
+    "nom": "La 4×4 noire",
+    "description": "La province cesse d'être une rumeur.",
+    "prix": 12,
+    "natures": ["contenu"]
+  },
+  {
+    "id": "motos",
+    "piece": "garage",
+    "nom": "Le cortège de six motos",
+    "description": "On vous voit arriver de loin, et on s'écarte.",
+    "prix": 15,
+    "natures": ["contenu"],
+    "effet_achat": {"armee": 3}
+  },
+  {
+    "id": "limousine",
+    "piece": "garage",
+    "nom": "La limousine de cérémonie",
+    "description": "L'objet le plus cher du palais. Il ne sert à rien, et c'est le propos.",
+    "prix": 18,
+    "natures": ["decor"]
+  },
+
+  {
+    "id": "transats",
+    "piece": "piscine",
+    "nom": "Les transats et le parasol",
+    "description": "Au bord du bassin, face au mur d'enceinte.",
+    "prix": 4,
+    "natures": ["decor"]
+  },
+  {
+    "id": "plongeoir",
+    "piece": "piscine",
+    "nom": "Le plongeoir",
+    "description": "Il grince. Personne ne s'en sert.",
+    "prix": 5,
+    "natures": ["decor"]
+  },
+  {
+    "id": "pompe",
+    "piece": "piscine",
+    "nom": "Le remplissage et la pompe",
+    "description": "L'eau redevient claire, tant que les caisses tiennent.",
+    "prix": 8,
+    "natures": ["decor"]
+  },
+  {
+    "id": "dimanche",
+    "piece": "piscine",
+    "nom": "L'ouverture au quartier le dimanche",
+    "description": "La grille reste ouverte de midi à la nuit. On viendra.",
+    "prix": 10,
+    "natures": ["contenu"],
+    "effet_achat": {"peuple": 4},
+    "style_achat": -4
+  }
+]

@@ -7,6 +7,7 @@ import '../moteur/modeles.dart';
 import '../moteur/partie.dart';
 import 'carte_glissante.dart';
 import 'fin_ecran.dart';
+import 'palais_ecran.dart';
 import 'session.dart';
 import 'theme.dart';
 
@@ -163,6 +164,19 @@ class _LigneJour extends StatelessWidget {
                 icon: const Icon(Icons.west, size: 20),
                 color: Couleurs.cremeDoux,
                 onPressed: () => Navigator.of(context).maybePop(),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              child: IconButton(
+                tooltip: 'Le palais',
+                icon: const Icon(Icons.account_balance_outlined, size: 20),
+                color: Couleurs.cremeDoux,
+                // Visiter ne coûte pas un jour : le palais est une
+                // récompense, pas une dépense.
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(builder: (_) => const PalaisEcran()),
+                ),
               ),
             ),
           ],

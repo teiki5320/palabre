@@ -151,6 +151,7 @@ Map<String, dynamic> progressionVersJson(Progression p) => {
       'fins_decouvertes': p.finsDecouvertes.toList(),
       'mandats_joues': p.mandatsJoues,
       'meilleur_jour': p.meilleurJour,
+      'objets': p.objets.toList(),
     };
 
 Progression progressionDepuisJson(Map<String, dynamic> j) => Progression(
@@ -159,4 +160,6 @@ Progression progressionDepuisJson(Map<String, dynamic> j) => Progression(
       finsDecouvertes: ((j['fins_decouvertes'] as List?) ?? const []).cast<String>().toSet(),
       mandatsJoues: ((j['mandats_joues'] as num?) ?? 0).toInt(),
       meilleurJour: ((j['meilleur_jour'] as num?) ?? 0).toInt(),
+      // Une sauvegarde d'avant le palais commence avec un palais vide.
+      objets: ((j['objets'] as List?) ?? const []).cast<String>().toSet(),
     );

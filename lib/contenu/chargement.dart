@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 import '../moteur/modeles.dart';
+import '../moteur/palais.dart';
 import '../moteur/progression.dart';
 
 /// Tout le contenu du jeu, lu une fois au démarrage.
@@ -13,6 +14,7 @@ class Contenu {
     required this.parcours,
     required this.fins,
     this.exploits = const [],
+    this.objets = const [],
   });
 
   final List<Carte> cartes;
@@ -35,6 +37,22 @@ class Contenu {
   /// [depuisChaines] qui ne passent pas ce paramètre.
   final List<Exploit> exploits;
 
+  /// Le catalogue du palais. Vide par défaut, pour la même raison.
+  final List<Objet> objets;
+
+  /// Les objets d'une pièce, dans l'ordre du moins cher au plus cher :
+  /// c'est l'ordre dans lequel on les découvre, et celui dans lequel on
+  /// peut se les offrir.
+  List<Objet> objetsDe(Piece piece) =>
+      [for (final o in objets) if (o.piece == piece) o]..sort((a, b) => a.prix.compareTo(b.prix));
+
+  Objet? objetParId(String id) {
+    for (final o in objets) {
+      if (o.id == id) return o;
+    }
+    return null;
+  }
+
   static List<Map<String, dynamic>> _liste(String source) =>
       (jsonDecode(source) as List).cast<Map<String, dynamic>>();
 
@@ -44,6 +62,7 @@ class Contenu {
     required String parcours,
     required String fins,
     String exploits = '',
+    String objets = '',
   }) {
     final gens = [for (final j in _liste(personnages)) Personnage.depuisJson(j)];
     return Contenu(
@@ -52,6 +71,7 @@ class Contenu {
       parcours: [for (final j in _liste(parcours)) Parcours.depuisJson(j)],
       fins: [for (final j in _liste(fins)) Fin.depuisJson(j)],
       exploits: exploits.isEmpty ? const [] : [for (final j in _liste(exploits)) Exploit.depuisJson(j)],
+      objets: objets.isEmpty ? const [] : [for (final j in _liste(objets)) Objet.depuisJson(j)],
     );
   }
 
@@ -63,6 +83,7 @@ class Contenu {
       parcours: await lis('parcours'),
       fins: await lis('fins'),
       exploits: await lis('exploits'),
+      objets: await lis('objets'),
     );
   }
 

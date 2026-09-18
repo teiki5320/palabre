@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/services.dart' show rootBundle;
@@ -8,6 +9,7 @@ import '../moteur/condition.dart';
 import '../moteur/denouement.dart';
 import '../moteur/etat_partie.dart';
 import '../moteur/modeles.dart';
+import '../moteur/palais.dart';
 import '../moteur/partie.dart' as moteur;
 import '../moteur/partie.dart';
 import '../moteur/progression.dart';
@@ -56,10 +58,46 @@ class SessionNotifier extends Notifier<Session?> {
   Contenu get _contenu => ref.read(contenuProvider).requireValue;
 
   /// Commence un mandat. La graine rend la partie reproductible en test.
+  ///
+  /// Le mandat ne commence pas les mains vides : ce que le palais contient
+  /// déjà pose ses drapeaux dès le premier jour, sans quoi un objet acheté
+  /// au premier mandat n'ouvrirait plus rien au quatrième.
   void demarre({required Parcours parcours, required String nom, int? graine}) {
     _alea = Random(graine ?? DateTime.now().millisecondsSinceEpoch);
-    final etat = EtatPartie(parcours: parcours.id, nomJoueur: nom, jauges: parcours.depart);
+    final palais = ref.read(progressionProvider).value?.objets ?? const <String>{};
+    final etat = EtatPartie(
+      parcours: parcours.id,
+      nomJoueur: nom,
+      jauges: parcours.depart,
+      drapeaux: drapeauxDuPalais(palais),
+    );
     state = _prochaine(etat);
+  }
+
+  /// Achète un objet du palais : les caisses paient tout de suite, l'objet
+  /// entre dans la progression pour toujours, et son drapeau ouvre dès
+  /// demain les cartes qu'il débloque. Ne fait rien si la partie est finie
+  /// ou si le prix laisse les caisses sous le plancher — l'écran n'a pas à
+  /// être le seul à vérifier.
+  void acheteObjet(Objet objet) {
+    final s = state;
+    if (s == null || s.terminee) return;
+    final progression = ref.read(progressionProvider).value;
+    final possedes = progression?.objets ?? const <String>{};
+    if (!achetable(s.etat, objet, possedes)) return;
+
+    if (progression != null) {
+      final apres = progression.copie(objets: {...progression.objets, objet.id});
+      // L'écriture d'abord, la relecture ensuite : invalider avant que le
+      // disque ait reçu l'objet fait relire l'ancien palais, et l'objet
+      // qu'on vient de payer disparaît jusqu'au prochain lancement.
+      unawaited(Sauvegarde.enregistreProgression(apres).then((_) {
+        ref.invalidate(progressionProvider);
+      }));
+    }
+    final etat = achete(s.etat, objet);
+    Sauvegarde.enregistre(etat);
+    state = Session(etat: etat, carte: s.carte);
   }
 
   /// Reprend une partie enregistrée.
@@ -99,8 +137,14 @@ class SessionNotifier extends Notifier<Session?> {
     if (s.etat.jour <= 1) return;
     final parcours = _contenu.parcoursParId(s.etat.parcours);
     if (parcours == null) return;
+    final palais = ref.read(progressionProvider).value?.objets ?? const <String>{};
     final etat = moteur.mandatSuivant(s.etat, parcours);
-    state = _prochaine(etat);
+    // Les drapeaux du palais survivent au mandat comme les objets : un
+    // coffre-fort acheté hier reste un coffre-fort demain, mais il se
+    // referme, il n'a pas déjà servi.
+    state = _prochaine(etat.copie(
+      drapeaux: {...etat.drapeaux, ...drapeauxDuPalais(palais)}..remove(drapeauCoffreOuvert),
+    ));
   }
 
   /// Calcule l'état affichable : dénouement s'il y en a un, sinon la carte du jour.

@@ -1,6 +1,7 @@
 import 'etat_partie.dart';
 import 'jauges.dart';
 import 'modeles.dart';
+import 'palais.dart';
 
 /// Le côté vers lequel le joueur a glissé la carte.
 enum Cote { gauche, droite }
@@ -114,7 +115,7 @@ EtatPartie repond({
     chainesJour[ch.id] = etat.jour;
   }
 
-  return etat.copie(
+  final apres = etat.copie(
     jauges: etat.jauges.applique(effets),
     jour: etat.jour + 1,
     // L'axe du régime ne s'amplifie pas au fil des mandats : un abus de
@@ -126,6 +127,10 @@ EtatPartie repond({
     chainesJour: chainesJour,
     hier: carte.id,
   );
+
+  // Le coffre-fort, s'il y en a un au palais, s'ouvre tout seul le jour où
+  // les caisses passent sous le seuil — une fois, et une seule.
+  return coffreSiBesoin(apres);
 }
 
 /// Le mandat suivant, après une réélection. Le pays se souvient : le régime

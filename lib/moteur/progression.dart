@@ -34,6 +34,7 @@ class Progression {
     required this.finsDecouvertes,
     required this.mandatsJoues,
     required this.meilleurJour,
+    this.objets = const {},
   });
 
   final Set<String> parcoursDebloques;
@@ -42,12 +43,17 @@ class Progression {
   final int mandatsJoues;
   final int meilleurJour;
 
+  /// Les objets du palais, acquis pour toujours. Un mandat perdu ne les
+  /// reprend pas : ce qu'on a acheté avec l'argent de l'État reste au palais.
+  final Set<String> objets;
+
   factory Progression.neuve() => const Progression(
         parcoursDebloques: {},
         exploits: {},
         finsDecouvertes: {},
         mandatsJoues: 0,
         meilleurJour: 0,
+        objets: {},
       );
 
   Progression copie({
@@ -56,6 +62,7 @@ class Progression {
     Set<String>? finsDecouvertes,
     int? mandatsJoues,
     int? meilleurJour,
+    Set<String>? objets,
   }) =>
       Progression(
         parcoursDebloques: parcoursDebloques ?? this.parcoursDebloques,
@@ -63,6 +70,7 @@ class Progression {
         finsDecouvertes: finsDecouvertes ?? this.finsDecouvertes,
         mandatsJoues: mandatsJoues ?? this.mandatsJoues,
         meilleurJour: meilleurJour ?? this.meilleurJour,
+        objets: objets ?? this.objets,
       );
 }
 

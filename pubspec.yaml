@@ -1,7 +1,7 @@
 name: president
 description: "Président pour 100 jours — jeu de cartes à glisser."
 publish_to: none
-version: 0.7.0+1
+version: 0.8.0+1
 
 environment:
   sdk: ^3.13.0
@@ -36,6 +36,25 @@ flutter:
     - assets/images/personnages/
     - assets/images/parcours/
     - assets/images/fins/
+    - assets/images/palais/balcon/jour/cameras/
+    - assets/images/palais/balcon/jour/defile/
+    - assets/images/palais/balcon/jour/deuil/
+    - assets/images/palais/balcon/jour/emeute/
+    - assets/images/palais/balcon/jour/eteinte/
+    - assets/images/palais/balcon/jour/liesse/
+    - assets/images/palais/balcon/jour/ordinaire/
+    - assets/images/palais/balcon/jour/pluies/
+    - assets/images/palais/balcon/jour/prospere/
+    - assets/images/palais/balcon/jour/verrouillee/
+    - assets/images/palais/balcon/nuit/cameras/
+    - assets/images/palais/balcon/nuit/emeute/
+    - assets/images/palais/balcon/nuit/eteinte/
+    - assets/images/palais/balcon/nuit/liesse/
+    - assets/images/palais/balcon/nuit/ordinaire/
+    - assets/images/palais/balcon/nuit/pluies/
+    - assets/images/palais/balcon/nuit/prospere/
+    - assets/images/palais/balcon/nuit/verrouillee/
+    - assets/images/palais/pieces/
   fonts:
     - family: Bricolage
       fonts:
