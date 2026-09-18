@@ -62,9 +62,12 @@ void main() {
   });
 
   test('aucune brève ne parle de francs', () {
+    // Le mot entier, pas la suite de lettres : « franchissent » et
+    // « franchise » sont innocents, et un test qui les condamne fait perdre
+    // plus de temps qu'il n'en fait gagner.
+    final argent = RegExp(r'\bfrancs?\b', caseSensitive: false);
     for (final l in lignes()) {
-      final bas = l.ligne.toLowerCase();
-      expect(bas.contains('franc'), isFalse, reason: '${l.carte} ${l.cote}');
+      expect(argent.hasMatch(l.ligne), isFalse, reason: '${l.carte} ${l.cote} : « ${l.ligne} »');
     }
   });
 
