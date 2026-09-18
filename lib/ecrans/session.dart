@@ -34,10 +34,16 @@ class Session {
     this.denouement,
     this.fin,
     this.nouveautes = const Nouveautes(),
+    this.journal,
   });
 
   final EtatPartie etat;
   final Carte? carte;
+
+  /// Ce que le pays a dit de la réponse d'hier, à afficher sous la carte du
+  /// jour. Null au premier jour et après une visite du palais — on ne
+  /// réimprime pas le journal de la veille à chaque aller-retour.
+  final String? journal;
   final Denouement? denouement;
   final Fin? fin;
 
@@ -97,7 +103,7 @@ class SessionNotifier extends Notifier<Session?> {
     }
     final etat = achete(s.etat, objet);
     Sauvegarde.enregistre(etat);
-    state = Session(etat: etat, carte: s.carte);
+    state = Session(etat: etat, carte: s.carte, journal: s.journal);
   }
 
   /// Reprend une partie enregistrée.
@@ -109,6 +115,7 @@ class SessionNotifier extends Notifier<Session?> {
   void repondA(Cote cote) {
     final s = state;
     if (s == null || s.carte == null || s.terminee) return;
+    final reponse = cote == Cote.gauche ? s.carte!.gauche : s.carte!.droite;
     state = _prochaine(
       repond(
         etat: s.etat,
@@ -116,6 +123,7 @@ class SessionNotifier extends Notifier<Session?> {
         cote: cote,
         atout: _contenu.parcoursParId(s.etat.parcours)?.atout,
       ),
+      journal: reponse.journal,
     );
   }
 
@@ -148,7 +156,7 @@ class SessionNotifier extends Notifier<Session?> {
   }
 
   /// Calcule l'état affichable : dénouement s'il y en a un, sinon la carte du jour.
-  Session _prochaine(EtatPartie etat) {
+  Session _prochaine(EtatPartie etat, {String? journal}) {
     final d = evalue(etat);
     if (d != null) return _termine(etat, d);
     final carte = choisitCarte(paquet: _contenu.cartes, etat: etat, alea: _alea);
@@ -174,7 +182,7 @@ class SessionNotifier extends Notifier<Session?> {
       return _termine(etat, faute);
     }
     Sauvegarde.enregistre(etat);
-    return Session(etat: etat, carte: carte);
+    return Session(etat: etat, carte: carte, journal: journal);
   }
 
   /// Le mandat s'arrête ici, et nulle part ailleurs : le bilan n'est

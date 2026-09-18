@@ -9,6 +9,7 @@ import 'carte_glissante.dart';
 import 'fin_ecran.dart';
 import 'palais_ecran.dart';
 import 'session.dart';
+import 'telegraphe.dart';
 import 'theme.dart';
 
 /// L'écran de jeu : les jauges en haut, la carte du jour au milieu, les deux
@@ -123,6 +124,10 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                   ),
                 ),
               ),
+              // Le journal de la veille, juste sous la carte du jour : la
+              // conséquence se lit à l'endroit même où l'on vient de
+              // décider.
+              Telegraphe(key: ValueKey(session.etat.jour), ligne: session.journal),
               _AxeRegime(style: session.etat.style, vise: reponse?.style ?? 0),
             ],
           ),

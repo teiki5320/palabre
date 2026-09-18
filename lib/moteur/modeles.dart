@@ -18,6 +18,7 @@ class Reponse {
     required this.effets,
     this.drapeaux = const [],
     this.style = 0,
+    this.journal,
   });
 
   final String libelle;
@@ -31,11 +32,17 @@ class Reponse {
   /// Marques posées dans la partie, que d'autres cartes pourront exiger.
   final List<String> drapeaux;
 
+  /// Ce que le pays en a dit le lendemain : une brève, jamais un effet.
+  /// Null tant que la carte n'a pas sa ligne — le jeu marche sans, il est
+  /// seulement plus silencieux.
+  final String? journal;
+
   factory Reponse.depuisJson(Map<String, dynamic> j) => Reponse(
         libelle: j['libelle'] as String,
         effets: _effets(j['effets'] as Map<String, dynamic>?),
         drapeaux: _textes(j['drapeaux']),
         style: ((j['style'] as num?) ?? 0).toInt(),
+        journal: j['journal'] as String?,
       );
 }
 

@@ -170,3 +170,37 @@ républicaine, les deux totaux doivent rester **à cinq points l'un de
 l'autre**. Si l'autoritaire fait −8, la républicaine ne fait pas +6 : elle
 fait −4 ou −3. L'un n'est jamais le bon choix et l'autre le mauvais ; ce
 sont deux façons de payer.
+
+## Le journal du lendemain (septembre 2026)
+
+Chaque réponse porte une brève, le champ `journal`, qui paraît juste après
+le glissement, frappée lettre à lettre sous la carte suivante. Ce n'est pas
+un effet, c'est une voix : le pays rapporte ce qui s'est passé, il ne
+commente pas la partie.
+
+**Jamais la mécanique.** La ligne ne dit pas « le peuple vous en veut » ni
+« vos caisses se vident ». Elle dit où votre mot s'est retrouvé, ce qu'un
+grossiste a fait, ce que le communiqué a omis. Le joueur a déjà vu les
+jauges bouger ; lui répéter le chiffre en français n'ajoute rien.
+
+**Un détail concret, et un seul.** Le trésorier qui demande à ne pas être
+cité. Les trois grossistes fermés « pour inventaire ». Le nom de la société
+absent du communiqué. C'est le détail qui fait croire au pays, pas
+l'adjectif.
+
+**Deux phrases au maximum**, souvent une seule, et jamais plus de cent
+quarante signes. C'est une brève, pas un article.
+
+**Elle ne juge pas.** Le journal rapporte ; c'est au joueur de se sentir
+mal. Aucune ligne ne doit contenir « hélas », « malheureusement », ni un
+point d'exclamation.
+
+**Elle est écrite au passé composé ou au présent**, jamais au futur : elle
+raconte ce qui a eu lieu depuis hier, pas ce qui va arriver.
+
+**Les deux lignes d'une même carte ne se ressemblent pas.** Si les deux
+brèves pourraient s'échanger, c'est que ni l'une ni l'autre ne parle
+vraiment de la décision prise.
+
+**Les mots interdits des cartes le restent** — jamais de franc, jamais un
+pays réel, jamais un nom de marque.
