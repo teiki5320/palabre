@@ -140,3 +140,97 @@ List<Jauge> jaugesLues(Piece piece) => switch (piece) {
       Piece.garage => const [],
       Piece.piscine => const [Jauge.caisses],
     };
+
+// ──────────────────────────── les passages ────────────────────────────
+
+/// Toutes les plaques du palais sont en trois-deux. Le cadrage en dépend :
+/// c'est lui qui dit où tombe une porte à l'écran.
+const double ratioPlaque = 3 / 2;
+
+/// Un rectangle en fractions de la plaque, de 0 à 1, coin haut-gauche.
+/// Pas de `Rect` : ce fichier doit rester lisible sans Flutter, et testable
+/// sans écran.
+class Zone {
+  const Zone(this.x, this.y, this.largeur, this.hauteur);
+
+  final double x;
+  final double y;
+  final double largeur;
+  final double hauteur;
+
+  double get droite => x + largeur;
+  double get bas => y + hauteur;
+  double get centreX => x + largeur / 2;
+}
+
+/// Une ouverture qu'on touche dans l'image pour changer de pièce. Elle est
+/// posée sur une porte, une baie ou une colonnade qui existe vraiment dans
+/// la plaque — c'est ce qui la distingue d'un onglet déguisé.
+class Passage {
+  const Passage({required this.vers, required this.nom, required this.zone});
+
+  final Piece vers;
+
+  /// Ce qu'on lit au bas de l'ouverture : le lieu, pas l'action.
+  final String nom;
+  final Zone zone;
+}
+
+/// Les quatre états du bureau partagent le même cadrage : la baie vitrée à
+/// gauche, la porte du couloir au centre, la porte-fenêtre du jardin à
+/// droite. Les quatre plaques ont été faites depuis la même assise, donc
+/// une seule série de coordonnées les sert toutes.
+const _passagesDuBureau = [
+  Passage(vers: Piece.balcon, nom: 'Le balcon', zone: Zone(0.00, 0.05, 0.26, 0.78)),
+  Passage(vers: Piece.chambre, nom: 'Le couloir', zone: Zone(0.42, 0.23, 0.16, 0.40)),
+  Passage(vers: Piece.piscine, nom: 'Le jardin', zone: Zone(0.76, 0.24, 0.24, 0.42)),
+];
+
+/// Depuis la piscine, la colonnade ramène à l'intérieur et la terrasse mène
+/// à la cour des voitures. Les quatre états de la piscine sont cadrés de la
+/// même fenêtre.
+const _passagesDeLaPiscine = [
+  Passage(vers: Piece.garage, nom: 'La cour', zone: Zone(0.04, 0.34, 0.20, 0.28)),
+  Passage(vers: Piece.bureau, nom: 'Le palais', zone: Zone(0.68, 0.30, 0.22, 0.40)),
+];
+
+/// La chambre ouvre sur le même balcon que le bureau, par sa baie de droite.
+const _passagesDeLaChambre = [
+  Passage(vers: Piece.balcon, nom: 'Le balcon', zone: Zone(0.62, 0.14, 0.26, 0.68)),
+];
+
+/// La cour : l'aile du palais, sur la gauche, avec sa porte de service.
+const _passagesDuGarage = [
+  Passage(vers: Piece.bureau, nom: 'Le palais', zone: Zone(0.00, 0.10, 0.21, 0.66)),
+];
+
+/// Les ouvertures d'une pièce. Le balcon n'en a aucune : on y est dos au
+/// palais, et c'est le demi-tour du bas de l'écran qui ramène — la même
+/// sortie que partout ailleurs, pour qu'aucune pièce ne puisse enfermer
+/// le joueur si une porte tombe à côté de son ouverture.
+List<Passage> passagesDe(Piece piece) => switch (piece) {
+      Piece.bureau => _passagesDuBureau,
+      Piece.piscine => _passagesDeLaPiscine,
+      Piece.chambre => _passagesDeLaChambre,
+      Piece.garage => _passagesDuGarage,
+      Piece.balcon => const [],
+    };
+
+/// Où mène le demi-tour, depuis n'importe où. Null depuis le bureau : on y
+/// est déjà, et le bureau est le vestibule du palais.
+Piece? demiTourDepuis(Piece piece) => piece == Piece.bureau ? null : Piece.bureau;
+
+/// Le tour d'horizon d'entrée, de 0 à 1 : où doit se porter le regard à
+/// l'instant [p] de la découverte d'une pièce. Il part du centre, va à
+/// gauche, traverse jusqu'à droite, puis revient au centre.
+///
+/// C'est une règle, pas une décoration : sans elle, un joueur qui ignore
+/// qu'on déplace le regard au doigt ne voit qu'une ouverture sur trois et
+/// croit le palais fermé. Elle vit donc ici, où elle se teste sans écran.
+double regardDuTour(double p) {
+  double doux(double x) => x * x * (3 - 2 * x);
+  final t = p.clamp(0.0, 1.0);
+  if (t < .28) return 0.5 + (0.10 - 0.5) * doux(t / .28);
+  if (t < .72) return 0.10 + (0.90 - 0.10) * doux((t - .28) / .44);
+  return 0.90 + (0.5 - 0.90) * doux((t - .72) / .28);
+}

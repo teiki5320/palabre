@@ -23,6 +23,11 @@ class PalaisEcran extends ConsumerStatefulWidget {
 class _PalaisEcranState extends ConsumerState<PalaisEcran> {
   Piece _piece = Piece.bureau;
 
+  void _va(Piece p) {
+    if (p == _piece) return;
+    setState(() => _piece = p);
+  }
+
   @override
   Widget build(BuildContext context) {
     final session = ref.watch(sessionProvider);
@@ -36,7 +41,15 @@ class _PalaisEcranState extends ConsumerState<PalaisEcran> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          _Decor(decor: decor, cle: ValueKey('${_piece.name}-${decor.etat}')),
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 420),
+            child: _Decor(
+              decor: decor,
+              passages: passagesDe(_piece),
+              vers: _va,
+              key: ValueKey('${_piece.name}-${decor.etat}'),
+            ),
+          ),
           const _Voile(),
           SafeArea(
             child: Column(
@@ -51,7 +64,7 @@ class _PalaisEcranState extends ConsumerState<PalaisEcran> {
                     catalogue: contenu.objetsDe(_piece),
                     achete: (o) => ref.read(sessionProvider.notifier).acheteObjet(o),
                   ),
-                _Portes(piece: _piece, vers: (p) => setState(() => _piece = p)),
+                _DemiTour(depuis: _piece, vers: _va),
               ],
             ),
           ),
@@ -69,10 +82,15 @@ class _PalaisEcranState extends ConsumerState<PalaisEcran> {
 /// bouger même quand le système demande de réduire les animations, sinon
 /// le décor du jeu devient une photographie sans que personne le sache.
 class _Decor extends StatefulWidget {
-  const _Decor({required this.decor, required this.cle});
+  const _Decor({required this.decor, required this.passages, required this.vers, super.key});
 
   final Decor decor;
-  final Key cle;
+
+  /// Les ouvertures de cette pièce, en coordonnées d'image : c'est le
+  /// décor qui les porte, donc elles suivent le regard et le travelling
+  /// au lieu de flotter à une place fixe de l'écran.
+  final List<Passage> passages;
+  final void Function(Piece) vers;
 
   @override
   State<_Decor> createState() => _DecorState();
@@ -80,10 +98,18 @@ class _Decor extends StatefulWidget {
 
 class _DecorState extends State<_Decor> with SingleTickerProviderStateMixin {
   static const _cycle = Duration(seconds: 8);
+
+  /// En entrant dans une pièce, le regard en fait le tour une fois : à
+  /// gauche, à droite, puis il revient. Sans ça, un joueur qui ignore
+  /// qu'on peut déplacer le regard ne voit qu'une ouverture sur trois et
+  /// croit le palais fermé. Le premier toucher l'interrompt.
+  static const _tour = Duration(milliseconds: 3400);
+
   late final Ticker _ticker = Ticker(_bat);
   double _t = 0;
   double _regard = 0.5; // 0 = tout à gauche, 1 = tout à droite
   double _cible = 0.5;
+  bool _tourFini = false;
 
   @override
   void initState() {
@@ -94,6 +120,15 @@ class _DecorState extends State<_Decor> with SingleTickerProviderStateMixin {
   void _bat(Duration ecoule) {
     setState(() {
       _t = ecoule.inMilliseconds / _cycle.inMilliseconds;
+      if (!_tourFini) {
+        final p = ecoule.inMilliseconds / _tour.inMilliseconds;
+        if (p >= 1) {
+          _tourFini = true;
+          _cible = 0.5;
+        } else {
+          _cible = regardDuTour(p);
+        }
+      }
       // Le regard rejoint sa cible sans à-coup, et dérive doucement tout
       // seul quand le doigt ne dit rien.
       _regard += (_cible - _regard) * 0.08;
@@ -121,11 +156,15 @@ class _DecorState extends State<_Decor> with SingleTickerProviderStateMixin {
     final zoom = 1.06 + 0.03 * math.sin(_t * (_cycle.inMilliseconds / 26000) * 2 * math.pi);
 
     return GestureDetector(
-      key: widget.cle,
       behavior: HitTestBehavior.translucent,
       onHorizontalDragUpdate: (d) {
         final largeur = MediaQuery.sizeOf(context).width;
-        setState(() => _cible = (_cible - d.delta.dx / largeur).clamp(0.0, 1.0));
+        setState(() {
+          // Le doigt reprend la main : le tour d'horizon s'arrête là où il
+          // en est, il ne ramène pas le regard de force.
+          _tourFini = true;
+          _cible = (_cible - d.delta.dx / largeur).clamp(0.0, 1.0);
+        });
       },
       child: LayoutBuilder(
         builder: (context, c) {
@@ -145,11 +184,44 @@ class _DecorState extends State<_Decor> with SingleTickerProviderStateMixin {
                   ),
                 ),
               );
+          // La même transformation que l'image, refaite à la main : c'est
+          // elle qui pose une porte sur sa porte, et non à côté.
+          final hauteurPlaque = c.maxHeight * zoom;
+          final largeurPlaque = hauteurPlaque * ratioPlaque;
+          final gauche = (c.maxWidth - largeurPlaque) * _regard;
+          final haut = (c.maxHeight - hauteurPlaque) / 2;
+          Rect surEcran(Zone z) => Rect.fromLTWH(
+                gauche + z.x * largeurPlaque,
+                haut + z.y * hauteurPlaque,
+                z.largeur * largeurPlaque,
+                z.hauteur * hauteurPlaque,
+              );
+          // Un souffle lent, pour qu'une ouverture se remarque sans
+          // clignoter : elle doit se voir, pas se réclamer.
+          final souffle = .5 + .5 * math.sin(_t * 2 * math.pi);
+
           return Stack(
             fit: StackFit.expand,
             children: [
               plan(i, 1),
               if (a > 0) plan(suivant, a),
+              for (final passage in widget.passages)
+                () {
+                  // Une ouverture ne se dessine que sur sa part visible :
+                  // une porte à demi sortie du champ garderait sinon son
+                  // nom hors de l'écran, donc hors d'atteinte du doigt.
+                  final r = surEcran(passage.zone)
+                      .intersect(Rect.fromLTWH(0, 0, c.maxWidth, c.maxHeight));
+                  if (r.width < 40 || r.height < 40) return const SizedBox.shrink();
+                  return Positioned.fromRect(
+                    rect: r,
+                    child: _Ouverture(
+                      nom: passage.nom,
+                      souffle: souffle,
+                      onTap: () => widget.vers(passage.vers),
+                    ),
+                  );
+                }(),
             ],
           );
         },
@@ -222,58 +294,95 @@ class _Entete extends StatelessWidget {
       );
 }
 
-/// Les portes : on ne choisit pas une pièce dans une liste, on va vers
-/// elle. Le bureau est le vestibule, donc il est toujours atteignable.
-class _Portes extends StatelessWidget {
-  const _Portes({required this.piece, required this.vers});
+/// Une ouverture dans le décor : une baie, une porte, une colonnade. Pas
+/// un bouton posé sur l'image — un rectangle qui épouse l'ouverture vraie,
+/// et qui se déplace avec le regard du joueur.
+class _Ouverture extends StatelessWidget {
+  const _Ouverture({required this.nom, required this.souffle, required this.onTap});
 
-  final Piece piece;
-  final void Function(Piece) vers;
+  final String nom;
+
+  /// De 0 à 1, le battement lent qui fait remarquer l'ouverture.
+  final double souffle;
+  final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) => Cadre(
-        enfant: Padding(
-          padding: const EdgeInsets.fromLTRB(12, 10, 12, 14),
-          child: Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            alignment: WrapAlignment.center,
-            children: [
-              for (final p in Piece.values)
-                _Porte(nom: p.nom, ici: p == piece, onTap: () => vers(p)),
-            ],
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: onTap,
+        behavior: HitTestBehavior.opaque,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            border: Border.all(color: Couleurs.or.withValues(alpha: .18 + .22 * souffle), width: 1.2),
+            borderRadius: BorderRadius.circular(3),
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Couleurs.or.withValues(alpha: 0),
+                Couleurs.or.withValues(alpha: .05 + .07 * souffle),
+              ],
+            ),
+          ),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+                decoration: BoxDecoration(
+                  color: Couleurs.encre.withValues(alpha: .62),
+                  borderRadius: BorderRadius.circular(3),
+                ),
+                child: Text(
+                  nom,
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Textes.nomJauge.copyWith(
+                    color: Couleurs.creme,
+                    fontSize: 10,
+                    letterSpacing: 1.1,
+                  ),
+                ),
+              ),
+            ),
           ),
         ),
       );
 }
 
-class _Porte extends StatelessWidget {
-  const _Porte({required this.nom, required this.ici, required this.onTap});
+/// Le demi-tour. On est toujours dos à quelque chose : depuis n'importe
+/// quelle pièce, cette ligne ramène au bureau. C'est la sortie de secours
+/// du palais — si une ouverture tombait mal, aucune pièce n'enferme.
+class _DemiTour extends StatelessWidget {
+  const _DemiTour({required this.depuis, required this.vers});
 
-  final String nom;
-  final bool ici;
-  final VoidCallback onTap;
+  final Piece depuis;
+  final void Function(Piece) vers;
 
   @override
-  Widget build(BuildContext context) => GestureDetector(
-        onTap: ici ? null : onTap,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
-          decoration: BoxDecoration(
-            color: ici ? Couleurs.or.withValues(alpha: .16) : Couleurs.nuitClair.withValues(alpha: .72),
-            border: Border.all(color: ici ? Couleurs.or : Couleurs.bordure),
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: Text(
-            nom,
-            style: Textes.nomJauge.copyWith(
-              color: ici ? Couleurs.or : Couleurs.cremeDoux,
-              fontSize: 11,
-              letterSpacing: 1.2,
+  Widget build(BuildContext context) {
+    final retour = demiTourDepuis(depuis);
+    if (retour == null) return const SizedBox(height: 10);
+    return GestureDetector(
+      onTap: () => vers(retour),
+      behavior: HitTestBehavior.opaque,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 10, 16, 14),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.keyboard_return, size: 14, color: Couleurs.cremeDoux),
+            const SizedBox(width: 8),
+            Text(
+              'Revenir au bureau',
+              style: Textes.nomJauge.copyWith(color: Couleurs.cremeDoux, fontSize: 11, letterSpacing: 1.2),
             ),
-          ),
+          ],
         ),
-      );
+      ),
+    );
+  }
 }
 
 /// Ce qu'on peut acheter ici — replié par défaut. Le palais est d'abord un

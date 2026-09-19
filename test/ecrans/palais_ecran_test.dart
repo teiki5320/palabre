@@ -79,20 +79,32 @@ void main() {
     expect(find.text('Le bureau de travail'), findsOneWidget);
   });
 
-  testWidgets('les cinq pièces sont des portes', (tester) async {
+  testWidgets('le bureau montre ses trois ouvertures, et aucune pastille', (tester) async {
     await _ouvreLePalais(tester);
-    for (final nom in ['Le bureau', 'Le balcon', 'La chambre', 'La cour des voitures', 'La piscine']) {
-      expect(find.text(nom), findsWidgets, reason: 'la porte « $nom » manque');
+    for (final nom in ['Le balcon', 'Le couloir', 'Le jardin']) {
+      expect(find.text(nom), findsOneWidget, reason: 'l\'ouverture « $nom » manque');
     }
+    // Les anciennes pastilles nommaient les pièces où l'on n'est pas ;
+    // les ouvertures nomment ce qu'on voit.
+    expect(find.text('La cour des voitures'), findsNothing);
+    expect(find.text('La piscine'), findsNothing);
   });
 
-  testWidgets('on passe du bureau au balcon, et le décor change de nom', (tester) async {
+  testWidgets('le bureau n a pas de demi-tour : on y est déjà', (tester) async {
+    await _ouvreLePalais(tester);
+    expect(find.text('Revenir au bureau'), findsNothing);
+  });
+
+  testWidgets('la baie vitrée mène au balcon, et le demi-tour ramène', (tester) async {
     await _ouvreLePalais(tester);
     expect(find.text('Le bureau de travail'), findsOneWidget);
     await tester.tap(find.text('Le balcon'));
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 120));
+    await tester.pumpAndSettle();
     expect(find.text("L'avenue ordinaire"), findsOneWidget);
+
+    await tester.tap(find.text('Revenir au bureau'));
+    await tester.pumpAndSettle();
+    expect(find.text('Le bureau de travail'), findsOneWidget);
   });
 
   testWidgets('le catalogue est replié, et s ouvre d une main', (tester) async {
@@ -144,8 +156,8 @@ void main() {
 
   testWidgets('visiter le palais ne consomme pas un jour', (tester) async {
     await _ouvreLePalais(tester);
-    await tester.tap(find.text('La piscine'));
-    await tester.pump();
+    await tester.tap(find.text('Le jardin'));
+    await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Retour à la journée'));
     await tester.pumpAndSettle();
     expect(find.text('JOUR 1'), findsOneWidget);
