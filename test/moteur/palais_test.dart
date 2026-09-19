@@ -213,8 +213,16 @@ void main() {
       expect(decorDuBalcon(etatAvec(jour: 80)).dossier, contains('/nuit/'));
     });
 
-    test('chaque état du balcon compte six images', () {
-      expect(decorDuBalcon(etatAvec()).images, 6);
+    test('les boucles du balcon comptent cinq ou six clés, sauf l avenue ordinaire de jour', () {
+      // Trois cas particuliers, tous dus à des plaques d'origine perdues :
+      // l'avenue ordinaire de jour n'a plus qu'une image, le siège des
+      // caméras de nuit en a cinq, et tout le reste en a six. Une clé
+      // dupliquée figerait la boucle, et une régénération ne tient pas.
+      expect(decorDuBalcon(etatAvec()).images, 1);
+      expect(decorDuBalcon(etatAvec(jour: 85)).images, 6);
+      expect(decorDuBalcon(etatAvec(presse: 20)).images, 6);
+      expect(decorDuBalcon(etatAvec(jour: 85, presse: 20)).images, 5);
+      expect(decorDuBalcon(etatAvec(peuple: 80)).images, 6);
     });
   });
 
@@ -300,6 +308,20 @@ void main() {
         }
       }
       expect(manquants, isEmpty, reason: 'images absentes : ${manquants.join(', ')}');
+
+      // Et l'inverse : aucune clé oubliée dans un dossier de boucle. Une
+      // image que le décor ne déclare plus ne serait jamais montrée, mais
+      // elle partirait dans l'application et ferait croire à une boucle
+      // plus longue qu'elle n'est.
+      final enTrop = <String>[];
+      for (final d in aVerifier) {
+        if (d.images == 1) continue;
+        final dossier = Directory('assets/images/palais/${d.dossier}');
+        if (!dossier.existsSync()) continue;
+        final cles = dossier.listSync().whereType<File>().where((f) => f.path.endsWith('.jpg')).length;
+        if (cles != d.images) enTrop.add('${d.dossier} : $cles fichiers pour ${d.images} déclarées');
+      }
+      expect(enTrop, isEmpty, reason: enTrop.join(', '));
     });
   });
 }

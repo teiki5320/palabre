@@ -61,7 +61,16 @@ Decor decorDuBalcon(EtatPartie etat) {
     return Decor(dossier: d('eteinte'), etat: 'eteinte', nom: 'La ville éteinte', images: 6);
   }
   if (j.presse <= 25) {
-    return Decor(dossier: d('cameras'), etat: 'cameras', nom: 'Le siège des caméras', images: 6);
+    // La boucle de nuit n'a que cinq clés : la sixième plaque d'origine est
+    // perdue, et une clé dupliquée figerait l'animation un huitième de
+    // seconde — mieux vaut cinq images qui bougent que six dont deux sont
+    // la même.
+    return Decor(
+      dossier: d('cameras'),
+      etat: 'cameras',
+      nom: 'Le siège des caméras',
+      images: estNuit(etat) ? 5 : 6,
+    );
   }
   if (j.peuple >= 70) return Decor(dossier: d('liesse'), etat: 'liesse', nom: 'La liesse', images: 6);
   if (j.caisses >= 65 && j.peuple >= 55) {
@@ -70,7 +79,17 @@ Decor decorDuBalcon(EtatPartie etat) {
   if (etat.jour >= 55 && etat.jour <= 75) {
     return Decor(dossier: d('pluies'), etat: 'pluies', nom: 'La saison des pluies', images: 6);
   }
-  return Decor(dossier: d('ordinaire'), etat: 'ordinaire', nom: "L'avenue ordinaire", images: 6);
+  // De jour, l'avenue ordinaire est une seule image : ses six plaques
+  // d'origine sont perdues, et aucune régénération ne tient une boucle —
+  // mesuré quatre fois, les clés refaites se ressemblent à 0,66 au lieu de
+  // 0,94, et le fondu devient un saut. Une image nette qui respire par le
+  // travelling vaut mieux qu'une boucle floue.
+  return Decor(
+    dossier: d('ordinaire'),
+    etat: 'ordinaire',
+    nom: "L'avenue ordinaire",
+    images: estNuit(etat) ? 6 : 1,
+  );
 }
 
 Decor decorDuBureau(EtatPartie etat) {
