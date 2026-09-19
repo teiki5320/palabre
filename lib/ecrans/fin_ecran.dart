@@ -2,9 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../moteur/denouement.dart';
+import '../moteur/etat_partie.dart';
+import '../moteur/memoire.dart';
 import '../moteur/progression.dart';
 import 'session.dart';
 import 'theme.dart';
+
+/// Ce que le centième jour a donné, quand le mandat s'est terminé par une
+/// élection et qu'on sait qui était en face. Rend null dans tous les autres
+/// cas — une chute ne se compte pas en points.
+///
+/// L'écart est celui que le moteur a tranché : la moyenne du peuple et de la
+/// presse contre la force de l'opposant. On le dit en points, sans accorder
+/// un seul participe au joueur, dont on ne connaît pas le genre.
+String? resultatDuScrutin({
+  required Denouement denouement,
+  required EtatPartie etat,
+  required Adversaire? adversaire,
+}) {
+  if (denouement.type == TypeDenouement.chute) return null;
+  if (adversaire == null) return null;
+  final ecart = (((etat.jauges.peuple + etat.jauges.presse) / 2) - etat.force).round();
+  final gagnee = denouement.type == TypeDenouement.electionGagnee;
+  if (ecart == 0) return 'En face, ${adversaire.nom}. Il s\'en est fallu de rien.';
+  final points = ecart.abs() == 1 ? '1 point' : '${ecart.abs()} points';
+  return gagnee
+      ? 'En face, ${adversaire.nom}. Vous avez fait $points de mieux.'
+      : 'En face, ${adversaire.nom}. Il vous manquait $points.';
+}
 
 /// Les widgets de la zone « Vous avez débloqué » : un exploit par ligne avec
 /// son titre et sa description, un parcours débloqué par ligne avec son
@@ -59,6 +84,11 @@ class FinEcran extends ConsumerWidget {
     final fin = session.fin;
     final jours = session.etat.jour - 1;
     final gagnee = session.denouement!.type == TypeDenouement.electionGagnee;
+    final scrutin = resultatDuScrutin(
+      denouement: session.denouement!,
+      etat: session.etat,
+      adversaire: ref.watch(contenuProvider).value?.adversaireParId(session.etat.adversaire),
+    );
 
     return Scaffold(
       body: Stack(
@@ -110,6 +140,17 @@ class FinEcran extends ConsumerWidget {
                             'Vous avez tenu $jours jours.',
                             style: Textes.sousTitre.copyWith(fontSize: 15),
                           ),
+                          if (scrutin != null) ...[
+                            const SizedBox(height: 6),
+                            Text(
+                              scrutin,
+                              style: Textes.sousTitre.copyWith(
+                                color: Couleurs.cremeDoux,
+                                fontSize: 14,
+                                height: 1.3,
+                              ),
+                            ),
+                          ],
                           // Rien du tout quand il n'y a rien : ni titre, ni
                           // espace, sous peine de laisser un trou orphelin.
                           // Une fin inédite n'entre pas dans ce compte : elle
