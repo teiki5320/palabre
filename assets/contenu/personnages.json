@@ -67,14 +67,26 @@
  },
  {
   "id": "epouse",
-  "nom": "Votre épouse",
-  "titre": "Première dame",
+  "nom": "La cheffe du protocole",
+  "titre": "Cheffe du protocole",
   "jauge": "peuple"
  },
  {
   "id": "epoux",
-  "nom": "Votre époux",
-  "titre": "Premier époux",
+  "nom": "L'intendant du palais",
+  "titre": "Intendant du palais",
   "jauge": "peuple"
+ },
+ {
+  "id": "international",
+  "nom": "L'ancien international",
+  "titre": "Gloire du football national",
+  "jauge": "peuple"
+ },
+ {
+  "id": "militante",
+  "nom": "La militante",
+  "titre": "Porte-parole de la rue",
+  "jauge": "presse"
  }
 ]

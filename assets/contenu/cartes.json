@@ -7980,7 +7980,8 @@
    "journal": "Un conseiller est allé voir le proviseur à votre place, pendant que l'élève attendait dans le couloir avant de repartir seul."
   },
   "conditions": {
-   "jour_min": 15
+   "jour_min": 15,
+   "marie": true
   }
  },
  {
@@ -8013,7 +8014,10 @@
    "id": "conjoint_metier",
    "rang": 1
   },
-  "poids": 2
+  "poids": 2,
+  "conditions": {
+   "marie": true
+  }
  },
  {
   "id": "conjoint_metier_2",
@@ -8046,7 +8050,8 @@
   "conditions": {
    "drapeaux_requis": [
     "conjoint_cabinet_ouvert"
-   ]
+   ],
+   "marie": true
   },
   "poids": 3
  },
@@ -8072,6 +8077,9 @@
     "presse": -5
    },
    "journal": "L'invitation a été déclinée par lettre. Le pays hôte a lu le refus en séance, et la place réservée est restée vide."
+  },
+  "conditions": {
+   "marie": true
   }
  },
  {
@@ -8098,6 +8106,9 @@
    },
    "style": 6,
    "journal": "Aucun document n'est sorti du palais. Le journal a publié la photo de l'entrepôt de la fondation, et rien d'autre."
+  },
+  "conditions": {
+   "marie": true
   }
  },
  {
@@ -8124,6 +8135,9 @@
    },
    "style": 5,
    "journal": "Le journal a payé l'amende et changé sa une — le photographe n'a plus d'accréditation pour le palais."
+  },
+  "conditions": {
+   "marie": true
   }
  },
  {
@@ -8148,7 +8162,8 @@
    "journal": "Rien n'a bougé derrière la porte. Un journal a publié le plan de l'étage, avec deux croix au bon endroit."
   },
   "conditions": {
-   "jour_min": 30
+   "jour_min": 30,
+   "marie": true
   }
  },
  {
@@ -8174,6 +8189,9 @@
    },
    "style": -6,
    "journal": "L'article a paru sans retouche, votre conjoint tenant à être photographié à vos côtés à l'inauguration du pont."
+  },
+  "conditions": {
+   "marie": true
   }
  },
  {
@@ -8208,7 +8226,10 @@
    "id": "conjoint_soin",
    "rang": 1
   },
-  "poids": 2
+  "poids": 2,
+  "conditions": {
+   "marie": true
+  }
  },
  {
   "id": "conjoint_soin_2",
@@ -8241,7 +8262,8 @@
   "conditions": {
    "drapeaux_requis": [
     "conjoint_soin_cache"
-   ]
+   ],
+   "marie": true
   },
   "poids": 3
  },
@@ -8269,6 +8291,9 @@
    },
    "style": 7,
    "journal": "Toutes les gardes à vue ont été prolongées. Devant le commissariat, des mères ont passé la nuit sur des nattes."
+  },
+  "conditions": {
+   "marie": true
   }
  },
  {
@@ -8292,6 +8317,9 @@
     "peuple": -3
    },
    "journal": "La maison a été couverte aux frais de la famille. L'oncle raconte partout que vous avez refusé, et personne ne le croit."
+  },
+  "conditions": {
+   "marie": true
   }
  },
  {
@@ -8320,7 +8348,8 @@
    "journal": "Aucune annonce n'est sortie, mais à l'imprimerie du centre une commande d'affiches a été retirée sans explication."
   },
   "conditions": {
-   "jour_min": 70
+   "jour_min": 70,
+   "marie": true
   },
   "poids": 10,
   "chaine": {
@@ -8349,6 +8378,9 @@
     "peuple": -4
    },
    "journal": "Vous avez tenu tous vos rendez-vous. Au palais, une carte d'anniversaire signée à la machine est restée dans son enveloppe."
+  },
+  "conditions": {
+   "marie": true
   }
  },
  {
@@ -8373,6 +8405,9 @@
     "peuple": -4
    },
    "journal": "Le dossier a été retiré la veille du concours. Votre fils a été vu au port, à chercher une place sur un cargo."
+  },
+  "conditions": {
+   "marie": true
   }
  },
  {
@@ -9012,7 +9047,8 @@
   "poids": 10,
   "conditions": {
    "mandat_min": 1,
-   "jour_min": 3
+   "jour_min": 3,
+   "marie": true
   },
   "texte": "{nom}, cette nuit-là, vous n'avez rien promis devant personne. Celui-ci est le dernier : dites-le dehors, et vos officiers l'entendront.",
   "gauche": {
@@ -10010,7 +10046,8 @@
    "journal": "Le poste est allé à un inspecteur de carrière. Votre beau-frère a quitté la capitale, et son bureau de campagne a fermé."
   },
   "conditions": {
-   "jour_max": 10
+   "jour_max": 10,
+   "marie": true
   },
   "poids": 12
  },
@@ -13207,7 +13244,8 @@
    "drapeaux_requis": [
     "conjoint_cabinet_ouvert"
    ],
-   "jour_min": 25
+   "jour_min": 25,
+   "marie": true
   },
   "poids": 6
  },
@@ -15396,5 +15434,2209 @@
    "jour_min": 25
   },
   "poids": 8
+ },
+ {
+  "id": "coeur_redactrice_1",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, il est deux heures et vous relisez encore mon papier. Je peux vous laisser, ou rester et le refaire avec vous.",
+  "gauche": {
+   "libelle": "Restez",
+   "effets": {
+    "presse": 5,
+    "peuple": -4,
+    "armee": -3
+   },
+   "journal": "La correction a duré jusqu'à quatre heures. La rédactrice est repartie avec le brouillon annoté de votre main.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Laissez-le-moi",
+   "effets": {
+    "presse": -4,
+    "caisses": 4,
+    "peuple": 3
+   },
+   "journal": "Le papier a paru sans correction. Deux phrases sur le port y ont survécu, que le ministère demandait de retirer."
+  },
+  "conditions": {
+   "attache_max": 0,
+   "jour_min": 10
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 1
+  },
+  "poids": 3
+ },
+ {
+  "id": "coeur_redactrice_2",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, je n'ai pas écrit une ligne sur vous depuis douze jours. Mon adjoint me l'a fait remarquer devant toute la salle.",
+  "gauche": {
+   "libelle": "Écrivez-en une",
+   "effets": {
+    "presse": 6,
+    "peuple": -4,
+    "armee": -3
+   },
+   "journal": "Un article sur le budget a paru sous sa signature. Il ne dit rien qu'elle ne vous ait déjà dit en face."
+  },
+  "droite": {
+   "libelle": "Qu'il remarque",
+   "effets": {
+    "presse": -6,
+    "peuple": 4,
+    "caisses": 3
+   },
+   "journal": "Rien n'a paru cette semaine. L'adjoint a demandé sa mutation aux sports, par écrit, en deux lignes.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "conditions": {
+   "attache_min": 1,
+   "attache_max": 1
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 2,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_redactrice_3",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{nom}, votre chauffeur m'attend en bas depuis une heure, et il le dira à quelqu'un. Je monte, ou je rentre à pied.",
+  "gauche": {
+   "libelle": "Montez",
+   "effets": {
+    "presse": 4,
+    "armee": -4,
+    "peuple": -3
+   },
+   "journal": "La voiture est repartie vide à trois heures. Le chauffeur a pris son service le lendemain sans un mot.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Rentrez",
+   "effets": {
+    "presse": -5,
+    "peuple": 4,
+    "caisses": 3
+   },
+   "journal": "Elle est rentrée à pied par l'avenue. Un photographe l'a saluée au coin, et n'a pas levé son appareil."
+  },
+  "conditions": {
+   "attache_min": 2,
+   "attache_max": 2
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 3,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_redactrice_4",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{nom}, on peut continuer des mois sans que personne le sache. Ou on peut arrêter de faire semblant. Les deux me vont.",
+  "gauche": {
+   "libelle": "Comme ça",
+   "effets": {
+    "presse": 5,
+    "peuple": -4,
+    "armee": -3
+   },
+   "journal": "Aucune photographie, aucune rumeur nouvelle. Le journal a publié son enquête sur les douanes, en deux pages."
+  },
+  "droite": {
+   "libelle": "Arrêtons",
+   "effets": {
+    "peuple": 6,
+    "presse": -7,
+    "caisses": -3
+   },
+   "journal": "Vous êtes arrivés ensemble au dîner du palais. Trois journaux ont titré sur la rédactrice, aucun sur le dîner.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "conditions": {
+   "attache_min": 3,
+   "attache_max": 3
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 4,
+   "delai_min": 7
+  }
+ },
+ {
+  "id": "coeur_redactrice_5",
+  "personnage": "redactrice",
+  "humeur": "fache",
+  "texte": "{nom}, mon propre journal a reçu une photo de nous deux. C'est mon adjoint qui l'a ouverte, et il attend ma réponse.",
+  "gauche": {
+   "libelle": "Qu'elle paraisse",
+   "effets": {
+    "presse": 7,
+    "peuple": -6,
+    "armee": -4
+   },
+   "journal": "La photographie a paru en page trois, sans légende. La rédactrice a signé l'éditorial du jour, sur la vie privée.",
+   "style": -5
+  },
+  "droite": {
+   "libelle": "Enterrez-la",
+   "effets": {
+    "presse": -8,
+    "armee": 5,
+    "caisses": 4
+   },
+   "journal": "La photographie n'a pas paru. L'adjoint est nommé correspondant dans le nord, avec une prime de déplacement.",
+   "style": 7
+  },
+  "conditions": {
+   "attache_min": 3
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 5,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_redactrice_6",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{nom}, je ne demanderai pas deux fois. Ou vous m'épousez, ou je reprends ma place, et mon journal avec.",
+  "gauche": {
+   "libelle": "Je vous épouse",
+   "effets": {
+    "peuple": 7,
+    "presse": -8,
+    "caisses": -4
+   },
+   "journal": "Le mariage a été annoncé par un communiqué de six lignes. Elle a quitté la direction du journal le soir même.",
+   "romance": {
+    "epouse": true
+   }
+  },
+  "droite": {
+   "libelle": "Reprenez-la",
+   "effets": {
+    "presse": 6,
+    "peuple": -5,
+    "armee": 3
+   },
+   "journal": "Elle a repris la direction du journal lundi. Sa première une portait sur le marché des uniformes.",
+   "romance": {
+    "rupture": true
+   }
+  },
+  "conditions": {
+   "attache_min": 4,
+   "marie": false
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 6,
+   "delai_min": 8
+  }
+ },
+ {
+  "id": "coeur_cabinet_1",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, j'ai préparé vos dossiers de demain. Il est minuit, et je m'aperçois que je n'ai rien préparé pour moi.",
+  "gauche": {
+   "libelle": "Restez un moment",
+   "effets": {
+    "presse": 4,
+    "caisses": -4,
+    "peuple": 3
+   },
+   "journal": "La lumière du bureau de l'aile est est restée allumée jusqu'à deux heures. Le planton l'a noté sur son cahier.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Rentrez chez vous",
+   "effets": {
+    "caisses": 5,
+    "presse": -4,
+    "peuple": -3
+   },
+   "journal": "La directrice de cabinet est partie à minuit dix. Elle a laissé les dossiers ouverts à la bonne page."
+  },
+  "conditions": {
+   "attache_max": 0,
+   "jour_min": 12
+  },
+  "chaine": {
+   "id": "coeur_cabinet",
+   "rang": 1
+  },
+  "poids": 3
+ },
+ {
+  "id": "coeur_cabinet_2",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, on me propose la direction d'une banque, comme au ministre avant moi. Je n'ai pas répondu, et vous devez le savoir.",
+  "gauche": {
+   "libelle": "Restez",
+   "effets": {
+    "caisses": 5,
+    "presse": -4,
+    "peuple": -3
+   },
+   "journal": "Elle a décliné l'offre par téléphone, depuis le bureau d'à côté, la porte ouverte.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Prenez-la",
+   "effets": {
+    "caisses": -6,
+    "presse": 5,
+    "peuple": 3
+   },
+   "journal": "La banque a annoncé son arrivée pour janvier. Son bureau au palais a été rendu au service du courrier."
+  },
+  "conditions": {
+   "attache_min": 1,
+   "attache_max": 1
+  },
+  "chaine": {
+   "id": "coeur_cabinet",
+   "rang": 2,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_cabinet_3",
+  "personnage": "cabinet",
+  "humeur": "fache",
+  "texte": "{nom}, le chef des renseignements a demandé mon dossier personnel hier. Il ne le fait jamais sans raison, et vous savez laquelle.",
+  "gauche": {
+   "libelle": "Je lui parle",
+   "effets": {
+    "armee": -5,
+    "caisses": 4,
+    "presse": -3
+   },
+   "journal": "Le dossier est revenu au service du personnel, non consulté. Le chef des renseignements a annulé son rendez-vous.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Laissez-le faire",
+   "effets": {
+    "armee": 4,
+    "caisses": -4,
+    "peuple": -3
+   },
+   "journal": "Le dossier a été consulté deux fois dans la semaine. La directrice de cabinet a changé de trajet pour rentrer."
+  },
+  "conditions": {
+   "attache_min": 2,
+   "attache_max": 2
+  },
+  "chaine": {
+   "id": "coeur_cabinet",
+   "rang": 3,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_cabinet_4",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{nom}, je peux rester votre directrice de cabinet, ou devenir autre chose. Les deux, non : je connais trop vos comptes.",
+  "gauche": {
+   "libelle": "Gardez le poste",
+   "effets": {
+    "caisses": 6,
+    "peuple": -4,
+    "presse": -3
+   },
+   "journal": "Rien n'a changé à l'organigramme. Elle a fait installer une seconde chaise dans son bureau, contre la fenêtre."
+  },
+  "droite": {
+   "libelle": "Autre chose",
+   "effets": {
+    "peuple": 5,
+    "caisses": -6,
+    "presse": -3
+   },
+   "journal": "Elle a quitté la direction du cabinet vendredi. Son successeur a mis trois jours à retrouver le dossier du port.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "conditions": {
+   "attache_min": 3,
+   "attache_max": 3
+  },
+  "chaine": {
+   "id": "coeur_cabinet",
+   "rang": 4,
+   "delai_min": 7
+  }
+ },
+ {
+  "id": "coeur_cabinet_5",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{nom}, on me dit que je ferais une bonne candidate contre vous. Je réponds que je ne le ferai pas. On ne me croit pas.",
+  "gauche": {
+   "libelle": "Moi je vous crois",
+   "effets": {
+    "peuple": 4,
+    "presse": 4,
+    "armee": -4
+   },
+   "journal": "Elle a démenti devant la presse en trois mots. Deux comités de soutien ont maintenu leur réunion du samedi."
+  },
+  "droite": {
+   "libelle": "Personne n'y croit",
+   "effets": {
+    "armee": 4,
+    "presse": -5,
+    "peuple": -3
+   },
+   "journal": "Le palais n'a rien démenti. Une affiche à son nom est apparue sur un mur du quartier nord, puis recouverte.",
+   "style": 5
+  },
+  "conditions": {
+   "attache_min": 3
+  },
+  "chaine": {
+   "id": "coeur_cabinet",
+   "rang": 5,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_cabinet_6",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{nom}, je ne veux pas être celle qu'on cache dans un palais. Épousez-moi, ou laissez-moi me présenter contre vous.",
+  "gauche": {
+   "libelle": "Je vous épouse",
+   "effets": {
+    "peuple": 6,
+    "caisses": -5,
+    "presse": -4
+   },
+   "journal": "Le mariage a eu lieu un samedi, sans invités officiels. La liste des présents n'a pas été communiquée.",
+   "romance": {
+    "epouse": true
+   }
+  },
+  "droite": {
+   "libelle": "Présentez-vous",
+   "effets": {
+    "presse": 6,
+    "peuple": -5,
+    "caisses": 4
+   },
+   "journal": "Elle a déposé sa candidature le lundi. Son bureau au palais a été vidé pendant qu'elle signait le formulaire.",
+   "romance": {
+    "rupture": true
+   }
+  },
+  "conditions": {
+   "attache_min": 4,
+   "marie": false
+  },
+  "chaine": {
+   "id": "coeur_cabinet",
+   "rang": 6,
+   "delai_min": 8
+  }
+ },
+ {
+  "id": "coeur_emissaire_1",
+  "personnage": "emissaire",
+  "humeur": "neutre",
+  "texte": "{titre}, mon avion est à six heures et je ne connais de votre pays que cette salle et un hôtel. Montrez-moi quelque chose.",
+  "gauche": {
+   "libelle": "Je vous montre",
+   "effets": {
+    "caisses": -4,
+    "peuple": 3,
+    "presse": 3
+   },
+   "journal": "Vous avez emmené l'émissaire au marché de nuit. Elle a payé son poisson grillé elle-même, en petite monnaie.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Une autre fois",
+   "effets": {
+    "caisses": 5,
+    "presse": -4,
+    "peuple": -3
+   },
+   "journal": "L'émissaire a dîné à son hôtel. Son rapport de mission est parti à l'aube, sans annexe sur le pays."
+  },
+  "conditions": {
+   "attache_max": 0,
+   "jour_min": 14
+  },
+  "chaine": {
+   "id": "coeur_emissaire",
+   "rang": 1
+  },
+  "poids": 3
+ },
+ {
+  "id": "coeur_emissaire_2",
+  "personnage": "emissaire",
+  "humeur": "neutre",
+  "texte": "{titre}, je reviens dans trois semaines, et dans trois semaines encore. On peut faire semblant de se voir pour le travail.",
+  "gauche": {
+   "libelle": "Faisons semblant",
+   "effets": {
+    "caisses": 5,
+    "peuple": -4,
+    "presse": -3
+   },
+   "journal": "Un second rendez-vous a été inscrit à l'ordre du jour, sans objet précisé. Il a duré deux heures de plus que prévu.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Pour le travail",
+   "effets": {
+    "caisses": 3,
+    "presse": 4,
+    "peuple": -3
+   },
+   "journal": "Les réunions se sont tenues en salle du conseil, à quatre. Le compte rendu fait onze pages et ne dit rien d'autre."
+  },
+  "conditions": {
+   "attache_min": 1,
+   "attache_max": 1
+  },
+  "chaine": {
+   "id": "coeur_emissaire",
+   "rang": 2,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_emissaire_3",
+  "personnage": "emissaire",
+  "humeur": "neutre",
+  "texte": "{nom}, je ne resterai jamais. C'est peut-être ce qui vous plaît. Ma chambre est au huitième, et je repars jeudi.",
+  "gauche": {
+   "libelle": "Au huitième",
+   "effets": {
+    "presse": -5,
+    "caisses": 4,
+    "peuple": -3
+   },
+   "journal": "L'ascenseur du huitième est resté bloqué à cet étage une partie de la nuit. Le veilleur n'a pas fait de rapport.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Bon voyage",
+   "effets": {
+    "presse": 5,
+    "caisses": -4,
+    "peuple": 3
+   },
+   "journal": "L'émissaire a pris son vol de jeudi. Le dossier du prêt est reparti avec elle, inchangé."
+  },
+  "conditions": {
+   "attache_min": 2,
+   "attache_max": 2
+  },
+  "chaine": {
+   "id": "coeur_emissaire",
+   "rang": 3,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_emissaire_4",
+  "personnage": "emissaire",
+  "humeur": "neutre",
+  "texte": "{nom}, entendons-nous : ceci n'est pas une histoire. Si vous voulez que ça en devienne une, dites-le maintenant.",
+  "gauche": {
+   "libelle": "Rien de plus",
+   "effets": {
+    "caisses": 6,
+    "peuple": -4,
+    "presse": -3
+   },
+   "journal": "Aucun des deux n'a rien annoncé. Le programme du fonds a débloqué sa seconde tranche le jeudi suivant."
+  },
+  "droite": {
+   "libelle": "Alors je le dis",
+   "effets": {
+    "peuple": 5,
+    "caisses": -6,
+    "presse": -3
+   },
+   "journal": "Elle a demandé sa mutation dans la région. Le fonds a nommé quelqu'un d'autre sur votre dossier le lendemain.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "conditions": {
+   "attache_min": 3,
+   "attache_max": 3
+  },
+  "chaine": {
+   "id": "coeur_emissaire",
+   "rang": 4,
+   "delai_min": 7
+  }
+ },
+ {
+  "id": "coeur_emissaire_5",
+  "personnage": "emissaire",
+  "humeur": "fache",
+  "texte": "{nom}, mon siège demande pourquoi vos conditions de prêt sont les plus douces de la région. Je dois répondre par écrit.",
+  "gauche": {
+   "libelle": "Dites la vérité",
+   "effets": {
+    "presse": 6,
+    "caisses": -7,
+    "peuple": 3
+   },
+   "journal": "Le rapport mentionne un conflit d'intérêts en page deux. Les conditions du prêt ont été relevées de deux points.",
+   "style": -5
+  },
+  "droite": {
+   "libelle": "Trouvez autrement",
+   "effets": {
+    "caisses": 6,
+    "presse": -6,
+    "armee": 3
+   },
+   "journal": "Le rapport parle d'un pays exemplaire. Une note manuscrite a été retirée du dossier avant l'envoi.",
+   "style": 6
+  },
+  "conditions": {
+   "attache_min": 3
+  },
+  "chaine": {
+   "id": "coeur_emissaire",
+   "rang": 5,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_emissaire_6",
+  "personnage": "emissaire",
+  "humeur": "neutre",
+  "texte": "{nom}, je peux démissionner du fonds et rester. Vous savez ce que ça coûte : plus personne ne vous prêtera à ce taux.",
+  "gauche": {
+   "libelle": "Restez",
+   "effets": {
+    "peuple": 6,
+    "caisses": -9
+   },
+   "journal": "Elle a démissionné du fonds par lettre. Le mariage a été célébré à la mairie du quartier nord, sans photographe.",
+   "romance": {
+    "epouse": true
+   }
+  },
+  "droite": {
+   "libelle": "Rentrez",
+   "effets": {
+    "caisses": 7,
+    "peuple": -6
+   },
+   "journal": "L'émissaire a été rappelée à son siège. Son successeur est arrivé avec une liste de douze conditions nouvelles.",
+   "romance": {
+    "rupture": true
+   }
+  },
+  "conditions": {
+   "attache_min": 4,
+   "marie": false
+  },
+  "chaine": {
+   "id": "coeur_emissaire",
+   "rang": 6,
+   "delai_min": 8
+  }
+ },
+ {
+  "id": "coeur_militante_1",
+  "personnage": "militante",
+  "humeur": "fache",
+  "texte": "{titre}, je vous ai insulté en direct hier soir et vous me recevez aujourd'hui. Dites-moi si c'est du courage ou du calcul.",
+  "gauche": {
+   "libelle": "Du courage",
+   "effets": {
+    "presse": 5,
+    "armee": -4,
+    "peuple": 3
+   },
+   "journal": "L'entretien a duré une heure de plus que prévu. Elle est sortie sans déclaration, ce qui ne lui ressemble pas.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Du calcul",
+   "effets": {
+    "presse": -5,
+    "armee": 4,
+    "peuple": -3
+   },
+   "journal": "Elle a repris son émission le soir même. Le mot « calcul » y est revenu neuf fois en vingt minutes."
+  },
+  "conditions": {
+   "parcours_interdits": [
+    "militante"
+   ],
+   "attache_max": 0,
+   "jour_min": 10
+  },
+  "chaine": {
+   "id": "coeur_militante",
+   "rang": 1
+  },
+  "poids": 3
+ },
+ {
+  "id": "coeur_militante_2",
+  "personnage": "militante",
+  "humeur": "neutre",
+  "texte": "{titre}, on me dit de ne plus vous parler. Ma propre salle me le dit. Donnez-moi une raison de les faire taire.",
+  "gauche": {
+   "libelle": "La route du nord",
+   "effets": {
+    "peuple": 6,
+    "caisses": -7
+   },
+   "journal": "Le chantier de la route du nord a rouvert lundi. La militante l'a annoncé avant le ministère, sur ses écrans.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Je n'en ai pas",
+   "effets": {
+    "presse": -5,
+    "armee": 4,
+    "peuple": -3
+   },
+   "journal": "Elle n'a rien annoncé. Sa salle a voté la reprise des rassemblements du samedi, à main levée."
+  },
+  "conditions": {
+   "parcours_interdits": [
+    "militante"
+   ],
+   "attache_min": 1,
+   "attache_max": 1
+  },
+  "chaine": {
+   "id": "coeur_militante",
+   "rang": 2,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_militante_3",
+  "personnage": "militante",
+  "humeur": "fache",
+  "texte": "{nom}, je dors chez une amie depuis trois jours parce que des hommes attendent devant chez moi. Vous les connaissez.",
+  "gauche": {
+   "libelle": "Je les retire",
+   "effets": {
+    "armee": -6,
+    "presse": 5,
+    "peuple": 4
+   },
+   "journal": "Les deux voitures ont quitté sa rue dans la nuit. Personne au service n'a signé l'ordre de retrait.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Je ne sais rien",
+   "effets": {
+    "armee": 5,
+    "presse": -5,
+    "peuple": -4
+   },
+   "journal": "Les voitures sont restées. La militante a diffusé leurs plaques à ses abonnés, et elles ont changé le lendemain."
+  },
+  "conditions": {
+   "parcours_interdits": [
+    "militante"
+   ],
+   "attache_min": 2,
+   "attache_max": 2
+  },
+  "chaine": {
+   "id": "coeur_militante",
+   "rang": 3,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_militante_4",
+  "personnage": "militante",
+  "humeur": "neutre",
+  "texte": "{nom}, si je reste avec vous je perds la rue, et sans la rue je ne suis plus rien pour vous. Dites ce que vous voulez.",
+  "gauche": {
+   "libelle": "Gardez la rue",
+   "effets": {
+    "peuple": 5,
+    "presse": 4,
+    "caisses": -5
+   },
+   "journal": "Elle a tenu son rassemblement du samedi, seule à la tribune. Votre nom n'y a pas été prononcé une fois."
+  },
+  "droite": {
+   "libelle": "Restez",
+   "effets": {
+    "peuple": -5,
+    "presse": -4,
+    "caisses": 4
+   },
+   "journal": "Elle est apparue à votre table au dîner des maires. Deux de ses collaborateurs ont rendu leur badge le lundi.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "conditions": {
+   "parcours_interdits": [
+    "militante"
+   ],
+   "attache_min": 3,
+   "attache_max": 3
+  },
+  "chaine": {
+   "id": "coeur_militante",
+   "rang": 4,
+   "delai_min": 7
+  }
+ },
+ {
+  "id": "coeur_militante_5",
+  "personnage": "militante",
+  "humeur": "fache",
+  "texte": "{nom}, la rue que j'ai tenue pour vous se retourne. Ils demandent des comptes que je n'ai pas. Donnez-les-moi ce soir.",
+  "gauche": {
+   "libelle": "Voilà les comptes",
+   "effets": {
+    "presse": 7,
+    "caisses": -6,
+    "peuple": 4
+   },
+   "journal": "Les chiffres du budget ont été publiés en entier, en annexe de son émission. Trois lignes y manquent encore.",
+   "style": -6
+  },
+  "droite": {
+   "libelle": "Il n'y en a pas",
+   "effets": {
+    "presse": -7,
+    "armee": 5,
+    "peuple": -4
+   },
+   "journal": "Aucun chiffre n'a été communiqué. Son émission a été déplacée après minuit sur décision de la régie.",
+   "style": 6
+  },
+  "conditions": {
+   "parcours_interdits": [
+    "militante"
+   ],
+   "attache_min": 3
+  },
+  "chaine": {
+   "id": "coeur_militante",
+   "rang": 5,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_militante_6",
+  "personnage": "militante",
+  "humeur": "neutre",
+  "texte": "{nom}, épousez-moi et la moitié de la rue me traitera de vendue. L'autre moitié vous croira enfin. À vous de peser.",
+  "gauche": {
+   "libelle": "Je vous épouse",
+   "effets": {
+    "peuple": 7,
+    "presse": -6,
+    "armee": -4
+   },
+   "journal": "Le mariage a été célébré sur la place du quartier nord, devant quatre mille personnes et aucun ministre.",
+   "romance": {
+    "epouse": true
+   }
+  },
+  "droite": {
+   "libelle": "Ne pesons pas",
+   "effets": {
+    "presse": 5,
+    "peuple": -5,
+    "armee": 3
+   },
+   "journal": "Elle a repris son émission seule. Le sujet du soir était le financement des campagnes, sans vous nommer.",
+   "romance": {
+    "rupture": true
+   }
+  },
+  "conditions": {
+   "parcours_interdits": [
+    "militante"
+   ],
+   "attache_min": 4,
+   "marie": false
+  },
+  "chaine": {
+   "id": "coeur_militante",
+   "rang": 6,
+   "delai_min": 8
+  }
+ },
+ {
+  "id": "coeur_protocole_1",
+  "personnage": "epouse",
+  "humeur": "neutre",
+  "texte": "{titre}, j'ai placé quarante personnes à table ce soir et personne ne m'a adressé la parole. C'est le métier, je sais.",
+  "gauche": {
+   "libelle": "Restez près de moi",
+   "effets": {
+    "presse": -4,
+    "peuple": 4,
+    "caisses": -3
+   },
+   "journal": "La cheffe du protocole a dîné à la table d'honneur, à la place prévue pour l'ambassadeur absent.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "C'est le métier",
+   "effets": {
+    "caisses": 4,
+    "presse": 3,
+    "peuple": -4
+   },
+   "journal": "Le dîner s'est tenu comme prévu. La cheffe du protocole a mangé debout, dans l'office, après le dessert."
+  },
+  "conditions": {
+   "attache_max": 0,
+   "jour_min": 8
+  },
+  "chaine": {
+   "id": "coeur_protocole",
+   "rang": 1
+  },
+  "poids": 3
+ },
+ {
+  "id": "coeur_protocole_2",
+  "personnage": "epouse",
+  "humeur": "neutre",
+  "texte": "{titre}, votre discours de demain, je l'ai réécrit trois fois. La dernière version est celle que j'aurais dite à votre place.",
+  "gauche": {
+   "libelle": "Je lirai la vôtre",
+   "effets": {
+    "presse": 5,
+    "peuple": 4,
+    "armee": -4
+   },
+   "journal": "Le discours prononcé n'était pas celui du cabinet. Deux phrases sur les instituteurs ont été reprises partout.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Je lirai la mienne",
+   "effets": {
+    "armee": 4,
+    "presse": -4,
+    "peuple": -3
+   },
+   "journal": "Le discours du cabinet a été lu sans modification. La cheffe du protocole était au fond de la salle, debout."
+  },
+  "conditions": {
+   "attache_min": 1,
+   "attache_max": 1
+  },
+  "chaine": {
+   "id": "coeur_protocole",
+   "rang": 2,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_protocole_3",
+  "personnage": "epouse",
+  "humeur": "neutre",
+  "texte": "{nom}, je connais les couloirs de ce palais mieux que la garde. Il y en a un qui ne passe devant aucune caméra.",
+  "gauche": {
+   "libelle": "Montrez-le-moi",
+   "effets": {
+    "armee": -4,
+    "presse": -4,
+    "peuple": 3
+   },
+   "journal": "Une porte de service de l'aile ouest a été retrouvée déverrouillée deux nuits de suite. Le registre est vierge.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Je passe devant",
+   "effets": {
+    "armee": 4,
+    "presse": 3,
+    "peuple": -4
+   },
+   "journal": "Vous avez traversé la cour par l'allée centrale, comme chaque soir. La garde a salué, et noté l'heure."
+  },
+  "conditions": {
+   "attache_min": 2,
+   "attache_max": 2
+  },
+  "chaine": {
+   "id": "coeur_protocole",
+   "rang": 3,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_protocole_4",
+  "personnage": "epouse",
+  "humeur": "neutre",
+  "texte": "{nom}, personne ne sait, et personne ne saura tant que je tiendrai les portes. Mais je ne les tiendrai pas toujours.",
+  "gauche": {
+   "libelle": "Tenez-les encore",
+   "effets": {
+    "caisses": 4,
+    "presse": -4,
+    "peuple": -3
+   },
+   "journal": "Le plan de table du dîner d'État n'a pas changé. La cheffe du protocole y figure toujours en dernière ligne."
+  },
+  "droite": {
+   "libelle": "Alors lâchez-les",
+   "effets": {
+    "peuple": 5,
+    "presse": -5,
+    "caisses": -3
+   },
+   "journal": "Elle est entrée à votre bras à l'ouverture du salon. Le protocole a été tenu ce soir-là par son adjointe.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "conditions": {
+   "attache_min": 3,
+   "attache_max": 3
+  },
+  "chaine": {
+   "id": "coeur_protocole",
+   "rang": 4,
+   "delai_min": 7
+  }
+ },
+ {
+  "id": "coeur_protocole_5",
+  "personnage": "epouse",
+  "humeur": "fache",
+  "texte": "{nom}, la garde tient un registre des entrées de nuit, et mon nom y est douze fois. Le chef des renseignements l'a demandé.",
+  "gauche": {
+   "libelle": "Qu'il le lise",
+   "effets": {
+    "presse": 5,
+    "armee": -5,
+    "peuple": 3
+   },
+   "journal": "Le registre a été transmis au service, intact. Douze lignes y portent le même nom et la même heure."
+  },
+  "droite": {
+   "libelle": "Qu'on le perde",
+   "effets": {
+    "armee": 5,
+    "presse": -6,
+    "caisses": -3
+   },
+   "journal": "Le registre des entrées de nuit a disparu du poste de garde. Un cahier neuf a été ouvert le lendemain.",
+   "style": 7
+  },
+  "conditions": {
+   "attache_min": 3
+  },
+  "chaine": {
+   "id": "coeur_protocole",
+   "rang": 5,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_protocole_6",
+  "personnage": "epouse",
+  "humeur": "neutre",
+  "texte": "{nom}, je ne vous demanderai rien. Je vous dis seulement que je pars à la fin du mois, sauf si vous me donnez une raison.",
+  "gauche": {
+   "libelle": "Épousez-moi",
+   "effets": {
+    "peuple": 5,
+    "presse": -4,
+    "caisses": -4
+   },
+   "journal": "Le mariage a été célébré dans le salon d'honneur, à onze personnes. Le plan de table tenait sur une feuille.",
+   "romance": {
+    "epouse": true
+   }
+  },
+  "droite": {
+   "libelle": "Je n'en ai pas",
+   "effets": {
+    "caisses": 5,
+    "peuple": -5,
+    "presse": 3
+   },
+   "journal": "Elle a quitté le palais le trente et un, à midi. Son successeur a demandé où se trouvaient les plans de table.",
+   "romance": {
+    "rupture": true
+   }
+  },
+  "conditions": {
+   "attache_min": 4,
+   "marie": false
+  },
+  "chaine": {
+   "id": "coeur_protocole",
+   "rang": 6,
+   "delai_min": 8
+  }
+ },
+ {
+  "id": "coeur_international_1",
+  "personnage": "international",
+  "humeur": "content",
+  "texte": "{titre}, on me demande de parrainer votre campagne de vaccination. J'accepte si vous venez taper le ballon avec moi.",
+  "gauche": {
+   "libelle": "Je viens",
+   "effets": {
+    "peuple": 6,
+    "presse": -4,
+    "caisses": -3
+   },
+   "journal": "Vous avez joué vingt minutes sur le terrain du quartier nord. La vidéo a dépassé le million de vues avant minuit.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Parrainez sans moi",
+   "effets": {
+    "peuple": -4,
+    "caisses": 4,
+    "presse": 3
+   },
+   "journal": "L'ancien international a tourné le message seul. Il n'a pas cité le ministère de la Santé une seule fois."
+  },
+  "conditions": {
+   "parcours_interdits": [
+    "footballeur"
+   ],
+   "attache_max": 0,
+   "jour_min": 10
+  },
+  "chaine": {
+   "id": "coeur_international",
+   "rang": 1
+  },
+  "poids": 3
+ },
+ {
+  "id": "coeur_international_2",
+  "personnage": "international",
+  "humeur": "neutre",
+  "texte": "{titre}, depuis le terrain on m'écrit que je suis votre homme. Je ne réponds rien. Vous voulez que je réponde quoi ?",
+  "gauche": {
+   "libelle": "Que c'est vrai",
+   "effets": {
+    "peuple": 6,
+    "presse": -5,
+    "armee": -3
+   },
+   "journal": "Il a répondu « c'est vrai » en trois mots sous une photographie. Le message a été repris par tous les écrans.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Que c'est faux",
+   "effets": {
+    "presse": 5,
+    "peuple": -5,
+    "caisses": 3
+   },
+   "journal": "Il a démenti sèchement, puis fermé ses comptes pour la journée. Son agent a parlé d'une mise au point."
+  },
+  "conditions": {
+   "parcours_interdits": [
+    "footballeur"
+   ],
+   "attache_min": 1,
+   "attache_max": 1
+  },
+  "chaine": {
+   "id": "coeur_international",
+   "rang": 2,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_international_3",
+  "personnage": "international",
+  "humeur": "content",
+  "texte": "{nom}, j'ai loué une maison au bord de l'eau, à deux heures d'ici. Personne ne m'y a jamais reconnu. Venez dimanche.",
+  "gauche": {
+   "libelle": "Dimanche",
+   "effets": {
+    "peuple": -4,
+    "presse": -4,
+    "caisses": 3
+   },
+   "journal": "Le convoi présidentiel n'est pas sorti dimanche. Une voiture de location a fait l'aller-retour dans la journée.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Pas dimanche",
+   "effets": {
+    "peuple": 4,
+    "presse": 4,
+    "caisses": -4
+   },
+   "journal": "Vous avez passé dimanche au palais, portes ouvertes. Deux délégations ont été reçues sans rendez-vous."
+  },
+  "conditions": {
+   "parcours_interdits": [
+    "footballeur"
+   ],
+   "attache_min": 2,
+   "attache_max": 2
+  },
+  "chaine": {
+   "id": "coeur_international",
+   "rang": 3,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_international_4",
+  "personnage": "international",
+  "humeur": "neutre",
+  "texte": "{nom}, le pays m'aime pour ce que je suis. Si on se montre, il vous aimera aussi, ou il nous détestera tous les deux.",
+  "gauche": {
+   "libelle": "Restons cachés",
+   "effets": {
+    "caisses": 4,
+    "presse": 3,
+    "peuple": -4
+   },
+   "journal": "Aucune apparition commune. Il a décliné l'invitation au dîner du palais, en invoquant un déplacement."
+  },
+  "droite": {
+   "libelle": "Montrons-nous",
+   "effets": {
+    "peuple": 7,
+    "presse": -7,
+    "armee": -3
+   },
+   "journal": "Vous êtes entrés ensemble au stade. Trente mille personnes se sont levées, et deux journaux ont ricané.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "conditions": {
+   "parcours_interdits": [
+    "footballeur"
+   ],
+   "attache_min": 3,
+   "attache_max": 3
+  },
+  "chaine": {
+   "id": "coeur_international",
+   "rang": 4,
+   "delai_min": 7
+  }
+ },
+ {
+  "id": "coeur_international_5",
+  "personnage": "international",
+  "humeur": "fache",
+  "texte": "{nom}, un journal propose deux ans de mon salaire pour nos photos de la maison au bord de l'eau. Je n'ai pas dit non.",
+  "gauche": {
+   "libelle": "Vendez-les",
+   "effets": {
+    "presse": 5,
+    "peuple": -6,
+    "caisses": 3
+   },
+   "journal": "Les photographies ont paru sur six pages. L'ancien international a reversé la somme à son club d'origine."
+  },
+  "droite": {
+   "libelle": "Ne vendez rien",
+   "effets": {
+    "peuple": 5,
+    "presse": -5,
+    "caisses": -3
+   },
+   "journal": "Le journal n'a rien publié. Son directeur a reçu un appel du palais, ce qu'il a raconté à la radio le lendemain.",
+   "style": 5
+  },
+  "conditions": {
+   "parcours_interdits": [
+    "footballeur"
+   ],
+   "attache_min": 3
+  },
+  "chaine": {
+   "id": "coeur_international",
+   "rang": 5,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_international_6",
+  "personnage": "international",
+  "humeur": "neutre",
+  "texte": "{nom}, je ne sais pas faire semblant longtemps. Épousez-moi avant l'élection, ou je retourne au bord de l'eau seul.",
+  "gauche": {
+   "libelle": "Avant l'élection",
+   "effets": {
+    "peuple": 8,
+    "presse": -7,
+    "armee": -4
+   },
+   "journal": "Le mariage a été célébré au stade, un dimanche, devant les tribunes ouvertes. L'entrée était gratuite.",
+   "romance": {
+    "epouse": true
+   }
+  },
+  "droite": {
+   "libelle": "Retournez-y",
+   "effets": {
+    "presse": 4,
+    "peuple": -6,
+    "caisses": 3
+   },
+   "journal": "Il a quitté la capitale le lendemain. Sa maison au bord de l'eau a été rendue au propriétaire dans la semaine.",
+   "romance": {
+    "rupture": true
+   }
+  },
+  "conditions": {
+   "parcours_interdits": [
+    "footballeur"
+   ],
+   "attache_min": 4,
+   "marie": false
+  },
+  "chaine": {
+   "id": "coeur_international",
+   "rang": 6,
+   "delai_min": 8
+  }
+ },
+ {
+  "id": "coeur_ministre_1",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, je vous ai menti ce matin sur le chiffre du déficit. Je viens vous dire lequel, et pourquoi je l'ai fait.",
+  "gauche": {
+   "libelle": "Pourquoi",
+   "effets": {
+    "caisses": -4,
+    "presse": 4,
+    "peuple": 3
+   },
+   "journal": "Le vrai chiffre du déficit a été porté au dossier le soir même. Le ministre est resté jusqu'à la fermeture.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Le chiffre suffira",
+   "effets": {
+    "caisses": 5,
+    "presse": -4,
+    "peuple": -3
+   },
+   "journal": "Le chiffre corrigé a été transmis par note. Le ministre n'a pas demandé à être reçu cette semaine."
+  },
+  "conditions": {
+   "attache_max": 0,
+   "jour_min": 12
+  },
+  "chaine": {
+   "id": "coeur_ministre",
+   "rang": 1
+  },
+  "poids": 3
+ },
+ {
+  "id": "coeur_ministre_2",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, on me demande à quoi je passe mes nuits. Je réponds le budget. Personne ne me croit, et vous savez pourquoi.",
+  "gauche": {
+   "libelle": "Mentez encore",
+   "effets": {
+    "caisses": 4,
+    "presse": -4,
+    "peuple": -3
+   },
+   "journal": "Le ministre a présenté le budget à sept heures du matin, sans notes. Personne n'a demandé où il avait dormi.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Dites la vérité",
+   "effets": {
+    "presse": 5,
+    "caisses": -5,
+    "peuple": 3
+   },
+   "journal": "Il a parlé de lassitude et demandé deux semaines. Le ministère a fonctionné sans ministre jusqu'au quinze."
+  },
+  "conditions": {
+   "attache_min": 1,
+   "attache_max": 1
+  },
+  "chaine": {
+   "id": "coeur_ministre",
+   "rang": 2,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_ministre_3",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{nom}, je peux vous trouver dix points de caisses en une nuit, et personne ne saura où. Vous n'avez qu'à ne pas demander.",
+  "gauche": {
+   "libelle": "Je ne demande pas",
+   "effets": {
+    "caisses": 9,
+    "presse": -6,
+    "peuple": -4
+   },
+   "journal": "Dix points sont apparus au Trésor sans ligne d'origine. Le tableau de bord de janvier saute une colonne.",
+   "romance": {
+    "mouvement": 1
+   },
+   "style": 6
+  },
+  "droite": {
+   "libelle": "Je demande",
+   "effets": {
+    "presse": 6,
+    "caisses": -5,
+    "armee": -3
+   },
+   "journal": "Vous avez exigé l'origine des fonds par écrit. Le ministre a retiré sa proposition avant midi.",
+   "style": -5
+  },
+  "conditions": {
+   "attache_min": 2,
+   "attache_max": 2
+  },
+  "chaine": {
+   "id": "coeur_ministre",
+   "rang": 3,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_ministre_4",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{nom}, je ne peux plus vous refuser un budget, et vous le savez. Dites-moi si ça vous arrange ou si ça vous gêne.",
+  "gauche": {
+   "libelle": "Ça m'arrange",
+   "effets": {
+    "caisses": 6,
+    "presse": -5,
+    "peuple": -3
+   },
+   "journal": "Trois rallonges ont été signées la même semaine, le même jour. Le contrôleur financier a visé sans commentaire."
+  },
+  "droite": {
+   "libelle": "Ça me gêne",
+   "effets": {
+    "presse": 5,
+    "caisses": -5,
+    "peuple": 3
+   },
+   "journal": "Le ministre a demandé un second signataire pour tout engagement. La mesure a paru au journal officiel.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "conditions": {
+   "attache_min": 3,
+   "attache_max": 3
+  },
+  "chaine": {
+   "id": "coeur_ministre",
+   "rang": 4,
+   "delai_min": 7
+  }
+ },
+ {
+  "id": "coeur_ministre_5",
+  "personnage": "ministre",
+  "humeur": "fache",
+  "texte": "{nom}, la Cour veut savoir pourquoi le ministre des Finances dort au palais. Le doyen me l'a demandé à moi, pas à vous.",
+  "gauche": {
+   "libelle": "Répondez-lui",
+   "effets": {
+    "presse": 6,
+    "caisses": -5,
+    "armee": -3
+   },
+   "journal": "Le ministre a répondu par écrit, en deux paragraphes. Le doyen a classé la demande sans suite le lendemain.",
+   "style": -6
+  },
+  "droite": {
+   "libelle": "Ne répondez pas",
+   "effets": {
+    "presse": -6,
+    "armee": 4,
+    "caisses": 4
+   },
+   "journal": "Aucune réponse n'est parvenue à la Cour. Le doyen a fait consigner ce silence au registre des saisines.",
+   "style": 7
+  },
+  "conditions": {
+   "attache_min": 3
+  },
+  "chaine": {
+   "id": "coeur_ministre",
+   "rang": 5,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_ministre_6",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{nom}, épousez-moi et je démissionne : on ne tient pas les caisses d'une maison où l'on dort. Choisissez ce que vous gardez.",
+  "gauche": {
+   "libelle": "Je vous épouse",
+   "effets": {
+    "peuple": 5,
+    "caisses": -7,
+    "presse": -3
+   },
+   "journal": "Le ministre a remis sa démission le jour du mariage. Son successeur a trouvé deux lignes de dette non inscrites.",
+   "romance": {
+    "epouse": true
+   }
+  },
+  "droite": {
+   "libelle": "Restez ministre",
+   "effets": {
+    "caisses": 6,
+    "peuple": -5,
+    "presse": -3
+   },
+   "journal": "Il est resté aux Finances. Son bureau au palais a été rendu, et il a repris ses nuits au ministère.",
+   "romance": {
+    "rupture": true
+   }
+  },
+  "conditions": {
+   "attache_min": 4,
+   "marie": false
+  },
+  "chaine": {
+   "id": "coeur_ministre",
+   "rang": 6,
+   "delai_min": 8
+  }
+ },
+ {
+  "id": "coeur_renseignements_1",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, j'ai un dossier sur chacun de ceux qui vous entourent. Sur moi aussi, et c'est le seul que personne n'a lu.",
+  "gauche": {
+   "libelle": "Montrez-le-moi",
+   "effets": {
+    "armee": 4,
+    "presse": -4,
+    "peuple": -3
+   },
+   "journal": "Un dossier est sorti des archives du service et n'y est pas retourné. Le registre porte votre nom à l'emprunt.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Gardez-le",
+   "effets": {
+    "armee": -4,
+    "presse": 4,
+    "peuple": 3
+   },
+   "journal": "Le chef des renseignements a remis son dossier au coffre. Il a fait changer la combinaison le jour même."
+  },
+  "conditions": {
+   "attache_max": 0,
+   "jour_min": 12
+  },
+  "chaine": {
+   "id": "coeur_renseignements",
+   "rang": 1
+  },
+  "poids": 3
+ },
+ {
+  "id": "coeur_renseignements_2",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, mes hommes me suivent partout, c'est le métier. Depuis deux semaines je leur donne de fausses adresses.",
+  "gauche": {
+   "libelle": "Continuez",
+   "effets": {
+    "armee": 5,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "Deux filatures ont été rapportées comme infructueuses. Les deux fiches portent la même adresse, qui n'existe pas.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Arrêtez ça",
+   "effets": {
+    "armee": -5,
+    "presse": 4,
+    "peuple": 3
+   },
+   "journal": "Il a repris ses trajets déclarés. Le service a noté sa présence au bureau jusqu'à vingt-trois heures, six soirs."
+  },
+  "conditions": {
+   "attache_min": 1,
+   "attache_max": 1
+  },
+  "chaine": {
+   "id": "coeur_renseignements",
+   "rang": 2,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_renseignements_3",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{nom}, je sais tout de vous. Ce que vous buvez, qui vous appelez, qui dort ici. Vous pouvez me demander d'arrêter de savoir.",
+  "gauche": {
+   "libelle": "N'arrêtez pas",
+   "effets": {
+    "armee": 5,
+    "presse": -5,
+    "peuple": -3
+   },
+   "journal": "La note quotidienne au palais a doublé de volume. Elle n'est ni numérotée ni versée aux archives du service.",
+   "romance": {
+    "mouvement": 1
+   },
+   "style": 6
+  },
+  "droite": {
+   "libelle": "Arrêtez de savoir",
+   "effets": {
+    "armee": -5,
+    "presse": 5,
+    "peuple": 3
+   },
+   "journal": "Le service a cessé de rapporter sur le palais. Un agent a demandé par écrit à qui l'ordre devait être attribué.",
+   "style": -5
+  },
+  "conditions": {
+   "attache_min": 2,
+   "attache_max": 2
+  },
+  "chaine": {
+   "id": "coeur_renseignements",
+   "rang": 3,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_renseignements_4",
+  "personnage": "renseignements",
+  "humeur": "fache",
+  "texte": "{nom}, mardi soir, quelqu'un est sorti du palais par l'aile ouest à minuit, sans escorte. Je n'ai pas fait de note.",
+  "gauche": {
+   "libelle": "C'était moi",
+   "effets": {
+    "armee": 4,
+    "presse": -4,
+    "peuple": -3
+   },
+   "journal": "Aucune note n'a été rédigée sur la soirée de mardi. Le chef des renseignements a dîné seul au mess du service.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Faites la note",
+   "effets": {
+    "armee": -5,
+    "peuple": 4,
+    "presse": 3
+   },
+   "journal": "Une fiche sur la soirée de mardi a été versée au dossier. Elle compte quatre lignes et deux photographies."
+  },
+  "conditions": {
+   "attache_min": 3,
+   "attache_max": 3
+  },
+  "chaine": {
+   "id": "coeur_renseignements",
+   "rang": 4,
+   "delai_min": 7
+  }
+ },
+ {
+  "id": "coeur_renseignements_5",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{nom}, un de mes agents a photographié votre chambre depuis le toit d'en face. Il me l'a apportée au lieu de la classer.",
+  "gauche": {
+   "libelle": "Remerciez-le",
+   "effets": {
+    "armee": 5,
+    "presse": -5,
+    "peuple": -3
+   },
+   "journal": "L'agent a été promu chef de section le lendemain. La photographie a été détruite devant deux témoins du service.",
+   "style": 6
+  },
+  "droite": {
+   "libelle": "Sanctionnez-le",
+   "effets": {
+    "armee": -6,
+    "presse": 5,
+    "peuple": 4
+   },
+   "journal": "L'agent a été muté au fichier central. Une copie de la photographie a été retrouvée dans un tiroir du service.",
+   "style": -4
+  },
+  "conditions": {
+   "attache_min": 3
+  },
+  "chaine": {
+   "id": "coeur_renseignements",
+   "rang": 5,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_renseignements_6",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{nom}, épousez-moi et je brûle tout ce que j'ai sur vous. Refusez, et je le garde, parce que garder est mon métier.",
+  "gauche": {
+   "libelle": "Je vous épouse",
+   "effets": {
+    "armee": 6,
+    "presse": -5,
+    "caisses": -4
+   },
+   "journal": "Le mariage a été célébré sans annonce. Un incinérateur du service a tourné toute la nuit du vendredi.",
+   "romance": {
+    "epouse": true
+   }
+  },
+  "droite": {
+   "libelle": "Gardez-le",
+   "effets": {
+    "presse": 4,
+    "armee": -5,
+    "peuple": 3
+   },
+   "journal": "Il a repris ses fonctions sans un mot. La note quotidienne est redevenue numérotée, et versée aux archives.",
+   "romance": {
+    "rupture": true
+   }
+  },
+  "conditions": {
+   "attache_min": 4,
+   "marie": false
+  },
+  "chaine": {
+   "id": "coeur_renseignements",
+   "rang": 6,
+   "delai_min": 8
+  }
+ },
+ {
+  "id": "coeur_maire_1",
+  "personnage": "maire",
+  "humeur": "content",
+  "texte": "{titre}, la ville vous invite à la fête des quartiers. Il n'y aura pas de tribune, pas de discours, et moi je serai là.",
+  "gauche": {
+   "libelle": "J'y serai",
+   "effets": {
+    "peuple": 5,
+    "presse": -4,
+    "caisses": -3
+   },
+   "journal": "Vous avez dansé sur la place du quartier nord vers minuit. Le maire tenait le micro, et ne vous a pas annoncé.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Je passerai après",
+   "effets": {
+    "caisses": 4,
+    "presse": 3,
+    "peuple": -4
+   },
+   "journal": "La fête des quartiers s'est tenue sans le palais. Le maire a remercié les habitants et personne d'autre."
+  },
+  "conditions": {
+   "attache_max": 0,
+   "jour_min": 12
+  },
+  "chaine": {
+   "id": "coeur_maire",
+   "rang": 1
+  },
+  "poids": 3
+ },
+ {
+  "id": "coeur_maire_2",
+  "personnage": "maire",
+  "humeur": "neutre",
+  "texte": "{titre}, on nous a vus au marché tous les deux. Ma mairie me demande si c'est politique. Je ne sais pas quoi répondre.",
+  "gauche": {
+   "libelle": "Dites que non",
+   "effets": {
+    "peuple": 4,
+    "presse": -4,
+    "caisses": -3
+   },
+   "journal": "Le maire a répondu que ce n'était pas politique. La phrase a été reprise en titre, suivie d'un point d'interrogation.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Dites que oui",
+   "effets": {
+    "caisses": 4,
+    "presse": 4,
+    "peuple": -5
+   },
+   "journal": "Le maire a parlé d'un travail commun sur les ordures. Deux conseillers ont quitté la salle avant la fin."
+  },
+  "conditions": {
+   "attache_min": 1,
+   "attache_max": 1
+  },
+  "chaine": {
+   "id": "coeur_maire",
+   "rang": 2,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_maire_3",
+  "personnage": "maire",
+  "humeur": "neutre",
+  "texte": "{nom}, j'ai les clés d'un logement municipal au huitième étage, vide depuis deux ans. Personne n'y monte jamais.",
+  "gauche": {
+   "libelle": "Montons",
+   "effets": {
+    "peuple": -4,
+    "presse": -4,
+    "caisses": 3
+   },
+   "journal": "Un logement municipal du huitième a consommé de l'eau pour la première fois depuis deux ans.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Rendez les clés",
+   "effets": {
+    "presse": 5,
+    "peuple": 3,
+    "caisses": -4
+   },
+   "journal": "Les clés ont été rendues au service du logement. L'appartement a été attribué à une famille le mois suivant."
+  },
+  "conditions": {
+   "attache_min": 2,
+   "attache_max": 2
+  },
+  "chaine": {
+   "id": "coeur_maire",
+   "rang": 3,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_maire_4",
+  "personnage": "maire",
+  "humeur": "neutre",
+  "texte": "{nom}, je tiens la ville et vous tenez le palais. Ensemble on est imbattables, ou on ne fait plus qu'un, et ça se paie.",
+  "gauche": {
+   "libelle": "Restons deux",
+   "effets": {
+    "presse": 5,
+    "peuple": -4,
+    "caisses": 3
+   },
+   "journal": "La mairie et le palais ont publié deux communiqués distincts sur les ordures. Ils disent la même chose."
+  },
+  "droite": {
+   "libelle": "Ne faisons qu'un",
+   "effets": {
+    "peuple": 6,
+    "presse": -6,
+    "armee": -3
+   },
+   "journal": "Le maire a siégé au conseil des ministres de jeudi, sans portefeuille. Sa chaise avait été ajoutée le matin.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "conditions": {
+   "attache_min": 3,
+   "attache_max": 3
+  },
+  "chaine": {
+   "id": "coeur_maire",
+   "rang": 4,
+   "delai_min": 7
+  }
+ },
+ {
+  "id": "coeur_maire_5",
+  "personnage": "maire",
+  "humeur": "fache",
+  "texte": "{nom}, la Cour ouvre un contrôle sur ma mairie et demande qui a signé les marchés. Vous en avez signé deux.",
+  "gauche": {
+   "libelle": "Je les assume",
+   "effets": {
+    "presse": 6,
+    "peuple": -5,
+    "caisses": -4
+   },
+   "journal": "Les deux marchés ont été versés au dossier de la Cour avec votre signature. Le contrôle court jusqu'en mars.",
+   "style": -6
+  },
+  "droite": {
+   "libelle": "Vous les assumez",
+   "effets": {
+    "armee": 4,
+    "presse": -6,
+    "peuple": -3
+   },
+   "journal": "Le maire a endossé les deux marchés seul. Sa première adjointe a démissionné le soir même, par courrier.",
+   "style": 6
+  },
+  "conditions": {
+   "attache_min": 3
+  },
+  "chaine": {
+   "id": "coeur_maire",
+   "rang": 5,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_maire_6",
+  "personnage": "maire",
+  "humeur": "neutre",
+  "texte": "{nom}, épousez-moi et la ville est à vous jusqu'au dernier quartier. Refusez, et je me présente : il me restera ça.",
+  "gauche": {
+   "libelle": "Je vous épouse",
+   "effets": {
+    "peuple": 7,
+    "presse": -6,
+    "caisses": -3
+   },
+   "journal": "Le mariage a été célébré à la mairie centrale, par le premier adjoint. La salle des fêtes était ouverte à tous.",
+   "romance": {
+    "epouse": true
+   }
+  },
+  "droite": {
+   "libelle": "Présentez-vous",
+   "effets": {
+    "presse": 5,
+    "peuple": -5,
+    "armee": 3
+   },
+   "journal": "Le maire a annoncé sa candidature depuis le perron de sa mairie. Il n'a pas prononcé votre nom une seule fois.",
+   "romance": {
+    "rupture": true
+   }
+  },
+  "conditions": {
+   "attache_min": 4,
+   "marie": false
+  },
+  "chaine": {
+   "id": "coeur_maire",
+   "rang": 6,
+   "delai_min": 8
+  }
+ },
+ {
+  "id": "coeur_intendant_1",
+  "personnage": "epoux",
+  "humeur": "neutre",
+  "texte": "{titre}, je ferme ce palais tous les soirs depuis onze ans. Vous êtes le quatrième président, et le premier à me parler.",
+  "gauche": {
+   "libelle": "Bonsoir, alors",
+   "effets": {
+    "peuple": 4,
+    "caisses": -3,
+    "presse": -3
+   },
+   "journal": "L'intendant a fermé l'aile est à minuit vingt, comme chaque soir. Il a laissé une lampe allumée au couloir du fond.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Fermez",
+   "effets": {
+    "caisses": 4,
+    "armee": 3,
+    "peuple": -4
+   },
+   "journal": "Le palais a été fermé à minuit. L'intendant a consigné l'heure et rangé le trousseau dans son bureau."
+  },
+  "conditions": {
+   "attache_max": 0,
+   "jour_min": 8
+  },
+  "chaine": {
+   "id": "coeur_intendant",
+   "rang": 1
+  },
+  "poids": 3
+ },
+ {
+  "id": "coeur_intendant_2",
+  "personnage": "epoux",
+  "humeur": "neutre",
+  "texte": "{titre}, il reste une lampe allumée chez vous toutes les nuits. Je monte l'éteindre, et vous ne dormez jamais.",
+  "gauche": {
+   "libelle": "Montez plus tôt",
+   "effets": {
+    "peuple": 4,
+    "presse": -4,
+    "caisses": -3
+   },
+   "journal": "La lampe du bureau présidentiel s'est éteinte à vingt-trois heures. C'est la première fois depuis le serment.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Laissez-la",
+   "effets": {
+    "caisses": 4,
+    "presse": 3,
+    "peuple": -4
+   },
+   "journal": "La lampe est restée allumée jusqu'à l'aube. L'intendant l'a notée au cahier, comme les vingt nuits précédentes."
+  },
+  "conditions": {
+   "attache_min": 1,
+   "attache_max": 1
+  },
+  "chaine": {
+   "id": "coeur_intendant",
+   "rang": 2,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_intendant_3",
+  "personnage": "epoux",
+  "humeur": "neutre",
+  "texte": "{nom}, je sais qui entre ici et qui n'en ressort pas avant le jour. Je n'ai jamais rien écrit. Dois-je commencer ?",
+  "gauche": {
+   "libelle": "N'écrivez rien",
+   "effets": {
+    "armee": -4,
+    "presse": -4,
+    "peuple": 3
+   },
+   "journal": "Le cahier des entrées de nuit compte six pages vierges. L'intendant en a ouvert un second, pour le jour.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Écrivez tout",
+   "effets": {
+    "armee": 4,
+    "presse": 4,
+    "peuple": -4
+   },
+   "journal": "Le cahier des entrées de nuit a été tenu à la minute. Il a été demandé par deux services dans la même semaine."
+  },
+  "conditions": {
+   "attache_min": 2,
+   "attache_max": 2
+  },
+  "chaine": {
+   "id": "coeur_intendant",
+   "rang": 3,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_intendant_4",
+  "personnage": "epoux",
+  "humeur": "neutre",
+  "texte": "{nom}, un intendant qui dort chez le président n'est plus un intendant. Gardez-moi les clés, ou gardez-moi.",
+  "gauche": {
+   "libelle": "Les clés",
+   "effets": {
+    "caisses": 5,
+    "peuple": -4,
+    "presse": -3
+   },
+   "journal": "L'intendant a gardé le trousseau et son bureau du rez-de-chaussée. Il a demandé un second adjoint de nuit."
+  },
+  "droite": {
+   "libelle": "Vous",
+   "effets": {
+    "peuple": 5,
+    "caisses": -5,
+    "presse": -3
+   },
+   "journal": "Le trousseau du palais a changé de main un jeudi. L'ancien intendant a déménagé deux étages plus haut.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "conditions": {
+   "attache_min": 3,
+   "attache_max": 3
+  },
+  "chaine": {
+   "id": "coeur_intendant",
+   "rang": 4,
+   "delai_min": 7
+  }
+ },
+ {
+  "id": "coeur_intendant_5",
+  "personnage": "epoux",
+  "humeur": "fache",
+  "texte": "{nom}, la garde me demande pourquoi je ferme plus tard depuis un mois. Je peux dire la vérité, ou avancer l'heure.",
+  "gauche": {
+   "libelle": "La vérité",
+   "effets": {
+    "presse": 5,
+    "armee": -5,
+    "peuple": 3
+   },
+   "journal": "L'intendant a répondu devant le poste de garde, sans baisser la voix. Deux hommes ont demandé leur mutation.",
+   "style": -4
+  },
+  "droite": {
+   "libelle": "Avancez l'heure",
+   "effets": {
+    "armee": 4,
+    "presse": -5,
+    "peuple": -3
+   },
+   "journal": "Le palais ferme désormais à vingt-trois heures. Une porte de service du jardin reste ouverte jusqu'à l'aube.",
+   "style": 5
+  },
+  "conditions": {
+   "attache_min": 3
+  },
+  "chaine": {
+   "id": "coeur_intendant",
+   "rang": 5,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_intendant_6",
+  "personnage": "epoux",
+  "humeur": "neutre",
+  "texte": "{nom}, je n'ai rien à vous apporter qu'un trousseau et onze ans de silence. Épousez-moi, ou laissez-moi mon service.",
+  "gauche": {
+   "libelle": "Je vous épouse",
+   "effets": {
+    "peuple": 6,
+    "caisses": -4,
+    "presse": -4
+   },
+   "journal": "Le mariage a été célébré un mardi, à huit personnes. L'intendant a rendu son trousseau au chef de la garde.",
+   "romance": {
+    "epouse": true
+   }
+  },
+  "droite": {
+   "libelle": "Gardez le service",
+   "effets": {
+    "caisses": 4,
+    "peuple": -4,
+    "armee": 3
+   },
+   "journal": "Il a repris son service le soir même. Le palais a fermé à minuit vingt, et la lampe du fond est restée allumée.",
+   "romance": {
+    "rupture": true
+   }
+  },
+  "conditions": {
+   "attache_min": 4,
+   "marie": false
+  },
+  "chaine": {
+   "id": "coeur_intendant",
+   "rang": 6,
+   "delai_min": 8
+  }
  }
 ]

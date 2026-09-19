@@ -111,7 +111,16 @@ Decor decorDeLaChambre(EtatPartie etat) {
   // plus vraie de la pièce, et elle est rare. Jusqu'ici ce décor n'était
   // atteignable par rien — il attendait la romance.
   if (chambreSelon(etat.attache, etat.epouse) != Chambre.seule) {
-    return const Decor(dossier: 'pieces/chambre_conjoint', etat: 'conjoint', nom: "On n'est pas seul");
+    // Quatre images, et une seule génération : les quatre poses ont été
+    // faites d'un coup, côte à côte, puis posées en ombre sur la même
+    // plaque. C'est la seule façon d'avoir une boucle qui ne saute pas —
+    // quatre rendus séparés de la même chambre ne se ressemblent qu'à 0,7.
+    return const Decor(
+      dossier: 'pieces/chambre_conjoint',
+      etat: 'conjoint',
+      nom: "On n'est pas seul",
+      images: 4,
+    );
   }
   if (estNuit(etat)) {
     return const Decor(dossier: 'pieces/chambre_nuit', etat: 'nuit', nom: 'La nuit blanche');

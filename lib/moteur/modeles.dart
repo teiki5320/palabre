@@ -82,6 +82,7 @@ class Conditions {
     this.drapeauxRequis = const [],
     this.drapeauxInterdits = const [],
     this.parcours = const [],
+    this.parcoursInterdits = const [],
     this.styleMin = 0,
     this.styleMax = 100,
     this.loyauteDe,
@@ -111,6 +112,11 @@ class Conditions {
 
   /// Parcours autorisés ; vide signifie « tous ».
   final List<String> parcours;
+
+  /// Les parcours pour lesquels la carte n'a pas de sens. C'est ce qui
+  /// empêche la militante d'entrer dans le bureau de la militante : deux
+  /// personnes du jeu portent le même visage, l'une jouable, l'autre non.
+  final List<String> parcoursInterdits;
 
   /// Où doit en être le régime pour que la carte ait un sens. Le chef des
   /// renseignements ne vient pas voir un démocrate ; le président de
@@ -166,6 +172,7 @@ class Conditions {
       drapeauxRequis: _textes(j['drapeaux_requis']),
       drapeauxInterdits: _textes(j['drapeaux_interdits']),
       parcours: _textes(j['parcours']),
+      parcoursInterdits: _textes(j['parcours_interdits']),
       styleMin: ((j['style_min'] as num?) ?? 0).toInt(),
       styleMax: ((j['style_max'] as num?) ?? 100).toInt(),
       loyauteDe: j['loyaute_de'] as String?,

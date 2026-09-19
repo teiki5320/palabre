@@ -113,6 +113,9 @@ List<String> valide(Contenu c) {
     for (final p in cond.parcours) {
       if (!idsParcours.contains(p)) problemes.add('$ou : parcours inconnu « $p »');
     }
+    for (final p in cond.parcoursInterdits) {
+      if (!idsParcours.contains(p)) problemes.add('$ou : parcours inconnu « $p »');
+    }
 
     final texte = _mots('${carte.texte} ${carte.gauche.libelle} ${carte.droite.libelle}');
     for (final mot in _interdits) {

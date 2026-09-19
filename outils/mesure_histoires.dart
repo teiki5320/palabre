@@ -8,6 +8,7 @@ import 'package:president/moteur/etat_partie.dart';
 import 'package:president/moteur/jauges.dart';
 import 'package:president/moteur/modeles.dart';
 import 'package:president/moteur/partie.dart';
+import 'package:president/moteur/romance.dart';
 import 'package:president/moteur/tirage.dart';
 
 /// Ce qu'un joueur voit vraiment des histoires en cent jours.
@@ -57,6 +58,11 @@ void main() {
     var forceBasse = 0;
     var forceMaxTotale = 0;
     var loyautesExtremes = 0;
+    var cartesCoeur = 0;
+    var mandatsAvecLiaison = 0;
+    var mandatsMaries = 0;
+    var cartesConjoint = 0;
+    final avecQui = <String, int>{};
 
     for (var p = 0; p < parties; p++) {
       final opposants = contenu.adversaires;
@@ -76,6 +82,8 @@ void main() {
         if (carte == null) break;
         cartes++;
         if (carte.id.startsWith('ardoise_')) rappels++;
+        if (carte.id.startsWith('coeur_')) cartesCoeur++;
+        if (carte.personnage == 'conjoint') cartesConjoint++;
         if (carte.id.startsWith('fidele_') || carte.id.startsWith('rancune_')) memoire++;
         if (carte.id.startsWith('face_') || carte.id.startsWith('campagne_')) opposition++;
         final ch = carte.chaine;
@@ -110,6 +118,12 @@ void main() {
       joursTotal += etat.jour - 1;
       cartesTotal += cartes;
       forceFinale += etat.force;
+      final l = liaisonPrincipale(etat.attache);
+      if (l != null && l.cran >= attacheLiaison) mandatsAvecLiaison++;
+      if (estMarie(etat.epouse)) {
+        mandatsMaries++;
+        avecQui.update(etat.epouse!, (v) => v + 1, ifAbsent: () => 1);
+      }
       forceMaxTotale += forceMax;
       if (forceMax >= 55) forceHaute++;
       if (forceMin <= 42) forceBasse++;
@@ -146,10 +160,17 @@ MILLE MANDATS, JOUEUR ATTENTIF
   cartes d opposition           : ${(opposition / parties).toStringAsFixed(2)} par mandat
   personnages a loyaute forte   : ${(loyautesExtremes / parties).toStringAsFixed(2)} en fin de mandat
   force de l opposant au bout   : ${(forceFinale / parties).toStringAsFixed(1)}
+  cartes de romance par mandat  : ${(cartesCoeur / parties).toStringAsFixed(2)}
+  mandats avec une liaison      : $mandatsAvecLiaison sur $parties
+  mandats ou l on se marie      : $mandatsMaries sur $parties
+  cartes du conjoint par mandat : ${(cartesConjoint / parties).toStringAsFixed(2)}
   force la plus haute atteinte  : ${(forceMaxTotale / parties).toStringAsFixed(1)} en moyenne
   mandats ou l opposant passe 55 : $forceHaute sur $parties
   mandats ou il descend sous 42  : $forceBasse sur $parties
 ''');
+
+    // ignore: avoid_print
+    print('QUI L ON EPOUSE : ${(avecQui.entries.toList()..sort((a, b) => b.value.compareTo(a.value))).map((e) => '${e.key} ${e.value}').join(', ')}');
 
     final jamaisFinies = chaines.keys.where((k) => (finies[k] ?? 0) == 0).toList()..sort();
     // ignore: avoid_print

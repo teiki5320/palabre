@@ -138,6 +138,7 @@ extension ConditionsSurEtat on Conditions {
       if (etat.drapeaux.contains(d)) return false;
     }
     if (parcours.isNotEmpty && !parcours.contains(etat.parcours)) return false;
+    if (parcoursInterdits.contains(etat.parcours)) return false;
     if (etat.style < styleMin || etat.style > styleMax) return false;
 
     final plancher = loyauteMin;

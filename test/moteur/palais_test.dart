@@ -15,6 +15,8 @@ EtatPartie etatAvec({
   int jour = 10,
   int style = styleDepart,
   Set<String> drapeaux = const {},
+  Map<String, int> attache = const {},
+  String? epouse,
 }) =>
     EtatPartie(
       parcours: 'general_parcours',
@@ -23,6 +25,8 @@ EtatPartie etatAvec({
       jour: jour,
       style: style,
       drapeaux: drapeaux,
+      attache: attache,
+      epouse: epouse,
     );
 
 List<Objet> lisCatalogue() {
@@ -213,6 +217,24 @@ void main() {
       expect(decorDuBalcon(etatAvec(jour: 80)).dossier, contains('/nuit/'));
     });
 
+    test('la chambre partagée s ouvre par la romance, et par rien d autre', () {
+      // Elle a existé des mois sans qu'aucune partie puisse l'atteindre :
+      // elle exigeait un drapeau que personne ne posait.
+      expect(decorDeLaChambre(etatAvec()).etat, 'base');
+      expect(decorDeLaChambre(etatAvec(drapeaux: {'conjoint'})).etat, 'base');
+      expect(decorDeLaChambre(etatAvec(attache: {'maire': 2})).etat, 'base');
+      expect(decorDeLaChambre(etatAvec(attache: {'maire': 3})).etat, 'conjoint');
+      expect(decorDeLaChambre(etatAvec(epouse: 'maire')).etat, 'conjoint');
+      // Et elle passe avant la nuit blanche : dormir à deux est ce qu'il y
+      // a de plus vrai dans cette pièce.
+      expect(decorDeLaChambre(etatAvec(jour: 85, epouse: 'maire')).etat, 'conjoint');
+      expect(decorDeLaChambre(etatAvec(jour: 85)).etat, 'nuit');
+    });
+
+    test('elle se montre en quatre images, faites d un seul coup', () {
+      expect(decorDeLaChambre(etatAvec(epouse: 'maire')).images, 4);
+    });
+
     test('les boucles du balcon comptent cinq ou six clés, sauf l avenue ordinaire de jour', () {
       // Trois cas particuliers, tous dus à des plaques d'origine perdues :
       // l'avenue ordinaire de jour n'a plus qu'une image, le siège des
@@ -292,6 +314,10 @@ void main() {
         decorDeLaChambre(etatAvec()),
         decorDeLaChambre(etatAvec(jour: 85)),
         decorDeLaChambre(etatAvec(drapeaux: {'conjoint'})),
+        // La chambre partagée : longtemps inatteignable, elle a maintenant
+        // ses quatre clés, et c'est la romance qui l'ouvre.
+        decorDeLaChambre(etatAvec(epouse: 'maire')),
+        decorDeLaChambre(etatAvec(attache: {'maire': 3})),
         decorDuGarage({}),
         decorDuGarage({'velo', 'motos'}),
         decorDeLaPiscine(etatAvec(caisses: 60), {}),
