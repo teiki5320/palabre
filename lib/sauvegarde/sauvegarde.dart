@@ -124,6 +124,8 @@ Map<String, dynamic> versJson(EtatPartie e) => {
       'loyaute': e.loyaute,
       'adversaire': e.adversaire,
       'force': e.force,
+      'attache': e.attache,
+      'epouse': e.epouse,
     };
 
 EtatPartie depuisJson(Map<String, dynamic> j) {
@@ -152,6 +154,9 @@ EtatPartie depuisJson(Map<String, dynamic> j) {
     loyaute: ((j['loyaute'] as Map?) ?? const {}).map((k, v) => MapEntry(k as String, (v as num).toInt())),
     adversaire: j['adversaire'] as String?,
     force: ((j['force'] as num?) ?? forceDepart).toInt(),
+    // Une sauvegarde d'avant la romance reprend célibataire, sans attache.
+    attache: ((j['attache'] as Map?) ?? const {}).map((k, v) => MapEntry(k as String, (v as num).toInt())),
+    epouse: j['epouse'] as String?,
   );
 }
 

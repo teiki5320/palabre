@@ -127,7 +127,7 @@ class SessionNotifier extends Notifier<Session?> {
         carte: s.carte!,
         cote: cote,
         atout: _contenu.parcoursParId(s.etat.parcours)?.atout,
-        qui: _contenu.personnageDe(s.carte!, _contenu.parcoursParId(s.etat.parcours)),
+        qui: _contenu.personnageDe(s.carte!, _contenu.parcoursParId(s.etat.parcours), epouse: s.etat.epouse),
       ),
       journal: reponse.journal,
     );

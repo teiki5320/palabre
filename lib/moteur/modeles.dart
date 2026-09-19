@@ -1,5 +1,6 @@
 import 'condition.dart';
 import 'jauges.dart';
+import 'romance.dart';
 
 /// Les trois expressions disponibles pour chaque personnage.
 enum Humeur { neutre, content, fache }
@@ -19,6 +20,7 @@ class Reponse {
     this.drapeaux = const [],
     this.style = 0,
     this.journal,
+    this.romance = const EffetRomance(),
   });
 
   final String libelle;
@@ -32,6 +34,11 @@ class Reponse {
   /// Marques posées dans la partie, que d'autres cartes pourront exiger.
   final List<String> drapeaux;
 
+  /// Ce que la réponse change à une romance : un cran, un mariage, une
+  /// rupture. Vide sur presque toutes les cartes — rien ne se noue sans
+  /// que la carte le dise.
+  final EffetRomance romance;
+
   /// Ce que le pays en a dit le lendemain : une brève, jamais un effet.
   /// Null tant que la carte n'a pas sa ligne — le jeu marche sans, il est
   /// seulement plus silencieux.
@@ -43,6 +50,7 @@ class Reponse {
         drapeaux: _textes(j['drapeaux']),
         style: ((j['style'] as num?) ?? 0).toInt(),
         journal: j['journal'] as String?,
+        romance: EffetRomance.depuisJson(j['romance'] as Map<String, dynamic>?),
       );
 }
 
@@ -82,6 +90,10 @@ class Conditions {
     this.adversaire = const [],
     this.forceMin,
     this.forceMax,
+    this.attacheDe,
+    this.attacheMin,
+    this.attacheMax,
+    this.marie,
   });
 
   final int mandatMin;
@@ -121,6 +133,20 @@ class Conditions {
   final int? forceMin;
   final int? forceMax;
 
+  /// De qui l'on exige une attache, si ce n'est pas le personnage de la
+  /// carte lui-même.
+  final String? attacheDe;
+
+  /// Le cran de romance exigé, de 0 à 5. Une carte de premier regard
+  /// demande 0 à 0, une carte de demande en mariage 5 à 5.
+  final int? attacheMin;
+  final int? attacheMax;
+
+  /// Vrai pour une carte qui n'a de sens qu'une fois marié, faux pour une
+  /// carte réservée au célibataire, null pour l'immense majorité qui ne
+  /// s'en soucie pas.
+  final bool? marie;
+
   factory Conditions.depuisJson(Map<String, dynamic>? j) {
     if (j == null) return const Conditions();
     final minimums = <Jauge, int>{};
@@ -148,6 +174,10 @@ class Conditions {
       adversaire: _textes(j['adversaire']),
       forceMin: (j['force_min'] as num?)?.toInt(),
       forceMax: (j['force_max'] as num?)?.toInt(),
+      attacheDe: j['attache_de'] as String?,
+      attacheMin: (j['attache_min'] as num?)?.toInt(),
+      attacheMax: (j['attache_max'] as num?)?.toInt(),
+      marie: j['marie'] as bool?,
     );
   }
 }

@@ -48,7 +48,7 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
     final contenu = ref.watch(contenuProvider).requireValue;
     final carte = session.carte!;
     final parcours = contenu.parcoursParId(session.etat.parcours);
-    final personnage = contenu.personnageDe(carte, parcours);
+    final personnage = contenu.personnageDe(carte, parcours, epouse: session.etat.epouse);
     final titre = parcours?.titre ?? 'Monsieur le Président';
     final reponse = switch (_intention) {
       Cote.gauche => carte.gauche,

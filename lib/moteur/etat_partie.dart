@@ -1,5 +1,6 @@
 import 'jauges.dart';
 import 'memoire.dart';
+import 'romance.dart';
 import 'modeles.dart';
 
 /// Tout ce qui décrit un mandat en cours. Immuable : chaque réponse rend un
@@ -25,6 +26,8 @@ class EtatPartie {
     this.loyaute = const {},
     this.adversaire,
     this.force = forceDepart,
+    this.attache = const {},
+    this.epouse,
   });
 
   final String parcours;
@@ -66,6 +69,15 @@ class EtatPartie {
   /// utilisait quand il n'y avait personne en face.
   final int force;
 
+  /// Où en est ce qui se noue avec chacun, de 0 à 5. Contrairement à la
+  /// loyauté, rien n'y entre sans que le joueur l'ait choisi sur une carte.
+  final Map<String, int> attache;
+
+  /// Qui le président a épousé, ou null : il commence célibataire, et le
+  /// reste tant qu'il n'a pas dit oui. C'est cette personne que les cartes
+  /// du conjoint font parler.
+  final String? epouse;
+
   EtatPartie copie({
     Jauges? jauges,
     int? jour,
@@ -79,6 +91,9 @@ class EtatPartie {
     Map<String, int>? loyaute,
     String? adversaire,
     int? force,
+    Map<String, int>? attache,
+    String? epouse,
+    bool celibataire = false,
   }) =>
       EtatPartie(
         parcours: parcours,
@@ -95,6 +110,11 @@ class EtatPartie {
         loyaute: loyaute ?? this.loyaute,
         adversaire: adversaire ?? this.adversaire,
         force: force ?? this.force,
+        attache: attache ?? this.attache,
+        // Un mariage ne se défait qu'en le demandant : sans le drapeau,
+        // `copie` ne peut que garder ou remplacer l'époux, jamais l'effacer
+        // par omission.
+        epouse: celibataire ? null : (epouse ?? this.epouse),
       );
 }
 
@@ -128,6 +148,18 @@ extension ConditionsSurEtat on Conditions {
       final v = etat.loyaute[qui] ?? 0;
       if (plancher != null && v < plancher) return false;
       if (plafond != null && v > plafond) return false;
+    }
+
+    if (!romanceSatisfaite(
+      attache: etat.attache,
+      epouse: etat.epouse,
+      personnage: personnage,
+      attacheDe: attacheDe,
+      attacheMin: attacheMin,
+      attacheMax: attacheMax,
+      marie: marie,
+    )) {
+      return false;
     }
 
     if (adversaire.isNotEmpty && !adversaire.contains(etat.adversaire)) return false;

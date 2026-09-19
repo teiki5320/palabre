@@ -2,6 +2,7 @@ import 'etat_partie.dart';
 import 'jauges.dart';
 import 'memoire.dart';
 import 'modeles.dart';
+import 'romance.dart';
 import 'palais.dart';
 
 /// Le côté vers lequel le joueur a glissé la carte.
@@ -133,10 +134,29 @@ EtatPartie repond({
   );
   final force = appliqueForce(etat.force, mouvementForce(effets));
 
+  // La romance, elle, ne se déduit de rien : seule la réponse la déclare.
+  // Une rupture efface l'attache de la personne visée et défait le mariage
+  // s'il s'agissait d'elle ; un oui retient qui l'on vient d'épouser.
+  final r = reponse.romance;
+  final vise = r.de ?? carte.personnage;
+  var attache = etat.attache;
+  var epouse = etat.epouse;
+  var celibataire = false;
+  if (r.rupture) {
+    attache = apresRupture(attache, vise);
+    if (epouse == vise) celibataire = true;
+  } else if (r.mouvement != 0) {
+    attache = appliqueAttache(attache, vise, r.mouvement);
+  }
+  if (r.epouse) epouse = vise;
+
   final apres = etat.copie(
     jauges: etat.jauges.applique(effets),
     loyaute: loyaute,
     force: force,
+    attache: attache,
+    epouse: epouse,
+    celibataire: celibataire,
     jour: etat.jour + 1,
     // L'axe du régime ne s'amplifie pas au fil des mandats : un abus de
     // pouvoir est un abus de pouvoir, qu'il soit le premier ou le dixième.
@@ -170,6 +190,10 @@ EtatPartie mandatSuivant(EtatPartie etat, Parcours parcours) => EtatPartie(
       // elle en était — son délai est réputé écoulé.
       vues: etat.vues,
       chainesRang: etat.chainesRang,
+      // Ce qui s'est noué ne se dénoue pas à l'élection : on rempile avec
+      // les mêmes gens, et marié si on l'était.
+      attache: etat.attache,
+      epouse: etat.epouse,
       // On ne repart pas parmi des inconnus : ceux qui vous ont vu décider
       // cent jours durant s'en souviennent, et celui d'en face aussi.
       loyaute: etat.loyaute,

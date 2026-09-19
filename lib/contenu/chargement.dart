@@ -28,8 +28,15 @@ class Contenu {
   static const conjoint = 'conjoint';
 
   /// Qui parle sur cette carte, pour ce joueur.
-  Personnage? personnageDe(Carte carte, Parcours? parcours) {
+  ///
+  /// Une carte du conjoint ne nomme personne : elle fait parler la personne
+  /// que le président a épousée, quelle qu'elle soit. Tant qu'il est
+  /// célibataire, ces cartes ne sortent pas — elles exigent `marie` — et le
+  /// repli sur l'époux ou l'épouse ne sert qu'aux parties d'avant la
+  /// romance, pour qu'une sauvegarde ancienne reste lisible.
+  Personnage? personnageDe(Carte carte, Parcours? parcours, {String? epouse}) {
     if (carte.personnage != conjoint) return personnages[carte.personnage];
+    if (epouse != null) return personnages[epouse];
     return personnages[(parcours?.femme ?? false) ? 'epoux' : 'epouse'];
   }
   final List<Parcours> parcours;

@@ -85,7 +85,7 @@ Mesures simule({
         carte: carte,
         cote: _choisit(strategie, etat, carte, alea, depart.atout),
         atout: depart.atout,
-        qui: contenu.personnageDe(carte, depart),
+        qui: contenu.personnageDe(carte, depart, epouse: etat.epouse),
       );
     }
     totalJours += etat.jour - 1;

@@ -1,6 +1,7 @@
 import 'etat_partie.dart';
 import 'jauges.dart';
 import 'palais.dart';
+import 'romance.dart';
 
 /// Quelle image le palais montre, pour une pièce et un état de partie.
 ///
@@ -106,11 +107,14 @@ Decor decorDuBureau(EtatPartie etat) {
 }
 
 Decor decorDeLaChambre(EtatPartie etat) {
+  // Qu'on dorme à deux passe avant la nuit blanche : c'est la chose la
+  // plus vraie de la pièce, et elle est rare. Jusqu'ici ce décor n'était
+  // atteignable par rien — il attendait la romance.
+  if (chambreSelon(etat.attache, etat.epouse) != Chambre.seule) {
+    return const Decor(dossier: 'pieces/chambre_conjoint', etat: 'conjoint', nom: "On n'est pas seul");
+  }
   if (estNuit(etat)) {
     return const Decor(dossier: 'pieces/chambre_nuit', etat: 'nuit', nom: 'La nuit blanche');
-  }
-  if (etat.drapeaux.contains('conjoint')) {
-    return const Decor(dossier: 'pieces/chambre_conjoint', etat: 'conjoint', nom: "On n'est pas seul");
   }
   return const Decor(dossier: 'pieces/chambre_base', etat: 'base', nom: 'La chambre');
 }
