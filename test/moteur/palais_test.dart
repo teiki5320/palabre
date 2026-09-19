@@ -223,16 +223,38 @@ void main() {
       expect(decorDeLaChambre(etatAvec()).etat, 'base');
       expect(decorDeLaChambre(etatAvec(drapeaux: {'conjoint'})).etat, 'base');
       expect(decorDeLaChambre(etatAvec(attache: {'maire': 2})).etat, 'base');
-      expect(decorDeLaChambre(etatAvec(attache: {'maire': 3})).etat, 'conjoint');
-      expect(decorDeLaChambre(etatAvec(epouse: 'maire')).etat, 'conjoint');
+      expect(decorDeLaChambre(etatAvec(attache: {'maire': 3})).etat, 'conjoint_maire');
+      expect(decorDeLaChambre(etatAvec(epouse: 'maire')).etat, 'conjoint_maire');
       // Et elle passe avant la nuit blanche : dormir à deux est ce qu'il y
       // a de plus vrai dans cette pièce.
-      expect(decorDeLaChambre(etatAvec(jour: 85, epouse: 'maire')).etat, 'conjoint');
+      expect(decorDeLaChambre(etatAvec(jour: 85, epouse: 'maire')).etat, 'conjoint_maire');
       expect(decorDeLaChambre(etatAvec(jour: 85)).etat, 'nuit');
     });
 
     test('elle se montre en quatre images, faites d un seul coup', () {
       expect(decorDeLaChambre(etatAvec(epouse: 'maire')).images, 4);
+    });
+
+    test('c est la personne avec qui l on est qu on y voit', () {
+      // Dix jeux d'images, un par personne : la chambre ne montre pas une
+      // figure anonyme, elle montre qui est là.
+      for (final qui in ['redactrice', 'cabinet', 'emissaire', 'militante', 'epouse',
+        'international', 'ministre', 'renseignements', 'maire', 'epoux']) {
+        final d = decorDeLaChambre(etatAvec(epouse: qui));
+        expect(d.dossier, 'pieces/chambre_conjoint/$qui');
+        for (var i = 1; i <= d.images; i++) {
+          expect(File(d.chemin(i)).existsSync(), isTrue, reason: d.chemin(i));
+        }
+      }
+    });
+
+    test('le conjoint passe avant l amante', () {
+      final d = decorDeLaChambre(etatAvec(epouse: 'maire', attache: {'redactrice': 5}));
+      expect(d.dossier, contains('maire'));
+    });
+
+    test('quelqu un sans plaque laisse la chambre du célibataire', () {
+      expect(decorDeLaChambre(etatAvec(epouse: 'doyen')).etat, 'base');
     });
 
     test('les boucles du balcon comptent cinq ou six clés, sauf l avenue ordinaire de jour', () {
@@ -317,7 +339,7 @@ void main() {
         // La chambre partagée : longtemps inatteignable, elle a maintenant
         // ses quatre clés, et c'est la romance qui l'ouvre.
         decorDeLaChambre(etatAvec(epouse: 'maire')),
-        decorDeLaChambre(etatAvec(attache: {'maire': 3})),
+        decorDeLaChambre(etatAvec(attache: {'redactrice': 3})),
         decorDuGarage({}),
         decorDuGarage({'velo', 'motos'}),
         decorDeLaPiscine(etatAvec(caisses: 60), {}),

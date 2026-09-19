@@ -106,18 +106,29 @@ Decor decorDuBureau(EtatPartie etat) {
   return const Decor(dossier: 'pieces/bureau_base', etat: 'base', nom: 'Le bureau de travail');
 }
 
+/// Ceux dont la chambre existe en images. C'est la liste des dix qu'on peut
+/// courtiser : une personne qui n'y figure pas n'a pas de plaque, et la
+/// chambre reste celle d'un célibataire plutôt que de pointer sur un
+/// fichier absent.
+const _chambresPartagees = {
+  'redactrice', 'cabinet', 'emissaire', 'militante', 'epouse',
+  'international', 'ministre', 'renseignements', 'maire', 'epoux',
+};
+
 Decor decorDeLaChambre(EtatPartie etat) {
   // Qu'on dorme à deux passe avant la nuit blanche : c'est la chose la
   // plus vraie de la pièce, et elle est rare. Jusqu'ici ce décor n'était
   // atteignable par rien — il attendait la romance.
-  if (chambreSelon(etat.attache, etat.epouse) != Chambre.seule) {
-    // Quatre images, et une seule génération : les quatre poses ont été
-    // faites d'un coup, côte à côte, puis posées en ombre sur la même
-    // plaque. C'est la seule façon d'avoir une boucle qui ne saute pas —
-    // quatre rendus séparés de la même chambre ne se ressemblent qu'à 0,7.
-    return const Decor(
-      dossier: 'pieces/chambre_conjoint',
-      etat: 'conjoint',
+  final qui = partenaire(etat.attache, etat.epouse);
+  if (qui != null && _chambresPartagees.contains(qui)) {
+    // Quatre images par personne, et une seule génération chacune : les
+    // quatre poses ont été faites d'un coup, côte à côte sur fond vert,
+    // puis incrustées sur une plaque unique. C'est la seule façon d'avoir
+    // une boucle qui ne saute pas — quatre rendus séparés de la même
+    // chambre ne se ressemblent qu'à 0,7 là où il en faut 0,94.
+    return Decor(
+      dossier: 'pieces/chambre_conjoint/$qui',
+      etat: 'conjoint_$qui',
       nom: "On n'est pas seul",
       images: 4,
     );

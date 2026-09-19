@@ -157,6 +157,15 @@ enum Chambre {
   partagee,
 }
 
+/// Avec qui l'on partage la chambre, ou null. Le conjoint d'abord — on ne
+/// met pas son amant dans le lit conjugal — puis la liaison la plus
+/// avancée, à partir du cran où elle n'est plus un regard.
+String? partenaire(Map<String, int> attache, String? epouse) {
+  if (epouse != null) return epouse;
+  final l = liaisonPrincipale(attache);
+  return (l != null && l.cran >= attacheLiaison) ? l.qui : null;
+}
+
 Chambre chambreSelon(Map<String, int> attache, String? epouse) {
   if (estMarie(epouse)) return Chambre.partagee;
   final l = liaisonPrincipale(attache);
