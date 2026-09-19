@@ -14,6 +14,8 @@ Contenu contenuLivre() {
     parcours: lis('parcours'),
     fins: lis('fins'),
     exploits: lis('exploits'),
+    objets: lis('objets'),
+    adversaires: lis('adversaires'),
   );
 }
 

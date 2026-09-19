@@ -2286,7 +2286,10 @@
     "presse": 6,
     "caisses": -5
    },
-   "journal": "Un cordon ferme le quartier bas depuis mardi. Les taxis refusent la descente, même avec un laissez-passer tamponné."
+   "journal": "Un cordon ferme le quartier bas depuis mardi. Les taxis refusent la descente, même avec un laissez-passer tamponné.",
+   "drapeaux": [
+    "cholera_avoue"
+   ]
   },
   "droite": {
    "libelle": "On se tait",
@@ -3039,7 +3042,10 @@
     "peuple": 4,
     "presse": 3
    },
-   "journal": "Aucune signature au bas du texte. Une radio a rediffusé votre « je ne signe rien » toute la journée, entre deux chansons."
+   "journal": "Aucune signature au bas du texte. Une radio a rediffusé votre « je ne signe rien » toute la journée, entre deux chansons.",
+   "drapeaux": [
+    "pret_refuse"
+   ]
   },
   "conditions": {
    "drapeaux_requis": [
@@ -11437,8 +11443,8 @@
    "journal": "Les réserves restent au pays. Deux directeurs ont déposé une demande de rallonge dans la même semaine."
   },
   "conditions": {
-   "caisses_min": 70,
-   "peuple_max": 40
+   "caisses_min": 62,
+   "peuple_max": 48
   },
   "chaine": {
    "id": "tresor_place",
@@ -11470,7 +11476,7 @@
    "journal": "Une deuxième part est partie dehors. La note des bailleurs relevant le taux tient en une phrase, sans motif."
   },
   "conditions": {
-   "caisses_min": 52,
+   "caisses_min": 40,
    "drapeaux_requis": [
     "reserves_placees"
    ]
@@ -11822,9 +11828,9 @@
   "humeur": "neutre",
   "poids": 10,
   "conditions": {
-   "peuple_min": 60,
-   "presse_min": 60,
-   "jour_max": 45
+   "peuple_min": 50,
+   "presse_min": 50,
+   "jour_max": 60
   },
   "chaine": {
    "id": "verrou_constitution",
@@ -11860,9 +11866,9 @@
   "humeur": "neutre",
   "poids": 10,
   "conditions": {
-   "peuple_min": 42,
-   "presse_min": 42,
-   "jour_max": 45,
+   "peuple_min": 32,
+   "presse_min": 32,
+   "jour_max": 90,
    "drapeaux_requis": [
     "limite_verrouillee"
    ]
@@ -12353,5 +12359,3042 @@
    ]
   },
   "poids": 10
+ },
+ {
+  "id": "emissaire_pret_echeance",
+  "personnage": "emissaire",
+  "humeur": "neutre",
+  "texte": "{titre}, la première échéance tombe vendredi. Le programme la reporte si vous gelez les embauches de l'État six mois.",
+  "gauche": {
+   "libelle": "Je gèle",
+   "effets": {
+    "caisses": 6,
+    "peuple": -7
+   },
+   "drapeaux": [
+    "embauches_gelees"
+   ],
+   "journal": "Le concours de la fonction publique est reporté sans nouvelle date. Les listes d'admissibles restent affichées."
+  },
+  "droite": {
+   "libelle": "Je paie",
+   "effets": {
+    "caisses": -11,
+    "peuple": 4,
+    "presse": 3
+   },
+   "journal": "Le virement est parti jeudi soir. Le Trésor a décalé les bourses d'étudiants de deux semaines pour tenir la date."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "pret_signe"
+   ]
+  },
+  "chaine": {
+   "id": "pret_fonds",
+   "rang": 3,
+   "delai_min": 10
+  }
+ },
+ {
+  "id": "emissaire_pret_loi",
+  "personnage": "emissaire",
+  "humeur": "neutre",
+  "texte": "{titre}, le gel tient, mais le fonds veut l'inscrire dans la loi de finances. Sinon la seconde moitié du prêt n'arrive pas.",
+  "gauche": {
+   "libelle": "On l'inscrit",
+   "effets": {
+    "caisses": 12,
+    "peuple": -8,
+    "presse": -3
+   },
+   "journal": "Le texte a été déposé mardi avec l'article seize, celui qui plafonne les recrutements de l'État jusqu'en juin."
+  },
+  "droite": {
+   "libelle": "Rien dans la loi",
+   "effets": {
+    "caisses": -8,
+    "peuple": 6,
+    "presse": 4
+   },
+   "journal": "L'article seize a disparu de la version déposée. L'émissaire a annulé sa conférence de presse de dix-huit heures."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "embauches_gelees"
+   ]
+  },
+  "chaine": {
+   "id": "pret_fonds",
+   "rang": 4,
+   "delai_min": 8
+  }
+ },
+ {
+  "id": "emissaire_pret_apres_refus",
+  "personnage": "emissaire",
+  "humeur": "fache",
+  "texte": "{titre}, depuis votre refus le fonds a suspendu l'étude. Deux voisins proposent un prêt direct, à un taux que je ne vous cache pas.",
+  "gauche": {
+   "libelle": "On emprunte",
+   "effets": {
+    "caisses": 11,
+    "presse": -5,
+    "peuple": -3
+   },
+   "journal": "Le prêt a été signé dans un salon d'aéroport. Le taux ne figure pas dans le communiqué commun des deux délégations."
+  },
+  "droite": {
+   "libelle": "On s'en passe",
+   "effets": {
+    "caisses": -7,
+    "peuple": 5,
+    "presse": 4
+   },
+   "journal": "Le ministère a publié un plan de trésorerie à quatre mois. Trois chantiers de route y sont marqués « en attente »."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "pret_refuse"
+   ]
+  },
+  "chaine": {
+   "id": "pret_fonds",
+   "rang": 3,
+   "delai_min": 10
+  }
+ },
+ {
+  "id": "doyen_magistrat_2_fidele",
+  "personnage": "doyen",
+  "humeur": "neutre",
+  "texte": "{titre}, votre juge a classé le dossier de la caserne en trois jours. Deux de ses collègues veulent que la Cour se réunisse.",
+  "gauche": {
+   "libelle": "Qu'on en parle",
+   "effets": {
+    "presse": 7,
+    "armee": -5,
+    "caisses": -3
+   },
+   "style": -6,
+   "journal": "La Cour siégera jeudi en formation plénière. Le dossier de la caserne est ressorti du classement le jour même."
+  },
+  "droite": {
+   "libelle": "Pas de réunion",
+   "effets": {
+    "presse": -8,
+    "armee": 5,
+    "caisses": 3
+   },
+   "style": 7,
+   "drapeaux": [
+    "cour_tenue"
+   ],
+   "journal": "La réunion n'a pas été convoquée. Les deux magistrats ont appris par le greffe que leurs permanences changeaient."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "magistrat_loyal"
+   ]
+  },
+  "chaine": {
+   "id": "magistrat_doyen",
+   "rang": 2,
+   "delai_min": 3
+  }
+ },
+ {
+  "id": "doyen_magistrat_3_fidele",
+  "personnage": "doyen",
+  "humeur": "fache",
+  "texte": "{titre}, la Cour n'a plus tenu séance depuis trois semaines. Le doyen sortant veut lire une déclaration à la radio avant de partir.",
+  "gauche": {
+   "libelle": "Qu'il la lise",
+   "effets": {
+    "presse": 8,
+    "peuple": 4,
+    "armee": -6
+   },
+   "style": -7,
+   "journal": "La déclaration a duré quatre minutes à la radio de sept heures. Le doyen y a cité le nombre de séances non tenues."
+  },
+  "droite": {
+   "libelle": "Qu'il se taise",
+   "effets": {
+    "presse": -9,
+    "armee": 5,
+    "peuple": -3
+   },
+   "style": 8,
+   "journal": "Le doyen est parti sans déclaration. Sa voiture de fonction a été reprise le matin même, devant la Cour."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "cour_tenue"
+   ]
+  },
+  "chaine": {
+   "id": "magistrat_doyen",
+   "rang": 3,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "redactrice_rumeur_sante_2_silence",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, votre silence a fait trois jours de une. On me propose l'ordonnance d'un médecin, et je ne sais pas d'où elle sort.",
+  "gauche": {
+   "libelle": "Ne publiez pas",
+   "effets": {
+    "presse": -8,
+    "armee": 4,
+    "peuple": -4
+   },
+   "style": 6,
+   "journal": "L'ordonnance n'a pas paru. Le médecin cité a fermé son cabinet pour congés, deux semaines avant la date prévue."
+  },
+  "droite": {
+   "libelle": "Publiez-la",
+   "effets": {
+    "presse": 9,
+    "peuple": -5,
+    "armee": -4
+   },
+   "style": -5,
+   "journal": "L'ordonnance a paru en fac-similé. Deux pharmacies de la capitale ont vendu le même produit jusqu'à la rupture."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "rumeur_sante_ignoree"
+   ]
+  },
+  "chaine": {
+   "id": "rumeur_sante",
+   "rang": 2,
+   "delai_min": 3
+  }
+ },
+ {
+  "id": "renseignements_succession",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, depuis la rumeur, trois cabinets préparent votre succession. J'ai la liste de leurs réunions et je peux la faire circuler.",
+  "gauche": {
+   "libelle": "Faites circuler",
+   "effets": {
+    "presse": -6,
+    "armee": 6,
+    "peuple": -4
+   },
+   "style": 7,
+   "journal": "La liste des réunions a circulé sur les téléphones avant midi. Deux directeurs ont annulé leurs déplacements."
+  },
+  "droite": {
+   "libelle": "Laissez-les",
+   "effets": {
+    "armee": -5,
+    "presse": 5,
+    "peuple": 3
+   },
+   "style": -5,
+   "journal": "Aucune liste n'a circulé. L'un des trois cabinets a tenu sa réunion dans un hôtel du bord de mer, sans se cacher."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "rumeur_sante_lancee"
+   ],
+   "jour_min": 35
+  }
+ },
+ {
+  "id": "general_sante_caserne",
+  "personnage": "general",
+  "humeur": "neutre",
+  "texte": "{titre}, à la caserne on parie sur votre santé. Je peux faire taire les bavards, ou laisser dire et voir qui parle le plus fort.",
+  "gauche": {
+   "libelle": "Faites-les taire",
+   "effets": {
+    "armee": 6,
+    "presse": -7,
+    "peuple": -3
+   },
+   "style": 6,
+   "journal": "Trois sous-officiers ont été mutés au dépôt du nord. La note de service invoque un redéploiement saisonnier."
+  },
+  "droite": {
+   "libelle": "Qu'ils parient",
+   "effets": {
+    "armee": -5,
+    "presse": 5,
+    "peuple": 3
+   },
+   "style": -4,
+   "journal": "Les paris ont continué au mess. Un capitaine a tenu le cahier pendant huit jours, puis l'a laissé sur une table."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "rumeur_sante_lancee"
+   ],
+   "jour_min": 50
+  }
+ },
+ {
+  "id": "ardoise_caniveaux",
+  "personnage": "maire",
+  "humeur": "fache",
+  "texte": "{titre}, l'entreprise qui a curé les caniveaux attend son solde depuis trois semaines. Elle menace de tout remettre où elle l'a pris.",
+  "gauche": {
+   "libelle": "On la paie",
+   "effets": {
+    "caisses": -8,
+    "peuple": 5,
+    "presse": 3
+   },
+   "journal": "Le solde a été mandaté mercredi. Les camions ont quitté le quartier du bas sans rien redéposer sur le trottoir."
+  },
+  "droite": {
+   "libelle": "Qu'elle attende",
+   "effets": {
+    "caisses": 5,
+    "peuple": -7,
+    "presse": -3
+   },
+   "journal": "Les bennes sont restées devant la mairie huit jours. Des enfants s'y sont installés pour vendre des sachets d'eau."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "caniveaux_cures"
+   ],
+   "jour_min": 25
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_cousin",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, la société du cousin du ministre a encaissé l'avance et livré un tiers du chantier. Rien ne bouge depuis dix jours.",
+  "gauche": {
+   "libelle": "On résilie",
+   "effets": {
+    "caisses": 6,
+    "presse": 5,
+    "peuple": -4
+   },
+   "journal": "Le marché a été résilié jeudi. Le chantier de l'école du quartier nord est refermé par une tôle et un cadenas."
+  },
+  "droite": {
+   "libelle": "Qu'il finisse",
+   "effets": {
+    "caisses": -7,
+    "peuple": 4,
+    "presse": -5
+   },
+   "style": 5,
+   "journal": "Une rallonge a été signée pour la même société. Le maçon qui parlait aux journalistes n'est plus sur la liste."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "cousin_servi"
+   ],
+   "jour_min": 22
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_coupures",
+  "personnage": "marchande",
+  "humeur": "fache",
+  "texte": "{titre}, trois semaines de coupures. Les congélateurs du marché ont lâché, et les femmes veulent une réponse avant samedi.",
+  "gauche": {
+   "libelle": "Des groupes",
+   "effets": {
+    "caisses": -9,
+    "peuple": 7,
+    "presse": 3
+   },
+   "journal": "Douze groupes électrogènes ont été livrés au marché central. Le carburant reste à la charge des commerçantes."
+  },
+  "droite": {
+   "libelle": "Patientez",
+   "effets": {
+    "peuple": -9,
+    "caisses": 5,
+    "armee": 3
+   },
+   "journal": "La délégation des commerçantes a attendu quatre heures dans le couloir, puis est repartie sans être reçue."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "coupures_tolerees"
+   ],
+   "jour_min": 20
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_forage",
+  "personnage": "chef",
+  "humeur": "fache",
+  "texte": "{titre}, le forage promis n'a pas commencé. Les femmes marchent toujours deux heures, et elles savent compter les jours.",
+  "gauche": {
+   "libelle": "On creuse",
+   "effets": {
+    "caisses": -9,
+    "peuple": 8,
+    "presse": 3
+   },
+   "journal": "La foreuse est arrivée lundi sur un plateau. Le chef a fait dégager la place devant l'école pour la laisser passer."
+  },
+  "droite": {
+   "libelle": "Plus tard",
+   "effets": {
+    "peuple": -8,
+    "caisses": 6,
+    "presse": -3
+   },
+   "journal": "Le chef est rentré sans rien annoncer. Les bidons jaunes sont restés alignés devant la case de réunion."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "forage_promis"
+   ],
+   "jour_min": 25
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_retraites",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, la promesse sur les retraites a une date : le mois prochain. Les syndicats viennent chercher le décret, pas une explication.",
+  "gauche": {
+   "libelle": "Je signe",
+   "effets": {
+    "caisses": -12,
+    "peuple": 8,
+    "presse": 4
+   },
+   "journal": "Le décret a paru au journal officiel de jeudi. Le Trésor a reporté deux paiements de fournisseurs pour l'absorber."
+  },
+  "droite": {
+   "libelle": "On repousse",
+   "effets": {
+    "caisses": 7,
+    "peuple": -9,
+    "presse": -3
+   },
+   "journal": "Le rendez-vous a été déplacé trois fois en une semaine. Les syndicats ont déposé un préavis de grève pour le quinze."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "retraite_promise"
+   ],
+   "jour_min": 28
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_taxi",
+  "personnage": "marchande",
+  "humeur": "fache",
+  "texte": "{titre}, le prix du taxi est bloqué, mais pas celui du carburant. La moitié des chauffeurs ne sortent plus le matin.",
+  "gauche": {
+   "libelle": "On débloque",
+   "effets": {
+    "peuple": -8,
+    "presse": 4,
+    "caisses": 4
+   },
+   "journal": "Le tarif a été relevé d'un cinquième à minuit. Les files d'attente aux arrêts ont doublé dès le lendemain."
+  },
+  "droite": {
+   "libelle": "On compense",
+   "effets": {
+    "caisses": -10,
+    "peuple": 7,
+    "presse": -3
+   },
+   "journal": "Une compensation au litre a été ouverte aux chauffeurs. Trois stations ont refusé de tenir le registre des bons."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "taxi_prix_bloque"
+   ],
+   "jour_min": 18
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_carburant",
+  "personnage": "ministre",
+  "humeur": "fache",
+  "texte": "{titre}, la subvention du carburant a coûté en trois semaines ce que la santé dépense en un an. Je ne peux pas la porter plus loin.",
+  "gauche": {
+   "libelle": "On la garde",
+   "effets": {
+    "caisses": -12,
+    "peuple": 7,
+    "presse": -3
+   },
+   "journal": "La subvention est reconduite jusqu'à la fin de l'année. Deux commandes de matériel hospitalier ont été annulées."
+  },
+  "droite": {
+   "libelle": "On l'arrête",
+   "effets": {
+    "caisses": 10,
+    "peuple": -9,
+    "presse": 3
+   },
+   "journal": "Le prix à la pompe a changé à six heures. Des mototaxis ont bloqué le rond-point du stade toute la matinée."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "carburant_subventionne"
+   ],
+   "jour_min": 22
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_arrieres",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, la première tranche des arriérés tombe vendredi, et les fournisseurs ont compté. Le reste du mois ne tient pas avec.",
+  "gauche": {
+   "libelle": "On paie",
+   "effets": {
+    "caisses": -10,
+    "presse": 5,
+    "peuple": 4
+   },
+   "journal": "Les mandats sont partis vendredi matin. Deux pharmacies régionales ont rouvert leur ligne de crédit dans la journée."
+  },
+  "droite": {
+   "libelle": "On décale encore",
+   "effets": {
+    "caisses": 7,
+    "presse": -6,
+    "peuple": -4
+   },
+   "journal": "Aucun mandat n'est parti. Un fournisseur a fait constater la dette par huissier devant la porte du ministère."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "arrieres_etales"
+   ],
+   "jour_min": 20
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_solde_suivante",
+  "personnage": "general",
+  "humeur": "neutre",
+  "texte": "{titre}, la solde est tombée une fois, et la caserne a compris qu'elle pouvait tomber. Le mois prochain se prépare maintenant.",
+  "gauche": {
+   "libelle": "On provisionne",
+   "effets": {
+    "caisses": -9,
+    "armee": 8
+   },
+   "journal": "Une ligne a été bloquée au Trésor pour la solde du mois suivant. Deux chantiers de route y ont perdu leur avance."
+  },
+  "droite": {
+   "libelle": "On verra",
+   "effets": {
+    "caisses": 7,
+    "armee": -8
+   },
+   "journal": "Rien n'a été mis de côté. Au mess, un adjudant a affiché le calendrier des soldes des six derniers mois."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "soldats_payes"
+   ],
+   "jour_min": 25
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_marche_transfere",
+  "personnage": "marchande",
+  "humeur": "fache",
+  "texte": "{titre}, le nouveau marché est à quarante minutes de bus. Les clientes ne viennent pas, et l'ancien terrain se remplit tout seul.",
+  "gauche": {
+   "libelle": "On laisse faire",
+   "effets": {
+    "peuple": 6,
+    "caisses": -6,
+    "presse": -3
+   },
+   "journal": "Les étals sont revenus sur l'ancien terrain en trois jours. Le nouveau marché garde son gardien et ses allées vides."
+  },
+  "droite": {
+   "libelle": "On fait dégager",
+   "effets": {
+    "peuple": -8,
+    "armee": 4,
+    "caisses": 4
+   },
+   "style": 6,
+   "journal": "Le terrain a été dégagé mardi avant l'aube. Deux tables ont été cassées, et les photos circulent depuis midi."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "marche_transfere"
+   ],
+   "jour_min": 20
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_reserves_or",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, l'or vendu a payé deux mois. Le cours a monté depuis, et on me demande si nous rachetons ou si nous vendons le reste.",
+  "gauche": {
+   "libelle": "On rachète",
+   "effets": {
+    "caisses": -11,
+    "presse": 5,
+    "peuple": 3
+   },
+   "journal": "Un premier rachat a été passé jeudi, à un cours plus haut que celui de la vente. La note interne tient en une page."
+  },
+  "droite": {
+   "libelle": "On vend le reste",
+   "effets": {
+    "caisses": 12,
+    "presse": -6,
+    "peuple": -4
+   },
+   "journal": "Le solde des réserves a été cédé en deux lots. La salle forte de la banque centrale a été filmée vide, de loin."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "reserves_vendues"
+   ],
+   "jour_min": 25
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_enveloppes",
+  "personnage": "redactrice",
+  "humeur": "fache",
+  "texte": "{titre}, les journalistes nommés dans les enveloppes portent plainte contre moi. Un mot de vous, et le procès n'a pas lieu.",
+  "gauche": {
+   "libelle": "Je dis un mot",
+   "effets": {
+    "presse": -7,
+    "peuple": -4,
+    "caisses": 4
+   },
+   "style": 7,
+   "journal": "La plainte a été retirée sans explication. Le bâtonnier a reçu un appel du palais, et l'a raconté à trois confrères."
+  },
+  "droite": {
+   "libelle": "Rien de moi",
+   "effets": {
+    "presse": 7,
+    "armee": -4,
+    "caisses": -4
+   },
+   "style": -6,
+   "journal": "Le procès s'ouvre le mois prochain. La rédaction a publié la liste des enveloppes une seconde fois, en plus gros."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "enveloppes_publiees"
+   ],
+   "jour_min": 20
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_ecoutes",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, les transcriptions des écoutes circulent hors du service. On y trouve deux ministres et le doyen de la Cour.",
+  "gauche": {
+   "libelle": "Trouvez la fuite",
+   "effets": {
+    "armee": 5,
+    "presse": -6,
+    "peuple": -3
+   },
+   "style": 7,
+   "journal": "Deux agents du service ont été suspendus le même matin. Leurs badges ont été rendus au poste de garde, sans motif."
+  },
+  "droite": {
+   "libelle": "On arrête tout",
+   "effets": {
+    "armee": -6,
+    "presse": 6,
+    "peuple": 4
+   },
+   "style": -7,
+   "journal": "Le dispositif a été débranché mercredi. Une antenne posée sur le toit du service est restée en place, éteinte."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "ecoutes_autorisees"
+   ],
+   "jour_min": 22
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_prison",
+  "personnage": "doyen",
+  "humeur": "fache",
+  "texte": "{titre}, la maison d'arrêt tient trois fois sa capacité. Une fièvre y court depuis dix jours, et deux gardiens sont tombés.",
+  "gauche": {
+   "libelle": "On désengorge",
+   "effets": {
+    "presse": 6,
+    "peuple": 5,
+    "armee": -6
+   },
+   "style": -6,
+   "journal": "Cent quarante détenus en fin de peine sont sortis jeudi. Les listes ont été affichées à la porte de la prison."
+  },
+  "droite": {
+   "libelle": "On tient",
+   "effets": {
+    "armee": 5,
+    "presse": -7,
+    "peuple": -4
+   },
+   "style": 6,
+   "journal": "Aucune libération. L'infirmerie a été déplacée sous un préau, et les visites sont suspendues jusqu'à nouvel ordre."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "prison_pleine"
+   ],
+   "jour_min": 25
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_campagne_financee",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, celui qui a payé la campagne demande la concession du port pour trente ans. Il ne parle pas de ce qu'il a versé.",
+  "gauche": {
+   "libelle": "Il l'aura",
+   "effets": {
+    "caisses": 8,
+    "presse": -7,
+    "peuple": -4
+   },
+   "style": 6,
+   "journal": "La concession a été attribuée sans appel d'offres. Le nom du groupe n'apparaît pas dans le communiqué du ministère."
+  },
+  "droite": {
+   "libelle": "Il ne l'aura pas",
+   "effets": {
+    "caisses": -6,
+    "presse": 6,
+    "peuple": 4
+   },
+   "style": -5,
+   "journal": "L'appel d'offres a été relancé pour trois mois. Le financier a quitté la réception du palais avant le discours."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "campagne_financee"
+   ],
+   "jour_min": 28
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_villages",
+  "personnage": "chef",
+  "humeur": "fache",
+  "texte": "{titre}, les deux villages que nous avons laissés s'arranger ont compté leurs morts ce week-end. Trois, et un puits comblé.",
+  "gauche": {
+   "libelle": "J'envoie l'armée",
+   "effets": {
+    "armee": 4,
+    "peuple": -6,
+    "presse": -4
+   },
+   "style": 6,
+   "journal": "Un détachement s'est installé entre les deux villages. Le marché hebdomadaire n'a pas eu lieu, pour la première fois."
+  },
+  "droite": {
+   "libelle": "J'y vais",
+   "effets": {
+    "peuple": 7,
+    "caisses": -6,
+    "armee": -4
+   },
+   "style": -5,
+   "journal": "Vous avez passé la journée sous l'arbre à palabres. Les deux familles ont signé un papier, sans le lire à voix haute."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "villages_laisses"
+   ],
+   "jour_min": 20
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_immunite",
+  "personnage": "doyen",
+  "humeur": "neutre",
+  "texte": "{titre}, le ministre dont vous avez levé l'immunité passe jeudi. Il annonce qu'il parlera du financement de la campagne.",
+  "gauche": {
+   "libelle": "Qu'il parle",
+   "effets": {
+    "presse": 7,
+    "peuple": 4,
+    "caisses": -6
+   },
+   "style": -6,
+   "journal": "L'audience a duré six heures. Le nom de deux entreprises de travaux publics est entré au procès-verbal."
+  },
+  "droite": {
+   "libelle": "On repousse",
+   "effets": {
+    "presse": -8,
+    "caisses": 5,
+    "armee": 4
+   },
+   "style": 8,
+   "journal": "L'audience a été renvoyée pour vice de forme. Le greffier qui l'avait fixée est passé au service des archives."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "immunite_levee"
+   ],
+   "jour_min": 22
+  },
+  "poids": 6
+ },
+ {
+  "id": "ardoise_conjoint_cabinet",
+  "personnage": "conjoint",
+  "humeur": "neutre",
+  "texte": "{titre}, mon cabinet reçoit trente demandes par jour et deux dossiers de marchés publics. Je ne sais pas où je dois m'arrêter.",
+  "gauche": {
+   "libelle": "Arrête-toi là",
+   "effets": {
+    "presse": 6,
+    "peuple": -5,
+    "caisses": -3
+   },
+   "style": -5,
+   "journal": "Le cabinet de la présidence a renvoyé les deux dossiers au ministère. Sa porte n'ouvre plus que le mardi matin."
+  },
+  "droite": {
+   "libelle": "Continue",
+   "effets": {
+    "peuple": 6,
+    "presse": -7,
+    "caisses": 4
+   },
+   "style": 5,
+   "journal": "Deux marchés ont été arbitrés dans le bureau de l'aile est. La liste des visiteurs n'est plus tenue depuis lundi."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "conjoint_cabinet_ouvert"
+   ],
+   "jour_min": 25
+  },
+  "poids": 6
+ },
+ {
+  "id": "affaire_4x4_3_etouffee",
+  "personnage": "redactrice",
+  "humeur": "fache",
+  "texte": "{titre}, la photo retenue est sortie sur une radio en ligne, avec la date et l'heure. Ma rédaction me demande des comptes.",
+  "gauche": {
+   "libelle": "Publiez la vôtre",
+   "effets": {
+    "presse": 8,
+    "armee": -9,
+    "peuple": 3
+   },
+   "style": -5,
+   "journal": "La photo est parue le lendemain, avec la mention « cliché retenu onze jours » au bas de la légende."
+  },
+  "droite": {
+   "libelle": "Toujours rien",
+   "effets": {
+    "presse": -9,
+    "armee": 7,
+    "peuple": -3
+   },
+   "style": 6,
+   "journal": "La rédaction n'a rien sorti. Deux journalistes ont demandé par écrit leur affectation à la rubrique sportive."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "photo_etouffee"
+   ]
+  },
+  "chaine": {
+   "id": "affaire_4x4",
+   "rang": 3,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "affaire_4x4_4",
+  "personnage": "general",
+  "humeur": "fache",
+  "texte": "{titre}, mon fils a rendu le véhicule et veut s'expliquer à la télévision. Sa mère est contre, moi je vous demande votre avis.",
+  "gauche": {
+   "libelle": "Qu'il s'explique",
+   "effets": {
+    "presse": 6,
+    "peuple": 5,
+    "armee": -6
+   },
+   "style": -4,
+   "journal": "L'entretien a duré onze minutes sur la chaîne publique. Le fils du général y a dit « bêtise de jeunesse » deux fois."
+  },
+  "droite": {
+   "libelle": "Qu'il se taise",
+   "effets": {
+    "presse": -7,
+    "armee": 6,
+    "peuple": -4
+   },
+   "style": 5,
+   "journal": "L'entretien a été déprogrammé la veille. La chaîne a diffusé un documentaire animalier à la place, sans annonce."
+  },
+  "chaine": {
+   "id": "affaire_4x4",
+   "rang": 4,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "affaire_4x4_5",
+  "personnage": "doyen",
+  "humeur": "neutre",
+  "texte": "{titre}, l'affaire se termine : une amende, ou six mois avec sursis et le permis retiré. Les deux tiennent en droit.",
+  "gauche": {
+   "libelle": "L'amende",
+   "effets": {
+    "armee": 7,
+    "presse": -8,
+    "peuple": -4
+   },
+   "style": 6,
+   "journal": "L'amende a été prononcée jeudi, sans retrait de permis. Elle représente deux semaines de solde d'un capitaine."
+  },
+  "droite": {
+   "libelle": "Le sursis",
+   "effets": {
+    "presse": 8,
+    "peuple": 4,
+    "armee": -8
+   },
+   "style": -6,
+   "journal": "Six mois avec sursis et le permis retiré pour deux ans. Le père n'était pas dans la salle, son aide de camp si."
+  },
+  "chaine": {
+   "id": "affaire_4x4",
+   "rang": 5,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "general_solde_4",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, la prime promise à la caserne n'est nulle part dans le budget. Je peux la prendre sur les bourses, ou dire qu'elle n'existe pas.",
+  "gauche": {
+   "libelle": "Sur les bourses",
+   "effets": {
+    "armee": 7,
+    "peuple": -8
+   },
+   "journal": "La prime a été versée aux compagnies vendredi. Le paiement des bourses d'étudiants glisse de six semaines."
+  },
+  "droite": {
+   "libelle": "Elle n'existe pas",
+   "effets": {
+    "armee": -9,
+    "caisses": 6,
+    "presse": 4
+   },
+   "journal": "Le ministère dément toute prime. Au camp, la feuille où elle figurait a été photographiée et circule depuis midi."
+  },
+  "chaine": {
+   "id": "solde",
+   "rang": 4,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "general_solde_5",
+  "personnage": "general",
+  "humeur": "neutre",
+  "texte": "{titre}, la caserne est calme. Deux colonels demandent une audience à trois, sans moi, et me préviennent par courtoisie.",
+  "gauche": {
+   "libelle": "Je les reçois",
+   "effets": {
+    "armee": -6,
+    "peuple": 4,
+    "presse": 4
+   },
+   "style": -4,
+   "journal": "L'audience a eu lieu sans le chef d'état-major. Sa voiture est repartie du palais un quart d'heure avant leur arrivée."
+  },
+  "droite": {
+   "libelle": "Avec le chef",
+   "effets": {
+    "armee": 6,
+    "presse": -5,
+    "peuple": -3
+   },
+   "style": 5,
+   "journal": "Les deux colonels ne sont pas venus. Le chef d'état-major a fait afficher au mess l'ordre de service qui l'exige."
+  },
+  "chaine": {
+   "id": "solde",
+   "rang": 5,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "riz_4",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, le riz est redescendu, mais trois grossistes ont perdu leur stock et demandent réparation. Ils tiennent la moitié du marché.",
+  "gauche": {
+   "libelle": "On indemnise",
+   "effets": {
+    "caisses": -9,
+    "peuple": 5,
+    "presse": -3
+   },
+   "journal": "Les trois grossistes ont été reçus au ministère et repartis avec une lettre. Le montant n'a pas été rendu public."
+  },
+  "droite": {
+   "libelle": "Rien pour eux",
+   "effets": {
+    "caisses": 5,
+    "peuple": -6,
+    "presse": 4
+   },
+   "journal": "Les grossistes ont fermé leurs entrepôts deux jours. Le sac a repris en une nuit ce qu'il avait perdu en dix."
+  },
+  "chaine": {
+   "id": "penurie_riz",
+   "rang": 4,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "riz_5",
+  "personnage": "marchande",
+  "humeur": "neutre",
+  "texte": "{titre}, les femmes veulent que le dépôt soit tenu par elles, et pas par le ministère. Elles ont déjà choisi trois noms.",
+  "gauche": {
+   "libelle": "Qu'elles tiennent",
+   "effets": {
+    "peuple": 8,
+    "caisses": -5,
+    "armee": -3
+   },
+   "style": -4,
+   "journal": "Le dépôt central est confié à un comité de trois commerçantes. Deux fonctionnaires y ont perdu leur bureau."
+  },
+  "droite": {
+   "libelle": "Le ministère garde",
+   "effets": {
+    "peuple": -7,
+    "caisses": 5,
+    "presse": -3
+   },
+   "style": 5,
+   "journal": "Le ministère garde la clé du dépôt. Les commerçantes ont tenu leur assemblée sur le parking, sans micro."
+  },
+  "chaine": {
+   "id": "penurie_riz",
+   "rang": 5,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "sante_cholera_3_avoue",
+  "personnage": "sante",
+  "humeur": "fache",
+  "texte": "{titre}, le cordon tient, mais le quartier bas n'a plus de marché ni de taxi. Les bailleurs proposent des tentes et des caméras.",
+  "gauche": {
+   "libelle": "On les accepte",
+   "effets": {
+    "caisses": 7,
+    "presse": 6,
+    "peuple": -6
+   },
+   "journal": "Quarante tentes ont été montées sur le terrain de football. Deux équipes de télévision y ont passé la nuit."
+  },
+  "droite": {
+   "libelle": "On fait seuls",
+   "effets": {
+    "caisses": -8,
+    "peuple": 6,
+    "presse": -4
+   },
+   "journal": "L'offre des bailleurs a été déclinée par note verbale. Le dispensaire a reçu vingt lits de l'hôpital militaire."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "cholera_avoue"
+   ]
+  },
+  "chaine": {
+   "id": "cholera",
+   "rang": 3,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "sante_cholera_4",
+  "personnage": "sante",
+  "humeur": "neutre",
+  "texte": "{titre}, l'épidémie recule. Reste la source : le puits du quartier bas, qui rouvrira dès qu'on aura le dos tourné.",
+  "gauche": {
+   "libelle": "On le comble",
+   "effets": {
+    "caisses": -8,
+    "peuple": -5,
+    "presse": 5
+   },
+   "journal": "Le puits a été comblé au ciment mercredi. Une borne-fontaine est promise pour la fin du trimestre, par affiche."
+  },
+  "droite": {
+   "libelle": "On le laisse",
+   "effets": {
+    "caisses": 6,
+    "peuple": 5,
+    "presse": -7
+   },
+   "journal": "Le puits a rouvert de lui-même le lendemain. Un panneau « eau non potable » a été posé, puis retiré par des jeunes."
+  },
+  "chaine": {
+   "id": "cholera",
+   "rang": 4,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "sante_cholera_5",
+  "personnage": "doyen",
+  "humeur": "neutre",
+  "texte": "{titre}, les familles des morts demandent une commission d'enquête. Elle dirait qui savait, et à quelle date on l'a su.",
+  "gauche": {
+   "libelle": "Qu'elle se tienne",
+   "effets": {
+    "presse": 8,
+    "peuple": 4,
+    "caisses": -6
+   },
+   "style": -7,
+   "journal": "La commission a été installée lundi avec trois magistrats. Le premier document réclamé est le registre du dispensaire."
+  },
+  "droite": {
+   "libelle": "Pas de commission",
+   "effets": {
+    "presse": -9,
+    "caisses": 4,
+    "peuple": -4
+   },
+   "style": 8,
+   "journal": "La demande a été rejetée comme prématurée. Les familles ont déposé la même requête devant la Cour, à quatre."
+  },
+  "chaine": {
+   "id": "cholera",
+   "rang": 5,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "renseignements_dossier_ministre_4",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, le ministre que nous tenons a fait une copie du dossier. Elle est chez son avocat, avec une lettre à ouvrir s'il tombe.",
+  "gauche": {
+   "libelle": "On récupère",
+   "effets": {
+    "armee": 6,
+    "presse": -7,
+    "peuple": -3
+   },
+   "style": 8,
+   "journal": "Le cabinet de l'avocat a été visité de nuit. Le barreau a publié un communiqué de quatre lignes, sans nommer personne."
+  },
+  "droite": {
+   "libelle": "On le lâche",
+   "effets": {
+    "armee": -6,
+    "presse": 7,
+    "caisses": -4
+   },
+   "style": -6,
+   "journal": "Le ministre a été remercié dans un communiqué de deux phrases. L'enveloppe est restée chez l'avocat, cachetée."
+  },
+  "chaine": {
+   "id": "dossier_ministre",
+   "rang": 4,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "renseignements_dossier_ministre_5",
+  "personnage": "doyen",
+  "humeur": "fache",
+  "texte": "{titre}, le chef des renseignements a constitué des dossiers sur onze personnes, dont deux juges. On me demande ce que j'en fais.",
+  "gauche": {
+   "libelle": "Rendez-les",
+   "effets": {
+    "presse": 8,
+    "armee": -7,
+    "peuple": 4
+   },
+   "style": -8,
+   "journal": "Les onze dossiers ont été remis à leurs sujets sous scellés. Deux juges ont demandé à les ouvrir devant témoin."
+  },
+  "droite": {
+   "libelle": "Gardez-les",
+   "effets": {
+    "presse": -8,
+    "armee": 7,
+    "peuple": -4
+   },
+   "style": 8,
+   "journal": "Les dossiers sont restés au service. Le coffre où ils dorment a été changé le lendemain, et sa clé avec."
+  },
+  "chaine": {
+   "id": "dossier_ministre",
+   "rang": 5,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "redactrice_marche_4",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, le chantier des écoles est à l'arrêt depuis l'article, et la rentrée est dans six semaines. On relance, ou on reprend tout.",
+  "gauche": {
+   "libelle": "On relance",
+   "effets": {
+    "caisses": -7,
+    "peuple": 6,
+    "presse": -5
+   },
+   "journal": "La même société est repartie sur le chantier lundi, avec un avenant. Deux classes sur six seront livrées à temps."
+  },
+  "droite": {
+   "libelle": "On reprend tout",
+   "effets": {
+    "caisses": -4,
+    "presse": 6,
+    "peuple": -5
+   },
+   "journal": "Le marché a été relancé pour trois mois. Les élèves du quartier nord feront leur rentrée sous les manguiers."
+  },
+  "chaine": {
+   "id": "marche",
+   "rang": 4,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "redactrice_marche_5",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, le cousin du ministre me propose un encart qui paierait mon journal trois ans. Je voulais que vous le sachiez.",
+  "gauche": {
+   "libelle": "Prenez-le",
+   "effets": {
+    "presse": -8,
+    "caisses": 4,
+    "peuple": -3
+   },
+   "style": 6,
+   "journal": "L'encart paraît depuis mercredi en quatrième de couverture. L'enquête sur les écoles n'a pas eu de suite."
+  },
+  "droite": {
+   "libelle": "Refusez",
+   "effets": {
+    "presse": 8,
+    "caisses": -5,
+    "peuple": 3
+   },
+   "style": -5,
+   "journal": "La rédactrice a refusé l'encart par lettre. Son imprimeur lui réclame désormais le papier au comptant."
+  },
+  "chaine": {
+   "id": "marche",
+   "rang": 5,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "general_materiel_4",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, remplacer le parc coûte un tiers du budget de l'armée. Un voisin propose ses camions d'occasion, livrés le mois prochain.",
+  "gauche": {
+   "libelle": "D'occasion",
+   "effets": {
+    "armee": 7,
+    "caisses": -7,
+    "presse": -3
+   },
+   "journal": "Quarante camions d'occasion sont arrivés par le port. Onze n'avaient pas de carte grise, régularisée sur place."
+  },
+  "droite": {
+   "libelle": "Du neuf, plus tard",
+   "effets": {
+    "armee": -6,
+    "caisses": 5,
+    "presse": 4
+   },
+   "journal": "L'appel d'offres pour du matériel neuf court sur six mois. Les ateliers continuent de réparer à la soudure."
+  },
+  "chaine": {
+   "id": "materiel",
+   "rang": 4,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "general_materiel_5",
+  "personnage": "general",
+  "humeur": "neutre",
+  "texte": "{titre}, le parc roule enfin. Mes mécaniciens demandent un atelier et une école ; la moitié part au privé chaque année.",
+  "gauche": {
+   "libelle": "L'atelier",
+   "effets": {
+    "armee": 7,
+    "caisses": -8
+   },
+   "journal": "L'atelier central a ouvert dans un ancien hangar du port. Douze mécaniciens y ont signé pour trois ans."
+  },
+  "droite": {
+   "libelle": "Ils partiront",
+   "effets": {
+    "armee": -7,
+    "caisses": 6,
+    "presse": 3
+   },
+   "journal": "Aucun atelier n'a été créé. Le chef mécanicien du camp central a rendu son tablier et ouvert un garage en ville."
+  },
+  "chaine": {
+   "id": "materiel",
+   "rang": 5,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "redactrice_photographe_4",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, mon photographe est sorti et veut couvrir la prochaine manifestation. La police me dit qu'elle ne garantit rien.",
+  "gauche": {
+   "libelle": "Qu'il y aille",
+   "effets": {
+    "presse": 7,
+    "armee": -6,
+    "peuple": 3
+   },
+   "style": -5,
+   "journal": "Le photographe était au premier rang samedi, gilet sur le dos. Aucune interpellation n'a été signalée ce jour-là."
+  },
+  "droite": {
+   "libelle": "Pas d'accès",
+   "effets": {
+    "presse": -8,
+    "armee": 6,
+    "peuple": -3
+   },
+   "style": 6,
+   "journal": "Les accréditations ont été suspendues pour la manifestation. Trois photographes ont travaillé depuis les toits."
+  },
+  "chaine": {
+   "id": "photographe",
+   "rang": 4,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "redactrice_photographe_5",
+  "personnage": "doyen",
+  "humeur": "neutre",
+  "texte": "{titre}, l'État a été condamné à indemniser le photographe pour sa détention. L'arrêt est motivé, et il sera lu partout.",
+  "gauche": {
+   "libelle": "On paie",
+   "effets": {
+    "caisses": -8,
+    "presse": 7,
+    "armee": -4
+   },
+   "style": -6,
+   "journal": "L'indemnité a été versée en une fois. L'arrêt est affiché à l'entrée de la Cour, où on le photographie depuis."
+  },
+  "droite": {
+   "libelle": "On fait appel",
+   "effets": {
+    "presse": -7,
+    "caisses": 5,
+    "armee": 5
+   },
+   "style": 7,
+   "journal": "L'appel a été déposé le dernier jour du délai. Le photographe a publié la copie de l'arrêt sur trois pages."
+  },
+  "chaine": {
+   "id": "photographe",
+   "rang": 5,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "chef_puits_4",
+  "personnage": "chef",
+  "humeur": "neutre",
+  "texte": "{titre}, le forage marche, et quatre villages voisins demandent le leur. Ils ont envoyé leurs chefs, tous ensemble, ce matin.",
+  "gauche": {
+   "libelle": "Quatre forages",
+   "effets": {
+    "caisses": -12,
+    "peuple": 9
+   },
+   "journal": "Quatre chantiers ont été ouverts la même semaine. Le budget de l'eau est engagé jusqu'à la fin de l'exercice."
+  },
+  "droite": {
+   "libelle": "Un seul, partagé",
+   "effets": {
+    "peuple": -6,
+    "caisses": 4,
+    "presse": 3
+   },
+   "journal": "Un forage unique a été décidé pour les quatre villages. Les chefs ont refusé de dire où il serait creusé."
+  },
+  "chaine": {
+   "id": "puits",
+   "rang": 4,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "chef_puits_5",
+  "personnage": "chef",
+  "humeur": "fache",
+  "texte": "{titre}, on vend l'eau du forage au bidon, et c'est le neveu d'un conseiller qui tient la pompe. Le village me demande de parler.",
+  "gauche": {
+   "libelle": "Il la rend",
+   "effets": {
+    "peuple": 7,
+    "caisses": -4,
+    "armee": -3
+   },
+   "style": -4,
+   "journal": "La pompe est revenue au comité du village. Le neveu du conseiller a gardé le groupe électrogène, qui est à lui."
+  },
+  "droite": {
+   "libelle": "Qu'il la garde",
+   "effets": {
+    "peuple": -7,
+    "caisses": 5,
+    "presse": -4
+   },
+   "style": 5,
+   "journal": "Le bidon d'eau se vend toujours au même prix. Le comité du village ne s'est plus réuni depuis trois semaines."
+  },
+  "chaine": {
+   "id": "puits",
+   "rang": 5,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "general_rival_4",
+  "personnage": "general",
+  "humeur": "fache",
+  "texte": "{titre}, le colonel a des soutiens dans deux régions et un local de campagne. Mes officiers demandent ce qu'ils doivent en penser.",
+  "gauche": {
+   "libelle": "Qu'ils le suivent",
+   "effets": {
+    "armee": -6,
+    "presse": 6,
+    "peuple": 4
+   },
+   "style": -6,
+   "journal": "Deux officiers ont été vus au local du colonel, en civil. L'état-major n'a publié aucune note sur le sujet."
+  },
+  "droite": {
+   "libelle": "Rien à en penser",
+   "effets": {
+    "armee": 6,
+    "presse": -6,
+    "peuple": -4
+   },
+   "style": 6,
+   "journal": "Une note a rappelé le devoir de réserve aux officiers. Le local du colonel a reçu la visite des services d'hygiène."
+  },
+  "chaine": {
+   "id": "rival_colonel",
+   "rang": 4,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "general_rival_5",
+  "personnage": "general",
+  "humeur": "neutre",
+  "texte": "{titre}, le colonel demande à prendre ma place à l'état-major, ou à quitter l'armée. Les deux portes sont ouvertes, choisissez.",
+  "gauche": {
+   "libelle": "Il prend la place",
+   "effets": {
+    "peuple": 6,
+    "armee": -5,
+    "presse": 4
+   },
+   "style": -4,
+   "journal": "Le colonel a pris ses fonctions à l'état-major mardi. Son prédécesseur a quitté le bureau avec deux cartons."
+  },
+  "droite": {
+   "libelle": "Qu'il s'en aille",
+   "effets": {
+    "armee": 7,
+    "peuple": -6,
+    "presse": -3
+   },
+   "style": 5,
+   "journal": "Le colonel a rendu son uniforme vendredi. Une centaine de personnes l'attendaient devant la porte de la caserne."
+  },
+  "chaine": {
+   "id": "rival_colonel",
+   "rang": 5,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "fidele_general",
+  "personnage": "general",
+  "humeur": "content",
+  "texte": "{titre}, vous avez tenu parole avec la caserne. Si la rue monte un jour au palais, dites-moi seulement où vous voulez mes hommes.",
+  "gauche": {
+   "libelle": "Devant le palais",
+   "effets": {
+    "armee": 5,
+    "presse": -6,
+    "peuple": -4
+   },
+   "journal": "Deux sections ont pris position devant les grilles du palais. Le poste de garde a doublé ses effectifs de nuit.",
+   "style": 7
+  },
+  "droite": {
+   "libelle": "Dans les casernes",
+   "effets": {
+    "armee": -4,
+    "presse": 6,
+    "peuple": 5
+   },
+   "journal": "L'état-major a confirmé que rien ne changeait aux consignes. Les grilles du palais sont gardées par six hommes.",
+   "style": -6
+  },
+  "conditions": {
+   "loyaute_min": 3,
+   "jour_min": 22
+  },
+  "poids": 8
+ },
+ {
+  "id": "rancune_general",
+  "personnage": "general",
+  "humeur": "fache",
+  "texte": "{titre}, je ne vous demande plus rien. Je viens vous dire que la liste des officiers de garde du palais a changé sans moi.",
+  "gauche": {
+   "libelle": "Je veux l'ancienne",
+   "effets": {
+    "armee": 6,
+    "presse": -4,
+    "caisses": -4
+   },
+   "journal": "L'ancienne liste de garde a été rétablie le soir même. Le colonel qui l'avait modifiée est en congé de droit."
+  },
+  "droite": {
+   "libelle": "Laissez comme ça",
+   "effets": {
+    "armee": -7,
+    "peuple": 4,
+    "presse": 4
+   },
+   "journal": "La nouvelle liste de garde est restée. Aucun des officiers qui y figurent n'a servi au palais auparavant."
+  },
+  "conditions": {
+   "loyaute_max": -3,
+   "jour_min": 22
+  },
+  "poids": 8
+ },
+ {
+  "id": "fidele_ministre",
+  "personnage": "ministre",
+  "humeur": "content",
+  "texte": "{titre}, vous m'avez couvert quand il le fallait. Je peux faire passer un collectif budgétaire sans l'Assemblée, si vous voulez.",
+  "gauche": {
+   "libelle": "Faites-le passer",
+   "effets": {
+    "caisses": 9,
+    "presse": -7,
+    "peuple": -3
+   },
+   "journal": "Le collectif a été pris par ordonnance jeudi soir. Les commissions de l'Assemblée n'ont pas été convoquées.",
+   "style": 8
+  },
+  "droite": {
+   "libelle": "Par l'Assemblée",
+   "effets": {
+    "caisses": -6,
+    "presse": 6,
+    "peuple": 4
+   },
+   "journal": "Le texte est parti en commission pour trois semaines. Deux dépenses urgentes y attendent une date d'examen.",
+   "style": -7
+  },
+  "conditions": {
+   "loyaute_min": 3,
+   "jour_min": 24
+  },
+  "poids": 8
+ },
+ {
+  "id": "rancune_ministre",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, je signe encore, mais je ne défends plus rien. On me propose la direction d'une banque de la place, et j'ai dit peut-être.",
+  "gauche": {
+   "libelle": "Restez",
+   "effets": {
+    "caisses": 6,
+    "presse": -5,
+    "peuple": -3
+   },
+   "journal": "Le ministre est resté en poste. Sa signature manquait sur onze arrêtés, régularisés en une seule matinée."
+  },
+  "droite": {
+   "libelle": "Partez",
+   "effets": {
+    "caisses": -8,
+    "presse": 6,
+    "peuple": 4
+   },
+   "journal": "Le ministre a été remplacé par son directeur de cabinet. La banque a annoncé son arrivée dès le lendemain."
+  },
+  "conditions": {
+   "loyaute_max": -3,
+   "jour_min": 24
+  },
+  "poids": 8
+ },
+ {
+  "id": "fidele_redactrice",
+  "personnage": "redactrice",
+  "humeur": "content",
+  "texte": "{titre}, vous avez laissé mon journal vivre. J'ai une enquête sur l'opposition qui tient debout, je la sors quand vous voulez.",
+  "gauche": {
+   "libelle": "Sortez-la",
+   "effets": {
+    "peuple": 5,
+    "presse": -6,
+    "armee": 3
+   },
+   "journal": "L'enquête sur l'opposition a tenu deux pages. Trois confrères ont refusé de la reprendre dans leurs colonnes.",
+   "style": 6
+  },
+  "droite": {
+   "libelle": "Gardez-la",
+   "effets": {
+    "presse": 7,
+    "peuple": -4,
+    "caisses": -3
+   },
+   "journal": "L'enquête n'a pas paru cette semaine. La une est allée à la réfection du marché de nuit, photographie comprise.",
+   "style": -5
+  },
+  "conditions": {
+   "loyaute_min": 3,
+   "jour_min": 26
+  },
+  "poids": 8
+ },
+ {
+  "id": "rancune_redactrice",
+  "personnage": "redactrice",
+  "humeur": "fache",
+  "texte": "{titre}, je ne vous appelle plus avant de publier. Demain, ma une porte votre nom et un chiffre que vous connaissez.",
+  "gauche": {
+   "libelle": "Je veux le voir",
+   "effets": {
+    "presse": -8,
+    "armee": 4,
+    "caisses": 4
+   },
+   "journal": "Le tirage du matin a été retardé de trois heures. La une parue ne porte ni le nom ni le chiffre annoncés.",
+   "style": 8
+  },
+  "droite": {
+   "libelle": "Publiez",
+   "effets": {
+    "presse": 7,
+    "peuple": -5,
+    "caisses": -3
+   },
+   "journal": "La une est sortie avec le chiffre, en gras. Deux annonceurs ont retiré leurs encarts dans la journée.",
+   "style": -6
+  },
+  "conditions": {
+   "loyaute_max": -3,
+   "jour_min": 26
+  },
+  "poids": 8
+ },
+ {
+  "id": "fidele_marchande",
+  "personnage": "marchande",
+  "humeur": "content",
+  "texte": "{titre}, les femmes du marché vous doivent quelque chose. Elles peuvent sortir dimanche pour vous, ou rester à leurs étals.",
+  "gauche": {
+   "libelle": "Qu'elles sortent",
+   "effets": {
+    "peuple": 6,
+    "presse": -6,
+    "armee": -3
+   },
+   "journal": "Un cortège de commerçantes a traversé l'avenue dimanche, en pagnes assortis. Le marché est resté fermé.",
+   "style": 5
+  },
+  "droite": {
+   "libelle": "Qu'elles vendent",
+   "effets": {
+    "peuple": -4,
+    "caisses": 5,
+    "presse": 4
+   },
+   "journal": "Le marché a ouvert normalement dimanche. La présidente des commerçantes a décliné les micros qui l'attendaient.",
+   "style": -3
+  },
+  "conditions": {
+   "loyaute_min": 3,
+   "jour_min": 20
+  },
+  "poids": 8
+ },
+ {
+  "id": "rancune_marchande",
+  "personnage": "marchande",
+  "humeur": "fache",
+  "texte": "{titre}, je ne parle plus en votre nom. Les femmes votent une grève des étals pour jeudi, et je ne ferai rien pour l'empêcher.",
+  "gauche": {
+   "libelle": "Empêchez-la",
+   "effets": {
+    "peuple": -7,
+    "armee": 5,
+    "caisses": 4
+   },
+   "journal": "Les étals ont ouvert jeudi sous surveillance. Quatre meneuses ont été convoquées au commissariat central.",
+   "style": 7
+  },
+  "droite": {
+   "libelle": "Qu'elles ferment",
+   "effets": {
+    "peuple": 5,
+    "caisses": -6,
+    "presse": 3
+   },
+   "journal": "Le marché est resté fermé jeudi. Les rues alentour étaient si calmes qu'une radio y a fait un direct de dix minutes.",
+   "style": -4
+  },
+  "conditions": {
+   "loyaute_max": -3,
+   "jour_min": 20
+  },
+  "poids": 8
+ },
+ {
+  "id": "fidele_doyen",
+  "personnage": "doyen",
+  "humeur": "content",
+  "texte": "{titre}, la Cour vous a suivi plus souvent qu'elle n'aurait dû. Je pars dans deux mois, et je peux choisir qui me remplace.",
+  "gauche": {
+   "libelle": "Choisissez",
+   "effets": {
+    "presse": -6,
+    "armee": 4,
+    "caisses": 4
+   },
+   "journal": "Le successeur du doyen a été désigné en interne. Deux magistrats plus anciens n'ont pas été consultés.",
+   "style": 6
+  },
+  "droite": {
+   "libelle": "Que la Cour vote",
+   "effets": {
+    "presse": 7,
+    "peuple": 3,
+    "armee": -5
+   },
+   "journal": "La Cour a élu son doyen à bulletin secret. Le nom sorti n'était pas celui que le palais attendait.",
+   "style": -7
+  },
+  "conditions": {
+   "loyaute_min": 3,
+   "jour_min": 28
+  },
+  "poids": 8
+ },
+ {
+  "id": "rancune_doyen",
+  "personnage": "doyen",
+  "humeur": "fache",
+  "texte": "{titre}, je vous dis non, désormais. Trois de vos décrets sont devant moi, et je compte les renvoyer tous les trois.",
+  "gauche": {
+   "libelle": "Renvoyez-les",
+   "effets": {
+    "presse": 7,
+    "caisses": -6,
+    "peuple": 3
+   },
+   "journal": "Les trois décrets ont été renvoyés pour excès de pouvoir. Deux chantiers publics s'arrêtent le temps de les refaire.",
+   "style": -7
+  },
+  "droite": {
+   "libelle": "Pas les trois",
+   "effets": {
+    "presse": -8,
+    "caisses": 5,
+    "armee": 4
+   },
+   "journal": "Un seul décret a été renvoyé. Le doyen a fait porter les deux autres au palais par un greffier, sans lettre.",
+   "style": 8
+  },
+  "conditions": {
+   "loyaute_max": -3,
+   "jour_min": 28
+  },
+  "poids": 8
+ },
+ {
+  "id": "fidele_renseignements",
+  "personnage": "renseignements",
+  "humeur": "content",
+  "texte": "{titre}, mes hommes vous sont acquis. Je peux vous donner chaque matin ce qui se dit dans les trois partis, sans que ça se sache.",
+  "gauche": {
+   "libelle": "Chaque matin",
+   "effets": {
+    "armee": 5,
+    "presse": -6,
+    "peuple": -3
+   },
+   "journal": "Une note de synthèse arrive au palais avant sept heures. Elle n'est ni numérotée ni enregistrée nulle part.",
+   "style": 8
+  },
+  "droite": {
+   "libelle": "Non merci",
+   "effets": {
+    "armee": -5,
+    "presse": 6,
+    "peuple": 4
+   },
+   "journal": "Le service a cessé ses synthèses politiques. Deux agents affectés à cette tâche sont passés aux stupéfiants.",
+   "style": -6
+  },
+  "conditions": {
+   "loyaute_min": 3,
+   "jour_min": 22
+  },
+  "poids": 8
+ },
+ {
+  "id": "rancune_renseignements",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, je fais mon travail, rien de plus. Vous devriez savoir que trois de mes notes ont été lues ailleurs qu'ici.",
+  "gauche": {
+   "libelle": "Trouvez où",
+   "effets": {
+    "armee": 4,
+    "presse": -5,
+    "caisses": -4
+   },
+   "journal": "Une enquête interne a été ouverte au service. Les photocopieuses ont été remplacées par des machines à compteur.",
+   "style": 6
+  },
+  "droite": {
+   "libelle": "Tant pis",
+   "effets": {
+    "armee": -6,
+    "peuple": 4,
+    "presse": 5
+   },
+   "journal": "Aucune enquête n'a été ouverte. Une note sur les mouvements de fonds a paru en fac-similé dans un hebdomadaire.",
+   "style": -4
+  },
+  "conditions": {
+   "loyaute_max": -3,
+   "jour_min": 22
+  },
+  "poids": 8
+ },
+ {
+  "id": "fidele_chef",
+  "personnage": "chef",
+  "humeur": "content",
+  "texte": "{titre}, vous avez tenu parole avec nous. La région peut vous donner sa voix d'un bloc, si vous acceptez ce que cela veut dire.",
+  "gauche": {
+   "libelle": "J'accepte",
+   "effets": {
+    "peuple": 7,
+    "presse": -6,
+    "caisses": -3
+   },
+   "journal": "Les chefs de la région ont appelé à voter pour vous ensemble. Deux d'entre eux ont demandé une route dans la foulée.",
+   "style": 5
+  },
+  "droite": {
+   "libelle": "Chacun sa voix",
+   "effets": {
+    "peuple": -4,
+    "presse": 6,
+    "caisses": 3
+   },
+   "journal": "Aucune consigne n'est partie de la région. Le chef a dit à la radio que chacun voterait selon sa tête.",
+   "style": -5
+  },
+  "conditions": {
+   "loyaute_min": 3,
+   "jour_min": 30
+  },
+  "poids": 8
+ },
+ {
+  "id": "rancune_chef",
+  "personnage": "chef",
+  "humeur": "fache",
+  "texte": "{titre}, on ne m'écoute plus quand je parle de vous. Les jeunes veulent bloquer la route du nord, et je les regarde faire.",
+  "gauche": {
+   "libelle": "Qu'on dégage",
+   "effets": {
+    "peuple": -7,
+    "armee": 5,
+    "caisses": 4
+   },
+   "journal": "La route du nord a été rouverte par la gendarmerie avant midi. Sept jeunes sont retenus à la brigade.",
+   "style": 7
+  },
+  "droite": {
+   "libelle": "Je viens parler",
+   "effets": {
+    "peuple": 6,
+    "caisses": -6,
+    "armee": -3
+   },
+   "journal": "Vous avez passé deux heures sur la route du nord. Le barrage de pneus a été retiré par ceux qui l'avaient monté.",
+   "style": -5
+  },
+  "conditions": {
+   "loyaute_max": -3,
+   "jour_min": 30
+  },
+  "poids": 8
+ },
+ {
+  "id": "fidele_sante",
+  "personnage": "sante",
+  "humeur": "content",
+  "texte": "{titre}, vous m'avez donné mes budgets. Je peux ouvrir dix dispensaires avant la fin du mandat, ou un hôpital dans la capitale.",
+  "gauche": {
+   "libelle": "Dix dispensaires",
+   "effets": {
+    "peuple": 7,
+    "caisses": -8,
+    "presse": 3
+   },
+   "journal": "Les dix dispensaires ont été inaugurés en série, par visioconférence. Trois n'ont pas encore de médecin affecté."
+  },
+  "droite": {
+   "libelle": "L'hôpital",
+   "effets": {
+    "presse": 6,
+    "caisses": -7,
+    "peuple": -3
+   },
+   "journal": "La première pierre de l'hôpital a été posée dans la capitale. Le chantier est annoncé pour trente-deux mois."
+  },
+  "conditions": {
+   "loyaute_min": 3,
+   "jour_min": 24
+  },
+  "poids": 8
+ },
+ {
+  "id": "rancune_sante",
+  "personnage": "sante",
+  "humeur": "fache",
+  "texte": "{titre}, je ne me battrai plus pour ce ministère. Il manque des vaccins depuis six semaines, et je vous le dis sans y croire.",
+  "gauche": {
+   "libelle": "On commande",
+   "effets": {
+    "caisses": -9,
+    "peuple": 7,
+    "presse": 3
+   },
+   "journal": "Une commande d'urgence est partie par avion. Le prix au flacon est trois fois celui du marché ordinaire."
+  },
+  "droite": {
+   "libelle": "Faites avec",
+   "effets": {
+    "peuple": -8,
+    "caisses": 6,
+    "presse": -3
+   },
+   "journal": "Aucune commande n'est partie. Deux centres de santé ont affiché la liste des vaccins qu'ils n'ont plus."
+  },
+  "conditions": {
+   "loyaute_max": -3,
+   "jour_min": 24
+  },
+  "poids": 8
+ },
+ {
+  "id": "fidele_maire",
+  "personnage": "maire",
+  "humeur": "content",
+  "texte": "{titre}, la capitale vous suit. Je peux vous donner la place du monument pour un meeting, ou la garder pour la fête du quartier.",
+  "gauche": {
+   "libelle": "Le meeting",
+   "effets": {
+    "peuple": 8,
+    "presse": -6,
+    "caisses": -3
+   },
+   "journal": "La place du monument est réservée pour un meeting de fin de mois. La fête de quartier est déplacée au stade.",
+   "style": 4
+  },
+  "droite": {
+   "libelle": "La fête",
+   "effets": {
+    "peuple": 6,
+    "caisses": -5,
+    "presse": 4
+   },
+   "journal": "La fête de quartier a eu lieu sur la place, sans tribune officielle. Le maire y a dansé, filmé par tout le monde.",
+   "style": -3
+  },
+  "conditions": {
+   "loyaute_min": 3,
+   "jour_min": 20
+  },
+  "poids": 8
+ },
+ {
+  "id": "rancune_maire",
+  "personnage": "maire",
+  "humeur": "fache",
+  "texte": "{titre}, la ville ne ramasse plus les ordures du quartier nord, faute de gazole. Je ne le demanderai pas deux fois.",
+  "gauche": {
+   "libelle": "On paie le gazole",
+   "effets": {
+    "caisses": -8,
+    "peuple": 6,
+    "presse": 3
+   },
+   "journal": "Les bennes sont reparties samedi dans le quartier nord. La facture de carburant de la ville a été réglée par l'État."
+  },
+  "droite": {
+   "libelle": "Débrouillez-vous",
+   "effets": {
+    "caisses": 5,
+    "peuple": -8,
+    "presse": -3
+   },
+   "journal": "Les ordures du quartier nord ont été brûlées sur place par les habitants. La fumée a tenu deux jours."
+  },
+  "conditions": {
+   "loyaute_max": -3,
+   "jour_min": 20
+  },
+  "poids": 8
+ },
+ {
+  "id": "fidele_cabinet",
+  "personnage": "cabinet",
+  "humeur": "content",
+  "texte": "{titre}, je sais tout et je n'en ai jamais rien dit. Laissez-moi tenir l'agenda seule, et vous gagnerez vos matinées.",
+  "gauche": {
+   "libelle": "Tenez-le",
+   "effets": {
+    "caisses": 6,
+    "peuple": -5,
+    "presse": -3
+   },
+   "journal": "L'agenda du palais est désormais tenu par une seule personne. Deux ministres n'ont pas obtenu de rendez-vous.",
+   "style": 5
+  },
+  "droite": {
+   "libelle": "Je le tiens",
+   "effets": {
+    "caisses": -5,
+    "peuple": 5,
+    "presse": 4
+   },
+   "journal": "Trois visiteurs sont reçus chaque jour sans passer par le cabinet. Les réunions du matin ont glissé au soir.",
+   "style": -4
+  },
+  "conditions": {
+   "loyaute_min": 3,
+   "jour_min": 26
+  },
+  "poids": 8
+ },
+ {
+  "id": "rancune_cabinet",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, je vous préviens par correction : on m'a proposé de raconter l'intérieur du palais, et je n'ai pas encore dit non.",
+  "gauche": {
+   "libelle": "Parlons",
+   "effets": {
+    "presse": 5,
+    "caisses": -5,
+    "peuple": 3
+   },
+   "journal": "La directrice de cabinet est restée. Son bureau a été déplacé à l'étage au-dessus, avec une porte de communication.",
+   "style": -4
+  },
+  "droite": {
+   "libelle": "Faites au mieux",
+   "effets": {
+    "presse": -7,
+    "armee": 5,
+    "caisses": 4
+   },
+   "journal": "La directrice de cabinet a quitté le palais un vendredi soir. Son badge a été désactivé avant qu'elle sorte.",
+   "style": 6
+  },
+  "conditions": {
+   "loyaute_max": -3,
+   "jour_min": 26
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_pm_1",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, l'ancien Premier ministre a loué un bureau en face du palais. Il n'a rien annoncé, et tout le monde a compris.",
+  "gauche": {
+   "libelle": "Qu'on le surveille",
+   "effets": {
+    "armee": 4,
+    "presse": -5,
+    "peuple": -3
+   },
+   "journal": "Une voiture banalisée stationne devant le bureau d'en face depuis mardi. Son conducteur change toutes les six heures.",
+   "style": 6
+  },
+  "droite": {
+   "libelle": "Je l'invite",
+   "effets": {
+    "presse": 5,
+    "peuple": 4,
+    "armee": -5
+   },
+   "journal": "Le déjeuner au palais a duré deux heures. Aucune photographie n'a été autorisée à la sortie.",
+   "style": -4
+  },
+  "conditions": {
+   "adversaire": [
+    "premier_ministre"
+   ],
+   "jour_max": 6
+  },
+  "poids": 25
+ },
+ {
+  "id": "face_pm_2",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, l'ancien Premier ministre publie chaque semaine une note sur vos comptes. Elles sont justes, et mes lecteurs les attendent.",
+  "gauche": {
+   "libelle": "Répondez-lui",
+   "effets": {
+    "presse": 6,
+    "caisses": -5,
+    "peuple": -3
+   },
+   "journal": "Le palais a publié sa propre note, chiffres à l'appui. Les deux documents ont paru côte à côte dans trois journaux.",
+   "style": -4
+  },
+  "droite": {
+   "libelle": "Pas de réponse",
+   "effets": {
+    "presse": -6,
+    "peuple": -4,
+    "armee": 4
+   },
+   "journal": "Aucune réponse du palais. La note de la semaine a été lue en entier à la radio de sept heures, sans contradiction.",
+   "style": 5
+  },
+  "conditions": {
+   "adversaire": [
+    "premier_ministre"
+   ],
+   "force_min": 55
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_pm_3",
+  "personnage": "ministre",
+  "humeur": "fache",
+  "texte": "{titre}, l'ancien Premier ministre connaît le dossier du port : c'est lui qui l'a monté. Il demande à être entendu par l'Assemblée.",
+  "gauche": {
+   "libelle": "Qu'on l'entende",
+   "effets": {
+    "presse": 7,
+    "caisses": -6,
+    "peuple": 3
+   },
+   "journal": "L'audition a duré cinq heures devant la commission. Deux annexes du contrat du port ont été versées au dossier.",
+   "style": -6
+  },
+  "droite": {
+   "libelle": "Pas d'audition",
+   "effets": {
+    "presse": -7,
+    "caisses": 5,
+    "armee": 4
+   },
+   "journal": "La commission n'a pas inscrit l'audition à son ordre du jour. Le dossier du port reste au coffre du ministère.",
+   "style": 7
+  },
+  "conditions": {
+   "adversaire": [
+    "premier_ministre"
+   ],
+   "jour_min": 40
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_pm_4",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, six de vos directeurs déjeunent avec l'ancien Premier ministre. Je peux vous dire lesquels, ou les laisser tranquilles.",
+  "gauche": {
+   "libelle": "Dites-moi lesquels",
+   "effets": {
+    "armee": 4,
+    "presse": -5,
+    "caisses": -4
+   },
+   "journal": "Quatre directeurs ont été remplacés la même semaine. Leurs successeurs ont pris leurs fonctions sans passation.",
+   "style": 6
+  },
+  "droite": {
+   "libelle": "Laissez-les",
+   "effets": {
+    "peuple": 4,
+    "presse": 5,
+    "armee": -5
+   },
+   "journal": "Les déjeuners ont continué le jeudi, au même restaurant. Le maître d'hôtel y réserve désormais la table du fond.",
+   "style": -4
+  },
+  "conditions": {
+   "adversaire": [
+    "premier_ministre"
+   ],
+   "force_min": 62,
+   "jour_min": 55
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_maire_1",
+  "personnage": "maire",
+  "humeur": "neutre",
+  "texte": "{titre}, on me demande partout si je me présenterai contre vous. Je n'ai pas répondu non, et vous devez l'apprendre de moi.",
+  "gauche": {
+   "libelle": "Répondez non",
+   "effets": {
+    "peuple": -4,
+    "presse": -5,
+    "caisses": 5
+   },
+   "journal": "Le maire a déclaré en trois mots qu'il ne se présenterait pas, devant la mairie. Personne ne l'a cru.",
+   "style": 5
+  },
+  "droite": {
+   "libelle": "Comme vous voulez",
+   "effets": {
+    "peuple": 5,
+    "presse": 5,
+    "armee": -4
+   },
+   "journal": "Le maire a dit qu'il y penserait, puis a repris sa visite du marché. La phrase a ouvert les journaux du soir.",
+   "style": -4
+  },
+  "conditions": {
+   "adversaire": [
+    "maire_capitale"
+   ],
+   "jour_max": 6
+  },
+  "poids": 25
+ },
+ {
+  "id": "face_maire_2",
+  "personnage": "marchande",
+  "humeur": "neutre",
+  "texte": "{titre}, le maire a fait goudronner trois rues du marché en une semaine. Les femmes disent que lui, au moins, il fait.",
+  "gauche": {
+   "libelle": "C'est son travail",
+   "effets": {
+    "peuple": -5,
+    "caisses": 5,
+    "presse": 3
+   },
+   "journal": "Le palais a renvoyé la question à la mairie. Les trois rues goudronnées ont été inaugurées sans invité d'État."
+  },
+  "droite": {
+   "libelle": "On goudronne aussi",
+   "effets": {
+    "peuple": 6,
+    "caisses": -8,
+    "presse": -3
+   },
+   "journal": "L'État a lancé le goudronnage de six rues voisines. Deux chantiers de route dans le nord ont été repoussés."
+  },
+  "conditions": {
+   "adversaire": [
+    "maire_capitale"
+   ],
+   "force_min": 55
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_maire_3",
+  "personnage": "doyen",
+  "humeur": "neutre",
+  "texte": "{titre}, la mairie de la capitale a dépassé son budget de moitié. La Cour peut ouvrir un contrôle, ou attendre l'exercice suivant.",
+  "gauche": {
+   "libelle": "Ouvrez le contrôle",
+   "effets": {
+    "presse": -5,
+    "caisses": 5,
+    "peuple": -4
+   },
+   "journal": "Le contrôle a été ouvert lundi à la mairie. Les magistrats en ont emporté onze cartons devant les caméras.",
+   "style": 6
+  },
+  "droite": {
+   "libelle": "Après l'exercice",
+   "effets": {
+    "presse": 6,
+    "peuple": 4,
+    "caisses": -5
+   },
+   "journal": "La Cour a inscrit le contrôle pour l'an prochain. Le maire a publié lui-même ses comptes, sur deux pages.",
+   "style": -5
+  },
+  "conditions": {
+   "adversaire": [
+    "maire_capitale"
+   ],
+   "jour_min": 45
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_maire_4",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, le maire tient les jeunes des quartiers par ses clubs de football. Je peux couper les subventions de la ville à ces clubs.",
+  "gauche": {
+   "libelle": "Coupez",
+   "effets": {
+    "peuple": -7,
+    "caisses": 6,
+    "presse": -3
+   },
+   "journal": "Les subventions aux clubs de quartier ont été suspendues. Deux tournois de fin de saison ont été annulés.",
+   "style": 7
+  },
+  "droite": {
+   "libelle": "N'y touchez pas",
+   "effets": {
+    "peuple": 4,
+    "caisses": -5,
+    "armee": -3
+   },
+   "journal": "Les clubs ont reçu leur subvention à la date prévue. Le maire a remis les maillots lui-même, sur le terrain du nord.",
+   "style": -4
+  },
+  "conditions": {
+   "adversaire": [
+    "maire_capitale"
+   ],
+   "force_min": 62,
+   "jour_min": 55
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_radio_1",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, l'animateur de la radio du matin répète qu'il ne fait pas de politique. Il en fait depuis un mois, et ça s'entend.",
+  "gauche": {
+   "libelle": "Coupez l'antenne",
+   "effets": {
+    "presse": -8,
+    "armee": 4,
+    "caisses": 4
+   },
+   "journal": "La fréquence de la radio du matin a été suspendue pour vice de licence. L'émission continue sur les téléphones.",
+   "style": 8
+  },
+  "droite": {
+   "libelle": "Qu'il parle",
+   "effets": {
+    "presse": 6,
+    "peuple": 4,
+    "armee": -5
+   },
+   "journal": "L'émission du matin a battu son record d'écoute. Un ministre y était invité, puis s'est décommandé la veille.",
+   "style": -5
+  },
+  "conditions": {
+   "adversaire": [
+    "animateur"
+   ],
+   "jour_max": 6
+  },
+  "poids": 25
+ },
+ {
+  "id": "face_radio_2",
+  "personnage": "marchande",
+  "humeur": "neutre",
+  "texte": "{titre}, au marché, tout le monde écoute la radio du matin. Il a lu hier le prix du sac de riz sur quatre ans, de mémoire.",
+  "gauche": {
+   "libelle": "J'irai à l'antenne",
+   "effets": {
+    "peuple": 5,
+    "presse": 5,
+    "armee": -4
+   },
+   "journal": "Vous avez répondu en direct pendant quarante minutes. L'animateur a relu vos chiffres à la fin, un par un.",
+   "style": -4
+  },
+  "droite": {
+   "libelle": "On l'ignore",
+   "effets": {
+    "peuple": -5,
+    "presse": -4,
+    "caisses": 5
+   },
+   "journal": "Le palais n'a pas réagi. L'émission a rediffusé la séquence des prix trois jours de suite, à la même heure.",
+   "style": 4
+  },
+  "conditions": {
+   "adversaire": [
+    "animateur"
+   ],
+   "force_min": 55
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_radio_3",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, l'animateur a une dette fiscale de six ans et deux maisons non déclarées. Le fisc peut ouvrir demain matin.",
+  "gauche": {
+   "libelle": "Qu'il ouvre",
+   "effets": {
+    "presse": -7,
+    "caisses": 6,
+    "peuple": -4
+   },
+   "journal": "Le redressement a été notifié un mardi. L'animateur en a lu la première page à l'antenne, chiffre par chiffre.",
+   "style": 7
+  },
+  "droite": {
+   "libelle": "On laisse",
+   "effets": {
+    "presse": 5,
+    "peuple": 4,
+    "caisses": -5
+   },
+   "journal": "Aucune procédure n'a été engagée. Le dossier est retourné au service avec une mention manuscrite illisible.",
+   "style": -5
+  },
+  "conditions": {
+   "adversaire": [
+    "animateur"
+   ],
+   "jour_min": 45
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_radio_4",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, la radio du matin veut un débat avec vous, en direct, une heure. Refuser se verra autant qu'accepter.",
+  "gauche": {
+   "libelle": "J'y vais",
+   "effets": {
+    "peuple": 6,
+    "presse": 5,
+    "armee": -6
+   },
+   "journal": "Le débat a duré soixante-deux minutes sans coupure. Deux questions sur le port sont restées sans réponse.",
+   "style": -5
+  },
+  "droite": {
+   "libelle": "Je refuse",
+   "effets": {
+    "peuple": -6,
+    "presse": -5,
+    "armee": 5
+   },
+   "journal": "La chaise du palais est restée vide pendant l'heure d'émission. L'animateur l'a décrite toutes les dix minutes.",
+   "style": 5
+  },
+  "conditions": {
+   "adversaire": [
+    "animateur"
+   ],
+   "force_min": 62,
+   "jour_min": 55
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_generale_1",
+  "personnage": "general",
+  "humeur": "neutre",
+  "texte": "{titre}, la générale à la retraite vient d'accepter une tribune publique. Elle avait refusé un ministère avant vous.",
+  "gauche": {
+   "libelle": "Qu'on la rappelle",
+   "effets": {
+    "armee": 5,
+    "presse": -4,
+    "caisses": -4
+   },
+   "journal": "La générale a été rappelée à l'activité par décret. Elle a demandé une affectation écrite avant de répondre.",
+   "style": 5
+  },
+  "droite": {
+   "libelle": "Qu'elle parle",
+   "effets": {
+    "armee": -5,
+    "presse": 6,
+    "peuple": 4
+   },
+   "journal": "La tribune a duré vingt minutes devant une salle pleine. Trois officiers en civil étaient au dernier rang.",
+   "style": -5
+  },
+  "conditions": {
+   "adversaire": [
+    "generale"
+   ],
+   "jour_max": 6
+  },
+  "poids": 25
+ },
+ {
+  "id": "face_generale_2",
+  "personnage": "general",
+  "humeur": "fache",
+  "texte": "{titre}, mes officiers la citent au mess. Elle n'a jamais pris un marché, et chez nous c'est le seul titre qui compte.",
+  "gauche": {
+   "libelle": "Je la reçois",
+   "effets": {
+    "armee": -4,
+    "presse": 5,
+    "peuple": 4
+   },
+   "journal": "La générale a été reçue au palais un samedi. Elle est repartie sans déclaration et sans avoir rien accepté.",
+   "style": -4
+  },
+  "droite": {
+   "libelle": "Qu'on l'oublie",
+   "effets": {
+    "armee": 5,
+    "presse": -5,
+    "peuple": -4
+   },
+   "journal": "Son nom a disparu des invitations officielles. Au mess, un capitaine a punaisé sa photographie au tableau.",
+   "style": 5
+  },
+  "conditions": {
+   "adversaire": [
+    "generale"
+   ],
+   "force_min": 55
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_generale_3",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, la générale a déposé les statuts de son parti ce matin. Trois signatures viennent de familles d'officiers tombés au nord.",
+  "gauche": {
+   "libelle": "Refusez le dépôt",
+   "effets": {
+    "armee": 4,
+    "presse": -7,
+    "peuple": -4
+   },
+   "journal": "Le récépissé n'a pas été délivré, faute de pièce. Les trois familles ont posé devant la préfecture, en deuil.",
+   "style": 8
+  },
+  "droite": {
+   "libelle": "Enregistrez",
+   "effets": {
+    "presse": 6,
+    "peuple": 4,
+    "armee": -5
+   },
+   "journal": "Le parti a été enregistré sous le numéro quarante et un. Sa première réunion se tiendra dans une salle de cinéma.",
+   "style": -6
+  },
+  "conditions": {
+   "adversaire": [
+    "generale"
+   ],
+   "jour_min": 45
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_generale_4",
+  "personnage": "general",
+  "humeur": "neutre",
+  "texte": "{titre}, la générale demande à parler aux élèves-officiers, comme chaque ancien. Le programme le prévoit, et tout le monde le sait.",
+  "gauche": {
+   "libelle": "Qu'elle y aille",
+   "effets": {
+    "armee": -5,
+    "presse": 5,
+    "peuple": 4
+   },
+   "journal": "La conférence a eu lieu à l'école, devant cent dix élèves. Aucun enregistrement n'a été autorisé dans la salle.",
+   "style": -5
+  },
+  "droite": {
+   "libelle": "Pas cette année",
+   "effets": {
+    "armee": 5,
+    "presse": -6,
+    "peuple": -3
+   },
+   "journal": "La conférence a été retirée du programme pour raisons d'emploi du temps. La salle est restée fermée ce jour-là.",
+   "style": 6
+  },
+  "conditions": {
+   "adversaire": [
+    "generale"
+   ],
+   "force_min": 62,
+   "jour_min": 55
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_cabinet_1",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, je vous prépare vos dossiers depuis le premier jour. On me demande de préparer les miens, et je n'ai pas dit non.",
+  "gauche": {
+   "libelle": "Préparez-les ici",
+   "effets": {
+    "caisses": 5,
+    "presse": -4,
+    "peuple": -3
+   },
+   "journal": "La directrice de cabinet a gardé son bureau et ses clés. Deux de ses collaborateurs ont été affectés ailleurs.",
+   "style": 5
+  },
+  "droite": {
+   "libelle": "Alors dehors",
+   "effets": {
+    "caisses": -5,
+    "presse": 5,
+    "peuple": 4
+   },
+   "journal": "La directrice de cabinet a quitté le palais à midi. Elle a emporté un carton et rendu son badge au poste.",
+   "style": -3
+  },
+  "conditions": {
+   "adversaire": [
+    "directrice_cabinet"
+   ],
+   "jour_max": 6
+  },
+  "poids": 25
+ },
+ {
+  "id": "face_cabinet_2",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, votre directrice de cabinet connaît vos horaires, vos chiffres et vos visiteurs. Elle parle à des journalistes.",
+  "gauche": {
+   "libelle": "Qu'on la suive",
+   "effets": {
+    "armee": 4,
+    "presse": -6,
+    "peuple": -3
+   },
+   "journal": "Une équipe a été affectée à ses déplacements. Elle a changé trois fois de voiture en une semaine, sans se cacher.",
+   "style": 7
+  },
+  "droite": {
+   "libelle": "Elle a le droit",
+   "effets": {
+    "armee": -4,
+    "presse": 6,
+    "peuple": 3
+   },
+   "journal": "Aucune surveillance n'a été mise en place. Elle a donné un entretien de deux pages, relu avant parution.",
+   "style": -5
+  },
+  "conditions": {
+   "adversaire": [
+    "directrice_cabinet"
+   ],
+   "force_min": 55
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_cabinet_3",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, elle raconte l'intérieur du palais dans un livre. Elle m'en a lu douze pages, et je n'y ai rien trouvé de faux.",
+  "gauche": {
+   "libelle": "Qu'on l'empêche",
+   "effets": {
+    "presse": -8,
+    "armee": 4,
+    "caisses": 4
+   },
+   "journal": "L'imprimeur a suspendu le tirage, invoquant un litige de contrat. Les douze pages circulent en photocopie.",
+   "style": 8
+  },
+  "droite": {
+   "libelle": "Qu'elle publie",
+   "effets": {
+    "presse": 7,
+    "peuple": -4,
+    "armee": -4
+   },
+   "journal": "Le livre est sorti à quatre mille exemplaires. Deux chapitres portent sur des réunions tenues sans procès-verbal.",
+   "style": -6
+  },
+  "conditions": {
+   "adversaire": [
+    "directrice_cabinet"
+   ],
+   "jour_min": 45
+  },
+  "poids": 8
+ },
+ {
+  "id": "face_cabinet_4",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, elle a gardé le double des dossiers du palais. Elle propose de les rendre contre une garantie écrite de votre main.",
+  "gauche": {
+   "libelle": "Donnez-la-lui",
+   "effets": {
+    "caisses": -6,
+    "presse": -4,
+    "armee": 4
+   },
+   "journal": "Un accord a été signé chez un notaire. Les dossiers sont revenus au palais dans quatre cartons scellés.",
+   "style": 5
+  },
+  "droite": {
+   "libelle": "Rien du tout",
+   "effets": {
+    "caisses": 5,
+    "presse": 5,
+    "peuple": -4
+   },
+   "journal": "Aucun accord n'a été conclu. Les dossiers sont restés où ils étaient, et leur liste a été publiée en annexe.",
+   "style": -4
+  },
+  "conditions": {
+   "adversaire": [
+    "directrice_cabinet"
+   ],
+   "force_min": 62,
+   "jour_min": 55
+  },
+  "poids": 8
+ },
+ {
+  "id": "campagne_inaugurations",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, les enquêtes du marché donnent celui d'en face devant vous. Mes conseillers proposent d'avancer trois inaugurations.",
+  "gauche": {
+   "libelle": "Avancez-les",
+   "effets": {
+    "peuple": 6,
+    "caisses": -8,
+    "presse": -3
+   },
+   "journal": "Trois inaugurations ont été avancées de six semaines. Un pont a été ouvert avec une voie sur deux en service."
+  },
+  "droite": {
+   "libelle": "On ne bouge rien",
+   "effets": {
+    "peuple": -5,
+    "caisses": 5,
+    "presse": 4
+   },
+   "journal": "Le calendrier officiel n'a pas changé. Le ruban du pont attend dans un bureau de la préfecture, sous plastique."
+  },
+  "conditions": {
+   "force_min": 58,
+   "jour_min": 30
+  },
+  "poids": 8
+ },
+ {
+  "id": "campagne_salles",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, l'opposition tient trois meetings ce mois-ci. La préfecture peut refuser les salles, ou les laisser toutes.",
+  "gauche": {
+   "libelle": "Refusez les salles",
+   "effets": {
+    "presse": -7,
+    "peuple": -4,
+    "armee": 5
+   },
+   "journal": "Deux des trois salles ont été refusées pour raisons de sécurité. Le meeting s'est tenu sur un terrain vague.",
+   "style": 8
+  },
+  "droite": {
+   "libelle": "Toutes les salles",
+   "effets": {
+    "presse": 6,
+    "peuple": 4,
+    "armee": -5
+   },
+   "journal": "Les trois meetings ont eu lieu comme prévu. Le plus grand a rempli une salle de mille deux cents places.",
+   "style": -6
+  },
+  "conditions": {
+   "force_min": 58,
+   "jour_min": 35
+  },
+  "poids": 8
+ },
+ {
+  "id": "campagne_taxe_transport",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, il reste de quoi baisser la taxe sur le transport, ou de quoi tenir les caisses jusqu'au dernier jour du mandat.",
+  "gauche": {
+   "libelle": "La baisse",
+   "effets": {
+    "peuple": 8,
+    "caisses": -10
+   },
+   "journal": "La taxe sur le transport a baissé d'un tiers à minuit. Le tarif du car de brousse n'a pas bougé pour autant."
+  },
+  "droite": {
+   "libelle": "On tient",
+   "effets": {
+    "caisses": 8,
+    "peuple": -7
+   },
+   "journal": "Aucune baisse n'a été annoncée. Le ministre a présenté un tableau de trésorerie à quatre mois, sans commentaire."
+  },
+  "conditions": {
+   "force_min": 62,
+   "jour_min": 50
+  },
+  "poids": 8
+ },
+ {
+  "id": "campagne_adversaire_faible",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, celui d'en face ne remplit plus ses salles. Mes conseillers veulent l'achever, ou le laisser s'éteindre tout seul.",
+  "gauche": {
+   "libelle": "Qu'on l'achève",
+   "effets": {
+    "presse": -6,
+    "armee": 4,
+    "peuple": -4
+   },
+   "journal": "Une enquête fiscale a été ouverte sur son comité de soutien. Sa permanence a fermé faute de bail renouvelé.",
+   "style": 7
+  },
+  "droite": {
+   "libelle": "Qu'il s'éteigne",
+   "effets": {
+    "presse": 5,
+    "peuple": 4,
+    "caisses": -4
+   },
+   "journal": "Aucune mesure n'a été prise. Sa réunion du samedi a rassemblé quarante personnes dans une salle de deux cents.",
+   "style": -4
+  },
+  "conditions": {
+   "force_max": 42,
+   "jour_min": 40
+  },
+  "poids": 8
+ },
+ {
+  "id": "campagne_report_election",
+  "personnage": "doyen",
+  "humeur": "neutre",
+  "texte": "{titre}, l'opposition est faible, et vos partisans proposent de reporter l'élection d'un an, le temps d'achever les chantiers.",
+  "gauche": {
+   "libelle": "On reporte",
+   "effets": {
+    "presse": -9,
+    "peuple": -5,
+    "caisses": 6
+   },
+   "journal": "Le report d'un an a été voté en une séance de quarante minutes. Trois députés ont quitté la salle avant le vote.",
+   "style": 10
+  },
+  "droite": {
+   "libelle": "À la date prévue",
+   "effets": {
+    "presse": 7,
+    "peuple": 5,
+    "armee": -4
+   },
+   "journal": "La date de l'élection a été confirmée au journal officiel. La commission électorale a reçu son budget le jour même.",
+   "style": -8
+  },
+  "conditions": {
+   "force_max": 42,
+   "jour_min": 55
+  },
+  "poids": 8
+ },
+ {
+  "id": "campagne_archives",
+  "personnage": "general",
+  "humeur": "neutre",
+  "texte": "{titre}, si vous perdez, des dossiers sortiront. Mes hommes peuvent en faire disparaître une partie avant le dépouillement.",
+  "gauche": {
+   "libelle": "Faites le ménage",
+   "effets": {
+    "armee": 4,
+    "presse": -8,
+    "peuple": -4
+   },
+   "journal": "Un local d'archives du palais a brûlé un dimanche. Le rapport parle d'un court-circuit dans un climatiseur.",
+   "style": 10
+  },
+  "droite": {
+   "libelle": "On ne touche rien",
+   "effets": {
+    "armee": -5,
+    "presse": 7,
+    "peuple": 4
+   },
+   "journal": "Les archives ont été inventoriées et scellées par un huissier. La liste tient en cent quarante pages.",
+   "style": -8
+  },
+  "conditions": {
+   "force_min": 64,
+   "jour_min": 70
+  },
+  "poids": 8
+ },
+ {
+  "id": "campagne_marche_inquiet",
+  "personnage": "marchande",
+  "humeur": "fache",
+  "texte": "{titre}, on dit au marché que vous ne passerez pas. Les femmes demandent ce qu'elles deviennent si l'autre arrive.",
+  "gauche": {
+   "libelle": "Je les rassure",
+   "effets": {
+    "peuple": 5,
+    "caisses": -6,
+    "presse": 3
+   },
+   "journal": "Vous avez passé la matinée dans les allées du marché. Les places des étals ont été reconduites pour trois ans."
+  },
+  "droite": {
+   "libelle": "Je ne promets rien",
+   "effets": {
+    "peuple": -6,
+    "presse": 5,
+    "caisses": 4
+   },
+   "journal": "Aucune promesse n'a été faite aux commerçantes. Deux d'entre elles ont accroché une affiche au fond de leur étal."
+  },
+  "conditions": {
+   "force_min": 58,
+   "jour_min": 45
+  },
+  "poids": 8
+ },
+ {
+  "id": "campagne_place_monument",
+  "personnage": "maire",
+  "humeur": "neutre",
+  "texte": "{titre}, l'opposition demande la place du monument pour un rassemblement. La ville doit répondre avant vendredi.",
+  "gauche": {
+   "libelle": "Qu'elle l'ait",
+   "effets": {
+    "presse": 7,
+    "peuple": 4,
+    "armee": -5
+   },
+   "journal": "Le rassemblement a eu lieu sur la place du monument, samedi. La ville a fourni l'eau et deux ambulances.",
+   "style": -6
+  },
+  "droite": {
+   "libelle": "Place occupée",
+   "effets": {
+    "presse": -7,
+    "armee": 5,
+    "peuple": -3
+   },
+   "journal": "La place a été réservée pour des travaux de dallage. Aucun ouvrier n'y a été vu pendant le week-end.",
+   "style": 7
+  },
+  "conditions": {
+   "force_min": 55,
+   "jour_min": 25
+  },
+  "poids": 8
  }
 ]

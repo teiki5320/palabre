@@ -12,10 +12,10 @@
   "accroche": "Il ramasse les ordures que vous ne ramassez pas, et il le fait savoir."
  },
  {
-  "id": "pasteur",
-  "nom": "Le pasteur de la grande église",
-  "titre": "Quarante mille fidèles chaque dimanche",
-  "accroche": "Il ne fait pas de politique, dit-il, et il en fait tous les dimanches."
+  "id": "animateur",
+  "nom": "L'animateur de la radio du matin",
+  "titre": "Trois millions d'auditeurs chaque matin",
+  "accroche": "Il ne fait pas de politique, dit-il, et il en fait tous les matins."
  },
  {
   "id": "generale",

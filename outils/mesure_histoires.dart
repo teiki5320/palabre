@@ -27,6 +27,7 @@ void main() {
       fins: await lis('fins'),
       exploits: await lis('exploits'),
       objets: await lis('objets'),
+      adversaires: await lis('adversaires'),
     );
 
     final chaines = <String, int>{}; // id de chaîne -> rang le plus haut
@@ -47,19 +48,40 @@ void main() {
     final finies = <String, int>{};
     final histoiresParPartie = <int>[];
     final finiesParPartie = <int>[];
+    var actesLongs = 0; // maillons de rang 4 ou 5
+    var rappels = 0; // cartes « ardoise »
+    var memoire = 0; // cartes de loyauté
+    var opposition = 0; // cartes d'adversaire ou de campagne
+    var forceFinale = 0;
+    var forceHaute = 0; // mandats ou l opposant a depasse 55
+    var forceBasse = 0;
+    var forceMaxTotale = 0;
+    var loyautesExtremes = 0;
 
     for (var p = 0; p < parties; p++) {
-      var etat = EtatPartie(parcours: depart.id, nomJoueur: 'Awa', jauges: depart.depart);
+      final opposants = contenu.adversaires;
+      var etat = EtatPartie(
+        parcours: depart.id,
+        nomJoueur: 'Awa',
+        jauges: depart.depart,
+        adversaire: opposants.isEmpty ? null : opposants[alea.nextInt(opposants.length)].id,
+      );
       final vuesChaines = <String, int>{};
       var cartes = 0;
+      var forceMax = etat.force;
+      var forceMin = etat.force;
       while (true) {
         if (evalue(etat) != null) break;
         final carte = choisitCarte(paquet: contenu.cartes, etat: etat, alea: alea);
         if (carte == null) break;
         cartes++;
+        if (carte.id.startsWith('ardoise_')) rappels++;
+        if (carte.id.startsWith('fidele_') || carte.id.startsWith('rancune_')) memoire++;
+        if (carte.id.startsWith('face_') || carte.id.startsWith('campagne_')) opposition++;
         final ch = carte.chaine;
         if (ch != null) {
           if (ch.rang > 1) maillonsTotal++;
+          if (ch.rang >= 4) actesLongs++;
           vuesChaines[ch.id] = max(vuesChaines[ch.id] ?? 0, ch.rang);
         }
         // Le joueur attentif de l'equilibrage : il vise le centre sur les
@@ -73,10 +95,25 @@ void main() {
         final cote = alea.nextInt(4) == 0
             ? (alea.nextBool() ? Cote.gauche : Cote.droite)
             : (ecart(carte.gauche) <= ecart(carte.droite) ? Cote.gauche : Cote.droite);
-        etat = repond(etat: etat, carte: carte, cote: cote, atout: depart.atout);
+        // ignore: unused_local_variable
+        final avant = etat;
+        etat = repond(
+          etat: etat,
+          carte: carte,
+          cote: cote,
+          atout: depart.atout,
+          qui: contenu.personnageDe(carte, depart),
+        );
+        if (etat.force > forceMax) forceMax = etat.force;
+        if (etat.force < forceMin) forceMin = etat.force;
       }
       joursTotal += etat.jour - 1;
       cartesTotal += cartes;
+      forceFinale += etat.force;
+      forceMaxTotale += forceMax;
+      if (forceMax >= 55) forceHaute++;
+      if (forceMin <= 42) forceBasse++;
+      loyautesExtremes += etat.loyaute.values.where((v) => v >= 3 || v <= -3).length;
       var ici = 0;
       var iciFinies = 0;
       for (final e in vuesChaines.entries) {
@@ -103,6 +140,15 @@ MILLE MANDATS, JOUEUR ATTENTIF
   histoires menees a leur fin   : ${moy(finiesParPartie).toStringAsFixed(2)} par mandat
   mandats sans aucune histoire finie : ${finiesParPartie.where((x) => x == 0).length} sur $parties
   mandats avec au moins 3 finies     : ${finiesParPartie.where((x) => x >= 3).length} sur $parties
+  actes 4 ou 5 vus              : ${(actesLongs / parties).toStringAsFixed(2)} par mandat
+  cartes de rappel (ardoise)    : ${(rappels / parties).toStringAsFixed(2)} par mandat
+  cartes de memoire (loyaute)   : ${(memoire / parties).toStringAsFixed(2)} par mandat
+  cartes d opposition           : ${(opposition / parties).toStringAsFixed(2)} par mandat
+  personnages a loyaute forte   : ${(loyautesExtremes / parties).toStringAsFixed(2)} en fin de mandat
+  force de l opposant au bout   : ${(forceFinale / parties).toStringAsFixed(1)}
+  force la plus haute atteinte  : ${(forceMaxTotale / parties).toStringAsFixed(1)} en moyenne
+  mandats ou l opposant passe 55 : $forceHaute sur $parties
+  mandats ou il descend sous 42  : $forceBasse sur $parties
 ''');
 
     final jamaisFinies = chaines.keys.where((k) => (finies[k] ?? 0) == 0).toList()..sort();

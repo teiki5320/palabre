@@ -50,8 +50,18 @@ Mesures simule({
   final vuesPartout = <String>{};
   var totalJours = 0;
 
+  final adversaires = contenu.adversaires;
+
   for (var p = 0; p < parties; p++) {
-    var etat = EtatPartie(parcours: parcours, nomJoueur: 'Test', jauges: depart.depart);
+    var etat = EtatPartie(
+      parcours: parcours,
+      nomJoueur: 'Test',
+      jauges: depart.depart,
+      // Comme l'écran : un opposant tiré au premier jour, sans quoi les
+      // cartes qui le nomment ne sortiraient jamais et passeraient pour du
+      // contenu écrit pour rien.
+      adversaire: adversaires.isEmpty ? null : adversaires[alea.nextInt(adversaires.length)].id,
+    );
     while (true) {
       final fin = evalue(etat, duree: duree);
       if (fin != null) {
@@ -75,6 +85,7 @@ Mesures simule({
         carte: carte,
         cote: _choisit(strategie, etat, carte, alea, depart.atout),
         atout: depart.atout,
+        qui: contenu.personnageDe(carte, depart),
       );
     }
     totalJours += etat.jour - 1;

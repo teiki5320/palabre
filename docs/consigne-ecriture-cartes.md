@@ -204,3 +204,53 @@ vraiment de la décision prise.
 
 **Les mots interdits des cartes le restent** — jamais de franc, jamais un
 pays réel, jamais un nom de marque.
+
+## Le crochet : finir un acte sur un objet (septembre 2026)
+
+Une carte qui appartient à une histoire ne se termine pas sur une idée, elle
+se termine sur **une chose qu'on peut photographier** et dont on ne sait pas
+encore ce qu'elle va devenir. C'est ce qui fait qu'on attend la suite.
+
+| Sans crochet | Avec crochet |
+|---|---|
+| « L'affaire risque de rebondir. » | « L'enveloppe est restée chez l'avocat, cachetée. » |
+| « La caserne est mécontente. » | « Au mess, un adjudant a affiché le calendrier des six derniers mois. » |
+| « Le chantier prend du retard. » | « Le chantier est refermé par une tôle et un cadenas. » |
+
+La règle tient en une ligne : **le dernier détail d'un acte doit pouvoir être
+repris au début du suivant.** Le coffre qu'on a changé, la liste affichée, la
+photocopieuse à compteur, le badge désactivé : l'acte d'après commence là.
+
+Le crochet se pose le plus souvent dans la brève du journal, parce qu'elle est
+la dernière chose que le joueur lit avant la carte suivante.
+
+## La mémoire : loyauté, opposant, force (septembre 2026)
+
+Trois conditions supplémentaires sont disponibles, et elles ne se déclarent
+jamais dans une réponse : le moteur les calcule seul.
+
+- **`loyaute_min` / `loyaute_max`** (de −5 à +5) portent, par défaut, sur le
+  personnage **de la carte**. La loyauté monte d'un cran chaque fois qu'une
+  décision sert de plus de deux points la jauge que ce personnage défend, et
+  descend d'un cran quand elle la saigne d'autant. `loyaute_de` permet de
+  viser quelqu'un d'autre.
+
+  Une carte à `loyaute_min: 3` est une carte que seul un allié ancien peut
+  prononcer ; une carte à `loyaute_max: -3`, ce que dit quelqu'un qui ne vous
+  doit plus rien. **Écrivez-les par paires** : le même personnage, deux
+  tempéraments, et jamais la même proposition.
+
+- **`adversaire`** est la liste des opposants pour qui la carte existe. Un seul
+  est tiré au premier jour de chaque mandat, et il ne change plus : une carte
+  qui le nomme peut donc le nommer franchement, il ne sera pas quelqu'un
+  d'autre.
+
+- **`force_min` / `force_max`** (de 20 à 85, départ 50) mesurent où en est cet
+  opposant. Il monte de ce que vous perdez **devant le pays** — le peuple et la
+  presse, jamais l'armée ni les caisses — à raison d'un point pour quatre
+  perdus. Au centième jour, c'est contre sa force, et non contre cinquante,
+  que l'élection se joue.
+
+  Repères mesurés sur mille mandats joués attentivement : il dépasse 55 dans
+  quatre mandats sur dix, et redescend sous 42 dans deux sur trois. Au-delà de
+  64, on est dans le mandat d'un président qui a lâché la rue.
