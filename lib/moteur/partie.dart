@@ -1,5 +1,6 @@
 import 'etat_partie.dart';
 import 'jauges.dart';
+import 'memoire.dart';
 import 'modeles.dart';
 import 'palais.dart';
 
@@ -90,11 +91,17 @@ Map<Jauge, int> effetsReels({
 }
 
 /// Applique une réponse et rend l'état du lendemain.
+///
+/// [qui] est le personnage tel que ce joueur le voit — c'est de lui qu'on
+/// tire la jauge à laquelle il tient, donc ce que la réponse change à sa
+/// loyauté. Facultatif : sans lui, personne ne retient rien, et le moteur
+/// se comporte comme avant la mémoire.
 EtatPartie repond({
   required EtatPartie etat,
   required Carte carte,
   required Cote cote,
   Atout? atout,
+  Personnage? qui,
 }) {
   final reponse = cote == Cote.gauche ? carte.gauche : carte.droite;
   final effets = effetsReels(
@@ -115,8 +122,21 @@ EtatPartie repond({
     chainesJour[ch.id] = etat.jour;
   }
 
+  // Deux mémoires se mettent à jour ici, et nulle part ailleurs : ce que
+  // l'interlocuteur du jour retient de la réponse, et ce que l'opposition
+  // en tire. Ni l'une ni l'autre n'est déclarée dans les cartes — elles se
+  // lisent dans les effets que le joueur vient de subir.
+  final loyaute = appliqueLoyaute(
+    etat.loyaute,
+    carte.personnage,
+    mouvementLoyaute(qui: qui, effetsReels: effets),
+  );
+  final force = appliqueForce(etat.force, mouvementForce(effets));
+
   final apres = etat.copie(
     jauges: etat.jauges.applique(effets),
+    loyaute: loyaute,
+    force: force,
     jour: etat.jour + 1,
     // L'axe du régime ne s'amplifie pas au fil des mandats : un abus de
     // pouvoir est un abus de pouvoir, qu'il soit le premier ou le dixième.
@@ -150,4 +170,9 @@ EtatPartie mandatSuivant(EtatPartie etat, Parcours parcours) => EtatPartie(
       // elle en était — son délai est réputé écoulé.
       vues: etat.vues,
       chainesRang: etat.chainesRang,
+      // On ne repart pas parmi des inconnus : ceux qui vous ont vu décider
+      // cent jours durant s'en souviennent, et celui d'en face aussi.
+      loyaute: etat.loyaute,
+      adversaire: etat.adversaire,
+      force: forceApresDefaite(etat.force),
     );

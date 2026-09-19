@@ -3045,7 +3045,7 @@
    "drapeaux_requis": [
     "accord_fonds"
    ],
-   "caisses_max": 40
+   "caisses_max": 58
   },
   "chaine": {
    "id": "pret_fonds",
@@ -8804,7 +8804,7 @@
   "humeur": "fache",
   "poids": 10,
   "conditions": {
-   "mandat_min": 2,
+   "mandat_min": 1,
    "style_min": 65,
    "drapeaux_requis": [
     "constitution_relue"
@@ -9005,7 +9005,7 @@
   "humeur": "fache",
   "poids": 10,
   "conditions": {
-   "mandat_min": 2,
+   "mandat_min": 1,
    "jour_min": 3
   },
   "texte": "{nom}, cette nuit-là, vous n'avez rien promis devant personne. Celui-ci est le dernier : dites-le dehors, et vos officiers l'entendront.",
@@ -11259,8 +11259,8 @@
   "humeur": "neutre",
   "poids": 10,
   "conditions": {
-   "peuple_min": 55,
-   "armee_max": 45,
+   "peuple_min": 37,
+   "armee_max": 63,
    "drapeaux_requis": [
     "officiers_recus_ensemble"
    ]
@@ -11470,7 +11470,7 @@
    "journal": "Une deuxième part est partie dehors. La note des bailleurs relevant le taux tient en une phrase, sans motif."
   },
   "conditions": {
-   "caisses_min": 70,
+   "caisses_min": 52,
    "drapeaux_requis": [
     "reserves_placees"
    ]
@@ -11656,7 +11656,7 @@
    "journal": "Les vérificateurs sont restés dans les bureaux de votre financier. Sa fondation a annulé la distribution de cahiers."
   },
   "conditions": {
-   "caisses_max": 30,
+   "caisses_max": 48,
    "jour_min": 70,
    "drapeaux_requis": [
     "campagne_financee"
@@ -11860,8 +11860,8 @@
   "humeur": "neutre",
   "poids": 10,
   "conditions": {
-   "peuple_min": 60,
-   "presse_min": 60,
+   "peuple_min": 42,
+   "presse_min": 42,
    "jour_max": 45,
    "drapeaux_requis": [
     "limite_verrouillee"
@@ -12134,7 +12134,7 @@
    "journal": "La coupure dure depuis onze jours. La commission a inscrit le point à l'ordre du jour de sa séance de validation."
   },
   "conditions": {
-   "presse_max": 30,
+   "presse_max": 48,
    "jour_min": 60,
    "drapeaux_requis": [
     "campagne_site_coupe"
@@ -12211,8 +12211,8 @@
    "journal": "Les grilles restent tenues par les hommes du colonel. Les visiteurs du matin ont été fouillés deux fois, carnet à l'appui."
   },
   "conditions": {
-   "peuple_max": 30,
-   "armee_min": 65,
+   "peuple_max": 48,
+   "armee_min": 47,
    "drapeaux_requis": [
     "rue_donnee_armee"
    ]

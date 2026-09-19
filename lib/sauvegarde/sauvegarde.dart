@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../moteur/etat_partie.dart';
 import '../moteur/jauges.dart';
+import '../moteur/memoire.dart';
 import '../moteur/progression.dart';
 
 /// La partie en cours et la progression, gardées sur l'appareil. Rien ne
@@ -120,6 +121,9 @@ Map<String, dynamic> versJson(EtatPartie e) => {
       'chaines_rang': e.chainesRang,
       'chaines_jour': e.chainesJour,
       'hier': e.hier,
+      'loyaute': e.loyaute,
+      'adversaire': e.adversaire,
+      'force': e.force,
     };
 
 EtatPartie depuisJson(Map<String, dynamic> j) {
@@ -142,6 +146,12 @@ EtatPartie depuisJson(Map<String, dynamic> j) {
     chainesRang: ((j['chaines_rang'] as Map?) ?? const {}).map((k, v) => MapEntry(k as String, (v as num).toInt())),
     chainesJour: ((j['chaines_jour'] as Map?) ?? const {}).map((k, v) => MapEntry(k as String, (v as num).toInt())),
     hier: j['hier'] as String?,
+    // Une sauvegarde d'avant la mémoire reprend sans rancune et sans
+    // opposant : la force repart de son départ, donc l'élection se décide
+    // comme elle se décidait quand elle a été enregistrée.
+    loyaute: ((j['loyaute'] as Map?) ?? const {}).map((k, v) => MapEntry(k as String, (v as num).toInt())),
+    adversaire: j['adversaire'] as String?,
+    force: ((j['force'] as num?) ?? forceDepart).toInt(),
   );
 }
 

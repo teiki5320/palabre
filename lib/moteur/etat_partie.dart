@@ -1,4 +1,5 @@
 import 'jauges.dart';
+import 'memoire.dart';
 import 'modeles.dart';
 
 /// Tout ce qui décrit un mandat en cours. Immuable : chaque réponse rend un
@@ -21,6 +22,9 @@ class EtatPartie {
     this.chainesRang = const {},
     this.chainesJour = const {},
     this.hier,
+    this.loyaute = const {},
+    this.adversaire,
+    this.force = forceDepart,
   });
 
   final String parcours;
@@ -50,6 +54,18 @@ class EtatPartie {
   /// deux jours de suite ; null au premier jour.
   final String? hier;
 
+  /// Ce que chaque personnage retient de vous, de −5 à +5. Personne n'y
+  /// figure tant qu'il n'a rien à retenir.
+  final Map<String, int> loyaute;
+
+  /// Qui se présentera contre vous au centième jour, tiré au sort le
+  /// premier. Null dans les parties d'avant l'opposition.
+  final String? adversaire;
+
+  /// Sa force, de 20 à 85. Elle part de 50 — le seuil que l'élection
+  /// utilisait quand il n'y avait personne en face.
+  final int force;
+
   EtatPartie copie({
     Jauges? jauges,
     int? jour,
@@ -60,6 +76,9 @@ class EtatPartie {
     Map<String, int>? chainesRang,
     Map<String, int>? chainesJour,
     String? hier,
+    Map<String, int>? loyaute,
+    String? adversaire,
+    int? force,
   }) =>
       EtatPartie(
         parcours: parcours,
@@ -73,12 +92,17 @@ class EtatPartie {
         chainesRang: chainesRang ?? this.chainesRang,
         chainesJour: chainesJour ?? this.chainesJour,
         hier: hier ?? this.hier,
+        loyaute: loyaute ?? this.loyaute,
+        adversaire: adversaire ?? this.adversaire,
+        force: force ?? this.force,
       );
 }
 
 /// Évaluation des conditions d'une carte contre l'état courant.
 extension ConditionsSurEtat on Conditions {
-  bool satisfaites(EtatPartie etat) {
+  /// [personnage] est celui qui parle sur la carte : c'est de lui qu'on
+  /// exige une loyauté quand la carte ne nomme personne d'autre.
+  bool satisfaites(EtatPartie etat, {String? personnage}) {
     if (etat.mandat < mandatMin) return false;
     if (etat.jour < jourMin || etat.jour > jourMax) return false;
     for (final e in minimums.entries) {
@@ -95,6 +119,22 @@ extension ConditionsSurEtat on Conditions {
     }
     if (parcours.isNotEmpty && !parcours.contains(etat.parcours)) return false;
     if (etat.style < styleMin || etat.style > styleMax) return false;
+
+    final plancher = loyauteMin;
+    final plafond = loyauteMax;
+    if (plancher != null || plafond != null) {
+      final qui = loyauteDe ?? personnage;
+      if (qui == null) return false;
+      final v = etat.loyaute[qui] ?? 0;
+      if (plancher != null && v < plancher) return false;
+      if (plafond != null && v > plafond) return false;
+    }
+
+    if (adversaire.isNotEmpty && !adversaire.contains(etat.adversaire)) return false;
+    final forceBas = forceMin;
+    final forceHaut = forceMax;
+    if (forceBas != null && etat.force < forceBas) return false;
+    if (forceHaut != null && etat.force > forceHaut) return false;
     return true;
   }
 }

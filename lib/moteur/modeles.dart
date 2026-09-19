@@ -76,6 +76,12 @@ class Conditions {
     this.parcours = const [],
     this.styleMin = 0,
     this.styleMax = 100,
+    this.loyauteDe,
+    this.loyauteMin,
+    this.loyauteMax,
+    this.adversaire = const [],
+    this.forceMin,
+    this.forceMax,
   });
 
   final int mandatMin;
@@ -100,6 +106,21 @@ class Conditions {
   final int styleMin;
   final int styleMax;
 
+  /// De qui l'on parle quand on exige une loyauté. Null signifie « celui
+  /// qui parle sur cette carte » — le cas courant : le général ne vient
+  /// vous menacer que si sa loyauté est déjà tombée.
+  final String? loyauteDe;
+  final int? loyauteMin;
+  final int? loyauteMax;
+
+  /// Adversaires pour lesquels cette carte a un sens ; vide signifie
+  /// « n'importe lequel ».
+  final List<String> adversaire;
+
+  /// Où doit en être l'opposition pour que la carte sorte.
+  final int? forceMin;
+  final int? forceMax;
+
   factory Conditions.depuisJson(Map<String, dynamic>? j) {
     if (j == null) return const Conditions();
     final minimums = <Jauge, int>{};
@@ -121,6 +142,12 @@ class Conditions {
       parcours: _textes(j['parcours']),
       styleMin: ((j['style_min'] as num?) ?? 0).toInt(),
       styleMax: ((j['style_max'] as num?) ?? 100).toInt(),
+      loyauteDe: j['loyaute_de'] as String?,
+      loyauteMin: (j['loyaute_min'] as num?)?.toInt(),
+      loyauteMax: (j['loyaute_max'] as num?)?.toInt(),
+      adversaire: _textes(j['adversaire']),
+      forceMin: (j['force_min'] as num?)?.toInt(),
+      forceMax: (j['force_max'] as num?)?.toInt(),
     );
   }
 }
@@ -176,16 +203,30 @@ class Carte {
 
 /// Quelqu'un qui vient voir le Président.
 class Personnage {
-  const Personnage({required this.id, required this.nom, required this.titre});
+  const Personnage({required this.id, required this.nom, required this.titre, this.jauge});
 
   final String id;
   final String nom;
   final String titre;
 
+  /// La jauge que ce personnage défend, et par laquelle il juge vos
+  /// décisions. C'est elle qui fait monter ou descendre sa loyauté, sans
+  /// qu'aucune carte ait à le déclarer.
+  final Jauge? jauge;
+
+  static Jauge? _jauge(String? nom) {
+    if (nom == null) return null;
+    for (final j in Jauge.values) {
+      if (j.name == nom) return j;
+    }
+    return null;
+  }
+
   factory Personnage.depuisJson(Map<String, dynamic> j) => Personnage(
         id: j['id'] as String,
         nom: j['nom'] as String,
         titre: j['titre'] as String,
+        jauge: _jauge(j['jauge'] as String?),
       );
 
   /// Chemin de l'image pour une humeur donnée.

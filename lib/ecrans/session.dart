@@ -71,11 +71,16 @@ class SessionNotifier extends Notifier<Session?> {
   void demarre({required Parcours parcours, required String nom, int? graine}) {
     _alea = Random(graine ?? DateTime.now().millisecondsSinceEpoch);
     final palais = ref.read(progressionProvider).value?.objets ?? const <String>{};
+    // L'opposant est tiré au premier jour et ne change plus : c'est lui
+    // qu'on affrontera au centième, et c'est son nom que les cartes de
+    // campagne demandent.
+    final adversaires = _contenu.adversaires;
     final etat = EtatPartie(
       parcours: parcours.id,
       nomJoueur: nom,
       jauges: parcours.depart,
       drapeaux: drapeauxDuPalais(palais),
+      adversaire: adversaires.isEmpty ? null : adversaires[_alea.nextInt(adversaires.length)].id,
     );
     state = _prochaine(etat);
   }
@@ -122,6 +127,7 @@ class SessionNotifier extends Notifier<Session?> {
         carte: s.carte!,
         cote: cote,
         atout: _contenu.parcoursParId(s.etat.parcours)?.atout,
+        qui: _contenu.personnageDe(s.carte!, _contenu.parcoursParId(s.etat.parcours)),
       ),
       journal: reponse.journal,
     );
@@ -166,11 +172,7 @@ class SessionNotifier extends Notifier<Session?> {
       // chose à dire, mais si pas un seul jour n'a été joué, il n'y a rien
       // à mettre au bilan — ni mandat compté, ni exploit décroché sur les
       // jauges de départ, ni progression réécrite.
-      final faute = Denouement(
-        type: (etat.jauges.peuple + etat.jauges.presse) / 2 > 50
-            ? TypeDenouement.electionGagnee
-            : TypeDenouement.electionPerdue,
-      );
+      final faute = Denouement(type: electionDe(etat));
       if (etat.jour <= 1) {
         Sauvegarde.efface();
         return Session(

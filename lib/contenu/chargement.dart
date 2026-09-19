@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
+import '../moteur/memoire.dart';
 import '../moteur/modeles.dart';
 import '../moteur/palais.dart';
 import '../moteur/progression.dart';
@@ -15,6 +16,7 @@ class Contenu {
     required this.fins,
     this.exploits = const [],
     this.objets = const [],
+    this.adversaires = const [],
   });
 
   final List<Carte> cartes;
@@ -40,6 +42,19 @@ class Contenu {
   /// Le catalogue du palais. Vide par défaut, pour la même raison.
   final List<Objet> objets;
 
+  /// Ceux qui peuvent se présenter contre vous. Vide par défaut : une
+  /// partie sans opposant se joue comme avant, l'élection se décidant
+  /// alors sur la force de départ.
+  final List<Adversaire> adversaires;
+
+  Adversaire? adversaireParId(String? id) {
+    if (id == null) return null;
+    for (final a in adversaires) {
+      if (a.id == id) return a;
+    }
+    return null;
+  }
+
   /// Les objets d'une pièce, dans l'ordre du moins cher au plus cher :
   /// c'est l'ordre dans lequel on les découvre, et celui dans lequel on
   /// peut se les offrir.
@@ -63,6 +78,7 @@ class Contenu {
     required String fins,
     String exploits = '',
     String objets = '',
+    String adversaires = '',
   }) {
     final gens = [for (final j in _liste(personnages)) Personnage.depuisJson(j)];
     return Contenu(
@@ -72,6 +88,8 @@ class Contenu {
       fins: [for (final j in _liste(fins)) Fin.depuisJson(j)],
       exploits: exploits.isEmpty ? const [] : [for (final j in _liste(exploits)) Exploit.depuisJson(j)],
       objets: objets.isEmpty ? const [] : [for (final j in _liste(objets)) Objet.depuisJson(j)],
+      adversaires:
+          adversaires.isEmpty ? const [] : [for (final j in _liste(adversaires)) Adversaire.depuisJson(j)],
     );
   }
 
@@ -84,6 +102,7 @@ class Contenu {
       fins: await lis('fins'),
       exploits: await lis('exploits'),
       objets: await lis('objets'),
+      adversaires: await lis('adversaires'),
     );
   }
 

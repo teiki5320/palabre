@@ -8,7 +8,9 @@ Carte? choisitCarte({required List<Carte> paquet, required EtatPartie etat, requ
   final jouables = <Carte>[];
   for (final c in paquet) {
     if (!c.repetable && etat.vues.contains(c.id)) continue;
-    if (!c.conditions.satisfaites(etat)) continue;
+    // Le personnage de la carte sert de sujet par défaut aux conditions
+    // de loyauté : « celui qui vous parle aujourd'hui ne vous aime plus ».
+    if (!c.conditions.satisfaites(etat, personnage: c.personnage)) continue;
     final ch = c.chaine;
     if (ch != null) {
       final rangAtteint = etat.chainesRang[ch.id] ?? 0;

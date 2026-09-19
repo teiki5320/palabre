@@ -31,11 +31,17 @@ Denouement? evalue(EtatPartie etat, {int duree = dureeMandat}) {
       versLeHaut: etat.jauges.valeur(fautive) >= 100,
     );
   }
-  if (etat.jour > duree) {
-    final moyenne = (etat.jauges.peuple + etat.jauges.presse) / 2;
-    return Denouement(type: moyenne > 50 ? TypeDenouement.electionGagnee : TypeDenouement.electionPerdue);
-  }
+  if (etat.jour > duree) return Denouement(type: electionDe(etat));
   return null;
+}
+
+/// Qui gagne le centième jour. Le pays vous pèse au peuple et à la presse ;
+/// en face, l'opposition a sa propre force, qui part de cinquante et monte
+/// de ce que vous avez perdu devant le pays. Une partie où personne ne
+/// monte se décide donc exactement comme avant : à cinquante.
+TypeDenouement electionDe(EtatPartie etat) {
+  final moyenne = (etat.jauges.peuple + etat.jauges.presse) / 2;
+  return moyenne > etat.force ? TypeDenouement.electionGagnee : TypeDenouement.electionPerdue;
 }
 
 /// La fin écrite qui correspond au dénouement, ou null si le contenu ne la

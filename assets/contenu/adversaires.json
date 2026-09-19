@@ -1,0 +1,32 @@
+[
+ {
+  "id": "premier_ministre",
+  "nom": "L'ancien Premier ministre",
+  "titre": "Il a tenu le pays six ans avant vous",
+  "accroche": "Il connaît chaque dossier que vous ouvrez, parce qu'il les a fermés."
+ },
+ {
+  "id": "maire_capitale",
+  "nom": "Le maire de la capitale",
+  "titre": "Il tient la ville, vous tenez le palais",
+  "accroche": "Il ramasse les ordures que vous ne ramassez pas, et il le fait savoir."
+ },
+ {
+  "id": "pasteur",
+  "nom": "Le pasteur de la grande église",
+  "titre": "Quarante mille fidèles chaque dimanche",
+  "accroche": "Il ne fait pas de politique, dit-il, et il en fait tous les dimanches."
+ },
+ {
+  "id": "generale",
+  "nom": "La générale à la retraite",
+  "titre": "Deux étoiles, et une réputation d'incorruptible",
+  "accroche": "Elle a refusé un ministère avant vous, et tout le monde s'en souvient."
+ },
+ {
+  "id": "directrice_cabinet",
+  "nom": "Votre directrice de cabinet",
+  "titre": "Elle sait tout, et elle attend",
+  "accroche": "Elle vous prépare vos dossiers depuis le premier jour, et les siens aussi."
+ }
+]
