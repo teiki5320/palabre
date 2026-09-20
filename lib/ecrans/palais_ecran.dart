@@ -143,13 +143,14 @@ class _DecorState extends State<_Decor> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final n = widget.decor.images;
-    final phase = (_t % 1) * n;
-    final i = phase.floor() % n;
+    // Le pas, et non le nombre d'images : une boucle en aller-retour
+    // compte presque deux fois plus de pas qu'elle n'a de plaques.
+    final pas = widget.decor.pas;
+    final phase = (_t % 1) * pas;
+    final i = phase.floor() % pas;
     final reste = phase - phase.floor();
     const fondu = 0.5;
     final a = ((reste - (1 - fondu)) / fondu).clamp(0.0, 1.0);
-    final suivant = (i + 1) % n;
 
     // Le travelling : un aller-retour de quelques pour cent sur vingt-six
     // secondes, imperceptible mais suffisant pour que rien ne soit figé.
@@ -176,7 +177,7 @@ class _DecorState extends State<_Decor> with SingleTickerProviderStateMixin {
                   child: Transform.scale(
                     scale: zoom,
                     child: Image.asset(
-                      widget.decor.chemin(index + 1),
+                      widget.decor.chemin(widget.decor.cle(index)),
                       height: c.maxHeight,
                       fit: BoxFit.fitHeight,
                       gaplessPlayback: true,
@@ -204,7 +205,7 @@ class _DecorState extends State<_Decor> with SingleTickerProviderStateMixin {
             fit: StackFit.expand,
             children: [
               plan(i, 1),
-              if (a > 0) plan(suivant, a),
+              if (a > 0) plan(i + 1, a),
               for (final passage in widget.passages)
                 () {
                   // Une ouverture ne se dessine que sur sa part visible :

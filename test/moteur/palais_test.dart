@@ -257,16 +257,66 @@ void main() {
       expect(decorDeLaChambre(etatAvec(epouse: 'doyen')).etat, 'base');
     });
 
-    test('les boucles du balcon comptent cinq ou six clés, sauf l avenue ordinaire de jour', () {
-      // Trois cas particuliers, tous dus à des plaques d'origine perdues :
-      // l'avenue ordinaire de jour n'a plus qu'une image, le siège des
-      // caméras de nuit en a cinq, et tout le reste en a six. Une clé
-      // dupliquée figerait la boucle, et une régénération ne tient pas.
-      expect(decorDuBalcon(etatAvec()).images, 1);
-      expect(decorDuBalcon(etatAvec(jour: 85)).images, 6);
-      expect(decorDuBalcon(etatAvec(presse: 20)).images, 6);
-      expect(decorDuBalcon(etatAvec(jour: 85, presse: 20)).images, 5);
-      expect(decorDuBalcon(etatAvec(peuple: 80)).images, 6);
+    test('les dix-huit états du balcon comptent six clés, jouées en aller-retour', () {
+      // Elles sont toutes tirées d'un plan filmé de quatre secondes : la
+      // dernière clé ne ressemble plus du tout à la première, donc la
+      // boucle repasse par où elle est venue au lieu de sauter.
+      for (final e in [
+        etatAvec(),
+        etatAvec(jour: 85),
+        etatAvec(presse: 20),
+        etatAvec(jour: 85, presse: 20),
+        etatAvec(peuple: 80),
+        etatAvec(peuple: 20),
+        etatAvec(armee: 75),
+        etatAvec(caisses: 20),
+        etatAvec(jour: 60),
+        etatAvec(caisses: 70, peuple: 60),
+        etatAvec(drapeaux: {'fete_nationale'}),
+        etatAvec(drapeaux: {'deuil_national'}),
+      ]) {
+        final d = decorDuBalcon(e);
+        expect(d.images, 6, reason: d.etat);
+        expect(d.allerRetour, isTrue, reason: d.etat);
+        // Six clés en aller-retour font dix pas, sans repasser deux fois
+        // par les deux bouts.
+        expect(d.pas, 10, reason: d.etat);
+      }
+    });
+
+    test('l aller-retour monte puis redescend, sans doubler les extrémités', () {
+      const d = Decor(dossier: 'x', etat: 'x', nom: 'x', images: 6, allerRetour: true);
+      expect([for (var j = 0; j < d.pas; j++) d.cle(j)], [1, 2, 3, 4, 5, 6, 5, 4, 3, 2]);
+      // Et le pas suivant repart sur la première : la boucle est continue.
+      expect(d.cle(d.pas), 1);
+    });
+
+    test('une boucle ordinaire tourne en rond comme avant', () {
+      const d = Decor(dossier: 'x', etat: 'x', nom: 'x', images: 4);
+      expect([for (var j = 0; j < d.pas; j++) d.cle(j)], [1, 2, 3, 4]);
+      expect(d.cle(4), 1);
+    });
+
+    test('une image seule n a qu un pas', () {
+      const d = Decor(dossier: 'x', etat: 'x', nom: 'x', allerRetour: true);
+      expect(d.pas, 1);
+      expect(d.cle(0), 1);
+      expect(d.cle(7), 1);
+    });
+  });
+
+  group('la cour des voitures', () {
+    test('elle se remplit une voiture à la fois', () {
+      expect(decorDuGarage({}).etat, 'base');
+      expect(decorDuGarage({'velo'}).etat, 'deux');
+      expect(decorDuGarage({'velo', 'motos'}).etat, 'trois');
+      expect(decorDuGarage({'velo', 'motos', 'limousine'}).etat, 'parc');
+      expect(decorDuGarage({'velo', 'motos', 'limousine', 'quatre_quatre'}).etat, 'parc');
+    });
+
+    test('seuls les véhicules comptent', () {
+      // Un coffre-fort dans le bureau ne remplit pas la cour.
+      expect(decorDuGarage({'coffre_fort', 'ventilateur'}).etat, 'base');
     });
   });
 
@@ -287,10 +337,12 @@ void main() {
       expect(decorDuBureau(etatAvec(presse: 20, style: 90)).etat, 'enseveli');
     });
 
-    test('le garage se remplit à partir de deux véhicules', () {
-      expect(decorDuGarage({'velo'}).etat, 'base');
-      expect(decorDuGarage({'velo', 'motos'}).etat, 'parc');
-      expect(decorDuGarage({'velo', 'climatiseur'}).etat, 'base');
+    test('le dimanche du quartier s anime, et lui seul parmi les pièces', () {
+      final dimanche = decorDeLaPiscine(etatAvec(caisses: 60, style: 30), {'dimanche'});
+      expect(dimanche.images, 6);
+      expect(dimanche.allerRetour, isTrue);
+      // Les autres états de la piscine restent des plaques fixes.
+      expect(decorDeLaPiscine(etatAvec(caisses: 60), {}).images, 1);
     });
 
     test('la piscine suit les caisses', () {
@@ -341,7 +393,10 @@ void main() {
         decorDeLaChambre(etatAvec(epouse: 'maire')),
         decorDeLaChambre(etatAvec(attache: {'redactrice': 3})),
         decorDuGarage({}),
+        decorDuGarage({'velo'}),
         decorDuGarage({'velo', 'motos'}),
+        decorDuGarage({'velo', 'motos', 'limousine'}),
+        decorDuGarage({'velo', 'motos', 'limousine', 'quatre_quatre'}),
         decorDeLaPiscine(etatAvec(caisses: 60), {}),
         decorDeLaPiscine(etatAvec(caisses: 25), {}),
         decorDeLaPiscine(etatAvec(caisses: 10), {}),

@@ -12,7 +12,13 @@ import 'romance.dart';
 ///
 /// Rien ici ne connaît Flutter : la règle se teste sans écran.
 class Decor {
-  const Decor({required this.dossier, required this.etat, required this.nom, this.images = 1});
+  const Decor({
+    required this.dossier,
+    required this.etat,
+    required this.nom,
+    this.images = 1,
+    this.allerRetour = false,
+  });
 
   /// Le chemin sous `assets/images/palais/`, sans le numéro d'image.
   final String dossier;
@@ -27,8 +33,29 @@ class Decor {
   /// les pièces, qui s'animent autrement.
   final int images;
 
+  /// Vrai quand la boucle se joue en aller-retour : 1, 2, 3, 4, 5, 6, puis
+  /// 5, 4, 3, 2 avant de repartir. C'est ce qu'il faut pour des images
+  /// tirées d'un plan filmé, où la dernière ne ressemble plus du tout à la
+  /// première : jouées en rond, elles feraient un raccord sec toutes les
+  /// huit secondes. En repassant par où elle est venue, la boucle n'a plus
+  /// de couture du tout, et pas une image de plus à livrer.
+  final bool allerRetour;
+
   String chemin(int i) =>
       images == 1 ? 'assets/images/palais/$dossier.jpg' : 'assets/images/palais/$dossier/k$i.jpg';
+
+  /// Combien de pas compte un tour complet. Une boucle en rond en compte
+  /// autant qu'elle a d'images ; une boucle en aller-retour en compte
+  /// presque le double, sans repasser deux fois par les deux bouts.
+  int get pas => allerRetour && images > 1 ? images * 2 - 2 : images;
+
+  /// L'image à montrer au pas [j], de 0 à [pas] − 1, en base 1 comme
+  /// [chemin] l'attend.
+  int cle(int j) {
+    final p = pas;
+    final i = ((j % p) + p) % p;
+    return (allerRetour && images > 1 && i >= images ? images * 2 - 2 - i : i) + 1;
+  }
 }
 
 /// Vrai entre le quatre-vingtième jour et la fin : c'est la seule chose qui
@@ -46,50 +73,71 @@ Decor decorDuBalcon(EtatPartie etat) {
   // posés par une carte, donc ils décrivent un jour précis, pas une
   // situation durable. Ils n'existent que de jour.
   if (etat.drapeaux.contains('fete_nationale')) {
-    return const Decor(dossier: 'balcon/jour/defile', etat: 'defile', nom: 'Le défilé', images: 6);
+    return const Decor(dossier: 'balcon/jour/defile', etat: 'defile', nom: 'Le défilé', images: 6, allerRetour: true);
   }
   if (etat.drapeaux.contains('deuil_national')) {
-    return const Decor(dossier: 'balcon/jour/deuil', etat: 'deuil', nom: 'Le deuil national', images: 6);
+    return const Decor(
+      dossier: 'balcon/jour/deuil',
+      etat: 'deuil',
+      nom: 'Le deuil national',
+      images: 6,
+      allerRetour: true,
+    );
   }
 
   String d(String nom) => 'balcon/$heure/$nom';
 
-  if (j.peuple <= 25) return Decor(dossier: d('emeute'), etat: 'emeute', nom: "L'émeute", images: 6);
+  if (j.peuple <= 25) {
+    return Decor(dossier: d('emeute'), etat: 'emeute', nom: "L'émeute", images: 6, allerRetour: true);
+  }
   if (j.armee >= 70) {
-    return Decor(dossier: d('verrouillee'), etat: 'verrouillee', nom: "L'avenue verrouillée", images: 6);
+    return Decor(
+      dossier: d('verrouillee'),
+      etat: 'verrouillee',
+      nom: "L'avenue verrouillée",
+      images: 6,
+      allerRetour: true,
+    );
   }
   if (j.caisses <= 25) {
-    return Decor(dossier: d('eteinte'), etat: 'eteinte', nom: 'La ville éteinte', images: 6);
+    return Decor(dossier: d('eteinte'), etat: 'eteinte', nom: 'La ville éteinte', images: 6, allerRetour: true);
   }
   if (j.presse <= 25) {
-    // La boucle de nuit n'a que cinq clés : la sixième plaque d'origine est
-    // perdue, et une clé dupliquée figerait l'animation un huitième de
-    // seconde — mieux vaut cinq images qui bougent que six dont deux sont
-    // la même.
     return Decor(
       dossier: d('cameras'),
       etat: 'cameras',
       nom: 'Le siège des caméras',
-      images: estNuit(etat) ? 5 : 6,
+      images: 6,
+      allerRetour: true,
     );
   }
-  if (j.peuple >= 70) return Decor(dossier: d('liesse'), etat: 'liesse', nom: 'La liesse', images: 6);
+  if (j.peuple >= 70) {
+    return Decor(dossier: d('liesse'), etat: 'liesse', nom: 'La liesse', images: 6, allerRetour: true);
+  }
   if (j.caisses >= 65 && j.peuple >= 55) {
-    return Decor(dossier: d('prospere'), etat: 'prospere', nom: "L'avenue prospère", images: 6);
+    return Decor(
+      dossier: d('prospere'),
+      etat: 'prospere',
+      nom: "L'avenue prospère",
+      images: 6,
+      allerRetour: true,
+    );
   }
   if (etat.jour >= 55 && etat.jour <= 75) {
-    return Decor(dossier: d('pluies'), etat: 'pluies', nom: 'La saison des pluies', images: 6);
+    return Decor(
+      dossier: d('pluies'),
+      etat: 'pluies',
+      nom: 'La saison des pluies',
+      images: 6,
+      allerRetour: true,
+    );
   }
-  // De jour, l'avenue ordinaire est une seule image : ses six plaques
-  // d'origine sont perdues, et aucune régénération ne tient une boucle —
-  // mesuré quatre fois, les clés refaites se ressemblent à 0,66 au lieu de
-  // 0,94, et le fondu devient un saut. Une image nette qui respire par le
-  // travelling vaut mieux qu'une boucle floue.
   return Decor(
     dossier: d('ordinaire'),
     etat: 'ordinaire',
     nom: "L'avenue ordinaire",
-    images: estNuit(etat) ? 6 : 1,
+    images: 6,
+    allerRetour: true,
   );
 }
 
@@ -143,17 +191,34 @@ Decor decorDeLaChambre(EtatPartie etat) {
 /// l'état ne dépend pas des jauges mais du palais lui-même.
 const _vehicules = {'velo', 'quatre_quatre', 'motos', 'limousine'};
 
+/// La cour se remplit une voiture à la fois. Les quatre plaques ont été
+/// faites en cascade — la deuxième depuis la première, la troisième depuis
+/// la deuxième — pour que ce soit la même cour du début à la fin et que
+/// les véhicules s'ajoutent au lieu de se remplacer.
 Decor decorDuGarage(Set<String> objets) {
   final combien = objets.where(_vehicules.contains).length;
-  if (combien >= 2) {
+  if (combien >= 3) {
     return const Decor(dossier: 'pieces/garage_parc', etat: 'parc', nom: 'Le parc');
+  }
+  if (combien == 2) {
+    return const Decor(dossier: 'pieces/garage_trois', etat: 'trois', nom: 'Le 4×4 noir');
+  }
+  if (combien == 1) {
+    return const Decor(dossier: 'pieces/garage_deux', etat: 'deux', nom: 'La sportive');
   }
   return const Decor(dossier: 'pieces/garage_base', etat: 'base', nom: 'La voiture de fonction');
 }
 
 Decor decorDeLaPiscine(EtatPartie etat, Set<String> objets) {
   if (objets.contains('dimanche') && etat.style <= 35) {
-    return const Decor(dossier: 'pieces/piscine_quartier', etat: 'quartier', nom: 'Le dimanche du quartier');
+    // La seule pièce qui bouge : quand le quartier vient, l'eau bouge avec.
+    return const Decor(
+      dossier: 'pieces/piscine_quartier',
+      etat: 'quartier',
+      nom: 'Le dimanche du quartier',
+      images: 6,
+      allerRetour: true,
+    );
   }
   if (etat.jauges.caisses <= 15) {
     return const Decor(dossier: 'pieces/piscine_vide', etat: 'vide', nom: 'Le bassin vidé');
