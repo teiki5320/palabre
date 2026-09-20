@@ -32,7 +32,15 @@ CHAINES = {
 HOMMES = {'international', 'ministre', 'renseignements', 'maire', 'epoux'}
 
 # Ce que vaut chaque cran, dans les mots du jeu.
-CRANS = ['rien', 'un regard', 'un geste', 'une liaison', 'au grand jour', 'une demande']
+CRANS = ['rien', 'un regard', 'un geste', 'une liaison', 'au grand jour', 'mariés']
+
+# Ce que chaque drapeau de noces montre.
+NOCES = {
+    'noces_etat': "Dans la cour d'honneur — deux cents invités, la garde en "
+                  'grande tenue, la ville arrêtée trois heures.',
+    'noces_discretes': 'À la salle des mariages — dix minutes, quatre témoins, '
+                       'aucune photographie officielle.',
+}
 
 # Le cran à partir duquel le rendez-vous peut sortir, et la chambre se
 # partager. Lu dans romance.dart plutôt que recopié.
@@ -93,7 +101,7 @@ def lis():
             ch = c.get('chaine') or {}
             if ch.get('id') == chaine:
                 rangs[ch['rang']] = c
-        manque = [r for r in range(1, 7) if r not in rangs]
+        manque = [r for r in range(1, max(rangs) + 1) if r not in rangs]
         if manque:
             sys.exit(f'{chaine} : rangs absents {manque}')
         rdv = parId.get(f'rdv_{qui}')
@@ -181,12 +189,35 @@ def coiffe_du_rang(c, liaison):
     return porte
 
 
+def bloc_des_noces(e):
+    """Les deux cérémonies, quand une carte de la chaîne les propose."""
+    lieux = set()
+    for c in e['rangs'].values():
+        for r in (c['gauche'], c['droite']):
+            lieux.update(d for d in r.get('drapeaux', []) if d.startswith('noces_')
+                         and d != f"noces_{e['id']}")
+    if not lieux:
+        return ''
+    vues = ''.join(
+        f'<figure class="noce"><img src="noces/{e["id"]}_{d.split("_", 1)[1]}.jpg" alt="">'
+        f'<figcaption>{echappe(NOCES[d])}</figcaption></figure>'
+        for d in sorted(lieux))
+    return f'''    <div class="bloc">
+      <p class="etiquette">Le jour des noces</p>
+      <div class="noces">{vues}</div>
+      <p class="porte">La cérémonie se joue une fois, en plein écran, après la
+      réponse — comme une fin, mais au milieu du mandat. C'est le seul moment
+      du jeu qu'on ne peut pas revoir.</p>
+    </div>'''
+
+
 def echelle(e, liaison):
     p = e['personne']
     homme = e['id'] in HOMMES
+    noces = bloc_des_noces(e)
     courtise_une_presidente = homme
     cartes = []
-    for r in range(1, 7):
+    for r in sorted(e['rangs']):
         c = e['rangs'][r]
         cartes.append(vraie_carte(c, e['id'], {
             'titre': p.get('titre', ''),
@@ -203,12 +234,13 @@ def echelle(e, liaison):
       <img src="visages/{e['id']}.jpg" alt="{echappe(p['nom'])}">
       <div>
         <h2>{echappe(p['nom'])}</h2>
-        <p class="titre">sept cartes · {'une présidente' if homme else 'un président'} seulement</p>
+        <p class="titre">{len(cartes)} cartes · {'une présidente' if homme else 'un président'} seulement</p>
       </div>
     </div>
     <div class="galerie">
 {''.join(cartes)}
     </div>
+    {noces}
     <div class="bloc">
       <p class="etiquette">Et la chambre, ce soir-là</p>
       <div class="issue">
@@ -262,7 +294,7 @@ def acte_du_mariage(cartes):
   </section>'''
 
 
-GABARIT = '''<title>Comment une romance se joue</title>
+GABARIT = '''<title>{{TITRE}}</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Public+Sans:wght@0,400;0,600&display=swap">
 <style>
   :root{
@@ -348,6 +380,10 @@ GABARIT = '''<title>Comment une romance se joue</title>
   .issue{display:flex;gap:16px;align-items:flex-start}
   .issue img{width:120px;aspect-ratio:3/4;object-fit:cover;border-radius:3px;flex:none}
   .issue .porte{margin:0;max-width:52ch}
+  .noces{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:12px}
+  .noce{margin:0}
+  .noce img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:3px;display:block}
+  .noce figcaption{font-size:.76rem;color:var(--douce);margin-top:7px}
 
   footer{border-top:1px solid var(--trait);margin-top:52px;padding-top:20px}
   @media (max-width:520px){
@@ -357,11 +393,8 @@ GABARIT = '''<title>Comment une romance se joue</title>
 </style>
 <div class="page">
   <p class="surtitre">Palabre — Président pour 100 jours · version {{VERSION}}</p>
-  <h1>Comment une romance se joue</h1>
-  <p class="chapeau">Toutes les cartes d'une romance, dans l'ordre où elles
-  sortent : les trois qui mènent à la liaison, les trois qui vont de la liaison
-  à la demande, le rendez-vous qui se rejoue ensuite tous les dix jours, et les
-  {{MARIAGE}} qui n'existent qu'une fois marié.</p>
+  <h1>{{TITRE}}</h1>
+  <p class="chapeau">{{CHAPEAU}}</p>
   <p class="note">Une romance ne s'ouvre qu'aux parcours du sexe opposé : les
   cinq femmes ne se laissent courtiser que par un président, les cinq hommes
   que par une présidente. Chaque partie a donc cinq personnes à courtiser, pas
@@ -390,28 +423,49 @@ def version():
 
 
 def main():
-    sortie = sys.argv[1] if len(sys.argv) > 1 else os.path.join(RACINE, 'sources/romances/romances.html')
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    seul = next((a.split('=', 1)[1] for a in sys.argv[1:] if a.startswith('--seul=')), None)
+    sortie = args[0] if args else os.path.join(RACINE, 'sources/romances/romances.html')
     os.makedirs(os.path.dirname(sortie), exist_ok=True)
     liaison = cran_liaison()
     tout = lis()
+    titre = 'Comment une romance se joue'
+    chapeau = ("Toutes les cartes d'une romance, dans l'ordre où elles sortent : "
+               'celles qui mènent à la liaison, celles qui vont de la liaison à '
+               'la demande, le jour des noces, le rendez-vous qui se rejoue '
+               'ensuite tous les dix jours, et les {{MARIAGE}} qui n\'existent '
+               "qu'une fois marié.")
+    if seul:
+        tout = [e for e in tout if e['id'] == seul]
+        if not tout:
+            sys.exit(f'{seul} : personne de ce nom')
+        titre = 'Une romance entière'
+        chapeau = ('Une romance entière, de la première carte au lendemain du '
+                   "mariage, pour juger de l'ensemble avant d'écrire les neuf "
+                   'autres. Les cartes sont dessinées comme le jeu les dessine.')
     echelon = ''.join(
         f'<span><b>{i}</b>{echappe(nom)}</span>' for i, nom in enumerate(CRANS))
     cartes = json.load(open(os.path.join(RACINE, 'assets/contenu/cartes.json')))
     mariage = apres_le_mariage(cartes)
     corps = '\n'.join(echelle(e, liaison) for e in tout)
-    corps += '\n' + acte_du_mariage(mariage)
-    pied = (f'{len(tout) * 7 + len(mariage)} cartes en tout, lues dans le contenu '
+    if not seul:
+        corps += '\n' + acte_du_mariage(mariage)
+    total = sum(len(e['rangs']) + 1 for e in tout) + (0 if seul else len(mariage))
+    pied = (f'{total} cartes, lues dans le contenu '
             'du jeu : ce qui est écrit ici est ce qui se joue. Les jours ordinaires, '
             'la chambre montre seulement que l\'on n\'y dort plus seul — le '
             'déshabillage appartient au soir promis.')
     page = (GABARIT
             .replace('{{VERSION}}', version())
             .replace('{{ECHELON}}', echelon)
+            .replace('{{TITRE}}', titre)
+            .replace('{{CHAPEAU}}', chapeau)
             .replace('{{MARIAGE}}', f'{len(mariage)} cartes')
             .replace('{{PIED}}', echappe(pied))
             .replace('{{CORPS}}', corps))
     open(sortie, 'w').write(page)
-    print(f'{sortie} — {len(tout)} romances, {len(tout) * 7} cartes')
+    compte = sum(len(e['rangs']) + 1 for e in tout)
+    print(f'{sortie} — {len(tout)} romance(s), {compte} cartes')
 
 
 if __name__ == '__main__':

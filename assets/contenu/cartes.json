@@ -15436,265 +15436,6 @@
   "poids": 8
  },
  {
-  "id": "coeur_redactrice_1",
-  "personnage": "redactrice",
-  "humeur": "neutre",
-  "texte": "{titre}, il est deux heures et vous relisez encore mon papier. Je peux vous laisser, ou rester et le refaire avec vous.",
-  "gauche": {
-   "libelle": "Restez",
-   "effets": {
-    "presse": 5,
-    "peuple": -4,
-    "armee": -3
-   },
-   "journal": "La correction a duré jusqu'à quatre heures. La rédactrice est repartie avec le brouillon annoté de votre main.",
-   "romance": {
-    "mouvement": 1
-   }
-  },
-  "droite": {
-   "libelle": "Laissez-le-moi",
-   "effets": {
-    "presse": -4,
-    "caisses": 4,
-    "peuple": 3
-   },
-   "journal": "Le papier a paru sans correction. Deux phrases sur le port y ont survécu, que le ministère demandait de retirer."
-  },
-  "conditions": {
-   "attache_max": 0,
-   "jour_min": 10,
-   "parcours": [
-    "general_parcours",
-    "syndicaliste",
-    "footballeur",
-    "putschiste",
-    "technocrate"
-   ]
-  },
-  "chaine": {
-   "id": "coeur_redactrice",
-   "rang": 1
-  },
-  "poids": 3
- },
- {
-  "id": "coeur_redactrice_2",
-  "personnage": "redactrice",
-  "humeur": "neutre",
-  "texte": "{titre}, je n'ai pas écrit une ligne sur vous depuis douze jours. Mon adjoint me l'a fait remarquer devant toute la salle.",
-  "gauche": {
-   "libelle": "Écrivez-en une",
-   "effets": {
-    "presse": 6,
-    "peuple": -4,
-    "armee": -3
-   },
-   "journal": "Un article sur le budget a paru sous sa signature. Il ne dit rien qu'elle ne vous ait déjà dit en face."
-  },
-  "droite": {
-   "libelle": "Qu'il remarque",
-   "effets": {
-    "presse": -6,
-    "peuple": 4,
-    "caisses": 3
-   },
-   "journal": "Rien n'a paru cette semaine. L'adjoint a demandé sa mutation aux sports, par écrit, en deux lignes.",
-   "romance": {
-    "mouvement": 1
-   }
-  },
-  "conditions": {
-   "attache_min": 1,
-   "attache_max": 1,
-   "parcours": [
-    "general_parcours",
-    "syndicaliste",
-    "footballeur",
-    "putschiste",
-    "technocrate"
-   ]
-  },
-  "chaine": {
-   "id": "coeur_redactrice",
-   "rang": 2,
-   "delai_min": 5
-  }
- },
- {
-  "id": "coeur_redactrice_3",
-  "personnage": "redactrice",
-  "humeur": "neutre",
-  "texte": "{nom}, votre chauffeur m'attend en bas depuis une heure, et il le dira à quelqu'un. Je monte, ou je rentre à pied.",
-  "gauche": {
-   "libelle": "Montez",
-   "effets": {
-    "presse": 4,
-    "armee": -4,
-    "peuple": -3
-   },
-   "journal": "La voiture est repartie vide à trois heures. Le chauffeur a pris son service le lendemain sans un mot.",
-   "romance": {
-    "mouvement": 1
-   }
-  },
-  "droite": {
-   "libelle": "Rentrez",
-   "effets": {
-    "presse": -5,
-    "peuple": 4,
-    "caisses": 3
-   },
-   "journal": "Elle est rentrée à pied par l'avenue. Un photographe l'a saluée au coin, et n'a pas levé son appareil."
-  },
-  "conditions": {
-   "attache_min": 2,
-   "attache_max": 2,
-   "parcours": [
-    "general_parcours",
-    "syndicaliste",
-    "footballeur",
-    "putschiste",
-    "technocrate"
-   ]
-  },
-  "chaine": {
-   "id": "coeur_redactrice",
-   "rang": 3,
-   "delai_min": 6
-  }
- },
- {
-  "id": "coeur_redactrice_4",
-  "personnage": "redactrice",
-  "humeur": "neutre",
-  "texte": "{nom}, on peut continuer des mois sans que personne le sache. Ou on peut arrêter de faire semblant. Les deux me vont.",
-  "gauche": {
-   "libelle": "Comme ça",
-   "effets": {
-    "presse": 5,
-    "peuple": -4,
-    "armee": -3
-   },
-   "journal": "Aucune photographie, aucune rumeur nouvelle. Le journal a publié son enquête sur les douanes, en deux pages."
-  },
-  "droite": {
-   "libelle": "Arrêtons",
-   "effets": {
-    "peuple": 6,
-    "presse": -7,
-    "caisses": -3
-   },
-   "journal": "Vous êtes arrivés ensemble au dîner du palais. Trois journaux ont titré sur la rédactrice, aucun sur le dîner.",
-   "romance": {
-    "mouvement": 1
-   }
-  },
-  "conditions": {
-   "attache_min": 3,
-   "attache_max": 3,
-   "parcours": [
-    "general_parcours",
-    "syndicaliste",
-    "footballeur",
-    "putschiste",
-    "technocrate"
-   ]
-  },
-  "chaine": {
-   "id": "coeur_redactrice",
-   "rang": 4,
-   "delai_min": 7
-  }
- },
- {
-  "id": "coeur_redactrice_5",
-  "personnage": "redactrice",
-  "humeur": "fache",
-  "texte": "{nom}, mon propre journal a reçu une photo de nous deux. C'est mon adjoint qui l'a ouverte, et il attend ma réponse.",
-  "gauche": {
-   "libelle": "Qu'elle paraisse",
-   "effets": {
-    "presse": 7,
-    "peuple": -6,
-    "armee": -4
-   },
-   "journal": "La photographie a paru en page trois, sans légende. La rédactrice a signé l'éditorial du jour, sur la vie privée.",
-   "style": -5
-  },
-  "droite": {
-   "libelle": "Enterrez-la",
-   "effets": {
-    "presse": -8,
-    "armee": 5,
-    "caisses": 4
-   },
-   "journal": "La photographie n'a pas paru. L'adjoint est nommé correspondant dans le nord, avec une prime de déplacement.",
-   "style": 7
-  },
-  "conditions": {
-   "attache_min": 3,
-   "parcours": [
-    "general_parcours",
-    "syndicaliste",
-    "footballeur",
-    "putschiste",
-    "technocrate"
-   ]
-  },
-  "chaine": {
-   "id": "coeur_redactrice",
-   "rang": 5,
-   "delai_min": 6
-  }
- },
- {
-  "id": "coeur_redactrice_6",
-  "personnage": "redactrice",
-  "humeur": "neutre",
-  "texte": "{nom}, je ne demanderai pas deux fois. Ou vous m'épousez, ou je reprends ma place, et mon journal avec.",
-  "gauche": {
-   "libelle": "Je vous épouse",
-   "effets": {
-    "peuple": 7,
-    "presse": -8,
-    "caisses": -4
-   },
-   "journal": "Le mariage a été annoncé par un communiqué de six lignes. Elle a quitté la direction du journal le soir même.",
-   "romance": {
-    "epouse": true
-   }
-  },
-  "droite": {
-   "libelle": "Reprenez-la",
-   "effets": {
-    "presse": 6,
-    "peuple": -5,
-    "armee": 3
-   },
-   "journal": "Elle a repris la direction du journal lundi. Sa première une portait sur le marché des uniformes.",
-   "romance": {
-    "rupture": true
-   }
-  },
-  "conditions": {
-   "attache_min": 4,
-   "marie": false,
-   "parcours": [
-    "general_parcours",
-    "syndicaliste",
-    "footballeur",
-    "putschiste",
-    "technocrate"
-   ]
-  },
-  "chaine": {
-   "id": "coeur_redactrice",
-   "rang": 6,
-   "delai_min": 8
-  }
- },
- {
   "id": "coeur_cabinet_1",
   "personnage": "cabinet",
   "humeur": "neutre",
@@ -18488,5 +18229,437 @@
   "repetable": true,
   "attente": 10,
   "poids": 2
+ },
+ {
+  "id": "coeur_redactrice_1",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, il est deux heures et vous relisez encore mon papier. Je peux vous laisser, ou rester et le refaire avec vous.",
+  "gauche": {
+   "libelle": "Restez",
+   "effets": {
+    "presse": 5,
+    "peuple": -4,
+    "armee": -3
+   },
+   "journal": "La correction a duré jusqu'à quatre heures. La rédactrice est repartie avec le brouillon annoté de votre main.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Laissez-le-moi",
+   "effets": {
+    "presse": -4,
+    "caisses": 4,
+    "peuple": 3
+   },
+   "journal": "Le papier a paru sans correction. Deux phrases sur le port y ont survécu, que le ministère demandait de retirer."
+  },
+  "conditions": {
+   "attache_max": 0,
+   "jour_min": 10,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 1
+  },
+  "poids": 3
+ },
+ {
+  "id": "coeur_redactrice_2",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, je n'ai pas écrit une ligne sur vous depuis douze jours. Mon adjoint me l'a fait remarquer devant toute la salle.",
+  "gauche": {
+   "libelle": "Écrivez-en une",
+   "effets": {
+    "presse": 6,
+    "peuple": -4,
+    "armee": -3
+   },
+   "journal": "Un article sur le budget a paru sous sa signature. Il ne dit rien qu'elle ne vous ait déjà dit en face."
+  },
+  "droite": {
+   "libelle": "Qu'il remarque",
+   "effets": {
+    "presse": -6,
+    "peuple": 4,
+    "caisses": 3
+   },
+   "journal": "Rien n'a paru cette semaine. L'adjoint a demandé sa mutation aux sports, par écrit, en deux lignes.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "conditions": {
+   "attache_min": 1,
+   "attache_max": 1,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 2,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_redactrice_3",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{nom}, votre chauffeur m'attend en bas depuis une heure, et il le dira à quelqu'un. Je monte, ou je rentre à pied.",
+  "gauche": {
+   "libelle": "Montez",
+   "effets": {
+    "presse": 4,
+    "armee": -4,
+    "peuple": -3
+   },
+   "journal": "La voiture est repartie vide à trois heures. Le chauffeur a pris son service le lendemain sans un mot.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "droite": {
+   "libelle": "Rentrez",
+   "effets": {
+    "presse": -5,
+    "peuple": 4,
+    "caisses": 3
+   },
+   "journal": "Elle est rentrée à pied par l'avenue. Un photographe l'a saluée au coin, et n'a pas levé son appareil."
+  },
+  "conditions": {
+   "attache_min": 2,
+   "attache_max": 2,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 3,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_redactrice_4",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{nom}, on peut continuer des mois sans que personne le sache. Ou on peut arrêter de faire semblant. Les deux me vont.",
+  "gauche": {
+   "libelle": "Comme ça",
+   "effets": {
+    "presse": 5,
+    "peuple": -4,
+    "armee": -3
+   },
+   "journal": "Aucune photographie, aucune rumeur nouvelle. Le journal a publié son enquête sur les douanes, en deux pages."
+  },
+  "droite": {
+   "libelle": "Arrêtons",
+   "effets": {
+    "peuple": 6,
+    "presse": -7,
+    "caisses": -3
+   },
+   "journal": "Vous êtes arrivés ensemble au dîner du palais. Trois journaux ont titré sur la rédactrice, aucun sur le dîner.",
+   "romance": {
+    "mouvement": 1
+   }
+  },
+  "conditions": {
+   "attache_min": 3,
+   "attache_max": 3,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 4,
+   "delai_min": 7
+  }
+ },
+ {
+  "id": "coeur_redactrice_5",
+  "personnage": "redactrice",
+  "humeur": "fache",
+  "texte": "{nom}, mon propre journal a reçu une photo de nous deux. C'est mon adjoint qui l'a ouverte, et il attend ma réponse.",
+  "gauche": {
+   "libelle": "Qu'elle paraisse",
+   "effets": {
+    "presse": 7,
+    "peuple": -6,
+    "armee": -4
+   },
+   "journal": "La photographie a paru en page trois, sans légende. La rédactrice a signé l'éditorial du jour, sur la vie privée.",
+   "style": -5
+  },
+  "droite": {
+   "libelle": "Enterrez-la",
+   "effets": {
+    "presse": -8,
+    "armee": 5,
+    "caisses": 4
+   },
+   "journal": "La photographie n'a pas paru. L'adjoint est nommé correspondant dans le nord, avec une prime de déplacement.",
+   "style": 7
+  },
+  "conditions": {
+   "attache_min": 3,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 5,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_redactrice_6",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{nom}, ma rédaction ne me croit plus quand je vous critique. Mon adjoint signe les éditos à ma place, et il les signe bien.",
+  "gauche": {
+   "libelle": "Qu'il signe",
+   "effets": {
+    "presse": 5,
+    "peuple": -4,
+    "caisses": -3
+   },
+   "journal": "L'éditorial de mercredi portait la signature de l'adjoint. Il y démontait le budget des routes, ligne à ligne."
+  },
+  "droite": {
+   "libelle": "Reprenez la plume",
+   "effets": {
+    "presse": -5,
+    "peuple": 4,
+    "caisses": 3
+   },
+   "journal": "La rédactrice en chef a repris les éditoriaux. Trois journalistes ont demandé leur mutation la même semaine."
+  },
+  "conditions": {
+   "attache_min": 4,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 6,
+   "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_redactrice_7",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{nom}, ma mère a lu le journal avant moi ce matin. Elle demande si vous venez manger dimanche, ou si elle doit l'apprendre autrement.",
+  "gauche": {
+   "libelle": "J'irai dimanche",
+   "effets": {
+    "peuple": 5,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "Le cortège présidentiel s'est arrêté dimanche dans une cour du quartier des Tanneurs. Personne n'avait prévenu la presse."
+  },
+  "droite": {
+   "libelle": "Pas maintenant",
+   "effets": {
+    "peuple": -5,
+    "caisses": 4,
+    "presse": 3
+   },
+   "journal": "Le déjeuner n'a pas eu lieu. La rédactrice en chef n'a pas paru au journal de la semaine."
+  },
+  "conditions": {
+   "attache_min": 4,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 7,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_redactrice_8",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{nom}, si cela continue je ne serai plus jamais journaliste. J'y consens. Mais je veux savoir à quoi je renonce, et pour quoi.",
+  "gauche": {
+   "libelle": "Pour de bon",
+   "effets": {
+    "peuple": 5,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "Le Président a parlé d'elle au singulier, en public, sans la nommer. Tout le monde a compris."
+  },
+  "droite": {
+   "libelle": "Je ne sais pas",
+   "effets": {
+    "peuple": -5,
+    "presse": 4,
+    "caisses": 3
+   },
+   "journal": "La rédactrice en chef est retournée au journal ce soir-là. Elle y a dormi."
+  },
+  "conditions": {
+   "attache_min": 4,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 8,
+   "delai_min": 6
+  }
+ },
+ {
+  "id": "coeur_redactrice_9",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{nom}, je ne demanderai pas deux fois. Ou vous m'épousez, ou je reprends ma place, et mon journal avec moi.",
+  "gauche": {
+   "libelle": "Épousons-nous",
+   "effets": {
+    "peuple": 6,
+    "caisses": -5,
+    "presse": -4
+   },
+   "drapeaux": [
+    "noces_redactrice"
+   ],
+   "journal": "Le Président a dit oui devant trois témoins, dont son chauffeur. La date n'a pas été annoncée."
+  },
+  "droite": {
+   "libelle": "Reprenez-la",
+   "effets": {
+    "presse": 6,
+    "caisses": 4,
+    "peuple": -6
+   },
+   "romance": {
+    "rupture": true
+   },
+   "journal": "La rédactrice en chef a repris la direction du journal. Son premier éditorial ne parlait pas du palais."
+  },
+  "conditions": {
+   "attache_min": 4,
+   "marie": false,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 9,
+   "delai_min": 7
+  }
+ },
+ {
+  "id": "coeur_redactrice_10",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{nom}, le protocole veut la cour d'honneur et deux cents invités. Moi, la salle des mariages et personne. Vous tranchez.",
+  "gauche": {
+   "libelle": "À la mairie",
+   "effets": {
+    "caisses": 5,
+    "presse": 4,
+    "peuple": -5
+   },
+   "drapeaux": [
+    "noces_discretes"
+   ],
+   "romance": {
+    "epouse": true,
+    "mouvement": 1
+   },
+   "journal": "Le mariage a été célébré à la salle des mariages, en dix minutes, devant quatre témoins. Aucune photographie officielle."
+  },
+  "droite": {
+   "libelle": "Dans la cour",
+   "effets": {
+    "peuple": 6,
+    "caisses": -6,
+    "presse": -3
+   },
+   "drapeaux": [
+    "noces_etat"
+   ],
+   "romance": {
+    "epouse": true,
+    "mouvement": 1
+   },
+   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue, et la ville arrêtée trois heures."
+  },
+  "conditions": {
+   "drapeaux_requis": [
+    "noces_redactrice"
+   ],
+   "marie": false,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 10,
+   "delai_min": 5
+  }
  }
 ]
