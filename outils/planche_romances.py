@@ -49,9 +49,17 @@ def echappe(s):
              .replace('"', '&quot;'))
 
 
-def habille(texte):
-    """Le texte tel que le joueur le lit, titre et nom posés."""
-    return texte.replace('{titre}', 'Madame la Présidente').replace('{nom}', 'Awa')
+def habille(texte, president_femme):
+    """Le texte tel que le joueur le lit, titre et nom posés.
+
+    Une romance ne s'ouvre qu'aux parcours du sexe opposé : c'est donc un
+    président que la rédactrice courtise, et une présidente que le maire
+    courtise. Poser le mauvais titre ici ferait lire toute la page de
+    travers.
+    """
+    titre = 'Madame la Présidente' if president_femme else 'Monsieur le Président'
+    nom = 'Awa' if president_femme else 'Idriss'
+    return texte.replace('{titre}', titre).replace('{nom}', nom)
 
 
 def mouvement(reponse):
@@ -117,7 +125,7 @@ def effets(reponse):
     return ''.join(out)
 
 
-def vraie_carte(c, qui, coiffe):
+def vraie_carte(c, qui, coiffe, president_femme):
     """La carte comme l'ecran la dessine : le portrait plein cadre, le titre
     en or, et ce que la personne dit. Les deux libelles n'apparaissent en
     jeu que pendant le geste — ici ils sont dessous, avec leur prix."""
@@ -126,7 +134,7 @@ def vraie_carte(c, qui, coiffe):
           <img src="portraits/{qui}_{c['humeur']}.jpg" alt="">
           <div class="bandeau">
             <p class="qualite">{echappe(coiffe['titre'].upper())}</p>
-            <p class="dit">{echappe(habille(c['texte']))}</p>
+            <p class="dit">{echappe(habille(c['texte'], president_femme))}</p>
           </div>
         </div>
         <figcaption>
@@ -175,26 +183,27 @@ def coiffe_du_rang(c, liaison):
 
 def echelle(e, liaison):
     p = e['personne']
+    homme = e['id'] in HOMMES
+    courtise_une_presidente = homme
     cartes = []
     for r in range(1, 7):
         c = e['rangs'][r]
         cartes.append(vraie_carte(c, e['id'], {
             'titre': p.get('titre', ''),
             'porte': f'{r} · ' + coiffe_du_rang(c, liaison),
-        }))
+        }, courtise_une_presidente))
     rdv = e['rdv']
     cartes.append(vraie_carte(rdv, e['id'], {
         'titre': p.get('titre', ''),
         'porte': 'le rendez-vous · attache au cran '
                  f'{liaison} ou plus · se rejoue tous les 10 jours',
-    }))
-    homme = e['id'] in HOMMES
+    }, courtise_une_presidente))
     return f'''  <section class="personne">
     <div class="tete">
       <img src="visages/{e['id']}.jpg" alt="{echappe(p['nom'])}">
       <div>
         <h2>{echappe(p['nom'])}</h2>
-        <p class="titre">sept cartes, du premier regard au soir promis</p>
+        <p class="titre">sept cartes · {'une présidente' if homme else 'un président'} seulement</p>
       </div>
     </div>
     <div class="galerie">
@@ -230,7 +239,7 @@ def carte_mariee(c):
     return vraie_carte(c, 'conjoint', {
         'titre': 'la personne que vous avez épousée',
         'porte': ' · '.join(porte) or 'une fois marié',
-    })
+    }, True)
 
 
 def acte_du_mariage(cartes):
@@ -353,6 +362,10 @@ GABARIT = '''<title>Comment une romance se joue</title>
   sortent : les trois qui mènent à la liaison, les trois qui vont de la liaison
   à la demande, le rendez-vous qui se rejoue ensuite tous les dix jours, et les
   {{MARIAGE}} qui n'existent qu'une fois marié.</p>
+  <p class="note">Une romance ne s'ouvre qu'aux parcours du sexe opposé : les
+  cinq femmes ne se laissent courtiser que par un président, les cinq hommes
+  que par une présidente. Chaque partie a donc cinq personnes à courtiser, pas
+  dix, et le titre change avec le parcours choisi.</p>
   <p class="note">L'attache ne monte jamais toute seule. Aucune jauge, aucun jour
   qui passe ne la déplace : seule une réponse qui la déclare la fait bouger, et
   une carte ne sort que si l'attache est exactement au cran qu'elle attend. On

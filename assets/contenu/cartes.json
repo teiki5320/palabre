@@ -15463,7 +15463,14 @@
   },
   "conditions": {
    "attache_max": 0,
-   "jour_min": 10
+   "jour_min": 10,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_redactrice",
@@ -15499,7 +15506,14 @@
   },
   "conditions": {
    "attache_min": 1,
-   "attache_max": 1
+   "attache_max": 1,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_redactrice",
@@ -15535,7 +15549,14 @@
   },
   "conditions": {
    "attache_min": 2,
-   "attache_max": 2
+   "attache_max": 2,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_redactrice",
@@ -15571,7 +15592,14 @@
   },
   "conditions": {
    "attache_min": 3,
-   "attache_max": 3
+   "attache_max": 3,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_redactrice",
@@ -15605,7 +15633,14 @@
    "style": 7
   },
   "conditions": {
-   "attache_min": 3
+   "attache_min": 3,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_redactrice",
@@ -15644,7 +15679,14 @@
   },
   "conditions": {
    "attache_min": 4,
-   "marie": false
+   "marie": false,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_redactrice",
@@ -15680,7 +15722,14 @@
   },
   "conditions": {
    "attache_max": 0,
-   "jour_min": 12
+   "jour_min": 12,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_cabinet",
@@ -15716,7 +15765,14 @@
   },
   "conditions": {
    "attache_min": 1,
-   "attache_max": 1
+   "attache_max": 1,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_cabinet",
@@ -15752,7 +15808,14 @@
   },
   "conditions": {
    "attache_min": 2,
-   "attache_max": 2
+   "attache_max": 2,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_cabinet",
@@ -15788,7 +15851,14 @@
   },
   "conditions": {
    "attache_min": 3,
-   "attache_max": 3
+   "attache_max": 3,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_cabinet",
@@ -15821,7 +15891,14 @@
    "style": 5
   },
   "conditions": {
-   "attache_min": 3
+   "attache_min": 3,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_cabinet",
@@ -15860,7 +15937,14 @@
   },
   "conditions": {
    "attache_min": 4,
-   "marie": false
+   "marie": false,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_cabinet",
@@ -15896,7 +15980,14 @@
   },
   "conditions": {
    "attache_max": 0,
-   "jour_min": 14
+   "jour_min": 14,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_emissaire",
@@ -15932,7 +16023,14 @@
   },
   "conditions": {
    "attache_min": 1,
-   "attache_max": 1
+   "attache_max": 1,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_emissaire",
@@ -15968,7 +16066,14 @@
   },
   "conditions": {
    "attache_min": 2,
-   "attache_max": 2
+   "attache_max": 2,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_emissaire",
@@ -16004,7 +16109,14 @@
   },
   "conditions": {
    "attache_min": 3,
-   "attache_max": 3
+   "attache_max": 3,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_emissaire",
@@ -16038,7 +16150,14 @@
    "style": 6
   },
   "conditions": {
-   "attache_min": 3
+   "attache_min": 3,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_emissaire",
@@ -16075,7 +16194,14 @@
   },
   "conditions": {
    "attache_min": 4,
-   "marie": false
+   "marie": false,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_emissaire",
@@ -16114,7 +16240,14 @@
     "militante"
    ],
    "attache_max": 0,
-   "jour_min": 10
+   "jour_min": 10,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_militante",
@@ -16152,7 +16285,14 @@
     "militante"
    ],
    "attache_min": 1,
-   "attache_max": 1
+   "attache_max": 1,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_militante",
@@ -16191,7 +16331,14 @@
     "militante"
    ],
    "attache_min": 2,
-   "attache_max": 2
+   "attache_max": 2,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_militante",
@@ -16230,7 +16377,14 @@
     "militante"
    ],
    "attache_min": 3,
-   "attache_max": 3
+   "attache_max": 3,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_militante",
@@ -16267,7 +16421,14 @@
    "parcours_interdits": [
     "militante"
    ],
-   "attache_min": 3
+   "attache_min": 3,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_militante",
@@ -16309,7 +16470,14 @@
     "militante"
    ],
    "attache_min": 4,
-   "marie": false
+   "marie": false,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_militante",
@@ -16345,7 +16513,14 @@
   },
   "conditions": {
    "attache_max": 0,
-   "jour_min": 8
+   "jour_min": 8,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_protocole",
@@ -16381,7 +16556,14 @@
   },
   "conditions": {
    "attache_min": 1,
-   "attache_max": 1
+   "attache_max": 1,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_protocole",
@@ -16417,7 +16599,14 @@
   },
   "conditions": {
    "attache_min": 2,
-   "attache_max": 2
+   "attache_max": 2,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_protocole",
@@ -16453,7 +16642,14 @@
   },
   "conditions": {
    "attache_min": 3,
-   "attache_max": 3
+   "attache_max": 3,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_protocole",
@@ -16486,7 +16682,14 @@
    "style": 7
   },
   "conditions": {
-   "attache_min": 3
+   "attache_min": 3,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_protocole",
@@ -16525,7 +16728,14 @@
   },
   "conditions": {
    "attache_min": 4,
-   "marie": false
+   "marie": false,
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ]
   },
   "chaine": {
    "id": "coeur_protocole",
@@ -16564,7 +16774,14 @@
     "footballeur"
    ],
    "attache_max": 0,
-   "jour_min": 10
+   "jour_min": 10,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_international",
@@ -16603,7 +16820,14 @@
     "footballeur"
    ],
    "attache_min": 1,
-   "attache_max": 1
+   "attache_max": 1,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_international",
@@ -16642,7 +16866,14 @@
     "footballeur"
    ],
    "attache_min": 2,
-   "attache_max": 2
+   "attache_max": 2,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_international",
@@ -16681,7 +16912,14 @@
     "footballeur"
    ],
    "attache_min": 3,
-   "attache_max": 3
+   "attache_max": 3,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_international",
@@ -16717,7 +16955,14 @@
    "parcours_interdits": [
     "footballeur"
    ],
-   "attache_min": 3
+   "attache_min": 3,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_international",
@@ -16759,7 +17004,14 @@
     "footballeur"
    ],
    "attache_min": 4,
-   "marie": false
+   "marie": false,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_international",
@@ -16795,7 +17047,14 @@
   },
   "conditions": {
    "attache_max": 0,
-   "jour_min": 12
+   "jour_min": 12,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_ministre",
@@ -16831,7 +17090,14 @@
   },
   "conditions": {
    "attache_min": 1,
-   "attache_max": 1
+   "attache_max": 1,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_ministre",
@@ -16869,7 +17135,14 @@
   },
   "conditions": {
    "attache_min": 2,
-   "attache_max": 2
+   "attache_max": 2,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_ministre",
@@ -16905,7 +17178,14 @@
   },
   "conditions": {
    "attache_min": 3,
-   "attache_max": 3
+   "attache_max": 3,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_ministre",
@@ -16939,7 +17219,14 @@
    "style": 7
   },
   "conditions": {
-   "attache_min": 3
+   "attache_min": 3,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_ministre",
@@ -16978,7 +17265,14 @@
   },
   "conditions": {
    "attache_min": 4,
-   "marie": false
+   "marie": false,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_ministre",
@@ -17014,7 +17308,14 @@
   },
   "conditions": {
    "attache_max": 0,
-   "jour_min": 12
+   "jour_min": 12,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_renseignements",
@@ -17050,7 +17351,14 @@
   },
   "conditions": {
    "attache_min": 1,
-   "attache_max": 1
+   "attache_max": 1,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_renseignements",
@@ -17088,7 +17396,14 @@
   },
   "conditions": {
    "attache_min": 2,
-   "attache_max": 2
+   "attache_max": 2,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_renseignements",
@@ -17124,7 +17439,14 @@
   },
   "conditions": {
    "attache_min": 3,
-   "attache_max": 3
+   "attache_max": 3,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_renseignements",
@@ -17158,7 +17480,14 @@
    "style": -4
   },
   "conditions": {
-   "attache_min": 3
+   "attache_min": 3,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_renseignements",
@@ -17197,7 +17526,14 @@
   },
   "conditions": {
    "attache_min": 4,
-   "marie": false
+   "marie": false,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_renseignements",
@@ -17233,7 +17569,14 @@
   },
   "conditions": {
    "attache_max": 0,
-   "jour_min": 12
+   "jour_min": 12,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_maire",
@@ -17269,7 +17612,14 @@
   },
   "conditions": {
    "attache_min": 1,
-   "attache_max": 1
+   "attache_max": 1,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_maire",
@@ -17305,7 +17655,14 @@
   },
   "conditions": {
    "attache_min": 2,
-   "attache_max": 2
+   "attache_max": 2,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_maire",
@@ -17341,7 +17698,14 @@
   },
   "conditions": {
    "attache_min": 3,
-   "attache_max": 3
+   "attache_max": 3,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_maire",
@@ -17375,7 +17739,14 @@
    "style": 6
   },
   "conditions": {
-   "attache_min": 3
+   "attache_min": 3,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_maire",
@@ -17414,7 +17785,14 @@
   },
   "conditions": {
    "attache_min": 4,
-   "marie": false
+   "marie": false,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_maire",
@@ -17450,7 +17828,14 @@
   },
   "conditions": {
    "attache_max": 0,
-   "jour_min": 8
+   "jour_min": 8,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_intendant",
@@ -17486,7 +17871,14 @@
   },
   "conditions": {
    "attache_min": 1,
-   "attache_max": 1
+   "attache_max": 1,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_intendant",
@@ -17522,7 +17914,14 @@
   },
   "conditions": {
    "attache_min": 2,
-   "attache_max": 2
+   "attache_max": 2,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_intendant",
@@ -17558,7 +17957,14 @@
   },
   "conditions": {
    "attache_min": 3,
-   "attache_max": 3
+   "attache_max": 3,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_intendant",
@@ -17592,7 +17998,14 @@
    "style": 5
   },
   "conditions": {
-   "attache_min": 3
+   "attache_min": 3,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_intendant",
@@ -17631,7 +18044,14 @@
   },
   "conditions": {
    "attache_min": 4,
-   "marie": false
+   "marie": false,
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ]
   },
   "chaine": {
    "id": "coeur_intendant",
@@ -17669,6 +18089,13 @@
    "attache_min": 3,
    "drapeaux_interdits": [
     "rdv_redactrice"
+   ],
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
    ]
   },
   "repetable": true,
@@ -17705,6 +18132,13 @@
    "attache_min": 3,
    "drapeaux_interdits": [
     "rdv_cabinet"
+   ],
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
    ]
   },
   "repetable": true,
@@ -17741,6 +18175,13 @@
    "attache_min": 3,
    "drapeaux_interdits": [
     "rdv_emissaire"
+   ],
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
    ]
   },
   "repetable": true,
@@ -17777,6 +18218,13 @@
    "attache_min": 3,
    "drapeaux_interdits": [
     "rdv_militante"
+   ],
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
    ]
   },
   "repetable": true,
@@ -17813,6 +18261,13 @@
    "attache_min": 3,
    "drapeaux_interdits": [
     "rdv_epouse"
+   ],
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
    ]
   },
   "repetable": true,
@@ -17849,6 +18304,13 @@
    "attache_min": 3,
    "drapeaux_interdits": [
     "rdv_international"
+   ],
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
    ]
   },
   "repetable": true,
@@ -17885,6 +18347,13 @@
    "attache_min": 3,
    "drapeaux_interdits": [
     "rdv_ministre"
+   ],
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
    ]
   },
   "repetable": true,
@@ -17921,6 +18390,13 @@
    "attache_min": 3,
    "drapeaux_interdits": [
     "rdv_renseignements"
+   ],
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
    ]
   },
   "repetable": true,
@@ -17957,6 +18433,13 @@
    "attache_min": 3,
    "drapeaux_interdits": [
     "rdv_maire"
+   ],
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
    ]
   },
   "repetable": true,
@@ -17993,6 +18476,13 @@
    "attache_min": 3,
    "drapeaux_interdits": [
     "rdv_epoux"
+   ],
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
    ]
   },
   "repetable": true,
