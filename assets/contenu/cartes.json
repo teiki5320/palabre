@@ -17638,5 +17638,365 @@
    "rang": 6,
    "delai_min": 8
   }
+ },
+ {
+  "id": "rdv_redactrice",
+  "personnage": "redactrice",
+  "humeur": "content",
+  "texte": "{titre}, je boucle à sept heures. Après, je ne suis plus journaliste. On m'a dit que votre chambre avait une vue.",
+  "gauche": {
+   "libelle": "Ce soir, oui",
+   "effets": {
+    "peuple": 4,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "La rédactrice en chef est montée après le bouclage. Le papier du lendemain était court.",
+   "drapeaux": [
+    "rdv_redactrice"
+   ]
+  },
+  "droite": {
+   "libelle": "Pas ce soir",
+   "effets": {
+    "presse": 4,
+    "caisses": 3,
+    "peuple": -4
+   },
+   "journal": "Le papier est parti sans correction. La rédactrice n'est pas montée."
+  },
+  "conditions": {
+   "attache_min": 3,
+   "drapeaux_interdits": [
+    "rdv_redactrice"
+   ]
+  },
+  "repetable": true,
+  "attente": 10,
+  "poids": 2
+ },
+ {
+  "id": "rdv_cabinet",
+  "personnage": "cabinet",
+  "humeur": "content",
+  "texte": "{titre}, j'ai vidé votre soirée moi-même. Personne au palais ne sait pourquoi. Moi, si.",
+  "gauche": {
+   "libelle": "Ce soir, oui",
+   "effets": {
+    "peuple": 4,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "L'agenda du soir est resté vide. La directrice de cabinet n'a pas dit qui l'avait rempli.",
+   "drapeaux": [
+    "rdv_cabinet"
+   ]
+  },
+  "droite": {
+   "libelle": "Pas ce soir",
+   "effets": {
+    "presse": 4,
+    "caisses": 3,
+    "peuple": -4
+   },
+   "journal": "La soirée a été rendue au travail. La directrice de cabinet a rempli l'agenda sans commentaire."
+  },
+  "conditions": {
+   "attache_min": 3,
+   "drapeaux_interdits": [
+    "rdv_cabinet"
+   ]
+  },
+  "repetable": true,
+  "attente": 10,
+  "poids": 2
+ },
+ {
+  "id": "rdv_emissaire",
+  "personnage": "emissaire",
+  "humeur": "content",
+  "texte": "{titre}, mon avion part demain midi. Il reste une nuit, et je n'ai pas envie de la passer sur des chiffres.",
+  "gauche": {
+   "libelle": "Ce soir, oui",
+   "effets": {
+    "peuple": 4,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "L'émissaire est repartie le lendemain. La note technique n'a jamais été relue.",
+   "drapeaux": [
+    "rdv_emissaire"
+   ]
+  },
+  "droite": {
+   "libelle": "Pas ce soir",
+   "effets": {
+    "presse": 4,
+    "caisses": 3,
+    "peuple": -4
+   },
+   "journal": "L'émissaire a relu la note jusqu'à minuit, seule. L'avion est parti à l'heure."
+  },
+  "conditions": {
+   "attache_min": 3,
+   "drapeaux_interdits": [
+    "rdv_emissaire"
+   ]
+  },
+  "repetable": true,
+  "attente": 10,
+  "poids": 2
+ },
+ {
+  "id": "rdv_militante",
+  "personnage": "militante",
+  "humeur": "content",
+  "texte": "{titre}, j'ai crié contre vous toute la journée. Ce soir, j'aimerais qu'on se taise, tous les deux.",
+  "gauche": {
+   "libelle": "Ce soir, oui",
+   "effets": {
+    "peuple": 4,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "La militante a quitté le cortège avant la fin. Son porte-voix est resté dans une voiture du palais.",
+   "drapeaux": [
+    "rdv_militante"
+   ]
+  },
+  "droite": {
+   "libelle": "Pas ce soir",
+   "effets": {
+    "presse": 4,
+    "caisses": 3,
+    "peuple": -4
+   },
+   "journal": "Le cortège a duré jusqu'à la nuit. La militante n'a pas baissé le porte-voix."
+  },
+  "conditions": {
+   "attache_min": 3,
+   "drapeaux_interdits": [
+    "rdv_militante"
+   ]
+  },
+  "repetable": true,
+  "attente": 10,
+  "poids": 2
+ },
+ {
+  "id": "rdv_epouse",
+  "personnage": "epouse",
+  "humeur": "content",
+  "texte": "{titre}, le protocole veut que je quitte le palais à vingt heures. Le protocole, c'est moi qui l'écris.",
+  "gauche": {
+   "libelle": "Ce soir, oui",
+   "effets": {
+    "peuple": 4,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "La cheffe du protocole a rayé son propre départ du registre du soir.",
+   "drapeaux": [
+    "rdv_epouse"
+   ]
+  },
+  "droite": {
+   "libelle": "Pas ce soir",
+   "effets": {
+    "presse": 4,
+    "caisses": 3,
+    "peuple": -4
+   },
+   "journal": "La cheffe du protocole est partie à vingt heures, comme le registre le prévoyait."
+  },
+  "conditions": {
+   "attache_min": 3,
+   "drapeaux_interdits": [
+    "rdv_epouse"
+   ]
+  },
+  "repetable": true,
+  "attente": 10,
+  "poids": 2
+ },
+ {
+  "id": "rdv_international",
+  "personnage": "international",
+  "humeur": "content",
+  "texte": "{titre}, j'ai joué devant cent mille personnes. Ce soir, je n'en veux qu'une dans les tribunes.",
+  "gauche": {
+   "libelle": "Ce soir, oui",
+   "effets": {
+    "peuple": 4,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "L'ancien international a annulé son gala. On l'a vu entrer au palais par la cour.",
+   "drapeaux": [
+    "rdv_international"
+   ]
+  },
+  "droite": {
+   "libelle": "Pas ce soir",
+   "effets": {
+    "presse": 4,
+    "caisses": 3,
+    "peuple": -4
+   },
+   "journal": "Le gala a eu lieu. On l'y a vu regarder l'entrée toute la soirée."
+  },
+  "conditions": {
+   "attache_min": 3,
+   "drapeaux_interdits": [
+    "rdv_international"
+   ]
+  },
+  "repetable": true,
+  "attente": 10,
+  "poids": 2
+ },
+ {
+  "id": "rdv_ministre",
+  "personnage": "ministre",
+  "humeur": "content",
+  "texte": "{titre}, le budget attendra demain matin. Moi, je n'attendrai pas toujours.",
+  "gauche": {
+   "libelle": "Ce soir, oui",
+   "effets": {
+    "peuple": 4,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "L'arbitrage budgétaire a glissé au lendemain. Le ministre est sorti du palais à l'aube.",
+   "drapeaux": [
+    "rdv_ministre"
+   ]
+  },
+  "droite": {
+   "libelle": "Pas ce soir",
+   "effets": {
+    "presse": 4,
+    "caisses": 3,
+    "peuple": -4
+   },
+   "journal": "L'arbitrage a été rendu dans la nuit. Le ministre est reparti avec ses tableaux."
+  },
+  "conditions": {
+   "attache_min": 3,
+   "drapeaux_interdits": [
+    "rdv_ministre"
+   ]
+  },
+  "repetable": true,
+  "attente": 10,
+  "poids": 2
+ },
+ {
+  "id": "rdv_renseignements",
+  "personnage": "renseignements",
+  "humeur": "content",
+  "texte": "{titre}, je sais où se trouve chacun ce soir. Sauf vous, si vous le voulez bien.",
+  "gauche": {
+   "libelle": "Ce soir, oui",
+   "effets": {
+    "peuple": 4,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "La note de surveillance du soir compte une ligne de moins que d'habitude.",
+   "drapeaux": [
+    "rdv_renseignements"
+   ]
+  },
+  "droite": {
+   "libelle": "Pas ce soir",
+   "effets": {
+    "presse": 4,
+    "caisses": 3,
+    "peuple": -4
+   },
+   "journal": "La note de surveillance du soir était complète, votre ligne comprise."
+  },
+  "conditions": {
+   "attache_min": 3,
+   "drapeaux_interdits": [
+    "rdv_renseignements"
+   ]
+  },
+  "repetable": true,
+  "attente": 10,
+  "poids": 2
+ },
+ {
+  "id": "rdv_maire",
+  "personnage": "maire",
+  "humeur": "content",
+  "texte": "{titre}, la capitale s'endort à onze heures. Nous, rien ne nous y oblige.",
+  "gauche": {
+   "libelle": "Ce soir, oui",
+   "effets": {
+    "peuple": 4,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "Le maire n'a pas dormi chez lui. La mairie a démenti sans qu'on lui demande rien.",
+   "drapeaux": [
+    "rdv_maire"
+   ]
+  },
+  "droite": {
+   "libelle": "Pas ce soir",
+   "effets": {
+    "presse": 4,
+    "caisses": 3,
+    "peuple": -4
+   },
+   "journal": "Le maire est rentré chez lui à onze heures, comme la capitale."
+  },
+  "conditions": {
+   "attache_min": 3,
+   "drapeaux_interdits": [
+    "rdv_maire"
+   ]
+  },
+  "repetable": true,
+  "attente": 10,
+  "poids": 2
+ },
+ {
+  "id": "rdv_epoux",
+  "personnage": "epoux",
+  "humeur": "content",
+  "texte": "{titre}, j'ai fait monter deux couverts dans vos appartements. Vous n'aviez rien demandé, je sais.",
+  "gauche": {
+   "libelle": "Ce soir, oui",
+   "effets": {
+    "peuple": 4,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "L'intendant a servi lui-même, puis a renvoyé le personnel de l'étage.",
+   "drapeaux": [
+    "rdv_epoux"
+   ]
+  },
+  "droite": {
+   "libelle": "Pas ce soir",
+   "effets": {
+    "presse": 4,
+    "caisses": 3,
+    "peuple": -4
+   },
+   "journal": "Les deux couverts sont redescendus intacts. L'intendant n'en a plus reparlé."
+  },
+  "conditions": {
+   "attache_min": 3,
+   "drapeaux_interdits": [
+    "rdv_epoux"
+   ]
+  },
+  "repetable": true,
+  "attente": 10,
+  "poids": 2
  }
 ]

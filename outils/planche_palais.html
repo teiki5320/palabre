@@ -37,6 +37,8 @@
   .grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
   .fiche{background:var(--leve);border:1px solid var(--trait);border-radius:4px;overflow:hidden}
   .cadre{position:relative;width:100%;aspect-ratio:3/2;background:#000;overflow:hidden}
+  .portrait .cadre{aspect-ratio:3/4}
+  .portrait .cadre img{width:100%;height:100%;object-fit:cover;left:0;transform:none!important}
   body.tel .cadre{aspect-ratio:9/16}
   .cadre img{position:absolute;top:0;left:0;height:100%;width:auto;max-width:none;
     transition:opacity .35s linear;will-change:opacity}
@@ -107,7 +109,7 @@ function bat(now){
         im.style.opacity = k === i ? 1 : (k === (i+1)%n ? a : 0);
       });
     }
-    if (tel){
+    if (tel && !c.closest('.portrait')){
       // le meme balayage qu en entrant dans une piece, puis le centre
       const p = Math.min(1, (now - depart) / TOUR);
       const regard = regardDuTour(p);

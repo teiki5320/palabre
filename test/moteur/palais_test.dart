@@ -6,6 +6,7 @@ import 'package:president/moteur/decor.dart';
 import 'package:president/moteur/etat_partie.dart';
 import 'package:president/moteur/jauges.dart';
 import 'package:president/moteur/palais.dart';
+import 'package:president/moteur/romance.dart';
 
 EtatPartie etatAvec({
   int peuple = 50,
@@ -229,6 +230,48 @@ void main() {
       // a de plus vrai dans cette pièce.
       expect(decorDeLaChambre(etatAvec(jour: 85, epouse: 'maire')).etat, 'conjoint_maire');
       expect(decorDeLaChambre(etatAvec(jour: 85)).etat, 'nuit');
+    });
+
+    test('un rendez-vous ne se tient que si quelqu un l a pose', () {
+      expect(rendezVousDe(etatAvec(epouse: 'maire')), isNull);
+      final soir = etatAvec(epouse: 'maire', drapeaux: {drapeauRendezVous('maire')});
+      expect(rendezVousDe(soir)!.qui, 'maire');
+    });
+
+    test('c est celle qui a invite qui attend, pas la liaison principale', () {
+      // Deux liaisons en cours : sans le nom dans le drapeau, la chambre
+      // montrerait la plus avancee, qui n a rien demande.
+      final deux = etatAvec(
+        attache: {'maire': 5, 'militante': 3},
+        drapeaux: {drapeauRendezVous('militante')},
+      );
+      expect(partenaire(deux.attache, deux.epouse), 'maire');
+      expect(rendezVousDe(deux)!.qui, 'militante');
+    });
+
+    test('la scene du rendez-vous a deux temps, debout puis sur le lit', () {
+      final rdv = rendezVousDe(etatAvec(epouse: 'maire', drapeaux: {drapeauRendezVous('maire')}))!;
+      expect(rdv.debout.images, 4);
+      expect(rdv.debout.ratio, ratioPlaque);
+      // Le lit est en portrait : il remplit l ecran du telephone au lieu
+      // d en montrer un tiers.
+      expect(rdv.lit.images, 6);
+      expect(rdv.lit.allerRetour, isTrue);
+      expect(rdv.lit.ratio, lessThan(1));
+      for (var i = 1; i <= rdv.lit.images; i++) {
+        expect(File(rdv.lit.chemin(i)).existsSync(), isTrue, reason: rdv.lit.chemin(i));
+      }
+    });
+
+    test('les dix personnes ont leur boucle de lit', () {
+      for (final qui in ['redactrice', 'cabinet', 'emissaire', 'militante', 'epouse',
+        'international', 'ministre', 'renseignements', 'maire', 'epoux']) {
+        final rdv = rendezVousDe(etatAvec(epouse: qui, drapeaux: {drapeauRendezVous(qui)}))!;
+        expect(rdv.lit.dossier, 'pieces/chambre_lit/$qui');
+        for (var i = 1; i <= rdv.lit.images; i++) {
+          expect(File(rdv.lit.chemin(i)).existsSync(), isTrue, reason: rdv.lit.chemin(i));
+        }
+      }
     });
 
     test('elle se montre en quatre images, faites d un seul coup', () {

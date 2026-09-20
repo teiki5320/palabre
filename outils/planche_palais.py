@@ -26,7 +26,8 @@ LARGEUR = 760  # de quoi juger le cadrage sans traîner douze méga
 
 ORDRE = [
     'Le bureau', 'Le balcon, de jour', 'Le balcon, de nuit',
-    'La chambre partagée', 'La chambre', 'La cour des voitures', 'La piscine',
+    'La chambre partagée', 'Le rendez-vous', 'La chambre', 'La cour des voitures',
+    'La piscine',
 ]
 
 
@@ -60,15 +61,16 @@ def allers_retours():
         retour = 'allerRetour: true' in bloc
         litteral = re.search(r"dossier:\s*'([^'$]+)'", bloc)
         aide = re.search(r"dossier:\s*d\('([^']+)'\)", bloc)
-        interpole = re.search(r"dossier:\s*'[^']*\$", bloc)
+        # « pieces/chambre_lit/$qui » : on garde le début littéral et on
+        # le complète par chacune des dix personnes.
+        interpole = re.search(r"dossier:\s*'([^'$]*)\$", bloc)
         if litteral:
             noms = [litteral.group(1)]
         elif aide:
             # `d(nom)` construit 'balcon/$heure/nom' : les deux heures.
             noms = [f'balcon/{h}/{aide.group(1)}' for h in ('jour', 'nuit')]
         elif interpole:
-            # La chambre partagée : un dossier par personne, tous pareils.
-            noms = [f'pieces/chambre_conjoint/{qui}' for qui in chambres()]
+            noms = [interpole.group(1) + qui for qui in chambres()]
         else:
             sys.exit('decor.dart : dossier illisible dans ' + bloc.strip()[:60])
         if retour:
@@ -126,8 +128,11 @@ def fiche(num, e):
         for i, src in enumerate(e['sequence']))
     n = e['n']
     compte = '1 image' if n == 1 else f'{n} images' + (' ↔' if e['retour'] else '')
+    # La scène du lit est la seule plaque en portrait : elle remplit
+    # l'écran du téléphone au lieu d'en occuper un tiers.
+    classe = 'fiche portrait' if e.get('portrait') else 'fiche'
     avert = f'<div class="avert">{echappe(e["note"])}</div>' if e.get('note') else ''
-    return f'''    <article class="fiche">
+    return f'''    <article class="{classe}">
       <div class="cadre"><span class="num">{num:02d}</span><span class="compte-img">{compte}</span>{images}</div>
       <div class="bas">
         <div class="nom">{echappe(e['nom'])}</div>

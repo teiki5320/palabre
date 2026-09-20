@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../contenu/chargement.dart';
 import '../moteur/condition.dart';
+import '../moteur/decor.dart';
 import '../moteur/denouement.dart';
 import '../moteur/etat_partie.dart';
 import '../moteur/modeles.dart';
@@ -83,6 +84,20 @@ class SessionNotifier extends Notifier<Session?> {
       adversaire: adversaires.isEmpty ? null : adversaires[_alea.nextInt(adversaires.length)].id,
     );
     state = _prochaine(etat);
+  }
+
+  /// La soirée est finie : le drapeau du rendez-vous tombe, et la chambre
+  /// redevient ce qu'elle était. Sans ça la scène se rejouerait à chaque
+  /// fois qu'on repasse la porte, et un rendez-vous qui ne finit jamais
+  /// n'est plus un rendez-vous.
+  void consommeRendezVous() {
+    final s = state;
+    if (s == null || s.terminee) return;
+    final qui = invitationDe(s.etat.drapeaux);
+    if (qui == null) return;
+    final etat = s.etat.copie(drapeaux: {...s.etat.drapeaux}..remove(drapeauRendezVous(qui)));
+    Sauvegarde.enregistre(etat);
+    state = Session(etat: etat, carte: s.carte, journal: s.journal);
   }
 
   /// Achète un objet du palais : les caisses paient tout de suite, l'objet

@@ -117,6 +117,9 @@ EtatPartie repond({
 
   final chainesRang = {...etat.chainesRang};
   final chainesJour = {...etat.chainesJour};
+  // Seules les cartes qui attendent avant de revenir laissent une date :
+  // retenir le jour des cinq cents autres ne servirait à rien.
+  final cartesJour = carte.attente > 0 ? {...etat.cartesJour, carte.id: etat.jour} : etat.cartesJour;
   final ch = carte.chaine;
   if (ch != null) {
     chainesRang[ch.id] = ch.rang;
@@ -165,6 +168,7 @@ EtatPartie repond({
     vues: vues,
     chainesRang: chainesRang,
     chainesJour: chainesJour,
+    cartesJour: cartesJour,
     hier: carte.id,
   );
 
@@ -190,6 +194,9 @@ EtatPartie mandatSuivant(EtatPartie etat, Parcours parcours) => EtatPartie(
       // elle en était — son délai est réputé écoulé.
       vues: etat.vues,
       chainesRang: etat.chainesRang,
+      // `cartesJour` repart vide, et c'est voulu : le compteur des jours
+      // revient à un, une date d'avant l'élection bloquerait un rendez-vous
+      // pendant les dix premiers jours du mandat suivant.
       // Ce qui s'est noué ne se dénoue pas à l'élection : on rempile avec
       // les mêmes gens, et marié si on l'était.
       attache: etat.attache,

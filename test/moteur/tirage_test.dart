@@ -6,7 +6,7 @@ import 'package:president/moteur/jauges.dart';
 import 'package:president/moteur/modeles.dart';
 import 'package:president/moteur/tirage.dart';
 
-Carte carte(String id, {Conditions? conditions, int poids = 1, Chaine? chaine, bool repetable = false, String personnage = 'general'}) => Carte(
+Carte carte(String id, {Conditions? conditions, int poids = 1, Chaine? chaine, bool repetable = false, int attente = 0, String personnage = 'general'}) => Carte(
       id: id,
       personnage: personnage,
       humeur: Humeur.neutre,
@@ -17,9 +17,17 @@ Carte carte(String id, {Conditions? conditions, int poids = 1, Chaine? chaine, b
       poids: poids,
       chaine: chaine,
       repetable: repetable,
+      attente: attente,
     );
 
-EtatPartie etat({int jour = 5, Set<String> vues = const {}, Map<String, int> rangs = const {}, Map<String, int> jours = const {}, String? hier}) =>
+EtatPartie etat({
+  int jour = 5,
+  Set<String> vues = const {},
+  Map<String, int> rangs = const {},
+  Map<String, int> jours = const {},
+  Map<String, int> cartesJour = const {},
+  String? hier,
+}) =>
     EtatPartie(
       hier: hier,
       parcours: 'general',
@@ -29,6 +37,7 @@ EtatPartie etat({int jour = 5, Set<String> vues = const {}, Map<String, int> ran
       vues: vues,
       chainesRang: rangs,
       chainesJour: jours,
+      cartesJour: cartesJour,
     );
 
 void main() {
@@ -39,6 +48,29 @@ void main() {
 
   test('une carte repetable peut ressortir', () {
     final tiree = choisitCarte(paquet: [carte('a', repetable: true)], etat: etat(vues: {'a'}), alea: Random(1));
+    expect(tiree!.id, 'a');
+  });
+
+  test('une carte repetable attend son delai avant de revenir', () {
+    final rdv = carte('rdv', repetable: true, attente: 10);
+    // Sortie au trentieme jour : elle ne revient pas le trente-neuvieme.
+    expect(
+      choisitCarte(paquet: [rdv], etat: etat(jour: 39, vues: {'rdv'}, cartesJour: {'rdv': 30}), alea: Random(1)),
+      isNull,
+    );
+    // Le quarantieme, si.
+    expect(
+      choisitCarte(paquet: [rdv], etat: etat(jour: 40, vues: {'rdv'}, cartesJour: {'rdv': 30}), alea: Random(1))!.id,
+      'rdv',
+    );
+  });
+
+  test('une carte repetable sans attente revient des le lendemain', () {
+    final tiree = choisitCarte(
+      paquet: [carte('a', repetable: true)],
+      etat: etat(jour: 6, vues: {'a'}, cartesJour: {'a': 5}),
+      alea: Random(1),
+    );
     expect(tiree!.id, 'a');
   });
 

@@ -22,6 +22,7 @@ class EtatPartie {
     this.vues = const {},
     this.chainesRang = const {},
     this.chainesJour = const {},
+    this.cartesJour = const {},
     this.hier,
     this.loyaute = const {},
     this.adversaire,
@@ -52,6 +53,11 @@ class EtatPartie {
 
   /// Chaîne -> jour du dernier rang joué.
   final Map<String, int> chainesJour;
+
+  /// Carte -> jour où elle est sortie, pour les seules cartes répétables
+  /// qui imposent une attente. Les autres n'y figurent pas : une carte
+  /// qu'on ne reverra pas n'a pas besoin qu'on retienne sa date.
+  final Map<String, int> cartesJour;
 
   /// La carte d'hier, pour que le tirage n'envoie pas la même personne
   /// deux jours de suite ; null au premier jour.
@@ -87,6 +93,7 @@ class EtatPartie {
     Set<String>? vues,
     Map<String, int>? chainesRang,
     Map<String, int>? chainesJour,
+    Map<String, int>? cartesJour,
     String? hier,
     Map<String, int>? loyaute,
     String? adversaire,
@@ -106,6 +113,7 @@ class EtatPartie {
         vues: vues ?? this.vues,
         chainesRang: chainesRang ?? this.chainesRang,
         chainesJour: chainesJour ?? this.chainesJour,
+        cartesJour: cartesJour ?? this.cartesJour,
         hier: hier ?? this.hier,
         loyaute: loyaute ?? this.loyaute,
         adversaire: adversaire ?? this.adversaire,

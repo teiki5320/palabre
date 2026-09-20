@@ -292,5 +292,85 @@
   "cond": "sinon",
   "dossier": "pieces/piscine_base",
   "note": ""
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir",
+  "cond": "avec la rédactrice en chef — après la carte « Rendez-vous ce soir »",
+  "dossier": "pieces/chambre_lit/redactrice",
+  "note": "",
+  "portrait": true
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir",
+  "cond": "avec la directrice de cabinet — après la carte « Rendez-vous ce soir »",
+  "dossier": "pieces/chambre_lit/cabinet",
+  "note": "",
+  "portrait": true
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir",
+  "cond": "avec l'émissaire du fonds — après la carte « Rendez-vous ce soir »",
+  "dossier": "pieces/chambre_lit/emissaire",
+  "note": "",
+  "portrait": true
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir",
+  "cond": "avec la militante — après la carte « Rendez-vous ce soir »",
+  "dossier": "pieces/chambre_lit/militante",
+  "note": "",
+  "portrait": true
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir",
+  "cond": "avec la cheffe du protocole — après la carte « Rendez-vous ce soir »",
+  "dossier": "pieces/chambre_lit/epouse",
+  "note": "",
+  "portrait": true
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir",
+  "cond": "avec l'ancien international — après la carte « Rendez-vous ce soir »",
+  "dossier": "pieces/chambre_lit/international",
+  "note": "",
+  "portrait": true
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir",
+  "cond": "avec le ministre des Finances — après la carte « Rendez-vous ce soir »",
+  "dossier": "pieces/chambre_lit/ministre",
+  "note": "",
+  "portrait": true
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir",
+  "cond": "avec le chef des renseignements — après la carte « Rendez-vous ce soir »",
+  "dossier": "pieces/chambre_lit/renseignements",
+  "note": "",
+  "portrait": true
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir",
+  "cond": "avec le maire de la capitale — après la carte « Rendez-vous ce soir »",
+  "dossier": "pieces/chambre_lit/maire",
+  "note": "",
+  "portrait": true
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir",
+  "cond": "avec l'intendant du palais — après la carte « Rendez-vous ce soir »",
+  "dossier": "pieces/chambre_lit/epoux",
+  "note": "",
+  "portrait": true
  }
 ]

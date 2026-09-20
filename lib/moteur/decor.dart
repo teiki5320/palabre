@@ -18,6 +18,7 @@ class Decor {
     required this.nom,
     this.images = 1,
     this.allerRetour = false,
+    this.ratio = ratioPlaque,
   });
 
   /// Le chemin sous `assets/images/palais/`, sans le numéro d'image.
@@ -40,6 +41,12 @@ class Decor {
   /// huit secondes. En repassant par où elle est venue, la boucle n'a plus
   /// de couture du tout, et pas une image de plus à livrer.
   final bool allerRetour;
+
+  /// La forme de la plaque. Presque tout le palais est en trois-deux, et
+  /// l'écran en montre moins d'un tiers à la fois ; la scène du lit est en
+  /// trois-quatre, et remplit alors l'écran du téléphone sans qu'on ait
+  /// rien à déplacer du doigt.
+  final double ratio;
 
   String chemin(int i) =>
       images == 1 ? 'assets/images/palais/$dossier.jpg' : 'assets/images/palais/$dossier/k$i.jpg';
@@ -163,6 +170,60 @@ const _chambresPartagees = {
   'international', 'ministre', 'renseignements', 'maire', 'epoux',
 };
 
+/// Le drapeau qu'une carte de rendez-vous pose, et que la chambre
+/// consomme quand la soirée est finie. Il nomme la personne : sans ça, un
+/// président qui a deux liaisons en cours verrait arriver celle qui ne
+/// l'avait pas invité.
+String drapeauRendezVous(String qui) => 'rdv_$qui';
+
+/// La personne qui attend ce soir, d'après les drapeaux posés, ou null.
+String? invitationDe(Set<String> drapeaux) {
+  for (final qui in _chambresPartagees) {
+    if (drapeaux.contains(drapeauRendezVous(qui))) return qui;
+  }
+  return null;
+}
+
+/// Une soirée promise : la personne attend, habillée, et rien ne bouge
+/// tant que le joueur ne touche pas l'écran. C'est la seule scène du
+/// palais qui avance au doigt plutôt qu'à l'horloge.
+class RendezVous {
+  const RendezVous({required this.qui, required this.debout, required this.lit});
+
+  final String qui;
+
+  /// Les quatre poses debout, celles de la chambre partagée : la première
+  /// habillée, les trois suivantes jouées d'une traite au premier appui.
+  final Decor debout;
+
+  /// La boucle sur le lit, en portrait, au second appui.
+  final Decor lit;
+}
+
+/// Le rendez-vous de ce soir, ou null : sans le drapeau, sans partenaire,
+/// ou avec quelqu'un dont la chambre n'existe pas en images.
+RendezVous? rendezVousDe(EtatPartie etat) {
+  final qui = invitationDe(etat.drapeaux);
+  if (qui == null) return null;
+  return RendezVous(
+    qui: qui,
+    debout: Decor(
+      dossier: 'pieces/chambre_conjoint/$qui',
+      etat: 'rdv_debout_$qui',
+      nom: 'Ce soir',
+      images: 4,
+    ),
+    lit: Decor(
+      dossier: 'pieces/chambre_lit/$qui',
+      etat: 'rdv_lit_$qui',
+      nom: 'Ce soir',
+      images: 6,
+      allerRetour: true,
+      ratio: 3 / 4,
+    ),
+  );
+}
+
 Decor decorDeLaChambre(EtatPartie etat) {
   // Qu'on dorme à deux passe avant la nuit blanche : c'est la chose la
   // plus vraie de la pièce, et elle est rare. Jusqu'ici ce décor n'était
@@ -251,8 +312,10 @@ List<Jauge> jaugesLues(Piece piece) => switch (piece) {
 
 // ──────────────────────────── les passages ────────────────────────────
 
-/// Toutes les plaques du palais sont en trois-deux. Le cadrage en dépend :
-/// c'est lui qui dit où tombe une porte à l'écran.
+/// La forme des plaques du palais, et la valeur par défaut de
+/// [Decor.ratio]. Le cadrage en dépend : c'est lui qui dit où tombe une
+/// porte à l'écran. Seule la scène du lit y échappe, et elle n'a pas de
+/// porte.
 const double ratioPlaque = 3 / 2;
 
 /// Un rectangle en fractions de la plaque, de 0 à 1, coin haut-gauche.

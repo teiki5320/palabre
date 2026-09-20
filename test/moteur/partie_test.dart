@@ -14,6 +14,18 @@ final carteSolde = Carte(
   chaine: const Chaine(id: 'solde', rang: 1),
 );
 
+/// Une carte de rendez-vous : repetable, mais pas tous les soirs.
+final carteRdv = Carte(
+  id: 'rdv_maire',
+  personnage: 'maire',
+  humeur: Humeur.content,
+  texte: 'La capitale s endort a onze heures.',
+  gauche: const Reponse(libelle: 'Ce soir, oui', effets: {Jauge.peuple: 4}, drapeaux: ['rdv_maire']),
+  droite: const Reponse(libelle: 'Pas ce soir', effets: {Jauge.presse: 4}),
+  repetable: true,
+  attente: 10,
+);
+
 EtatPartie depart() => const EtatPartie(parcours: 'general', nomJoueur: 'Awa', jauges: Jauges.milieu);
 
 void main() {
@@ -46,6 +58,17 @@ void main() {
     final e = repond(etat: depart(), carte: carteSolde, cote: Cote.droite);
     expect(e.chainesRang['solde'], 1);
     expect(e.chainesJour['solde'], 1);
+  });
+
+  test('une carte qui attend retient le jour ou elle est sortie', () {
+    final e = repond(etat: depart(), carte: carteRdv, cote: Cote.gauche);
+    expect(e.cartesJour['rdv_maire'], 1);
+    expect(e.drapeaux, contains('rdv_maire'));
+  });
+
+  test('une carte sans attente ne retient aucune date', () {
+    final e = repond(etat: depart(), carte: carteSolde, cote: Cote.droite);
+    expect(e.cartesJour, isEmpty);
   });
 
   test('l etat d origine n est pas modifie', () {

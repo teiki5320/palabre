@@ -36,6 +36,23 @@ class _PalaisEcranState extends ConsumerState<PalaisEcran> {
     final contenu = ref.watch(contenuProvider).value;
     final decor = decorDe(_piece, session.etat, objets);
 
+    // Un rendez-vous remplace la chambre entière : pas de tiroir, pas de
+    // portes, rien que la scène. On n'entre pas là pour acheter un lit.
+    final rdv = _piece == Piece.chambre ? rendezVousDe(session.etat) : null;
+    if (rdv != null) {
+      return Scaffold(
+        backgroundColor: Couleurs.nuit,
+        body: _SceneRendezVous(
+          rdv: rdv,
+          key: ValueKey('rdv-${rdv.qui}'),
+          fini: () {
+            ref.read(sessionProvider.notifier).consommeRendezVous();
+            _va(Piece.bureau);
+          },
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: Couleurs.nuit,
       body: Stack(
@@ -591,5 +608,155 @@ class Ticker {
   void dispose() {
     _actif = false;
     _minuterie?.cancel();
+  }
+}
+
+/// Les trois temps d'une soirée promise. Le palais avance à l'horloge
+/// partout ailleurs ; ici il attend le doigt, et c'est ce qui fait la
+/// différence entre un décor et une scène.
+enum _Temps { habille, deshabille, lit }
+
+/// La scène du rendez-vous. Elle remplace la chambre entière tant que le
+/// drapeau tient : on arrive, la personne attend habillée, un appui la
+/// fait se déshabiller, un second emmène sur le lit, un troisième rend au
+/// bureau et éteint le rendez-vous.
+class _SceneRendezVous extends StatefulWidget {
+  const _SceneRendezVous({required this.rdv, required this.fini, super.key});
+
+  final RendezVous rdv;
+
+  /// Appelée une fois, à la sortie : c'est elle qui consomme le drapeau.
+  final VoidCallback fini;
+
+  @override
+  State<_SceneRendezVous> createState() => _SceneRendezVousState();
+}
+
+class _SceneRendezVousState extends State<_SceneRendezVous> with SingleTickerProviderStateMixin {
+  /// Ce que dure chaque pose pendant qu'elle se déshabille. Trois poses,
+  /// soit un peu moins de trois secondes : assez pour qu'on suive, trop
+  /// court pour qu'on s'impatiente.
+  static const _pose = Duration(milliseconds: 900);
+
+  /// La boucle du lit, au même rythme que le reste du palais.
+  static const _cycle = Duration(seconds: 8);
+
+  _Temps _temps = _Temps.habille;
+
+  /// La pose debout affichée, de 1 à 4.
+  int _pas = 1;
+  Timer? _minuteur;
+
+  late final Ticker _ticker = Ticker((e) {
+    if (_temps == _Temps.lit) setState(() => _t = e.inMilliseconds / _cycle.inMilliseconds);
+  });
+  double _t = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _ticker.start();
+  }
+
+  @override
+  void dispose() {
+    _minuteur?.cancel();
+    _ticker.dispose();
+    super.dispose();
+  }
+
+  void _touche() {
+    switch (_temps) {
+      case _Temps.habille:
+        setState(() => _temps = _Temps.deshabille);
+        _minuteur = Timer.periodic(_pose, (t) {
+          // La dernière pose reste : on ne boucle pas sur le début, ce
+          // serait la rhabiller.
+          if (_pas >= 4) {
+            t.cancel();
+            return;
+          }
+          setState(() => _pas++);
+        });
+      case _Temps.deshabille:
+        // Pas avant la fin des quatre poses : un doigt pressé sauterait
+        // la seule chose qu'il est venu voir.
+        if (_pas < 4) return;
+        _minuteur?.cancel();
+        setState(() => _temps = _Temps.lit);
+      case _Temps.lit:
+        widget.fini();
+    }
+  }
+
+  /// Ce qu'on invite à faire, ou rien pendant que ça se joue.
+  String? get _invite => switch (_temps) {
+        _Temps.habille => 'Approcher',
+        _Temps.deshabille => _pas >= 4 ? 'Rejoindre le lit' : null,
+        _Temps.lit => 'Revenir au bureau',
+      };
+
+  @override
+  Widget build(BuildContext context) {
+    final decor = _temps == _Temps.lit ? widget.rdv.lit : widget.rdv.debout;
+    final invite = _invite;
+    return GestureDetector(
+      onTap: _touche,
+      behavior: HitTestBehavior.opaque,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          if (_temps == _Temps.lit) _boucleDuLit(decor) else _poseDebout(decor),
+          const _Voile(),
+          SafeArea(
+            child: Column(
+              children: [
+                const Spacer(),
+                if (invite != null)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 34),
+                    child: Text(
+                      invite,
+                      style: Textes.nomJauge.copyWith(
+                        color: Couleurs.creme,
+                        fontSize: 11,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Une pose debout, sur une plaque en trois-deux dont l'écran ne montre
+  /// que le milieu : c'est là que la personne se tient.
+  Widget _poseDebout(Decor decor) => AnimatedSwitcher(
+        duration: const Duration(milliseconds: 320),
+        child: Image.asset(
+          decor.chemin(_pas),
+          key: ValueKey(_pas),
+          fit: BoxFit.cover,
+          gaplessPlayback: true,
+        ),
+      );
+
+  /// La boucle du lit : six images en aller-retour, en fondu, et l'image
+  /// est en portrait — elle remplit l'écran sans qu'on ait à la déplacer.
+  Widget _boucleDuLit(Decor decor) {
+    final pas = decor.pas;
+    final phase = (_t % 1) * pas;
+    final i = phase.floor() % pas;
+    final reste = phase - phase.floor();
+    const fondu = 0.5;
+    final a = ((reste - (1 - fondu)) / fondu).clamp(0.0, 1.0);
+    Widget plan(int index, double opacite) => Opacity(
+          opacity: opacite,
+          child: Image.asset(decor.chemin(decor.cle(index)), fit: BoxFit.cover, gaplessPlayback: true),
+        );
+    return Stack(fit: StackFit.expand, children: [plan(i, 1), if (a > 0) plan(i + 1, a)]);
   }
 }

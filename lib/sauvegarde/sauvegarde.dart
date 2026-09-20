@@ -120,6 +120,7 @@ Map<String, dynamic> versJson(EtatPartie e) => {
       'vues': e.vues.toList(),
       'chaines_rang': e.chainesRang,
       'chaines_jour': e.chainesJour,
+      'cartes_jour': e.cartesJour,
       'hier': e.hier,
       'loyaute': e.loyaute,
       'adversaire': e.adversaire,
@@ -147,6 +148,7 @@ EtatPartie depuisJson(Map<String, dynamic> j) {
     vues: ((j['vues'] as List?) ?? const []).cast<String>().toSet(),
     chainesRang: ((j['chaines_rang'] as Map?) ?? const {}).map((k, v) => MapEntry(k as String, (v as num).toInt())),
     chainesJour: ((j['chaines_jour'] as Map?) ?? const {}).map((k, v) => MapEntry(k as String, (v as num).toInt())),
+    cartesJour: ((j['cartes_jour'] as Map?) ?? const {}).map((k, v) => MapEntry(k as String, (v as num).toInt())),
     hier: j['hier'] as String?,
     // Une sauvegarde d'avant la mémoire reprend sans rancune et sans
     // opposant : la force repart de son départ, donc l'élection se décide

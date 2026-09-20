@@ -14,6 +14,7 @@ const etat = EtatPartie(
   vues: {'c1', 'c2'},
   chainesRang: {'affaire': 2},
   chainesJour: {'affaire': 5},
+  cartesJour: {'rdv_maire': 30},
 );
 
 void main() {
@@ -36,6 +37,7 @@ void main() {
     expect(relu.vues, {'c1', 'c2'});
     expect(relu.chainesRang['affaire'], 2);
     expect(relu.chainesJour['affaire'], 5);
+    expect(relu.cartesJour['rdv_maire'], 30);
   });
 
   test('effacer supprime la partie', () async {

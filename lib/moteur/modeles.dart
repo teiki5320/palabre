@@ -202,6 +202,7 @@ class Carte {
     this.poids = 1,
     this.chaine,
     this.repetable = false,
+    this.attente = 0,
     this.ouverture = false,
   });
 
@@ -217,6 +218,11 @@ class Carte {
   final int poids;
   final Chaine? chaine;
   final bool repetable;
+
+  /// Combien de jours une carte répétable attend avant de pouvoir
+  /// revenir. Zéro : elle peut retomber dès le lendemain. Dix : c'est un
+  /// rendez-vous, et un rendez-vous tous les soirs n'en est plus un.
+  final int attente;
 
   /// La carte qui ouvre un premier mandat : la prestation de serment. Elle
   /// passe avant toutes les autres au premier jour, et une seule carte du
@@ -234,6 +240,7 @@ class Carte {
         poids: ((j['poids'] as num?) ?? 1).toInt(),
         chaine: j['chaine'] == null ? null : Chaine.depuisJson(j['chaine'] as Map<String, dynamic>),
         repetable: (j['repetable'] as bool?) ?? false,
+        attente: ((j['attente'] as num?) ?? 0).toInt(),
         ouverture: (j['ouverture'] as bool?) ?? false,
       );
 }
