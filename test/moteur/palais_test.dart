@@ -232,6 +232,26 @@ void main() {
       expect(decorDeLaChambre(etatAvec(jour: 85)).etat, 'nuit');
     });
 
+    test('la ceremonie se montre une fois, puis plus jamais', () {
+      final noces = etatAvec(epouse: 'maire', drapeaux: {'noces_etat'});
+      expect(ceremonieDe(noces), endsWith('maire_etat.jpg'));
+      // Une fois vue, elle ne revient pas : un mariage n a lieu qu une fois.
+      expect(ceremonieDe(etatAvec(epouse: 'maire',
+          drapeaux: {'noces_etat', drapeauNocesVues})), isNull);
+      // Et sans mariage, il n y a rien a montrer.
+      expect(ceremonieDe(etatAvec(drapeaux: {'noces_etat'})), isNull);
+    });
+
+    test('les vingt ceremonies existent sur le disque', () {
+      for (final qui in ['redactrice', 'cabinet', 'emissaire', 'militante', 'epouse',
+        'international', 'ministre', 'renseignements', 'maire', 'epoux']) {
+        for (final drapeau in ceremonies.keys) {
+          final chemin = ceremonieDe(etatAvec(epouse: qui, drapeaux: {drapeau}))!;
+          expect(File(chemin).existsSync(), isTrue, reason: chemin);
+        }
+      }
+    });
+
     test('un rendez-vous ne se tient que si quelqu un l a pose', () {
       expect(rendezVousDe(etatAvec(epouse: 'maire')), isNull);
       final soir = etatAvec(epouse: 'maire', drapeaux: {drapeauRendezVous('maire')});

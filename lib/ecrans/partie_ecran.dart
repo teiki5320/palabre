@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../moteur/decor.dart';
 import '../moteur/denouement.dart';
 import '../moteur/jauges.dart';
 import '../moteur/modeles.dart';
@@ -55,6 +56,20 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
       Cote.droite => carte.droite,
       null => null,
     };
+
+    // Le mariage se montre une fois, par-dessus tout le reste : la partie
+    // continue derrière, on ne fait que la couvrir le temps d'un regard.
+    final ceremonie = ceremonieDe(session.etat);
+    if (ceremonie != null) {
+      return Scaffold(
+        backgroundColor: Couleurs.nuit,
+        body: _Ceremonie(
+          image: ceremonie,
+          ligne: session.journal,
+          fini: () => ref.read(sessionProvider.notifier).ceremonieVue(),
+        ),
+      );
+    }
 
     return Scaffold(
       body: SafeArea(
@@ -585,4 +600,71 @@ class _Delta extends StatelessWidget {
       child: Text(texte, style: Textes.deltaJauge.copyWith(color: Couleurs.creme)),
     );
   }
+}
+
+/// Le jour du mariage. Une image plein cadre, la ligne du journal, et un
+/// mot pour reprendre. Elle ne se rejoue jamais : c'est le seul moment du
+/// jeu qu'on ne peut pas revoir, et c'est ce qui lui donne son poids.
+class _Ceremonie extends StatelessWidget {
+  const _Ceremonie({required this.image, required this.ligne, required this.fini});
+
+  final String image;
+
+  /// Ce que le journal du lendemain en a dit — la même ligne que sous la
+  /// carte, mais ici elle tient toute la place.
+  final String? ligne;
+  final VoidCallback fini;
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: fini,
+        behavior: HitTestBehavior.opaque,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(image, fit: BoxFit.cover, gaplessPlayback: true),
+            // Un voile qui s'épaissit vers le bas, pour que la ligne du
+            // journal se lise quelle que soit la photographie dessous.
+            IgnorePointer(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Couleurs.encre.withValues(alpha: .62),
+                      Couleurs.encre.withValues(alpha: .12),
+                      Couleurs.encre.withValues(alpha: .92),
+                    ],
+                    stops: const [0, .34, 1],
+                  ),
+                ),
+              ),
+            ),
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(28, 24, 28, 34),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('LE MARIAGE', style: Textes.titrePersonnage),
+                    const Spacer(),
+                    if (ligne != null)
+                      Text(ligne!, style: Textes.texteCarte.copyWith(fontSize: 17)),
+                    const SizedBox(height: 22),
+                    Text(
+                      'Toucher pour reprendre',
+                      style: Textes.nomJauge.copyWith(
+                        color: Couleurs.cremeDoux,
+                        fontSize: 11,
+                        letterSpacing: 1.3,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
 }

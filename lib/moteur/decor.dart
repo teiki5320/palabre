@@ -224,6 +224,32 @@ RendezVous? rendezVousDe(EtatPartie etat) {
   );
 }
 
+/// Les deux façons de se marier, et le drapeau que chacune pose.
+const Map<String, String> ceremonies = {
+  'noces_etat': 'etat',
+  'noces_discretes': 'discretes',
+};
+
+/// Le drapeau qui dit que la cérémonie a été montrée. Les drapeaux de noces
+/// eux-mêmes restent posés : une carte écrite plus tard pourra se souvenir
+/// qu'on s'est marié en grande pompe ou à la sauvette.
+const String drapeauNocesVues = 'noces_vues';
+
+/// L'image de la cérémonie qui n'a pas encore été montrée, ou null. Elle
+/// se joue une fois, en plein écran, le jour du mariage — c'est le seul
+/// moment du jeu qu'on ne peut pas revoir.
+String? ceremonieDe(EtatPartie etat) {
+  if (etat.drapeaux.contains(drapeauNocesVues)) return null;
+  final qui = etat.epouse;
+  if (qui == null || !_chambresPartagees.contains(qui)) return null;
+  for (final e in ceremonies.entries) {
+    if (etat.drapeaux.contains(e.key)) {
+      return 'assets/images/palais/pieces/noces/${qui}_${e.value}.jpg';
+    }
+  }
+  return null;
+}
+
 Decor decorDeLaChambre(EtatPartie etat) {
   // Qu'on dorme à deux passe avant la nuit blanche : c'est la chose la
   // plus vraie de la pièce, et elle est rare. Jusqu'ici ce décor n'était

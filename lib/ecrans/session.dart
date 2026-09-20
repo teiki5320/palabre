@@ -100,6 +100,18 @@ class SessionNotifier extends Notifier<Session?> {
     state = Session(etat: etat, carte: s.carte, journal: s.journal);
   }
 
+  /// La cérémonie a été montrée. Elle ne se rejoue pas : un mariage n'a
+  /// lieu qu'une fois, et le revoir à chaque ouverture de l'écran en
+  /// ferait un décor.
+  void ceremonieVue() {
+    final s = state;
+    if (s == null) return;
+    if (s.etat.drapeaux.contains(drapeauNocesVues)) return;
+    final etat = s.etat.copie(drapeaux: {...s.etat.drapeaux, drapeauNocesVues});
+    Sauvegarde.enregistre(etat);
+    state = Session(etat: etat, carte: s.carte, journal: s.journal);
+  }
+
   /// Achète un objet du palais : les caisses paient tout de suite, l'objet
   /// entre dans la progression pour toujours, et son drapeau ouvre dès
   /// demain les cartes qu'il débloque. Ne fait rien si la partie est finie
