@@ -1,0 +1,145 @@
+<title>Le palais état par état</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Public+Sans:wght@0,400;0,600&display=swap">
+<style>
+  :root{
+    --fond:#14131A; --leve:#1C1A23; --encre:#F6EFE4; --douce:#C3BBB0;
+    --faible:#857E8F; --or:#E9B44C; --trait:#2E2A38;
+    --serif:"Bricolage Grotesque","Trebuchet MS",sans-serif;
+    --corps:"Public Sans",system-ui,-apple-system,sans-serif;
+  }
+  :root[data-theme="light"]{
+    --fond:#F3ECE0; --leve:#FFFBF4; --encre:#1B1922; --douce:#544E5F;
+    --faible:#8C8595; --or:#A0700F; --trait:#D9CDB8;
+  }
+  body{background:var(--fond);color:var(--encre);font-family:var(--corps);font-size:16px;line-height:1.5}
+  .page{max-width:1120px;margin:0 auto;padding:0 20px;padding-block:40px 72px}
+  h1,h2{font-family:var(--serif);margin:0;text-wrap:balance}
+  h1{font-size:clamp(1.9rem,5.5vw,2.9rem);font-weight:800;line-height:1.02;letter-spacing:-.015em}
+  p{margin:0 0 .8em;max-width:64ch}
+  .surtitre{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faible);font-weight:600;margin:0 0 12px}
+  .chapeau{font-size:1.08rem;color:var(--douce);max-width:60ch;margin-top:14px}
+  .note{font-size:.82rem;color:var(--faible);max-width:72ch}
+
+  .barre{position:sticky;top:0;z-index:20;background:var(--fond);border-bottom:1px solid var(--trait);
+    display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 0;margin:26px 0 0}
+  .bouton{font-family:var(--corps);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
+    font-weight:600;color:var(--douce);background:var(--leve);border:1px solid var(--trait);
+    border-radius:3px;padding:7px 13px;cursor:pointer}
+  .bouton[aria-pressed="true"]{color:var(--fond);background:var(--or);border-color:var(--or)}
+  .compteur{margin-left:auto;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faible);font-weight:600}
+
+  .titre-piece{display:flex;align-items:baseline;gap:14px;border-top:1px solid var(--trait);
+    margin:44px 0 20px;padding-top:22px}
+  .titre-piece h2{font-size:1.45rem;font-weight:700}
+  .combien{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faible);
+    font-weight:600;margin-left:auto;white-space:nowrap}
+
+  .grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
+  .fiche{background:var(--leve);border:1px solid var(--trait);border-radius:4px;overflow:hidden}
+  .cadre{position:relative;width:100%;aspect-ratio:3/2;background:#000;overflow:hidden}
+  body.tel .cadre{aspect-ratio:9/16}
+  .cadre img{position:absolute;top:0;left:0;height:100%;width:auto;max-width:none;
+    transition:opacity .35s linear;will-change:opacity}
+  body:not(.tel) .cadre img{width:100%;height:100%;object-fit:cover;left:0}
+  .num{position:absolute;top:0;left:0;z-index:3;font-family:var(--serif);font-weight:800;
+    font-size:.78rem;color:var(--fond);background:var(--or);padding:3px 8px 4px;border-radius:0 0 4px 0}
+  .compte-img{position:absolute;top:6px;right:8px;z-index:3;font-size:.64rem;letter-spacing:.1em;
+    text-transform:uppercase;font-weight:600;color:var(--encre);background:rgba(0,0,0,.55);
+    padding:3px 7px;border-radius:2px}
+  .bas{padding:12px 14px 14px}
+  .nom{font-family:var(--serif);font-size:1.05rem;font-weight:700;line-height:1.2}
+  .cond{font-size:.84rem;color:var(--douce);margin-top:4px}
+  .avert{font-size:.76rem;color:var(--or);margin-top:6px}
+  footer{border-top:1px solid var(--trait);margin-top:52px;padding-top:20px}
+</style>
+<div class="page">
+  <p class="surtitre">Palabre — Président pour 100 jours · version {{VERSION}}</p>
+  <h1>Le palais état par état</h1>
+  <p class="chapeau">Les {{ETATS}} décors que le jeu peut montrer, avec ce qui les déclenche.
+  Les boucles tournent ici au même rythme que dans l'application : huit secondes, fondu sur
+  la moitié du pas. Le signe <strong>↔</strong> marque celles qui se jouent en aller-retour —
+  six images à l'aller, quatre au retour, pour qu'il n'y ait aucune couture.</p>
+  <p class="note">En jeu on ne voit jamais la plaque entière — l'écran d'un téléphone en montre
+  moins d'un tiers à la fois, et il faut déplacer le regard au doigt pour voir le reste.
+  Cette page montre les plaques en entier. Le bouton <strong>cadre du téléphone</strong> les
+  remet au format 9:16 et rejoue le tour d'horizon d'entrée, pour juger de ce que le joueur
+  verra vraiment.</p>
+
+  <div class="barre">
+    <button class="bouton" id="b-tel" aria-pressed="false">Cadre du téléphone</button>
+    <button class="bouton" id="b-pause" aria-pressed="false">Figer sur la première image</button>
+    <span class="compteur">{{ETATS}} états · {{IMAGES}} images</span>
+  </div>
+
+{{CORPS}}
+  <footer><p class="note">{{FORMATS}}</p></footer>
+</div>
+<script>
+const CYCLE = 8000;      // la boucle du jeu : huit secondes
+const FONDU = 0.5;       // moitie du pas en fondu, comme dans l app
+const TOUR  = 3400;      // le tour d horizon d entree
+
+function regardDuTour(p){
+  const doux = x => x*x*(3-2*x);
+  const t = Math.min(1, Math.max(0, p));
+  if (t < .28) return 0.5 + (0.10-0.5)*doux(t/.28);
+  if (t < .72) return 0.10 + (0.90-0.10)*doux((t-.28)/.44);
+  return 0.90 + (0.5-0.90)*doux((t-.72)/.28);
+}
+
+const cadres = [...document.querySelectorAll('.cadre')];
+let depart = performance.now();
+
+let fige = false;
+
+function bat(now){
+  if (fige){ requestAnimationFrame(bat); return; }
+  const tel = document.body.classList.contains('tel');
+  for (const c of cadres){
+    const imgs = c.querySelectorAll('img');
+    const n = imgs.length;
+    if (n > 1){
+      const phase = ((now - depart) % CYCLE) / CYCLE * n;
+      const i = Math.floor(phase) % n;
+      const reste = phase - Math.floor(phase);
+      const a = Math.min(1, Math.max(0, (reste - (1-FONDU)) / FONDU));
+      imgs.forEach((im, k) => {
+        im.style.opacity = k === i ? 1 : (k === (i+1)%n ? a : 0);
+      });
+    }
+    if (tel){
+      // le meme balayage qu en entrant dans une piece, puis le centre
+      const p = Math.min(1, (now - depart) / TOUR);
+      const regard = regardDuTour(p);
+      const large = c.clientHeight * 1.5;      // la plaque est en trois-deux
+      const dx = (c.clientWidth - large) * regard;
+      imgs.forEach(im => { im.style.transform = `translateX(${dx}px)`; });
+    } else {
+      imgs.forEach(im => { im.style.transform = 'none'; });
+    }
+  }
+  requestAnimationFrame(bat);
+}
+requestAnimationFrame(bat);
+
+const bTel = document.getElementById('b-tel');
+bTel.addEventListener('click', () => {
+  const on = document.body.classList.toggle('tel');
+  bTel.setAttribute('aria-pressed', on);
+  depart = performance.now();          // on rejoue le tour d horizon
+});
+
+const bPause = document.getElementById('b-pause');
+bPause.addEventListener('click', () => {
+  fige = !fige;
+  bPause.setAttribute('aria-pressed', fige);
+  if (fige){
+    // on se pose sur la premiere cle, celle qui sert de reference
+    for (const c of cadres){
+      c.querySelectorAll('img').forEach((im,k)=>{ im.style.opacity = k===0 ? 1 : 0; });
+    }
+  } else {
+    depart = performance.now();
+  }
+});
+</script>

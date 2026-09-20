@@ -1,0 +1,296 @@
+[
+ {
+  "piece": "Le bureau",
+  "nom": "Enseveli",
+  "cond": "la presse tombe à 30 ou moins",
+  "dossier": "pieces/bureau_enseveli",
+  "note": ""
+ },
+ {
+  "piece": "Le bureau",
+  "nom": "Le palais du chef",
+  "cond": "le régime atteint 70, vers la dictature",
+  "dossier": "pieces/bureau_chef",
+  "note": ""
+ },
+ {
+  "piece": "Le bureau",
+  "nom": "La porte ouverte",
+  "cond": "le régime descend à 30, vers la république",
+  "dossier": "pieces/bureau_ouvert",
+  "note": ""
+ },
+ {
+  "piece": "Le bureau",
+  "nom": "Le bureau de travail",
+  "cond": "le reste du temps",
+  "dossier": "pieces/bureau_base",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de jour",
+  "nom": "Le défilé",
+  "cond": "drapeau « fête nationale » — de jour seulement",
+  "dossier": "balcon/jour/defile",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de jour",
+  "nom": "Le deuil national",
+  "cond": "drapeau « deuil national » — de jour seulement",
+  "dossier": "balcon/jour/deuil",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de jour",
+  "nom": "L'émeute",
+  "cond": "peuple à 25 ou moins",
+  "dossier": "balcon/jour/emeute",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de jour",
+  "nom": "L'avenue verrouillée",
+  "cond": "armée à 70 ou plus",
+  "dossier": "balcon/jour/verrouillee",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de jour",
+  "nom": "La ville éteinte",
+  "cond": "caisses à 25 ou moins",
+  "dossier": "balcon/jour/eteinte",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de jour",
+  "nom": "Le siège des caméras",
+  "cond": "presse à 25 ou moins",
+  "dossier": "balcon/jour/cameras",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de jour",
+  "nom": "La liesse",
+  "cond": "peuple à 70 ou plus",
+  "dossier": "balcon/jour/liesse",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de jour",
+  "nom": "L'avenue prospère",
+  "cond": "caisses ≥ 65 et peuple ≥ 55",
+  "dossier": "balcon/jour/prospere",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de jour",
+  "nom": "La saison des pluies",
+  "cond": "entre le 55ᵉ et le 75ᵉ jour",
+  "dossier": "balcon/jour/pluies",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de jour",
+  "nom": "L'avenue ordinaire",
+  "cond": "quand rien de ce qui précède n'est vrai",
+  "dossier": "balcon/jour/ordinaire",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de nuit",
+  "nom": "L'émeute",
+  "cond": "peuple à 25 ou moins — à partir du 80ᵉ jour",
+  "dossier": "balcon/nuit/emeute",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de nuit",
+  "nom": "L'avenue verrouillée",
+  "cond": "armée à 70 ou plus — à partir du 80ᵉ jour",
+  "dossier": "balcon/nuit/verrouillee",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de nuit",
+  "nom": "La ville éteinte",
+  "cond": "caisses à 25 ou moins — à partir du 80ᵉ jour",
+  "dossier": "balcon/nuit/eteinte",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de nuit",
+  "nom": "Le siège des caméras",
+  "cond": "presse à 25 ou moins — à partir du 80ᵉ jour",
+  "dossier": "balcon/nuit/cameras",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de nuit",
+  "nom": "La liesse",
+  "cond": "peuple à 70 ou plus — à partir du 80ᵉ jour",
+  "dossier": "balcon/nuit/liesse",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de nuit",
+  "nom": "L'avenue prospère",
+  "cond": "caisses ≥ 65 et peuple ≥ 55 — à partir du 80ᵉ jour",
+  "dossier": "balcon/nuit/prospere",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de nuit",
+  "nom": "La saison des pluies",
+  "cond": "entre le 55ᵉ et le 75ᵉ jour — à partir du 80ᵉ jour",
+  "dossier": "balcon/nuit/pluies",
+  "note": ""
+ },
+ {
+  "piece": "Le balcon, de nuit",
+  "nom": "L'avenue ordinaire",
+  "cond": "quand rien de ce qui précède n'est vrai — à partir du 80ᵉ jour",
+  "dossier": "balcon/nuit/ordinaire",
+  "note": ""
+ },
+ {
+  "piece": "La chambre partagée",
+  "nom": "On n'est pas seul",
+  "cond": "avec la rédactrice en chef — dès la liaison, ou une fois mariés",
+  "dossier": "pieces/chambre_conjoint/redactrice",
+  "note": ""
+ },
+ {
+  "piece": "La chambre partagée",
+  "nom": "On n'est pas seul",
+  "cond": "avec la directrice de cabinet — dès la liaison, ou une fois mariés",
+  "dossier": "pieces/chambre_conjoint/cabinet",
+  "note": ""
+ },
+ {
+  "piece": "La chambre partagée",
+  "nom": "On n'est pas seul",
+  "cond": "avec l'émissaire du fonds — dès la liaison, ou une fois mariés",
+  "dossier": "pieces/chambre_conjoint/emissaire",
+  "note": ""
+ },
+ {
+  "piece": "La chambre partagée",
+  "nom": "On n'est pas seul",
+  "cond": "avec la militante — dès la liaison, ou une fois mariés",
+  "dossier": "pieces/chambre_conjoint/militante",
+  "note": ""
+ },
+ {
+  "piece": "La chambre partagée",
+  "nom": "On n'est pas seul",
+  "cond": "avec la cheffe du protocole — dès la liaison, ou une fois mariés",
+  "dossier": "pieces/chambre_conjoint/epouse",
+  "note": ""
+ },
+ {
+  "piece": "La chambre partagée",
+  "nom": "On n'est pas seul",
+  "cond": "avec l'ancien international — dès la liaison, ou une fois mariés",
+  "dossier": "pieces/chambre_conjoint/international",
+  "note": ""
+ },
+ {
+  "piece": "La chambre partagée",
+  "nom": "On n'est pas seul",
+  "cond": "avec le ministre des Finances — dès la liaison, ou une fois mariés",
+  "dossier": "pieces/chambre_conjoint/ministre",
+  "note": ""
+ },
+ {
+  "piece": "La chambre partagée",
+  "nom": "On n'est pas seul",
+  "cond": "avec le chef des renseignements — dès la liaison, ou une fois mariés",
+  "dossier": "pieces/chambre_conjoint/renseignements",
+  "note": ""
+ },
+ {
+  "piece": "La chambre partagée",
+  "nom": "On n'est pas seul",
+  "cond": "avec le maire de la capitale — dès la liaison, ou une fois mariés",
+  "dossier": "pieces/chambre_conjoint/maire",
+  "note": ""
+ },
+ {
+  "piece": "La chambre partagée",
+  "nom": "On n'est pas seul",
+  "cond": "avec l'intendant du palais — dès la liaison, ou une fois mariés",
+  "dossier": "pieces/chambre_conjoint/epoux",
+  "note": ""
+ },
+ {
+  "piece": "La chambre",
+  "nom": "La nuit blanche",
+  "cond": "à partir du 80ᵉ jour",
+  "dossier": "pieces/chambre_nuit",
+  "note": ""
+ },
+ {
+  "piece": "La chambre",
+  "nom": "La chambre",
+  "cond": "le reste du temps",
+  "dossier": "pieces/chambre_base",
+  "note": ""
+ },
+ {
+  "piece": "La cour des voitures",
+  "nom": "Le parc",
+  "cond": "au moins trois véhicules achetés",
+  "dossier": "pieces/garage_parc",
+  "note": ""
+ },
+ {
+  "piece": "La cour des voitures",
+  "nom": "Le 4×4 noir",
+  "cond": "deux véhicules achetés",
+  "dossier": "pieces/garage_trois",
+  "note": ""
+ },
+ {
+  "piece": "La cour des voitures",
+  "nom": "La sportive",
+  "cond": "un seul véhicule acheté",
+  "dossier": "pieces/garage_deux",
+  "note": ""
+ },
+ {
+  "piece": "La cour des voitures",
+  "nom": "La voiture de fonction",
+  "cond": "aucun véhicule acheté",
+  "dossier": "pieces/garage_base",
+  "note": ""
+ },
+ {
+  "piece": "La piscine",
+  "nom": "Le dimanche du quartier",
+  "cond": "l'objet « dimanche » acheté et un régime à 35 ou moins",
+  "dossier": "pieces/piscine_quartier",
+  "note": ""
+ },
+ {
+  "piece": "La piscine",
+  "nom": "Le bassin vidé",
+  "cond": "caisses à 15 ou moins",
+  "dossier": "pieces/piscine_vide",
+  "note": ""
+ },
+ {
+  "piece": "La piscine",
+  "nom": "L'eau verte",
+  "cond": "caisses à 30 ou moins",
+  "dossier": "pieces/piscine_verte",
+  "note": ""
+ },
+ {
+  "piece": "La piscine",
+  "nom": "L'eau claire",
+  "cond": "sinon",
+  "dossier": "pieces/piscine_base",
+  "note": ""
+ }
+]

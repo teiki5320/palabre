@@ -87,3 +87,6 @@ lib/generated_plugin_registrant.dart
 android/key.properties
 *.jks
 .tmp/
+
+# Matière première non livrée avec l'app (plaques 4K, plans filmés).
+sources/
