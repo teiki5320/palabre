@@ -215,32 +215,39 @@ def echelle(e, liaison):
     p = e['personne']
     homme = e['id'] in HOMMES
     noces = bloc_des_noces(e)
-    courtise_une_presidente = homme
-    cartes = []
+    coiffe = {'titre': p.get('titre', '')}
+
+    # Avant la liaison, après la liaison. Le rendez-vous et la chambre se
+    # placent à la charnière, pas à la fin : on ne dort pas ensemble le soir
+    # des noces, on dort ensemble bien avant, et c'est le jeu qui le dit.
+    avant, apres = [], []
     for r in sorted(e['rangs']):
         c = e['rangs'][r]
-        cartes.append(vraie_carte(c, e['id'], {
-            'titre': p.get('titre', ''),
-            'porte': f'{r} · ' + coiffe_du_rang(c, liaison),
-        }, courtise_une_presidente))
-    rdv = e['rdv']
-    cartes.append(vraie_carte(rdv, e['id'], {
-        'titre': p.get('titre', ''),
-        'porte': 'le rendez-vous · attache au cran '
-                 f'{liaison} ou plus · se rejoue tous les 10 jours',
-    }, courtise_une_presidente))
+        cond = c.get('conditions', {})
+        porte = cond.get('attache_min', cond.get('attache_max', 0))
+        dessin = vraie_carte(c, e['id'], {**coiffe, 'porte': f'{r} · ' + coiffe_du_rang(c, liaison)}, homme)
+        (avant if porte < liaison else apres).append(dessin)
+
+    rdv = vraie_carte(e['rdv'], e['id'], {**coiffe,
+        'porte': f'le rendez-vous · attache au cran {liaison} ou plus · '
+                 'se rejoue tous les 10 jours'}, homme)
+
     return f'''  <section class="personne">
     <div class="tete">
       <img src="visages/{e['id']}.jpg" alt="{echappe(p['nom'])}">
       <div>
         <h2>{echappe(p['nom'])}</h2>
-        <p class="titre">{len(cartes)} cartes · {'une présidente' if homme else 'un président'} seulement</p>
+        <p class="titre">{len(avant) + len(apres) + 1} cartes · {'une présidente' if homme else 'un président'} seulement</p>
       </div>
     </div>
+    <p class="acte">Jusqu'à la liaison</p>
     <div class="galerie">
-{''.join(cartes)}
+{''.join(avant)}
     </div>
-    {noces}
+    <p class="acte">La liaison — à partir d'ici, et tant qu'elle dure</p>
+    <div class="galerie">
+{rdv}
+    </div>
     <div class="bloc">
       <p class="etiquette">Et la chambre, ce soir-là</p>
       <div class="issue">
@@ -251,6 +258,11 @@ def echelle(e, liaison):
         qu'on n'y dort plus seul.</p>
       </div>
     </div>
+    <p class="acte">De la liaison à la demande</p>
+    <div class="galerie">
+{''.join(apres)}
+    </div>
+{noces}
   </section>'''
 
 
@@ -384,6 +396,9 @@ GABARIT = '''<title>{{TITRE}}</title>
   .noce{margin:0}
   .noce img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:3px;display:block}
   .noce figcaption{font-size:.76rem;color:var(--douce);margin-top:7px}
+  .acte{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);
+    font-weight:600;margin:30px 0 14px;padding-top:16px;border-top:1px solid var(--trait)}
+  .personne > .acte:first-of-type{margin-top:0;padding-top:0;border-top:none}
 
   footer{border-top:1px solid var(--trait);margin-top:52px;padding-top:20px}
   @media (max-width:520px){
