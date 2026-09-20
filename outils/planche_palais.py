@@ -194,6 +194,11 @@ def main():
 
     total = sum(e['n'] for e in etats)
     corps = []
+    # Les numéros suivent la page, pas le fichier : c'est par eux qu'on
+    # valide un état à voix haute, ils doivent se lire de haut en bas.
+    # Le rendez-vous, ajouté en fin de fichier mais affiché au milieu,
+    # portait les numéros 43 à 52 au beau milieu des trentièmes.
+    numero = 0
     for piece in ORDRE:
         dedans = [e for e in etats if e['piece'] == piece]
         if not dedans:
@@ -204,7 +209,8 @@ def main():
             f'<span class="combien">{len(dedans)} états · {n} images</span></div>\n'
             '  <div class="grille">')
         for e in dedans:
-            corps.append(fiche(etats.index(e) + 1, e))
+            numero += 1
+            corps.append(fiche(numero, e))
         corps.append('  </div>')
 
     gabarit = open(os.path.join(RACINE, 'outils/planche_palais.html')).read()
