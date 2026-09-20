@@ -95,6 +95,52 @@ def lis():
     return tout
 
 
+JAUGES = {'peuple': 'peuple', 'armee': 'armée', 'caisses': 'caisses', 'presse': 'presse'}
+
+
+def effets(reponse):
+    """Ce que la réponse coûte, dans l'ordre où le jeu les écrit."""
+    out = []
+    for nom, v in reponse.get('effets', {}).items():
+        signe = 'plus' if v > 0 else 'moins'
+        out.append(f'<span class="jauge {signe}">{JAUGES.get(nom, nom)}'
+                   f'<b>{v:+d}</b></span>')
+    r = reponse.get('romance', {})
+    if r.get('epouse'):
+        out.append('<span class="jauge romance">mariage</span>')
+    elif r.get('rupture'):
+        out.append('<span class="jauge romance">rupture</span>')
+    elif r.get('mouvement'):
+        out.append(f'<span class="jauge romance">attache<b>{r["mouvement"]:+d}</b></span>')
+    for d in reponse.get('drapeaux', []):
+        out.append(f'<span class="jauge drapeau">{echappe(d.replace("_", " "))}</span>')
+    return ''.join(out)
+
+
+def vraie_carte(c, qui, coiffe):
+    """La carte comme l'ecran la dessine : le portrait plein cadre, le titre
+    en or, et ce que la personne dit. Les deux libelles n'apparaissent en
+    jeu que pendant le geste — ici ils sont dessous, avec leur prix."""
+    return f'''      <figure class="carte">
+        <div class="vignette">
+          <img src="portraits/{qui}_{c['humeur']}.jpg" alt="">
+          <div class="bandeau">
+            <p class="qualite">{echappe(coiffe['titre'].upper())}</p>
+            <p class="dit">{echappe(habille(c['texte']))}</p>
+          </div>
+        </div>
+        <figcaption>
+          <p class="porte">{echappe(coiffe['porte'])}</p>
+          <div class="deux">
+            <div class="geste"><span class="sens">← {echappe(c['gauche']['libelle'])}</span>
+              <div class="prix">{effets(c['gauche'])}</div></div>
+            <div class="geste"><span class="sens">{echappe(c['droite']['libelle'])} →</span>
+              <div class="prix">{effets(c['droite'])}</div></div>
+          </div>
+        </figcaption>
+      </figure>'''
+
+
 def chip(reponse, sens):
     m = mouvement(reponse)
     classe = 'chip' + (' chip-monte' if m and m.startswith('+') else '')
@@ -106,63 +152,62 @@ def chip(reponse, sens):
             f'{echappe(reponse["libelle"])}{marque}</span>')
 
 
-def barreau(c, liaison):
+def coiffe_du_rang(c, liaison):
+    """Ce qui ouvre la carte, en clair : le cran exige et le delai."""
     ch = c['chaine']
     cond = c.get('conditions', {})
-    rang = ch['rang']
-    exige = cond.get('attache_min')
-    plafond = cond.get('attache_max')
+    exige, plafond = cond.get('attache_min'), cond.get('attache_max')
     if exige is None and plafond == 0:
-        porte = 'tant que rien n\'a commencé'
+        porte = "tant que rien n'a commencé"
     elif exige is not None and exige == plafond:
-        porte = f'au cran {exige} — {CRANS[exige]}'
+        porte = f'attache au cran {exige} — {CRANS[exige]}'
     elif exige is not None:
-        porte = f'à partir du cran {exige} — {CRANS[exige]}'
+        porte = f'attache au cran {exige} ou plus — {CRANS[exige]}'
     else:
         porte = ''
+    if cond.get('marie') is False:
+        porte += ', et célibataire'
     delai = ch.get('delai_min')
-    attente = f' · pas avant {delai} jours' if delai else ''
-    return f'''      <li class="barreau">
-        <div class="rang">{rang}</div>
-        <div class="dit">
-          <p class="replique">{echappe(habille(c['texte']))}</p>
-          <p class="porte">{echappe(porte)}{echappe(attente)}</p>
-          <div class="choix">{chip(c['gauche'], 'g')}{chip(c['droite'], 'd')}</div>
-        </div>
-      </li>'''
+    if delai:
+        porte += f' · pas avant {delai} jours'
+    return porte
 
 
 def echelle(e, liaison):
     p = e['personne']
-    homme = e['id'] in HOMMES
-    attend = 'Il attend habillé.' if homme else 'Elle attend habillée.'
-    pronom = 'il' if homme else 'elle'
-    barreaux = ''.join(barreau(e['rangs'][r], liaison) for r in range(1, 7))
+    cartes = []
+    for r in range(1, 7):
+        c = e['rangs'][r]
+        cartes.append(vraie_carte(c, e['id'], {
+            'titre': p.get('titre', ''),
+            'porte': f'{r} · ' + coiffe_du_rang(c, liaison),
+        }))
     rdv = e['rdv']
+    cartes.append(vraie_carte(rdv, e['id'], {
+        'titre': p.get('titre', ''),
+        'porte': 'le rendez-vous · attache au cran '
+                 f'{liaison} ou plus · se rejoue tous les 10 jours',
+    }))
+    homme = e['id'] in HOMMES
     return f'''  <section class="personne">
     <div class="tete">
       <img src="visages/{e['id']}.jpg" alt="{echappe(p['nom'])}">
       <div>
         <h2>{echappe(p['nom'])}</h2>
-        <p class="titre">{echappe(p.get('titre', ''))}</p>
+        <p class="titre">sept cartes, du premier regard au soir promis</p>
       </div>
     </div>
-    <ol class="echelle">
-{barreaux}
-    </ol>
-    <div class="apres">
-      <div class="bloc">
-        <p class="etiquette">Puis, tous les dix jours</p>
-        <p class="replique">{echappe(habille(rdv['texte']))}</p>
-        <div class="choix">{chip(rdv['gauche'], 'g')}{chip(rdv['droite'], 'd')}</div>
-      </div>
-      <div class="bloc">
-        <p class="etiquette">Et la chambre, ce soir-là</p>
-        <div class="pellicule">
-          <img src="lit/{e['id']}.jpg" alt="Sur le lit">
-        </div>
-        <p class="porte">{attend} Un appui, {pronom} se déshabille.
-        Un second, la scène passe sur le lit.</p>
+    <div class="galerie">
+{''.join(cartes)}
+    </div>
+    <div class="bloc">
+      <p class="etiquette">Et la chambre, ce soir-là</p>
+      <div class="issue">
+        <img src="lit/{e['id']}.jpg" alt="Sur le lit">
+        <p class="porte">{'Il attend habillé.' if homme else 'Elle attend habillée.'}
+        Un appui, {'il' if homme else 'elle'} se déshabille. Un second, la scène
+        passe sur le lit. Les jours ordinaires, la chambre dit seulement
+        qu'on n'y dort plus seul.</p>
       </div>
     </div>
   </section>'''
@@ -182,18 +227,15 @@ def carte_mariee(c):
     ch = c.get('chaine')
     if ch:
         porte.append(f"suite {ch['rang']} de « {ch['id'].replace('_', ' ')} »")
-    return f'''      <li class="barreau barreau-plat">
-        <div class="dit">
-          <p class="replique">{echappe(habille(c['texte']))}</p>
-          <p class="porte">{echappe(' · '.join(porte))}</p>
-          <div class="choix">{chip(c['gauche'], 'g')}{chip(c['droite'], 'd')}</div>
-        </div>
-      </li>'''
+    return vraie_carte(c, 'conjoint', {
+        'titre': 'la personne que vous avez épousée',
+        'porte': ' · '.join(porte) or 'une fois marié',
+    })
 
 
 def acte_du_mariage(cartes):
     liste = ''.join(carte_mariee(c) for c in cartes)
-    return f'''  <section class="personne mariage">
+    return f'''  <section class="personne">
     <div class="tete">
       <div>
         <h2>Une fois marié</h2>
@@ -201,12 +243,13 @@ def acte_du_mariage(cartes):
       </div>
     </div>
     <p class="note">Elles ne nomment personne : c'est la personne que le
-    président a épousée qui les dit. Elles n'existent pas pour un célibataire,
-    et elles ne s'arrêtent plus — le mariage n'est pas la fin de l'histoire,
-    c'est la moitié qu'on joue ensuite.</p>
-    <ol class="echelle">
+    président a épousée qui les dit, et c'est son visage qui apparaît. Elles
+    n'existent pas pour un célibataire, et elles ne s'arrêtent plus — le
+    mariage n'est pas la fin de l'histoire, c'est la moitié qu'on joue
+    ensuite.</p>
+    <div class="galerie">
 {liste}
-    </ol>
+    </div>
   </section>'''
 
 
@@ -216,6 +259,7 @@ GABARIT = '''<title>Comment une romance se joue</title>
   :root{
     --fond:#14131A; --leve:#1C1A23; --encre:#F6EFE4; --douce:#C3BBB0;
     --faible:#857E8F; --or:#E9B44C; --trait:#2E2A38; --chair:#C97B6A;
+    --nuit:#14131A;
     --serif:"Bricolage Grotesque","Trebuchet MS",sans-serif;
     --corps:"Public Sans",system-ui,-apple-system,sans-serif;
   }
@@ -257,44 +301,49 @@ GABARIT = '''<title>Comment une romance se joue</title>
   .tete h2{font-size:1.4rem;font-weight:700;line-height:1.1}
   .titre{font-size:.82rem;color:var(--faible);margin:2px 0 0}
 
-  .echelle{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
-  .barreau{display:grid;grid-template-columns:38px 1fr;gap:16px;align-items:start;
-    padding:14px 0;border-top:1px solid var(--trait)}
-  .barreau:first-child{border-top:none}
-  .barreau-plat{grid-template-columns:1fr}
-  .mariage .tete{gap:0}
-  .acte{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--or);font-weight:600;margin:18px 0 4px;padding-top:14px;
-    border-top:1px solid var(--trait)}
-  .acte:first-child{margin-top:0;padding-top:0;border-top:none}
-  .rang{font-family:var(--serif);font-weight:800;font-size:1.05rem;color:var(--or);
-    text-align:center;line-height:1.4;border-right:1px solid var(--trait);padding-right:10px}
-  .replique{font-size:1rem;color:var(--encre);margin:0 0 6px;max-width:58ch}
-  .porte{font-size:.76rem;letter-spacing:.04em;color:var(--faible);margin:0 0 10px}
-  .choix{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{font-size:.8rem;color:var(--douce);background:var(--leve);
-    border:1px solid var(--trait);border-radius:3px;padding:5px 10px;
-    display:inline-flex;align-items:center;gap:7px}
-  .fleche{color:var(--faible);font-size:.76rem}
-  .mouv{font-family:var(--serif);font-weight:700;font-size:.74rem;color:var(--or)}
-  .chip-monte{border-color:rgba(233,180,76,.38)}
-  .chip-mariage{border-color:var(--chair)}
-  .chip-mariage .mouv,.chip-rupture .mouv{color:var(--chair)}
-  .chip-rupture{border-color:var(--trait)}
+  /* La carte, telle que partie_ecran.dart la dessine : le portrait plein
+     cadre, un degrade vers l encre, le titre en or et ce qui se dit. */
+  .galerie{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:22px}
+  .carte{margin:0}
+  .vignette{position:relative;aspect-ratio:3/4;border-radius:24px;overflow:hidden;
+    background:var(--nuit);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+  .vignette img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    object-position:50% 32%}
+  .bandeau{position:absolute;left:0;right:0;bottom:0;padding:88px 16px 18px;
+    background:linear-gradient(to bottom,rgba(8,7,9,0) 0%,rgba(8,7,9,.95) 55%)}
+  .qualite{font-size:.62rem;font-weight:800;letter-spacing:.16em;color:var(--or);
+    margin:0 0 7px;text-transform:uppercase}
+  .dit{font-size:.9rem;line-height:1.38;color:#F6EFE4;margin:0}
+  figcaption{padding:12px 2px 0}
+  .porte{font-size:.72rem;letter-spacing:.04em;color:var(--faible);margin:0 0 9px}
+  .deux{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .geste{min-width:0}
+  .sens{display:block;font-size:.78rem;font-weight:600;color:var(--douce);
+    margin-bottom:5px}
+  .geste:last-child .sens{text-align:right}
+  .prix{display:flex;flex-wrap:wrap;gap:4px}
+  .geste:last-child .prix{justify-content:flex-end}
+  .jauge{font-size:.66rem;letter-spacing:.02em;color:var(--faible);
+    border:1px solid var(--trait);border-radius:2px;padding:2px 5px;white-space:nowrap}
+  .jauge b{font-family:var(--serif);margin-left:4px}
+  .jauge.plus b{color:var(--or)}
+  .jauge.moins b{color:var(--chair)}
+  .jauge.romance{border-color:var(--chair);color:var(--chair)}
+  .jauge.romance b{color:var(--chair)}
+  .jauge.drapeau{font-style:italic}
 
-  .apres{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:16px;margin-top:22px}
-  .bloc{background:var(--leve);border:1px solid var(--trait);border-radius:4px;padding:14px 16px}
+  .bloc{background:var(--leve);border:1px solid var(--trait);border-radius:4px;
+    padding:14px 16px;margin-top:24px}
   .etiquette{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--or);font-weight:600;margin:0 0 8px}
-  .pellicule{width:100%;aspect-ratio:3/4;max-height:260px;overflow:hidden;
-    border-radius:3px;margin-bottom:10px}
-  .pellicule img{width:100%;height:100%;object-fit:cover;display:block}
+    color:var(--or);font-weight:600;margin:0 0 10px}
+  .issue{display:flex;gap:16px;align-items:flex-start}
+  .issue img{width:120px;aspect-ratio:3/4;object-fit:cover;border-radius:3px;flex:none}
+  .issue .porte{margin:0;max-width:52ch}
 
   footer{border-top:1px solid var(--trait);margin-top:52px;padding-top:20px}
   @media (max-width:520px){
-    .barreau{grid-template-columns:28px 1fr;gap:12px}
-    .rang{padding-right:6px}
+    .galerie{grid-template-columns:1fr}
+    .issue{flex-direction:column}
   }
 </style>
 <div class="page">
