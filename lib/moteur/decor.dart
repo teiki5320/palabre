@@ -230,16 +230,15 @@ Decor decorDeLaChambre(EtatPartie etat) {
   // atteignable par rien — il attendait la romance.
   final qui = partenaire(etat.attache, etat.epouse);
   if (qui != null && _chambresPartagees.contains(qui)) {
-    // Quatre images par personne, et une seule génération chacune : les
-    // quatre poses ont été faites d'un coup, côte à côte sur fond vert,
-    // puis incrustées sur une plaque unique. C'est la seule façon d'avoir
-    // une boucle qui ne saute pas — quatre rendus séparés de la même
-    // chambre ne se ressemblent qu'à 0,7 là où il en faut 0,94.
+    // Une seule image, et la personne est habillée : les jours ordinaires,
+    // la chambre dit seulement qu'on n'y dort plus seul. Le déshabillage
+    // appartient au rendez-vous — le montrer tous les soirs lui retirait
+    // tout son prix, et un soir promis ne valait pas plus qu'une porte
+    // poussée par hasard.
     return Decor(
-      dossier: 'pieces/chambre_conjoint/$qui',
-      etat: 'conjoint_$qui',
+      dossier: 'pieces/chambre_presence/$qui',
+      etat: 'presence_$qui',
       nom: "On n'est pas seul",
-      images: 4,
     );
   }
   if (estNuit(etat)) {

@@ -224,11 +224,11 @@ void main() {
       expect(decorDeLaChambre(etatAvec()).etat, 'base');
       expect(decorDeLaChambre(etatAvec(drapeaux: {'conjoint'})).etat, 'base');
       expect(decorDeLaChambre(etatAvec(attache: {'maire': 2})).etat, 'base');
-      expect(decorDeLaChambre(etatAvec(attache: {'maire': 3})).etat, 'conjoint_maire');
-      expect(decorDeLaChambre(etatAvec(epouse: 'maire')).etat, 'conjoint_maire');
+      expect(decorDeLaChambre(etatAvec(attache: {'maire': 3})).etat, 'presence_maire');
+      expect(decorDeLaChambre(etatAvec(epouse: 'maire')).etat, 'presence_maire');
       // Et elle passe avant la nuit blanche : dormir à deux est ce qu'il y
       // a de plus vrai dans cette pièce.
-      expect(decorDeLaChambre(etatAvec(jour: 85, epouse: 'maire')).etat, 'conjoint_maire');
+      expect(decorDeLaChambre(etatAvec(jour: 85, epouse: 'maire')).etat, 'presence_maire');
       expect(decorDeLaChambre(etatAvec(jour: 85)).etat, 'nuit');
     });
 
@@ -274,8 +274,11 @@ void main() {
       }
     });
 
-    test('elle se montre en quatre images, faites d un seul coup', () {
-      expect(decorDeLaChambre(etatAvec(epouse: 'maire')).images, 4);
+    test('les jours ordinaires, elle montre une personne habillee et rien d autre', () {
+      // Le deshabillage a quitte la chambre de tous les jours : il est ce
+      // qu'on vient chercher un soir de rendez-vous, et rien d'autre.
+      expect(decorDeLaChambre(etatAvec(epouse: 'maire')).images, 1);
+      expect(rendezVousDe(etatAvec(epouse: 'maire', drapeaux: {drapeauRendezVous('maire')}))!.debout.images, 4);
     });
 
     test('c est la personne avec qui l on est qu on y voit', () {
@@ -284,7 +287,7 @@ void main() {
       for (final qui in ['redactrice', 'cabinet', 'emissaire', 'militante', 'epouse',
         'international', 'ministre', 'renseignements', 'maire', 'epoux']) {
         final d = decorDeLaChambre(etatAvec(epouse: qui));
-        expect(d.dossier, 'pieces/chambre_conjoint/$qui');
+        expect(d.dossier, 'pieces/chambre_presence/$qui');
         for (var i = 1; i <= d.images; i++) {
           expect(File(d.chemin(i)).existsSync(), isTrue, reason: d.chemin(i));
         }

@@ -66,6 +66,7 @@ flutter:
     - assets/images/palais/pieces/chambre_conjoint/renseignements/
     - assets/images/palais/pieces/chambre_conjoint/maire/
     - assets/images/palais/pieces/chambre_conjoint/epoux/
+    - assets/images/palais/pieces/chambre_presence/
     - assets/images/palais/pieces/chambre_lit/redactrice/
     - assets/images/palais/pieces/chambre_lit/cabinet/
     - assets/images/palais/pieces/chambre_lit/emissaire/

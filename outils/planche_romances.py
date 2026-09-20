@@ -64,6 +64,15 @@ def mouvement(reponse):
     return f'+{m}' if m > 0 else (str(m) if m else None)
 
 
+def apres_le_mariage(cartes):
+    """Les cartes qui n'existent qu'une fois marié. Elles ne nomment
+    personne : c'est la personne épousée qui les dit, quelle qu'elle soit."""
+    dedans = [c for c in cartes if c['personnage'] == 'conjoint']
+    if not dedans:
+        sys.exit('aucune carte du conjoint : le mariage ne mène nulle part')
+    return dedans
+
+
 def lis():
     cartes = json.load(open(os.path.join(RACINE, 'assets/contenu/cartes.json')))
     gens = {p['id']: p for p in
@@ -159,6 +168,48 @@ def echelle(e, liaison):
   </section>'''
 
 
+def carte_mariee(c):
+    cond = c.get('conditions', {})
+    porte = []
+    if cond.get('jour_min'):
+        porte.append(f"à partir du {cond['jour_min']}ᵉ jour")
+    if cond.get('jour_max'):
+        porte.append(f"avant le {cond['jour_max']}ᵉ jour")
+    if cond.get('mandat_min', 1) > 1:
+        porte.append(f"au mandat {cond['mandat_min']}")
+    for d in cond.get('drapeaux_requis', []):
+        porte.append('si « ' + d.replace('_', ' ') + ' »')
+    ch = c.get('chaine')
+    if ch:
+        porte.append(f"suite {ch['rang']} de « {ch['id'].replace('_', ' ')} »")
+    return f'''      <li class="barreau barreau-plat">
+        <div class="dit">
+          <p class="replique">{echappe(habille(c['texte']))}</p>
+          <p class="porte">{echappe(' · '.join(porte))}</p>
+          <div class="choix">{chip(c['gauche'], 'g')}{chip(c['droite'], 'd')}</div>
+        </div>
+      </li>'''
+
+
+def acte_du_mariage(cartes):
+    liste = ''.join(carte_mariee(c) for c in cartes)
+    return f'''  <section class="personne mariage">
+    <div class="tete">
+      <div>
+        <h2>Une fois marié</h2>
+        <p class="titre">{len(cartes)} cartes, quelle que soit la personne épousée</p>
+      </div>
+    </div>
+    <p class="note">Elles ne nomment personne : c'est la personne que le
+    président a épousée qui les dit. Elles n'existent pas pour un célibataire,
+    et elles ne s'arrêtent plus — le mariage n'est pas la fin de l'histoire,
+    c'est la moitié qu'on joue ensuite.</p>
+    <ol class="echelle">
+{liste}
+    </ol>
+  </section>'''
+
+
 GABARIT = '''<title>Comment une romance se joue</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Public+Sans:wght@0,400;0,600&display=swap">
 <style>
@@ -210,6 +261,12 @@ GABARIT = '''<title>Comment une romance se joue</title>
   .barreau{display:grid;grid-template-columns:38px 1fr;gap:16px;align-items:start;
     padding:14px 0;border-top:1px solid var(--trait)}
   .barreau:first-child{border-top:none}
+  .barreau-plat{grid-template-columns:1fr}
+  .mariage .tete{gap:0}
+  .acte{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);font-weight:600;margin:18px 0 4px;padding-top:14px;
+    border-top:1px solid var(--trait)}
+  .acte:first-child{margin-top:0;padding-top:0;border-top:none}
   .rang{font-family:var(--serif);font-weight:800;font-size:1.05rem;color:var(--or);
     text-align:center;line-height:1.4;border-right:1px solid var(--trait);padding-right:10px}
   .replique{font-size:1rem;color:var(--encre);margin:0 0 6px;max-width:58ch}
@@ -243,13 +300,16 @@ GABARIT = '''<title>Comment une romance se joue</title>
 <div class="page">
   <p class="surtitre">Palabre — Président pour 100 jours · version {{VERSION}}</p>
   <h1>Comment une romance se joue</h1>
-  <p class="chapeau">Dix personnes qu'on peut courtiser, et le même chemin pour
-  chacune : six cartes qui montent l'attache d'un cran à la fois, puis un
-  rendez-vous qui s'ouvre au troisième et mène à la chambre.</p>
+  <p class="chapeau">Toutes les cartes d'une romance, dans l'ordre où elles
+  sortent : les trois qui mènent à la liaison, les trois qui vont de la liaison
+  à la demande, le rendez-vous qui se rejoue ensuite tous les dix jours, et les
+  {{MARIAGE}} qui n'existent qu'une fois marié.</p>
   <p class="note">L'attache ne monte jamais toute seule. Aucune jauge, aucun jour
   qui passe ne la déplace : seule une réponse qui la déclare la fait bouger, et
   une carte ne sort que si l'attache est exactement au cran qu'elle attend. On
-  ne saute donc pas d'étape, et on peut s'arrêter à n'importe laquelle.</p>
+  ne saute donc pas d'étape, et on peut s'arrêter à n'importe laquelle. Le cran
+  3, la liaison, est la charnière : c'est lui qui ouvre le rendez-vous et la
+  chambre partagée.</p>
 
   <div class="echelon">{{ECHELON}}</div>
 
@@ -274,14 +334,18 @@ def main():
     tout = lis()
     echelon = ''.join(
         f'<span><b>{i}</b>{echappe(nom)}</span>' for i, nom in enumerate(CRANS))
+    cartes = json.load(open(os.path.join(RACINE, 'assets/contenu/cartes.json')))
+    mariage = apres_le_mariage(cartes)
     corps = '\n'.join(echelle(e, liaison) for e in tout)
-    pied = (f'Le rendez-vous s\'ouvre au cran {liaison}, celui de la liaison, et la '
-            f'chambre se partage à partir du même. Les {len(tout) * 7} cartes de cette '
-            'page sont lues dans le contenu du jeu : ce qui est écrit ici est ce qui '
-            'se joue.')
+    corps += '\n' + acte_du_mariage(mariage)
+    pied = (f'{len(tout) * 7 + len(mariage)} cartes en tout, lues dans le contenu '
+            'du jeu : ce qui est écrit ici est ce qui se joue. Les jours ordinaires, '
+            'la chambre montre seulement que l\'on n\'y dort plus seul — le '
+            'déshabillage appartient au soir promis.')
     page = (GABARIT
             .replace('{{VERSION}}', version())
             .replace('{{ECHELON}}', echelon)
+            .replace('{{MARIAGE}}', f'{len(mariage)} cartes')
             .replace('{{PIED}}', echappe(pied))
             .replace('{{CORPS}}', corps))
     open(sortie, 'w').write(page)

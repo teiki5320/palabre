@@ -156,71 +156,71 @@
  {
   "piece": "La chambre partagée",
   "nom": "On n'est pas seul",
-  "cond": "avec la rédactrice en chef — dès la liaison, ou une fois mariés",
-  "dossier": "pieces/chambre_conjoint/redactrice",
+  "cond": "avec la rédactrice en chef — les jours ordinaires, dès la liaison",
+  "dossier": "pieces/chambre_presence/redactrice",
   "note": ""
  },
  {
   "piece": "La chambre partagée",
   "nom": "On n'est pas seul",
-  "cond": "avec la directrice de cabinet — dès la liaison, ou une fois mariés",
-  "dossier": "pieces/chambre_conjoint/cabinet",
+  "cond": "avec la directrice de cabinet — les jours ordinaires, dès la liaison",
+  "dossier": "pieces/chambre_presence/cabinet",
   "note": ""
  },
  {
   "piece": "La chambre partagée",
   "nom": "On n'est pas seul",
-  "cond": "avec l'émissaire du fonds — dès la liaison, ou une fois mariés",
-  "dossier": "pieces/chambre_conjoint/emissaire",
+  "cond": "avec l'émissaire du fonds — les jours ordinaires, dès la liaison",
+  "dossier": "pieces/chambre_presence/emissaire",
   "note": ""
  },
  {
   "piece": "La chambre partagée",
   "nom": "On n'est pas seul",
-  "cond": "avec la militante — dès la liaison, ou une fois mariés",
-  "dossier": "pieces/chambre_conjoint/militante",
+  "cond": "avec la militante — les jours ordinaires, dès la liaison",
+  "dossier": "pieces/chambre_presence/militante",
   "note": ""
  },
  {
   "piece": "La chambre partagée",
   "nom": "On n'est pas seul",
-  "cond": "avec la cheffe du protocole — dès la liaison, ou une fois mariés",
-  "dossier": "pieces/chambre_conjoint/epouse",
+  "cond": "avec la cheffe du protocole — les jours ordinaires, dès la liaison",
+  "dossier": "pieces/chambre_presence/epouse",
   "note": ""
  },
  {
   "piece": "La chambre partagée",
   "nom": "On n'est pas seul",
-  "cond": "avec l'ancien international — dès la liaison, ou une fois mariés",
-  "dossier": "pieces/chambre_conjoint/international",
+  "cond": "avec l'ancien international — les jours ordinaires, dès la liaison",
+  "dossier": "pieces/chambre_presence/international",
   "note": ""
  },
  {
   "piece": "La chambre partagée",
   "nom": "On n'est pas seul",
-  "cond": "avec le ministre des Finances — dès la liaison, ou une fois mariés",
-  "dossier": "pieces/chambre_conjoint/ministre",
+  "cond": "avec le ministre des Finances — les jours ordinaires, dès la liaison",
+  "dossier": "pieces/chambre_presence/ministre",
   "note": ""
  },
  {
   "piece": "La chambre partagée",
   "nom": "On n'est pas seul",
-  "cond": "avec le chef des renseignements — dès la liaison, ou une fois mariés",
-  "dossier": "pieces/chambre_conjoint/renseignements",
+  "cond": "avec le chef des renseignements — les jours ordinaires, dès la liaison",
+  "dossier": "pieces/chambre_presence/renseignements",
   "note": ""
  },
  {
   "piece": "La chambre partagée",
   "nom": "On n'est pas seul",
-  "cond": "avec le maire de la capitale — dès la liaison, ou une fois mariés",
-  "dossier": "pieces/chambre_conjoint/maire",
+  "cond": "avec le maire de la capitale — les jours ordinaires, dès la liaison",
+  "dossier": "pieces/chambre_presence/maire",
   "note": ""
  },
  {
   "piece": "La chambre partagée",
   "nom": "On n'est pas seul",
-  "cond": "avec l'intendant du palais — dès la liaison, ou une fois mariés",
-  "dossier": "pieces/chambre_conjoint/epoux",
+  "cond": "avec l'intendant du palais — les jours ordinaires, dès la liaison",
+  "dossier": "pieces/chambre_presence/epoux",
   "note": ""
  },
  {
@@ -295,80 +295,150 @@
  },
  {
   "piece": "Le rendez-vous",
-  "nom": "Ce soir",
-  "cond": "avec la rédactrice en chef — après la carte « Rendez-vous ce soir »",
+  "nom": "Ce soir — elle se déshabille",
+  "cond": "avec la rédactrice en chef — au premier appui",
+  "dossier": "pieces/chambre_conjoint/redactrice",
+  "note": ""
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir — sur le lit",
+  "cond": "avec la rédactrice en chef — au second appui",
   "dossier": "pieces/chambre_lit/redactrice",
   "note": "",
   "portrait": true
  },
  {
   "piece": "Le rendez-vous",
-  "nom": "Ce soir",
-  "cond": "avec la directrice de cabinet — après la carte « Rendez-vous ce soir »",
+  "nom": "Ce soir — elle se déshabille",
+  "cond": "avec la directrice de cabinet — au premier appui",
+  "dossier": "pieces/chambre_conjoint/cabinet",
+  "note": ""
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir — sur le lit",
+  "cond": "avec la directrice de cabinet — au second appui",
   "dossier": "pieces/chambre_lit/cabinet",
   "note": "",
   "portrait": true
  },
  {
   "piece": "Le rendez-vous",
-  "nom": "Ce soir",
-  "cond": "avec l'émissaire du fonds — après la carte « Rendez-vous ce soir »",
+  "nom": "Ce soir — elle se déshabille",
+  "cond": "avec l'émissaire du fonds — au premier appui",
+  "dossier": "pieces/chambre_conjoint/emissaire",
+  "note": ""
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir — sur le lit",
+  "cond": "avec l'émissaire du fonds — au second appui",
   "dossier": "pieces/chambre_lit/emissaire",
   "note": "",
   "portrait": true
  },
  {
   "piece": "Le rendez-vous",
-  "nom": "Ce soir",
-  "cond": "avec la militante — après la carte « Rendez-vous ce soir »",
+  "nom": "Ce soir — elle se déshabille",
+  "cond": "avec la militante — au premier appui",
+  "dossier": "pieces/chambre_conjoint/militante",
+  "note": ""
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir — sur le lit",
+  "cond": "avec la militante — au second appui",
   "dossier": "pieces/chambre_lit/militante",
   "note": "",
   "portrait": true
  },
  {
   "piece": "Le rendez-vous",
-  "nom": "Ce soir",
-  "cond": "avec la cheffe du protocole — après la carte « Rendez-vous ce soir »",
+  "nom": "Ce soir — elle se déshabille",
+  "cond": "avec la cheffe du protocole — au premier appui",
+  "dossier": "pieces/chambre_conjoint/epouse",
+  "note": ""
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir — sur le lit",
+  "cond": "avec la cheffe du protocole — au second appui",
   "dossier": "pieces/chambre_lit/epouse",
   "note": "",
   "portrait": true
  },
  {
   "piece": "Le rendez-vous",
-  "nom": "Ce soir",
-  "cond": "avec l'ancien international — après la carte « Rendez-vous ce soir »",
+  "nom": "Ce soir — il se déshabille",
+  "cond": "avec l'ancien international — au premier appui",
+  "dossier": "pieces/chambre_conjoint/international",
+  "note": ""
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir — sur le lit",
+  "cond": "avec l'ancien international — au second appui",
   "dossier": "pieces/chambre_lit/international",
   "note": "",
   "portrait": true
  },
  {
   "piece": "Le rendez-vous",
-  "nom": "Ce soir",
-  "cond": "avec le ministre des Finances — après la carte « Rendez-vous ce soir »",
+  "nom": "Ce soir — il se déshabille",
+  "cond": "avec le ministre des Finances — au premier appui",
+  "dossier": "pieces/chambre_conjoint/ministre",
+  "note": ""
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir — sur le lit",
+  "cond": "avec le ministre des Finances — au second appui",
   "dossier": "pieces/chambre_lit/ministre",
   "note": "",
   "portrait": true
  },
  {
   "piece": "Le rendez-vous",
-  "nom": "Ce soir",
-  "cond": "avec le chef des renseignements — après la carte « Rendez-vous ce soir »",
+  "nom": "Ce soir — il se déshabille",
+  "cond": "avec le chef des renseignements — au premier appui",
+  "dossier": "pieces/chambre_conjoint/renseignements",
+  "note": ""
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir — sur le lit",
+  "cond": "avec le chef des renseignements — au second appui",
   "dossier": "pieces/chambre_lit/renseignements",
   "note": "",
   "portrait": true
  },
  {
   "piece": "Le rendez-vous",
-  "nom": "Ce soir",
-  "cond": "avec le maire de la capitale — après la carte « Rendez-vous ce soir »",
+  "nom": "Ce soir — il se déshabille",
+  "cond": "avec le maire de la capitale — au premier appui",
+  "dossier": "pieces/chambre_conjoint/maire",
+  "note": ""
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir — sur le lit",
+  "cond": "avec le maire de la capitale — au second appui",
   "dossier": "pieces/chambre_lit/maire",
   "note": "",
   "portrait": true
  },
  {
   "piece": "Le rendez-vous",
-  "nom": "Ce soir",
-  "cond": "avec l'intendant du palais — après la carte « Rendez-vous ce soir »",
+  "nom": "Ce soir — il se déshabille",
+  "cond": "avec l'intendant du palais — au premier appui",
+  "dossier": "pieces/chambre_conjoint/epoux",
+  "note": ""
+ },
+ {
+  "piece": "Le rendez-vous",
+  "nom": "Ce soir — sur le lit",
+  "cond": "avec l'intendant du palais — au second appui",
   "dossier": "pieces/chambre_lit/epoux",
   "note": "",
   "portrait": true
