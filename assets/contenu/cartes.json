@@ -15674,7 +15674,10 @@
    "journal": "Elle a déposé sa candidature le lundi. Son bureau au palais a été vidé pendant qu'elle signait le formulaire.",
    "romance": {
     "rupture": true
-   }
+   },
+   "drapeaux": [
+    "rompu_cabinet"
+   ]
   },
   "conditions": {
    "parcours": [
@@ -15931,7 +15934,10 @@
    "journal": "L'émissaire a été rappelée à son siège. Son successeur est arrivé avec une liste de douze conditions nouvelles.",
    "romance": {
     "rupture": true
-   }
+   },
+   "drapeaux": [
+    "rompu_emissaire"
+   ]
   },
   "conditions": {
    "parcours": [
@@ -16204,7 +16210,10 @@
    "journal": "Elle a repris son émission seule. Le sujet du soir était le financement des campagnes, sans vous nommer.",
    "romance": {
     "rupture": true
-   }
+   },
+   "drapeaux": [
+    "rompu_militante"
+   ]
   },
   "conditions": {
    "parcours": [
@@ -16465,7 +16474,10 @@
    "journal": "Elle a quitté le palais le trente et un, à midi. Son successeur a demandé où se trouvaient les plans de table.",
    "romance": {
     "rupture": true
-   }
+   },
+   "drapeaux": [
+    "rompu_epouse"
+   ]
   },
   "conditions": {
    "parcours": [
@@ -16738,7 +16750,10 @@
    "journal": "Il a quitté la capitale le lendemain. Sa maison au bord de l'eau a été rendue au propriétaire dans la semaine.",
    "romance": {
     "rupture": true
-   }
+   },
+   "drapeaux": [
+    "rompu_international"
+   ]
   },
   "conditions": {
    "parcours": [
@@ -16999,7 +17014,10 @@
    "journal": "Il est resté aux Finances. Son bureau au palais a été rendu, et il a repris ses nuits au ministère.",
    "romance": {
     "rupture": true
-   }
+   },
+   "drapeaux": [
+    "rompu_ministre"
+   ]
   },
   "conditions": {
    "parcours": [
@@ -17260,7 +17278,10 @@
    "journal": "Il a repris ses fonctions sans un mot. La note quotidienne est redevenue numérotée, et versée aux archives.",
    "romance": {
     "rupture": true
-   }
+   },
+   "drapeaux": [
+    "rompu_renseignements"
+   ]
   },
   "conditions": {
    "parcours": [
@@ -17519,7 +17540,10 @@
    "journal": "Le maire a annoncé sa candidature depuis le perron de sa mairie. Il n'a pas prononcé votre nom une seule fois.",
    "romance": {
     "rupture": true
-   }
+   },
+   "drapeaux": [
+    "rompu_maire"
+   ]
   },
   "conditions": {
    "parcours": [
@@ -17778,7 +17802,10 @@
    "journal": "Il a repris son service le soir même. Le palais a fermé à minuit vingt, et la lampe du fond est restée allumée.",
    "romance": {
     "rupture": true
-   }
+   },
+   "drapeaux": [
+    "rompu_epoux"
+   ]
   },
   "conditions": {
    "parcours": [
@@ -18584,7 +18611,10 @@
    "romance": {
     "rupture": true
    },
-   "journal": "La rédactrice en chef a repris la direction du journal. Son premier éditorial ne parlait pas du palais."
+   "journal": "La rédactrice en chef a repris la direction du journal. Son premier éditorial ne parlait pas du palais.",
+   "drapeaux": [
+    "rompu_redactrice"
+   ]
   },
   "conditions": {
    "attache_min": 4,
@@ -20226,6 +20256,419 @@
    "id": "coeur_intendant",
    "rang": 10,
    "delai_min": 5
+  }
+ },
+ {
+  "id": "coeur_redactrice_11",
+  "personnage": "redactrice",
+  "humeur": "fache",
+  "texte": "{nom}, mon premier éditorial depuis trois mois paraît demain, et il parle de vous. Je peux vous le lire ce soir, ou pas.",
+  "gauche": {
+   "libelle": "Lisez-le-moi",
+   "effets": {
+    "presse": 5,
+    "peuple": -4,
+    "caisses": -3
+   },
+   "journal": "La rédactrice en chef a lu son éditorial au palais avant de le publier. Elle n'en a pas changé une ligne."
+  },
+  "droite": {
+   "libelle": "Je lirai demain",
+   "effets": {
+    "peuple": 4,
+    "caisses": 4,
+    "presse": -5
+   },
+   "journal": "L'éditorial a paru sans prévenir personne. Il occupait toute la une."
+  },
+  "conditions": {
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ],
+   "drapeaux_requis": [
+    "rompu_redactrice"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_redactrice",
+   "rang": 10,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "coeur_cabinet_11",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{nom}, j'ai rendu mon bureau et gardé les dossiers dans ma tête. On me demande toujours si je me présente contre vous.",
+  "gauche": {
+   "libelle": "Restez en dehors",
+   "effets": {
+    "caisses": 5,
+    "presse": -4,
+    "peuple": -3
+   },
+   "journal": "L'ancienne directrice de cabinet a démenti toute candidature. Personne ne l'a crue."
+  },
+  "droite": {
+   "libelle": "Présentez-vous",
+   "effets": {
+    "presse": 5,
+    "peuple": 3,
+    "caisses": -5
+   },
+   "journal": "L'ancienne directrice de cabinet a déposé un dossier de candidature jeudi matin."
+  },
+  "conditions": {
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ],
+   "drapeaux_requis": [
+    "rompu_cabinet"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_cabinet",
+   "rang": 10,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "coeur_emissaire_11",
+  "personnage": "emissaire",
+  "humeur": "neutre",
+  "texte": "{nom}, mon siège a repris le dossier et relève vos taux de deux points. Ce n'est pas moi qui l'ai demandé.",
+  "gauche": {
+   "libelle": "Je vous crois",
+   "effets": {
+    "peuple": 5,
+    "caisses": -5,
+    "presse": -3
+   },
+   "journal": "Les nouveaux taux sont entrés en vigueur sans protestation du palais."
+  },
+  "droite": {
+   "libelle": "Bien sûr que si",
+   "effets": {
+    "caisses": 4,
+    "armee": 3,
+    "peuple": -5
+   },
+   "journal": "Le palais a protesté par note verbale. Le fonds n'a pas répondu."
+  },
+  "conditions": {
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ],
+   "drapeaux_requis": [
+    "rompu_emissaire"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_emissaire",
+   "rang": 10,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "coeur_militante_11",
+  "personnage": "militante",
+  "humeur": "fache",
+  "texte": "{nom}, j'ai repris le porte-voix et la rue m'a reprise. Demain nous passons devant le palais, et je ne peux plus l'empêcher.",
+  "gauche": {
+   "libelle": "Qu'elle passe",
+   "effets": {
+    "presse": 5,
+    "peuple": 4,
+    "armee": -5
+   },
+   "journal": "Le cortège est passé devant les grilles sans un policier. La militante marchait en tête."
+  },
+  "droite": {
+   "libelle": "Bloquez l'avenue",
+   "effets": {
+    "armee": 5,
+    "presse": -5,
+    "peuple": -4
+   },
+   "journal": "L'avenue a été bouclée dès six heures. Le cortège s'est dispersé dans les rues voisines."
+  },
+  "conditions": {
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ],
+   "parcours_interdits": [
+    "militante"
+   ],
+   "drapeaux_requis": [
+    "rompu_militante"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_militante",
+   "rang": 10,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "coeur_protocole_11",
+  "personnage": "epouse",
+  "humeur": "neutre",
+  "texte": "{nom}, j'ai formé quelqu'un pour me remplacer, et elle est meilleure que moi. Mon dernier dîner d'État est jeudi.",
+  "gauche": {
+   "libelle": "Restez encore",
+   "effets": {
+    "peuple": 5,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "La cheffe du protocole a repoussé son départ sans donner de date nouvelle."
+  },
+  "droite": {
+   "libelle": "Jeudi, alors",
+   "effets": {
+    "caisses": 4,
+    "presse": 3,
+    "peuple": -5
+   },
+   "journal": "La cheffe du protocole a quitté le palais après le dîner de jeudi. Elle a laissé ses clés sur le bureau."
+  },
+  "conditions": {
+   "parcours": [
+    "general_parcours",
+    "syndicaliste",
+    "footballeur",
+    "putschiste",
+    "technocrate"
+   ],
+   "drapeaux_requis": [
+    "rompu_epouse"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_protocole",
+   "rang": 10,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "coeur_international_11",
+  "personnage": "international",
+  "humeur": "neutre",
+  "texte": "{nom}, je pars au bord de l'eau demain matin. La fédération m'a repris. Le pays saura que je pars, pas pourquoi.",
+  "gauche": {
+   "libelle": "Dites pourquoi",
+   "effets": {
+    "presse": 5,
+    "peuple": -5,
+    "caisses": -3
+   },
+   "journal": "L'ancien international a parlé à un journal. L'entretien tenait trois pages."
+  },
+  "droite": {
+   "libelle": "Qu'il l'ignore",
+   "effets": {
+    "peuple": 5,
+    "caisses": 3,
+    "presse": -5
+   },
+   "journal": "L'ancien international est parti sans déclaration. La rumeur a rempli le vide."
+  },
+  "conditions": {
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ],
+   "drapeaux_requis": [
+    "rompu_international"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_international",
+   "rang": 10,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "coeur_ministre_11",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{nom}, je peux tenir vos comptes en vous regardant, ou m'en aller proprement. Les deux vous coûtent quelque chose.",
+  "gauche": {
+   "libelle": "Restez ministre",
+   "effets": {
+    "caisses": 6,
+    "peuple": -4,
+    "presse": -3
+   },
+   "journal": "Le ministre des Finances est resté en poste. Les conseils se tiennent sans qu'il lève les yeux."
+  },
+  "droite": {
+   "libelle": "Allez-vous-en",
+   "effets": {
+    "presse": 5,
+    "peuple": 4,
+    "caisses": -6
+   },
+   "journal": "Le ministre des Finances a démissionné pour raisons personnelles. Le Trésor a mis trois semaines à s'en remettre."
+  },
+  "conditions": {
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ],
+   "drapeaux_requis": [
+    "rompu_ministre"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_ministre",
+   "rang": 10,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "coeur_renseignements_11",
+  "personnage": "renseignements",
+  "humeur": "fache",
+  "texte": "{nom}, ce que j'ai sur vous tient dans une chemise cartonnée. Elle est dans mon coffre, et elle y reste. Pour l'instant.",
+  "gauche": {
+   "libelle": "Détruisez-la",
+   "effets": {
+    "presse": 5,
+    "peuple": 3,
+    "armee": -5
+   },
+   "journal": "Le chef des renseignements a fait porter une chemise vide au palais. Personne n'a vérifié ce qu'elle contenait avant."
+  },
+  "droite": {
+   "libelle": "Gardez-la",
+   "effets": {
+    "armee": 5,
+    "presse": -5,
+    "caisses": -3
+   },
+   "journal": "La chemise est restée au coffre. Le chef des renseignements a demandé une rallonge de budget le lendemain."
+  },
+  "conditions": {
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ],
+   "drapeaux_requis": [
+    "rompu_renseignements"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_renseignements",
+   "rang": 10,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "coeur_maire_11",
+  "personnage": "maire",
+  "humeur": "neutre",
+  "texte": "{nom}, je me présente. Ce n'est pas contre vous, c'est ce qui me reste. La ville votera pour moi, et vous le savez.",
+  "gauche": {
+   "libelle": "Je vous laisse",
+   "effets": {
+    "peuple": 5,
+    "presse": 3,
+    "armee": -5
+   },
+   "journal": "Le maire a annoncé sa candidature depuis le perron de sa mairie. Le palais n'a pas réagi."
+  },
+  "droite": {
+   "libelle": "Je me battrai",
+   "effets": {
+    "armee": 5,
+    "caisses": 3,
+    "peuple": -5
+   },
+   "journal": "Deux contrôles ont été ouverts sur la mairie dans la semaine qui a suivi l'annonce."
+  },
+  "conditions": {
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ],
+   "drapeaux_requis": [
+    "rompu_maire"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_maire",
+   "rang": 10,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "coeur_intendant_11",
+  "personnage": "epoux",
+  "humeur": "neutre",
+  "texte": "{nom}, je demande ma mutation à l'intendance du port. Onze ans ici, et je ne sais plus fermer les portes le soir.",
+  "gauche": {
+   "libelle": "Restez",
+   "effets": {
+    "peuple": 5,
+    "caisses": -4,
+    "presse": -3
+   },
+   "journal": "L'intendant a retiré sa demande. Il ferme désormais les portes avant la tombée du jour."
+  },
+  "droite": {
+   "libelle": "J'ai signé",
+   "effets": {
+    "caisses": 4,
+    "armee": 3,
+    "peuple": -5
+   },
+   "journal": "L'intendant du palais est parti pour le port un lundi matin, sans que personne le raccompagne."
+  },
+  "conditions": {
+   "parcours": [
+    "professeure",
+    "femme_affaires",
+    "musicienne",
+    "fille_president",
+    "militante"
+   ],
+   "drapeaux_requis": [
+    "rompu_epoux"
+   ]
+  },
+  "chaine": {
+   "id": "coeur_intendant",
+   "rang": 10,
+   "delai_min": 4
   }
  }
 ]

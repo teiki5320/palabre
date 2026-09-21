@@ -100,14 +100,15 @@ def lis():
         for c in cartes:
             ch = c.get('chaine') or {}
             if ch.get('id') == chaine:
-                rangs[ch['rang']] = c
+                rangs.setdefault(ch['rang'], []).append(c)
         manque = [r for r in range(1, max(rangs) + 1) if r not in rangs]
         if manque:
             sys.exit(f'{chaine} : rangs absents {manque}')
         rdv = parId.get(f'rdv_{qui}')
         if rdv is None:
             sys.exit(f'{qui} : pas de carte de rendez-vous')
-        tout.append({'id': qui, 'personne': gens[qui], 'rangs': rangs, 'rdv': rdv})
+        tout.append({'id': qui, 'personne': gens[qui], 'rangs': rangs, 'rdv': rdv,
+                     'cartes': [c for r in sorted(rangs) for c in rangs[r]]})
     return tout
 
 
@@ -189,7 +190,7 @@ def coiffe_du_rang(c, liaison):
     return porte
 
 
-def bloc_des_noces(e):
+def _bloc_des_noces_inutilise(e):
     """Les deux cérémonies, quand une carte de la chaîne les propose."""
     lieux = set()
     for c in e['rangs'].values():
@@ -211,33 +212,54 @@ def bloc_des_noces(e):
     </div>'''
 
 
+def issue(c):
+    """Le drapeau qui conditionne une carte d'issue : noces ou rupture."""
+    for d in c.get('conditions', {}).get('drapeaux_requis', []):
+        if d.startswith('noces_'):
+            return 'noces'
+        if d.startswith('rompu_'):
+            return 'rupture'
+    return None
+
+
 def echelle(e, liaison):
     p = e['personne']
     homme = e['id'] in HOMMES
-    noces = bloc_des_noces(e)
     coiffe = {'titre': p.get('titre', '')}
 
-    # Avant la liaison, après la liaison. Le rendez-vous et la chambre se
-    # placent à la charnière, pas à la fin : on ne dort pas ensemble le soir
-    # des noces, on dort ensemble bien avant, et c'est le jeu qui le dit.
-    avant, apres = [], []
-    for r in sorted(e['rangs']):
-        c = e['rangs'][r]
+    # Avant la liaison, après la liaison, puis les deux issues. Le
+    # rendez-vous et la chambre se placent à la charnière, pas à la fin :
+    # on ne dort pas ensemble le soir des noces.
+    avant, apres, noces, rupture = [], [], [], []
+    for c in e['cartes']:
         cond = c.get('conditions', {})
+        rang = c['chaine']['rang']
         porte = cond.get('attache_min', cond.get('attache_max', 0))
-        dessin = vraie_carte(c, e['id'], {**coiffe, 'porte': f'{r} · ' + coiffe_du_rang(c, liaison)}, homme)
-        (avant if porte < liaison else apres).append(dessin)
+        dessin = vraie_carte(c, e['id'], {**coiffe, 'porte': f'{rang} · ' + coiffe_du_rang(c, liaison)}, homme)
+        quelle = issue(c)
+        if quelle == 'noces':
+            noces.append(dessin)
+        elif quelle == 'rupture':
+            rupture.append(dessin)
+        elif porte < liaison:
+            avant.append(dessin)
+        else:
+            apres.append(dessin)
 
     rdv = vraie_carte(e['rdv'], e['id'], {**coiffe,
         'porte': f'le rendez-vous · attache au cran {liaison} ou plus · '
                  'se rejoue tous les 10 jours'}, homme)
+    vues = ''.join(
+        f'<figure class="noce"><img src="noces/{e["id"]}_{v}.jpg" alt=""> '
+        f'<figcaption>{echappe(NOCES["noces_" + v])}</figcaption></figure>'
+        for v in ('etat', 'discretes'))
 
     return f'''  <section class="personne">
     <div class="tete">
       <img src="visages/{e['id']}.jpg" alt="{echappe(p['nom'])}">
       <div>
         <h2>{echappe(p['nom'])}</h2>
-        <p class="titre">{len(avant) + len(apres) + 1} cartes · {'une présidente' if homme else 'un président'} seulement</p>
+        <p class="titre">{len(e['cartes']) + 1} cartes · {'une présidente' if homme else 'un président'} seulement</p>
       </div>
     </div>
     <p class="acte">Jusqu'à la liaison</p>
@@ -262,7 +284,23 @@ def echelle(e, liaison):
     <div class="galerie">
 {''.join(apres)}
     </div>
-{noces}
+    <p class="acte">Si l'on dit oui — le jour des noces</p>
+    <div class="galerie">
+{''.join(noces)}
+    </div>
+    <div class="bloc">
+      <p class="etiquette">La cérémonie, une seule fois</p>
+      <div class="noces">{vues}</div>
+      <p class="porte">Elle se joue en plein écran après la réponse, puis ne
+      revient jamais — c'est le seul moment du jeu qu'on ne peut pas revoir.</p>
+    </div>
+    <p class="acte">Si l'on dit non — ce qu'il en reste</p>
+    <div class="galerie">
+{''.join(rupture)}
+    </div>
+    <p class="note">L'attache retombe à zéro et cette histoire-là s'arrête pour
+    de bon. Une autre peut commencer avec quelqu'un d'autre : rien ne l'empêche,
+    et le jeu ne compte pas les cœurs.</p>
   </section>'''
 
 
@@ -455,9 +493,9 @@ def main():
         if not tout:
             sys.exit(f'{seul} : personne de ce nom')
         titre = 'Une romance entière'
-        chapeau = ('Une romance entière, de la première carte au lendemain du '
-                   "mariage, pour juger de l'ensemble avant d'écrire les neuf "
-                   'autres. Les cartes sont dessinées comme le jeu les dessine.')
+        chapeau = ('Une romance entière, de la première carte aux deux façons '
+                   "dont elle peut finir — le mariage, ou le refus. Les cartes "
+                   'sont dessinées comme le jeu les dessine.')
     echelon = ''.join(
         f'<span><b>{i}</b>{echappe(nom)}</span>' for i, nom in enumerate(CRANS))
     cartes = json.load(open(os.path.join(RACINE, 'assets/contenu/cartes.json')))
@@ -465,7 +503,7 @@ def main():
     corps = '\n'.join(echelle(e, liaison) for e in tout)
     if not seul:
         corps += '\n' + acte_du_mariage(mariage)
-    total = sum(len(e['rangs']) + 1 for e in tout) + (0 if seul else len(mariage))
+    total = sum(len(e['cartes']) + 1 for e in tout) + (0 if seul else len(mariage))
     pied = (f'{total} cartes, lues dans le contenu '
             'du jeu : ce qui est écrit ici est ce qui se joue. Les jours ordinaires, '
             'la chambre montre seulement que l\'on n\'y dort plus seul — le '
@@ -479,7 +517,7 @@ def main():
             .replace('{{PIED}}', echappe(pied))
             .replace('{{CORPS}}', corps))
     open(sortie, 'w').write(page)
-    compte = sum(len(e['rangs']) + 1 for e in tout)
+    compte = sum(len(e['cartes']) + 1 for e in tout)
     print(f'{sortie} — {len(tout)} romance(s), {compte} cartes')
 
 
