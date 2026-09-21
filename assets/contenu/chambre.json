@@ -1,0 +1,122 @@
+{
+  "redactrice": {
+    "liaison": {
+      "habille": "J'ai garé deux rues plus loin. Comme une voleuse.",
+      "deshabille": "Ne me regarde pas comme un dossier.",
+      "lit": "Demain je t'éreinte. Pas maintenant."
+    },
+    "marie": {
+      "habille": "Le protocole voulait notre programme de demain. J'ai dit : occupé.",
+      "deshabille": "Tu as gardé la cravate toute la journée.",
+      "lit": "Il est tard, {titre}."
+    }
+  },
+  "cabinet": {
+    "liaison": {
+      "habille": "Ton agenda dit conseil restreint. C'est moi qui l'écris.",
+      "deshabille": "Onze heures que je te vois. C'est la première fois que je te regarde.",
+      "lit": "Ne dis rien. Pas ce soir."
+    },
+    "marie": {
+      "habille": "J'ai décalé le point de sept heures. Tu me remercieras demain.",
+      "deshabille": "Laisse le téléphone dans l'autre pièce.",
+      "lit": "Là, tu n'es plus président."
+    }
+  },
+  "emissaire": {
+    "liaison": {
+      "habille": "Mon vol repart à six heures. Ça nous laisse la nuit.",
+      "deshabille": "Ici, je ne représente personne.",
+      "lit": "Pas un mot demain matin."
+    },
+    "marie": {
+      "habille": "J'ai refusé trois postes pour rester dans ce pays.",
+      "deshabille": "Tu as encore lu le rapport au lit.",
+      "lit": "Éteins, {nom}."
+    }
+  },
+  "militante": {
+    "liaison": {
+      "habille": "Il y avait trois cents personnes devant ce palais ce matin. J'étais devant.",
+      "deshabille": "Si les miens savaient, ils me le feraient payer.",
+      "lit": "Tais-toi, et oublie qui tu es."
+    },
+    "marie": {
+      "habille": "Ils m'appellent la traîtresse. Je leur réponds encore.",
+      "deshabille": "Tu sens le palais.",
+      "lit": "Viens là, {nom}."
+    }
+  },
+  "epouse": {
+    "liaison": {
+      "habille": "J'ai placé vos invités toute la soirée. Je n'ai regardé que vous.",
+      "deshabille": "Il n'y a pas de protocole pour ça.",
+      "lit": "Fermez les rideaux, {titre}."
+    },
+    "marie": {
+      "habille": "Vingt ans que je place les gens. Ce soir, je ne place personne.",
+      "deshabille": "Tu as encore ton badge.",
+      "lit": "Laisse la lumière."
+    }
+  },
+  "international": {
+    "liaison": {
+      "habille": "On m'a reconnu à l'entrée. J'ai signé deux maillots pour monter.",
+      "deshabille": "Vingt ans de vestiaire, et je tremble.",
+      "lit": "Vous gagnez toujours, vous."
+    },
+    "marie": {
+      "habille": "Le garde m'a demandé un autographe. Pour sa fille.",
+      "deshabille": "J'ai couru ce matin. En pensant à ce soir.",
+      "lit": "Viens, championne."
+    }
+  },
+  "ministre": {
+    "liaison": {
+      "habille": "J'ai dit au chauffeur que j'allais aux archives.",
+      "deshabille": "Vous êtes la seule ligne que je n'arrive pas à équilibrer.",
+      "lit": "Coupez la lumière, {titre}."
+    },
+    "marie": {
+      "habille": "Le budget est passé. Je n'y pense déjà plus.",
+      "deshabille": "Tu as les mains froides.",
+      "lit": "Reste."
+    }
+  },
+  "renseignements": {
+    "liaison": {
+      "habille": "Personne ne sait que je suis ici. C'est mon métier.",
+      "deshabille": "Ce soir, je n'écoute rien.",
+      "lit": "Dormez. Je veille."
+    },
+    "marie": {
+      "habille": "J'ai fait retirer les caméras de cet étage. Toutes.",
+      "deshabille": "Tu as eu peur aujourd'hui. Je l'ai vu.",
+      "lit": "Je reste éveillé."
+    }
+  },
+  "maire": {
+    "liaison": {
+      "habille": "J'ai dit que j'avais une réunion. Ce n'est pas tout à fait faux.",
+      "deshabille": "Vous savez que je n'ai jamais su vous refuser un budget.",
+      "lit": "Éteignez, {titre}."
+    },
+    "marie": {
+      "habille": "Ta garde m'a salué. Je ne m'y fais toujours pas.",
+      "deshabille": "J'ai signé trois arrêtés en pensant à ce soir.",
+      "lit": "Viens."
+    }
+  },
+  "epoux": {
+    "liaison": {
+      "habille": "J'ai éteint l'aile est moi-même. Il n'y a plus personne.",
+      "deshabille": "Onze ans que je ferme ces portes. Jamais de l'intérieur.",
+      "lit": "Personne ne viendra."
+    },
+    "marie": {
+      "habille": "J'ai fait monter du thé. Il refroidit depuis une heure.",
+      "deshabille": "Tu as encore travaillé debout.",
+      "lit": "Laisse-moi faire."
+    }
+  }
+}
