@@ -1,7 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:president/moteur/decor.dart';
+import 'package:president/moteur/etat_partie.dart';
 import 'package:president/moteur/jauges.dart';
+import 'package:president/moteur/palais.dart';
 import 'package:president/moteur/sons.dart';
 
 void main() {
@@ -39,6 +42,43 @@ void main() {
       // finira par couper.
       expect(File(chemin).lengthSync(), lessThan(60000), reason: '$chemin est trop lourd');
     }
+  });
+
+  test('chaque piece a son fond, et chaque fond son fichier', () {
+    const jour = EtatPartie(
+        parcours: 'p', nomJoueur: 'Awa', jauges: Jauges.milieu, jour: 10);
+    for (final piece in Piece.values) {
+      final decor = decorDe(piece, jour, const {});
+      final fond = fondDe(piece, decor, jour);
+      final chemin = 'assets/${fichierDuFond(fond)}';
+      expect(File(chemin).existsSync(), isTrue, reason: '$chemin manque');
+    }
+    for (final fond in Fond.values) {
+      expect(File('assets/${fichierDuFond(fond)}').existsSync(), isTrue,
+          reason: '${fond.name} n a pas de fichier');
+    }
+  });
+
+  test('la nuit ne tait que les etats calmes du balcon', () {
+    const tard = EtatPartie(
+        parcours: 'p', nomJoueur: 'Awa', jauges: Jauges.milieu, jour: 90);
+    // Le balcon ordinaire devient la nuit...
+    expect(fondDe(Piece.balcon, decorDuBalcon(tard), tard), Fond.balconNuit);
+    // ...mais une emeute ne se calme pas parce qu il fait nuit.
+    const emeute = EtatPartie(
+        parcours: 'p', nomJoueur: 'Awa',
+        jauges: Jauges(peuple: 10, armee: 50, caisses: 50, presse: 50), jour: 90);
+    expect(fondDe(Piece.balcon, decorDuBalcon(emeute), emeute), Fond.balconEmeute);
+  });
+
+  test('la piscine ne sonne que lorsqu il y a du monde', () {
+    const riche = EtatPartie(
+        parcours: 'p', nomJoueur: 'Awa', jauges: Jauges.milieu, jour: 10, style: 20);
+    final vide = decorDeLaPiscine(riche, const {});
+    expect(fondDe(Piece.piscine, vide, riche), Fond.musiqueBureau,
+        reason: 'un bassin sans personne prend la musique');
+    final plein = decorDeLaPiscine(riche, const {'dimanche'});
+    expect(fondDe(Piece.piscine, plein, riche), Fond.piscineQuartier);
   });
 
   test('le son de la decision reste le plus court : on l entend cent fois', () {

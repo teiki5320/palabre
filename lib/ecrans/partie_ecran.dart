@@ -58,6 +58,11 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
       null => null,
     };
 
+    // L'écran des cartes n'est pas une pièce du palais, mais on y est assis
+    // à son bureau : il en prend la musique. Le palais, poussé par-dessus,
+    // la remplacera le temps de la visite et la rendra en revenant.
+    ref.read(sonsProvider).metLeFond(Fond.musiqueBureau);
+
     // Le mariage se montre une fois, par-dessus tout le reste : la partie
     // continue derrière, on ne fait que la couvrir le temps d'un regard.
     final ceremonie = ceremonieDe(session.etat);
@@ -67,6 +72,7 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
         body: _Ceremonie(
           image: ceremonie,
           ligne: session.journal,
+          auDebut: () => ref.read(sonsProvider).joue(Son.ceremonie),
           fini: () => ref.read(sessionProvider.notifier).ceremonieVue(),
         ),
       );
@@ -615,8 +621,16 @@ class _Delta extends StatelessWidget {
 /// Le jour du mariage. Une image plein cadre, la ligne du journal, et un
 /// mot pour reprendre. Elle ne se rejoue jamais : c'est le seul moment du
 /// jeu qu'on ne peut pas revoir, et c'est ce qui lui donne son poids.
-class _Ceremonie extends StatelessWidget {
-  const _Ceremonie({required this.image, required this.ligne, required this.fini});
+class _Ceremonie extends StatefulWidget {
+  const _Ceremonie({
+    required this.image,
+    required this.ligne,
+    required this.auDebut,
+    required this.fini,
+  });
+
+  /// Appelée une fois, à l'ouverture : c'est elle qui fait sonner la salle.
+  final VoidCallback auDebut;
 
   final String image;
 
@@ -626,13 +640,28 @@ class _Ceremonie extends StatelessWidget {
   final VoidCallback fini;
 
   @override
+  State<_Ceremonie> createState() => _CeremonieState();
+}
+
+class _CeremonieState extends State<_Ceremonie> {
+  @override
+  void initState() {
+    super.initState();
+    // Après la première image, pas pendant : un son lancé au milieu de la
+    // construction arrive avant que l'écran soit là pour le porter.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) widget.auDebut();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: fini,
+        onTap: widget.fini,
         behavior: HitTestBehavior.opaque,
         child: Stack(
           fit: StackFit.expand,
           children: [
-            Image.asset(image, fit: BoxFit.cover, gaplessPlayback: true),
+            Image.asset(widget.image, fit: BoxFit.cover, gaplessPlayback: true),
             // Un voile qui s'épaissit vers le bas, pour que la ligne du
             // journal se lise quelle que soit la photographie dessous.
             IgnorePointer(
@@ -659,8 +688,8 @@ class _Ceremonie extends StatelessWidget {
                   children: [
                     Text('LE MARIAGE', style: Textes.titrePersonnage),
                     const Spacer(),
-                    if (ligne != null)
-                      Text(ligne!, style: Textes.texteCarte.copyWith(fontSize: 17)),
+                    if (widget.ligne != null)
+                      Text(widget.ligne!, style: Textes.texteCarte.copyWith(fontSize: 17)),
                     const SizedBox(height: 22),
                     Text(
                       'Toucher pour reprendre',

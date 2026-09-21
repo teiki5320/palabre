@@ -9,6 +9,7 @@ import '../moteur/dits.dart';
 import '../moteur/etat_partie.dart';
 import '../moteur/palais.dart';
 import 'session.dart';
+import 'sons.dart';
 import 'theme.dart';
 
 /// Le palais : on arrive au bureau, on en repart vers les quatre autres
@@ -36,6 +37,12 @@ class _PalaisEcranState extends ConsumerState<PalaisEcran> {
     final objets = ref.watch(progressionProvider).value?.objets ?? const <String>{};
     final contenu = ref.watch(contenuProvider).value;
     final decor = decorDe(_piece, session.etat, objets);
+
+    // Le fond de la pièce où l'on vient d'entrer. Posé ici parce que c'est
+    // le seul endroit qui connaît à la fois la pièce et son décor ;
+    // `metLeFond` ne fait rien quand on lui redemande ce qui joue déjà,
+    // donc le redire à chaque reconstruction ne coûte rien.
+    ref.read(sonsProvider).metLeFond(fondDe(_piece, decor, session.etat));
 
     // Un rendez-vous remplace la chambre entière : pas de tiroir, pas de
     // portes, rien que la scène. On n'entre pas là pour acheter un lit.
