@@ -1,7 +1,9 @@
 import '../moteur/condition.dart';
 import '../moteur/denouement.dart';
 import '../moteur/jauges.dart';
+import '../moteur/decor.dart';
 import '../moteur/modeles.dart';
+import '../moteur/palais.dart';
 import 'chargement.dart';
 
 /// Mots qui n'ont rien à faire dans un jeu situé dans un pays imaginaire.
@@ -51,6 +53,13 @@ List<String> valide(Contenu c) {
       drapeauxPoses.addAll(r.drapeaux);
     }
   }
+  // Toutes les cartes ne posent pas tous les drapeaux : un objet acheté pose
+  // le sien, et le moteur pose les deux qu'il se réserve. Sans eux, une
+  // carte qui s'ouvre sur un objet passerait pour une carte morte.
+  for (final o in c.objets) {
+    drapeauxPoses.add(o.drapeau);
+  }
+  drapeauxPoses.addAll(const [drapeauCoffreOuvert, drapeauNocesVues]);
 
   for (final carte in c.cartes) {
     final ou = 'carte ${carte.id}';
@@ -109,6 +118,14 @@ List<String> valide(Contenu c) {
     }
     for (final d in cond.drapeauxRequis) {
       if (!drapeauxPoses.contains(d)) problemes.add('$ou : exige le drapeau « $d » que personne ne pose');
+    }
+    // Un garde-fou qui ne peut jamais se déclencher est pire qu'absent : la
+    // carte se croit protégée et sort quand même. Deux cartes du second
+    // mandat ont vécu comme ça, chacune ignorant une décision du premier.
+    for (final d in cond.drapeauxInterdits) {
+      if (!drapeauxPoses.contains(d)) {
+        problemes.add('$ou : se protège du drapeau « $d » que personne ne pose');
+      }
     }
     for (final p in cond.parcours) {
       if (!idsParcours.contains(p)) problemes.add('$ou : parcours inconnu « $p »');

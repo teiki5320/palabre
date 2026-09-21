@@ -99,6 +99,19 @@ void main() {
     expect(valide(contenuAvec(c)).join(), contains('jamais_pose'));
   });
 
+  test('un drapeau interdit que personne ne pose', () {
+    final c = carte(extra: ',"conditions":{"drapeaux_interdits":["jamais_pose"]}');
+    expect(valide(contenuAvec(c)).join(), contains('jamais_pose'));
+  });
+
+  test('un garde-fou pose par une reponse passe le controle', () {
+    final pose = '{"id":"p","personnage":"general","humeur":"neutre","texte":"Une phrase courte.",'
+        '"gauche":{"libelle":"Non","effets":{"armee":-10,"caisses":6},"drapeaux":["fait"]},'
+        '"droite":{"libelle":"Oui","effets":{"armee":10,"caisses":-6}}}';
+    final c = carte(id: 'b', extra: ',"conditions":{"drapeaux_interdits":["fait"]}');
+    expect(valide(contenuAvec('$pose,$c')), isEmpty);
+  });
+
   test('une chaine a trou', () {
     final un = carte(id: 'c1', extra: ',"chaine":{"id":"affaire","rang":1}');
     final trois = carte(id: 'c3', extra: ',"chaine":{"id":"affaire","rang":3}');

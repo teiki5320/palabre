@@ -3390,6 +3390,9 @@
     "caisses": -8,
     "presse": 5
    },
+   "drapeaux": [
+    "retraite_assumee"
+   ],
    "journal": "Un communiqué de midi a retiré le texte. Le décaissement du trimestre ne figure plus au calendrier du programme."
   },
   "conditions": {
@@ -4040,6 +4043,9 @@
     "presse": -4
    },
    "style": 9,
+   "drapeaux": [
+    "colonel_arrete"
+   ],
    "journal": "Le colonel a été arrêté avant l'aube, et devant le commissariat central des passants ont applaudi le fourgon."
   },
   "droite": {
