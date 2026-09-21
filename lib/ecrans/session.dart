@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../contenu/chargement.dart';
 import '../moteur/condition.dart';
 import '../moteur/decor.dart';
+import 'sons.dart';
 import '../moteur/denouement.dart';
 import '../moteur/etat_partie.dart';
 import '../moteur/modeles.dart';
@@ -123,6 +124,9 @@ class SessionNotifier extends Notifier<Session?> {
     final progression = ref.read(progressionProvider).value;
     final possedes = progression?.objets ?? const <String>{};
     if (!achetable(s.etat, objet, possedes)) return;
+    // Après le contrôle, pas avant : un achat refusé ne fait pas sonner
+    // les caisses.
+    ref.read(sonsProvider).joue(Son.caisses);
 
     if (progression != null) {
       final apres = progression.copie(objets: {...progression.objets, objet.id});

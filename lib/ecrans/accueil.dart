@@ -10,6 +10,7 @@ import '../sauvegarde/sauvegarde.dart';
 import 'collection_ecran.dart';
 import 'partie_ecran.dart';
 import 'session.dart';
+import 'sons.dart';
 import 'theme.dart';
 
 /// Matrice de conversion en niveaux de gris, pour un portrait ou une
@@ -113,6 +114,34 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                 subtitle: Text('Choisir un autre parcours', style: Textes.sousTitre),
                 onTap: () => Navigator.of(context).pop('nouvelle'),
               ),
+            // Le son se règle sans quitter le menu : un joueur qui le coupe
+            // veut le silence tout de suite, pas après un aller-retour.
+            StatefulBuilder(
+              builder: (context, redessine) {
+                final sons = ref.read(sonsProvider);
+                return SwitchListTile(
+                  value: !sons.coupe,
+                  activeThumbColor: Couleurs.or,
+                  secondary: Icon(
+                    sons.coupe ? Icons.volume_off_outlined : Icons.volume_up_outlined,
+                    color: Couleurs.or,
+                  ),
+                  title: const Text('Le son'),
+                  subtitle: Text(
+                    sons.coupe ? 'Coupé' : 'La carte, les jauges, les caisses',
+                    style: Textes.sousTitre,
+                  ),
+                  onChanged: (allume) {
+                    // `coupeLe` pose l'état tout de suite et n'attend que
+                    // pour l'écrire sur le disque : on redessine après
+                    // l'appel, sinon l'interrupteur montre l'état d'avant.
+                    final ecrit = sons.coupeLe(!allume);
+                    redessine(() {});
+                    if (allume) ecrit.then((_) => sons.joue(Son.mieux));
+                  },
+                );
+              },
+            ),
             const SizedBox(height: 10),
           ],
         ),

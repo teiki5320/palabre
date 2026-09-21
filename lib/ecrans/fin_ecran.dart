@@ -6,6 +6,7 @@ import '../moteur/etat_partie.dart';
 import '../moteur/memoire.dart';
 import '../moteur/progression.dart';
 import 'session.dart';
+import 'sons.dart';
 import 'theme.dart';
 
 /// Ce que le centième jour a donné, quand le mandat s'est terminé par une
@@ -73,11 +74,31 @@ List<Widget> _nouveautes(Nouveautes nouveautes) => [
 
 /// Ce qu'on voit quand le mandat s'arrête : la fin écrite, les jours tenus,
 /// et l'invitation à recommencer.
-class FinEcran extends ConsumerWidget {
+class FinEcran extends ConsumerStatefulWidget {
   const FinEcran({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<FinEcran> createState() => _FinEcranState();
+}
+
+class _FinEcranState extends ConsumerState<FinEcran> {
+  @override
+  void initState() {
+    super.initState();
+    // Une seule fois, à l'arrivée sur l'écran. Dans `build` il se rejouerait
+    // à chaque reconstruction — et un mandat ne se termine qu'une fois.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final denouement = ref.read(sessionProvider)?.denouement;
+      if (denouement == null) return;
+      ref.read(sonsProvider).joue(
+            denouement.type == TypeDenouement.electionGagnee ? Son.reelu : Son.battu,
+          );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final session = ref.watch(sessionProvider);
     if (session == null || !session.terminee) return const Scaffold(body: SizedBox.shrink());
 

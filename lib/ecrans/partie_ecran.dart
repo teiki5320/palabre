@@ -10,6 +10,7 @@ import 'carte_glissante.dart';
 import 'fin_ecran.dart';
 import 'palais_ecran.dart';
 import 'session.dart';
+import 'sons.dart';
 import 'telegraphe.dart';
 import 'theme.dart';
 
@@ -125,6 +126,15 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                             onReponse: (c) {
                               setState(() => _intention = null);
                               _doublure.value = 0;
+                              // Le son se choisit sur ce que la réponse fait
+                              // vraiment, régime et mandat compris : un même
+                              // libellé ne frappe pas pareil au second mandat.
+                              ref.read(sonsProvider).joue(sonDeLaReponse(effetsReels(
+                                    effets: (c == Cote.gauche ? carte.gauche : carte.droite).effets,
+                                    style: session.etat.style,
+                                    mandat: session.etat.mandat,
+                                    atout: parcours?.atout,
+                                  )));
                               ref.read(sessionProvider.notifier).repondA(c);
                             },
                             enfant: _Carte(
