@@ -295,6 +295,11 @@ Decor decorDuGarage(Set<String> objets) {
   return const Decor(dossier: 'pieces/garage_base', etat: 'base', nom: 'La voiture de fonction');
 }
 
+/// Ce que la pompe repousse. Le catalogue promet « l'eau redevient claire,
+/// tant que les caisses tiennent » : sans ces deux seuils-là, l'objet se
+/// payait huit caisses et ne changeait rien du tout.
+const int _reculDeLaPompe = 8;
+
 Decor decorDeLaPiscine(EtatPartie etat, Set<String> objets) {
   if (objets.contains('dimanche') && etat.style <= 35) {
     // La seule pièce qui bouge : quand le quartier vient, l'eau bouge avec.
@@ -306,10 +311,11 @@ Decor decorDeLaPiscine(EtatPartie etat, Set<String> objets) {
       allerRetour: true,
     );
   }
-  if (etat.jauges.caisses <= 15) {
+  final recul = objets.contains('pompe') ? _reculDeLaPompe : 0;
+  if (etat.jauges.caisses <= 15 - recul) {
     return const Decor(dossier: 'pieces/piscine_vide', etat: 'vide', nom: 'Le bassin vidé');
   }
-  if (etat.jauges.caisses <= 30) {
+  if (etat.jauges.caisses <= 30 - recul) {
     return const Decor(dossier: 'pieces/piscine_verte', etat: 'verte', nom: "L'eau verte");
   }
   return const Decor(dossier: 'pieces/piscine_base', etat: 'base', nom: "L'eau claire");

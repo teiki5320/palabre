@@ -417,6 +417,15 @@ void main() {
       expect(decorDeLaPiscine(etatAvec(caisses: 10), {}).etat, 'vide');
     });
 
+    test('la pompe recule le moment où l eau se trouble', () {
+      // Le catalogue promet « l'eau redevient claire, tant que les caisses
+      // tiennent » : sans ce recul, la pompe se payait et ne changeait rien.
+      expect(decorDeLaPiscine(etatAvec(caisses: 25), {'pompe'}).etat, 'base');
+      expect(decorDeLaPiscine(etatAvec(caisses: 20), {'pompe'}).etat, 'verte');
+      expect(decorDeLaPiscine(etatAvec(caisses: 10), {'pompe'}).etat, 'verte');
+      expect(decorDeLaPiscine(etatAvec(caisses: 6), {'pompe'}).etat, 'vide');
+    });
+
     test('le dimanche du quartier demande l objet et un régime tendre', () {
       expect(decorDeLaPiscine(etatAvec(caisses: 60, style: 30), {'dimanche'}).etat, 'quartier');
       expect(decorDeLaPiscine(etatAvec(caisses: 60, style: 50), {'dimanche'}).etat, 'base');
