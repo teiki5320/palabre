@@ -87,12 +87,12 @@
     "liaison": {
       "habille": "Personne ne sait que je suis ici. C'est mon métier.",
       "deshabille": "Ce soir, je n'écoute rien.",
-      "lit": "Dormez. Je veille."
+      "lit": "Venez près de moi."
     },
     "marie": {
       "habille": "J'ai fait retirer les caméras de cet étage. Toutes.",
       "deshabille": "Tu as eu peur aujourd'hui. Je l'ai vu.",
-      "lit": "Je reste éveillé."
+      "lit": "Éteins la lumière."
     }
   },
   "maire": {

@@ -62,17 +62,124 @@ def detoure(planche, panneau, i, couleur, sortie):
          # n'ont presque pas de chrominance, il les trouve donc aussi
          # proches du vert que le fond lui-même et les efface. C'est ce
          # qui rendait les gens transparents.
-         f'colorkey={couleur}:0.18:0.03,split[c][a];'
+         f'colorkey={couleur}:0.18:0.03,'
+         # Le fond n'est pas d'un vert unique : sous la personne il passe
+         # à l'ombre, et le `colorkey`, qui mesure une distance à une seule
+         # couleur, ne l'y reconnaît plus. Il le laissait opaque, et le
+         # dévert le retournait en bleu marine — la cheffe du protocole
+         # avait une flaque bleue à ses pieds. Est aussi du fond tout ce
+         # dont le vert domine franchement les deux autres canaux : une
+         # peau, un jean, un satin ivoire n'en sont jamais là.
+         "geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':"
+         "a='if(gt(g(X,Y),50)*gt(g(X,Y),1.25*r(X,Y))*gt(g(X,Y),1.25*b(X,Y)),"
+         "0,alpha(X,Y))',"
+         'split[c][a];'
          '[c]despill=type=green:mix=0.5:expand=0[cc];'
          # L'alpha est binarisé, puis fermé — une dilatation suivie d'une
          # érosion — pour boucher les trous que le vert a percés dans les
          # vêtements, avant d'être refeutré d'un pixel sur le bord.
          "[a]format=rgba,alphaextract,format=gray,lut=y='if(gt(val,128),255,0)',"
          'dilation,dilation,dilation,dilation,'
-         'erosion,erosion,erosion,erosion,boxblur=1:1[m];'
+         'erosion,erosion,erosion,erosion,'
+         # Puis une ouverture, qui fait l'inverse : elle rogne les
+         # filaments que le vert a laissés pendre au bord d'un vêtement —
+         # la militante gardait des fils de jean accrochés à sa manche —
+         # sans entamer un corps, bien plus large que trois pixels.
+         'erosion,erosion,erosion,'
+         'dilation,dilation,dilation,boxblur=1:1[m];'
          '[cc][m]alphamerge',
          '-frames:v', '1', '-update', '1', sortie],
         check=True)
+
+
+def _alpha(png, w, h):
+    raw = subprocess.run(
+        ['ffmpeg', '-v', 'error', '-i', png, '-vf', 'alphaextract',
+         '-f', 'rawvideo', '-pix_fmt', 'gray', '-'],
+        capture_output=True).stdout
+    if len(raw) < w * h:
+        sys.exit(f'{png} : alpha illisible')
+    return bytearray(raw[:w * h])
+
+
+def _composantes(op, w, h, cherchee):
+    """Les paquets de pixels qui se touchent, du plus gros au plus petit."""
+    vu = bytearray(w * h)
+    paquets = []
+    for depart in range(w * h):
+        if vu[depart] or op[depart] != cherchee:
+            continue
+        pile, paquet = [depart], []
+        vu[depart] = 1
+        while pile:
+            i = pile.pop()
+            paquet.append(i)
+            x, y = i % w, i // w
+            if x and not vu[i - 1] and op[i - 1] == cherchee:
+                vu[i - 1] = 1; pile.append(i - 1)
+            if x + 1 < w and not vu[i + 1] and op[i + 1] == cherchee:
+                vu[i + 1] = 1; pile.append(i + 1)
+            if y and not vu[i - w] and op[i - w] == cherchee:
+                vu[i - w] = 1; pile.append(i - w)
+            if y + 1 < h and not vu[i + w] and op[i + w] == cherchee:
+                vu[i + w] = 1; pile.append(i + w)
+        paquets.append(paquet)
+    paquets.sort(key=len, reverse=True)
+    return paquets
+
+
+def recoud(png):
+    """Rend à la découpe ce que le vert lui a pris.
+
+    Le `colorkey` compare des couleurs une à une, sans savoir ce qu'il
+    découpe : un jean éclairé passe à moins de deux dixièmes du vert du
+    fond, et il en perce des plaques entières — la militante avait la
+    penderie au travers de sa chemise, et un morceau de cette chemise
+    traînait tout seul sur le tapis. La fermeture morphologique ne rebouche
+    que les petits trous ; celui-là faisait deux cents pixels.
+
+    Deux règles suffisent, et elles ne regardent plus les couleurs :
+    une personne est d'un seul tenant — donc on jette les morceaux
+    détachés ; et une personne n'a pas de fenêtres — donc tout trou qui
+    ne communique pas avec le bord se rebouche.
+    """
+    w, h = dimensions(png)
+    a = _alpha(png, w, h)
+    op = bytearray(1 if v > 127 else 0 for v in a)
+
+    morceaux = _composantes(op, w, h, 1)
+    if not morceaux:
+        sys.exit(f'{png} : rien à détourer — le fond a tout mangé')
+    jetes = sum(len(m) for m in morceaux[1:])
+    for m in morceaux[1:]:
+        for i in m:
+            op[i] = 0
+
+    bouches = 0
+    for trou in _composantes(op, w, h, 0):
+        x = trou[0] % w
+        y = trou[0] // w
+        # Un paquet transparent qui touche le bord, c'est le fond.
+        if any(p % w in (0, w - 1) or p // w in (0, h - 1) for p in trou):
+            continue
+        bouches += len(trou)
+        for i in trou:
+            op[i] = 1
+
+    if not jetes and not bouches:
+        return 0, 0
+    brut = png + '.alpha'
+    open(brut, 'wb').write(bytes(255 if v else 0 for v in op))
+    recousu = png + '.recousu.png'
+    subprocess.run(
+        ['ffmpeg', '-v', 'error', '-y', '-i', png,
+         '-f', 'rawvideo', '-pix_fmt', 'gray', '-s', f'{w}x{h}', '-i', brut,
+         '-filter_complex', '[0]format=rgba[c];[1]format=gray,boxblur=1:1[m];'
+         '[c][m]alphamerge', '-frames:v', '1', '-update', '1', recousu],
+        check=True)
+    os.replace(recousu, png)
+    os.remove(brut)
+    return jetes, bouches
 
 
 def boite(png):
@@ -110,6 +217,10 @@ def main():
         # Le vert se relève en haut à gauche du panneau, loin de la personne.
         couleur = vert(planche, i * panneau[0] + 20, 20)
         detoure(planche, panneau, i, couleur, decoupe)
+        jetes, bouches = recoud(decoupe)
+        if jetes or bouches:
+            print(f'  k{i + 1}  recousu : {jetes} pixels détachés jetés, '
+                  f'{bouches} rebouchés')
         bx, by, bw, bh = boite(decoupe)
         if bh < ph * 0.5:
             sys.exit(f'{planche} pose {i + 1} : la découpe ne fait que {bh} '
