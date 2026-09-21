@@ -400,6 +400,41 @@ def page_des_histoires(par_chaine, numero, gens, parcours, lien):
 
 # ────────────────────────────── les drapeaux ───────────────────────────
 
+# Les drapeaux que le moteur lit lui-même, hors de toute carte : la page
+# les dirait « posés pour mémoire » alors qu'ils commandent un décor, une
+# cérémonie ou un coffre. Chacun est vérifié dans lib/ au passage — un nom
+# qui changerait sans qu'on le suive rendrait la planche menteuse.
+LUS_PAR_LE_MOTEUR = {
+    'fete_nationale': 'décor du balcon — le défilé',
+    'deuil_national': 'décor du balcon — le deuil',
+    'noces_etat': 'la cérémonie en grande pompe',
+    'noces_discretes': 'la cérémonie à la sauvette',
+    'noces_vues': 'la cérémonie a déjà été montrée',
+    'objet_coffre_fort': 'le coffre du bureau',
+    'coffre_ouvert': 'le coffre a déjà été ouvert',
+}
+
+
+def verifie_les_drapeaux_du_moteur():
+    """Que les noms cités existent encore dans le code."""
+    code = ''
+    for dossier, _, fichiers in os.walk(os.path.join(RACINE, 'lib')):
+        for f in fichiers:
+            if f.endswith('.dart'):
+                code += open(os.path.join(dossier, f)).read()
+    absents = [d for d in LUS_PAR_LE_MOTEUR if f"'{d}'" not in code]
+    if absents:
+        sys.exit('drapeaux du moteur introuvables dans lib/ : ' + ', '.join(absents))
+
+
+def lu_par_le_moteur(d):
+    if d in LUS_PAR_LE_MOTEUR:
+        return LUS_PAR_LE_MOTEUR[d]
+    if d.startswith('rdv_'):
+        return 'le rendez-vous du soir, dans la chambre'
+    return None
+
+
 def releve_des_drapeaux(cartes):
     """Qui pose quoi, qui le lit. C'est la vraie carte des ramifications :
     une carte n'appelle pas la suivante, elle pose un drapeau que la
@@ -437,9 +472,16 @@ def page_des_drapeaux(cartes, numero, ou, gens):
         fermes = ''.join(
             f'<li>{renvoi(c)} <span class="qui">{echappe(nom_de(c["personnage"], gens))}</span></li>'
             for c in interdit.get(d, []))
+        moteur = lu_par_le_moteur(d)
         alerte = ''
-        if not pose.get(d):
-            alerte = '<p class="alerte">Personne ne le pose : les cartes qui l\'exigent ne sortiront jamais.</p>'
+        if not pose.get(d) and exige.get(d):
+            alerte = ('<p class="alerte">Personne ne le pose, et des cartes l\'exigent : '
+                      'elles ne sortiront jamais.</p>')
+        elif not pose.get(d) and interdit.get(d):
+            alerte = ('<p class="alerte">Personne ne le pose : le garde-fou ne joue '
+                      'jamais, et la carte qui s\'en protège sort toujours.</p>')
+        elif moteur:
+            alerte = f'<p class="tiede">Lu par le jeu lui-même : {echappe(moteur)}.</p>'
         elif not exige.get(d) and not interdit.get(d):
             alerte = '<p class="tiede">Personne ne le lit : il est posé pour mémoire.</p>'
         lignes.append(f'''    <article class="drapeau" id="d-{echappe(d)}">
@@ -948,6 +990,7 @@ def main():
     def lien(d):
         return f'drapeaux.html#d-{d}'
 
+    verifie_les_drapeaux_du_moteur()
     etats = lis_les_etats()
     prepare_les_images(sortie, gens, parcours, fins, etats)
 
