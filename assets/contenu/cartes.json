@@ -13192,7 +13192,7 @@
   "id": "ardoise_immunite",
   "personnage": "doyen",
   "humeur": "neutre",
-  "texte": "{titre}, le ministre dont vous avez levé l'immunité passe jeudi. Il annonce qu'il parlera du financement de la campagne.",
+  "texte": "{titre}, l'audience de jeudi inquiète le palais : l'ancien ministre annonce qu'il parlera du financement de la campagne.",
   "gauche": {
    "libelle": "Qu'il parle",
    "effets": {
@@ -18658,7 +18658,7 @@
     "epouse": true,
     "mouvement": 1
    },
-   "journal": "Le mariage a été célébré à la salle des mariages, en dix minutes, devant quatre témoins. Aucune photographie officielle."
+   "journal": "Dix minutes à la salle des mariages, quatre témoins. Son propre journal l'a appris par le registre, et l'a mis en dernière page."
   },
   "droite": {
    "libelle": "Dans la cour",
@@ -18674,7 +18674,7 @@
     "epouse": true,
     "mouvement": 1
    },
-   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue, et la ville arrêtée trois heures."
+   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue. Sa rédaction avait la meilleure place, et n'a signé aucun article."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -18824,7 +18824,7 @@
     "presse": 4,
     "peuple": -5
    },
-   "journal": "Le mariage a été célébré à la salle des mariages, en dix minutes, devant quatre témoins. Aucune photographie officielle.",
+   "journal": "Dix minutes à la salle des mariages, quatre témoins. Elle est rentrée au palais l'après-midi : le conseil restreint tenait à seize heures.",
    "drapeaux": [
     "noces_discretes"
    ],
@@ -18840,7 +18840,7 @@
     "caisses": -6,
     "presse": -3
    },
-   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue, et la ville arrêtée trois heures.",
+   "journal": "Deux cents invités dans la cour d'honneur, la ville arrêtée trois heures. C'est elle qui avait fait le plan de table, trois semaines plus tôt.",
    "drapeaux": [
     "noces_etat"
    ],
@@ -18997,7 +18997,7 @@
     "presse": 4,
     "peuple": -5
    },
-   "journal": "Le mariage a été célébré à la salle des mariages, en dix minutes, devant quatre témoins. Aucune photographie officielle.",
+   "journal": "Dix minutes à la salle des mariages, quatre témoins. Le programme n'a pas été prévenu, et la mission suivante arrive lundi.",
    "drapeaux": [
     "noces_discretes"
    ],
@@ -19013,7 +19013,7 @@
     "caisses": -6,
     "presse": -3
    },
-   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue, et la ville arrêtée trois heures.",
+   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue. Les bailleurs ont envoyé un télégramme, et personne de chez eux.",
    "drapeaux": [
     "noces_etat"
    ],
@@ -19179,7 +19179,7 @@
     "presse": 4,
     "peuple": -5
    },
-   "journal": "Le mariage a été célébré à la salle des mariages, en dix minutes, devant quatre témoins. Aucune photographie officielle.",
+   "journal": "Dix minutes à la salle des mariages, quatre témoins. Devant la porte, une vingtaine de ses camarades attendaient sans banderole.",
    "drapeaux": [
     "noces_discretes"
    ],
@@ -19195,7 +19195,7 @@
     "caisses": -6,
     "presse": -3
    },
-   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue, et la ville arrêtée trois heures.",
+   "journal": "Deux cents invités dans la cour d'honneur, la ville arrêtée trois heures. Son quartier a suivi la retransmission debout, sur la place.",
    "drapeaux": [
     "noces_etat"
    ],
@@ -19355,7 +19355,7 @@
     "presse": 4,
     "peuple": -5
    },
-   "journal": "Le mariage a été célébré à la salle des mariages, en dix minutes, devant quatre témoins. Aucune photographie officielle.",
+   "journal": "Dix minutes à la salle des mariages, quatre témoins. La cheffe du protocole a refusé qu'on applique le protocole à son propre mariage.",
    "drapeaux": [
     "noces_discretes"
    ],
@@ -19371,7 +19371,7 @@
     "caisses": -6,
     "presse": -3
    },
-   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue, et la ville arrêtée trois heures.",
+   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue. Elle avait réglé la cérémonie elle-même, jusqu'à la longueur des pas.",
    "drapeaux": [
     "noces_etat"
    ],
@@ -19528,7 +19528,7 @@
     "presse": 4,
     "peuple": -5
    },
-   "journal": "Le mariage a été célébré à la salle des mariages, en dix minutes, devant quatre témoins. Aucune photographie officielle.",
+   "journal": "Dix minutes à la salle des mariages, quatre témoins. Une centaine de personnes l'attendaient dehors, en maillot, sans que rien n'ait filtré.",
    "drapeaux": [
     "noces_discretes"
    ],
@@ -19544,7 +19544,7 @@
     "caisses": -6,
     "presse": -3
    },
-   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue, et la ville arrêtée trois heures.",
+   "journal": "Deux cents invités dans la cour d'honneur, la ville arrêtée trois heures. La garde a eu du mal à contenir les enfants venus pour lui.",
    "drapeaux": [
     "noces_etat"
    ],
@@ -19701,7 +19701,7 @@
     "presse": 4,
     "peuple": -5
    },
-   "journal": "Le mariage a été célébré à la salle des mariages, en dix minutes, devant quatre témoins. Aucune photographie officielle.",
+   "journal": "Dix minutes à la salle des mariages, quatre témoins. Le ministre des Finances a tenu à payer le timbre fiscal de sa poche.",
    "drapeaux": [
     "noces_discretes"
    ],
@@ -19717,7 +19717,7 @@
     "caisses": -6,
     "presse": -3
    },
-   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue, et la ville arrêtée trois heures.",
+   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue. Le coût de la journée ne figure sur aucune ligne du budget.",
    "drapeaux": [
     "noces_etat"
    ],
@@ -19874,7 +19874,7 @@
     "presse": 4,
     "peuple": -5
    },
-   "journal": "Le mariage a été célébré à la salle des mariages, en dix minutes, devant quatre témoins. Aucune photographie officielle.",
+   "journal": "Dix minutes à la salle des mariages, quatre témoins. Aucune photographie : trois de ses hommes avaient fait le tour de la salle avant.",
    "drapeaux": [
     "noces_discretes"
    ],
@@ -19890,7 +19890,7 @@
     "caisses": -6,
     "presse": -3
    },
-   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue, et la ville arrêtée trois heures.",
+   "journal": "Deux cents invités dans la cour d'honneur, la ville arrêtée trois heures. Ses services avaient relu la liste, et deux noms n'y figuraient plus.",
    "drapeaux": [
     "noces_etat"
    ],
@@ -20047,7 +20047,7 @@
     "presse": 4,
     "peuple": -5
    },
-   "journal": "Le mariage a été célébré à la salle des mariages, en dix minutes, devant quatre témoins. Aucune photographie officielle.",
+   "journal": "Dix minutes à la salle des mariages, quatre témoins. Le maire s'est marié dans sa propre mairie, et c'est son adjoint qui a lu les textes.",
    "drapeaux": [
     "noces_discretes"
    ],
@@ -20063,7 +20063,7 @@
     "caisses": -6,
     "presse": -3
    },
-   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue, et la ville arrêtée trois heures.",
+   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue. La circulation, coupée par ses propres services, a tenu jusqu'au soir.",
    "drapeaux": [
     "noces_etat"
    ],
@@ -20220,7 +20220,7 @@
     "presse": 4,
     "peuple": -5
    },
-   "journal": "Le mariage a été célébré à la salle des mariages, en dix minutes, devant quatre témoins. Aucune photographie officielle.",
+   "journal": "Dix minutes à la salle des mariages, quatre témoins. L'intendant est rentré à temps pour le service du soir.",
    "drapeaux": [
     "noces_discretes"
    ],
@@ -20236,7 +20236,7 @@
     "caisses": -6,
     "presse": -3
    },
-   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue, et la ville arrêtée trois heures.",
+   "journal": "Deux cents invités dans la cour d'honneur, la ville arrêtée trois heures. Il connaissait chacun des serveurs par son prénom.",
    "drapeaux": [
     "noces_etat"
    ],
