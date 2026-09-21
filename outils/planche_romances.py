@@ -134,13 +134,14 @@ def effets(reponse):
     return ''.join(out)
 
 
-def vraie_carte(c, qui, coiffe, president_femme):
+def vraie_carte(c, qui, coiffe, president_femme, n=None):
     """La carte comme l'ecran la dessine : le portrait plein cadre, le titre
     en or, et ce que la personne dit. Les deux libelles n'apparaissent en
     jeu que pendant le geste — ici ils sont dessous, avec leur prix."""
     return f'''      <figure class="carte">
         <div class="vignette">
           <img src="portraits/{qui}_{c['humeur']}.jpg" alt="">
+          {'<span class="numero">' + str(n) + '</span>' if n else ''}
           <div class="bandeau">
             <p class="qualite">{echappe(coiffe['titre'].upper())}</p>
             <p class="dit">{echappe(habille(c['texte'], president_femme))}</p>
@@ -222,7 +223,21 @@ def issue(c):
     return None
 
 
-def echelle(e, liaison):
+# Les passes de relecture. On valide une colonne du tableau à la fois,
+# sur les dix personnes : les numéros sont posés avant le filtre, donc
+# la carte 17 reste la carte 17, qu'on lise la planche entière ou une
+# seule passe.
+ACTES = {
+    'avant': "Jusqu'à la liaison",
+    'liaison': 'La liaison — le rendez-vous, et la chambre',
+    'apres': 'De la liaison à la demande',
+    'noces': "Si l'on dit oui — le jour des noces",
+    'rupture': "Si l'on dit non — ce qu'il en reste",
+    'marie': 'Une fois marié',
+}
+
+
+def echelle(e, liaison, suivant, actes):
     p = e['personne']
     homme = e['id'] in HOMMES
     coiffe = {'titre': p.get('titre', '')}
@@ -233,78 +248,98 @@ def echelle(e, liaison):
     avant, apres, noces, rupture = [], [], [], []
     for c in e['cartes']:
         cond = c.get('conditions', {})
-        rang = c['chaine']['rang']
         porte = cond.get('attache_min', cond.get('attache_max', 0))
-        dessin = vraie_carte(c, e['id'], {**coiffe, 'porte': f'{rang} · ' + coiffe_du_rang(c, liaison)}, homme)
         quelle = issue(c)
         if quelle == 'noces':
-            noces.append(dessin)
+            noces.append(c)
         elif quelle == 'rupture':
-            rupture.append(dessin)
+            rupture.append(c)
         elif porte < liaison:
-            avant.append(dessin)
+            avant.append(c)
         else:
-            apres.append(dessin)
+            apres.append(c)
 
-    rdv = vraie_carte(e['rdv'], e['id'], {**coiffe,
+    def dessine(c):
+        rang = c['chaine']['rang']
+        return vraie_carte(c, e['id'], {**coiffe,
+            'porte': f'{rang} · ' + coiffe_du_rang(c, liaison)}, homme, suivant())
+
+    # Numéroter d'abord, filtrer ensuite : c'est ce qui rend les passes
+    # comparables entre elles, et ce qui permet de dire « 17 à refaire ».
+    vu = {'avant': [dessine(c) for c in avant]}
+    vu['liaison'] = [vraie_carte(e['rdv'], e['id'], {**coiffe,
         'porte': f'le rendez-vous · attache au cran {liaison} ou plus · '
-                 'se rejoue tous les 10 jours'}, homme)
+                 'se rejoue tous les 10 jours'}, homme, suivant())]
+    vu['apres'] = [dessine(c) for c in apres]
+    vu['noces'] = [dessine(c) for c in noces]
+    vu['rupture'] = [dessine(c) for c in rupture]
+
+    montre = sum(len(vu[a]) for a in actes if a in vu)
+    if not montre:
+        return ''
+
     vues = ''.join(
         f'<figure class="noce"><img src="noces/{e["id"]}_{v}.jpg" alt=""> '
         f'<figcaption>{echappe(NOCES["noces_" + v])}</figcaption></figure>'
         for v in ('etat', 'discretes'))
 
-    return f'''  <section class="personne">
-    <div class="tete">
-      <img src="visages/{e['id']}.jpg" alt="{echappe(p['nom'])}">
-      <div>
-        <h2>{echappe(p['nom'])}</h2>
-        <p class="titre">{len(e['cartes']) + 1} cartes · {'une présidente' if homme else 'un président'} seulement</p>
-      </div>
-    </div>
-    <p class="acte">Jusqu'à la liaison</p>
-    <div class="galerie">
-{''.join(avant)}
-    </div>
-    <p class="acte">La liaison — à partir d'ici, et tant qu'elle dure</p>
-    <div class="galerie">
-{rdv}
-    </div>
-    <div class="bloc">
-      <p class="etiquette">Et la chambre, ce soir-là</p>
-      <div class="issue">
-        <img src="lit/{e['id']}.jpg" alt="Sur le lit">
-        <p class="porte">{'Il attend habillé.' if homme else 'Elle attend habillée.'}
-        Un appui, {'il' if homme else 'elle'} se déshabille. Un second, la scène
-        passe sur le lit. Les jours ordinaires, la chambre dit seulement
-        qu'on n'y dort plus seul.</p>
-      </div>
-    </div>
-    <p class="acte">De la liaison à la demande</p>
-    <div class="galerie">
-{''.join(apres)}
-    </div>
-    <p class="acte">Si l'on dit oui — le jour des noces</p>
-    <div class="galerie">
-{''.join(noces)}
-    </div>
-    <div class="bloc">
-      <p class="etiquette">La cérémonie, une seule fois</p>
-      <div class="noces">{vues}</div>
-      <p class="porte">Elle se joue en plein écran après la réponse, puis ne
-      revient jamais — c'est le seul moment du jeu qu'on ne peut pas revoir.</p>
-    </div>
-    <p class="acte">Si l'on dit non — ce qu'il en reste</p>
-    <div class="galerie">
-{''.join(rupture)}
-    </div>
-    <p class="note">L'attache retombe à zéro et cette histoire-là s'arrête pour
-    de bon. Une autre peut commencer avec quelqu'un d'autre : rien ne l'empêche,
-    et le jeu ne compte pas les cœurs.</p>
-  </section>'''
+    blocs = []
+    if 'avant' in actes:
+        blocs.append('    <p class="acte">' + ACTES['avant'] + '</p>\n'
+                     '    <div class="galerie">\n' + ''.join(vu['avant']) + '\n    </div>')
+    if 'liaison' in actes:
+        blocs.append(
+            "    <p class=\"acte\">La liaison — à partir d'ici, et tant qu'elle dure</p>\n"
+            '    <div class="galerie">\n' + vu['liaison'][0] + '\n    </div>\n'
+            '    <div class="bloc">\n'
+            '      <p class="etiquette">Et la chambre, ce soir-là</p>\n'
+            '      <div class="issue">\n'
+            f'        <img src="lit/{e["id"]}.jpg" alt="Sur le lit">\n'
+            '        <p class="porte">'
+            + ('Il attend habillé.' if homme else 'Elle attend habillée.')
+            + ' Un appui, ' + ('il' if homme else 'elle') + " se déshabille. Un second,\n"
+            '        la scène passe sur le lit. Les jours ordinaires, la chambre dit\n'
+            "        seulement qu'on n'y dort plus seul.</p>\n"
+            '      </div>\n'
+            '    </div>')
+    if 'apres' in actes:
+        blocs.append('    <p class="acte">' + ACTES['apres'] + '</p>\n'
+                     '    <div class="galerie">\n' + ''.join(vu['apres']) + '\n    </div>')
+    if 'noces' in actes:
+        blocs.append(
+            '    <p class="acte">' + ACTES['noces'] + '</p>\n'
+            '    <div class="galerie">\n' + ''.join(vu['noces']) + '\n    </div>\n'
+            '    <div class="bloc">\n'
+            '      <p class="etiquette">La cérémonie, une seule fois</p>\n'
+            f'      <div class="noces">{vues}</div>\n'
+            '      <p class="porte">Elle se joue en plein écran après la réponse, puis\n'
+            "      ne revient jamais — c'est le seul moment du jeu qu'on ne peut pas\n"
+            '      revoir.</p>\n'
+            '    </div>')
+    if 'rupture' in actes:
+        blocs.append(
+            '    <p class="acte">' + ACTES['rupture'] + '</p>\n'
+            '    <div class="galerie">\n' + ''.join(vu['rupture']) + '\n    </div>\n'
+            "    <p class=\"note\">L'attache retombe à zéro et cette histoire-là s'arrête\n"
+            "    pour de bon. Une autre peut commencer avec quelqu'un d'autre : rien ne\n"
+            "    l'empêche, et le jeu ne compte pas les cœurs.</p>")
+
+    compte = (f'{montre} cartes ici' if len(actes) < len(ACTES)
+              else f"{len(e['cartes']) + 1} cartes")
+    seulement = 'une présidente' if homme else 'un président'
+    return ('  <section class="personne">\n'
+            '    <div class="tete">\n'
+            f'      <img src="visages/{e["id"]}.jpg" alt="{echappe(p["nom"])}">\n'
+            '      <div>\n'
+            f'        <h2>{echappe(p["nom"])}</h2>\n'
+            f'        <p class="titre">{compte} · {seulement} seulement</p>\n'
+            '      </div>\n'
+            '    </div>\n'
+            + '\n'.join(blocs) + '\n'
+            '  </section>')
 
 
-def carte_mariee(c):
+def carte_mariee(c, n=None):
     cond = c.get('conditions', {})
     porte = []
     if cond.get('jour_min'):
@@ -321,11 +356,11 @@ def carte_mariee(c):
     return vraie_carte(c, 'conjoint', {
         'titre': 'la personne que vous avez épousée',
         'porte': ' · '.join(porte) or 'une fois marié',
-    }, True)
+    }, True, n)
 
 
-def acte_du_mariage(cartes):
-    liste = ''.join(carte_mariee(c) for c in cartes)
+def acte_du_mariage(cartes, suivant):
+    liste = ''.join(carte_mariee(c, suivant()) for c in cartes)
     return f'''  <section class="personne">
     <div class="tete">
       <div>
@@ -396,6 +431,9 @@ GABARIT = '''<title>{{TITRE}}</title>
      cadre, un degrade vers l encre, le titre en or et ce qui se dit. */
   .galerie{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:22px}
   .carte{margin:0}
+  .numero{position:absolute;top:10px;left:10px;z-index:2;font-family:var(--serif);
+    font-size:.78rem;font-weight:700;color:var(--nuit);background:var(--or);
+    border-radius:3px;padding:2px 7px;letter-spacing:.02em}
   .vignette{position:relative;aspect-ratio:3/4;border-radius:24px;overflow:hidden;
     background:var(--nuit);box-shadow:0 18px 40px rgba(0,0,0,.45)}
   .vignette img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
@@ -478,6 +516,10 @@ def version():
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith('--')]
     seul = next((a.split('=', 1)[1] for a in sys.argv[1:] if a.startswith('--seul=')), None)
+    acte = next((a.split('=', 1)[1] for a in sys.argv[1:] if a.startswith('--acte=')), None)
+    if acte and acte not in ACTES:
+        sys.exit('actes connus : ' + ', '.join(ACTES))
+    actes = [acte] if acte else list(ACTES)
     sortie = args[0] if args else os.path.join(RACINE, 'sources/romances/romances.html')
     os.makedirs(os.path.dirname(sortie), exist_ok=True)
     liaison = cran_liaison()
@@ -496,14 +538,31 @@ def main():
         chapeau = ('Une romance entière, de la première carte aux deux façons '
                    "dont elle peut finir — le mariage, ou le refus. Les cartes "
                    'sont dessinées comme le jeu les dessine.')
+    if acte:
+        titre = ACTES[acte]
+        chapeau = ('Une passe de relecture : le même moment de la romance, chez '
+                   'les dix personnes, pour les juger ensemble. Les numéros ne '
+                   'changent pas d\'une passe à l\'autre — « 17 » désigne la même '
+                   'carte ici et sur la planche entière.')
     echelon = ''.join(
         f'<span><b>{i}</b>{echappe(nom)}</span>' for i, nom in enumerate(CRANS))
     cartes = json.load(open(os.path.join(RACINE, 'assets/contenu/cartes.json')))
     mariage = apres_le_mariage(cartes)
-    corps = '\n'.join(echelle(e, liaison) for e in tout)
+
+    # Un seul compteur pour toute la page, posé dans l'ordre de lecture.
+    compteur = [0]
+
+    def suivant():
+        compteur[0] += 1
+        return compteur[0]
+
+    corps = '\n'.join(x for x in (echelle(e, liaison, suivant, actes) for e in tout) if x)
     if not seul:
-        corps += '\n' + acte_du_mariage(mariage)
-    total = sum(len(e['cartes']) + 1 for e in tout) + (0 if seul else len(mariage))
+        bloc = acte_du_mariage(mariage, suivant)
+        corps += ('\n' + bloc) if 'marie' in actes else ''
+    # Le compteur court sur toute la romance pour garder les numéros
+    # stables ; le pied, lui, annonce ce que la page montre vraiment.
+    total = corps.count('<figure class="carte">')
     pied = (f'{total} cartes, lues dans le contenu '
             'du jeu : ce qui est écrit ici est ce qui se joue. Les jours ordinaires, '
             'la chambre montre seulement que l\'on n\'y dort plus seul — le '
@@ -517,8 +576,7 @@ def main():
             .replace('{{PIED}}', echappe(pied))
             .replace('{{CORPS}}', corps))
     open(sortie, 'w').write(page)
-    compte = sum(len(e['cartes']) + 1 for e in tout)
-    print(f'{sortie} — {len(tout)} romance(s), {compte} cartes')
+    print(f'{sortie} — {len(tout)} romance(s), {total} cartes')
 
 
 if __name__ == '__main__':
