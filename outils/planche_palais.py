@@ -80,7 +80,10 @@ def allers_retours():
 
 def chambres():
     src = open(os.path.join(RACINE, 'lib/moteur/decor.dart')).read()
-    bloc = re.search(r'_chambresPartagees\s*=\s*\{(.*?)\}', src, re.S).group(1)
+    trouve = re.search(r'\bchambresPartagees\s*=\s*\{(.*?)\}', src, re.S)
+    if trouve is None:
+        sys.exit('decor.dart : la liste des chambres partagées a changé de nom')
+    bloc = trouve.group(1)
     return re.findall(r"'([^']+)'", bloc)
 
 
