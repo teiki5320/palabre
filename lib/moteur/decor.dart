@@ -165,7 +165,7 @@ Decor decorDuBureau(EtatPartie etat) {
 /// courtiser : une personne qui n'y figure pas n'a pas de plaque, et la
 /// chambre reste celle d'un célibataire plutôt que de pointer sur un
 /// fichier absent.
-const _chambresPartagees = {
+const chambresPartagees = {
   'redactrice', 'cabinet', 'emissaire', 'militante', 'epouse',
   'international', 'ministre', 'renseignements', 'maire', 'epoux',
 };
@@ -178,7 +178,7 @@ String drapeauRendezVous(String qui) => 'rdv_$qui';
 
 /// La personne qui attend ce soir, d'après les drapeaux posés, ou null.
 String? invitationDe(Set<String> drapeaux) {
-  for (final qui in _chambresPartagees) {
+  for (final qui in chambresPartagees) {
     if (drapeaux.contains(drapeauRendezVous(qui))) return qui;
   }
   return null;
@@ -241,7 +241,7 @@ const String drapeauNocesVues = 'noces_vues';
 String? ceremonieDe(EtatPartie etat) {
   if (etat.drapeaux.contains(drapeauNocesVues)) return null;
   final qui = etat.epouse;
-  if (qui == null || !_chambresPartagees.contains(qui)) return null;
+  if (qui == null || !chambresPartagees.contains(qui)) return null;
   for (final e in ceremonies.entries) {
     if (etat.drapeaux.contains(e.key)) {
       return 'assets/images/palais/pieces/noces/${qui}_${e.value}.jpg';
@@ -255,7 +255,7 @@ Decor decorDeLaChambre(EtatPartie etat) {
   // plus vraie de la pièce, et elle est rare. Jusqu'ici ce décor n'était
   // atteignable par rien — il attendait la romance.
   final qui = partenaire(etat.attache, etat.epouse);
-  if (qui != null && _chambresPartagees.contains(qui)) {
+  if (qui != null && chambresPartagees.contains(qui)) {
     // Une seule image, et la personne est habillée : les jours ordinaires,
     // la chambre dit seulement qu'on n'y dort plus seul. Le déshabillage
     // appartient au rendez-vous — le montrer tous les soirs lui retirait

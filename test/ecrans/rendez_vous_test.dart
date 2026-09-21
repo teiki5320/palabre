@@ -9,7 +9,8 @@ import 'package:president/moteur/etat_partie.dart';
 import 'package:president/moteur/jauges.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-Contenu _contenu() => Contenu.depuisChaines(
+Contenu _contenu({String chambre = ''}) => Contenu.depuisChaines(
+      chambre: chambre,
       cartes: '['
           '{"id":"c1","personnage":"maire","humeur":"neutre","texte":"La ville dort.",'
           '"gauche":{"libelle":"Bien","effets":{"peuple":-5}},'
@@ -21,6 +22,15 @@ Contenu _contenu() => Contenu.depuisChaines(
       fins: '[{"id":"election_gagnee","jauge":null,"vers_le_haut":true,"titre":"Reelu","texte":"t","image":"i"},'
           '{"id":"election_perdue","jauge":null,"vers_le_haut":false,"titre":"Battu","texte":"t","image":"i"}]',
     );
+
+/// Ce que le maire dit, les deux fois. La marque du titre est la pour
+/// verifier qu elle se pose comme sur une carte.
+const _ditsDuMaire = '{"maire":{'
+    '"liaison":{"habille":"Une reunion, presque vrai.",'
+    '"deshabille":"Jamais su vous refuser un budget.","lit":"Eteignez, {titre}."},'
+    '"marie":{"habille":"Ta garde m a salue.",'
+    '"deshabille":"Trois arretes en pensant a ce soir.","lit":"Viens, {nom}."}'
+    '}}';
 
 /// Un mandat ou quelqu un attend ce soir.
 EtatPartie _soiree() => const EtatPartie(
@@ -34,8 +44,9 @@ EtatPartie _soiree() => const EtatPartie(
 
 late SessionNotifier _session;
 
-Future<void> _ouvreLaChambre(WidgetTester tester) async {
-  final contenu = _contenu();
+Future<void> _ouvreLaChambre(WidgetTester tester,
+    {String chambre = '', EtatPartie? etat}) async {
+  final contenu = _contenu(chambre: chambre);
   await tester.pumpWidget(ProviderScope(
     overrides: [contenuProvider.overrideWith((ref) => contenu)],
     child: MaterialApp(
@@ -44,7 +55,7 @@ Future<void> _ouvreLaChambre(WidgetTester tester) async {
         return TextButton(
           onPressed: () {
             _session = ref.read(sessionProvider.notifier);
-            _session.reprend(_soiree(), graine: 1);
+            _session.reprend(etat ?? _soiree(), graine: 1);
             Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PartieEcran()));
           },
           child: const Text('commencer'),
@@ -96,6 +107,53 @@ void main() {
     await tester.pump(const Duration(milliseconds: 400));
     expect(_session.state!.etat.drapeaux, isNot(contains('rdv_maire')));
     expect(find.text('Le bureau de travail'), findsOneWidget);
+  });
+
+  testWidgets('la personne parle une fois a chaque appui', (tester) async {
+    await _ouvreLaChambre(tester, chambre: _ditsDuMaire);
+
+    expect(find.text('Une reunion, presque vrai.'), findsOneWidget);
+
+    await tester.tap(find.text('Approcher'));
+    await tester.pump();
+    // Le temps que l ancienne replique finisse de se fondre : l
+    // AnimatedSwitcher garde les deux textes pendant la transition.
+    await tester.pump(const Duration(milliseconds: 600));
+    expect(find.text('Jamais su vous refuser un budget.'), findsOneWidget);
+    expect(find.text('Une reunion, presque vrai.'), findsNothing);
+
+    await tester.pump(const Duration(milliseconds: 950));
+    await tester.pump(const Duration(milliseconds: 950));
+    await tester.pump(const Duration(milliseconds: 950));
+    await tester.tap(find.text('Rejoindre le lit'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 400));
+    // Le titre se pose comme sur une carte : c est le parcours qui le dit.
+    expect(find.text('Eteignez, Monsieur le President.'), findsOneWidget);
+  });
+
+  testWidgets('une fois mariee, la personne ne parle plus pareil', (tester) async {
+    await _ouvreLaChambre(tester,
+        chambre: _ditsDuMaire,
+        etat: const EtatPartie(
+          parcours: 'general_parcours',
+          nomJoueur: 'Awa',
+          jauges: Jauges.milieu,
+          jour: 30,
+          attache: {'maire': 5},
+          drapeaux: {'rdv_maire'},
+          epouse: 'maire',
+        ));
+
+    expect(find.text('Ta garde m a salue.'), findsOneWidget);
+    expect(find.text('Une reunion, presque vrai.'), findsNothing);
+  });
+
+  testWidgets('sans une ligne ecrite, la scene se joue muette', (tester) async {
+    await _ouvreLaChambre(tester);
+
+    expect(find.text('Approcher'), findsOneWidget);
+    expect(find.text('Une reunion, presque vrai.'), findsNothing);
   });
 
   testWidgets('sans rendez-vous, la chambre reste une chambre', (tester) async {

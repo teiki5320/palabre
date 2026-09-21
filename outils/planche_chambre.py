@@ -82,7 +82,7 @@ def invites():
                      src, re.S)
     if bloc is None:
         sys.exit('palais_ecran.dart : les libellés du rendez-vous sont introuvables')
-    trouve = dict(re.findall(r"_Temps\.(\w+)\s*=>[^,]*?'([^']+)'", bloc.group(1)))
+    trouve = dict(re.findall(r"TempsChambre\.(\w+)\s*=>[^,]*?'([^']+)'", bloc.group(1)))
     if set(trouve) != {'habille', 'deshabille', 'lit'}:
         sys.exit(f'palais_ecran.dart : libellés incomplets {sorted(trouve)}')
     return trouve
@@ -311,9 +311,11 @@ def main():
         return compteur[0]
 
     corps = '\n'.join(section(q, gens, chemins, libelles, suivant) for q in dits())
-    pied = (f'{compteur[0]} répliques, lues dans assets/contenu/chambre.json. '
-            'Rien de tout cela n\'est encore branché : la scène se joue '
-            'aujourd\'hui sans une parole.')
+    pied = (f'{compteur[0]} répliques, lues dans assets/contenu/chambre.json — '
+            'le fichier même que le jeu charge au démarrage. Une personne '
+            'sans texte laisserait la scène muette plutôt que d\'arrêter la '
+            'partie : on n\'interrompt pas un mandat pour un fichier de '
+            'contenu incomplet.')
     page = (GABARIT.replace('{{VERSION}}', version())
             .replace('{{PIED}}', echappe(pied))
             .replace('{{CORPS}}', corps))

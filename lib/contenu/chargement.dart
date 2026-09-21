@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
+import '../moteur/dits.dart';
 import '../moteur/memoire.dart';
 import '../moteur/modeles.dart';
 import '../moteur/palais.dart';
@@ -17,6 +18,7 @@ class Contenu {
     this.exploits = const [],
     this.objets = const [],
     this.adversaires = const [],
+    this.dits = DitsDeLaChambre.muette,
   });
 
   final List<Carte> cartes;
@@ -54,6 +56,11 @@ class Contenu {
   /// alors sur la force de départ.
   final List<Adversaire> adversaires;
 
+  /// Ce qui se dit dans la chambre pendant un rendez-vous. Muet par
+  /// défaut : une partie dont le contenu n'a pas le fichier joue la scène
+  /// sans une parole, comme elle le faisait avant.
+  final DitsDeLaChambre dits;
+
   Adversaire? adversaireParId(String? id) {
     if (id == null) return null;
     for (final a in adversaires) {
@@ -86,6 +93,7 @@ class Contenu {
     String exploits = '',
     String objets = '',
     String adversaires = '',
+    String chambre = '',
   }) {
     final gens = [for (final j in _liste(personnages)) Personnage.depuisJson(j)];
     return Contenu(
@@ -97,6 +105,7 @@ class Contenu {
       objets: objets.isEmpty ? const [] : [for (final j in _liste(objets)) Objet.depuisJson(j)],
       adversaires:
           adversaires.isEmpty ? const [] : [for (final j in _liste(adversaires)) Adversaire.depuisJson(j)],
+      dits: chambre.isEmpty ? DitsDeLaChambre.muette : DitsDeLaChambre.depuisJson(chambre),
     );
   }
 
@@ -110,6 +119,7 @@ class Contenu {
       exploits: await lis('exploits'),
       objets: await lis('objets'),
       adversaires: await lis('adversaires'),
+      chambre: await lis('chambre'),
     );
   }
 

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../moteur/decor.dart';
+import '../moteur/dits.dart';
 import '../moteur/etat_partie.dart';
 import '../moteur/palais.dart';
 import 'session.dart';
@@ -45,6 +46,17 @@ class _PalaisEcranState extends ConsumerState<PalaisEcran> {
         body: _SceneRendezVous(
           rdv: rdv,
           key: ValueKey('rdv-${rdv.qui}'),
+          // Le texte se résout ici, pas dans la scène : c'est l'écran qui
+          // sait qui joue, sous quel titre, et si le mariage a eu lieu.
+          replique: (temps) {
+            final dit = (contenu?.dits ?? DitsDeLaChambre.muette)
+                .dit(rdv.qui, marie: session.etat.epouse == rdv.qui, temps: temps);
+            if (dit == null) return null;
+            final parcours = contenu?.parcoursParId(session.etat.parcours);
+            return habille(dit,
+                nom: session.etat.nomJoueur,
+                titre: parcours?.titre ?? 'Monsieur le Président');
+          },
           fini: () {
             ref.read(sessionProvider.notifier).consommeRendezVous();
             _va(Piece.bureau);
@@ -614,16 +626,23 @@ class Ticker {
 /// Les trois temps d'une soirée promise. Le palais avance à l'horloge
 /// partout ailleurs ; ici il attend le doigt, et c'est ce qui fait la
 /// différence entre un décor et une scène.
-enum _Temps { habille, deshabille, lit }
-
 /// La scène du rendez-vous. Elle remplace la chambre entière tant que le
 /// drapeau tient : on arrive, la personne attend habillée, un appui la
 /// fait se déshabiller, un second emmène sur le lit, un troisième rend au
 /// bureau et éteint le rendez-vous.
 class _SceneRendezVous extends StatefulWidget {
-  const _SceneRendezVous({required this.rdv, required this.fini, super.key});
+  const _SceneRendezVous({
+    required this.rdv,
+    required this.replique,
+    required this.fini,
+    super.key,
+  });
 
   final RendezVous rdv;
+
+  /// Ce que la personne dit à ce moment-là, ou rien : une personne sans
+  /// texte laisse la scène muette au lieu d'arrêter le jeu.
+  final String? Function(TempsChambre) replique;
 
   /// Appelée une fois, à la sortie : c'est elle qui consomme le drapeau.
   final VoidCallback fini;
@@ -641,14 +660,14 @@ class _SceneRendezVousState extends State<_SceneRendezVous> with SingleTickerPro
   /// La boucle du lit, au même rythme que le reste du palais.
   static const _cycle = Duration(seconds: 8);
 
-  _Temps _temps = _Temps.habille;
+  TempsChambre _temps = TempsChambre.habille;
 
   /// La pose debout affichée, de 1 à 4.
   int _pas = 1;
   Timer? _minuteur;
 
   late final Ticker _ticker = Ticker((e) {
-    if (_temps == _Temps.lit) setState(() => _t = e.inMilliseconds / _cycle.inMilliseconds);
+    if (_temps == TempsChambre.lit) setState(() => _t = e.inMilliseconds / _cycle.inMilliseconds);
   });
   double _t = 0;
 
@@ -667,8 +686,8 @@ class _SceneRendezVousState extends State<_SceneRendezVous> with SingleTickerPro
 
   void _touche() {
     switch (_temps) {
-      case _Temps.habille:
-        setState(() => _temps = _Temps.deshabille);
+      case TempsChambre.habille:
+        setState(() => _temps = TempsChambre.deshabille);
         _minuteur = Timer.periodic(_pose, (t) {
           // La dernière pose reste : on ne boucle pas sur le début, ce
           // serait la rhabiller.
@@ -678,40 +697,58 @@ class _SceneRendezVousState extends State<_SceneRendezVous> with SingleTickerPro
           }
           setState(() => _pas++);
         });
-      case _Temps.deshabille:
+      case TempsChambre.deshabille:
         // Pas avant la fin des quatre poses : un doigt pressé sauterait
         // la seule chose qu'il est venu voir.
         if (_pas < 4) return;
         _minuteur?.cancel();
-        setState(() => _temps = _Temps.lit);
-      case _Temps.lit:
+        setState(() => _temps = TempsChambre.lit);
+      case TempsChambre.lit:
         widget.fini();
     }
   }
 
   /// Ce qu'on invite à faire, ou rien pendant que ça se joue.
   String? get _invite => switch (_temps) {
-        _Temps.habille => 'Approcher',
-        _Temps.deshabille => _pas >= 4 ? 'Rejoindre le lit' : null,
-        _Temps.lit => 'Revenir au bureau',
+        TempsChambre.habille => 'Approcher',
+        TempsChambre.deshabille => _pas >= 4 ? 'Rejoindre le lit' : null,
+        TempsChambre.lit => 'Revenir au bureau',
       };
 
   @override
   Widget build(BuildContext context) {
-    final decor = _temps == _Temps.lit ? widget.rdv.lit : widget.rdv.debout;
+    final decor = _temps == TempsChambre.lit ? widget.rdv.lit : widget.rdv.debout;
     final invite = _invite;
+    final dit = widget.replique(_temps);
     return GestureDetector(
       onTap: _touche,
       behavior: HitTestBehavior.opaque,
       child: Stack(
         fit: StackFit.expand,
         children: [
-          if (_temps == _Temps.lit) _boucleDuLit(decor) else _poseDebout(decor),
+          if (_temps == TempsChambre.lit) _boucleDuLit(decor) else _poseDebout(decor),
           const _Voile(),
           SafeArea(
             child: Column(
               children: [
                 const Spacer(),
+                // La réplique se pose au-dessus de l'invitation, sur le
+                // voile qui est déjà là. Elle se fond d'un temps à l'autre
+                // plutôt que de sauter : on la lit pendant que l'image
+                // change.
+                if (dit != null)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(28, 0, 28, 20),
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 400),
+                      child: Text(
+                        dit,
+                        key: ValueKey(dit),
+                        textAlign: TextAlign.center,
+                        style: Textes.texteCarte.copyWith(fontSize: 17, height: 1.34),
+                      ),
+                    ),
+                  ),
                 if (invite != null)
                   Padding(
                     padding: const EdgeInsets.only(bottom: 34),

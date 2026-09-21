@@ -16,6 +16,7 @@ Contenu contenuLivre() {
     exploits: lis('exploits'),
     objets: lis('objets'),
     adversaires: lis('adversaires'),
+    chambre: lis('chambre'),
   );
 }
 
