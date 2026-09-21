@@ -237,7 +237,20 @@ ACTES = {
 }
 
 
-def echelle(e, liaison, suivant, actes):
+ONGLETS = {
+    'avant': "Jusqu'à la liaison", 'liaison': 'La liaison',
+    'apres': "Jusqu'à la demande", 'noces': 'Les noces',
+    'rupture': 'Le refus', 'marie': 'Une fois marié',
+}
+
+
+def numero_de_passe(nom):
+    """La passe 1 est « Jusqu'à la liaison » : les numéros de passe suivent
+    l'ordre de la romance, et ne bougent pas quand on en lit cinq sur six."""
+    return list(ACTES).index(nom) + 1
+
+
+def echelle(e, liaison, suivant, actes, defaut=None):
     p = e['personne']
     homme = e['id'] in HOMMES
     coiffe = {'titre': p.get('titre', '')}
@@ -283,12 +296,17 @@ def echelle(e, liaison, suivant, actes):
         f'<figcaption>{echappe(NOCES["noces_" + v])}</figcaption></figure>'
         for v in ('etat', 'discretes'))
 
+    def enveloppe(nom, contenu):
+        cache = ' hidden' if defaut and nom != defaut else ''
+        return (f'    <div class="acte-bloc" data-acte="{nom}"{cache}>\n'
+                + contenu + '\n    </div>')
+
     blocs = []
     if 'avant' in actes:
-        blocs.append('    <p class="acte">' + ACTES['avant'] + '</p>\n'
-                     '    <div class="galerie">\n' + ''.join(vu['avant']) + '\n    </div>')
+        blocs.append(enveloppe('avant', '    <p class="acte">' + ACTES['avant'] + '</p>\n'
+                     '    <div class="galerie">\n' + ''.join(vu['avant']) + '\n    </div>'))
     if 'liaison' in actes:
-        blocs.append(
+        blocs.append(enveloppe('liaison',
             "    <p class=\"acte\">La liaison — à partir d'ici, et tant qu'elle dure</p>\n"
             '    <div class="galerie">\n' + vu['liaison'][0] + '\n    </div>\n'
             '    <div class="bloc">\n'
@@ -301,12 +319,12 @@ def echelle(e, liaison, suivant, actes):
             '        la scène passe sur le lit. Les jours ordinaires, la chambre dit\n'
             "        seulement qu'on n'y dort plus seul.</p>\n"
             '      </div>\n'
-            '    </div>')
+            '    </div>'))
     if 'apres' in actes:
-        blocs.append('    <p class="acte">' + ACTES['apres'] + '</p>\n'
-                     '    <div class="galerie">\n' + ''.join(vu['apres']) + '\n    </div>')
+        blocs.append(enveloppe('apres', '    <p class="acte">' + ACTES['apres'] + '</p>\n'
+                     '    <div class="galerie">\n' + ''.join(vu['apres']) + '\n    </div>'))
     if 'noces' in actes:
-        blocs.append(
+        blocs.append(enveloppe('noces',
             '    <p class="acte">' + ACTES['noces'] + '</p>\n'
             '    <div class="galerie">\n' + ''.join(vu['noces']) + '\n    </div>\n'
             '    <div class="bloc">\n'
@@ -315,19 +333,20 @@ def echelle(e, liaison, suivant, actes):
             '      <p class="porte">Elle se joue en plein écran après la réponse, puis\n'
             "      ne revient jamais — c'est le seul moment du jeu qu'on ne peut pas\n"
             '      revoir.</p>\n'
-            '    </div>')
+            '    </div>'))
     if 'rupture' in actes:
-        blocs.append(
+        blocs.append(enveloppe('rupture',
             '    <p class="acte">' + ACTES['rupture'] + '</p>\n'
             '    <div class="galerie">\n' + ''.join(vu['rupture']) + '\n    </div>\n'
             "    <p class=\"note\">L'attache retombe à zéro et cette histoire-là s'arrête\n"
             "    pour de bon. Une autre peut commencer avec quelqu'un d'autre : rien ne\n"
-            "    l'empêche, et le jeu ne compte pas les cœurs.</p>")
+            "    l'empêche, et le jeu ne compte pas les cœurs.</p>"))
 
-    compte = (f'{montre} cartes ici' if len(actes) < len(ACTES)
-              else f"{len(e['cartes']) + 1} cartes")
+    compte = (f'{montre} cartes ici' if len(actes) == 1
+              else f"{len(e['cartes']) + 1} cartes en tout")
     seulement = 'une présidente' if homme else 'un président'
-    return ('  <section class="personne">\n'
+    creuse = ' hidden' if defaut and not vu.get(defaut) else ''
+    return (f'  <section class="personne"{creuse}>\n'
             '    <div class="tete">\n'
             f'      <img src="visages/{e["id"]}.jpg" alt="{echappe(p["nom"])}">\n'
             '      <div>\n'
@@ -359,15 +378,17 @@ def carte_mariee(c, n=None):
     }, True, n)
 
 
-def acte_du_mariage(cartes, suivant):
+def acte_du_mariage(cartes, suivant, defaut=None):
     liste = ''.join(carte_mariee(c, suivant()) for c in cartes)
-    return f'''  <section class="personne">
+    creuse = ' hidden' if defaut and defaut != 'marie' else ''
+    return f'''  <section class="personne"{creuse}>
     <div class="tete">
       <div>
         <h2>Une fois marié</h2>
         <p class="titre">{len(cartes)} cartes, quelle que soit la personne épousée</p>
       </div>
     </div>
+    <div class="acte-bloc" data-acte="marie">
     <p class="note">Elles ne nomment personne : c'est la personne que le
     président a épousée qui les dit, et c'est son visage qui apparaît. Elles
     n'existent pas pour un célibataire, et elles ne s'arrêtent plus — le
@@ -375,6 +396,7 @@ def acte_du_mariage(cartes, suivant):
     ensuite.</p>
     <div class="galerie">
 {liste}
+    </div>
     </div>
   </section>'''
 
@@ -477,9 +499,19 @@ GABARIT = '''<title>{{TITRE}}</title>
   .personne > .acte:first-of-type{margin-top:0;padding-top:0;border-top:none}
 
   footer{border-top:1px solid var(--trait);margin-top:52px;padding-top:20px}
+  .passes{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:.4rem;
+    margin:0 0 2rem;padding:.7rem 0;background:var(--fond);border-bottom:1px solid var(--trait)}
+  .passes button{font:600 .8rem/1.2 var(--corps);color:var(--douce);cursor:pointer;
+    background:var(--leve);border:1px solid var(--trait);border-radius:999px;
+    padding:.5rem .9rem;display:flex;align-items:center;gap:.45rem}
+  .passes button b{font:800 .72rem var(--serif);color:var(--faible)}
+  .passes button[aria-current="true"]{color:var(--nuit);background:var(--or);border-color:var(--or)}
+  .passes button[aria-current="true"] b{color:var(--nuit);opacity:.65}
+  .passes button:focus-visible{outline:2px solid var(--chair);outline-offset:2px}
   @media (max-width:520px){
     .galerie{grid-template-columns:1fr}
     .issue{flex-direction:column}
+    .passes button{padding:.45rem .7rem;font-size:.74rem}
   }
 </style>
 <div class="page">
@@ -498,12 +530,36 @@ GABARIT = '''<title>{{TITRE}}</title>
   chambre partagée.</p>
 
   <div class="echelon">{{ECHELON}}</div>
-
+{{PASSES}}
 {{CORPS}}
 
   <footer><p class="note">{{PIED}}</p></footer>
 </div>
-'''
+<script>
+  // La page tient les six passes ; on n'en montre qu'une. Tout est déjà
+  // dans le document — changer d'onglet ne recharge rien et ne renumérote
+  // rien, c'est le même « 17 » d'une passe à l'autre.
+  (function () {
+    var barre = document.querySelector('.passes');
+    if (!barre) return;
+    function ouvre(acte) {
+      document.querySelectorAll('.acte-bloc').forEach(function (b) {
+        b.hidden = b.dataset.acte !== acte;
+      });
+      document.querySelectorAll('.personne').forEach(function (s) {
+        s.hidden = !s.querySelector('.acte-bloc[data-acte="' + acte + '"]');
+      });
+      barre.querySelectorAll('button').forEach(function (b) {
+        b.setAttribute('aria-current', String(b.dataset.acte === acte));
+      });
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+    barre.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (b) ouvre(b.dataset.acte);
+    });
+  })();
+</script>'''
 
 
 def version():
@@ -517,9 +573,14 @@ def main():
     args = [a for a in sys.argv[1:] if not a.startswith('--')]
     seul = next((a.split('=', 1)[1] for a in sys.argv[1:] if a.startswith('--seul=')), None)
     acte = next((a.split('=', 1)[1] for a in sys.argv[1:] if a.startswith('--acte=')), None)
-    if acte and acte not in ACTES:
+    demandes = acte.split(',') if acte else []
+    inconnus = [a for a in demandes if a not in ACTES]
+    if inconnus:
         sys.exit('actes connus : ' + ', '.join(ACTES))
-    actes = [acte] if acte else list(ACTES)
+    # On garde l'ordre de la romance, pas celui de la ligne de commande :
+    # les numéros de passe en dépendent.
+    actes = [a for a in ACTES if a in demandes] if demandes else list(ACTES)
+    defaut = actes[0] if len(actes) > 1 else None
     sortie = args[0] if args else os.path.join(RACINE, 'sources/romances/romances.html')
     os.makedirs(os.path.dirname(sortie), exist_ok=True)
     liaison = cran_liaison()
@@ -538,12 +599,18 @@ def main():
         chapeau = ('Une romance entière, de la première carte aux deux façons '
                    "dont elle peut finir — le mariage, ou le refus. Les cartes "
                    'sont dessinées comme le jeu les dessine.')
-    if acte:
-        titre = ACTES[acte]
+    if len(actes) == 1:
+        titre = ACTES[actes[0]]
         chapeau = ('Une passe de relecture : le même moment de la romance, chez '
                    'les dix personnes, pour les juger ensemble. Les numéros ne '
                    'changent pas d\'une passe à l\'autre — « 17 » désigne la même '
                    'carte ici et sur la planche entière.')
+    elif demandes:
+        titre = 'De la liaison au mariage'
+        chapeau = ('Les passes de relecture qui restent, dans une seule page : '
+                   'un onglet par moment de la romance, les dix personnes à la '
+                   'suite. Les numéros de cartes sont posés une fois pour toutes '
+                   '— « 17 » désigne la même carte dans toutes les passes.')
     echelon = ''.join(
         f'<span><b>{i}</b>{echappe(nom)}</span>' for i, nom in enumerate(CRANS))
     cartes = json.load(open(os.path.join(RACINE, 'assets/contenu/cartes.json')))
@@ -556,12 +623,21 @@ def main():
         compteur[0] += 1
         return compteur[0]
 
-    corps = '\n'.join(x for x in (echelle(e, liaison, suivant, actes) for e in tout) if x)
+    corps = '\n'.join(x for x in (echelle(e, liaison, suivant, actes, defaut)
+                                  for e in tout) if x)
     if not seul:
-        bloc = acte_du_mariage(mariage, suivant)
+        bloc = acte_du_mariage(mariage, suivant, defaut)
         corps += ('\n' + bloc) if 'marie' in actes else ''
     # Le compteur court sur toute la romance pour garder les numéros
     # stables ; le pied, lui, annonce ce que la page montre vraiment.
+    passes = ''
+    if len(actes) > 1:
+        passes = ('  <nav class="passes">'
+                  + ''.join(f'<button type="button" data-acte="{a}" '
+                            f'aria-current="{str(a == defaut).lower()}">'
+                            f'<b>{numero_de_passe(a)}</b>{echappe(ONGLETS[a])}</button>'
+                            for a in actes)
+                  + '</nav>')
     total = corps.count('<figure class="carte">')
     pied = (f'{total} cartes, lues dans le contenu '
             'du jeu : ce qui est écrit ici est ce qui se joue. Les jours ordinaires, '
@@ -570,6 +646,7 @@ def main():
     page = (GABARIT
             .replace('{{VERSION}}', version())
             .replace('{{ECHELON}}', echelon)
+            .replace('{{PASSES}}', passes)
             .replace('{{TITRE}}', titre)
             .replace('{{CHAPEAU}}', chapeau)
             .replace('{{MARIAGE}}', f'{len(mariage)} cartes')
