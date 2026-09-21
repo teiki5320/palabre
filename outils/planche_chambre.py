@@ -37,12 +37,42 @@ TEMPS = [
 
 SITUATIONS = [
     ('liaison', "Tant que c'est caché",
-     "Personne ne sait. {Elle} vouvoie, {elle} parle de la porte par "
-     "laquelle {elle} est {entree}."),
+     "Personne ne sait, et ce qui {la} préoccupe est d'être {entree} sans "
+     "qu'on {la} voie."),
     ('marie', 'Une fois mariés',
-     "Le mariage a eu lieu. {Elle} tutoie, et ce qui l'occupe n'est plus "
-     "d'arriver sans être {vue}."),
+     "Plus de porte dérobée : ce qui reste, c'est la journée qu'ils "
+     'viennent de passer chacun de leur côté.'),
 ]
+
+
+# Le registre ne se décrète pas : il se lit dans les répliques. Tout le
+# monde ne vouvoie pas tant que c'est caché — la militante ne le ferait
+# jamais — et prétendre le contraire sur la planche ferait juger les
+# textes sur une règle qu'ils ne suivent pas.
+TU = re.compile(r"\b(tu|te|toi|ton|ta|tes)\b|\bt'", re.I)
+VOUS = re.compile(r'\b(vous|votre|vos)\b', re.I)
+# Un impératif de politesse en tête de phrase : « Dormez. », « Éteignez, »
+IMPERATIF = re.compile(r'(?:^|[.!?…]\s+)([A-ZÉÈÀ][a-zà-ÿ]*ez)\b')
+
+
+def registre(lignes):
+    texte = ' '.join(lignes.values())
+    vous = bool(VOUS.search(texte)) or bool(IMPERATIF.search(texte))
+    tu = bool(TU.search(texte))
+    if vous and not tu:
+        return 'vouvoiement'
+    if tu and not vous:
+        return 'tutoiement'
+    return None
+
+
+# Quand aucune des trois répliques ne porte de pronom, on se tait : la
+# planche préfère ne rien dire à trancher de travers.
+DITS_DU_REGISTRE = {
+    'vouvoiement': '{Elle} vouvoie encore.',
+    'tutoiement': '{Elle} tutoie déjà.',
+    None: '',
+}
 
 
 def invites():
@@ -60,9 +90,9 @@ def invites():
 
 def accorde(texte, homme):
     """La page parle d'eux ; le jeu, lui, ne connaît pas leur genre."""
-    mots = {'Elle': 'Il', 'elle': 'il', 'habillee': 'habillé', 'entree': 'entré',
-            'vue': 'vu'} if homme else {
-            'Elle': 'Elle', 'elle': 'elle', 'habillee': 'habillée',
+    mots = {'Elle': 'Il', 'elle': 'il', 'la': 'le', 'habillee': 'habillé',
+            'entree': 'entré', 'vue': 'vu'} if homme else {
+            'Elle': 'Elle', 'elle': 'elle', 'la': 'la', 'habillee': 'habillée',
             'entree': 'entrée', 'vue': 'vue'}
     for k, v in mots.items():
         texte = texte.replace('{' + k + '}', v)
@@ -154,8 +184,9 @@ def section(qui, gens, chemins, libelles, suivant):
         lignes = dits()[qui][sit]
         ecrans = ''.join(ecran(qui, t, lignes[t], suivant(), chemins, libelles, homme)
                          for t, _, _ in TEMPS)
+        dit = DITS_DU_REGISTRE[registre(lignes)]
         blocs.append(f'''    <p class="acte">{echappe(titre)}</p>
-    <p class="note">{echappe(accorde(note, homme))}</p>
+    <p class="note">{echappe(accorde(note, homme))}{' ' + echappe(accorde(dit, homme)) if dit else ''}</p>
     <div class="scene">
 {ecrans}
     </div>''')
