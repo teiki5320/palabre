@@ -3188,10 +3188,38 @@
   }
  },
  {
+  "id": "ministre_pourquoi_le_fonds",
+  "personnage": "ministre",
+  "humeur": "neutre",
+  "texte": "{titre}, il manque deux mois de salaires d'ici décembre. Les voisins prêtent cher ; le fonds prête moins cher et pose ses conditions.",
+  "gauche": {
+   "libelle": "Qu'il vienne",
+   "effets": {
+    "caisses": 6,
+    "presse": 3,
+    "peuple": -4
+   },
+   "journal": "L'émissaire du fonds est annoncé pour la semaine prochaine. Le ministère a ressorti les comptes des trois dernières années."
+  },
+  "droite": {
+   "libelle": "On se débrouille",
+   "effets": {
+    "caisses": -5,
+    "peuple": 6
+   },
+   "journal": "Aucune demande n'a été déposée. Les salaires de décembre figurent au budget sans qu'on dise avec quoi ils seront payés."
+  },
+  "poids": 14,
+  "conditions": {
+   "jour_min": 3,
+   "jour_max": 20
+  }
+ },
+ {
   "id": "emissaire_premiere_visite",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, le fonds a étudié votre dossier. Nous pouvons avancer, à condition de revoir trois postes de dépense ensemble.",
+  "texte": "{titre}, le fonds qui prête aux États a étudié votre dossier. Nous avançons si nous revoyons trois postes de dépense.",
   "gauche": {
    "libelle": "On revoit tout",
    "effets": {
