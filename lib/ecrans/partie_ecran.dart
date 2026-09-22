@@ -10,9 +10,9 @@ import 'carte_glissante.dart';
 import 'ciel_carte.dart';
 import 'fin_ecran.dart';
 import 'palais_ecran.dart';
+import 'quotidien_ecran.dart';
 import 'session.dart';
 import 'sons.dart';
-import 'telegraphe.dart';
 import 'theme.dart';
 
 /// L'écran de jeu : les jauges en haut, la carte du jour au milieu, les deux
@@ -27,6 +27,12 @@ class PartieEcran extends ConsumerStatefulWidget {
 
 class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProviderStateMixin {
   Cote? _intention;
+
+  /// La brève à lire avant la carte suivante, et le matin dont elle parle.
+  /// Nulle la plupart du temps : l'écran ne s'ouvre pas quand la réponse
+  /// n'a pas laissé de lendemain.
+  String? _quotidien;
+  int _matin = 0;
 
   /// Le passage de la carte suivante de l'arrière-plan au premier plan. Il
   /// démarre au départ de la carte du jour et se remet à zéro d'un coup quand
@@ -65,6 +71,18 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
     // silence laisse les sons de décision, de mieux et de mal porter seuls.
     // Le palais, poussé par-dessus, remet son fond le temps de la visite.
     ref.read(sonsProvider).metLeFond(null);
+
+    // Le lendemain se lit seul, entre deux cartes. Il était écrit sous la
+    // carte du jour, donc sous une question qui n'avait rien à voir : on le
+    // lisait de travers, ou pas du tout.
+    final quotidien = _quotidien;
+    if (quotidien != null) {
+      return QuotidienEcran(
+        jour: _matin,
+        ligne: quotidien,
+        onFini: () => setState(() => _quotidien = null),
+      );
+    }
 
     // Le mariage se montre une fois, par-dessus tout le reste : la partie
     // continue derrière, on ne fait que la couvrir le temps d'un regard.
@@ -145,6 +163,21 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                                     atout: parcours?.atout,
                                   )));
                               ref.read(sessionProvider.notifier).repondA(c);
+                              // Le quotidien du lendemain prend tout l'écran
+                              // avant la carte suivante — sauf le jour des
+                              // noces, où la cérémonie porte déjà la ligne.
+                              final apres = ref.read(sessionProvider);
+                              final ligne = apres?.journal;
+                              if (apres != null &&
+                                  !apres.terminee &&
+                                  ligne != null &&
+                                  ligne.isNotEmpty &&
+                                  ceremonieDe(apres.etat) == null) {
+                                setState(() {
+                                  _quotidien = ligne;
+                                  _matin = apres.etat.jour;
+                                });
+                              }
                             },
                             enfant: _Carte(
                               personnage: personnage,
@@ -159,10 +192,6 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                   ),
                 ),
               ),
-              // Le journal de la veille, juste sous la carte du jour : la
-              // conséquence se lit à l'endroit même où l'on vient de
-              // décider.
-              Telegraphe(key: ValueKey(session.etat.jour), ligne: session.journal),
               _AxeRegime(style: session.etat.style, vise: reponse?.style ?? 0),
             ],
           ),

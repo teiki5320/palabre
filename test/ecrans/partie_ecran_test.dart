@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
 import 'package:president/ecrans/ciel_carte.dart';
 import 'package:president/ecrans/partie_ecran.dart';
+import 'package:president/ecrans/quotidien_ecran.dart';
 import 'package:president/ecrans/session.dart';
 import 'package:president/moteur/denouement.dart';
 import 'package:president/ecrans/theme.dart';
@@ -12,8 +13,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 Contenu contenuDEssai() => Contenu.depuisChaines(
       cartes: '['
           '{"id":"c1","personnage":"general","humeur":"neutre","texte":"{nom}, la solde a du retard.",'
-          '"gauche":{"libelle":"Patientez","effets":{"armee":-10},"style":6},'
-          '"droite":{"libelle":"On paie","effets":{"armee":10,"caisses":-10}}},'
+          '"gauche":{"libelle":"Patientez","effets":{"armee":-10},"style":6,'
+          '"journal":"La solde n est pas tombee : au mess, un adjudant a inscrit le nombre de jours."},'
+          '"droite":{"libelle":"On paie","effets":{"armee":10,"caisses":-10},'
+          '"journal":"Deux mois d arrieres ont ete verses hier."}},'
           '{"id":"c2","personnage":"general","humeur":"neutre","texte":"Les casernes murmurent.",'
           '"gauche":{"libelle":"Ignorer","effets":{"armee":-5}},'
           '"droite":{"libelle":"Ecouter","effets":{"armee":5}}}'
@@ -50,6 +53,23 @@ Future<void> lance(WidgetTester tester) async {
   await tester.pumpAndSettle();
 }
 
+/// Traverse l ecran du quotidien, qui s ouvre apres chaque reponse. Ses
+/// animations — l onde, le point d antenne — tournent sans fin : on pompe
+/// une duree fixe plutot que d attendre un repos qui ne vient jamais.
+Future<void> passeLeQuotidien(WidgetTester tester) async {
+  // Le depart de la carte dure un quart de seconde avant que la reponse ne
+  // compte : on pompe jusqu a ce que l ecran s ouvre, sans jamais attendre
+  // un repos que ses animations ne connaissent pas.
+  for (var i = 0; i < 24 && find.byType(QuotidienEcran).evaluate().isEmpty; i++) {
+    await tester.pump(const Duration(milliseconds: 120));
+  }
+  if (find.byType(QuotidienEcran).evaluate().isEmpty) return;
+  await tester.tap(find.byType(QuotidienEcran));
+  await tester.pump(const Duration(milliseconds: 300));
+  await tester.tap(find.byType(QuotidienEcran));
+  await tester.pumpAndSettle();
+}
+
 void main() {
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
@@ -63,8 +83,28 @@ void main() {
   testWidgets('repondre avance au jour suivant et change de carte', (tester) async {
     await lance(tester);
     await tester.drag(find.textContaining('solde'), const Offset(400, 0));
-    await tester.pumpAndSettle();
+    await passeLeQuotidien(tester);
     expect(find.text('JOUR 2'), findsOneWidget);
+    expect(find.textContaining('casernes'), findsOneWidget);
+  });
+
+  testWidgets('le quotidien prend tout l ecran entre deux cartes', (tester) async {
+    // Il etait ecrit sous la carte du jour, donc sous une question qui
+    // n avait rien a voir : on le lisait de travers, ou pas du tout.
+    await lance(tester);
+    await tester.drag(find.textContaining('solde'), const Offset(400, 0));
+    for (var i = 0; i < 24 && find.byType(QuotidienEcran).evaluate().isEmpty; i++) {
+      await tester.pump(const Duration(milliseconds: 120));
+    }
+    expect(find.byType(QuotidienEcran), findsOneWidget);
+    expect(find.text('JOUR 2'), findsOneWidget);
+    expect(find.textContaining('RADIO'), findsOneWidget);
+    // Un premier appui termine la frappe, un second rend la main aux cartes.
+    await tester.tap(find.byType(QuotidienEcran));
+    await tester.pump(const Duration(milliseconds: 400));
+    await tester.tap(find.byType(QuotidienEcran));
+    await tester.pumpAndSettle();
+    expect(find.byType(QuotidienEcran), findsNothing);
     expect(find.textContaining('casernes'), findsOneWidget);
   });
 
@@ -147,7 +187,7 @@ void main() {
     // « On paie » ne dit rien du regime ; c est « Patientez » qui porte
     // le style dans le contenu d essai.
     await tester.drag(find.textContaining('solde'), const Offset(-400, 0));
-    await tester.pumpAndSettle();
+    await passeLeQuotidien(tester);
 
     final apres = ProviderScope.containerOf(
       tester.element(find.byType(PartieEcran)),

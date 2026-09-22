@@ -29,6 +29,10 @@ abstract final class Couleurs {
 
   /// Bordures et fond d'une jauge au repos.
   static const bordure = Color(0x2EFFFFFF);
+
+  /// Le rouge sourd du jeu : une jauge qui tombe, le point d'antenne de la
+  /// radio. Il ne sert jamais de couleur d'accent — c'est le rôle de l'or.
+  static const chair = Color(0xFFC97B6A);
 }
 
 /// Les deux familles embarquees dans `assets/polices/`. Elles sont livrees
@@ -126,6 +130,15 @@ abstract final class Textes {
     fontFamily: Polices.corps,
     fontSize: 18,
     height: 1.38,
+    color: Couleurs.creme,
+  );
+
+  /// La brève du quotidien, en plein écran, le matin d'après.
+  static const texteQuotidien = TextStyle(
+    fontFamily: Polices.titre,
+    fontSize: 22,
+    height: 1.42,
+    fontWeight: FontWeight.w400,
     color: Couleurs.creme,
   );
 
