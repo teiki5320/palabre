@@ -9660,7 +9660,7 @@
    "jour_min": 3,
    "marie": true
   },
-  "texte": "{nom}, cette nuit-là, vous n'avez rien promis devant personne. Celui-ci est le dernier : dites-le dehors, et vos officiers l'entendront.",
+  "texte": "{nom}, cette nuit-là, vous n'avez rien promis devant personne. Ce mandat est le dernier : dites-le dehors, et vos officiers l'entendront.",
   "gauche": {
    "libelle": "Je le promets",
    "effets": {
@@ -15849,7 +15849,7 @@
   "id": "campagne_inaugurations",
   "personnage": "cabinet",
   "humeur": "neutre",
-  "texte": "{titre}, les enquêtes du marché donnent celui d'en face devant vous. Mes conseillers proposent d'avancer trois inaugurations.",
+  "texte": "{titre}, les enquêtes du marché donnent votre adversaire devant vous. Mes conseillers proposent d'avancer trois inaugurations.",
   "gauche": {
    "libelle": "Avancez-les",
    "effets": {
@@ -15936,7 +15936,7 @@
   "id": "campagne_adversaire_faible",
   "personnage": "cabinet",
   "humeur": "neutre",
-  "texte": "{titre}, celui d'en face ne remplit plus ses salles. Mes conseillers veulent l'achever, ou le laisser s'éteindre tout seul.",
+  "texte": "{titre}, votre adversaire ne remplit plus ses salles. Mes conseillers veulent l'achever, ou le laisser s'éteindre tout seul.",
   "gauche": {
    "libelle": "Qu'on l'achève",
    "effets": {
