@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:president/ecrans/carte_pays_ecran.dart';
 import 'package:president/contenu/chargement.dart';
 import 'package:president/ecrans/partie_ecran.dart';
 import 'package:president/ecrans/session.dart';
@@ -88,6 +89,27 @@ void main() {
     // les ouvertures nomment ce qu'on voit.
     expect(find.text('La cour des voitures'), findsNothing);
     expect(find.text('La piscine'), findsNothing);
+  });
+
+  testWidgets('la carte du pays est accrochee au mur du bureau', (tester) async {
+    await _ouvreLePalais(tester);
+    expect(find.bySemanticsLabel('La carte du pays'), findsOneWidget);
+    await tester.tap(find.bySemanticsLabel('La carte du pays'));
+    await tester.pumpAndSettle();
+    expect(find.byType(CartePaysEcran), findsOneWidget);
+    // La capitale est connue avant d avoir joue ; le reste s allume quand
+    // une carte le nomme.
+    expect(find.textContaining('LA CAPITALE'), findsOneWidget);
+    await tester.tap(find.byType(CartePaysEcran));
+    await tester.pumpAndSettle();
+    expect(find.byType(CartePaysEcran), findsNothing);
+  });
+
+  testWidgets('la carte ne pend qu au mur du bureau', (tester) async {
+    await _ouvreLePalais(tester);
+    await tester.tap(find.text('Le balcon'));
+    await tester.pumpAndSettle();
+    expect(find.bySemanticsLabel('La carte du pays'), findsNothing);
   });
 
   testWidgets('le bureau n a pas de demi-tour : on y est déjà', (tester) async {

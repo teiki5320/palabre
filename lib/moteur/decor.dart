@@ -427,6 +427,15 @@ List<Passage> passagesDe(Piece piece) => switch (piece) {
       Piece.balcon => const [],
     };
 
+/// L'écran accroché au mur du bureau, entre le rideau et la porte du
+/// couloir : c'est le seul mur libre des quatre plaques, et elles
+/// partagent toutes le même cadrage. Il montre la carte du pays, de jour
+/// ou de nuit, et s'ouvre en grand quand on le touche.
+const Zone ecranDuBureau = Zone(0.30, 0.235, 0.15, 0.15);
+
+/// L'écran de la pièce, ou null : le bureau seul en a un.
+Zone? ecranDe(Piece piece) => piece == Piece.bureau ? ecranDuBureau : null;
+
 /// Où mène le demi-tour, depuis n'importe où. Null depuis le bureau : on y
 /// est déjà, et le bureau est le vestibule du palais.
 Piece? demiTourDepuis(Piece piece) => piece == Piece.bureau ? null : Piece.bureau;

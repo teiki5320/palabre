@@ -10,6 +10,8 @@ import '../moteur/etat_partie.dart';
 import '../moteur/palais.dart';
 import 'session.dart';
 import 'sons.dart';
+import 'carte_pays_ecran.dart';
+import '../moteur/pays.dart';
 import 'theme.dart';
 
 /// Le palais : on arrive au bureau, on en repart vers les quatre autres
@@ -82,6 +84,10 @@ class _PalaisEcranState extends ConsumerState<PalaisEcran> {
             child: _Decor(
               decor: decor,
               passages: passagesDe(_piece),
+              ecran: ecranDe(_piece),
+              nuit: estNuit(session.etat),
+              lieuxConnus: lieuxConnus(
+                  paquet: contenu?.cartes ?? const [], vues: session.etat.vues),
               vers: _va,
               key: ValueKey('${_piece.name}-${decor.etat}'),
             ),
@@ -118,7 +124,15 @@ class _PalaisEcranState extends ConsumerState<PalaisEcran> {
 /// bouger même quand le système demande de réduire les animations, sinon
 /// le décor du jeu devient une photographie sans que personne le sache.
 class _Decor extends StatefulWidget {
-  const _Decor({required this.decor, required this.passages, required this.vers, super.key});
+  const _Decor({
+    required this.decor,
+    required this.passages,
+    required this.vers,
+    required this.ecran,
+    required this.nuit,
+    required this.lieuxConnus,
+    super.key,
+  });
 
   final Decor decor;
 
@@ -126,6 +140,14 @@ class _Decor extends StatefulWidget {
   /// décor qui les porte, donc elles suivent le regard et le travelling
   /// au lieu de flotter à une place fixe de l'écran.
   final List<Passage> passages;
+
+  /// L'écran accroché au mur, ou null : seul le bureau en a un.
+  final Zone? ecran;
+
+  /// Ce que l'écran montre : le pays de jour ou de nuit, et les lieux
+  /// qu'au moins une carte vue a nommés.
+  final bool nuit;
+  final Set<String> lieuxConnus;
   final void Function(Piece) vers;
 
   @override
@@ -242,6 +264,24 @@ class _DecorState extends State<_Decor> with SingleTickerProviderStateMixin {
             children: [
               plan(i, 1),
               if (a > 0) plan(i + 1, a),
+              if (widget.ecran != null)
+                () {
+                  final r = surEcran(widget.ecran!)
+                      .intersect(Rect.fromLTWH(0, 0, c.maxWidth, c.maxHeight));
+                  if (r.width < 30 || r.height < 20) return const SizedBox.shrink();
+                  return Positioned.fromRect(
+                    rect: r,
+                    child: _EcranDuMur(
+                      nuit: widget.nuit,
+                      connus: widget.lieuxConnus,
+                      souffle: souffle,
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => CartePaysEcran(
+                            nuit: widget.nuit, connus: widget.lieuxConnus),
+                      )),
+                    ),
+                  );
+                }(),
               for (final passage in widget.passages)
                 () {
                   // Une ouverture ne se dessine que sur sa part visible :
@@ -329,6 +369,50 @@ class _Entete extends StatelessWidget {
           ),
         ),
       );
+}
+
+/// L'écran accroché au mur du bureau : la carte du pays en petit, qu'on
+/// touche pour l'ouvrir. Il s'allume et s'éteint avec le palais.
+class _EcranDuMur extends StatelessWidget {
+  const _EcranDuMur({
+    required this.nuit,
+    required this.connus,
+    required this.souffle,
+    required this.onTap,
+  });
+
+  final bool nuit;
+  final Set<String> connus;
+  final double souffle;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      button: true,
+      label: 'La carte du pays',
+      child: GestureDetector(
+        onTap: onTap,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            border: Border.all(color: Couleurs.encre, width: 2),
+            boxShadow: [
+              BoxShadow(
+                color: (nuit ? Couleurs.creme : Couleurs.or)
+                    .withValues(alpha: .10 + .16 * souffle),
+                blurRadius: 14,
+                spreadRadius: 1,
+              ),
+              const BoxShadow(color: Colors.black54, blurRadius: 10, offset: Offset(0, 4)),
+            ],
+          ),
+          child: ClipRect(
+            child: PlaqueDuPays(nuit: nuit, connus: connus, avecNoms: false),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 /// Une ouverture dans le décor : une baie, une porte, une colonnade. Pas
