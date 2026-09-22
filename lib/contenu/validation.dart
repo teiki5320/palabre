@@ -262,7 +262,13 @@ List<String> valide(Contenu c) {
       for (var k = i + 1; k < liste.length; k++) {
         final a = liste[i];
         final b = liste[k];
-        final seChevauchent = a.styleMin <= b.styleMax && b.styleMin <= a.styleMax;
+        // Un drapeau exigé départage aussi sûrement que le régime : la fin
+        // qui demande un objet ne sort que si le palais l'a, et l'autre
+        // reste le repli.
+        final unDrapeauLesSepare =
+            a.drapeauxRequis.length != b.drapeauxRequis.length;
+        final seChevauchent =
+            !unDrapeauLesSepare && a.styleMin <= b.styleMax && b.styleMin <= a.styleMax;
         final aContientB = a.styleMin <= b.styleMin && a.styleMax >= b.styleMax && a.precision > b.precision;
         final bContientA = b.styleMin <= a.styleMin && b.styleMax >= a.styleMax && b.precision > a.precision;
         if (seChevauchent && !aContientB && !bContientA) {

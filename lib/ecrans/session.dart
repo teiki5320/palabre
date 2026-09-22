@@ -209,7 +209,7 @@ class SessionNotifier extends Notifier<Session?> {
         return Session(
           etat: etat,
           denouement: faute,
-          fin: choisitFin(faute, _contenu.fins, style: etat.style),
+          fin: choisitFin(faute, _contenu.fins, style: etat.style, drapeaux: etat.drapeaux),
         );
       }
       return _termine(etat, faute);
@@ -224,7 +224,7 @@ class SessionNotifier extends Notifier<Session?> {
   /// plusieurs fois et de réécrire la progression en boucle.
   Session _termine(EtatPartie etat, Denouement denouement) {
     Sauvegarde.efface(); // le mandat est fini, il n'y a plus rien à reprendre
-    final fin = choisitFin(denouement, _contenu.fins, style: etat.style);
+    final fin = choisitFin(denouement, _contenu.fins, style: etat.style, drapeaux: etat.drapeaux);
 
     // Si la progression n'a pas encore été lue du disque, on calcule le
     // bilan contre une progression neuve pour que l'écran de fin ait quelque

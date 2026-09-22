@@ -383,7 +383,14 @@ class Fin {
     required this.image,
     this.styleMin = 0,
     this.styleMax = 100,
+    this.drapeauxRequis = const [],
   });
+
+  /// Ce que le palais doit contenir pour que cette fin-là soit possible.
+  /// C'est ce qui fait qu'un objet acheté au bureau change l'épilogue : le
+  /// vitrage pare-balles promet « le jour où le palais sera pris, vous
+  /// aurez le choix de rester », et sans ce champ il ne le tenait pas.
+  final List<String> drapeauxRequis;
 
   /// Le régime auquel cette fin appartient. Réélu dans un pays où l'on
   /// pouvait voter contre vous n'est pas réélu parce qu'il ne restait
@@ -425,5 +432,6 @@ class Fin {
         image: j['image'] as String,
         styleMin: ((j['style_min'] as num?) ?? 0).toInt(),
         styleMax: ((j['style_max'] as num?) ?? 100).toInt(),
+        drapeauxRequis: ((j['drapeaux_requis'] as List?) ?? const []).cast<String>(),
       );
 }

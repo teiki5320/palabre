@@ -1,15 +1,120 @@
 [
-  {"id": "armee_bas", "jauge": "armee", "vers_le_haut": false, "titre": "Le palais est pris", "texte": "Les blindés sont entrés à l'aube. On vous a laissé prendre un avion, et vos affaires suivront.", "image": "fins/coup.jpg"},
-  {"id": "armee_haut", "jauge": "armee", "vers_le_haut": true, "titre": "L'armée gouverne à votre place", "texte": "Vos officiers décident désormais avant vous. On vous salue encore, mais on ne vous demande plus rien.", "image": "fins/coup.jpg"},
-  {"id": "peuple_bas", "jauge": "peuple", "vers_le_haut": false, "titre": "L'avenue a tranché", "texte": "Trois semaines de marches, puis une nuit de klaxons. Vous avez signé votre départ à quatre heures du matin.", "image": "fins/rue.jpg"},
-  {"id": "peuple_haut", "jauge": "peuple", "vers_le_haut": true, "titre": "L'homme providentiel", "texte": "La foule ne veut plus que vous. Les autres pouvoirs, eux, ont compris qu'ils ne comptaient plus, et se sont entendus.", "image": "fins/rue.jpg"},
-  {"id": "caisses_bas", "jauge": "caisses", "vers_le_haut": false, "titre": "Les guichets sont fermés", "texte": "Les salaires n'ont pas pu partir. Ce sont vos partenaires, désormais, qui écrivent le budget.", "image": "fins/faillite.jpg"},
-  {"id": "caisses_haut", "jauge": "caisses", "vers_le_haut": true, "titre": "Un trésor et rien d'autre", "texte": "Les caisses n'ont jamais été aussi pleines. Les routes, les écoles et les hôpitaux attendent toujours, et la rue a fini par le dire.", "image": "fins/faillite.jpg"},
-  {"id": "presse_bas", "jauge": "presse", "vers_le_haut": false, "titre": "Démoli en première page", "texte": "Plus un journal ne vous épargnait. Vous avez annoncé votre retrait avant qu'on vous le demande.", "image": "fins/rue.jpg"},
-  {"id": "presse_haut", "jauge": "presse", "vers_le_haut": true, "titre": "Personne ne vous informe plus", "texte": "Les journaux ne disaient plus que du bien. Vous avez appris le complot le matin où il a réussi.", "image": "fins/coup.jpg"},
-  {"id": "election_gagnee", "jauge": null, "vers_le_haut": true, "titre": "Réélu", "texte": "Les affiches sont déjà collées sur les murs. Le prochain mandat sera plus difficile que celui-ci.", "image": "fins/urne.jpg"},
-  {"id": "election_perdue", "jauge": null, "vers_le_haut": false, "titre": "Battu dans les urnes", "texte": "Vous avez appelé votre successeur avant les résultats officiels. Cela vous fera une belle sortie.", "image": "fins/urne.jpg"},
-  {"id": "election_gagnee_franche", "jauge": null, "vers_le_haut": true, "style_max": 30, "titre": "Réélu dans les règles", "texte": "Vous l'avez emporté de peu. Le perdant a reconnu sa défaite le soir même, à la radio, sans y être contraint. Vous recommencez, et cette fois ils vous attendent.", "image": "fins/urne.jpg"},
-  {"id": "election_gagnee_seul", "jauge": null, "vers_le_haut": true, "style_min": 72, "titre": "Seul candidat", "texte": "Quatre-vingt-quatorze pour cent. Personne n'a jugé utile de se présenter contre vous, et personne n'a jugé prudent de le dire. Vous recommencez, et plus personne ne vous dira non.", "image": "fins/urne.jpg"},
-  {"id": "election_perdue_comptee", "jauge": null, "vers_le_haut": false, "style_min": 72, "titre": "Ils ont compté quand même", "texte": "Vous aviez la commission, les préfets, les antennes. Il a manqué les voix. Quelqu'un, quelque part, a fait son travail honnêtement, et vous ne saurez jamais qui.", "image": "fins/urne.jpg"}
+ {
+  "id": "armee_bas",
+  "jauge": "armee",
+  "vers_le_haut": false,
+  "titre": "Le palais est pris",
+  "texte": "Les blindés sont entrés à l'aube. On vous a laissé prendre un avion, et vos affaires suivront.",
+  "image": "fins/coup.jpg"
+ },
+ {
+  "id": "armee_bas_vitrage",
+  "jauge": "armee",
+  "vers_le_haut": false,
+  "titre": "Derrière la baie",
+  "texte": "Les blindés sont entrés à l'aube. Vous êtes resté au bureau, derrière le vitrage, et c'est par la porte qu'ils ont fini par passer, quatre heures plus tard. Le pays a eu le temps de voir.",
+  "image": "fins/coup.jpg",
+  "drapeaux_requis": [
+   "objet_vitrage"
+  ]
+ },
+ {
+  "id": "armee_haut",
+  "jauge": "armee",
+  "vers_le_haut": true,
+  "titre": "L'armée gouverne à votre place",
+  "texte": "Vos officiers décident désormais avant vous. On vous salue encore, mais on ne vous demande plus rien.",
+  "image": "fins/coup.jpg"
+ },
+ {
+  "id": "peuple_bas",
+  "jauge": "peuple",
+  "vers_le_haut": false,
+  "titre": "L'avenue a tranché",
+  "texte": "Trois semaines de marches, puis une nuit de klaxons. Vous avez signé votre départ à quatre heures du matin.",
+  "image": "fins/rue.jpg"
+ },
+ {
+  "id": "peuple_haut",
+  "jauge": "peuple",
+  "vers_le_haut": true,
+  "titre": "L'homme providentiel",
+  "texte": "La foule ne veut plus que vous. Les autres pouvoirs, eux, ont compris qu'ils ne comptaient plus, et se sont entendus.",
+  "image": "fins/rue.jpg"
+ },
+ {
+  "id": "caisses_bas",
+  "jauge": "caisses",
+  "vers_le_haut": false,
+  "titre": "Les guichets sont fermés",
+  "texte": "Les salaires n'ont pas pu partir. Ce sont vos partenaires, désormais, qui écrivent le budget.",
+  "image": "fins/faillite.jpg"
+ },
+ {
+  "id": "caisses_haut",
+  "jauge": "caisses",
+  "vers_le_haut": true,
+  "titre": "Un trésor et rien d'autre",
+  "texte": "Les caisses n'ont jamais été aussi pleines. Les routes, les écoles et les hôpitaux attendent toujours, et la rue a fini par le dire.",
+  "image": "fins/faillite.jpg"
+ },
+ {
+  "id": "presse_bas",
+  "jauge": "presse",
+  "vers_le_haut": false,
+  "titre": "Démoli en première page",
+  "texte": "Plus un journal ne vous épargnait. Vous avez annoncé votre retrait avant qu'on vous le demande.",
+  "image": "fins/rue.jpg"
+ },
+ {
+  "id": "presse_haut",
+  "jauge": "presse",
+  "vers_le_haut": true,
+  "titre": "Personne ne vous informe plus",
+  "texte": "Les journaux ne disaient plus que du bien. Vous avez appris le complot le matin où il a réussi.",
+  "image": "fins/coup.jpg"
+ },
+ {
+  "id": "election_gagnee",
+  "jauge": null,
+  "vers_le_haut": true,
+  "titre": "Réélu",
+  "texte": "Les affiches sont déjà collées sur les murs. Le prochain mandat sera plus difficile que celui-ci.",
+  "image": "fins/urne.jpg"
+ },
+ {
+  "id": "election_perdue",
+  "jauge": null,
+  "vers_le_haut": false,
+  "titre": "Battu dans les urnes",
+  "texte": "Vous avez appelé votre successeur avant les résultats officiels. Cela vous fera une belle sortie.",
+  "image": "fins/urne.jpg"
+ },
+ {
+  "id": "election_gagnee_franche",
+  "jauge": null,
+  "vers_le_haut": true,
+  "style_max": 30,
+  "titre": "Réélu dans les règles",
+  "texte": "Vous l'avez emporté de peu. Le perdant a reconnu sa défaite le soir même, à la radio, sans y être contraint. Vous recommencez, et cette fois ils vous attendent.",
+  "image": "fins/urne.jpg"
+ },
+ {
+  "id": "election_gagnee_seul",
+  "jauge": null,
+  "vers_le_haut": true,
+  "style_min": 72,
+  "titre": "Seul candidat",
+  "texte": "Quatre-vingt-quatorze pour cent. Personne n'a jugé utile de se présenter contre vous, et personne n'a jugé prudent de le dire. Vous recommencez, et plus personne ne vous dira non.",
+  "image": "fins/urne.jpg"
+ },
+ {
+  "id": "election_perdue_comptee",
+  "jauge": null,
+  "vers_le_haut": false,
+  "style_min": 72,
+  "titre": "Ils ont compté quand même",
+  "texte": "Vous aviez la commission, les préfets, les antennes. Il a manqué les voix. Quelqu'un, quelque part, a fait son travail honnêtement, et vous ne saurez jamais qui.",
+  "image": "fins/urne.jpg"
+ }
 ]

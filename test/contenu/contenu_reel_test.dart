@@ -51,9 +51,9 @@ void main() {
     }
   });
 
-  test('neuf exploits sont definis, chacun avec un identifiant unique', () {
-    expect(contenu.exploits.length, 9);
-    expect(contenu.exploits.map((e) => e.id).toSet().length, 9);
+  test('dix exploits sont definis, chacun avec un identifiant unique', () {
+    expect(contenu.exploits.length, 10);
+    expect(contenu.exploits.map((e) => e.id).toSet().length, 10);
   });
 
   // Jouer au hasard ne doit jamais mener bien loin : un joueur qui répond

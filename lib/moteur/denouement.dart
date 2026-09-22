@@ -48,15 +48,25 @@ TypeDenouement electionDe(EtatPartie etat) {
 /// fournit pas encore. À dénouement égal, c'est le régime qui départage :
 /// la fin la plus précise l'emporte, et une fin couvrant tout l'axe reste
 /// le repli quand aucune ne colle.
-Fin? choisitFin(Denouement d, List<Fin> fins, {int style = styleDepart}) {
+Fin? choisitFin(Denouement d, List<Fin> fins,
+    {int style = styleDepart, Set<String> drapeaux = const {}}) {
   bool correspond(Fin f) => switch (d.type) {
         TypeDenouement.chute => f.jauge == d.jauge && f.versLeHaut == d.versLeHaut,
         TypeDenouement.electionGagnee => f.jauge == null && f.versLeHaut,
         TypeDenouement.electionPerdue => f.jauge == null && !f.versLeHaut,
       };
 
-  final candidates = fins.where(correspond).toList()
-    ..sort((a, b) => a.precision.compareTo(b.precision));
+  // Une fin qui exige quelque chose du palais passe avant une fin qui
+  // n'exige rien : c'est la plus précise des deux, même si elle couvre
+  // tout l'axe du régime.
+  final candidates = fins
+      .where(correspond)
+      .where((f) => f.drapeauxRequis.every(drapeaux.contains))
+      .toList()
+    ..sort((a, b) {
+      final poids = b.drapeauxRequis.length.compareTo(a.drapeauxRequis.length);
+      return poids != 0 ? poids : a.precision.compareTo(b.precision);
+    });
   for (final f in candidates) {
     if (style >= f.styleMin && style <= f.styleMax) return f;
   }

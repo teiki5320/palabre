@@ -56,6 +56,26 @@ void main() {
     expect(choisitFin(gagnee, fins)!.id, 'election_gagnee');
   });
 
+  test('le vitrage change l epilogue du palais pris', () {
+    // Sans l'objet, la fin de base ; avec lui, la variante — c'est ce que le
+    // catalogue promet, et ce qui n'existait pas.
+    final chute = Denouement(type: TypeDenouement.chute, jauge: Jauge.armee, versLeHaut: false);
+    final fins = [
+      const Fin(id: 'armee_bas', jauge: Jauge.armee, versLeHaut: false, titre: 't', texte: 't', image: 'i'),
+      const Fin(
+        id: 'armee_bas_vitrage',
+        jauge: Jauge.armee,
+        versLeHaut: false,
+        titre: 't',
+        texte: 't',
+        image: 'i',
+        drapeauxRequis: ['objet_vitrage'],
+      ),
+    ];
+    expect(choisitFin(chute, fins)!.id, 'armee_bas');
+    expect(choisitFin(chute, fins, drapeaux: {'objet_vitrage'})!.id, 'armee_bas_vitrage');
+  });
+
   test('choisitFin rend null si la fin manque au contenu', () {
     final chute = evalue(etat(const Jauges(peuple: 0, armee: 50, caisses: 50, presse: 50)))!;
     expect(choisitFin(chute, fins), isNull);
