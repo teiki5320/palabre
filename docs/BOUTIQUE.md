@@ -221,23 +221,28 @@ catégories.
 ne partage aucune donnée utilisateur ».
 
 Une **politique de confidentialité** reste exigée par les deux boutiques,
-même sans collecte. Une page d'une dizaine de lignes suffit : ce qui précède,
-plus une adresse de contact. Elle doit être hébergée à une adresse publique
-stable — à faire, rien dans le dépôt.
+même sans collecte. Elle est écrite : `docs/confidentialite.html`, prête à
+servir telle quelle.
+
+Il reste à l'héberger à une adresse publique stable. Le plus simple, et
+gratuit : activer GitHub Pages sur le dossier `docs/` du dépôt — Settings,
+Pages, source « main / docs ». L'adresse devient
+`https://teiki5320.github.io/palabre/confidentialite.html`, et c'est celle-là
+qu'on colle dans les deux consoles.
 
 ---
 
 ## 7. Ce qui bloque encore la soumission
 
-1. **La relecture des 687 cartes** — la seule étape qui n'est pas mécanisable.
-2. **La décision de monétisation** — elle change la réponse « achats intégrés »
+1. **La décision de monétisation** — elle change la réponse « achats intégrés »
    du questionnaire IARC et la fiche elle-même.
-3. **La politique de confidentialité** — à écrire et à héberger.
-4. **La taille du paquet Android.** Mesuré, pas estimé : l'APK de release
+2. **L'hébergement de la politique de confidentialité** — elle est écrite, il
+   lui faut une adresse publique.
+3. **La taille du paquet Android.** Mesuré, pas estimé : l'APK de release
    pèse **144,7 Mo** et le bundle **143,3 Mo**, dont 91 Mo d'`assets/`. La
    limite de Google Play pour le module de base est de 150 Mo. La marge est
    donc de moins de 5 %, et la moindre image ajoutée la mange. À traiter
    avant la première soumission Android : sortir les plaques du palais du
    module de base par Play Asset Delivery, ou recomprimer les images.
-5. **Le compte Google Play et le compte Apple** — état à vérifier dans les
+4. **Le compte Google Play et le compte Apple** — état à vérifier dans les
    consoles.

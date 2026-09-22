@@ -11,7 +11,7 @@
 - **Version commune** : **0.27.0+1** (`pubspec.yaml`). Les deux plateformes en dépendent : iOS lit `FLUTTER_BUILD_NAME` et `FLUTTER_BUILD_NUMBER`, Android lit `flutter.versionName` et `flutter.versionCode`. Une seule ligne à changer pour les deux.
 - **Identifiant de bundle** : **`sn.palabre.app`**, identique des deux côtés — `PRODUCT_BUNDLE_IDENTIFIER` dans `ios/Runner.xcodeproj/project.pbxproj`, `applicationId` dans `android/app/build.gradle.kts`. Le `namespace` Android, `sn.palabre.president`, est interne au code Kotlin et n'a aucun effet sur la boutique. Nom affiché des deux côtés : **« Palabre »**.
 - **Monétisation** : **aucune**. Ni SDK publicitaire, ni achat intégré, ni abonnement dans `pubspec.yaml` ou dans `lib/`. L'application ne fait aucun appel réseau et ne déclare aucune permission Android. C'est la réponse la plus simple possible aux questionnaires de confidentialité des deux boutiques : aucune donnée collectée.
-- **Chemin critique** : la relecture des 687 cartes, puis la décision de monétisation — qui conditionne la fiche, la classification et le questionnaire de confidentialité —, puis la première soumission iOS, la seule chaîne déjà câblée. Android suit, une fois la signature de publication en place.
+- **Chemin critique** : la décision de monétisation — qui conditionne la fiche, la classification et le questionnaire de confidentialité —, puis la première soumission iOS, la seule chaîne déjà câblée. Android suit, une fois le keystore posé et le paquet ramené sous les 150 Mo.
 
 ### 1. iOS · App Store
 
@@ -29,7 +29,7 @@
 | **Numéro de build** | fourni par Xcode Cloud (`CI_BUILD_NUMBER`), pas figé dans le dépôt |
 | **Signature** | déléguée à Xcode Cloud ; aucun certificat ni profil dans le dépôt |
 | **Classification** | 17+ visée, à cause des scènes de chambre — questionnaire à remplir, à vérifier dans la console |
-| **Confidentialité** | aucune donnée collectée : aucun réseau, aucun outil d'analyse, sauvegarde locale par `shared_preferences` |
+| **Confidentialité** | aucune donnée collectée ; politique rédigée, `docs/confidentialite.html` |
 | **TestFlight** | à vérifier dans la console |
 | **Fiche (titre, description, captures)** | rédigée dans `docs/BOUTIQUE.md`, captures dans `docs/captures/` |
 
@@ -53,18 +53,19 @@
 | **Poids du bundle** | 143,3 Mo mesurés — limite de 150 Mo, marge sous 5 % |
 | **Poids de l'APK** | 144,7 Mo mesurés |
 | **Classification** | 18 visée — questionnaire à remplir, à vérifier dans la console |
-| **Confidentialité** | formulaire de sécurité des données à remplir ; la réponse est « aucune donnée collectée » |
+| **Confidentialité** | « aucune donnée collectée » ; politique rédigée, `docs/confidentialite.html` |
 | **Fiche (titre, description, captures)** | rédigée dans `docs/BOUTIQUE.md`, captures dans `docs/captures/` |
 
 ## Ce qui reste, dans l'ordre
 
-1. **Relire les 687 cartes** une par une — grammaire, compréhension, cohérence des deux réponses. C'est le seul point qui n'est pas mécanisable et le seul qui bloque vraiment.
-2. **Trancher le modèle de rémunération.** Il décide de la fiche, de la classification et du questionnaire de confidentialité : le faire après la soumission obligerait à tout reprendre.
-3. ~~Mettre à jour le `README.md`~~ — fait : il disait encore « élection au jour 30 » quand le code dit 100.
-4. ~~Rédiger les deux fiches de boutique~~ — faites, dans `docs/BOUTIQUE.md` : titre, sous-titre, descriptions française et anglaise, mots-clés.
-5. ~~Produire les captures d'écran~~ — faites, dans `docs/captures/`, aux deux formats, plus l'icône et l'image de présentation de Play.
-6. **Remplir les questionnaires** de classification et de confidentialité des deux côtés. La réponse « aucune donnée collectée » est vérifiable dans le code et doit être donnée telle quelle.
-7. **Soumettre une première build iOS à TestFlight** par Xcode Cloud, et la faire tourner sur appareil réel avant toute ouverture publique.
-8. **Poser le vrai keystore Android.** Le câblage est fait et vérifié ; il ne manque que le fichier `android/key.properties` sur la machine de publication, sur le modèle de `android/key.properties.exemple`.
-9. **Réduire le paquet Android sous les 150 Mo.** Le bundle en fait 143,3 : la marge ne survivra pas à la prochaine image. Sortir les plaques du palais du module de base, ou recomprimer.
-10. **Ouvrir en test fermé** sur les deux boutiques avant la publication générale.
+Le contenu est fini et relu, les fiches de boutique sont écrites, les
+captures sont prises, la politique de confidentialité est rédigée et la
+signature Android est câblée. Ce qui suit est tout ce qui reste.
+
+1. **Trancher le modèle de rémunération.** Il décide de la fiche, de la classification IARC et du questionnaire de confidentialité : le faire après la soumission obligerait à tout reprendre.
+2. **Héberger la politique de confidentialité.** Elle est écrite (`docs/confidentialite.html`) ; il lui faut une adresse publique stable. Le plus court : activer GitHub Pages sur `main / docs`.
+3. **Remplir les questionnaires** de classification et de confidentialité des deux côtés. Les réponses sont préparées dans `docs/BOUTIQUE.md` et vérifiables dans le code.
+4. **Soumettre une première build iOS à TestFlight** par Xcode Cloud, et la faire tourner sur appareil réel avant toute ouverture publique.
+5. **Poser le vrai keystore Android.** Le câblage est fait et vérifié ; il ne manque que `android/key.properties` sur la machine de publication, sur le modèle de `android/key.properties.exemple`.
+6. **Ramener le paquet Android sous les 150 Mo.** Le bundle en fait 143,3. Une recompression des images à qualité ferme le ramène autour de 110 Mo sans perte visible ; la livraison d'actifs de Play le ferait sans toucher aux images.
+7. **Ouvrir en test fermé** sur les deux boutiques avant la publication générale.

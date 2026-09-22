@@ -65,7 +65,7 @@ Le seul chiffre mesuré aujourd'hui l'est hors application, par simulation : `ou
 
 Aucune date de sortie n'est arrêtée dans le dépôt. L'ordre est contraint par ce qui bloque quoi, pas par un calendrier.
 
-1. **Maintenant** — le contenu est complet et l'audit est propre. Reste la relecture humaine des 687 cartes.
+1. **Maintenant** — le contenu est complet, relu, et l'audit est propre.
 2. **Ensuite** — trancher la monétisation (phase 1), parce qu'elle décide de la fiche de boutique, de la classification et du questionnaire de confidentialité.
 3. **Puis** — première soumission iOS par TestFlight, la seule chaîne déjà câblée.
 4. **En parallèle** — câbler la signature Android de publication, qui n'existe pas encore.
@@ -75,13 +75,14 @@ Aucune date de sortie n'est arrêtée dans le dépôt. L'ordre est contraint par
 
 - ✅ Contenu complet : 687 cartes, 59 histoires, audit sans remarque
 - ✅ Chaîne de construction iOS câblée sur Xcode Cloud
-- ✅ Intégration continue : analyse et 421 tests à chaque poussée
-- ⬜ Relire les 687 cartes une par une (grammaire, compréhension, cohérence des deux réponses)
+- ✅ Intégration continue : analyse et 423 tests à chaque poussée
+- ✅ Relecture des 687 cartes — 214 réécrites
 - ⬜ Trancher le modèle de rémunération pour le marché visé
 - ✅ Câbler la signature de publication Android, vérifiée avec un keystore jetable — reste à poser la vraie clé
 - ⬜ Ramener le paquet Android sous les 150 Mo : le bundle en fait 143,3, la marge est sous 5 %
 - ✅ Rédiger les fiches de boutique : titre, sous-titre, descriptions française et anglaise, mots-clés — `docs/BOUTIQUE.md`
 - ✅ Produire les captures d'écran aux deux formats, plus l'icône et l'image de présentation de Play — `docs/captures/`
 - ⬜ Répondre aux questionnaires de classification 17+ / 18 et de confidentialité — réponses préparées dans `docs/BOUTIQUE.md`
-- ⬜ Écrire et héberger une politique de confidentialité, exigée même sans collecte
+- ✅ Écrire la politique de confidentialité — `docs/confidentialite.html`
+- ⬜ L'héberger : activer GitHub Pages sur `docs/`, ou la poser ailleurs à une adresse stable
 - ✅ Mettre le `README.md` à jour : il annonçait encore une élection au jour 30
