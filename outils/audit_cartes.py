@@ -41,7 +41,7 @@ LUS_PAR_LE_MOTEUR = {'fete_nationale', 'deuil_national', 'noces_etat',
 # les quatre véhicules remplissent la cour, le dimanche ouvre la piscine au
 # quartier, le coffre-fort renfloue les caisses une fois.
 OBJETS_LUS_PAR_LE_MOTEUR = {'velo', 'quatre_quatre', 'motos', 'limousine',
-                            'dimanche', 'coffre_fort'}
+                            'dimanche', 'coffre_fort', 'pompe'}
 
 
 def sans_accent(s):
@@ -84,8 +84,14 @@ def paires_exclusives(cartes):
 
 
 def etend_les_exclusifs(cartes, ensemble):
-    """Deuxième tour : deux drapeaux posés par des cartes qui ne peuvent
-    jamais sortir ensemble ne peuvent jamais coexister non plus."""
+    """Deuxième tour : deux drapeaux qu'aucune partie ne peut porter tous
+    les deux.
+
+    Le cas simple est déjà traité — les deux faces d'une même carte. Ici on
+    prend le cas général : aucune réponse ne pose les deux, et deux cartes
+    qui les posent séparément ne peuvent jamais sortir toutes les deux, soit
+    parce que c'est la même carte par ses deux faces, soit parce que leurs
+    conditions s'excluent."""
     poseurs = defaultdict(set)
     par_id = {c['id']: c for c in cartes}
     for c in cartes:
@@ -98,9 +104,10 @@ def etend_les_exclusifs(cartes, ensemble):
         for b in noms[i + 1:]:
             if frozenset((a, b)) in ensemble:
                 continue
-            if poseurs[a] & poseurs[b]:
+            if any(a in c[cote].get('drapeaux', []) and b in c[cote].get('drapeaux', [])
+                   for c in cartes for cote in ('gauche', 'droite')):
                 continue
-            if all(conditions_exclusives(par_id[x], par_id[y], ensemble)
+            if all(x == y or conditions_exclusives(par_id[x], par_id[y], ensemble)
                    for x in poseurs[a] for y in poseurs[b]):
                 ajouts.add(frozenset((a, b)))
     return ensemble | ajouts
@@ -324,8 +331,20 @@ def audit():
     # sortir », dit palais.dart. Un objet que rien ne lit se paie et ne
     # change rien : ni décor, ni carte, ni jauge.
     catalogue = charge('objets')
+    # Une fin et un exploit peuvent exiger un objet tout autant qu'une carte.
+    lus_ailleurs = set()
+    for f in charge('fins'):
+        for d in f.get('drapeaux_requis', []):
+            if d.startswith('objet_'):
+                lus_ailleurs.add(d[6:])
+    for e in charge('exploits'):
+        cond = e.get('condition', {})
+        for d in cond.get('drapeaux_requis', []) + cond.get('drapeaux_interdits', []):
+            if d.startswith('objet_'):
+                lus_ailleurs.add(d[6:])
     for o in catalogue:
-        if o['id'] in lus_par_une_carte or o['id'] in OBJETS_LUS_PAR_LE_MOTEUR:
+        if (o['id'] in lus_par_une_carte or o['id'] in OBJETS_LUS_PAR_LE_MOTEUR
+                or o['id'] in lus_ailleurs):
             continue
         if o.get('effet_achat') or o.get('style_achat'):
             continue
@@ -333,7 +352,8 @@ def audit():
                        'rien ne lit son drapeau — l\'acheter ne change rien')
     promis = [o for o in catalogue if 'contenu' in o['natures']
               and o['id'] not in lus_par_une_carte
-              and o['id'] not in OBJETS_LUS_PAR_LE_MOTEUR]
+              and o['id'] not in OBJETS_LUS_PAR_LE_MOTEUR
+              and o['id'] not in lus_ailleurs]
     if promis:
         note('objets', f'{len(promis)} objets portent la nature « contenu » mais '
                        'aucune carte n\'exige leur drapeau : '

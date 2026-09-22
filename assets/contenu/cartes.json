@@ -406,6 +406,9 @@
     "armee": 10,
     "caisses": -8
    },
+   "drapeaux": [
+    "solde_payee"
+   ],
    "journal": "Deux mois d'arriérés ont été versés hier — le règlement des fournisseurs de l'hôpital a glissé au mois prochain."
   },
   "chaine": {
@@ -442,6 +445,41 @@
   "conditions": {
    "drapeaux_requis": [
     "solde_impayee"
+   ]
+  },
+  "chaine": {
+   "id": "solde",
+   "rang": 2,
+   "delai_min": 3
+  }
+ },
+ {
+  "id": "general_solde_2_payee",
+  "personnage": "general",
+  "humeur": "neutre",
+  "texte": "La solde est tombée, {titre}, mais l'hôpital n'a rien reçu. Le directeur a fermé deux services et il le fait savoir.",
+  "gauche": {
+   "libelle": "On paie l'hôpital",
+   "effets": {
+    "caisses": -9,
+    "peuple": 7,
+    "presse": 3
+   },
+   "journal": "Les deux services ont rouvert vendredi. Le fournisseur de carburant de la caserne attend, lui, depuis six semaines."
+  },
+  "droite": {
+   "libelle": "Qu'il attende",
+   "effets": {
+    "caisses": 4,
+    "peuple": -8,
+    "presse": -5
+   },
+   "journal": "L'hôpital garde ses deux services fermés. Le directeur a lu la liste des reports à la radio, service par service."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "solde_payee"
    ]
   },
   "chaine": {
@@ -782,6 +820,9 @@
     "presse": -6,
     "armee": 5
    },
+   "drapeaux": [
+    "rumeur_4x4_enterree"
+   ],
    "journal": "Aucune ligne sur le 4×4 ce matin : la rédaction a donné sa une à la réfection d'un carrefour."
   },
   "droite": {
@@ -835,6 +876,44 @@
   "conditions": {
    "drapeaux_requis": [
     "rumeur_4x4"
+   ]
+  },
+  "chaine": {
+   "id": "affaire_4x4",
+   "rang": 2,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "affaire_4x4_2_enterree",
+  "personnage": "redactrice",
+  "humeur": "fache",
+  "texte": "{titre}, la photo du 4×4 a été prise quand même, par un autre. Elle est sur trois téléphones et arrive chez mon confrère.",
+  "gauche": {
+   "libelle": "Je la rachète",
+   "effets": {
+    "caisses": -9,
+    "presse": -4,
+    "armee": 3
+   },
+   "drapeaux": [
+    "photo_etouffee"
+   ],
+   "journal": "Le cliché n'a pas paru. Le photographe indépendant a changé de ville, et son compte a reçu un virement d'entreprise."
+  },
+  "droite": {
+   "libelle": "Qu'elle sorte",
+   "effets": {
+    "presse": 6,
+    "peuple": 3,
+    "armee": -7
+   },
+   "journal": "La photo a fait trois unes. Le fils du général n'a pas été revu au palais, et le 4×4 est rentré au parc de l'État."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "rumeur_4x4_enterree"
    ]
   },
   "chaine": {
@@ -1101,6 +1180,9 @@
     "peuple": 8,
     "caisses": -4
    },
+   "drapeaux": [
+    "riz_plafonne"
+   ],
    "journal": "Le prix du sac est plafonné depuis ce matin — trois grossistes ont fermé « pour inventaire »."
   },
   "chaine": {
@@ -1138,6 +1220,40 @@
   "conditions": {
    "drapeaux_requis": [
     "riz_cher"
+   ]
+  },
+  "chaine": {
+   "id": "penurie_riz",
+   "rang": 2,
+   "delai_min": 3
+  }
+ },
+ {
+  "id": "riz_2_plafond",
+  "personnage": "marchande",
+  "humeur": "fache",
+  "texte": "Le riz au prix officiel, il n'y en a plus, {titre}. Il y en a derrière les boutiques, au double, et tout le monde le sait.",
+  "gauche": {
+   "libelle": "On saisit tout",
+   "effets": {
+    "peuple": 6,
+    "caisses": -5,
+    "presse": -4
+   },
+   "journal": "Les entrepôts de trois grossistes ont été ouverts par la police. Les files du matin se sont écoulées avant midi."
+  },
+  "droite": {
+   "libelle": "On lève le plafond",
+   "effets": {
+    "caisses": 6,
+    "peuple": -8
+   },
+   "journal": "Le prix est libre depuis ce matin. Le sac se vend un tiers plus cher qu'avant le plafond, et il y en a partout."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "riz_plafonne"
    ]
   },
   "chaine": {
@@ -1879,6 +1995,9 @@
     "caisses": 2,
     "peuple": -10
    },
+   "drapeaux": [
+    "forage_ajourne"
+   ],
    "journal": "Rien n'est venu au village. Une radio locale a diffusé le bruit de la corde qui racle le fond du puits, sans commentaire."
   },
   "chaine": {
@@ -1919,6 +2038,40 @@
    "drapeaux_requis": [
     "forage_promis"
    ]
+  }
+ },
+ {
+  "id": "chef_puits_2_ajourne",
+  "personnage": "chef",
+  "humeur": "fache",
+  "texte": "{titre}, une société étrangère a creusé un puits au village et fait payer le bidon. Les anciens demandent qui l'a permis.",
+  "gauche": {
+   "libelle": "On le rachète",
+   "effets": {
+    "caisses": -9,
+    "peuple": 7
+   },
+   "journal": "Le puits est passé au village contre un dédommagement. La société a démonté sa pompe et laissé le forage."
+  },
+  "droite": {
+   "libelle": "Qu'ils paient",
+   "effets": {
+    "caisses": 5,
+    "peuple": -9,
+    "presse": -3
+   },
+   "journal": "Le bidon se paie toujours au village. Les femmes qui marchaient trois heures marchent encore, pour ne pas payer."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "forage_ajourne"
+   ]
+  },
+  "chaine": {
+   "id": "puits",
+   "rang": 2,
+   "delai_min": 4
   }
  },
  {
@@ -2253,6 +2406,9 @@
     "caisses": -6,
     "peuple": 5
    },
+   "drapeaux": [
+    "eau_fermee"
+   ],
    "journal": "Le puits du quartier bas est condamné depuis l'aube. Les femmes descendent vingt minutes plus loin pour la corvée d'eau."
   },
   "droite": {
@@ -2307,6 +2463,47 @@
   "conditions": {
    "drapeaux_requis": [
     "eau_ignoree"
+   ]
+  },
+  "chaine": {
+   "id": "cholera",
+   "rang": 2,
+   "delai_min": 3
+  }
+ },
+ {
+  "id": "sante_cholera_2_ferme",
+  "personnage": "sante",
+  "humeur": "fache",
+  "texte": "{titre}, le puits est condamné, mais le quartier boit l'eau du canal. Quatre diarrhées sanglantes au dispensaire ce matin.",
+  "gauche": {
+   "libelle": "On l'annonce",
+   "effets": {
+    "presse": 6,
+    "peuple": -7,
+    "caisses": -4
+   },
+   "drapeaux": [
+    "cholera_avoue"
+   ],
+   "journal": "Le mot a été prononcé à la radio de midi. Les autocars du quartier bas sont partis vides l'après-midi."
+  },
+  "droite": {
+   "libelle": "On dit gastro",
+   "effets": {
+    "peuple": 5,
+    "presse": -8,
+    "caisses": 3
+   },
+   "drapeaux": [
+    "cholera_cache"
+   ],
+   "journal": "Le communiqué parle d'une gastro-entérite saisonnière. Le dispensaire a commandé quatre fois plus de sels de réhydratation."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "eau_fermee"
    ]
   },
   "chaine": {
@@ -3008,6 +3205,9 @@
     "caisses": -4,
     "peuple": 5
    },
+   "drapeaux": [
+    "fonds_econduit"
+   ],
    "journal": "L'émissaire a repris l'avion sans déclaration, alors que sa chambre d'hôtel était réservée jusqu'à vendredi."
   },
   "conditions": {
@@ -3052,6 +3252,47 @@
     "accord_fonds"
    ],
    "caisses_max": 58
+  },
+  "chaine": {
+   "id": "pret_fonds",
+   "rang": 2,
+   "delai_min": 3
+  }
+ },
+ {
+  "id": "emissaire_pret_sans_accord",
+  "personnage": "emissaire",
+  "humeur": "neutre",
+  "texte": "{titre}, le fonds a publié une note prudente sur nos comptes. Les taux que nous payons ailleurs ont monté le matin même.",
+  "gauche": {
+   "libelle": "On tient bon",
+   "effets": {
+    "presse": 5,
+    "caisses": -7,
+    "peuple": 3
+   },
+   "drapeaux": [
+    "pret_refuse"
+   ],
+   "journal": "Le palais a répondu par un communiqué de souveraineté. Le taux du prochain emprunt a été relevé d'un point et demi."
+  },
+  "droite": {
+   "libelle": "On rouvre",
+   "effets": {
+    "caisses": 6,
+    "presse": -4,
+    "peuple": -3
+   },
+   "drapeaux": [
+    "pret_refuse"
+   ],
+   "journal": "Une délégation technique est annoncée pour le mois prochain. Le mot « programme » n'apparaît dans aucun communiqué."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "fonds_econduit"
+   ]
   },
   "chaine": {
    "id": "pret_fonds",
@@ -3258,6 +3499,9 @@
     "armee": 6,
     "presse": -4
    },
+   "drapeaux": [
+    "audit_refuse"
+   ],
    "journal": "Le communiqué parle de « souveraineté des comptes ». Le versement attendu n'a pas été inscrit aux recettes."
   },
   "chaine": {
@@ -3298,6 +3542,44 @@
   "conditions": {
    "drapeaux_requis": [
     "audit_accepte"
+   ]
+  },
+  "chaine": {
+   "id": "audit_emissaire",
+   "rang": 2,
+   "delai_min": 3
+  }
+ },
+ {
+  "id": "emissaire_audit_portuaire_2_refus",
+  "personnage": "emissaire",
+  "humeur": "fache",
+  "texte": "{titre}, le port a été audité depuis l'extérieur. Le rapport existe, il ne vous appartient pas, et deux rédactions l'ont déjà.",
+  "gauche": {
+   "libelle": "On le conteste",
+   "effets": {
+    "presse": -6,
+    "caisses": 4,
+    "armee": 3
+   },
+   "drapeaux": [
+    "audit_classe"
+   ],
+   "journal": "Le palais a publié un démenti de quatre pages. Le rapport, lui, circule en entier depuis mardi soir."
+  },
+  "droite": {
+   "libelle": "On l'assume",
+   "effets": {
+    "presse": 7,
+    "caisses": -6,
+    "peuple": 3
+   },
+   "journal": "Le rapport a été mis en ligne par le palais lui-même. Deux chefs de quai ont été suspendus dans la journée."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "audit_refuse"
    ]
   },
   "chaine": {
@@ -3779,6 +4061,9 @@
     "armee": -8,
     "peuple": 4
    },
+   "drapeaux": [
+    "camions_arretes"
+   ],
    "journal": "Quarante camions sont restés au garage depuis mardi. La relève du nord s'est faite en car de ligne, billets payés par les hommes."
   },
   "droite": {
@@ -3824,6 +4109,41 @@
   "conditions": {
    "drapeaux_requis": [
     "camions_risques"
+   ]
+  },
+  "chaine": {
+   "id": "materiel",
+   "rang": 2,
+   "delai_min": 3
+  }
+ },
+ {
+  "id": "general_materiel_2_arretes",
+  "personnage": "general",
+  "humeur": "fache",
+  "texte": "{titre}, la relève du nord se fait en car de ligne depuis trois semaines. Un car a été arrêté par des hommes armés hier soir.",
+  "gauche": {
+   "libelle": "On loue dehors",
+   "effets": {
+    "caisses": -9,
+    "armee": 6,
+    "peuple": 3
+   },
+   "journal": "Douze camions ont été loués à une société de transport. La relève est passée jeudi, escortée, et sans incident."
+  },
+  "droite": {
+   "libelle": "On continue ainsi",
+   "effets": {
+    "armee": -7,
+    "peuple": -5,
+    "caisses": 5
+   },
+   "journal": "La relève repart en car lundi. Deux compagnies ont demandé par écrit à être relevées par la route du fleuve."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "camions_arretes"
    ]
   },
   "chaine": {
@@ -3987,6 +4307,9 @@
     "armee": -6,
     "presse": 4
    },
+   "drapeaux": [
+    "colonel_mute"
+   ],
    "journal": "Le colonel a pris son poste à la frontière est, son ancienne compagnie l'ayant accompagné à pied jusqu'au camion."
   },
   "chaine": {
@@ -4022,6 +4345,40 @@
   "conditions": {
    "drapeaux_requis": [
     "colonel_populaire"
+   ]
+  },
+  "chaine": {
+   "id": "rival_colonel",
+   "rang": 2,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "general_rival_2_mute",
+  "personnage": "general",
+  "humeur": "neutre",
+  "texte": "{titre}, le colonel muté à la frontière est y tient un poste modèle. Trois journaux en ont fait un reportage la même semaine.",
+  "gauche": {
+   "libelle": "Qu'on le ramène",
+   "effets": {
+    "armee": 7,
+    "presse": -4,
+    "peuple": 3
+   },
+   "journal": "Le colonel a repris un commandement à la capitale. Ses anciens hommes de la frontière ont demandé à le suivre."
+  },
+  "droite": {
+   "libelle": "Qu'il y reste",
+   "effets": {
+    "armee": -6,
+    "presse": 5
+   },
+   "journal": "Le colonel est resté au poste. Une radio l'a présenté comme « le seul officier dont on parle sans baisser la voix »."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "colonel_mute"
    ]
   },
   "chaine": {
@@ -5038,6 +5395,9 @@
     "presse": 6,
     "peuple": -2
    },
+   "drapeaux": [
+    "dossier_brule"
+   ],
    "journal": "Un employé des archives a brûlé des papiers dans la cour avant le jour. Le ministre a repris ses audiences du matin."
   },
   "chaine": {
@@ -5079,6 +5439,41 @@
   "conditions": {
    "drapeaux_requis": [
     "dossier_ouvert"
+   ]
+  },
+  "chaine": {
+   "id": "dossier_ministre",
+   "rang": 2,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "renseignements_dossier_ministre_2_brule",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, le dossier est en cendres, mais l'archiviste qui l'a sorti se souvient de chaque page. Il demande un poste à l'étranger.",
+  "gauche": {
+   "libelle": "Qu'il parte",
+   "effets": {
+    "caisses": -7,
+    "armee": 4,
+    "presse": 3
+   },
+   "journal": "L'archiviste a pris un poste de conseiller culturel. Son remplaçant au palais a vingt-trois ans et aucune ancienneté."
+  },
+  "droite": {
+   "libelle": "Qu'il reste ici",
+   "effets": {
+    "armee": -5,
+    "presse": -6,
+    "peuple": 4
+   },
+   "journal": "L'archiviste est resté à son bureau. Depuis lundi, deux ministres passent le voir le matin, avant l'ouverture."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "dossier_brule"
    ]
   },
   "chaine": {
@@ -5380,6 +5775,9 @@
     "peuple": -3
    },
    "style": -6,
+   "drapeaux": [
+    "photographe_relache"
+   ],
    "journal": "Le photographe est sorti à midi, sans que ses pellicules lui soient rendues."
   },
   "droite": {
@@ -5442,6 +5840,44 @@
   }
  },
  {
+  "id": "redactrice_photographe_2_relache",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, mon photographe est sorti sans ses pellicules. Il en a refait d'autres, et cette fois il a photographié le commissariat.",
+  "gauche": {
+   "libelle": "On lui rend tout",
+   "effets": {
+    "presse": 6,
+    "armee": -6,
+    "peuple": 3
+   },
+   "journal": "Les pellicules ont été rendues au journal, développées, et publiées le surlendemain sans légende."
+  },
+  "droite": {
+   "libelle": "On l'inculpe",
+   "effets": {
+    "presse": -8,
+    "armee": 6,
+    "peuple": -3
+   },
+   "drapeaux": [
+    "photographe_proces"
+   ],
+   "journal": "Le photographe a été inculpé d'outrage à l'uniforme. Son journal a paru avec un rectangle blanc en première page."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "photographe_relache"
+   ]
+  },
+  "chaine": {
+   "id": "photographe",
+   "rang": 2,
+   "delai_min": 3
+  }
+ },
+ {
   "id": "redactrice_photographe_3",
   "personnage": "redactrice",
   "humeur": "fache",
@@ -5488,6 +5924,9 @@
     "presse": -6,
     "caisses": 4
    },
+   "drapeaux": [
+    "marche_ecoles_laisse"
+   ],
    "journal": "Le marché des écoles a été confirmé jeudi. La société n'a toujours pas d'adresse, seulement une boîte postale au ministère."
   },
   "droite": {
@@ -5545,6 +5984,44 @@
   "conditions": {
    "drapeaux_requis": [
     "marche_ecoles_amorce"
+   ]
+  },
+  "chaine": {
+   "id": "marche",
+   "rang": 2,
+   "delai_min": 3
+  }
+ },
+ {
+  "id": "redactrice_marche_2_laisse",
+  "personnage": "redactrice",
+  "humeur": "fache",
+  "texte": "{titre}, une école de la zone nord s'est effondrée sur un chantier vide. La société sans employé revient dans toutes les bouches.",
+  "gauche": {
+   "libelle": "On publie tout",
+   "effets": {
+    "presse": 7,
+    "peuple": 4,
+    "armee": -6
+   },
+   "drapeaux": [
+    "marche_publie"
+   ],
+   "journal": "Le nom de la société est sorti en première page, avec celui du ministère qui l'a choisie. Les cours ont repris sous un préau."
+  },
+  "droite": {
+   "libelle": "On parle de pluie",
+   "effets": {
+    "peuple": -6,
+    "presse": -5,
+    "caisses": 4
+   },
+   "journal": "Le communiqué met l'effondrement sur le compte des pluies. Trois parents ont porté plainte le lendemain."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "marche_ecoles_laisse"
    ]
   },
   "chaine": {
