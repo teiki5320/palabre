@@ -1044,7 +1044,7 @@
   "id": "redactrice_visa",
   "personnage": "redactrice",
   "humeur": "fache",
-  "texte": "{titre}, un correspondant étranger dort à l'aéroport, caméra sous scellés. Les bailleurs appellent, ses confrères filment la porte.",
+  "texte": "{titre}, un correspondant étranger dort à l'aéroport, caméra sous scellés. Les ambassades appellent, ses confrères filment la porte.",
   "gauche": {
    "libelle": "On le renvoie",
    "effets": {
@@ -3227,7 +3227,7 @@
   "id": "emissaire_pret_urgence",
   "personnage": "emissaire",
   "humeur": "content",
-  "texte": "{titre}, les trois postes sont revus. Le programme avance la moitié du prêt dès demain, contre un engagement écrit de votre main.",
+  "texte": "{titre}, les trois postes sont revus. Le fonds avance la moitié du prêt dès demain, contre un engagement écrit de votre main.",
   "gauche": {
    "libelle": "Je signe",
    "effets": {
@@ -3290,7 +3290,7 @@
    "drapeaux": [
     "pret_refuse"
    ],
-   "journal": "Une délégation technique est annoncée pour le mois prochain. Le mot « programme » n'apparaît dans aucun communiqué."
+   "journal": "Une délégation technique est annoncée pour le mois prochain. Le mot « fonds » n'apparaît dans aucun communiqué."
   },
   "poids": 6,
   "conditions": {
@@ -3368,7 +3368,7 @@
   "id": "emissaire_taux_change",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, la monnaie est surévaluée de l'avis du programme. Un ajustement de quinze pour cent est inscrit dans l'accord.",
+  "texte": "{titre}, la monnaie est surévaluée de l'avis du fonds. Un ajustement de quinze pour cent est inscrit dans l'accord.",
   "gauche": {
    "libelle": "On ajuste",
    "effets": {
@@ -3413,7 +3413,7 @@
   "id": "emissaire_expert_envoye",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, un expert du programme s'installe six mois dans vos ministères. C'est la condition du taux préférentiel.",
+  "texte": "{titre}, un expert du fonds s'installe six mois dans vos ministères. C'est la condition du taux préférentiel.",
   "gauche": {
    "libelle": "Il s'installe",
    "effets": {
@@ -3461,7 +3461,7 @@
   "id": "emissaire_fonctionnaires_gel",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, le programme demande un gel des salaires publics pendant deux ans. C'est la clause quatre de l'accord.",
+  "texte": "{titre}, le fonds demande un gel des salaires publics pendant deux ans. C'est la clause quatre de l'accord.",
   "gauche": {
    "libelle": "On gèle",
    "effets": {
@@ -3483,7 +3483,7 @@
   "id": "emissaire_audit_portuaire_1",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, le programme veut auditer les recettes du port avant de verser la tranche. Vos colonels du quai n'aimeront pas ça, dit-elle.",
+  "texte": "{titre}, le fonds veut auditer les recettes du port avant de verser la tranche. Vos colonels du quai n'aimeront pas ça, dit-elle.",
   "gauche": {
    "libelle": "Ils auditent",
    "effets": {
@@ -3596,7 +3596,7 @@
   "id": "emissaire_audit_portuaire_3",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, les bailleurs ont l'écart du port par écrit et rognent le prochain versement. La rumeur enfle : on explique ou on dément ?",
+  "texte": "{titre}, le fonds a l'écart du port par écrit et rogne le prochain versement. La rumeur enfle : on explique ou on dément ?",
   "gauche": {
    "libelle": "On explique",
    "effets": {
@@ -3615,7 +3615,7 @@
     "caisses": -2
    },
    "style": 6,
-   "journal": "Le démenti a été lu trois fois hier soir. Les bailleurs ont fait savoir qu'ils gardaient le document."
+   "journal": "Le démenti a été lu trois fois hier soir. Le fonds a fait savoir qu'il gardait le document."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -3661,7 +3661,7 @@
   "id": "emissaire_reforme_retraites_2",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, la réforme promise n'a pas été votée. Le programme relit simplement les termes de l'accord signé.",
+  "texte": "{titre}, la réforme promise n'a pas été votée. Le fonds relit simplement les termes de l'accord signé.",
   "gauche": {
    "libelle": "On la fait voter",
    "effets": {
@@ -3679,7 +3679,7 @@
    "drapeaux": [
     "retraite_assumee"
    ],
-   "journal": "Un communiqué de midi a retiré le texte. Le décaissement du trimestre ne figure plus au calendrier du programme."
+   "journal": "Un communiqué de midi a retiré le texte. Le décaissement du trimestre ne figure plus au calendrier du fonds."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -4913,7 +4913,7 @@
   "id": "ministre_reserves_or_2",
   "personnage": "ministre",
   "humeur": "fache",
-  "texte": "{titre}, les bailleurs veulent auditer les réserves d'or avant le prochain prêt. Le coffre est aux trois quarts vide.",
+  "texte": "{titre}, le fonds veut auditer les réserves d'or avant le prochain prêt. Le coffre est aux trois quarts vide.",
   "gauche": {
    "libelle": "On leur dit",
    "effets": {
@@ -5760,7 +5760,7 @@
   "id": "renseignements_service_echange",
   "personnage": "renseignements",
   "humeur": "content",
-  "texte": "{titre}, un service étranger offre ses dossiers sur les bailleurs. En échange, on lui remettrait un des siens, sans passer par un juge.",
+  "texte": "{titre}, un service étranger offre ses dossiers sur le fonds. En échange, on lui remettrait un des siens, sans passer par un juge.",
   "gauche": {
    "libelle": "On le remet",
    "effets": {
@@ -7423,7 +7423,7 @@
   "id": "perso_technocrate_pret_conditionne",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, vos anciens collègues des bailleurs offrent un prêt à taux doux, contre la fermeture de la banque agricole de l'État.",
+  "texte": "{titre}, vos anciens collègues du fonds offrent un prêt à taux doux, contre la fermeture de la banque agricole de l'État.",
   "gauche": {
    "libelle": "J'accepte le prêt",
    "effets": {
@@ -7438,7 +7438,7 @@
     "caisses": -4,
     "presse": 6
    },
-   "journal": "Les bailleurs ont rappelé leur délégation après le refus. La banque agricole a rouvert un guichet dans le nord."
+   "journal": "Le fonds a rappelé sa délégation après le refus. La banque agricole a rouvert un guichet dans le nord."
   },
   "conditions": {
    "parcours": [
@@ -8037,7 +8037,7 @@
   "id": "perso_professeure_liberte_academique",
   "personnage": "cabinet",
   "humeur": "fache",
-  "texte": "{titre}, un professeur de votre ancienne faculté démonte vos chiffres. Les bailleurs le lisent, et on vous demande de le faire taire.",
+  "texte": "{titre}, un professeur de votre ancienne faculté démonte vos chiffres. Le fonds le lit, et on vous demande de le faire taire.",
   "gauche": {
    "libelle": "Il garde la parole",
    "effets": {
@@ -8046,7 +8046,7 @@
     "caisses": -3
    },
    "style": -6,
-   "journal": "Le cours de jeudi s'est tenu en salle comble. Les bailleurs ont cité ses tableaux dans leur note du trimestre."
+   "journal": "Le cours de jeudi s'est tenu en salle comble. Le fonds a cité ses tableaux dans sa note du trimestre."
   },
   "droite": {
    "libelle": "On le fait taire",
@@ -8068,7 +8068,7 @@
   "id": "perso_syndicaliste_hausse_smic",
   "personnage": "emissaire",
   "humeur": "fache",
-  "texte": "{titre}, la hausse du salaire que vous avez signée doit s'appliquer. Les bailleurs menacent de couper les fonds.",
+  "texte": "{titre}, la hausse du salaire que vous avez signée doit s'appliquer. Le fonds menace de couper ses versements.",
   "gauche": {
    "libelle": "On l'applique",
    "effets": {
@@ -8095,7 +8095,7 @@
   "id": "perso_syndicaliste_greve_generale",
   "personnage": "cabinet",
   "humeur": "fache",
-  "texte": "{titre}, votre ancienne centrale annonce une grève générale contre votre plan d'austérité. Vos méthodes, contre vous.",
+  "texte": "{titre}, votre ancien syndicat annonce une grève générale contre votre plan d'austérité. Vos méthodes, contre vous.",
   "gauche": {
    "libelle": "On négocie",
    "effets": {
@@ -9905,7 +9905,7 @@
     "caisses": -6,
     "presse": -4
    },
-   "journal": "L'application est suspendue. Les bailleurs ont demandé par écrit une copie de la décision, et une date."
+   "journal": "L'application est suspendue. Le fonds a demandé par écrit une copie de la décision, et une date."
   }
  },
  {
@@ -10552,7 +10552,7 @@
   "id": "general_garde_consignes",
   "personnage": "general",
   "humeur": "neutre",
-  "texte": "Votre garde est aux hommes de l'autre, {titre}. Je peux vous en amener d'autres avant la nuit, deux camions que la ville verra passer.",
+  "texte": "Votre garde est celle de votre prédécesseur, {titre}. Je peux vous en amener d'autres avant la nuit, deux camions que la ville verra.",
   "gauche": {
    "libelle": "Amenez les vôtres",
    "effets": {
@@ -11797,7 +11797,7 @@
   "id": "doyen_liste_candidatures",
   "personnage": "doyen",
   "humeur": "neutre",
-  "texte": "{titre}, la Cour examine les listes pour l'Assemblée. Celle de votre rival tient à un papier manquant ; sans lui, le budget passe seul.",
+  "texte": "{titre}, la Cour examine les listes pour l'Assemblée. Celle de l'opposition tient à un papier manquant ; sans lui, le budget passe seul.",
   "gauche": {
    "libelle": "Qu'il se présente",
    "effets": {
@@ -12122,7 +12122,7 @@
     "presse": -5,
     "peuple": -4
    },
-   "journal": "Une deuxième part est partie dehors. La note des bailleurs relevant le taux tient en une phrase, sans motif."
+   "journal": "Une deuxième part est partie dehors. La note du fonds relevant le taux tient en une phrase, sans motif."
   },
   "conditions": {
    "caisses_min": 40,
@@ -12670,7 +12670,7 @@
   "id": "situation_campagne_journal_etranger",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, un grand journal d'ailleurs a rassemblé tout le pire écrit sur vous. Les bailleurs l'ont lu, vos rivaux le citent déjà.",
+  "texte": "{titre}, un grand journal d'ailleurs a rassemblé tout le pire écrit sur vous. Le fonds l'a lu, vos rivaux le citent déjà.",
   "gauche": {
    "libelle": "Je leur réponds",
    "effets": {
@@ -12701,7 +12701,7 @@
   "id": "situation_campagne_page_achetee",
   "personnage": "cabinet",
   "humeur": "neutre",
-  "texte": "{titre}, une page du quotidien le plus lu coûte trois mois de fournitures. Votre rival a pris jeudi, le directeur la vend à qui paie.",
+  "texte": "{titre}, une page du quotidien le plus lu coûte trois mois de fournitures. Votre adversaire a pris jeudi ; elle se vend à qui paie.",
   "gauche": {
    "libelle": "Achetez la page",
    "effets": {
@@ -12914,7 +12914,7 @@
   "id": "situation_coup_pleins_pouvoirs",
   "personnage": "ministre",
   "humeur": "content",
-  "texte": "{titre}, le colonel a fait porter un décret : trois mois de pleins pouvoirs. Il me donnerait la taxe du port sans l'Assemblée.",
+  "texte": "{titre}, un colonel de la garde propose un décret : trois mois de pleins pouvoirs. Il me donnerait la taxe du port sans l'Assemblée.",
   "gauche": {
    "libelle": "Je signe",
    "effets": {
@@ -13013,7 +13013,7 @@
   "id": "emissaire_pret_echeance",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, la première échéance tombe vendredi. Le programme la reporte si vous gelez les embauches de l'État six mois.",
+  "texte": "{titre}, la première échéance tombe vendredi. Le fonds la reporte si vous gelez les embauches de l'État six mois.",
   "gauche": {
    "libelle": "Je gèle",
    "effets": {
@@ -13086,7 +13086,7 @@
   "id": "emissaire_pret_apres_echeance",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, l'échéance est payée, mais la caisse est vide pour le trimestre. Le programme rééchelonne, contre un audit complet.",
+  "texte": "{titre}, l'échéance est payée, mais la caisse est vide pour le trimestre. Le fonds rééchelonne, contre un audit complet.",
   "gauche": {
    "libelle": "On rééchelonne",
    "effets": {
@@ -14120,7 +14120,7 @@
   "id": "sante_cholera_3_avoue",
   "personnage": "sante",
   "humeur": "fache",
-  "texte": "{titre}, le cordon tient, mais le quartier bas n'a plus de marché ni de taxi. Les bailleurs proposent des tentes et des caméras.",
+  "texte": "{titre}, le cordon tient, mais le quartier bas n'a plus de marché ni de taxi. Le fonds propose des tentes et des caméras.",
   "gauche": {
    "libelle": "On les accepte",
    "effets": {
@@ -14137,7 +14137,7 @@
     "peuple": 6,
     "presse": -4
    },
-   "journal": "L'offre des bailleurs a été déclinée par note verbale. Le dispensaire a reçu vingt lits de l'hôpital militaire."
+   "journal": "L'offre du fonds a été déclinée par note verbale. Le dispensaire a reçu vingt lits de l'hôpital militaire."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -15682,7 +15682,7 @@
   "id": "face_generale_4",
   "personnage": "general",
   "humeur": "neutre",
-  "texte": "{titre}, la générale demande à parler aux élèves-officiers, comme chaque ancien. Le programme le prévoit, et tout le monde le sait.",
+  "texte": "{titre}, la générale demande à parler aux élèves-officiers, comme chaque ancien. L'usage le prévoit, et tout le monde le sait.",
   "gauche": {
    "libelle": "Qu'elle y aille",
    "effets": {
@@ -16029,7 +16029,7 @@
   "id": "campagne_marche_inquiet",
   "personnage": "marchande",
   "humeur": "fache",
-  "texte": "{titre}, on dit au marché que vous ne passerez pas. Les femmes demandent ce qu'elles deviennent si l'autre arrive.",
+  "texte": "{titre}, on dit au marché que vous ne passerez pas. Les femmes demandent ce qu'elles deviennent si votre adversaire passe.",
   "gauche": {
    "libelle": "Je les rassure",
    "effets": {
@@ -16487,7 +16487,7 @@
     "peuple": -4,
     "presse": -3
    },
-   "journal": "Aucun des deux n'a rien annoncé. Le programme du fonds a débloqué sa seconde tranche le jeudi suivant."
+   "journal": "Aucun des deux n'a rien annoncé. Le fonds a débloqué sa seconde tranche le jeudi suivant."
   },
   "droite": {
    "libelle": "Alors je le dis",
@@ -19641,7 +19641,7 @@
     "presse": 4,
     "peuple": -5
    },
-   "journal": "Dix minutes à la salle des mariages, quatre témoins. Le programme n'a pas été prévenu, et la mission suivante arrive lundi.",
+   "journal": "Dix minutes à la salle des mariages, quatre témoins. Le fonds n'a pas été prévenu, et la mission suivante arrive lundi.",
    "drapeaux": [
     "noces_discretes"
    ],
@@ -19657,7 +19657,7 @@
     "caisses": -6,
     "presse": -3
    },
-   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue. Les bailleurs ont envoyé un télégramme, et personne de chez eux.",
+   "journal": "Deux cents invités dans la cour d'honneur, la garde en grande tenue. Le fonds a envoyé un télégramme, et personne de chez lui.",
    "drapeaux": [
     "noces_etat"
    ],
