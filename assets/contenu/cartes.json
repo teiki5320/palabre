@@ -1318,6 +1318,7 @@
   "gauche": {
    "libelle": "Patience",
    "effets": {
+    "caisses": 8,
     "peuple": -8,
     "presse": -3
    },
@@ -1377,8 +1378,8 @@
   "droite": {
    "libelle": "On attend",
    "effets": {
-    "peuple": -12,
-    "presse": -4
+    "caisses": 7,
+    "peuple": -12
    },
    "journal": "Les cantines restant fermées, les mères ont organisé un repas sur le trottoir, devant l'école."
   },
@@ -1400,6 +1401,7 @@
   "droite": {
    "libelle": "Un fonds plus tard",
    "effets": {
+    "caisses": 8,
     "peuple": -10,
     "presse": -4
    },
@@ -1727,9 +1729,9 @@
   "gauche": {
    "libelle": "On rase",
    "effets": {
-    "caisses": 8,
-    "peuple": -16,
-    "presse": -6
+    "caisses": 12,
+    "peuple": -14,
+    "presse": -5
    },
    "journal": "Les pelles sont entrées dans le quartier de la gare à six heures. Une école y avait fait sa rentrée trois semaines plus tôt."
   },
@@ -1819,8 +1821,8 @@
    "libelle": "Rénovation dorée",
    "effets": {
     "caisses": -9,
-    "presse": -8,
-    "peuple": 4
+    "presse": -6,
+    "peuple": 9
    },
    "journal": "Le chantier a démarré par une grille neuve et un ascenseur, alors que les archives de l'état civil sont rangées dans un garage."
   },
@@ -1943,9 +1945,9 @@
   "droite": {
    "libelle": "L'an prochain",
    "effets": {
-    "caisses": 4,
-    "peuple": -12,
-    "presse": -6
+    "caisses": 8,
+    "peuple": -11,
+    "presse": -4
    },
    "journal": "La classe se tient toujours sous le manguier, où l'institutrice a attaché le tableau noir au tronc avec du fil de fer."
   }
@@ -2366,9 +2368,9 @@
   "droite": {
    "libelle": "Pas maintenant",
    "effets": {
-    "caisses": 4,
-    "peuple": -14,
-    "presse": -6
+    "caisses": 8,
+    "peuple": -12,
+    "presse": -4
    },
    "journal": "Les groupes sont toujours sous bâche à l'entrepôt. Le chef a fait le voyage pour rien et l'a dit à une radio du nord."
   }
@@ -2655,8 +2657,8 @@
   "droite": {
    "libelle": "Pas cette année",
    "effets": {
-    "peuple": -10,
-    "presse": -4
+    "caisses": 8,
+    "peuple": -10
    },
    "journal": "La maternité garde ses douze lits. Une sage-femme a photographié un couloir à trois heures du matin ; l'image circule."
   }
@@ -2771,7 +2773,8 @@
    "libelle": "On répare un peu",
    "effets": {
     "caisses": -4,
-    "peuple": -6
+    "peuple": 3,
+    "presse": -4
    },
    "journal": "La pédiatrie a rouvert derrière une bâche : les mères apportent leur ventilateur et le branchent dans le couloir."
   }
@@ -2792,6 +2795,7 @@
   "droite": {
    "libelle": "L'hôpital local",
    "effets": {
+    "caisses": 7,
     "peuple": -10
    },
    "journal": "L'ouvrier est mort dimanche à l'hôpital du district. Ses collègues ont porté le cercueil jusqu'à la mine."
@@ -4101,6 +4105,7 @@
   "droite": {
    "libelle": "C'est la guerre",
    "effets": {
+    "caisses": 9,
     "armee": -8,
     "presse": -4
    },
@@ -4497,6 +4502,7 @@
   "gauche": {
    "libelle": "Moins de rondes",
    "effets": {
+    "caisses": 9,
     "armee": -8,
     "peuple": -3
    },
@@ -4527,6 +4533,7 @@
   "droite": {
    "libelle": "Ça attendra",
    "effets": {
+    "caisses": 9,
     "armee": -8,
     "presse": -3
    },
@@ -4741,8 +4748,8 @@
   "droite": {
    "libelle": "La route, tant pis",
    "effets": {
-    "caisses": 4,
-    "peuple": -12,
+    "caisses": 8,
+    "peuple": -10,
     "armee": -4
    },
    "journal": "Le blessé est mort sur la piste, à la sixième heure. Les hommes de la caserne du nord avaient cotisé pour le carburant."
@@ -6962,6 +6969,7 @@
   "droite": {
    "libelle": "C'est trop tard",
    "effets": {
+    "caisses": 4,
     "peuple": -8,
     "presse": -3
    },
@@ -7849,6 +7857,7 @@
   "droite": {
    "libelle": "Plus tard",
    "effets": {
+    "caisses": 7,
     "armee": -10,
     "peuple": -4
    },
@@ -9364,8 +9373,9 @@
   "droite": {
    "libelle": "Qu'ils s'arrangent",
    "effets": {
-    "peuple": -10,
-    "presse": -6
+    "caisses": 5,
+    "armee": 4,
+    "peuple": -10
    },
    "journal": "Deux morts de plus dans la nuit de jeudi. Le chef traditionnel a rendu son bâton et quitté la région."
   },
@@ -9760,6 +9770,7 @@
   "droite": {
    "libelle": "Qu'il attende",
    "effets": {
+    "caisses": 9,
     "peuple": -8,
     "presse": -3
    },
@@ -11075,6 +11086,7 @@
   "droite": {
    "libelle": "Pas de semence",
    "effets": {
+    "caisses": 9,
     "peuple": -8,
     "presse": -3
    },
