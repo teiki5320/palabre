@@ -189,7 +189,7 @@
     "presse": 6,
     "caisses": -8
    },
-   "journal": "Vingt-cinq appareils sont arrivés à l'hôpital. Deux ont été branchés ; le reste attend que le tableau tienne."
+   "journal": "Vingt-cinq appareils sont arrivés à l'hôpital. Deux sont branchés ; les autres attendent la réfection du tableau électrique."
   }
  },
  {
@@ -290,7 +290,7 @@
   "id": "ministre_carburant",
   "personnage": "ministre",
   "humeur": "fache",
-  "texte": "Le carburant subventionné mange le tiers du budget, {titre}. Le supprimer, c'est la rue dès mardi.",
+  "texte": "Le carburant subventionné mange le tiers du budget, {titre}. Supprimer cette aide, c'est la rue dès mardi.",
   "gauche": {
    "libelle": "On supprime",
    "effets": {
@@ -440,7 +440,7 @@
     "peuple": 4,
     "caisses": -5
    },
-   "journal": "Vous êtes entré dans la cour du camp sans escorte. Une radio a diffusé l'enregistrement, coupé avant les questions."
+   "journal": "Vous avez franchi la cour du camp sans escorte. Une radio a diffusé l'enregistrement, coupé avant les questions."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -507,7 +507,7 @@
     "armee": -14,
     "peuple": 4
    },
-   "journal": "Onze sous-officiers ont été mutés au nord, où leurs remplaçants ont mis trois jours à trouver les clés de l'armurerie."
+   "journal": "Onze sous-officiers ont été mutés au nord. Dans leur ancienne caserne, leurs remplaçants ont cherché les clés de l'armurerie."
   },
   "chaine": {
    "id": "solde",
@@ -625,7 +625,7 @@
   "id": "general_ecoutes",
   "personnage": "general",
   "humeur": "neutre",
-  "texte": "Les meneurs préparent par téléphone la marche de jeudi, celle qui bloquera la capitale. On peut écouter, discrètement bien entendu.",
+  "texte": "Les meneurs préparent par téléphone la marche de jeudi. On peut les écouter pour les arrêter avant qu'ils bloquent la capitale.",
   "gauche": {
    "libelle": "Non",
    "effets": {
@@ -637,7 +637,7 @@
    "journal": "La marche de jeudi a traversé la ville sans incident. L'état-major n'a envoyé personne au point de presse."
   },
   "droite": {
-   "libelle": "Écoutez",
+   "libelle": "Écoutez, arrêtez",
    "effets": {
     "armee": 8,
     "peuple": 3,
@@ -674,7 +674,7 @@
     "peuple": -6,
     "armee": 6
    },
-   "journal": "Les pièces sont commandées et le hangar rouvert, quand le dispensaire du quartier lac garde sa salle d'attente sous tôle."
+   "journal": "Les pièces sont commandées et le hangar rouvert, quand le dispensaire du quartier du Lac garde sa salle d'attente sous tôle."
   }
  },
  {
@@ -793,7 +793,7 @@
     "armee": 10,
     "peuple": -4
    },
-   "journal": "Vous avez déjeuné au mess des officiers, où le doyen des colonels vous a servi lui-même, ce qui ne se fait pas."
+   "journal": "Vous avez déjeuné au mess des officiers, où le doyen des colonels vous a servie lui-même, ce qui ne se fait pas."
   },
   "droite": {
    "libelle": "Qu'ils viennent",
@@ -990,7 +990,7 @@
   "id": "redactrice_carburant",
   "personnage": "redactrice",
   "humeur": "fache",
-  "texte": "Le prix du carburant a monté dans la nuit : vous avez coupé la subvention sans le dire. Ma une est prête.",
+  "texte": "{titre}, les pompistes réclament une hausse des prix ou des aides. Mon journal publie leur demande demain, sauf ordre contraire.",
   "gauche": {
    "libelle": "Reportez ça",
    "effets": {
@@ -999,7 +999,7 @@
     "caisses": 4
    },
    "style": 6,
-   "journal": "La une annoncée n'a pas paru : à la pompe, les taxis ont fait la queue jusqu'à l'avenue sans qu'aucun journal l'écrive."
+   "journal": "La demande des pompistes n'a pas paru. Devant les stations, les taxis attendent toujours."
   },
   "droite": {
    "libelle": "Publiez",
@@ -1008,7 +1008,7 @@
     "peuple": -8
    },
    "style": -5,
-   "journal": "La coupure de la subvention est en première page — les taxis ont affiché un nouveau tarif au pare-brise dès le matin."
+   "journal": "La demande des pompistes a paru en une. Au marché, les chauffeurs la lisent à voix haute."
   },
   "conditions": {
    "style_max": 72
@@ -1073,7 +1073,7 @@
   "id": "redactrice_anniversaire",
   "personnage": "redactrice",
   "humeur": "neutre",
-  "texte": "La télévision publique veut six heures d'émission pour votre anniversaire. L'état-major a déjà envoyé ses voeux.",
+  "texte": "La télévision publique veut six heures d'émission pour votre anniversaire. L'état-major a déjà envoyé ses vœux.",
   "gauche": {
    "libelle": "Six heures",
    "effets": {
@@ -1475,7 +1475,7 @@
    "drapeaux": [
     "liste_ramassee"
    ],
-   "journal": "Vingt-neuf personnes ont été ramassées avant l'aube. La trentième enseigne, et sa classe l'a attendue jusqu'à midi."
+   "journal": "Trente personnes ont été arrêtées avant l'aube. Parmi elles, une enseignante dont la classe a attendu jusqu'à midi."
   },
   "droite": {
    "libelle": "Qu'ils parlent",
@@ -1629,7 +1629,7 @@
    "journal": "Les bennes ont tourné dès samedi. Le marché central a retrouvé son trottoir, et la mairie a publié la facture."
   },
   "droite": {
-   "libelle": "Il se débrouille",
+   "libelle": "Débrouillez-vous",
    "effets": {
     "caisses": 5,
     "peuple": -10,
@@ -1708,7 +1708,7 @@
     "caisses": -3,
     "peuple": -6
    },
-   "journal": "On a recuré les mêmes caniveaux : une femme a photographié l'eau qui remonte, et la photo circule depuis."
+   "journal": "Les caniveaux de cet autre quartier ont été curés. Une femme a photographié l'eau qui remonte, et la photo circule."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -2053,7 +2053,7 @@
     "caisses": -9,
     "peuple": 7
    },
-   "journal": "Le puits est passé au village contre un dédommagement. La société a démonté sa pompe et laissé le forage."
+   "journal": "Le village a racheté le puits et sa pompe. La société a emporté sa caisse, et l'eau est devenue gratuite."
   },
   "droite": {
    "libelle": "Qu'ils paient",
@@ -2117,7 +2117,7 @@
    "drapeaux": [
     "arbitrage_rendu"
    ],
-   "journal": "Les éleveurs ont payé les champs brûlés, sacs de mil comptés devant tout le monde. Le chef a fait relire la somme trois fois."
+   "journal": "Les éleveurs ont payé les cultures dévorées, sacs de mil comptés devant tout le monde. Le chef a fait relire la somme trois fois."
   },
   "droite": {
    "libelle": "Chacun chez soi",
@@ -2477,7 +2477,7 @@
   "id": "sante_cholera_2_ferme",
   "personnage": "sante",
   "humeur": "fache",
-  "texte": "{titre}, le puits est condamné, mais le quartier boit l'eau du canal. Quatre diarrhées sanglantes au dispensaire ce matin.",
+  "texte": "{titre}, malgré le puits fermé, la Cuvette boit l'eau du canal. Le dispensaire confirme le choléra : faut-il l'annoncer ?",
   "gauche": {
    "libelle": "On l'annonce",
    "effets": {
@@ -2667,9 +2667,9 @@
   "id": "sante_vaccination_ecoles",
   "personnage": "sante",
   "humeur": "content",
-  "texte": "{titre}, on peut vacciner toutes les écoles du pays contre la rougeole ce trimestre. Ça coûtera cher.",
+  "texte": "{titre}, on peut vacciner tous les élèves du pays contre la rougeole ce trimestre. Ça coûtera cher.",
   "gauche": {
-   "libelle": "On vaccine tout",
+   "libelle": "Tous les élèves",
    "effets": {
     "caisses": -13,
     "peuple": 10,
@@ -2683,7 +2683,7 @@
     "caisses": -3,
     "peuple": -4
    },
-   "journal": "Seules les écoles des villes ont été vaccinées — des parents du nord ont descendu leurs enfants en charrette."
+   "journal": "Seuls les élèves des villes ont été vaccinés. Des parents du nord ont descendu leurs enfants en charrette."
   }
  },
  {
@@ -2834,7 +2834,7 @@
   "id": "cabinet_notes_frais_2",
   "personnage": "cabinet",
   "humeur": "fache",
-  "texte": "{titre}, un journal a les notes de frais de votre conseiller et veut une réaction ce soir. Le palais paie la note, ou nous démentons ?",
+  "texte": "{titre}, un journal a les trois factures du conseiller. Le palais rembourse ces frais au Trésor, ou dément leur existence ?",
   "gauche": {
    "libelle": "On dément",
    "effets": {
@@ -2853,7 +2853,7 @@
     "peuple": -3
    },
    "style": -3,
-   "journal": "Les trois nuits d'hôtel ont été remboursées par le palais. Le communiqué ne dit pas qui avait signé les ordres de mission."
+   "journal": "Le palais a remboursé les trois factures au Trésor sur son budget. Le conseiller n'a rien versé, selon la comptable."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -3032,7 +3032,7 @@
   "humeur": "fache",
   "texte": "{titre}, votre frère a renversé un moto-taxi, sans permis. Le blessé attend une indemnité publique, ou une enveloppe de la famille.",
   "gauche": {
-   "libelle": "On l'indemnise",
+   "libelle": "L'État paie",
    "effets": {
     "caisses": -5,
     "presse": 6,
@@ -3041,14 +3041,14 @@
    "journal": "Le blessé a été indemnisé sur fonds publics. Le montant est paru au bulletin des dépenses, à côté du nom de votre frère."
   },
   "droite": {
-   "libelle": "On étouffe ça",
+   "libelle": "La famille paie",
    "effets": {
     "presse": -6,
     "peuple": -3,
     "caisses": 4
    },
    "style": 6,
-   "journal": "Aucune plainte n'a été enregistrée. Le moto-taxi a repris le travail avec un plâtre, et refuse de parler aux journalistes."
+   "journal": "La famille a payé le blessé contre un accord de silence. Le chauffeur a repris le travail avec un plâtre."
   }
  },
  {
@@ -3147,9 +3147,9 @@
   "id": "cabinet_cadeau_diplomate",
   "personnage": "cabinet",
   "humeur": "content",
-  "texte": "{titre}, un ambassadeur vous offre une montre en or, la veille de signer le prêt de son pays. L'usage veut qu'on la déclare.",
+  "texte": "{titre}, un ambassadeur vous offre une montre en or avant de signer le prêt de son pays. Un cadeau officiel va au Trésor.",
   "gauche": {
-   "libelle": "Je la déclare",
+   "libelle": "Au Trésor",
    "effets": {
     "presse": 8,
     "caisses": -4
@@ -3157,7 +3157,7 @@
    "journal": "La montre a été inscrite au registre des cadeaux et déposée au Trésor, tandis que l'ambassadeur décalait la signature du prêt."
   },
   "droite": {
-   "libelle": "Je la garde",
+   "libelle": "Pour moi",
    "effets": {
     "presse": -8,
     "caisses": 5
@@ -3295,7 +3295,7 @@
   "id": "emissaire_pret_sans_accord",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, le fonds a publié une note prudente sur nos comptes. Les taux que nous payons ailleurs ont monté le matin même.",
+  "texte": "{titre}, le fonds a publié une note prudente sur vos comptes. Les taux que vous payez ailleurs ont monté le matin même.",
   "gauche": {
    "libelle": "On tient bon",
    "effets": {
@@ -3369,7 +3369,7 @@
   "id": "emissaire_privatisation_eau",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, céder la distribution de l'eau libère un versement immédiat. C'est écrit dans l'accord que vous avez signé.",
+  "texte": "{titre}, le fonds veut ajouter la privatisation de l'eau aux discussions. Deux groupes attendent déjà le cahier des charges.",
   "gauche": {
    "libelle": "On cède",
    "effets": {
@@ -3396,7 +3396,7 @@
   "id": "emissaire_taux_change",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, la monnaie est surévaluée de l'avis du fonds. Un ajustement de quinze pour cent est inscrit dans l'accord.",
+  "texte": "{titre}, le fonds propose de dévaluer votre monnaie de quinze pour cent. Les importations coûteront plus cher dès l'annonce.",
   "gauche": {
    "libelle": "On ajuste",
    "effets": {
@@ -3418,7 +3418,7 @@
   "id": "emissaire_decaissement_gele",
   "personnage": "emissaire",
   "humeur": "fache",
-  "texte": "{titre}, le versement reste gelé. Le recensement des fonctionnaires promis n'a pas commencé : les salaires fantômes courent.",
+  "texte": "{titre}, le fonds exige un recensement des fonctionnaires avant tout nouveau versement. Les listes actuelles ne lui suffisent pas.",
   "gauche": {
    "libelle": "On recense",
    "effets": {
@@ -3489,7 +3489,7 @@
   "id": "emissaire_fonctionnaires_gel",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, le fonds demande un gel des salaires publics pendant deux ans. C'est la clause quatre de l'accord.",
+  "texte": "{titre}, le fonds propose de geler les salaires publics deux ans. La clause quatre du nouvel accord attend votre signature.",
   "gauche": {
    "libelle": "On gèle",
    "effets": {
@@ -3504,14 +3504,14 @@
     "caisses": -5,
     "peuple": 6
    },
-   "journal": "La clause quatre a été rejetée. L'émissaire a quitté l'hôtel avant le petit-déjeuner, et son vol n'était pas celui prévu."
+   "journal": "La clause a été refusée. Le fonds a suspendu la discussion, et les syndicats ont diffusé votre réponse."
   }
  },
  {
   "id": "emissaire_audit_portuaire_1",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, le fonds veut auditer les recettes du port avant de verser la tranche. Vos colonels du quai n'aimeront pas ça, dit-elle.",
+  "texte": "{titre}, le fonds veut auditer les recettes du port avant de verser la tranche. Vos colonels du quai n'aimeront pas ça.",
   "gauche": {
    "libelle": "Ils auditent",
    "effets": {
@@ -3522,7 +3522,7 @@
    "drapeaux": [
     "audit_accepte"
    ],
-   "journal": "Les vérificateurs sont entrés au port mardi : deux officiers du quai ont pris permission le même jour."
+   "journal": "Les vérificateurs sont entrés au port mardi : deux officiers du quai sont partis en permission le même jour."
   },
   "droite": {
    "libelle": "On refuse l'audit",
@@ -4038,7 +4038,7 @@
   "id": "doyen_conseil_constitutionnel",
   "personnage": "doyen",
   "humeur": "neutre",
-  "texte": "{titre}, la loi électorale de votre majorité est attaquée : l'article contesté dit qui comptera les voix. Tout refaire coûte une saison.",
+  "texte": "{titre}, la loi électorale est attaquée sur le comptage des voix. Il faut revoir cet article avant le scrutin.",
   "gauche": {
    "libelle": "L'article saute",
    "effets": {
@@ -4047,7 +4047,7 @@
     "caisses": -8
    },
    "style": -4,
-   "journal": "Le décompte des voix revient à la commission, le vote glisse d'une saison et l'imprimeur a déjà livré les bulletins."
+   "journal": "La commission reprend le décompte des voix. Ses agents travaillent la nuit pour tenir la date du scrutin."
   },
   "droite": {
    "libelle": "L'article tient",
@@ -4066,7 +4066,7 @@
   "humeur": "neutre",
   "texte": "{titre}, une grâce collective viderait un tiers des prisons pour la fête nationale. Les victimes ne l'oublieront pas.",
   "gauche": {
-   "libelle": "On gracie tous",
+   "libelle": "Grâce collective",
    "effets": {
     "peuple": 8,
     "presse": -6
@@ -4074,7 +4074,7 @@
    "journal": "Onze cents détenus sont sortis jeudi : une famille a reconnu, dans la file, l'homme qui avait tué son fils."
   },
   "droite": {
-   "libelle": "On trie les cas",
+   "libelle": "Au cas par cas",
    "effets": {
     "caisses": -4,
     "presse": 6
@@ -4131,7 +4131,7 @@
    "journal": "Les trois blessés ont reçu leur mandat vendredi. Le chauffeur a signé un papier où le mot « freins » ne figure pas."
   },
   "droite": {
-   "libelle": "C'est la guerre",
+   "libelle": "Risques du métier",
    "effets": {
     "caisses": 9,
     "armee": -8,
@@ -4154,9 +4154,9 @@
   "id": "general_materiel_2_arretes",
   "personnage": "general",
   "humeur": "fache",
-  "texte": "{titre}, la relève du nord se fait en car de ligne depuis trois semaines. Un car a été arrêté par des hommes armés hier soir.",
+  "texte": "{titre}, la relève du nord se fait en car de ligne depuis votre ordre. Un car a été arrêté par des hommes armés hier soir.",
   "gauche": {
-   "libelle": "On loue dehors",
+   "libelle": "Louons des camions",
    "effets": {
     "caisses": -9,
     "armee": 6,
@@ -4502,14 +4502,14 @@
    "journal": "Le marché a rouvert mercredi sous escorte. Trois journalistes n'ont pas obtenu l'autorisation de monter au nord."
   },
   "droite": {
-   "libelle": "On négocie encore",
+   "libelle": "On paie la milice",
    "effets": {
     "presse": 5,
     "peuple": -4,
     "caisses": -3
    },
    "style": -4,
-   "journal": "Une rencontre a eu lieu chez le chef du village. Les étals du fond restent fermés, et la taxe se paie au matin."
+   "journal": "Une allocation a été versée à la milice devant le chef du village. Les étals rouvrent, mais trois familles ont quitté le quartier."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -4841,7 +4841,7 @@
   "id": "general_mineurs",
   "personnage": "general",
   "humeur": "fache",
-  "texte": "{titre}, des mineurs de quinze ans servent dans nos rangs au nord. Une organisation étrangère l'a écrit : je les renvoie ou je dément ?",
+  "texte": "{titre}, des mineurs de quinze ans servent dans nos rangs au nord. Une organisation étrangère l'a écrit : je les renvoie ou je démens ?",
   "gauche": {
    "libelle": "On les renvoie",
    "effets": {
@@ -5247,7 +5247,7 @@
    "journal": "La paie est arrivée dans les écoles jeudi midi. Le nom du prêteur ne figure nulle part dans le communiqué du ministère."
   },
   "droite": {
-   "libelle": "On attend, poli",
+   "libelle": "On attend",
    "effets": {
     "caisses": -4,
     "peuple": -6,
@@ -5354,7 +5354,7 @@
   "humeur": "content",
   "texte": "{titre}, un prélèvement sur chaque paiement par téléphone. Les vendeuses reviendront aux billets, mais la caisse aura encaissé avant.",
   "gauche": {
-   "libelle": "On la met",
+   "libelle": "On prélève",
    "effets": {
     "caisses": 12,
     "peuple": -10
@@ -5462,7 +5462,7 @@
    "journal": "Six délégations de crédit ont été signées en une matinée. Le directeur de cabinet du ministre a demandé à ne pas être cité."
   },
   "droite": {
-   "libelle": "On le libère",
+   "libelle": "Plus de chantage",
    "effets": {
     "presse": 6,
     "armee": -5,
@@ -5999,7 +5999,7 @@
   "id": "redactrice_photographe_2_relache",
   "personnage": "redactrice",
   "humeur": "neutre",
-  "texte": "{titre}, mon photographe est sorti sans ses pellicules. Il en a refait d'autres, et cette fois il a photographié le commissariat.",
+  "texte": "{titre}, mon photographe est sorti sans ses pellicules. Il a repris des photos, cette fois du commissariat.",
   "gauche": {
    "libelle": "On lui rend tout",
    "effets": {
@@ -6040,7 +6040,7 @@
   "id": "redactrice_photographe_3",
   "personnage": "redactrice",
   "humeur": "fache",
-  "texte": "{titre}, le verdict de mon photographe tombe aujourd'hui, après trois mois de détention. Le procureur demande deux ans ferme.",
+  "texte": "{titre}, le verdict de mon photographe tombe aujourd'hui, après sa détention. Le procureur demande deux ans ferme.",
   "gauche": {
    "libelle": "Deux ans ferme",
    "effets": {
@@ -6049,7 +6049,7 @@
     "armee": 9
    },
    "style": 9,
-   "journal": "Le tribunal a suivi le procureur, sa mère attendant dehors avec un sac de vêtements propres."
+   "journal": "Le tribunal a suivi le procureur. La mère du photographe attendait dehors avec un sac de vêtements propres."
   },
   "droite": {
    "libelle": "Relaxe",
@@ -6059,7 +6059,7 @@
     "caisses": -3
    },
    "style": -7,
-   "journal": "Relaxe prononcée à onze heures, l'appareil rendu sans sa carte mémoire, contre signature."
+   "journal": "La relaxe a été prononcée à onze heures. L'appareil a été rendu sans ses pellicules, contre signature."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -6243,14 +6243,14 @@
    "journal": "Le journal a paru ce matin comme les autres jours. Le chantier des écoles, lui, est toujours gardé par deux vigiles."
   },
   "droite": {
-   "libelle": "Le journal ferme",
+   "libelle": "Fermez trois jours",
    "effets": {
     "presse": -9,
     "peuple": -3,
     "caisses": 8
    },
    "style": 9,
-   "journal": "Les scellés sont posés sur la porte de la rédaction, les machines ayant été enlevées dans la nuit, sans inventaire."
+   "journal": "Le journal a été fermé trois jours. À la reprise, la rédaction a photographié les scellés brisés."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -6338,7 +6338,7 @@
   "id": "redactrice_rumeur_sante_2",
   "personnage": "redactrice",
   "humeur": "fache",
-  "texte": "{titre}, votre démenti a paru hier. Une agence étrangère a une photo floue de vous sur un brancard, et veut confirmation ce soir.",
+  "texte": "{titre}, votre démenti a paru. Une agence étrangère a une photo floue de vous sur un brancard, et veut confirmation ce soir.",
   "gauche": {
    "libelle": "Je vais très bien",
    "effets": {
@@ -6451,9 +6451,9 @@
   "id": "redactrice_reseaux_faux_compte",
   "personnage": "redactrice",
   "humeur": "fache",
-  "texte": "{titre}, un faux compte imite mon journal et promet l'eau gratuite en votre nom. La foule attend aux bornes : vous le fermez, ou moi ?",
+  "texte": "{titre}, un faux compte promet l'eau gratuite en mon nom. La foule attend aux bornes : vos services le ferment, ou mon journal dément ?",
   "gauche": {
-   "libelle": "Fermez le compte",
+   "libelle": "Nos services",
    "effets": {
     "presse": -6,
     "peuple": 5
@@ -6462,7 +6462,7 @@
    "journal": "Le faux compte a disparu dans la nuit. Deux comptes du journal sont tombés avec, d'après la rédactrice."
   },
   "droite": {
-   "libelle": "Débrouillez-vous",
+   "libelle": "Votre démenti",
    "effets": {
     "presse": 6,
     "peuple": -5
@@ -6570,7 +6570,7 @@
   "id": "redactrice_dessin_1",
   "personnage": "redactrice",
   "humeur": "content",
-  "texte": "{titre}, un dessinateur vous croque en pagne à trois têtes pour demain. La caserne en rit déjà ; il attend votre avis.",
+  "texte": "{titre}, un dessinateur vous représente en pagne, avec trois têtes. La caserne en rit déjà ; il attend votre avis.",
   "gauche": {
    "libelle": "Publiez-le",
    "effets": {
@@ -6790,7 +6790,7 @@
   "humeur": "fache",
   "texte": "{titre}, si je publie mon article sur les achats de la caserne, un conseiller menace de couper la publicité d'État.",
   "gauche": {
-   "libelle": "Coupez-la",
+   "libelle": "Retirez la pub",
    "effets": {
     "presse": -8,
     "caisses": 6
@@ -6799,7 +6799,7 @@
    "journal": "La publicité d'État a été retirée du journal, qui a paru sur six pages au lieu de douze, sans expliquer pourquoi."
   },
   "droite": {
-   "libelle": "Laissez-la",
+   "libelle": "Maintenez la pub",
    "effets": {
     "presse": 8,
     "caisses": -3,
@@ -6850,7 +6850,7 @@
     "armee": -5
    },
    "style": -5,
-   "journal": "Le site est accessible depuis hier soir, son premier article portant sur les quatorze semaines de blocage."
+   "journal": "Le site est accessible depuis hier soir. Son premier article retrace le blocage, captures d'écran datées à l'appui."
   },
   "droite": {
    "libelle": "Pas encore",
@@ -6899,7 +6899,7 @@
   "humeur": "content",
   "texte": "{titre}, un de mes reporters reçoit un prix international pour son enquête sur le port. Une cérémonie est prévue.",
   "gauche": {
-   "libelle": "Félicitez-le",
+   "libelle": "Je le félicite",
    "effets": {
     "presse": 8,
     "peuple": 4,
@@ -6908,7 +6908,7 @@
    "journal": "Vos félicitations ont été lues à la cérémonie. À la caserne, l'enquête sur le port a été relue ligne à ligne le lendemain."
   },
   "droite": {
-   "libelle": "Ignorez ça",
+   "libelle": "Pas un mot",
    "effets": {
     "presse": -8,
     "armee": 5
@@ -7731,7 +7731,7 @@
     "caisses": -3
    },
    "style": -7,
-   "journal": "L'avenue est restée bloquée jusqu'à la nuit, si bien que les commerçants du marché ont fermé une deuxième journée."
+   "journal": "L'avenue est restée bloquée jusqu'à la nuit, si bien que les commerçants du marché ont fermé toute la journée."
   },
   "droite": {
    "libelle": "Dégagez l'avenue",
@@ -8079,7 +8079,7 @@
     "armee": 4,
     "presse": -6
    },
-   "journal": "Le doctorat a été remis à un absent. Au sommet, vous serriez des mains pendant qu'on lisait votre lettre d'excuses."
+   "journal": "Le doctorat a été décerné en votre absence. Au sommet, vous serriez des mains pendant la lecture de votre lettre d'excuses."
   },
   "conditions": {
    "parcours": [
@@ -8678,7 +8678,7 @@
   "id": "conjoint_enfant_ecole",
   "personnage": "conjoint",
   "humeur": "fache",
-  "texte": "{nom}, notre fils s'est battu deux fois et le proviseur demande à vous voir. L'enfant, lui, ne vous a pas vu depuis un mois.",
+  "texte": "{nom}, mon neveu s'est battu au lycée. Les autres élèves disent qu'il peut tout se permettre parce qu'il vous connaît.",
   "gauche": {
    "libelle": "Je passe au lycée",
    "effets": {
@@ -8705,9 +8705,9 @@
   "id": "conjoint_metier_1",
   "personnage": "conjoint",
   "humeur": "neutre",
-  "texte": "{nom}, j'ai fait dix ans de droit avant vous et on me propose de rouvrir mon cabinet. On dira que je vends votre signature.",
+  "texte": "{nom}, des associés me proposent d'ouvrir un cabinet de conseil. On dira que je vends votre signature.",
   "gauche": {
-   "libelle": "Rouvrez le cabinet",
+   "libelle": "Ouvrez le cabinet",
    "effets": {
     "peuple": 5,
     "caisses": 4,
@@ -8716,7 +8716,7 @@
    "drapeaux": [
     "conjoint_cabinet_ouvert"
    ],
-   "journal": "Le cabinet a rouvert rue du Marché. La première cliente vend des arachides, et sa photo circule depuis."
+   "journal": "Le cabinet a ouvert rue du Marché. La première cliente vend des arachides, et sa photo circule depuis."
   },
   "droite": {
    "libelle": "Restez au palais",
@@ -8889,7 +8889,7 @@
   "humeur": "fache",
   "texte": "{nom}, le journal vous prête quelqu'un au quartier des Palmiers, et cite un proche du palais. Ma mère l'a lu avant moi.",
   "gauche": {
-   "libelle": "On coupe la source",
+   "libelle": "Écartez l'auteur",
    "effets": {
     "presse": -6,
     "peuple": 5
@@ -9043,9 +9043,9 @@
   "id": "conjoint_nuit_arret",
   "personnage": "conjoint",
   "humeur": "neutre",
-  "texte": "Trois heures du matin, {nom}, et vous relisez encore. J'ai peur de ce que ce palais fait de vous : ne vous représentez pas.",
+  "texte": "Trois heures du matin, {nom}, et vous relisez encore. Prenez deux jours loin de la campagne : le palais vous épuise.",
   "gauche": {
-   "libelle": "Je me représente",
+   "libelle": "Je fais campagne",
    "effets": {
     "armee": 6,
     "peuple": -3,
@@ -9055,14 +9055,14 @@
    "journal": "Le palais a commandé des affiches, selon un bordereau daté d'hier. Votre bureau ne commente pas la commande."
   },
   "droite": {
-   "libelle": "Je m'arrête après",
+   "libelle": "Repos deux jours",
    "effets": {
     "presse": 7,
     "peuple": 3,
     "armee": -7
    },
    "style": -4,
-   "journal": "Aucune annonce n'est sortie, mais à l'imprimerie du centre une commande d'affiches a été retirée sans explication."
+   "journal": "Deux jours de repos ont été réservés dans l'agenda. L'impression des affiches a été décalée."
   },
   "conditions": {
    "jour_min": 70,
@@ -9078,7 +9078,7 @@
   "id": "conjoint_anniversaire_oublie",
   "personnage": "conjoint",
   "humeur": "fache",
-  "texte": "{nom}, hier c'était mes quarante ans : une carte du protocole signée par une machine, de vous, rien. Deux jours ensemble et le pays tiendra.",
+  "texte": "{nom}, hier c'était mon anniversaire : une carte du protocole signée par une machine, de vous, rien. Deux jours ensemble et le pays tiendra.",
   "gauche": {
    "libelle": "Deux jours à nous",
    "effets": {
@@ -9104,24 +9104,24 @@
   "id": "conjoint_fils_armee",
   "personnage": "conjoint",
   "humeur": "neutre",
-  "texte": "{nom}, notre fils veut l'école des officiers. Il dit qu'il passera le concours sous un faux nom, et il en est bien capable.",
+  "texte": "{nom}, mon neveu veut passer le concours des officiers sans aucune faveur. Il dit qu'il ne demandera rien au palais.",
   "gauche": {
-   "libelle": "Qu'il s'engage",
+   "libelle": "Qu'il concoure",
    "effets": {
     "armee": 8,
     "peuple": 4,
     "presse": -4
    },
-   "journal": "Votre fils a passé le concours sous son nom : la liste des admis est affichée, et il y figure quatrième."
+   "journal": "Le neveu de votre conjoint a passé le concours sans faveur. La liste des admis est affichée, et il y figure quatrième."
   },
   "droite": {
-   "libelle": "Pas mon fils",
+   "libelle": "Pas de militaire",
    "effets": {
     "presse": 5,
     "armee": -6,
     "peuple": -4
    },
-   "journal": "Le dossier a été retiré la veille du concours. Votre fils a été vu au port, à chercher une place sur un cargo."
+   "journal": "Le dossier a été retiré avant le concours. Le jeune homme cherche une place sur un cargo."
   },
   "conditions": {
    "marie": true
@@ -9253,14 +9253,14 @@
    "caisses_max": 15
   },
   "poids": 15,
-  "texte": "{titre}, il reste huit jours de guichet ouvert. Je gèle les salaires de l'État, ou je vends le stock de carburant des casernes.",
+  "texte": "{titre}, il reste huit jours de guichet ouvert. Je suspends la paie de l'État, ou je vends le stock de carburant des casernes.",
   "gauche": {
-   "libelle": "Gelez les salaires",
+   "libelle": "Suspendez la paie",
    "effets": {
     "caisses": 14,
     "peuple": -12
    },
-   "journal": "Les salaires de l'État sont gelés depuis lundi. Au dispensaire central, deux infirmières sur trois ne sont pas venues."
+   "journal": "La paie de l'État est suspendue depuis lundi. Au dispensaire central, deux infirmières sur trois ne sont pas venues."
   },
   "droite": {
    "libelle": "Vendez le stock",
@@ -9436,9 +9436,9 @@
   "id": "renseignements_apres_liste_2",
   "personnage": "renseignements",
   "humeur": "neutre",
-  "texte": "{titre}, un des trente est mort en cellule quatre cette nuit. On écrit crise cardiaque, ou on rend le corps à sa famille ?",
+  "texte": "{titre}, un détenu est mort en cellule cette nuit. On garde le corps et on écrit malaise, ou sa famille le reçoit avec les marques ?",
   "gauche": {
-   "libelle": "Crise cardiaque",
+   "libelle": "Cachez le corps",
    "effets": {
     "peuple": -5,
     "presse": -5,
@@ -9671,7 +9671,7 @@
     "audit_classe"
    ]
   },
-  "texte": "{titre}, le fonds rouvre cinq ans de comptes, l'écart du port compris. Une somme rendue, ou le nom de l'officier qui tenait le quai.",
+  "texte": "{titre}, le fonds rouvre les comptes du mandat précédent, l'écart du port compris. Il veut une somme rendue ou le nom du responsable.",
   "gauche": {
    "libelle": "On rembourse",
    "effets": {
@@ -9768,26 +9768,26 @@
    "jour_min": 3,
    "marie": true
   },
-  "texte": "{nom}, cette nuit-là, vous n'avez rien promis devant personne. Ce mandat est le dernier : dites-le dehors, et vos officiers l'entendront.",
+  "texte": "{nom}, vous aviez accepté de vous reposer. Annoncez deux jours sans audience : même vos officiers doivent l'entendre.",
   "gauche": {
-   "libelle": "Je le promets",
+   "libelle": "Je l'annonce",
    "effets": {
     "presse": 6,
     "peuple": 4,
     "armee": -7
    },
    "style": -6,
-   "journal": "Vous avez annoncé un dernier mandat, dehors, sans papier. Au mess des officiers, le poste a été coupé avant la fin."
+   "journal": "Deux jours sans audience ont été annoncés. L'état-major a demandé qui signerait les ordres."
   },
   "droite": {
-   "libelle": "Rien ne se dit",
+   "libelle": "L'agenda reste",
    "effets": {
     "armee": 6,
     "presse": -4,
     "peuple": -3
    },
    "style": 4,
-   "journal": "Le discours n'a rien dit de la suite. Un journal a compté les emplois du mot « transition » : aucun."
+   "journal": "L'agenda est resté plein. La dernière délégation est sortie du palais après minuit."
   },
   "chaine": {
    "id": "promesse_nuit",
@@ -9866,14 +9866,14 @@
     "forage_promis"
    ]
   },
-  "texte": "{titre}, le forage que vous aviez promis s'est tari en deux saisons. Mon village reprend la route de trois heures : on recreuse ?",
+  "texte": "{titre}, les villages voisins attendent encore un second point d'eau. Les femmes marchent trois heures : on lance le chantier ?",
   "gauche": {
    "libelle": "On recreuse",
    "effets": {
     "caisses": -9,
     "peuple": 8
    },
-   "journal": "La foreuse est arrivée au village mercredi. C'est la même entreprise qu'il y a quatre ans, au même prix."
+   "journal": "La foreuse est arrivée mercredi. L'entreprise du premier forage a présenté un nouveau devis."
   },
   "droite": {
    "libelle": "Qu'il attende",
@@ -9882,7 +9882,7 @@
     "peuple": -8,
     "presse": -3
    },
-   "journal": "Le village a repris la route de trois heures, avec des bidons, pendant qu'une radio du nord repassait votre promesse d'alors."
+   "journal": "Les femmes marchent toujours trois heures. Une radio du nord a rediffusé la demande du chef."
   }
  },
  {
@@ -9896,14 +9896,14 @@
     "riz_cher"
    ]
   },
-  "texte": "Vous aviez dit que la hausse était passagère, et ça fait cinq ans qu'elle passe. Le marché veut un prix affiché, ou il ferme lundi.",
+  "texte": "Vous aviez dit que la hausse était passagère. Elle dure encore ce mandat : le marché veut un prix fixé, ou il ferme lundi.",
   "gauche": {
-   "libelle": "Un prix affiché",
+   "libelle": "Un prix fixé",
    "effets": {
     "peuple": 9,
     "caisses": -8
    },
-   "journal": "Le prix du sac est affiché à l'entrée du marché, sur une planche peinte à la main."
+   "journal": "Le prix du sac a été plafonné par décret. Le nouveau tarif est affiché à l'entrée du marché."
   },
   "droite": {
    "libelle": "Pas de prix fixé",
@@ -10336,7 +10336,7 @@
     "caisses": 3,
     "presse": 4
    },
-   "journal": "La noce collective n'a pas eu lieu. Les femmes du marché en ont marié deux entre elles, sans mairie et sans papier."
+   "journal": "La noce collective n'a pas eu lieu. Les commerçantes ont organisé les noces de deux couples, sans mairie ni papier."
   }
  },
  {
@@ -10490,7 +10490,7 @@
   "id": "marchande_riz_tasse",
   "personnage": "marchande",
   "humeur": "fache",
-  "texte": "Le riz ne manque pas, mais on le vend à la tasse. Celle qui n'a pas de quoi prendre un sac entier paie le double du kilo, tous les jours.",
+  "texte": "Le riz ne manque pas, mais se vend à la tasse. Sans argent pour un sac entier, les femmes paient le kilo deux fois plus cher.",
   "gauche": {
    "libelle": "Des sacs à crédit",
    "effets": {
@@ -11726,7 +11726,7 @@
     "peuple": -5,
     "armee": -4
    },
-   "journal": "Nos postes sont restés ouverts, mais les camions passent au compte-gouttes, fouillés un par un de l'autre côté."
+   "journal": "Nos postes sont restés ouverts. Le voisin a entrouvert sa frontière aux camions, fouillés un par un."
   }
  },
  {
@@ -11799,7 +11799,7 @@
     "caisses": 3,
     "presse": -8
    },
-   "journal": "Un secrétaire d'État vous a représenté au sommet. Sur la photo de famille, il est au dernier rang, entre deux délégations."
+   "journal": "Un secrétaire d'État a représenté le palais au sommet. Sur la photo de famille, il est au dernier rang, entre deux délégations."
   }
  },
  {
@@ -11907,7 +11907,7 @@
   "humeur": "neutre",
   "texte": "{titre}, la Cour examine les listes pour l'Assemblée. Celle de l'opposition tient à un papier manquant ; sans lui, le budget passe seul.",
   "gauche": {
-   "libelle": "Qu'il se présente",
+   "libelle": "Validez la liste",
    "effets": {
     "presse": 8,
     "caisses": -10
@@ -11916,7 +11916,7 @@
    "journal": "La liste du rival a été validée jeudi. Le budget n'a pas trouvé ses voix, et deux chantiers se sont arrêtés."
   },
   "droite": {
-   "libelle": "On la rejette",
+   "libelle": "Rejetez la liste",
    "effets": {
     "caisses": 6,
     "peuple": -3,
@@ -12818,7 +12818,7 @@
     "presse": -4
    },
    "style": 4,
-   "journal": "Votre page est sortie vendredi, face à celle de votre rival. Le directeur du quotidien a pris ses congés le lendemain."
+   "journal": "Votre page est sortie vendredi, au même emplacement que celle du rival jeudi. Le directeur a pris ses congés le lendemain."
   },
   "droite": {
    "libelle": "Je n'achète rien",
@@ -12894,7 +12894,7 @@
     "presse": -8
    },
    "style": 8,
-   "journal": "La coupure dure depuis onze jours. La commission a inscrit le point à l'ordre du jour de sa séance de validation."
+   "journal": "La coupure continue. La commission a inscrit le point à l'ordre du jour de sa séance de validation."
   },
   "conditions": {
    "presse_max": 48,
@@ -13229,7 +13229,7 @@
   "id": "emissaire_pret_voisins",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, les voisins qui nous ont prêté veulent leur part : la concession du port, ou le remboursement en une seule fois.",
+  "texte": "{titre}, les voisins qui vous ont prêté veulent leur part : la concession du port, ou le remboursement en une seule fois.",
   "gauche": {
    "libelle": "Ils ont le port",
    "effets": {
@@ -13266,7 +13266,7 @@
   "id": "emissaire_austerite_seule",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{titre}, quatre mois sans emprunt : la caisse tient, mais les fournisseurs de l'hôpital veulent être payés avant de livrer.",
+  "texte": "{titre}, depuis votre refus d'emprunter, la caisse tient. Mais les fournisseurs de l'hôpital exigent le paiement avant de livrer.",
   "gauche": {
    "libelle": "On les paie",
    "effets": {
@@ -13303,7 +13303,7 @@
   "id": "emissaire_pret_apres_refus",
   "personnage": "emissaire",
   "humeur": "fache",
-  "texte": "{titre}, depuis votre refus le fonds a suspendu l'étude. Deux voisins proposent un prêt direct, à un taux que je ne vous cache pas.",
+  "texte": "{titre}, aucun prêt n'est signé. Deux voisins proposent de l'argent sans audit, à un taux plus élevé que celui du fonds.",
   "gauche": {
    "libelle": "On emprunte",
    "effets": {
@@ -13382,7 +13382,7 @@
   "id": "doyen_magistrat_3_fidele",
   "personnage": "doyen",
   "humeur": "fache",
-  "texte": "{titre}, la Cour n'a plus tenu séance depuis trois semaines. Le doyen sortant veut lire une déclaration à la radio avant de partir.",
+  "texte": "{titre}, la Cour n'a plus tenu séance depuis votre refus. Le doyen sortant veut lire une déclaration à la radio avant de partir.",
   "gauche": {
    "libelle": "Qu'il la lise",
    "effets": {
@@ -13518,7 +13518,7 @@
   "id": "ardoise_caniveaux",
   "personnage": "maire",
   "humeur": "fache",
-  "texte": "{titre}, l'entreprise qui a curé les caniveaux attend son solde depuis trois semaines. Elle menace de tout remettre où elle l'a pris.",
+  "texte": "{titre}, depuis les travaux, l'entreprise attend le solde du curage. Elle menace de redéposer les déchets devant la mairie.",
   "gauche": {
    "libelle": "On la paie",
    "effets": {
@@ -13549,7 +13549,7 @@
   "id": "ardoise_cousin",
   "personnage": "cabinet",
   "humeur": "neutre",
-  "texte": "{titre}, la société du cousin du ministre a encaissé l'avance et livré un tiers du chantier. Rien ne bouge depuis dix jours.",
+  "texte": "{titre}, votre cousin a encaissé l'avance des cantines mais ne livre qu'un repas sur trois. Les écoles attendent le reste.",
   "gauche": {
    "libelle": "On résilie",
    "effets": {
@@ -13557,17 +13557,17 @@
     "presse": 5,
     "peuple": -4
    },
-   "journal": "Le marché a été résilié jeudi. Le chantier de l'école du quartier de la Cuvette est refermé par une tôle et un cadenas."
+   "journal": "Le contrat des cantines a été résilié jeudi. Les écoles attendent un autre fournisseur."
   },
   "droite": {
-   "libelle": "Qu'il finisse",
+   "libelle": "Qu'il livre",
    "effets": {
     "caisses": -7,
     "peuple": 4,
     "presse": -5
    },
    "style": 5,
-   "journal": "Une rallonge a été signée pour la même société. Le maçon qui parlait aux journalistes n'est plus sur la liste."
+   "journal": "Une rallonge a été signée pour la même société. Le cuisinier qui parlait aux journalistes a été renvoyé."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -13581,7 +13581,7 @@
   "id": "ardoise_coupures",
   "personnage": "marchande",
   "humeur": "fache",
-  "texte": "{titre}, trois semaines de coupures. Les congélateurs du marché ont lâché, et les femmes veulent une réponse avant samedi.",
+  "texte": "{titre}, les coupures continuent. Les congélateurs du marché ont lâché, et les femmes veulent une réponse avant samedi.",
   "gauche": {
    "libelle": "Des groupes",
    "effets": {
@@ -13612,7 +13612,7 @@
   "id": "ardoise_forage",
   "personnage": "chef",
   "humeur": "fache",
-  "texte": "{titre}, le forage promis n'a pas commencé. Les femmes marchent toujours deux heures, et elles savent compter les jours.",
+  "texte": "{titre}, les hameaux voisins attendent un second point d'eau. Les femmes marchent toujours trois heures et comptent les jours.",
   "gauche": {
    "libelle": "On creuse",
    "effets": {
@@ -13643,15 +13643,15 @@
   "id": "ardoise_retraites",
   "personnage": "ministre",
   "humeur": "neutre",
-  "texte": "{titre}, la promesse sur les retraites a une date : le mois prochain. Les syndicats viennent chercher le décret, pas une explication.",
+  "texte": "{titre}, le recul de l'âge de la retraite reste contesté. Les syndicats demandent une prime de transition avant son application.",
   "gauche": {
-   "libelle": "Je signe",
+   "libelle": "Signez la prime",
    "effets": {
     "caisses": -12,
     "peuple": 8,
     "presse": 4
    },
-   "journal": "Le décret a paru au journal officiel de jeudi. Le Trésor a reporté deux paiements de fournisseurs pour l'absorber."
+   "journal": "La prime a été accordée par décret. Le Trésor a reporté deux paiements de fournisseurs pour la financer."
   },
   "droite": {
    "libelle": "On repousse",
@@ -13705,7 +13705,7 @@
   "id": "ardoise_carburant",
   "personnage": "ministre",
   "humeur": "fache",
-  "texte": "{titre}, la subvention du carburant a coûté en trois semaines ce que la santé dépense en un an. Je ne peux pas la porter plus loin.",
+  "texte": "{titre}, la subvention du carburant coûte autant que la santé. Je ne peux pas la porter plus loin.",
   "gauche": {
    "libelle": "On la garde",
    "effets": {
@@ -14024,16 +14024,16 @@
   "id": "ardoise_immunite",
   "personnage": "doyen",
   "humeur": "neutre",
-  "texte": "{titre}, l'audience de jeudi inquiète le palais : l'ancien ministre annonce qu'il parlera du financement de la campagne.",
+  "texte": "{titre}, les avocats demandent une nouvelle audience. L'ancien ministre y parlerait du financement de la campagne.",
   "gauche": {
-   "libelle": "Qu'il parle",
+   "libelle": "Une audience",
    "effets": {
     "presse": 7,
     "peuple": 4,
     "caisses": -6
    },
    "style": -6,
-   "journal": "L'audience a duré six heures. Le nom de deux entreprises de travaux publics est entré au procès-verbal."
+   "journal": "La nouvelle audience a duré six heures. Les noms de deux entreprises de travaux publics sont entrés au procès-verbal."
   },
   "droite": {
    "libelle": "On repousse",
@@ -14057,26 +14057,26 @@
   "id": "ardoise_conjoint_cabinet",
   "personnage": "conjoint",
   "humeur": "neutre",
-  "texte": "{titre}, mon cabinet reçoit trente demandes par jour et deux dossiers de marchés publics. Je ne sais pas où je dois m'arrêter.",
+  "texte": "{nom}, mon cabinet de conseil reçoit trente demandes par jour, dont deux marchés publics. Dois-je refuser ces deux dossiers ?",
   "gauche": {
-   "libelle": "Arrête-toi là",
+   "libelle": "Arrêtez là",
    "effets": {
     "presse": 6,
     "peuple": -5,
     "caisses": -3
    },
    "style": -5,
-   "journal": "Le cabinet de la présidence a renvoyé les deux dossiers au ministère. Sa porte n'ouvre plus que le mardi matin."
+   "journal": "Les associés ont refusé les deux dossiers de marchés publics. Le cabinet conserve ses clients privés."
   },
   "droite": {
-   "libelle": "Continue",
+   "libelle": "Continuez",
    "effets": {
     "peuple": 6,
     "presse": -7,
     "caisses": 4
    },
    "style": 5,
-   "journal": "Deux marchés ont été arbitrés dans le bureau de l'aile est. La liste des visiteurs n'est plus tenue depuis lundi."
+   "journal": "Le cabinet de conseil a accepté les deux dossiers de marchés publics. La liste des visiteurs n'est plus tenue."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -14100,7 +14100,7 @@
     "peuple": 3
    },
    "style": -5,
-   "journal": "La photo est parue le lendemain, avec la mention « cliché retenu onze jours » au bas de la légende."
+   "journal": "La photo a paru avec la date de sa prise et celle de sa publication. La légende précise que le cliché avait été retenu."
   },
   "droite": {
    "libelle": "Toujours rien",
@@ -14189,7 +14189,7 @@
   "id": "general_solde_4",
   "personnage": "ministre",
   "humeur": "neutre",
-  "texte": "{titre}, la prime promise à la caserne n'est nulle part dans le budget. Je peux la prendre sur les bourses, ou dire qu'elle n'existe pas.",
+  "texte": "{titre}, la caserne réclame une prime absente du budget. Je peux la prendre sur les bourses, ou annoncer qu'il n'y aura rien.",
   "gauche": {
    "libelle": "Sur les bourses",
    "effets": {
@@ -14199,13 +14199,13 @@
    "journal": "La prime a été versée aux compagnies vendredi. Le paiement des bourses d'étudiants glisse de six semaines."
   },
   "droite": {
-   "libelle": "Elle n'existe pas",
+   "libelle": "Pas de prime",
    "effets": {
     "armee": -9,
     "caisses": 6,
     "presse": 4
    },
-   "journal": "Le ministère dément toute prime. Au camp, la feuille où elle figurait a été photographiée et circule depuis midi."
+   "journal": "La prime a été refusée. Au mess, les sous-officiers ont laissé leurs plateaux sur la table."
   },
   "chaine": {
    "id": "solde",
@@ -14308,7 +14308,7 @@
   "id": "sante_cholera_3_avoue",
   "personnage": "sante",
   "humeur": "fache",
-  "texte": "{titre}, le cordon tient, mais le quartier de la Cuvette n'a plus de marché ni de taxi. Le fonds propose des tentes et des caméras.",
+  "texte": "{titre}, depuis l'annonce du choléra, la Cuvette n'a plus de marché ni de taxi. Le fonds propose des tentes et des caméras.",
   "gauche": {
    "libelle": "On les accepte",
    "effets": {
@@ -14342,7 +14342,7 @@
   "id": "sante_cholera_4",
   "personnage": "sante",
   "humeur": "neutre",
-  "texte": "{titre}, l'épidémie recule. Reste la source : le puits du quartier de la Cuvette, qui rouvrira dès qu'on aura le dos tourné.",
+  "texte": "{titre}, l'épidémie recule, mais le puits de la Cuvette reste dangereux. On le comble, ou on laisse les habitants y puiser ?",
   "gauche": {
    "libelle": "On le comble",
    "effets": {
@@ -14359,7 +14359,7 @@
     "peuple": 5,
     "presse": -7
    },
-   "journal": "Le puits a rouvert de lui-même le lendemain. Un panneau « eau non potable » a été posé, puis retiré par des jeunes."
+   "journal": "Le puits reste accessible. Un panneau « eau non potable » a été posé, puis retiré par des jeunes."
   },
   "chaine": {
    "id": "cholera",
@@ -14402,7 +14402,7 @@
   "id": "renseignements_dossier_ministre_4",
   "personnage": "renseignements",
   "humeur": "neutre",
-  "texte": "{titre}, le ministre que nous tenons a fait une copie du dossier. Elle est chez son avocat, avec une lettre à ouvrir s'il tombe.",
+  "texte": "{titre}, un ministre a confié à son avocat la trace de nos pressions. L'enveloppe doit être ouverte s'il lui arrive quelque chose.",
   "gauche": {
    "libelle": "On récupère",
    "effets": {
@@ -14414,14 +14414,14 @@
    "journal": "Le cabinet de l'avocat a été visité de nuit. Le barreau a publié un communiqué de quatre lignes, sans nommer personne."
   },
   "droite": {
-   "libelle": "On le lâche",
+   "libelle": "Laissez le dossier",
    "effets": {
     "armee": -6,
     "presse": 7,
     "caisses": -4
    },
    "style": -6,
-   "journal": "Le ministre a été remercié dans un communiqué de deux phrases. L'enveloppe est restée chez l'avocat, cachetée."
+   "journal": "Le palais n'a pas réclamé le dossier. L'enveloppe est restée chez l'avocat, cachetée."
   },
   "chaine": {
    "id": "dossier_ministre",
@@ -14464,9 +14464,9 @@
   "id": "redactrice_marche_4",
   "personnage": "ministre",
   "humeur": "neutre",
-  "texte": "{titre}, le chantier des écoles est à l'arrêt depuis l'article, et la rentrée est dans six semaines. On relance, ou on reprend tout.",
+  "texte": "{titre}, le chantier des écoles piétine avant la rentrée. Vous gardez la même entreprise, ou vous relancez l'appel d'offres ?",
   "gauche": {
-   "libelle": "On relance",
+   "libelle": "Même entreprise",
    "effets": {
     "caisses": -7,
     "peuple": 6,
@@ -14475,7 +14475,7 @@
    "journal": "La même société est repartie sur le chantier lundi, avec un avenant. Deux classes sur six seront livrées à temps."
   },
   "droite": {
-   "libelle": "On reprend tout",
+   "libelle": "Nouvel appel",
    "effets": {
     "caisses": -4,
     "presse": 6,
@@ -14553,7 +14553,7 @@
   "id": "general_materiel_5",
   "personnage": "general",
   "humeur": "neutre",
-  "texte": "{titre}, le parc roule enfin. Mes mécaniciens demandent un atelier et une école ; la moitié part au privé chaque année.",
+  "texte": "{titre}, les mécaniciens maintiennent le parc en service avec des pièces récupérées. Ils demandent un atelier couvert.",
   "gauche": {
    "libelle": "L'atelier",
    "effets": {
@@ -14581,16 +14581,16 @@
   "id": "redactrice_photographe_4",
   "personnage": "redactrice",
   "humeur": "neutre",
-  "texte": "{titre}, mon photographe est sorti et veut couvrir la prochaine manifestation. La police me dit qu'elle ne garantit rien.",
+  "texte": "{titre}, ma rédaction demande l'accès aux bâtiments publics pour ses photographes. Vous ouvrez les portes, ou vous exigez un visa ?",
   "gauche": {
-   "libelle": "Qu'il y aille",
+   "libelle": "Accès ouvert",
    "effets": {
     "presse": 7,
     "armee": -6,
     "peuple": 3
    },
    "style": -5,
-   "journal": "Le photographe était au premier rang samedi, gilet sur le dos. Aucune interpellation n'a été signalée ce jour-là."
+   "journal": "Les photographes du journal sont entrés sans visa. Le premier reportage montre les couloirs du ministère."
   },
   "droite": {
    "libelle": "Pas d'accès",
@@ -14643,7 +14643,7 @@
   "id": "chef_puits_4",
   "personnage": "chef",
   "humeur": "neutre",
-  "texte": "{titre}, le forage marche, et quatre villages voisins demandent le leur. Ils ont envoyé leurs chefs, tous ensemble, ce matin.",
+  "texte": "{titre}, quatre villages voisins demandent chacun un puits. Leurs délégations attendent ensemble devant le palais.",
   "gauche": {
    "libelle": "Quatre forages",
    "effets": {
@@ -14702,7 +14702,7 @@
   "id": "general_rival_4",
   "personnage": "general",
   "humeur": "fache",
-  "texte": "{titre}, le colonel a des soutiens dans deux régions et un local de campagne. Mes officiers demandent ce qu'ils doivent en penser.",
+  "texte": "{titre}, les partisans du colonel ont ouvert un local en son nom. Mes officiers demandent s'ils peuvent soutenir sa campagne.",
   "gauche": {
    "libelle": "Qu'ils le suivent",
    "effets": {
@@ -14714,7 +14714,7 @@
    "journal": "Deux officiers ont été vus au local du colonel, en civil. L'état-major n'a publié aucune note sur le sujet."
   },
   "droite": {
-   "libelle": "Rien à en penser",
+   "libelle": "Devoir de réserve",
    "effets": {
     "armee": 6,
     "presse": -6,
@@ -14733,7 +14733,7 @@
   "id": "general_rival_5",
   "personnage": "general",
   "humeur": "neutre",
-  "texte": "{titre}, le colonel demande à prendre ma place à l'état-major, ou à quitter l'armée. Les deux portes sont ouvertes, choisissez.",
+  "texte": "{titre}, les soutiens du colonel réclament sa nomination à la tête de l'armée. Sinon, ils veulent son retour à la vie civile.",
   "gauche": {
    "libelle": "Il prend la place",
    "effets": {
@@ -14742,7 +14742,7 @@
     "presse": 4
    },
    "style": -4,
-   "journal": "Le colonel a pris ses fonctions à l'état-major mardi. Son prédécesseur a quitté le bureau avec deux cartons."
+   "journal": "Le décret lève les mesures contre le colonel et le nomme chef d'état-major. Ses soutiens occupent le premier rang."
   },
   "droite": {
    "libelle": "Qu'il s'en aille",
@@ -14752,7 +14752,7 @@
     "presse": -3
    },
    "style": 5,
-   "journal": "Le colonel a rendu son uniforme vendredi. Une centaine de personnes l'attendaient devant la porte de la caserne."
+   "journal": "Le colonel a été rendu à la vie civile par décret. Ses partisans l'ont attendu devant sa maison."
   },
   "chaine": {
    "id": "rival_colonel",
@@ -14917,7 +14917,7 @@
   "humeur": "fache",
   "texte": "{titre}, je ne vous appelle plus avant de publier. Demain, ma une porte votre nom et un chiffre que vous connaissez.",
   "gauche": {
-   "libelle": "Je veux le voir",
+   "libelle": "Retirez ce chiffre",
    "effets": {
     "presse": -8,
     "armee": 4,
@@ -15008,7 +15008,7 @@
   "id": "fidele_doyen",
   "personnage": "doyen",
   "humeur": "content",
-  "texte": "{titre}, la Cour vous a suivi plus souvent qu'elle n'aurait dû. Je pars dans deux mois, et je peux choisir qui me remplace.",
+  "texte": "{titre}, la Cour a trop souvent suivi vos décisions. Je pars dans deux mois, et je peux choisir qui me remplace.",
   "gauche": {
    "libelle": "Choisissez",
    "effets": {
@@ -15475,7 +15475,7 @@
   "humeur": "neutre",
   "texte": "{titre}, six de vos directeurs déjeunent avec l'ancien Premier ministre. Je peux vous dire lesquels, ou les laisser tranquilles.",
   "gauche": {
-   "libelle": "Dites-moi lesquels",
+   "libelle": "Écartez-les",
    "effets": {
     "armee": 4,
     "presse": -5,
@@ -15671,7 +15671,7 @@
   "id": "face_radio_2",
   "personnage": "marchande",
   "humeur": "neutre",
-  "texte": "{titre}, au marché, tout le monde écoute la radio du matin. Il a lu hier le prix du sac de riz sur quatre ans, de mémoire.",
+  "texte": "{titre}, au marché, tous écoutent la radio du matin. Son animateur a cité de mémoire quatre ans de prix du riz.",
   "gauche": {
    "libelle": "J'irai à l'antenne",
    "effets": {
@@ -15970,7 +15970,7 @@
   "id": "face_cabinet_3",
   "personnage": "redactrice",
   "humeur": "neutre",
-  "texte": "{titre}, elle raconte l'intérieur du palais dans un livre. Elle m'en a lu douze pages, et je n'y ai rien trouvé de faux.",
+  "texte": "{titre}, la directrice de cabinet raconte le palais dans un livre. Elle m'en a lu douze pages ; je n'y ai rien trouvé de faux.",
   "gauche": {
    "libelle": "Qu'on l'empêche",
    "effets": {
@@ -16003,7 +16003,7 @@
   "id": "face_cabinet_4",
   "personnage": "ministre",
   "humeur": "neutre",
-  "texte": "{titre}, elle a gardé le double des dossiers du palais. Elle propose de les rendre contre une garantie écrite de votre main.",
+  "texte": "{titre}, la directrice a le double des dossiers du palais. Elle propose de les rendre contre une garantie écrite de votre main.",
   "gauche": {
    "libelle": "Donnez-la-lui",
    "effets": {
@@ -16155,15 +16155,15 @@
   "id": "campagne_report_election",
   "personnage": "doyen",
   "humeur": "neutre",
-  "texte": "{titre}, l'opposition est faible, et vos partisans proposent de reporter l'élection d'un an, le temps d'achever les chantiers.",
+  "texte": "{titre}, vos partisans veulent déposer un texte pour reporter l'élection. La Cour prévient qu'elle maintiendra la date du scrutin.",
   "gauche": {
-   "libelle": "On reporte",
+   "libelle": "Déposez le texte",
    "effets": {
     "presse": -9,
     "peuple": -5,
     "caisses": 6
    },
-   "journal": "Le report d'un an a été voté en une séance de quarante minutes. Trois députés ont quitté la salle avant le vote.",
+   "journal": "Le report a été voté, puis annulé par la Cour. L'élection reste fixée à la date prévue.",
    "style": 10
   },
   "droite": {
@@ -16320,7 +16320,7 @@
   "id": "coeur_cabinet_2",
   "personnage": "cabinet",
   "humeur": "neutre",
-  "texte": "{titre}, on me propose la direction d'une banque, comme au ministre avant moi. Je n'ai pas répondu, et vous devez le savoir.",
+  "texte": "{titre}, on me propose la direction d'une banque. Je n'ai pas répondu, et vous devez le savoir.",
   "gauche": {
    "libelle": "Restez",
    "effets": {
@@ -16406,24 +16406,24 @@
   "id": "coeur_cabinet_4",
   "personnage": "cabinet",
   "humeur": "neutre",
-  "texte": "{nom}, je peux rester votre directrice de cabinet, ou devenir autre chose. Les deux, non : je connais trop vos comptes.",
+  "texte": "{nom}, notre liaison complique mon travail. Je garde tous les dossiers, ou je confie les marchés publics à mon adjointe ?",
   "gauche": {
-   "libelle": "Gardez le poste",
+   "libelle": "Gardez tout",
    "effets": {
     "caisses": 6,
     "peuple": -4,
     "presse": -3
    },
-   "journal": "Rien n'a changé à l'organigramme. Elle a fait installer une seconde chaise dans son bureau, contre la fenêtre."
+   "journal": "La directrice a conservé tous ses dossiers. Une seconde chaise a été installée dans son bureau."
   },
   "droite": {
-   "libelle": "Autre chose",
+   "libelle": "Partagez-les",
    "effets": {
     "peuple": 5,
     "caisses": -6,
     "presse": -3
    },
-   "journal": "Elle a quitté la direction du cabinet vendredi. Son successeur a mis trois jours à retrouver le dossier du port.",
+   "journal": "Les marchés publics ont été confiés à l'adjointe. La directrice garde ses autres fonctions au palais.",
    "romance": {
     "mouvement": 1
    }
@@ -16497,7 +16497,7 @@
     "caisses": -5,
     "presse": -4
    },
-   "journal": "Le mariage a eu lieu un samedi, sans invités officiels. La liste des présents n'a pas été communiquée.",
+   "journal": "La demande a été acceptée en privé. Le protocole attend une date pour préparer la cérémonie.",
    "drapeaux": [
     "noces_cabinet"
    ]
@@ -16509,7 +16509,7 @@
     "peuple": -5,
     "caisses": 4
    },
-   "journal": "Elle a déposé sa candidature le lundi. Son bureau au palais a été vidé pendant qu'elle signait le formulaire.",
+   "journal": "La directrice prépare sa candidature contre vous. Son affiche attend encore le nom de l'imprimeur.",
    "romance": {
     "rupture": true
    },
@@ -16667,9 +16667,9 @@
   "id": "coeur_emissaire_4",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{nom}, entendons-nous : ceci n'est pas une histoire. Si vous voulez que ça en devienne une, dites-le maintenant.",
+  "texte": "{nom}, déclarer notre liaison imposerait une seconde signature sur mes rapports. Je la déclare, ou nous gardons le secret ?",
   "gauche": {
-   "libelle": "Rien de plus",
+   "libelle": "Gardons le secret",
    "effets": {
     "caisses": 6,
     "peuple": -4,
@@ -16678,13 +16678,13 @@
    "journal": "Aucun des deux n'a rien annoncé. Le fonds a débloqué sa seconde tranche le jeudi suivant."
   },
   "droite": {
-   "libelle": "Alors je le dis",
+   "libelle": "Déclarez-la",
    "effets": {
     "peuple": 5,
     "caisses": -6,
     "presse": -3
    },
-   "journal": "Elle a demandé sa mutation dans la région. Le fonds a nommé quelqu'un d'autre sur votre dossier le lendemain.",
+   "journal": "La liaison a été déclarée au fonds. Un autre responsable doit désormais cosigner les rapports sur votre pays.",
    "romance": {
     "mouvement": 1
    }
@@ -16710,7 +16710,7 @@
   "id": "coeur_emissaire_5",
   "personnage": "emissaire",
   "humeur": "fache",
-  "texte": "{nom}, mon siège demande pourquoi vos conditions de prêt sont les plus douces de la région. Je dois répondre par écrit.",
+  "texte": "{nom}, le fonds relit mes anciens rapports à cause de nous. Je lui donne tout, ou je retiens les notes les plus sensibles ?",
   "gauche": {
    "libelle": "Dites la vérité",
    "effets": {
@@ -16718,7 +16718,7 @@
     "caisses": -7,
     "peuple": 3
    },
-   "journal": "Le rapport mentionne un conflit d'intérêts en page deux. Les conditions du prêt ont été relevées de deux points.",
+   "journal": "Le rapport mentionne un conflit d'intérêts en page deux. Le taux du prêt a augmenté de deux points.",
    "style": -5
   },
   "droite": {
@@ -16751,14 +16751,14 @@
   "id": "coeur_emissaire_9",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{nom}, je peux démissionner du fonds et rester. Vous savez ce que ça coûte : plus personne ne vous prêtera à ce taux.",
+  "texte": "{nom}, épousez-moi et je quitte le fonds pour rester ici. Votre prochain prêt se négociera sans moi, à un autre taux.",
   "gauche": {
-   "libelle": "Restez",
+   "libelle": "Je vous épouse",
    "effets": {
     "peuple": 6,
     "caisses": -9
    },
-   "journal": "Elle a démissionné du fonds par lettre. Le mariage a été célébré à la mairie du quartier de la Cuvette, sans photographe.",
+   "journal": "La demande a été acceptée. L'émissaire prépare sa démission du fonds pour le jour du mariage.",
    "drapeaux": [
     "noces_emissaire"
    ]
@@ -16989,7 +16989,7 @@
     "caisses": -6,
     "peuple": 4
    },
-   "journal": "Les chiffres du budget ont été publiés en entier, en annexe de son émission. Trois lignes y manquent encore.",
+   "journal": "Les chiffres du budget ont été publiés comme complets, en annexe de son émission. Trois lignes y manquent encore.",
    "style": -6
   },
   "droite": {
@@ -17033,13 +17033,13 @@
     "presse": -6,
     "armee": -4
    },
-   "journal": "Le mariage a été célébré sur la place du quartier de la Cuvette, devant quatre mille personnes et aucun ministre.",
+   "journal": "Les fiançailles ont été annoncées sur la place. Les commerçantes demandent la date de la cérémonie.",
    "drapeaux": [
     "noces_militante"
    ]
   },
   "droite": {
-   "libelle": "Ne pesons pas",
+   "libelle": "Je refuse",
    "effets": {
     "presse": 5,
     "peuple": -5,
@@ -17177,7 +17177,7 @@
    }
   },
   "droite": {
-   "libelle": "Je passe devant",
+   "libelle": "À découvert",
    "effets": {
     "armee": 4,
     "presse": 3,
@@ -17297,7 +17297,7 @@
     "presse": -4,
     "caisses": -4
    },
-   "journal": "Le mariage a été célébré dans le salon d'honneur, à onze personnes. Le plan de table tenait sur une feuille.",
+   "journal": "La demande a été acceptée dans le salon. Sur la fiche de cérémonie, la case de la date reste vide.",
    "drapeaux": [
     "noces_epouse"
    ]
@@ -17309,7 +17309,7 @@
     "peuple": -5,
     "presse": 3
    },
-   "journal": "Elle a quitté le palais le trente et un, à midi. Son successeur a demandé où se trouvaient les plans de table.",
+   "journal": "Le départ est annoncé pour après le prochain dîner officiel. L'adjointe prépare la passation.",
    "romance": {
     "rupture": true
    },
@@ -17573,7 +17573,7 @@
     "presse": -7,
     "armee": -4
    },
-   "journal": "Le mariage a été célébré au stade, un dimanche, devant les tribunes ouvertes. L'entrée était gratuite.",
+   "journal": "Les fiançailles ont été annoncées au stade. Les supporters demandent déjà comment assister au mariage.",
    "drapeaux": [
     "noces_international"
    ]
@@ -17677,7 +17677,7 @@
     "caisses": -5,
     "peuple": 3
    },
-   "journal": "Il a parlé de lassitude et demandé deux semaines. Le ministère a fonctionné sans ministre jusqu'au quinze."
+   "journal": "Le ministre a reconnu la liaison par lettre et demandé un congé. Son adjoint a présenté les comptes à sa place."
   },
   "conditions": {
    "attache_min": 1,
@@ -17700,7 +17700,7 @@
   "id": "coeur_ministre_3",
   "personnage": "ministre",
   "humeur": "neutre",
-  "texte": "{nom}, je peux vous trouver dix points de caisses en une nuit, et personne ne saura où. Vous n'avez qu'à ne pas demander.",
+  "texte": "{nom}, je peux trouver dix milliards pour le Trésor en une nuit. Personne ne saura d'où ils viennent, si vous ne demandez rien.",
   "gauche": {
    "libelle": "Je ne demande pas",
    "effets": {
@@ -17708,7 +17708,7 @@
     "presse": -6,
     "peuple": -4
    },
-   "journal": "Dix points sont apparus au Trésor sans ligne d'origine. Le tableau de bord de janvier saute une colonne.",
+   "journal": "Dix milliards sont arrivés au Trésor sans ligne d'origine. Le tableau des recettes saute une colonne.",
    "romance": {
     "mouvement": 1
    },
@@ -17837,7 +17837,7 @@
     "caisses": -7,
     "presse": -3
    },
-   "journal": "Le ministre a remis sa démission le jour du mariage. Son successeur a trouvé deux lignes de dette non inscrites.",
+   "journal": "Le ministre quittera son poste au mariage. Sa lettre de démission attend la date de la cérémonie.",
    "drapeaux": [
     "noces_ministre"
    ]
@@ -17921,7 +17921,7 @@
   "id": "coeur_renseignements_2",
   "personnage": "renseignements",
   "humeur": "neutre",
-  "texte": "{titre}, mes hommes me suivent partout, c'est le métier. Depuis deux semaines je leur donne de fausses adresses.",
+  "texte": "{titre}, mes hommes me suivent partout, c'est le métier. Depuis notre rapprochement, je leur donne de fausses adresses.",
   "gauche": {
    "libelle": "Continuez",
    "effets": {
@@ -18052,9 +18052,9 @@
   "id": "coeur_renseignements_5",
   "personnage": "renseignements",
   "humeur": "neutre",
-  "texte": "{nom}, un de mes agents a photographié votre chambre depuis le toit d'en face. Il me l'a apportée au lieu de la classer.",
+  "texte": "{nom}, un agent a pris une photo de votre chambre depuis le toit d'en face. Il me l'a apportée au lieu de la classer.",
   "gauche": {
-   "libelle": "Remerciez-le",
+   "libelle": "Promouvez-le",
    "effets": {
     "armee": 5,
     "presse": -5,
@@ -18101,7 +18101,7 @@
     "presse": -5,
     "caisses": -4
    },
-   "journal": "Le mariage a été célébré sans annonce. Un incinérateur du service a tourné toute la nuit du vendredi.",
+   "journal": "La demande a été acceptée. Le chef a brûlé une feuille dans le cendrier sans la montrer.",
    "drapeaux": [
     "noces_renseignements"
    ]
@@ -18150,7 +18150,7 @@
     "presse": -4,
     "caisses": -3
    },
-   "journal": "Vous avez dansé sur la place du quartier de la Cuvette vers minuit. Le maire tenait le micro, et ne vous a pas annoncé.",
+   "journal": "Vous avez dansé sur la place de la Cuvette vers minuit. Le maire tenait le micro, sans annoncer votre présence.",
    "romance": {
     "mouvement": 1
    }
@@ -18363,7 +18363,7 @@
     "presse": -6,
     "caisses": -3
    },
-   "journal": "Le mariage a été célébré à la mairie centrale, par le premier adjoint. La salle des fêtes était ouverte à tous.",
+   "journal": "Les fiançailles ont été annoncées sur le perron de la mairie. Le premier adjoint attend le lieu de la cérémonie.",
    "drapeaux": [
     "noces_maire"
    ]
@@ -18375,7 +18375,7 @@
     "peuple": -5,
     "armee": 3
    },
-   "journal": "Le maire a annoncé sa candidature depuis le perron de sa mairie. Il n'a pas prononcé votre nom une seule fois.",
+   "journal": "Le maire prépare sa candidature contre vous. Au conseil, personne n'a demandé de suspension de séance.",
    "romance": {
     "rupture": true
    },
@@ -18404,7 +18404,7 @@
   "id": "coeur_intendant_1",
   "personnage": "epoux",
   "humeur": "neutre",
-  "texte": "{titre}, je ferme ce palais tous les soirs depuis onze ans. Vous êtes le quatrième président, et le premier à me parler.",
+  "texte": "{titre}, je ferme ce palais depuis onze ans. Quatre personnes ont dirigé le pays depuis mon arrivée, mais vous seule me parlez.",
   "gauche": {
    "libelle": "Bonsoir, alors",
    "effets": {
@@ -18467,7 +18467,7 @@
     "presse": 3,
     "peuple": -4
    },
-   "journal": "La lampe est restée allumée jusqu'à l'aube. L'intendant l'a notée au cahier, comme les vingt nuits précédentes."
+   "journal": "La lampe est restée allumée jusqu'à l'aube. L'intendant l'a notée au cahier, comme les nuits précédentes."
   },
   "conditions": {
    "attache_min": 1,
@@ -18533,9 +18533,9 @@
   "id": "coeur_intendant_4",
   "personnage": "epoux",
   "humeur": "neutre",
-  "texte": "{nom}, un intendant qui dort chez le président n'est plus un intendant. Gardez-moi les clés, ou gardez-moi.",
+  "texte": "{nom}, dormir chez la présidente complique mes rondes. Je garde ma chambre de service, ou je m'installe près de vous ?",
   "gauche": {
-   "libelle": "Les clés",
+   "libelle": "Votre chambre",
    "effets": {
     "caisses": 5,
     "peuple": -4,
@@ -18544,13 +18544,13 @@
    "journal": "L'intendant a gardé le trousseau et son bureau du rez-de-chaussée. Il a demandé un second adjoint de nuit."
   },
   "droite": {
-   "libelle": "Vous",
+   "libelle": "Près de moi",
    "effets": {
     "peuple": 5,
     "caisses": -5,
     "presse": -3
    },
-   "journal": "Le trousseau du palais a changé de main un jeudi. L'ancien intendant a déménagé deux étages plus haut.",
+   "journal": "L'intendant a déménagé deux étages plus haut. Son adjoint assure désormais la première ronde de nuit.",
    "romance": {
     "mouvement": 1
    }
@@ -18576,7 +18576,7 @@
   "id": "coeur_intendant_5",
   "personnage": "epoux",
   "humeur": "fache",
-  "texte": "{nom}, la garde me demande pourquoi je ferme plus tard depuis un mois. Je peux dire la vérité, ou avancer l'heure.",
+  "texte": "{nom}, la garde me demande pourquoi je ferme plus tard depuis notre rapprochement. Je peux dire la vérité, ou avancer l'heure.",
   "gauche": {
    "libelle": "La vérité",
    "effets": {
@@ -18625,7 +18625,7 @@
     "caisses": -4,
     "presse": -4
    },
-   "journal": "Le mariage a été célébré un mardi, à huit personnes. L'intendant a rendu son trousseau au chef de la garde.",
+   "journal": "La demande a été acceptée devant deux témoins. L'intendant cherche qui assurera sa ronde le jour du mariage.",
    "drapeaux": [
     "noces_epoux"
    ]
@@ -19139,7 +19139,7 @@
   "id": "coeur_redactrice_2",
   "personnage": "redactrice",
   "humeur": "neutre",
-  "texte": "{titre}, je n'ai pas écrit une ligne sur vous depuis douze jours. Mon adjoint me l'a fait remarquer devant toute la salle.",
+  "texte": "{titre}, je n'ai pas écrit une ligne sur vous depuis notre dernière rencontre. Mon adjoint me l'a fait remarquer devant toute la salle.",
   "gauche": {
    "libelle": "Écrivez-en une",
    "effets": {
@@ -19182,7 +19182,7 @@
   "id": "coeur_redactrice_3",
   "personnage": "redactrice",
   "humeur": "neutre",
-  "texte": "{nom}, votre chauffeur m'attend en bas depuis une heure, et il le dira à quelqu'un. Je monte, ou je rentre à pied.",
+  "texte": "{nom}, votre chauffeur attend en bas et il parlera. Je monte vous rejoindre dans vos appartements, ou je rentre à pied.",
   "gauche": {
    "libelle": "Montez",
    "effets": {
@@ -19236,7 +19236,7 @@
    "journal": "Aucune photographie, aucune rumeur nouvelle. Le journal a publié son enquête sur les douanes, en deux pages."
   },
   "droite": {
-   "libelle": "Arrêtons",
+   "libelle": "Au grand jour",
    "effets": {
     "peuple": 6,
     "presse": -7,
@@ -19395,7 +19395,7 @@
     "caisses": -4,
     "presse": -3
    },
-   "journal": "Le Président a parlé d'elle au singulier, en public, sans la nommer. Tout le monde a compris."
+   "journal": "Le Président a reconnu leur relation en public, sans annoncer de mariage. La rédactrice a suivi le discours depuis son bureau."
   },
   "droite": {
    "libelle": "Je ne sais pas",
@@ -19743,7 +19743,7 @@
   "id": "coeur_emissaire_7",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{nom}, ma fille vit à trois mille kilomètres et demande où je passe mes soirées. Je lui mens mal depuis deux mois.",
+  "texte": "{nom}, ma fille vit à trois mille kilomètres et demande où je passe mes soirées. Je lui mens mal depuis notre rencontre.",
   "gauche": {
    "libelle": "Dites-lui",
    "effets": {
@@ -19782,7 +19782,7 @@
   "id": "coeur_emissaire_8",
   "personnage": "emissaire",
   "humeur": "neutre",
-  "texte": "{nom}, je peux vous obtenir un dernier taux avant de partir, ou vous obtenir moi. Pas les deux, et pas indéfiniment.",
+  "texte": "{nom}, je peux négocier un dernier taux avant de partir, ou rester auprès de vous. Pas les deux, et pas indéfiniment.",
   "gauche": {
    "libelle": "Vous",
    "effets": {
@@ -19921,7 +19921,7 @@
   "humeur": "neutre",
   "texte": "{nom}, mon père a fait quinze ans d'usine pour que je ne finisse pas au palais. Il ne répond plus à mes appels.",
   "gauche": {
-   "libelle": "Allez le voir",
+   "libelle": "J'irai le voir",
    "effets": {
     "peuple": 5,
     "caisses": -4,
@@ -20179,7 +20179,7 @@
   "id": "coeur_protocole_10",
   "personnage": "epouse",
   "humeur": "content",
-  "texte": "{nom}, je sais dresser une cour d'honneur pour deux cents personnes. Je sais aussi n'inviter personne. Dites-moi laquelle.",
+  "texte": "{nom}, je sais dresser une cour d'honneur pour deux cents personnes. Je sais aussi n'inviter personne. Choisissez.",
   "gauche": {
    "libelle": "À la mairie",
    "effets": {
@@ -20274,9 +20274,9 @@
   "id": "coeur_international_7",
   "personnage": "international",
   "humeur": "neutre",
-  "texte": "{nom}, mes frères vivent de mon nom depuis que j'ai arrêté. Ils demandent si le vôtre vaut mieux, maintenant.",
+  "texte": "{nom}, mes frères vivent de mon nom depuis que j'ai arrêté. Ils réclament deux contrats d'entretien au palais, maintenant.",
   "gauche": {
-   "libelle": "Qu'ils attendent",
+   "libelle": "Aucun contrat",
    "effets": {
     "presse": 5,
     "peuple": -4,
@@ -20285,7 +20285,7 @@
    "journal": "Aucun marché n'a été attribué à la famille. Le plus jeune des frères en a parlé à un journal."
   },
   "droite": {
-   "libelle": "Donnez-leur",
+   "libelle": "Ils les auront",
    "effets": {
     "peuple": 5,
     "caisses": -5,
@@ -20352,7 +20352,7 @@
   "id": "coeur_international_10",
   "personnage": "international",
   "humeur": "content",
-  "texte": "{nom}, si c'est au palais le pays entier regardera. Si c'est à la mairie, il l'apprendra le lendemain. Choisissez.",
+  "texte": "{nom}, au palais, le pays entier regardera. À la mairie, on peut tenter une cérémonie discrète. Choisissez.",
   "gauche": {
    "libelle": "À la mairie",
    "effets": {
@@ -20360,7 +20360,7 @@
     "presse": 4,
     "peuple": -5
    },
-   "journal": "Dix minutes à la salle des mariages, quatre témoins. Une centaine de personnes l'attendaient dehors, en maillot, sans que rien n'ait filtré.",
+   "journal": "Dix minutes à la salle des mariages, quatre témoins. Une photo du cortège a attiré cent personnes en maillot devant la porte.",
    "drapeaux": [
     "noces_discretes"
    ],
@@ -20419,7 +20419,7 @@
    "journal": "Les trois arbitrages ont été rendus en une nuit, sans réunion. Le carnet existe toujours."
   },
   "droite": {
-   "libelle": "Rendez les soirs",
+   "libelle": "Travaillez le soir",
    "effets": {
     "presse": 5,
     "peuple": 4,
@@ -20754,7 +20754,7 @@
   "id": "coeur_maire_6",
   "personnage": "maire",
   "humeur": "fache",
-  "texte": "{nom}, mon conseil municipal m'a voté une motion de défiance. Douze voix contre onze, et c'est à cause de vous.",
+  "texte": "{nom}, la motion de défiance arrive au conseil : douze voix contre moi, onze pour. Je force le vote, ou je négocie ?",
   "gauche": {
    "libelle": "Tenez bon",
    "effets": {
@@ -20762,16 +20762,16 @@
     "caisses": -4,
     "presse": -4
    },
-   "journal": "Le maire a survécu à la motion d'une voix. Deux adjoints ont démissionné le soir même."
+   "journal": "Un conseiller a changé de camp : douze voix pour le maire, onze contre. Deux adjoints ont démissionné le soir même."
   },
   "droite": {
-   "libelle": "Lâchez la ville",
+   "libelle": "Négociez",
    "effets": {
     "presse": 5,
     "caisses": 4,
     "peuple": -6
    },
-   "journal": "Le maire a remis son écharpe à son premier adjoint. La capitale a changé de main en une heure."
+   "journal": "Le maire a cédé deux délégations à ses opposants. La motion a été retirée avant le vote."
   },
   "conditions": {
    "parcours": [
@@ -20938,7 +20938,7 @@
    "journal": "L'intendant a réuni son service un matin avant l'aube. Personne n'a démissionné."
   },
   "droite": {
-   "libelle": "Qu'elles voient",
+   "libelle": "Ne faites rien",
    "effets": {
     "caisses": 4,
     "presse": 3,
@@ -20968,7 +20968,7 @@
   "humeur": "neutre",
   "texte": "{nom}, mon frère est venu demander du travail en disant qu'il était de la famille du palais. Je l'ai renvoyé moi-même.",
   "gauche": {
-   "libelle": "Reprenez-le",
+   "libelle": "Embauchez-le",
    "effets": {
     "peuple": 5,
     "caisses": -5,
@@ -20983,7 +20983,7 @@
     "caisses": 4,
     "peuple": -5
    },
-   "journal": "Le frère de l'intendant n'a pas été repris. Il attend encore devant la grille certains matins."
+   "journal": "Le frère de l'intendant n'a pas été embauché. Il attend encore devant la grille certains matins."
   },
   "conditions": {
    "parcours": [
@@ -21022,7 +21022,7 @@
     "armee": 3,
     "peuple": -5
    },
-   "journal": "L'intendant a rendu toutes ses clés au chef de la sécurité, comme le règlement l'exige."
+   "journal": "L'intendant a conservé son trousseau et repris sa ronde. La porte de l'aile est est restée fermée."
   },
   "conditions": {
    "parcours": [
@@ -21100,7 +21100,7 @@
   "id": "coeur_redactrice_11",
   "personnage": "redactrice",
   "humeur": "fache",
-  "texte": "{nom}, mon premier éditorial depuis trois mois paraît demain, et il parle de vous. Je peux vous le lire ce soir, ou pas.",
+  "texte": "{nom}, mon premier éditorial depuis notre rupture paraît demain, et il parle de vous. Je peux vous le lire ce soir, ou pas.",
   "gauche": {
    "libelle": "Lisez-le-moi",
    "effets": {
@@ -21431,7 +21431,7 @@
   "id": "coeur_maire_11",
   "personnage": "maire",
   "humeur": "neutre",
-  "texte": "{nom}, je me présente. Ce n'est pas contre vous, c'est ce qui me reste. La ville votera pour moi, et vous le savez.",
+  "texte": "{nom}, mon dossier de candidature est prêt. Demain, je l'annonce sur le perron de la mairie. Vous me laisserez faire ?",
   "gauche": {
    "libelle": "Je vous laisse",
    "effets": {
@@ -21603,7 +21603,7 @@
   "id": "objet_pupitre_allocution",
   "personnage": "cabinet",
   "humeur": "neutre",
-  "texte": "{titre}, le pupitre est prêt et les micros branchés. Dix minutes ce soir, en direct, sans qu'aucune rédaction ne vous coupe.",
+  "texte": "{titre}, le pupitre est prêt pour parler du budget. Dix minutes en direct ce soir, sans qu'aucune rédaction ne vous coupe.",
   "gauche": {
    "libelle": "Je parle ce soir",
    "effets": {
@@ -21723,7 +21723,7 @@
   "id": "objet_quatre_quatre_piste",
   "personnage": "chef",
   "humeur": "neutre",
-  "texte": "{titre}, avec la 4×4 vous pouvez monter au nord par la piste. Le village vous attend depuis deux ans, et la route est mauvaise.",
+  "texte": "{titre}, avec le 4×4 vous pouvez monter au nord par la piste. Le village vous attend depuis deux ans, et la route est mauvaise.",
   "gauche": {
    "libelle": "J'y vais",
    "effets": {
@@ -21731,7 +21731,7 @@
     "caisses": -5,
     "armee": -3
    },
-   "journal": "Le convoi a mis onze heures. Les images du président dans la boue ont fait le tour des radios avant son retour."
+   "journal": "Le convoi a mis onze heures. Les images de votre visite dans la boue ont fait le tour des journaux avant votre retour."
   },
   "droite": {
    "libelle": "Qu'ils descendent",
@@ -21770,7 +21770,7 @@
     "peuple": -7,
     "presse": -3
    },
-   "journal": "Un taxi a été verbalisé pour entrave au cortège. Sa photo, klaxon au poing, a circulé toute la journée."
+   "journal": "Un chauffeur de taxi a été verbalisé pour entrave au cortège. Sa photo, la main sur le klaxon, a circulé toute la journée."
   },
   "poids": 5,
   "conditions": {
@@ -21815,9 +21815,9 @@
   "id": "objet_fauteuil_cuir_facture",
   "personnage": "doyen",
   "humeur": "neutre",
-  "texte": "{titre}, votre fauteuil de cuir vient de la maison qui meublait votre prédécesseur. On a retrouvé sa facture aux archives.",
+  "texte": "{titre}, le fournisseur du fauteuil réclame son dû. Le palais l'avait reçu en cadeau : je règle la facture, ou je garde ce cadeau ?",
   "gauche": {
-   "libelle": "Je le garde",
+   "libelle": "Gardons le cadeau",
    "effets": {
     "armee": 4,
     "presse": -4,
@@ -21827,7 +21827,7 @@
    "journal": "La facture est restée au dossier, sans suite. Deux archivistes ont demandé leur mutation dans la même semaine."
   },
   "droite": {
-   "libelle": "Je le paie",
+   "libelle": "Réglez la facture",
    "effets": {
     "caisses": -4,
     "presse": 5,
@@ -21975,7 +21975,7 @@
   "id": "objet_plongeoir_federation",
   "personnage": "sante",
   "humeur": "neutre",
-  "texte": "{titre}, le plongeoir du palais est le seul du pays aux normes. La fédération demande d'y faire nager ses jeunes deux fois par semaine.",
+  "texte": "{titre}, le plongeoir du palais est le seul du pays aux normes. La fédération veut y entraîner ses plongeurs deux fois par semaine.",
   "gauche": {
    "libelle": "Qu'ils viennent",
    "effets": {
@@ -21984,7 +21984,7 @@
     "armee": -3
    },
    "style": -4,
-   "journal": "Douze nageurs s'entraînent au palais le mardi et le jeudi. L'un d'eux a battu le record du pays sur cinquante mètres."
+   "journal": "Douze plongeurs s'entraînent au palais le mardi et le jeudi. Le plus jeune a réussi son premier double saut devant la garde."
   },
   "droite": {
    "libelle": "C'est chez moi",
@@ -21994,7 +21994,7 @@
     "presse": -3
    },
    "style": 5,
-   "journal": "La fédération s'entraîne de nouveau au bassin du port, qui n'a pas de plots. Sa demande a été classée sans réponse."
+   "journal": "Les plongeurs sont retournés au bassin du port, dont le tremplin est fendu. Leur demande a été classée sans réponse."
   },
   "poids": 5,
   "conditions": {
