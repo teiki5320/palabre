@@ -5434,6 +5434,9 @@
     "caisses": -3
    },
    "style": -6,
+   "drapeaux": [
+    "ministre_relache"
+   ],
    "journal": "Le ministre parle de nouveau en conseil, et longuement. Deux marchés promis au palais sont repartis ailleurs."
   },
   "conditions": {
@@ -5510,6 +5513,41 @@
    "drapeaux_requis": [
     "dossier_ouvert",
     "ministre_tenu"
+   ]
+  },
+  "chaine": {
+   "id": "dossier_ministre",
+   "rang": 3,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "renseignements_dossier_ministre_3_libre",
+  "personnage": "renseignements",
+  "humeur": "fache",
+  "texte": "{titre}, le ministre qu'on a laissé tranquille s'est trouvé un protecteur à l'état-major. Il ne répond plus à mes convocations.",
+  "gauche": {
+   "libelle": "Je le démets",
+   "effets": {
+    "peuple": 5,
+    "armee": -7,
+    "presse": 4
+   },
+   "journal": "Le décret de révocation est paru au journal officiel. Trois généraux ont assisté à son pot de départ, en uniforme."
+  },
+  "droite": {
+   "libelle": "Qu'il gouverne",
+   "effets": {
+    "armee": 6,
+    "presse": -5,
+    "peuple": -4
+   },
+   "journal": "Le ministre a gardé son portefeuille et obtenu deux directions de plus. Son bureau reçoit désormais avant le vôtre."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "ministre_relache"
    ]
   },
   "chaine": {
@@ -5813,6 +5851,9 @@
     "armee": -5
    },
    "style": -4,
+   "drapeaux": [
+    "photographe_libre"
+   ],
    "journal": "Le procureur a classé le dossier sans audience. Il a demandé que son nom ne figure pas dans le communiqué."
   },
   "droite": {
@@ -5851,6 +5892,9 @@
     "armee": -6,
     "peuple": 3
    },
+   "drapeaux": [
+    "photographe_libre"
+   ],
    "journal": "Les pellicules ont été rendues au journal, développées, et publiées le surlendemain sans légende."
   },
   "droite": {
@@ -5905,6 +5949,41 @@
   "conditions": {
    "drapeaux_requis": [
     "photographe_proces"
+   ]
+  },
+  "chaine": {
+   "id": "photographe",
+   "rang": 3,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "redactrice_photographe_3_libre",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, mon photographe expose ses clichés du commissariat dans une galerie du centre. La police demande l'annulation.",
+  "gauche": {
+   "libelle": "Qu'on l'annule",
+   "effets": {
+    "presse": -7,
+    "armee": 6,
+    "peuple": -3
+   },
+   "journal": "La galerie a fermé la veille du vernissage, pour « non-conformité électrique ». Les tirages ont circulé en photocopie."
+  },
+  "droite": {
+   "libelle": "Qu'il expose",
+   "effets": {
+    "presse": 6,
+    "armee": -6,
+    "peuple": 3
+   },
+   "journal": "L'exposition a ouvert sous escorte. Deux mille personnes sont passées en trois jours, dont le maire, sans prévenir."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "photographe_libre"
    ]
   },
   "chaine": {
@@ -6016,6 +6095,9 @@
     "presse": -5,
     "caisses": 4
    },
+   "drapeaux": [
+    "marche_etouffe"
+   ],
    "journal": "Le communiqué met l'effondrement sur le compte des pluies. Trois parents ont porté plainte le lendemain."
   },
   "poids": 6,
@@ -6058,6 +6140,41 @@
   "conditions": {
    "drapeaux_requis": [
     "marche_publie"
+   ]
+  },
+  "chaine": {
+   "id": "marche",
+   "rang": 3,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "redactrice_marche_3_etouffe",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, les papiers du marché sont dans mon coffre et pas dans le journal. Un confrère de la radio les réclame, et il sait.",
+  "gauche": {
+   "libelle": "Qu'il les ait",
+   "effets": {
+    "presse": 7,
+    "caisses": -5,
+    "peuple": 3
+   },
+   "journal": "La radio a lu les pièces à l'antenne du matin. Le chantier des écoles s'est arrêté avant midi."
+  },
+  "droite": {
+   "libelle": "Ils restent là",
+   "effets": {
+    "presse": -6,
+    "caisses": 4,
+    "peuple": -4
+   },
+   "journal": "Les papiers sont restés au coffre. Le confrère de la radio a été muté au service des sports la semaine suivante."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "marche_etouffe"
    ]
   },
   "chaine": {
@@ -12903,6 +13020,9 @@
     "peuple": 4,
     "presse": 3
    },
+   "drapeaux": [
+    "echeance_payee"
+   ],
    "journal": "Le virement est parti jeudi soir. Le Trésor a décalé les bourses d'étudiants de deux semaines pour tenir la date."
   },
   "conditions": {
@@ -12942,6 +13062,41 @@
   "conditions": {
    "drapeaux_requis": [
     "embauches_gelees"
+   ]
+  },
+  "chaine": {
+   "id": "pret_fonds",
+   "rang": 4,
+   "delai_min": 8
+  }
+ },
+ {
+  "id": "emissaire_pret_apres_echeance",
+  "personnage": "emissaire",
+  "humeur": "neutre",
+  "texte": "{titre}, l'échéance est payée, mais la caisse est vide pour le trimestre. Le programme rééchelonne, contre un audit complet.",
+  "gauche": {
+   "libelle": "On rééchelonne",
+   "effets": {
+    "caisses": 7,
+    "presse": -4,
+    "peuple": -3
+   },
+   "journal": "Le calendrier a été refait sur sept ans. Les vérificateurs ont demandé les comptes de quatre ministères, dont deux n'en tiennent pas."
+  },
+  "droite": {
+   "libelle": "On paie seuls",
+   "effets": {
+    "caisses": -9,
+    "presse": 5,
+    "peuple": 3
+   },
+   "journal": "Le trimestre a été payé sur les réserves. Le mot « souveraineté » a été prononcé onze fois dans le discours du soir."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "echeance_payee"
    ]
   },
   "chaine": {
