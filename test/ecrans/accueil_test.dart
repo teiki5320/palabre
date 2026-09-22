@@ -58,6 +58,18 @@ Future<void> glisseVersLeParcoursVerrouille(WidgetTester tester) async {
 void main() {
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
+  testWidgets('le menu propose de revoir l explication', (tester) async {
+    // Elle ne se montre qu au tout premier lancement : sans cette entree,
+    // un joueur qui l a passee ne pouvait plus jamais la relire.
+    await montre(tester);
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+    expect(find.text("Revoir l'explication"), findsOneWidget);
+    await tester.tap(find.text("Revoir l'explication"));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('élu'), findsOneWidget);
+  });
+
   testWidgets('les parcours ouverts et verrouilles sont distingues', (tester) async {
     await montre(tester);
 

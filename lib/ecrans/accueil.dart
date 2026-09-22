@@ -8,6 +8,7 @@ import '../moteur/jauges.dart';
 import '../moteur/modeles.dart';
 import '../sauvegarde/sauvegarde.dart';
 import 'collection_ecran.dart';
+import 'intro_ecran.dart';
 import 'partie_ecran.dart';
 import 'session.dart';
 import 'sons.dart';
@@ -114,6 +115,16 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
                 subtitle: Text('Choisir un autre parcours', style: Textes.sousTitre),
                 onTap: () => Navigator.of(context).pop('nouvelle'),
               ),
+            // L'explication ne se montre qu'au tout premier lancement : sans
+            // cette entrée, un joueur qui l'a passée trop vite ne pouvait
+            // plus jamais la revoir.
+            ListTile(
+              leading: const Icon(Icons.help_outline, color: Couleurs.or),
+              title: const Text('Revoir l\'explication'),
+              subtitle: Text('Le geste, les quatre forces, les cent jours',
+                  style: Textes.sousTitre),
+              onTap: () => Navigator.of(context).pop('explication'),
+            ),
             // Le son se règle sans quitter le menu : un joueur qui le coupe
             // veut le silence tout de suite, pas après un aller-retour.
             StatefulBuilder(
@@ -152,6 +163,12 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
     if (choix == 'collection') {
       await Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CollectionEcran()));
       await _relisSauvegarde();
+      return;
+    }
+    if (choix == 'explication') {
+      await Navigator.of(context).push(MaterialPageRoute(
+        builder: (contexte) => IntroEcran(onFini: () => Navigator.of(contexte).pop()),
+      ));
       return;
     }
     await _demandeNouvellePartie();
