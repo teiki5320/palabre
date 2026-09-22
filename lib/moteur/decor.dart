@@ -157,17 +157,23 @@ Decor decorDuBalcon(EtatPartie etat) {
   );
 }
 
+/// Le chemin d'une plaque de pièce, de jour ou de nuit. Les deux versions
+/// ont été faites depuis la même image, donc elles partagent le cadrage :
+/// les portes tombent au même endroit, et il n'y a qu'un jeu de zones.
+String _plaque(String nom, bool nuit) => nuit ? 'pieces/nuit/$nom' : 'pieces/$nom';
+
 Decor decorDuBureau(EtatPartie etat) {
+  final nuit = estNuit(etat);
   if (etat.jauges.presse <= 30) {
-    return const Decor(dossier: 'pieces/bureau_enseveli', etat: 'enseveli', nom: 'Enseveli');
+    return Decor(dossier: _plaque('bureau_enseveli', nuit), etat: 'enseveli', nom: 'Enseveli');
   }
   if (etat.style >= 70) {
-    return const Decor(dossier: 'pieces/bureau_chef', etat: 'chef', nom: 'Le palais du chef');
+    return Decor(dossier: _plaque('bureau_chef', nuit), etat: 'chef', nom: 'Le palais du chef');
   }
   if (etat.style <= 30) {
-    return const Decor(dossier: 'pieces/bureau_ouvert', etat: 'ouvert', nom: 'La porte ouverte');
+    return Decor(dossier: _plaque('bureau_ouvert', nuit), etat: 'ouvert', nom: 'La porte ouverte');
   }
-  return const Decor(dossier: 'pieces/bureau_base', etat: 'base', nom: 'Le bureau de travail');
+  return Decor(dossier: _plaque('bureau_base', nuit), etat: 'base', nom: 'Le bureau de travail');
 }
 
 /// Ceux dont la chambre existe en images. C'est la liste des dix qu'on peut
@@ -290,18 +296,19 @@ const _vehicules = {'velo', 'quatre_quatre', 'motos', 'limousine'};
 /// faites en cascade — la deuxième depuis la première, la troisième depuis
 /// la deuxième — pour que ce soit la même cour du début à la fin et que
 /// les véhicules s'ajoutent au lieu de se remplacer.
-Decor decorDuGarage(Set<String> objets) {
+Decor decorDuGarage(EtatPartie etat, Set<String> objets) {
+  final nuit = estNuit(etat);
   final combien = objets.where(_vehicules.contains).length;
   if (combien >= 3) {
-    return const Decor(dossier: 'pieces/garage_parc', etat: 'parc', nom: 'Le parc');
+    return Decor(dossier: _plaque('garage_parc', nuit), etat: 'parc', nom: 'Le parc');
   }
   if (combien == 2) {
-    return const Decor(dossier: 'pieces/garage_trois', etat: 'trois', nom: 'Le 4×4 noir');
+    return Decor(dossier: _plaque('garage_trois', nuit), etat: 'trois', nom: 'Le 4×4 noir');
   }
   if (combien == 1) {
-    return const Decor(dossier: 'pieces/garage_deux', etat: 'deux', nom: 'La sportive');
+    return Decor(dossier: _plaque('garage_deux', nuit), etat: 'deux', nom: 'La sportive');
   }
-  return const Decor(dossier: 'pieces/garage_base', etat: 'base', nom: 'La voiture de fonction');
+  return Decor(dossier: _plaque('garage_base', nuit), etat: 'base', nom: 'La voiture de fonction');
 }
 
 /// Ce que la pompe repousse. Le catalogue promet « l'eau redevient claire,
@@ -310,8 +317,9 @@ Decor decorDuGarage(Set<String> objets) {
 const int _reculDeLaPompe = 8;
 
 Decor decorDeLaPiscine(EtatPartie etat, Set<String> objets) {
-  if (objets.contains('dimanche') && etat.style <= 35) {
+  if (objets.contains('dimanche') && etat.style <= 35 && !estNuit(etat)) {
     // La seule pièce qui bouge : quand le quartier vient, l'eau bouge avec.
+    // Et c'est un dimanche après-midi : le quartier ne vient pas la nuit.
     return const Decor(
       dossier: 'pieces/piscine_quartier',
       etat: 'quartier',
@@ -320,14 +328,15 @@ Decor decorDeLaPiscine(EtatPartie etat, Set<String> objets) {
       allerRetour: true,
     );
   }
+  final nuit = estNuit(etat);
   final recul = objets.contains('pompe') ? _reculDeLaPompe : 0;
   if (etat.jauges.caisses <= 15 - recul) {
-    return const Decor(dossier: 'pieces/piscine_vide', etat: 'vide', nom: 'Le bassin vidé');
+    return Decor(dossier: _plaque('piscine_vide', nuit), etat: 'vide', nom: 'Le bassin vidé');
   }
   if (etat.jauges.caisses <= 30 - recul) {
-    return const Decor(dossier: 'pieces/piscine_verte', etat: 'verte', nom: "L'eau verte");
+    return Decor(dossier: _plaque('piscine_verte', nuit), etat: 'verte', nom: "L'eau verte");
   }
-  return const Decor(dossier: 'pieces/piscine_base', etat: 'base', nom: "L'eau claire");
+  return Decor(dossier: _plaque('piscine_base', nuit), etat: 'base', nom: "L'eau claire");
 }
 
 /// Le décor d'une pièce quelconque, pour que l'écran n'ait pas à savoir
@@ -336,7 +345,7 @@ Decor decorDe(Piece piece, EtatPartie etat, Set<String> objets) => switch (piece
       Piece.balcon => decorDuBalcon(etat),
       Piece.bureau => decorDuBureau(etat),
       Piece.chambre => decorDeLaChambre(etat),
-      Piece.garage => decorDuGarage(objets),
+      Piece.garage => decorDuGarage(etat, objets),
       Piece.piscine => decorDeLaPiscine(etat, objets),
     };
 

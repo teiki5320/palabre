@@ -378,16 +378,16 @@ void main() {
 
   group('la cour des voitures', () {
     test('elle se remplit une voiture à la fois', () {
-      expect(decorDuGarage({}).etat, 'base');
-      expect(decorDuGarage({'velo'}).etat, 'deux');
-      expect(decorDuGarage({'velo', 'motos'}).etat, 'trois');
-      expect(decorDuGarage({'velo', 'motos', 'limousine'}).etat, 'parc');
-      expect(decorDuGarage({'velo', 'motos', 'limousine', 'quatre_quatre'}).etat, 'parc');
+      expect(decorDuGarage(etatAvec(), {}).etat, 'base');
+      expect(decorDuGarage(etatAvec(), {'velo'}).etat, 'deux');
+      expect(decorDuGarage(etatAvec(), {'velo', 'motos'}).etat, 'trois');
+      expect(decorDuGarage(etatAvec(), {'velo', 'motos', 'limousine'}).etat, 'parc');
+      expect(decorDuGarage(etatAvec(), {'velo', 'motos', 'limousine', 'quatre_quatre'}).etat, 'parc');
     });
 
     test('seuls les véhicules comptent', () {
       // Un coffre-fort dans le bureau ne remplit pas la cour.
-      expect(decorDuGarage({'coffre_fort', 'ventilateur'}).etat, 'base');
+      expect(decorDuGarage(etatAvec(), {'coffre_fort', 'ventilateur'}).etat, 'base');
     });
   });
 
@@ -446,7 +446,7 @@ void main() {
   group('les images existent toutes sur le disque', () {
     test('chaque décor possible pointe sur un fichier réel', () {
       final aVerifier = <Decor>[
-        for (final heure in [10, 85])
+        for (final heure in [5, 15])
           ...[
             etatAvec(jour: heure),
             etatAvec(jour: heure, peuple: 20),
@@ -455,11 +455,27 @@ void main() {
             etatAvec(jour: heure, presse: 20),
             etatAvec(jour: heure, peuple: 80),
             etatAvec(jour: heure, caisses: 70, peuple: 60),
-            etatAvec(jour: heure == 10 ? 60 : 85),
+            etatAvec(jour: heure == 5 ? 60 : 65),
           ].map(decorDuBalcon),
         decorDuBalcon(etatAvec(drapeaux: {'fete_nationale'})),
         decorDuBalcon(etatAvec(drapeaux: {'deuil_national'})),
       ];
+
+      for (final heure in [5, 15]) {
+        aVerifier.addAll([
+          decorDuBureau(etatAvec(jour: heure)),
+          decorDuBureau(etatAvec(jour: heure, presse: 20)),
+          decorDuBureau(etatAvec(jour: heure, style: 80)),
+          decorDuBureau(etatAvec(jour: heure, style: 20)),
+          decorDuGarage(etatAvec(jour: heure), const {}),
+          decorDuGarage(etatAvec(jour: heure), const {'velo'}),
+          decorDuGarage(etatAvec(jour: heure), const {'velo', 'motos'}),
+          decorDuGarage(etatAvec(jour: heure), const {'velo', 'motos', 'limousine'}),
+          decorDeLaPiscine(etatAvec(jour: heure, caisses: 60), const {}),
+          decorDeLaPiscine(etatAvec(jour: heure, caisses: 25), const {}),
+          decorDeLaPiscine(etatAvec(jour: heure, caisses: 10), const {}),
+        ]);
+      }
 
       aVerifier.addAll([
         decorDuBureau(etatAvec()),
@@ -467,17 +483,17 @@ void main() {
         decorDuBureau(etatAvec(style: 80)),
         decorDuBureau(etatAvec(style: 20)),
         decorDeLaChambre(etatAvec()),
-        decorDeLaChambre(etatAvec(jour: 85)),
+        decorDeLaChambre(etatAvec(jour: 95)),
         decorDeLaChambre(etatAvec(drapeaux: {'conjoint'})),
         // La chambre partagée : longtemps inatteignable, elle a maintenant
         // ses quatre clés, et c'est la romance qui l'ouvre.
         decorDeLaChambre(etatAvec(epouse: 'maire')),
         decorDeLaChambre(etatAvec(attache: {'redactrice': 3})),
-        decorDuGarage({}),
-        decorDuGarage({'velo'}),
-        decorDuGarage({'velo', 'motos'}),
-        decorDuGarage({'velo', 'motos', 'limousine'}),
-        decorDuGarage({'velo', 'motos', 'limousine', 'quatre_quatre'}),
+        decorDuGarage(etatAvec(), {}),
+        decorDuGarage(etatAvec(), {'velo'}),
+        decorDuGarage(etatAvec(), {'velo', 'motos'}),
+        decorDuGarage(etatAvec(), {'velo', 'motos', 'limousine'}),
+        decorDuGarage(etatAvec(), {'velo', 'motos', 'limousine', 'quatre_quatre'}),
         decorDeLaPiscine(etatAvec(caisses: 60), {}),
         decorDeLaPiscine(etatAvec(caisses: 25), {}),
         decorDeLaPiscine(etatAvec(caisses: 10), {}),

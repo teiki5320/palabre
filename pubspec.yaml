@@ -1,7 +1,7 @@
 name: president
 description: "Président pour 100 jours — jeu de cartes à glisser."
 publish_to: none
-version: 0.24.0+1
+version: 0.25.0+1
 
 environment:
   sdk: ^3.13.0
@@ -59,6 +59,7 @@ flutter:
     - assets/images/palais/balcon/nuit/verrouillee/
     - assets/images/palais/carte/
     - assets/images/palais/pieces/
+    - assets/images/palais/pieces/nuit/
     - assets/images/palais/pieces/chambre_conjoint/redactrice/
     - assets/images/palais/pieces/piscine_quartier/
     - assets/images/palais/pieces/chambre_conjoint/cabinet/
