@@ -149,7 +149,14 @@ def audit():
     objets = {o['id'] for o in charge('objets')}
     par_id = {c['id']: c for c in cartes}
     exclusifs = paires_exclusives(cartes)
-    exclusifs = etend_les_exclusifs(cartes, exclusifs)
+    # Un seul tour ne suffit pas : « pret_voisins » et « embauches_gelees »
+    # ne s'excluent que parce que « pret_refuse » et « pret_signe »
+    # s'excluent, ce que le tour precedent vient seulement d'apprendre.
+    while True:
+        etendus = etend_les_exclusifs(cartes, exclusifs)
+        if etendus == exclusifs:
+            break
+        exclusifs = etendus
     trouvailles = defaultdict(list)
 
     def note(famille, texte):
@@ -363,7 +370,11 @@ def audit():
                        + ', '.join(o['id'] for o in promis))
 
     # ── les impasses ───────────────────────────────────────────────────
-    partielles = 0
+    # Une reponse qui refuse et clot le sujet n'est pas une impasse : son
+    # journal dit comment l'affaire s'est terminee. La vraie impasse, c'est
+    # la carte dont AUCUNE des deux reponses ne mene plus loin alors que ses
+    # soeurs de meme rang, elles, continuent : le joueur la recoit, repond,
+    # et l'histoire s'arrete sans que rien ne l'ait cloturee.
     for nom, lot in sorted(chaines.items()):
         rangs = rangs_de(lot)
         for r in sorted(rangs):
@@ -373,16 +384,16 @@ def audit():
             for x in rangs[r]:
                 besoin.update(x.get('conditions', {}).get('drapeaux_requis', []))
             avant = rangs.get(r - 1, [])
-            if not besoin or not avant:
+            if not besoin or len(avant) < 2:
                 continue
-            portes = sum(1 for x in avant for cote in ('gauche', 'droite')
-                         if besoin & set(x[cote].get('drapeaux', [])))
-            if portes < 2 * len(avant):
-                partielles += 1
-    if partielles:
-        note('impasses', f'{partielles} crans ne s\'ouvrent qu\'à une partie des '
-                         'réponses du cran précédent : l\'autre réponse arrête '
-                         'l\'histoire sans le dire')
+            for x in avant:
+                pose = set(x['gauche'].get('drapeaux', []))
+                pose |= set(x['droite'].get('drapeaux', []))
+                if not (besoin & pose):
+                    note('impasses',
+                         f'{x["id"]} (chaîne {nom}, cran {r - 1}) : aucune de '
+                         f'ses deux réponses n\'ouvre le cran {r}, que ses '
+                         'sœurs de même rang ouvrent')
 
     return trouvailles
 

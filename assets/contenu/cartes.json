@@ -5497,7 +5497,10 @@
     "armee": 4,
     "presse": 3
    },
-   "journal": "L'archiviste a pris un poste de conseiller culturel. Son remplaçant au palais a vingt-trois ans et aucune ancienneté."
+   "journal": "L'archiviste a pris un poste de conseiller culturel. Son remplaçant au palais a vingt-trois ans et aucune ancienneté.",
+   "drapeaux": [
+    "archiviste_exile"
+   ]
   },
   "droite": {
    "libelle": "Qu'il reste ici",
@@ -5506,7 +5509,10 @@
     "presse": -6,
     "peuple": 4
    },
-   "journal": "L'archiviste est resté à son bureau. Depuis lundi, deux ministres passent le voir le matin, avant l'ouverture."
+   "journal": "L'archiviste est resté à son bureau. Depuis lundi, deux ministres passent le voir le matin, avant l'ouverture.",
+   "drapeaux": [
+    "archiviste_garde"
+   ]
   },
   "poids": 6,
   "conditions": {
@@ -5583,6 +5589,80 @@
   "conditions": {
    "drapeaux_requis": [
     "ministre_relache"
+   ]
+  },
+  "chaine": {
+   "id": "dossier_ministre",
+   "rang": 3,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "renseignements_dossier_ministre_3_exil",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, notre conseiller culturel a fait relier ses souvenirs en trois volumes. Un éditeur du dehors les a lus.",
+  "gauche": {
+   "libelle": "On l'achète",
+   "effets": {
+    "caisses": -9,
+    "presse": 4,
+    "armee": -3
+   },
+   "style": 4,
+   "journal": "Les trois volumes ont été rachetés avant impression. L'éditeur a doublé son tirage sur un autre titre, très attendu."
+  },
+  "droite": {
+   "libelle": "Qu'il publie",
+   "effets": {
+    "presse": 7,
+    "armee": -6,
+    "peuple": -3
+   },
+   "style": -5,
+   "journal": "Le premier volume est en librairie depuis jeudi. Deux ministres cités y figurent sous leurs initiales, et chacun les lit."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "archiviste_exile"
+   ]
+  },
+  "chaine": {
+   "id": "dossier_ministre",
+   "rang": 3,
+   "delai_min": 4
+  }
+ },
+ {
+  "id": "renseignements_dossier_ministre_3_garde",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, l'archiviste reçoit plus de monde que moi. Il ne demande rien, mais personne ne décide sans être passé le voir.",
+  "gauche": {
+   "libelle": "Je le nomme",
+   "effets": {
+    "armee": 5,
+    "presse": -5,
+    "caisses": -3
+   },
+   "style": 6,
+   "journal": "L'archiviste a un titre et un bureau au premier étage. Sa porte reste ouverte, et la file commence avant huit heures."
+  },
+  "droite": {
+   "libelle": "Je le déplace",
+   "effets": {
+    "armee": -4,
+    "presse": 3,
+    "peuple": -3
+   },
+   "style": -4,
+   "journal": "L'archiviste a été muté aux archives du port. Trois cartons ont quitté le palais avec lui, scellés de sa main."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "archiviste_garde"
    ]
   },
   "chaine": {
@@ -13146,6 +13226,80 @@
   }
  },
  {
+  "id": "emissaire_pret_voisins",
+  "personnage": "emissaire",
+  "humeur": "neutre",
+  "texte": "{titre}, les voisins qui nous ont prêté veulent leur part : la concession du port, ou le remboursement en une seule fois.",
+  "gauche": {
+   "libelle": "Ils ont le port",
+   "effets": {
+    "caisses": 8,
+    "peuple": -7,
+    "presse": -4
+   },
+   "style": 5,
+   "journal": "La concession du port est signée pour douze ans. Les dockers ont appris le nom de leur nouvel employeur à la radio."
+  },
+  "droite": {
+   "libelle": "On rembourse",
+   "effets": {
+    "caisses": -12,
+    "peuple": 5,
+    "presse": 4
+   },
+   "style": -4,
+   "journal": "Le remboursement est parti en une fois. Deux ministères ont reçu l'ordre de ne rien engager jusqu'en janvier."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "pret_voisins"
+   ]
+  },
+  "chaine": {
+   "id": "pret_fonds",
+   "rang": 4,
+   "delai_min": 8
+  }
+ },
+ {
+  "id": "emissaire_austerite_seule",
+  "personnage": "emissaire",
+  "humeur": "neutre",
+  "texte": "{titre}, quatre mois sans emprunt : la caisse tient, mais les fournisseurs de l'hôpital veulent être payés avant de livrer.",
+  "gauche": {
+   "libelle": "On les paie",
+   "effets": {
+    "caisses": -10,
+    "peuple": 6,
+    "presse": 3
+   },
+   "style": -4,
+   "journal": "Les fournisseurs de l'hôpital ont été réglés lundi. La rallonge est venue du budget des routes, pour la seconde fois."
+  },
+  "droite": {
+   "libelle": "Ils attendront",
+   "effets": {
+    "caisses": 5,
+    "peuple": -8,
+    "presse": -3
+   },
+   "style": 5,
+   "journal": "L'hôpital du quartier de la Cuvette a cessé les opérations non urgentes. La liste d'attente est affichée à l'entrée."
+  },
+  "poids": 6,
+  "conditions": {
+   "drapeaux_requis": [
+    "austerite_seule"
+   ]
+  },
+  "chaine": {
+   "id": "pret_fonds",
+   "rang": 4,
+   "delai_min": 8
+  }
+ },
+ {
   "id": "emissaire_pret_apres_refus",
   "personnage": "emissaire",
   "humeur": "fache",
@@ -13157,7 +13311,10 @@
     "presse": -5,
     "peuple": -3
    },
-   "journal": "Le prêt a été signé dans un salon d'aéroport. Le taux ne figure pas dans le communiqué commun des deux délégations."
+   "journal": "Le prêt a été signé dans un salon d'aéroport. Le taux ne figure pas dans le communiqué commun des deux délégations.",
+   "drapeaux": [
+    "pret_voisins"
+   ]
   },
   "droite": {
    "libelle": "On s'en passe",
@@ -13166,7 +13323,10 @@
     "peuple": 5,
     "presse": 4
    },
-   "journal": "Le ministère a publié un plan de trésorerie à quatre mois. Trois chantiers de route y sont marqués « en attente »."
+   "journal": "Le ministère a publié un plan de trésorerie à quatre mois. Trois chantiers de route y sont marqués « en attente ».",
+   "drapeaux": [
+    "austerite_seule"
+   ]
   },
   "conditions": {
    "drapeaux_requis": [
@@ -21616,6 +21776,230 @@
   "conditions": {
    "drapeaux_requis": [
     "objet_motos"
+   ]
+  }
+ },
+ {
+  "id": "objet_ventilateur_photo",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, une photo du bureau a paru : on y voit le ventilateur neuf au-dessus des dossiers. Le titre parle du confort du palais.",
+  "gauche": {
+   "libelle": "J'assume",
+   "effets": {
+    "presse": -4,
+    "peuple": -3,
+    "armee": 4
+   },
+   "style": 5,
+   "journal": "Le palais n'a pas répondu à la photo. Le journal l'a reprise le lendemain, en plus grand, avec le prix de l'appareil."
+  },
+  "droite": {
+   "libelle": "Je le donne",
+   "effets": {
+    "presse": 5,
+    "peuple": 4,
+    "caisses": -2
+   },
+   "style": -4,
+   "journal": "Le ventilateur a été remonté dans une classe du quartier des Palmiers. Le bureau a rouvert ses fenêtres sur la cour."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_ventilateur"
+   ]
+  }
+ },
+ {
+  "id": "objet_fauteuil_cuir_facture",
+  "personnage": "doyen",
+  "humeur": "neutre",
+  "texte": "{titre}, votre fauteuil de cuir vient de la maison qui meublait votre prédécesseur. On a retrouvé sa facture aux archives.",
+  "gauche": {
+   "libelle": "Je le garde",
+   "effets": {
+    "armee": 4,
+    "presse": -4,
+    "peuple": -3
+   },
+   "style": 5,
+   "journal": "La facture est restée au dossier, sans suite. Deux archivistes ont demandé leur mutation dans la même semaine."
+  },
+  "droite": {
+   "libelle": "Je le paie",
+   "effets": {
+    "caisses": -4,
+    "presse": 5,
+    "peuple": 3
+   },
+   "style": -4,
+   "journal": "Le fauteuil a été payé sur les deniers de la Présidence. Le reçu a été affiché à l'entrée du palais, en grand."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_fauteuil_cuir"
+   ]
+  }
+ },
+ {
+  "id": "objet_jardinieres_ronds_points",
+  "personnage": "maire",
+  "humeur": "neutre",
+  "texte": "{titre}, vos jardinières fleurissent pendant que les ronds-points de la ville sont en friche. Je demande les mêmes plants pour eux.",
+  "gauche": {
+   "libelle": "Qu'il les ait",
+   "effets": {
+    "caisses": -5,
+    "peuple": 6,
+    "presse": 3
+   },
+   "style": -4,
+   "journal": "Les ronds-points ont été replantés en trois jours. Les jardiniers du palais ont fait le travail, sans heures supplémentaires."
+  },
+  "droite": {
+   "libelle": "C'est le palais",
+   "effets": {
+    "peuple": -5,
+    "presse": -3,
+    "armee": 3
+   },
+   "style": 5,
+   "journal": "Les jardinières du balcon ont été changées pour la saison. Au rond-point du marché, l'herbe atteint le pare-chocs."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_jardinieres"
+   ]
+  }
+ },
+ {
+  "id": "objet_fauteuil_lecture_liste",
+  "personnage": "redactrice",
+  "humeur": "neutre",
+  "texte": "{titre}, on raconte que vous lisez tard. Une revue veut publier la liste de ce qui traîne sur la table, à côté de votre fauteuil.",
+  "gauche": {
+   "libelle": "Qu'elle la publie",
+   "effets": {
+    "presse": 6,
+    "armee": -4,
+    "peuple": 3
+   },
+   "style": -5,
+   "journal": "La liste a paru en page deux : sept livres, dont deux interdits sous le régime d'avant. Les libraires les ont tous vendus."
+  },
+  "droite": {
+   "libelle": "C'est ma chambre",
+   "effets": {
+    "presse": -5,
+    "peuple": -3,
+    "armee": 4
+   },
+   "style": 5,
+   "journal": "La revue a paru avec un encadré vide à la place de la liste. Personne n'a expliqué l'encadré, et tout le monde l'a vu."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_fauteuil_lecture"
+   ]
+  }
+ },
+ {
+  "id": "objet_miroir_protocole",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, le protocole a fait poser le miroir en pied dans votre chambre. Il demande maintenant qui vous habille pour les cérémonies.",
+  "gauche": {
+   "libelle": "Le protocole",
+   "effets": {
+    "caisses": -4,
+    "armee": 4,
+    "presse": -3
+   },
+   "style": 5,
+   "journal": "Le protocole a engagé deux habilleuses et un tailleur. La note du mois a été réglée par le budget des réceptions."
+  },
+  "droite": {
+   "libelle": "Personne",
+   "effets": {
+    "peuple": 5,
+    "presse": 3,
+    "armee": -3
+   },
+   "style": -4,
+   "journal": "Le protocole s'est incliné. À la cérémonie du port, la tenue n'était pas neuve, et trois journaux l'ont remarqué."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_miroir"
+   ]
+  }
+ },
+ {
+  "id": "objet_transats_couverture",
+  "personnage": "marchande",
+  "humeur": "fache",
+  "texte": "{titre}, une photo des transats du palais est passée en couverture, à côté du prix du sac de riz. La légende tient en deux mots.",
+  "gauche": {
+   "libelle": "Je l'ignore",
+   "effets": {
+    "presse": -5,
+    "peuple": -4,
+    "armee": 4
+   },
+   "style": 5,
+   "journal": "La couverture est restée affichée chez les vendeuses du marché pendant une semaine, à côté de la pancarte des prix."
+  },
+  "droite": {
+   "libelle": "J'ouvre le bassin",
+   "effets": {
+    "peuple": 7,
+    "armee": -5,
+    "caisses": -3
+   },
+   "style": -5,
+   "journal": "Le bassin a reçu les écoles du quartier de la Cuvette le samedi. La garde a demandé deux hommes de plus à l'entrée."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_transats"
+   ]
+  }
+ },
+ {
+  "id": "objet_plongeoir_federation",
+  "personnage": "sante",
+  "humeur": "neutre",
+  "texte": "{titre}, le plongeoir du palais est le seul du pays aux normes. La fédération demande d'y faire nager ses jeunes deux fois par semaine.",
+  "gauche": {
+   "libelle": "Qu'ils viennent",
+   "effets": {
+    "peuple": 6,
+    "caisses": -3,
+    "armee": -3
+   },
+   "style": -4,
+   "journal": "Douze nageurs s'entraînent au palais le mardi et le jeudi. L'un d'eux a battu le record du pays sur cinquante mètres."
+  },
+  "droite": {
+   "libelle": "C'est chez moi",
+   "effets": {
+    "peuple": -5,
+    "armee": 3,
+    "presse": -3
+   },
+   "style": 5,
+   "journal": "La fédération s'entraîne de nouveau au bassin du port, qui n'a pas de plots. Sa demande a été classée sans réponse."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_plongeoir"
    ]
   }
  }
