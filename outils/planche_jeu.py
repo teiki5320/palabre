@@ -267,6 +267,17 @@ def prepare_les_images(sortie, gens, parcours, fins, etats):
     for f in {x['image'] for x in fins}:
         reduis(os.path.join(IMAGES, f),
                os.path.join(sortie, 'fins/' + os.path.basename(f)), LARGEUR_LARGE)
+    romances = os.path.join(RACINE, 'sources/romances')
+    for qui in CHAINES_DE_COEUR.values():
+        for sous in (f'lit/{qui}.jpg', f'noces/{qui}_etat.jpg', f'noces/{qui}_discretes.jpg'):
+            src = os.path.join(romances, sous)
+            if not os.path.exists(src):
+                sys.exit(f'{sous} : absent de sources/romances — relancer '
+                         'planche_romances.py')
+            dst = os.path.join(sortie, sous)
+            if not os.path.exists(dst):
+                os.makedirs(os.path.dirname(dst), exist_ok=True)
+                shutil.copyfile(src, dst)
     for e in etats:
         if e['n'] == 1:
             reduis(os.path.join(PLAQUES, e['sequence'][0]),
@@ -330,6 +341,35 @@ def page(nom, titre, chapeau, corps, pied=''):
             .replace('{{PIED}}', pied))
 # ────────────────────────────── les histoires ──────────────────────────
 
+# La chaîne de chacune des dix personnes qu'on peut courtiser. Deux ne
+# portent pas leur identifiant : l'épouse et l'époux d'avant la romance ont
+# gardé leurs noms de rôle.
+CHAINES_DE_COEUR = {
+    'coeur_redactrice': 'redactrice', 'coeur_cabinet': 'cabinet',
+    'coeur_emissaire': 'emissaire', 'coeur_militante': 'militante',
+    'coeur_protocole': 'epouse', 'coeur_international': 'international',
+    'coeur_ministre': 'ministre', 'coeur_renseignements': 'renseignements',
+    'coeur_maire': 'maire', 'coeur_intendant': 'epoux',
+}
+
+# Ce que chaque cérémonie montre.
+NOCES = {
+    'etat': "Dans la cour d'honneur — deux cents invités, la garde en grande "
+            'tenue, la ville arrêtée trois heures.',
+    'discretes': 'À la salle des mariages — dix minutes, quatre témoins, '
+                 'aucune photographie officielle.',
+}
+
+
+def cran_de_la_liaison():
+    """Le cran qui ouvre le rendez-vous, lu dans romance.dart."""
+    src = open(os.path.join(RACINE, 'lib/moteur/romance.dart')).read()
+    trouve = re.search(r'attacheLiaison\s*=\s*(\d+)', src)
+    if trouve is None:
+        sys.exit('romance.dart : cran de liaison introuvable')
+    return int(trouve.group(1))
+
+
 def rangs_de(cartes_de_la_chaine):
     rangs = {}
     for c in cartes_de_la_chaine:
@@ -355,7 +395,54 @@ def titre_de_chaine(nom, premiere, gens):
     return joli(nom).capitalize() + ' · ' + nom_de(premiere['personnage'], gens).lower()
 
 
-def page_des_histoires(par_chaine, numero, gens, parcours, lien):
+def bloc_du_rendez_vous(qui, numero, gens, parcours, lien, par_id):
+    """La soirée promise : la carte qui l'ouvre, et ce que la chambre montre
+    alors. Elle se place à la charnière de l'histoire, pas à sa fin — on ne
+    dort pas ensemble le soir des noces."""
+    rdv = par_id.get(f'rdv_{qui}')
+    if rdv is None:
+        sys.exit(f'{qui} : pas de carte de rendez-vous')
+    homme = qui in HOMMES
+    return f"""      <div class="cran">
+        <p class="acte">Le rendez-vous, et la chambre</p>
+        <div class="galerie">
+{carte_html(rdv, numero[rdv['id']], coiffe_de(rdv, gens, parcours, lien), gens, lien)}
+        </div>
+        <div class="bloc">
+          <p class="etiquette">Et la chambre, ce soir-là</p>
+          <div class="issue">
+            <img src="lit/{qui}.jpg" alt="" loading="lazy">
+            <p class="porte">{'Il attend habillé.' if homme else 'Elle attend habillée.'}
+            Un appui, {'il' if homme else 'elle'} se déshabille. Un second, la scène
+            passe sur le lit. Les jours ordinaires, la chambre dit seulement
+            qu'on n'y dort plus seul.</p>
+          </div>
+        </div>
+      </div>"""
+
+
+def bloc_des_noces(qui):
+    vues = ''.join(
+        f'<figure class="noce"><img src="noces/{qui}_{v}.jpg" alt="" loading="lazy">'
+        f'<figcaption>{echappe(NOCES[v])}</figcaption></figure>'
+        for v in ('etat', 'discretes'))
+    return f"""      <div class="cran">
+        <p class="acte">Le jour des noces</p>
+        <div class="bloc">
+          <div class="noces">{vues}</div>
+          <p class="porte">La cérémonie se joue une fois, en plein écran, après
+          la réponse — comme une fin, mais au milieu du mandat. C'est le seul
+          moment du jeu qu'on ne peut pas revoir.</p>
+        </div>
+      </div>"""
+
+
+# Ceux dont la chambre se raconte au masculin. Le jeu ne porte pas le genre
+# de ses personnages — seule cette planche a besoin de l'accord.
+HOMMES = {'international', 'ministre', 'renseignements', 'maire', 'epoux'}
+
+
+def page_des_histoires(par_chaine, numero, gens, parcours, lien, par_id, liaison):
     blocs = []
     for i, nom in enumerate(ordre_des_chaines(par_chaine), 1):
         cartes = par_chaine[nom]
@@ -371,6 +458,7 @@ def page_des_histoires(par_chaine, numero, gens, parcours, lien):
             etiquettes.append(f'{embranche} embranchement' + ('s' if embranche > 1 else ''))
         if delai:
             etiquettes.append('délai ' + ' et '.join(f'{d} j' for d in sorted(delai)))
+        qui = CHAINES_DE_COEUR.get(nom)
         crans = []
         for r in sorted(rangs):
             choix = rangs[r]
@@ -385,6 +473,10 @@ def page_des_histoires(par_chaine, numero, gens, parcours, lien):
 {galerie}
         </div>
       </div>''')
+            if qui and r == liaison:
+                crans.append(bloc_du_rendez_vous(qui, numero, gens, parcours, lien, par_id))
+        if qui:
+            crans.append(bloc_des_noces(qui))
         blocs.append(f'''  <section class="personne" id="h{i}">
     <div class="tete">
       <img src="{portrait(premiere)}" alt="" loading="lazy">
@@ -869,6 +961,13 @@ figcaption{padding:12px 2px 0}
 .jauge.moins b{color:var(--chair)}
 .jauge.romance{border-color:var(--chair);color:var(--chair)}
 .jauge.drapeau{font-style:italic;color:var(--douce)}
+.issue{display:flex;gap:16px;align-items:flex-start}
+.issue img{width:120px;aspect-ratio:3/4;object-fit:cover;border-radius:3px;flex:none}
+.issue .porte{margin:0;max-width:52ch}
+.noces{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:12px}
+.noce{margin:0}
+.noce img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:3px;display:block}
+.noce figcaption{font-size:.76rem;color:var(--douce);margin-top:7px}
 .acte{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);
   font-weight:600;margin:26px 0 14px;padding-top:14px;border-top:1px solid var(--trait)}
 .cran:first-of-type .acte{margin-top:0;padding-top:0;border-top:none}
@@ -960,6 +1059,7 @@ def main():
     objets, fins, exploits = charge('objets'), charge('fins'), charge('exploits')
     adversaires = charge('adversaires')
 
+    par_id = {c['id']: c for c in cartes}
     par_chaine = {}
     seules = []
     for c in cartes:
@@ -999,7 +1099,8 @@ def main():
                  '« Monsieur le Président » et « Idriss » ici — en jeu, le '
                  'titre et le nom viennent du parcours choisi.')
 
-    corps_h = page_des_histoires(par_chaine, numero, gens, parcours_par_id, lien)
+    corps_h = page_des_histoires(par_chaine, numero, gens, parcours_par_id, lien,
+                                 par_id, cran_de_la_liaison())
     corps_d, combien_drapeaux = page_des_drapeaux(cartes, numero, ou, gens)
     corps_c = page_des_cartes(lots, numero, gens, parcours_par_id, lien)
     corps_g = page_des_gens(gens, cartes, parcours, adversaires)
