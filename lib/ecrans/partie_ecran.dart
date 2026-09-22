@@ -58,10 +58,12 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
       null => null,
     };
 
-    // L'écran des cartes n'est pas une pièce du palais, mais on y est assis
-    // à son bureau : il en prend la musique. Le palais, poussé par-dessus,
-    // la remplacera le temps de la visite et la rendra en revenant.
-    ref.read(sonsProvider).metLeFond(Fond.musiqueBureau);
+    // L'écran des cartes ne porte aucun fond. On y a essayé la musique du
+    // bureau : elle tourne pendant les cent jours entiers, sous des cartes
+    // qui parlent d'émeute et de choléra, et elle ment sur chacune. Le
+    // silence laisse les sons de décision, de mieux et de mal porter seuls.
+    // Le palais, poussé par-dessus, remet son fond le temps de la visite.
+    ref.read(sonsProvider).metLeFond(null);
 
     // Le mariage se montre une fois, par-dessus tout le reste : la partie
     // continue derrière, on ne fait que la couvrir le temps d'un regard.

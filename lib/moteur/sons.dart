@@ -79,7 +79,8 @@ const Set<String> _calmesDeLaNuit = {'ordinaire', 'prospere', 'cameras'};
 ///
 /// La piscine n'a d'ambiance que lorsqu'il y a du monde dedans : un bassin
 /// vide, verdi ou vidé n'a rien à faire entendre, et prend la musique du
-/// bureau — celle-là même qui joue sur l'écran des cartes.
+/// bureau. L'écran des cartes, lui, ne porte aucun fond — un morceau qui
+/// tourne sous cent jours de décisions ment sur la moitié d'entre elles.
 Fond fondDe(Piece piece, Decor decor, EtatPartie etat) => switch (piece) {
       Piece.balcon => estNuit(etat) && _calmesDeLaNuit.contains(decor.etat)
           ? Fond.balconNuit
