@@ -64,6 +64,9 @@ def allers_retours():
         # « pieces/chambre_lit/$qui » : on garde le début littéral et on
         # le complète par chacune des dix personnes.
         interpole = re.search(r"dossier:\s*'([^'$]*)\$", bloc)
+        # « _plaque('bureau_base', nuit) » rend 'pieces/nom' le jour et
+        # 'pieces/nuit/nom' la nuit : les deux existent sur le disque.
+        plaque = re.search(r"dossier:\s*_plaque\('([^']+)'", bloc)
         if litteral:
             noms = [litteral.group(1)]
         elif aide:
@@ -71,6 +74,9 @@ def allers_retours():
             noms = [f'balcon/{h}/{aide.group(1)}' for h in ('jour', 'nuit')]
         elif interpole:
             noms = [interpole.group(1) + qui for qui in chambres()]
+        elif plaque:
+            noms = [f'pieces/{plaque.group(1)}',
+                    f'pieces/nuit/{plaque.group(1)}']
         else:
             sys.exit('decor.dart : dossier illisible dans ' + bloc.strip()[:60])
         if retour:
