@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
+import 'package:president/ecrans/ciel_carte.dart';
 import 'package:president/ecrans/partie_ecran.dart';
 import 'package:president/ecrans/session.dart';
 import 'package:president/moteur/denouement.dart';
@@ -65,6 +66,16 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('JOUR 2'), findsOneWidget);
     expect(find.textContaining('casernes'), findsOneWidget);
+  });
+
+  testWidgets('l astre du jour est pose sur la carte', (tester) async {
+    // Le soleil au premier jour, la lune au onzieme : c est la seule chose
+    // a l ecran qui dise l heure, le jeu n ayant pas d horloge.
+    await lance(tester);
+    expect(find.byType(CielDeLaCarte), findsOneWidget);
+    final ciel = tester.widget<CielDeLaCarte>(find.byType(CielDeLaCarte));
+    expect(ciel.ciel.astre, Astre.soleil);
+    expect(ciel.ciel.course, 0);
   });
 
   testWidgets('le nom du joueur remplace le gabarit', (tester) async {

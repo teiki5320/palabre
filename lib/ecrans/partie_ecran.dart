@@ -7,6 +7,7 @@ import '../moteur/jauges.dart';
 import '../moteur/modeles.dart';
 import '../moteur/partie.dart';
 import 'carte_glissante.dart';
+import 'ciel_carte.dart';
 import 'fin_ecran.dart';
 import 'palais_ecran.dart';
 import 'session.dart';
@@ -149,6 +150,7 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                               personnage: personnage,
                               humeur: carte.humeur,
                               texte: habille(carte.texte, nom: session.etat.nomJoueur, titre: titre),
+                              ciel: cielDe(session.etat),
                             ),
                           ),
                         ),
@@ -242,11 +244,20 @@ class _Doublure extends StatelessWidget {
 }
 
 class _Carte extends StatelessWidget {
-  const _Carte({required this.personnage, required this.humeur, required this.texte});
+  const _Carte({
+    required this.personnage,
+    required this.humeur,
+    required this.texte,
+    required this.ciel,
+  });
 
   final Personnage? personnage;
   final Humeur humeur;
   final String texte;
+
+  /// L'astre du jour, posé sur le portrait. Le jeu n'a pas d'horloge : le
+  /// temps, c'est le nombre de cartes répondues, et c'est lui qui le montre.
+  final CielDuJour ciel;
 
   @override
   Widget build(BuildContext context) {
@@ -271,6 +282,7 @@ class _Carte extends StatelessWidget {
                   alignment: const Alignment(0, -0.35),
                   errorBuilder: (_, __, ___) => Container(color: Couleurs.aplat),
                 ),
+              CielDeLaCarte(ciel: ciel),
               Positioned(
                 left: 0,
                 right: 0,
