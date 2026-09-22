@@ -1664,7 +1664,7 @@
   "id": "maire_inondations_1",
   "personnage": "maire",
   "humeur": "neutre",
-  "texte": "{titre}, le quartier bas est sous l'eau chaque juillet. Je cure vite les caniveaux, ou on construit un vrai réseau.",
+  "texte": "{titre}, le quartier de la Cuvette est sous l'eau chaque juillet. Je cure vite les caniveaux, ou on construit un vrai réseau.",
   "gauche": {
    "libelle": "On cure vite",
    "effets": {
@@ -1674,7 +1674,7 @@
    "drapeaux": [
     "caniveaux_cures"
    ],
-   "journal": "Les caniveaux du quartier bas ont été curés en cinq jours, les tas de boue attendant au bord de la route."
+   "journal": "Les caniveaux du quartier de la Cuvette ont été curés en cinq jours, les tas de boue attendant au bord de la route."
   },
   "droite": {
    "libelle": "Un vrai réseau",
@@ -1725,7 +1725,7 @@
   "id": "maire_titre_foncier",
   "personnage": "maire",
   "humeur": "neutre",
-  "texte": "{titre}, le quartier de la gare n'a aucun titre foncier. Je rase pour un boulevard et je vends les parcelles, ou je régularise tout.",
+  "texte": "{titre}, le quartier de la Cuvette n'a aucun titre foncier. Je rase pour un boulevard et je vends les parcelles, ou je régularise tout.",
   "gauche": {
    "libelle": "On rase",
    "effets": {
@@ -1733,7 +1733,7 @@
     "peuple": -14,
     "presse": -5
    },
-   "journal": "Les pelles sont entrées dans le quartier de la gare à six heures. Une école y avait fait sa rentrée trois semaines plus tôt."
+   "journal": "Les pelles sont entrées dans le quartier de la Cuvette à six heures. Une école y avait fait sa rentrée trois semaines plus tôt."
   },
   "droite": {
    "libelle": "On régularise",
@@ -1933,7 +1933,7 @@
   "id": "maire_ecole_urbaine",
   "personnage": "maire",
   "humeur": "fache",
-  "texte": "{titre}, l'école du quartier nord n'a plus de toit depuis les pluies. Les enfants ont classe sous un manguier.",
+  "texte": "{titre}, l'école du quartier de la Cuvette n'a plus de toit depuis les pluies. Les enfants ont classe sous un manguier.",
   "gauche": {
    "libelle": "On répare vite",
    "effets": {
@@ -2401,7 +2401,7 @@
   "id": "sante_cholera_1",
   "personnage": "sante",
   "humeur": "fache",
-  "texte": "{titre}, le puits du quartier bas est trouble. Deux enfants ont la diarrhée depuis hier.",
+  "texte": "{titre}, le puits du quartier de la Cuvette est trouble. Deux enfants ont la diarrhée depuis hier.",
   "gauche": {
    "libelle": "On ferme le puits",
    "effets": {
@@ -2411,7 +2411,7 @@
    "drapeaux": [
     "eau_fermee"
    ],
-   "journal": "Le puits du quartier bas est condamné depuis l'aube. Les femmes descendent vingt minutes plus loin pour la corvée d'eau."
+   "journal": "Le puits du quartier de la Cuvette est condamné depuis l'aube. Les femmes descendent vingt minutes plus loin pour la corvée d'eau."
   },
   "droite": {
    "libelle": "On attend de voir",
@@ -2422,7 +2422,7 @@
    "drapeaux": [
     "eau_ignoree"
    ],
-   "journal": "Le dispensaire du quartier bas a noté onze entrées pour diarrhée depuis hier — le puits sert toujours."
+   "journal": "Le dispensaire du quartier de la Cuvette a noté onze entrées pour diarrhée depuis hier — le puits sert toujours."
   },
   "chaine": {
    "id": "cholera",
@@ -2436,7 +2436,7 @@
   "id": "sante_cholera_2",
   "personnage": "sante",
   "humeur": "fache",
-  "texte": "{titre}, c'est le choléra. Douze cas confirmés, le quartier bas s'affole et le cordon sanitaire coûterait un budget d'urgence.",
+  "texte": "{titre}, c'est le choléra. Douze cas confirmés, le quartier de la Cuvette s'affole et le cordon sanitaire coûterait un budget d'urgence.",
   "gauche": {
    "libelle": "Quarantaine",
    "effets": {
@@ -2444,7 +2444,7 @@
     "presse": 6,
     "caisses": -5
    },
-   "journal": "Un cordon ferme le quartier bas depuis mardi. Les taxis refusent la descente, même avec un laissez-passer tamponné.",
+   "journal": "Un cordon ferme le quartier de la Cuvette depuis mardi. Les taxis refusent la descente, même avec un laissez-passer tamponné.",
    "drapeaux": [
     "cholera_avoue"
    ]
@@ -2488,7 +2488,7 @@
    "drapeaux": [
     "cholera_avoue"
    ],
-   "journal": "Le mot a été prononcé à la radio de midi. Les autocars du quartier bas sont partis vides l'après-midi."
+   "journal": "Le mot a été prononcé à la radio de midi. Les autocars du quartier de la Cuvette sont partis vides l'après-midi."
   },
   "droite": {
    "libelle": "On dit gastro",
@@ -3348,7 +3348,7 @@
     "caisses": 14,
     "peuple": -10
    },
-   "journal": "Le versement est arrivé mercredi. Aux bornes du quartier bas, le seau a changé de prix dès le lendemain."
+   "journal": "Le versement est arrivé mercredi. Aux bornes du quartier de la Cuvette, le seau a changé de prix dès le lendemain."
   },
   "droite": {
    "libelle": "On garde",
@@ -5191,7 +5191,7 @@
     "presse": -4,
     "armee": 4
    },
-   "journal": "Le quartier bas est éteint de dix-huit heures à l'aube, quand l'hôpital et les casernes gardent la lumière."
+   "journal": "Le quartier de la Cuvette est éteint de dix-huit heures à l'aube, quand l'hôpital et les casernes gardent la lumière."
   },
   "conditions": {
    "drapeaux_requis": [
@@ -7540,7 +7540,7 @@
     "caisses": 14,
     "peuple": -12
    },
-   "journal": "La consultation est payante depuis lundi : au dispensaire du quartier sud, la file du matin tient en six personnes."
+   "journal": "La consultation est payante depuis lundi : au dispensaire du quartier de la Cuvette, la file du matin tient en six personnes."
   },
   "droite": {
    "libelle": "Je le range",
@@ -7594,7 +7594,7 @@
     "peuple": 8,
     "armee": -8
    },
-   "journal": "Vous avez assumé la vidéo mot pour mot. Des jeunes du quartier bas la diffusent au haut-parleur depuis hier soir."
+   "journal": "Vous avez assumé la vidéo mot pour mot. Des jeunes du quartier de la Cuvette la diffusent au haut-parleur depuis hier soir."
   },
   "droite": {
    "libelle": "Une autre époque",
@@ -7703,7 +7703,7 @@
   "id": "perso_militante_vieux_posts",
   "personnage": "redactrice",
   "humeur": "neutre",
-  "texte": "{titre}, les baraques du quartier bas tombent demain pour le marché neuf. Je publie vos anciens messages qui juraient de les défendre.",
+  "texte": "{titre}, les baraques du quartier de la Cuvette tombent demain pour le marché neuf. Je publie vos vieux messages qui les défendaient.",
   "gauche": {
    "libelle": "J'annule",
    "effets": {
@@ -7719,7 +7719,7 @@
     "peuple": -6,
     "presse": -4
    },
-   "journal": "Le quartier bas a été rasé mercredi. Vos anciens messages sont reproduits en page deux, sans une virgule changée."
+   "journal": "Le quartier de la Cuvette a été rasé mercredi. Vos anciens messages sont reproduits en page deux, sans une virgule changée."
   },
   "conditions": {
    "parcours": [
@@ -8779,7 +8779,7 @@
   "id": "conjoint_rumeur_liaison",
   "personnage": "conjoint",
   "humeur": "fache",
-  "texte": "{nom}, le journal vous prête quelqu'un au quartier des ambassades, et cite un proche du palais. Ma mère l'a lu avant moi.",
+  "texte": "{nom}, le journal vous prête quelqu'un au quartier des Palmiers, et cite un proche du palais. Ma mère l'a lu avant moi.",
   "gauche": {
    "libelle": "On coupe la source",
    "effets": {
@@ -10283,7 +10283,7 @@
   "id": "marchande_femme_couches",
   "personnage": "marchande",
   "humeur": "fache",
-  "texte": "La femme du quartier bas est morte en couches hier. L'ambulance demandait le carburant d'avance, et personne n'avait la somme cette nuit-là.",
+  "texte": "La femme du quartier de la Cuvette est morte en couches hier. L'ambulance demandait le carburant d'avance, et personne n'avait la somme cette nuit-là.",
   "gauche": {
    "libelle": "Transport gratuit",
    "effets": {
@@ -10300,7 +10300,7 @@
     "presse": -4,
     "caisses": 3
    },
-   "journal": "Une commission a été annoncée pour le mois prochain. Les femmes du quartier bas ont porté le cercueil jusqu'à l'hôpital."
+   "journal": "Une commission a été annoncée pour le mois prochain. Les femmes du quartier de la Cuvette ont porté le cercueil jusqu'à l'hôpital."
   },
   "poids": 2
  },
@@ -10405,7 +10405,7 @@
   "id": "marchande_nuit_rue_basse",
   "personnage": "marchande",
   "humeur": "fache",
-  "texte": "La rue du bas est sans lumière depuis six mois : on rentre à trois ou on ne rentre pas. Deux femmes ont perdu leur recette samedi.",
+  "texte": "La rue basse de la Cuvette est sans lumière depuis six mois : on rentre à trois ou on ne rentre pas. Deux femmes ont perdu leur recette samedi.",
   "gauche": {
    "libelle": "Une patrouille",
    "effets": {
@@ -10413,7 +10413,7 @@
     "armee": -4,
     "presse": -4
    },
-   "journal": "Une patrouille descend la rue du bas depuis jeudi. Deux vendeuses de beignets ont plié boutique à la nuit."
+   "journal": "Une patrouille descend la rue basse de la Cuvette depuis jeudi. Deux vendeuses de beignets ont plié boutique à la nuit."
   },
   "droite": {
    "libelle": "On rallume",
@@ -10422,7 +10422,7 @@
     "peuple": 7,
     "presse": 3
    },
-   "journal": "Les lampadaires de la rue du bas sont rallumés depuis mardi, la facture prise sur le budget des fêtes."
+   "journal": "Les lampadaires de la rue basse de la Cuvette sont rallumés depuis mardi, la facture prise sur le budget des fêtes."
   }
  },
  {
@@ -11348,7 +11348,7 @@
   "id": "redactrice_rappeur",
   "personnage": "redactrice",
   "humeur": "neutre",
-  "texte": "{titre}, un gamin du quartier bas a fait une chanson qui moque vos généraux et vous. Les radios la passent en boucle, et elle est bonne.",
+  "texte": "{titre}, un gamin du quartier de la Cuvette a fait une chanson qui moque vos généraux et vous. Les radios la passent en boucle.",
   "gauche": {
    "libelle": "Qu'on la passe",
    "effets": {
@@ -11367,7 +11367,7 @@
     "presse": -6
    },
    "style": 7,
-   "journal": "Les radios ne la passent plus depuis mardi, alors que les taxis du quartier bas la diffusent portière ouverte, en boucle."
+   "journal": "Les radios ne la passent plus depuis mardi, alors que les taxis du quartier de la Cuvette la diffusent portière ouverte, en boucle."
   },
   "poids": 2
  },
@@ -11424,7 +11424,7 @@
   "id": "maire_commissaire_quartier",
   "personnage": "maire",
   "humeur": "neutre",
-  "texte": "{titre}, le commissaire du quartier bas règle lui-même les litiges, sans juge. Les gens l'aiment, et le tribunal ne voit plus personne.",
+  "texte": "{titre}, le commissaire du quartier de la Cuvette règle lui-même les litiges, sans juge. Les gens l'aiment, le tribunal est vide.",
   "gauche": {
    "libelle": "Laissez-le faire",
    "effets": {
@@ -13338,7 +13338,7 @@
     "peuple": 5,
     "presse": 3
    },
-   "journal": "Le solde a été mandaté mercredi. Les camions ont quitté le quartier du bas sans rien redéposer sur le trottoir."
+   "journal": "Le solde a été mandaté mercredi. Les camions ont quitté le quartier de la Cuvette sans rien redéposer sur le trottoir."
   },
   "droite": {
    "libelle": "Qu'elle attende",
@@ -13369,7 +13369,7 @@
     "presse": 5,
     "peuple": -4
    },
-   "journal": "Le marché a été résilié jeudi. Le chantier de l'école du quartier nord est refermé par une tôle et un cadenas."
+   "journal": "Le marché a été résilié jeudi. Le chantier de l'école du quartier de la Cuvette est refermé par une tôle et un cadenas."
   },
   "droite": {
    "libelle": "Qu'il finisse",
@@ -14120,7 +14120,7 @@
   "id": "sante_cholera_3_avoue",
   "personnage": "sante",
   "humeur": "fache",
-  "texte": "{titre}, le cordon tient, mais le quartier bas n'a plus de marché ni de taxi. Le fonds propose des tentes et des caméras.",
+  "texte": "{titre}, le cordon tient, mais le quartier de la Cuvette n'a plus de marché ni de taxi. Le fonds propose des tentes et des caméras.",
   "gauche": {
    "libelle": "On les accepte",
    "effets": {
@@ -14154,7 +14154,7 @@
   "id": "sante_cholera_4",
   "personnage": "sante",
   "humeur": "neutre",
-  "texte": "{titre}, l'épidémie recule. Reste la source : le puits du quartier bas, qui rouvrira dès qu'on aura le dos tourné.",
+  "texte": "{titre}, l'épidémie recule. Reste la source : le puits du quartier de la Cuvette, qui rouvrira dès qu'on aura le dos tourné.",
   "gauche": {
    "libelle": "On le comble",
    "effets": {
@@ -14293,7 +14293,7 @@
     "presse": 6,
     "peuple": -5
    },
-   "journal": "Le marché a été relancé pour trois mois. Les élèves du quartier nord feront leur rentrée sous les manguiers."
+   "journal": "Le marché a été relancé pour trois mois. Les élèves du quartier de la Cuvette feront leur rentrée sous les manguiers."
   },
   "chaine": {
    "id": "marche",
@@ -15095,7 +15095,7 @@
   "id": "rancune_maire",
   "personnage": "maire",
   "humeur": "fache",
-  "texte": "{titre}, la ville ne ramasse plus les ordures du quartier nord, faute de gazole. Je ne le demanderai pas deux fois.",
+  "texte": "{titre}, la ville ne ramasse plus les ordures du quartier de la Cuvette, faute de gazole. Je ne le demanderai pas deux fois.",
   "gauche": {
    "libelle": "On paie le gazole",
    "effets": {
@@ -15103,7 +15103,7 @@
     "peuple": 6,
     "presse": 3
    },
-   "journal": "Les bennes sont reparties samedi dans le quartier nord. La facture de carburant de la ville a été réglée par l'État."
+   "journal": "Les bennes sont reparties samedi dans le quartier de la Cuvette. La facture de carburant de la ville a été réglée par l'État."
   },
   "droite": {
    "libelle": "Débrouillez-vous",
@@ -15112,7 +15112,7 @@
     "peuple": -8,
     "presse": -3
    },
-   "journal": "Les ordures du quartier nord ont été brûlées sur place par les habitants. La fumée a tenu deux jours."
+   "journal": "Les ordures du quartier de la Cuvette ont été brûlées sur place par les habitants. La fumée a tenu deux jours."
   },
   "conditions": {
    "loyaute_max": -3,
@@ -16278,7 +16278,7 @@
     "presse": -5,
     "peuple": -3
    },
-   "journal": "Le palais n'a rien démenti. Une affiche à son nom est apparue sur un mur du quartier nord, puis recouverte.",
+   "journal": "Le palais n'a rien démenti. Une affiche à son nom est apparue sur un mur du quartier de la Cuvette, puis recouverte.",
    "style": 5
   },
   "conditions": {
@@ -16570,7 +16570,7 @@
     "peuple": 6,
     "caisses": -9
    },
-   "journal": "Elle a démissionné du fonds par lettre. Le mariage a été célébré à la mairie du quartier nord, sans photographe.",
+   "journal": "Elle a démissionné du fonds par lettre. Le mariage a été célébré à la mairie du quartier de la Cuvette, sans photographe.",
    "drapeaux": [
     "noces_emissaire"
    ]
@@ -16845,7 +16845,7 @@
     "presse": -6,
     "armee": -4
    },
-   "journal": "Le mariage a été célébré sur la place du quartier nord, devant quatre mille personnes et aucun ministre.",
+   "journal": "Le mariage a été célébré sur la place du quartier de la Cuvette, devant quatre mille personnes et aucun ministre.",
    "drapeaux": [
     "noces_militante"
    ]
@@ -17158,7 +17158,7 @@
     "presse": -4,
     "caisses": -3
    },
-   "journal": "Vous avez joué vingt minutes sur le terrain du quartier nord. La vidéo a dépassé le million de vues avant minuit.",
+   "journal": "Vous avez joué vingt minutes sur le terrain du quartier de la Cuvette. La vidéo a dépassé le million de vues avant minuit.",
    "romance": {
     "mouvement": 1
    }
@@ -17962,7 +17962,7 @@
     "presse": -4,
     "caisses": -3
    },
-   "journal": "Vous avez dansé sur la place du quartier nord vers minuit. Le maire tenait le micro, et ne vous a pas annoncé.",
+   "journal": "Vous avez dansé sur la place du quartier de la Cuvette vers minuit. Le maire tenait le micro, et ne vous a pas annoncé.",
    "romance": {
     "mouvement": 1
    }
@@ -19168,7 +19168,7 @@
     "caisses": -4,
     "presse": -3
    },
-   "journal": "Le cortège présidentiel s'est arrêté dimanche dans une cour du quartier des Tanneurs. Personne n'avait prévenu la presse."
+   "journal": "Le cortège présidentiel s'est arrêté dimanche dans une cour du quartier de la Cuvette. Personne n'avait prévenu la presse."
   },
   "droite": {
    "libelle": "Pas maintenant",
@@ -19390,7 +19390,7 @@
     "caisses": -4,
     "presse": -3
    },
-   "journal": "Une voiture du palais s'est arrêtée deux heures dans le quartier de la Poudrière. Personne n'en a parlé."
+   "journal": "Une voiture du palais s'est arrêtée deux heures dans le quartier des Palmiers. Personne n'en a parlé."
   },
   "droite": {
    "libelle": "Qu'elle attende",
@@ -19921,7 +19921,7 @@
     "caisses": -4,
     "presse": -3
    },
-   "journal": "Le Président a mangé dans une maison du quartier des Tanneurs. La vieille dame a fait la cuisine elle-même."
+   "journal": "Le Président a mangé dans une maison du quartier de la Cuvette. La vieille dame a fait la cuisine elle-même."
   },
   "droite": {
    "libelle": "Pas encore",
