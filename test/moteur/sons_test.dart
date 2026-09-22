@@ -61,13 +61,13 @@ void main() {
 
   test('la nuit ne tait que les etats calmes du balcon', () {
     const tard = EtatPartie(
-        parcours: 'p', nomJoueur: 'Awa', jauges: Jauges.milieu, jour: 90);
+        parcours: 'p', nomJoueur: 'Awa', jauges: Jauges.milieu, jour: 95);
     // Le balcon ordinaire devient la nuit...
     expect(fondDe(Piece.balcon, decorDuBalcon(tard), tard), Fond.balconNuit);
     // ...mais une emeute ne se calme pas parce qu il fait nuit.
     const emeute = EtatPartie(
         parcours: 'p', nomJoueur: 'Awa',
-        jauges: Jauges(peuple: 10, armee: 50, caisses: 50, presse: 50), jour: 90);
+        jauges: Jauges(peuple: 10, armee: 50, caisses: 50, presse: 50), jour: 95);
     expect(fondDe(Piece.balcon, decorDuBalcon(emeute), emeute), Fond.balconEmeute);
   });
 

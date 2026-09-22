@@ -65,11 +65,20 @@ class Decor {
   }
 }
 
-/// Vrai entre le quatre-vingtième jour et la fin : c'est la seule chose qui
-/// fait tomber la nuit sur le palais. Le jeu n'a pas d'horloge — la nuit
-/// n'est pas une heure, c'est la fin d'un mandat qui approche et qu'on ne
-/// dort plus.
-bool estNuit(EtatPartie etat) => etat.jour >= 80;
+/// Combien de cartes tient une moitié de journée. Dix : c'est assez long
+/// pour qu'on s'installe dans une lumière, assez court pour qu'on voie
+/// l'autre cinq fois dans un mandat.
+const int cartesParDemiJournee = 10;
+
+/// Vrai une journée sur deux, par tranches de dix cartes : les dix
+/// premières se jouent de jour, les dix suivantes de nuit, et ainsi de
+/// suite jusqu'au centième — qui tombe donc la nuit, ce qui va bien à un
+/// jour d'élection.
+///
+/// Le jeu n'a pas d'horloge : c'est le nombre de cartes répondues qui fait
+/// le temps, comme tout le reste ici.
+bool estNuit(EtatPartie etat) =>
+    ((etat.jour - 1) ~/ cartesParDemiJournee).isOdd;
 
 /// Les dix états de la place, dans leur ordre de priorité.
 Decor decorDuBalcon(EtatPartie etat) {

@@ -213,9 +213,14 @@ void main() {
       expect(decorDuBalcon(deuil).etat, 'deuil');
     });
 
-    test('la nuit tombe au quatre-vingtième jour et pas avant', () {
-      expect(decorDuBalcon(etatAvec(jour: 79)).dossier, contains('/jour/'));
-      expect(decorDuBalcon(etatAvec(jour: 80)).dossier, contains('/nuit/'));
+    test('le jour et la nuit alternent toutes les dix cartes', () {
+      expect(decorDuBalcon(etatAvec(jour: 1)).dossier, contains('/jour/'));
+      expect(decorDuBalcon(etatAvec(jour: 10)).dossier, contains('/jour/'));
+      expect(decorDuBalcon(etatAvec(jour: 11)).dossier, contains('/nuit/'));
+      expect(decorDuBalcon(etatAvec(jour: 20)).dossier, contains('/nuit/'));
+      expect(decorDuBalcon(etatAvec(jour: 21)).dossier, contains('/jour/'));
+      // Le centième tombe la nuit, ce qui va bien à un jour d'élection.
+      expect(decorDuBalcon(etatAvec(jour: 100)).dossier, contains('/nuit/'));
     });
 
     test('la chambre partagée s ouvre par la romance, et par rien d autre', () {
@@ -228,8 +233,8 @@ void main() {
       expect(decorDeLaChambre(etatAvec(epouse: 'maire')).etat, 'presence_maire');
       // Et elle passe avant la nuit blanche : dormir à deux est ce qu'il y
       // a de plus vrai dans cette pièce.
-      expect(decorDeLaChambre(etatAvec(jour: 85, epouse: 'maire')).etat, 'presence_maire');
-      expect(decorDeLaChambre(etatAvec(jour: 85)).etat, 'nuit');
+      expect(decorDeLaChambre(etatAvec(jour: 95, epouse: 'maire')).etat, 'presence_maire');
+      expect(decorDeLaChambre(etatAvec(jour: 95)).etat, 'nuit');
     });
 
     test('la ceremonie se montre une fois, puis plus jamais', () {
@@ -432,8 +437,9 @@ void main() {
       expect(decorDeLaPiscine(etatAvec(caisses: 60, style: 30), {}).etat, 'base');
     });
 
-    test('la chambre passe à la nuit blanche en fin de mandat', () {
-      expect(decorDeLaChambre(etatAvec(jour: 85)).etat, 'nuit');
+    test('la chambre passe à la nuit blanche quand il fait nuit', () {
+      expect(decorDeLaChambre(etatAvec(jour: 15)).etat, 'nuit');
+      expect(decorDeLaChambre(etatAvec(jour: 5)).etat, 'base');
     });
   });
 
