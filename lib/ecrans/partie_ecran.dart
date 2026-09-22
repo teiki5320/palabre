@@ -6,10 +6,12 @@ import '../moteur/denouement.dart';
 import '../moteur/jauges.dart';
 import '../moteur/modeles.dart';
 import '../moteur/partie.dart';
+import '../sauvegarde/sauvegarde.dart';
 import 'carte_glissante.dart';
 import 'ciel_carte.dart';
 import 'fin_ecran.dart';
 import 'palais_ecran.dart';
+import 'lecon_du_geste.dart';
 import 'quotidien_ecran.dart';
 import 'session.dart';
 import 'sons.dart';
@@ -33,6 +35,26 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
   /// n'a pas laissé de lendemain.
   String? _quotidien;
   int _matin = 0;
+
+  /// La leçon du geste : montrée sur la toute première carte d'un joueur,
+  /// effacée au premier contact du doigt, et jamais revue. Nulle tant que
+  /// le disque n'a pas répondu — on ne fait pas clignoter une leçon.
+  bool? _aApprisLeGeste;
+
+  @override
+  void initState() {
+    super.initState();
+    Sauvegarde.gesteAppris().then((appris) {
+      if (mounted) setState(() => _aApprisLeGeste = appris);
+    });
+  }
+
+  void _leconApprise() {
+    if (_aApprisLeGeste == false) {
+      setState(() => _aApprisLeGeste = true);
+      Sauvegarde.noteGesteAppris();
+    }
+  }
 
   /// Le passage de la carte suivante de l'arrière-plan au premier plan. Il
   /// démarre au départ de la carte du jour et se remet à zéro d'un coup quand
@@ -148,7 +170,10 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                             key: ValueKey('${session.etat.jour}_${carte.id}'),
                             libelleGauche: carte.gauche.libelle,
                             libelleDroite: carte.droite.libelle,
-                            onIntention: (c) => setState(() => _intention = c),
+                            onIntention: (c) {
+                              if (c != null) _leconApprise();
+                              setState(() => _intention = c);
+                            },
                             onSortie: () => _doublure.forward(from: 0),
                             onReponse: (c) {
                               setState(() => _intention = null);
@@ -179,11 +204,26 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                                 });
                               }
                             },
-                            enfant: _Carte(
-                              personnage: personnage,
-                              humeur: carte.humeur,
-                              texte: habille(carte.texte, nom: session.etat.nomJoueur, titre: titre),
-                              ciel: cielDe(session.etat),
+                            enfant: Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                _Carte(
+                                  personnage: personnage,
+                                  humeur: carte.humeur,
+                                  texte: habille(carte.texte,
+                                      nom: session.etat.nomJoueur, titre: titre),
+                                  ciel: cielDe(session.etat),
+                                ),
+                                // L'intro a dit le geste en mots ; ici on le
+                                // montre sur la carte, une seule fois.
+                                if (_aApprisLeGeste == false &&
+                                    session.etat.jour == 1 &&
+                                    session.etat.mandat == 1)
+                                  LeconDuGeste(
+                                    gauche: carte.gauche.libelle,
+                                    droite: carte.droite.libelle,
+                                  ),
+                              ],
                             ),
                           ),
                         ),

@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
 import 'package:president/ecrans/ciel_carte.dart';
 import 'package:president/ecrans/partie_ecran.dart';
+import 'package:president/ecrans/lecon_du_geste.dart';
 import 'package:president/ecrans/quotidien_ecran.dart';
 import 'package:president/ecrans/session.dart';
 import 'package:president/moteur/denouement.dart';
@@ -86,6 +87,25 @@ void main() {
     await passeLeQuotidien(tester);
     expect(find.text('JOUR 2'), findsOneWidget);
     expect(find.textContaining('casernes'), findsOneWidget);
+  });
+
+  testWidgets('la lecon du geste ne se montre qu a la premiere carte', (tester) async {
+    await lance(tester);
+    expect(find.byType(LeconDuGeste), findsOneWidget);
+    // Les deux reponses sont decouvertes le temps de la lecon : elles
+    // n apparaissent normalement que pendant le geste.
+    expect(find.textContaining('Patientez'), findsOneWidget);
+    expect(find.textContaining('On paie'), findsOneWidget);
+
+    await tester.drag(find.textContaining('solde'), const Offset(400, 0));
+    await passeLeQuotidien(tester);
+    expect(find.byType(LeconDuGeste), findsNothing);
+  });
+
+  testWidgets('la lecon ne revient pas quand le geste est appris', (tester) async {
+    SharedPreferences.setMockInitialValues({'geste_appris': true});
+    await lance(tester);
+    expect(find.byType(LeconDuGeste), findsNothing);
   });
 
   testWidgets('le quotidien prend tout l ecran entre deux cartes', (tester) async {

@@ -18,6 +18,7 @@ class Sauvegarde {
   static const _cle = 'partie_en_cours';
   static const _cleProgression = 'progression';
   static const _cleIntro = 'intro_vue';
+  static const _cleGeste = 'geste_appris';
 
   static Future<void> enregistre(EtatPartie etat) async {
     try {
@@ -73,6 +74,27 @@ class Sauvegarde {
       await prefs.setBool(_cleIntro, true);
     } catch (_) {
       // Rien à faire : au pire, l'intro se remontrera une fois.
+    }
+  }
+
+  /// Le geste ne s'explique qu'une fois, sur la toute première carte. On
+  /// répond « déjà appris » quand le stockage manque : une leçon sautée
+  /// vaut mieux qu'une leçon réimposée à chaque partie.
+  static Future<bool> gesteAppris() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      return prefs.getBool(_cleGeste) ?? false;
+    } catch (_) {
+      return true;
+    }
+  }
+
+  static Future<void> noteGesteAppris() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool(_cleGeste, true);
+    } catch (_) {
+      // Rien à faire.
     }
   }
 
