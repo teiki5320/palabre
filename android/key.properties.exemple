@@ -1,0 +1,13 @@
+# Modèle du fichier de signature Android. Copier en `android/key.properties`
+# et remplir — ce fichier-là n'est jamais versionné (.gitignore), et le
+# keystore non plus (*.jks).
+#
+#   keytool -genkey -v -keystore ~/Documents/cles-android/palabre.jks \
+#     -keyalg RSA -keysize 2048 -validity 10000 -alias palabre
+#
+# storeFile accepte un chemin absolu, ou relatif au dossier android/.
+
+storeFile=/chemin/vers/palabre.jks
+storePassword=
+keyAlias=palabre
+keyPassword=

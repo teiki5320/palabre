@@ -436,11 +436,17 @@ List<Passage> passagesDe(Piece piece) => switch (piece) {
       Piece.balcon => const [],
     };
 
-/// L'écran accroché au mur du bureau, entre le rideau et la porte du
-/// couloir : c'est le seul mur libre des quatre plaques, et elles
-/// partagent toutes le même cadrage. Il montre la carte du pays, de jour
-/// ou de nuit, et s'ouvre en grand quand on le touche.
-const Zone ecranDuBureau = Zone(0.30, 0.235, 0.15, 0.15);
+/// L'écran accroché au mur du bureau, sous le climatiseur : c'est le pan
+/// de mur nu de la plaque, et les quatre états du bureau partagent le même
+/// cadrage. Il montre la carte du pays, de jour ou de nuit, et s'ouvre en
+/// grand quand on le touche.
+///
+/// Les deux fractions sont égales parce que la plaque fait 2488 × 1656 :
+/// une zone carrée en fractions rend un rectangle de trois sur deux, qui
+/// est exactement le format de la carte. Le premier essai le posait à
+/// x = 0,30, c'est-à-dire à cheval sur le rideau et le chambranle du
+/// couloir — il mordait sur l'ouverture.
+const Zone ecranDuBureau = Zone(0.60, 0.30, 0.13, 0.13);
 
 /// L'écran de la pièce, ou null : le bureau seul en a un.
 Zone? ecranDe(Piece piece) => piece == Piece.bureau ? ecranDuBureau : null;

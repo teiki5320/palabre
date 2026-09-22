@@ -78,8 +78,10 @@ Aucune date de sortie n'est arrêtée dans le dépôt. L'ordre est contraint par
 - ✅ Intégration continue : analyse et 421 tests à chaque poussée
 - ⬜ Relire les 687 cartes une par une (grammaire, compréhension, cohérence des deux réponses)
 - ⬜ Trancher le modèle de rémunération pour le marché visé
-- ⬜ Câbler la signature de publication Android — la variante `release` signe encore avec la clé de debug
-- ⬜ Rédiger les fiches de boutique : titre, sous-titre, description, mots-clés
-- ⬜ Produire les captures d'écran aux formats exigés par les deux boutiques
-- ⬜ Répondre aux questionnaires de classification 17+ / 18 et de confidentialité
-- ⬜ Mettre le `README.md` à jour : il annonce encore une élection au jour 30, le code dit 100
+- ✅ Câbler la signature de publication Android, vérifiée avec un keystore jetable — reste à poser la vraie clé
+- ⬜ Ramener le paquet Android sous les 150 Mo : le bundle en fait 143,3, la marge est sous 5 %
+- ✅ Rédiger les fiches de boutique : titre, sous-titre, descriptions française et anglaise, mots-clés — `docs/BOUTIQUE.md`
+- ✅ Produire les captures d'écran aux deux formats, plus l'icône et l'image de présentation de Play — `docs/captures/`
+- ⬜ Répondre aux questionnaires de classification 17+ / 18 et de confidentialité — réponses préparées dans `docs/BOUTIQUE.md`
+- ⬜ Écrire et héberger une politique de confidentialité, exigée même sans collecte
+- ✅ Mettre le `README.md` à jour : il annonçait encore une élection au jour 30

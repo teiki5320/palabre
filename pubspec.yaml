@@ -1,7 +1,7 @@
 name: president
 description: "Président pour 100 jours — jeu de cartes à glisser."
 publish_to: none
-version: 0.27.0+1
+version: 0.28.0+1
 
 environment:
   sdk: ^3.13.0
