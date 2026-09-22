@@ -29,8 +29,8 @@ void main() {
 
   test('la lune croit d une nuit a l autre et n est pleine qu a la fin', () {
     expect(nuitsParMandat, 5);
-    expect(au(11).phase, closeTo(.2, .001));
-    expect(au(31).phase, closeTo(.4, .001));
+    expect(au(11).phase, closeTo(.5, .001));
+    expect(au(31).phase, closeTo(.625, .001));
     expect(au(100).phase, 1);
     // Le soleil n a pas de phase : il est toujours entier.
     expect(au(1).phase, 1);

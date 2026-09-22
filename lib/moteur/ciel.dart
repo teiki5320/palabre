@@ -33,9 +33,13 @@ class CielDuJour {
   /// l'astre monte vite, s'attarde en haut, et redescend.
   final double hauteur;
 
-  /// Pour la lune, de 0,2 la première nuit à 1 la dernière : elle croît
-  /// d'une nuit à l'autre et n'est pleine qu'au centième jour. Toujours 1
-  /// pour le soleil, qui n'a pas de phase.
+  /// Pour la lune, d'un demi-disque la première nuit au disque plein la
+  /// dernière : elle croît d'une nuit à l'autre et n'est pleine qu'au
+  /// centième jour. Toujours 1 pour le soleil, qui n'a pas de phase.
+  ///
+  /// Elle ne descend pas sous un demi : la lune tient dans neuf pixels, et
+  /// sous un demi-disque le croissant y fait moins d'un pixel — on ne verrait
+  /// plus rien du tout, ce qui est pire que de ne pas montrer la phase.
   final double phase;
 }
 
@@ -48,13 +52,14 @@ CielDuJour cielDe(EtatPartie etat) {
   // on divise par neuf, pas par dix, sinon l'astre ne se couche jamais.
   final course = cartesParDemiJournee > 1 ? dans / (cartesParDemiJournee - 1) : 0.0;
   final nuit = bloc.isOdd;
-  // La nuit numéro zéro est la première du mandat : sa lune est un mince
-  // croissant, et chaque nuit la découvre d'un cinquième de plus.
+  // La nuit numéro zéro est la première du mandat : sa lune est un demi
+  // disque, et chaque nuit la découvre un peu plus.
   final rang = nuit ? (bloc - 1) ~/ 2 : 0;
+  final derniere = nuitsParMandat - 1;
   return CielDuJour(
     astre: nuit ? Astre.lune : Astre.soleil,
     course: course,
     hauteur: math.sin(math.pi * course),
-    phase: nuit ? ((rang + 1) / nuitsParMandat).clamp(0.2, 1.0) : 1,
+    phase: nuit && derniere > 0 ? .5 + .5 * (rang / derniere) : 1,
   );
 }

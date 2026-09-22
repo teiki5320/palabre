@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
-import 'package:president/ecrans/ciel_carte.dart';
+import 'package:president/ecrans/cadran_du_jour.dart';
 import 'package:president/ecrans/partie_ecran.dart';
 import 'package:president/ecrans/lecon_du_geste.dart';
 import 'package:president/ecrans/quotidien_ecran.dart';
@@ -128,14 +128,16 @@ void main() {
     expect(find.textContaining('casernes'), findsOneWidget);
   });
 
-  testWidgets('l astre du jour est pose sur la carte', (tester) async {
+  testWidgets('l astre du jour est dans le hublot, pas sur la carte', (tester) async {
     // Le soleil au premier jour, la lune au onzieme : c est la seule chose
-    // a l ecran qui dise l heure, le jeu n ayant pas d horloge.
+    // a l ecran qui dise l heure, le jeu n ayant pas d horloge. Il est pose
+    // dans la ligne du jour, jamais dans l image : un astre sur le portrait
+    // entre en concurrence avec le visage.
     await lance(tester);
-    expect(find.byType(CielDeLaCarte), findsOneWidget);
-    final ciel = tester.widget<CielDeLaCarte>(find.byType(CielDeLaCarte));
-    expect(ciel.ciel.astre, Astre.soleil);
-    expect(ciel.ciel.course, 0);
+    expect(find.byType(CadranDuJour), findsOneWidget);
+    final cadran = tester.widget<CadranDuJour>(find.byType(CadranDuJour));
+    expect(cadran.ciel.astre, Astre.soleil);
+    expect(cadran.ciel.course, 0);
   });
 
   testWidgets('le nom du joueur remplace le gabarit', (tester) async {

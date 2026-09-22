@@ -8,7 +8,7 @@ import '../moteur/modeles.dart';
 import '../moteur/partie.dart';
 import '../sauvegarde/sauvegarde.dart';
 import 'carte_glissante.dart';
-import 'ciel_carte.dart';
+import 'cadran_du_jour.dart';
 import 'fin_ecran.dart';
 import 'palais_ecran.dart';
 import 'lecon_du_geste.dart';
@@ -140,7 +140,11 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                         atout: parcours?.atout,
                       ),
               ),
-              _LigneJour(jour: session.etat.jour, mandat: session.etat.mandat),
+              _LigneJour(
+                jour: session.etat.jour,
+                mandat: session.etat.mandat,
+                ciel: cielDe(session.etat),
+              ),
               Expanded(
                 // La carte qui part ne doit pas passer devant les jauges.
                 child: ClipRect(
@@ -212,7 +216,6 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                                   humeur: carte.humeur,
                                   texte: habille(carte.texte,
                                       nom: session.etat.nomJoueur, titre: titre),
-                                  ciel: cielDe(session.etat),
                                 ),
                                 // L'intro a dit le geste en mots ; ici on le
                                 // montre sur la carte, une seule fois.
@@ -244,10 +247,14 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
 /// « JOUR 12 », et ce vers quoi le mandat va. À gauche, la sortie : la
 /// partie est sauvegardée à chaque réponse, on la retrouve à l'accueil.
 class _LigneJour extends StatelessWidget {
-  const _LigneJour({required this.jour, required this.mandat});
+  const _LigneJour({required this.jour, required this.mandat, required this.ciel});
 
   final int jour;
   final int mandat;
+
+  /// L'astre du moment. Le jeu n'a pas d'horloge : le temps, c'est le nombre
+  /// de cartes répondues, et le hublot est ce qui le montre.
+  final CielDuJour ciel;
 
   @override
   Widget build(BuildContext context) {
@@ -264,6 +271,8 @@ class _LigneJour extends StatelessWidget {
                 Text('JOUR $jour', style: Textes.jour),
                 const SizedBox(width: 8),
                 Text(mandat > 1 ? 'second mandat' : 'élection au jour $dureeMandat', style: Textes.echeance),
+                const SizedBox(width: 9),
+                CadranDuJour(ciel: ciel),
               ],
             ),
             Positioned(
@@ -317,16 +326,11 @@ class _Carte extends StatelessWidget {
     required this.personnage,
     required this.humeur,
     required this.texte,
-    required this.ciel,
   });
 
   final Personnage? personnage;
   final Humeur humeur;
   final String texte;
-
-  /// L'astre du jour, posé sur le portrait. Le jeu n'a pas d'horloge : le
-  /// temps, c'est le nombre de cartes répondues, et c'est lui qui le montre.
-  final CielDuJour ciel;
 
   @override
   Widget build(BuildContext context) {
@@ -351,7 +355,6 @@ class _Carte extends StatelessWidget {
                   alignment: const Alignment(0, -0.35),
                   errorBuilder: (_, __, ___) => Container(color: Couleurs.aplat),
                 ),
-              CielDeLaCarte(ciel: ciel),
               Positioned(
                 left: 0,
                 right: 0,
