@@ -94,6 +94,7 @@ void main() {
           parties: 600,
           mandats: 2,
           duree: 100,
+          acheteDesObjets: true,
         );
         jamais = jamais.intersection(m.cartesJamaisVues);
         if (jamais.isEmpty) return;

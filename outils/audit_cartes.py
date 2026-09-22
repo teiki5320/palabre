@@ -166,7 +166,10 @@ def audit():
             exige[d].append(c['id'])
         for d in cond.get('drapeaux_interdits', []):
             interdit[d].append(c['id'])
-    poses = set(pose) | POSES_PAR_LE_MOTEUR
+    # Acheter un objet pose son drapeau : c'est le moteur qui le fait, pas
+    # une réponse. Sans ça, toute carte ouverte par un achat passerait pour
+    # une carte morte.
+    poses = set(pose) | POSES_PAR_LE_MOTEUR | {'objet_' + o for o in objets}
 
     for d in sorted(set(interdit) - poses):
         note('drapeaux', f'« {d} » : personne ne le pose, mais '

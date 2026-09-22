@@ -21308,5 +21308,275 @@
    "rang": 10,
    "delai_min": 4
   }
+ },
+ {
+  "id": "objet_poste_radio_station",
+  "personnage": "renseignements",
+  "humeur": "neutre",
+  "texte": "{titre}, votre poste à ondes courtes donne chaque soir une station qui compte nos morts et nos grèves. Elle émet de chez le voisin.",
+  "gauche": {
+   "libelle": "On la brouille",
+   "effets": {
+    "presse": -7,
+    "armee": 6,
+    "caisses": -3
+   },
+   "journal": "Le brouillage a commencé jeudi soir. Deux stations de musique du pays ont disparu de la bande à la même heure."
+  },
+  "droite": {
+   "libelle": "On l'écoute",
+   "effets": {
+    "presse": 5,
+    "peuple": -4,
+    "armee": -4
+   },
+   "journal": "La station a été citée nommément au conseil des ministres. Son audience a doublé dans la semaine qui a suivi."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_poste_radio"
+   ]
+  }
+ },
+ {
+  "id": "objet_telephone_rouge_nuit",
+  "personnage": "general",
+  "humeur": "fache",
+  "texte": "{titre}, le téléphone rouge a sonné à quatre heures. Le voisin dit qu'un de nos convois a franchi sa frontière, et il attend.",
+  "gauche": {
+   "libelle": "Je lui parle",
+   "effets": {
+    "armee": -5,
+    "presse": 6,
+    "peuple": 3
+   },
+   "journal": "L'appel a duré dix-neuf minutes. Le convoi est rentré avant l'aube, et aucun communiqué n'a parlé d'incident."
+  },
+  "droite": {
+   "libelle": "Je laisse sonner",
+   "effets": {
+    "armee": 6,
+    "presse": -5,
+    "peuple": -4
+   },
+   "journal": "La ligne a sonné trois nuits de suite. Le quatrième jour, le voisin a fermé son poste-frontière du nord."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_telephone_rouge"
+   ]
+  }
+ },
+ {
+  "id": "objet_climatiseur_groupe",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, le climatiseur du bureau tire sur le groupe du quartier. Trois heures de coupure : chez eux, ou ici.",
+  "gauche": {
+   "libelle": "Chez eux",
+   "effets": {
+    "peuple": -8,
+    "presse": -4,
+    "armee": 3
+   },
+   "journal": "Le quartier a été coupé de treize à seize heures. Les fenêtres du palais sont restées fermées, et fraîches."
+  },
+  "droite": {
+   "libelle": "Ici",
+   "effets": {
+    "peuple": 6,
+    "presse": 4,
+    "caisses": -4
+   },
+   "journal": "Le palais a coupé la climatisation aux heures chaudes. Deux conseillers ont demandé à travailler depuis chez eux."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_climatiseur"
+   ]
+  }
+ },
+ {
+  "id": "objet_pupitre_allocution",
+  "personnage": "cabinet",
+  "humeur": "neutre",
+  "texte": "{titre}, le pupitre est prêt et les micros branchés. Dix minutes ce soir, en direct, sans qu'aucune rédaction ne vous coupe.",
+  "gauche": {
+   "libelle": "Je parle ce soir",
+   "effets": {
+    "peuple": 7,
+    "presse": -5,
+    "armee": 3
+   },
+   "journal": "L'allocution a duré douze minutes. Deux stations l'ont reprise en entier, une troisième l'a commentée avant la fin."
+  },
+  "droite": {
+   "libelle": "Pas ce soir",
+   "effets": {
+    "presse": 5,
+    "peuple": -5,
+    "caisses": 3
+   },
+   "journal": "Le créneau est resté vide. Une radio privée l'a occupé avec un débat sur le même sujet, à la même heure."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_pupitre"
+   ]
+  }
+ },
+ {
+  "id": "objet_sono_place",
+  "personnage": "maire",
+  "humeur": "neutre",
+  "texte": "{titre}, la place est pleine et la sono porte jusqu'au carrefour. Ils attendent depuis deux heures que quelqu'un sorte au balcon.",
+  "gauche": {
+   "libelle": "Je sors",
+   "effets": {
+    "peuple": 8,
+    "armee": -5,
+    "presse": 3
+   },
+   "journal": "Le balcon s'est ouvert à dix-huit heures. La place a repris la dernière phrase deux fois, puis s'est vidée d'elle-même."
+  },
+  "droite": {
+   "libelle": "Un communiqué",
+   "effets": {
+    "peuple": -5,
+    "armee": 4,
+    "presse": 3
+   },
+   "journal": "Le communiqué a été lu par un porte-parole, à la sono, devant une place qui se clairsemait déjà."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_sono"
+   ]
+  }
+ },
+ {
+  "id": "objet_enceinte_disque",
+  "personnage": "redactrice",
+  "humeur": "content",
+  "texte": "{titre}, on sait ce que vous écoutez le soir : le disque d'un chanteur que la censure a interdit il y a vingt ans.",
+  "gauche": {
+   "libelle": "Je l'assume",
+   "effets": {
+    "peuple": 6,
+    "armee": -6,
+    "presse": 4
+   },
+   "journal": "Le palais a confirmé. Le disque s'est vendu comme jamais, et le chanteur est passé à la radio nationale le dimanche."
+  },
+  "droite": {
+   "libelle": "Je ne dis rien",
+   "effets": {
+    "presse": -5,
+    "armee": 4,
+    "peuple": -3
+   },
+   "journal": "Le palais n'a pas répondu. Le disque circule en copie, avec « écouté en haut lieu » écrit à la main sur les pochettes."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_enceinte"
+   ]
+  }
+ },
+ {
+  "id": "objet_coffret_inventaire",
+  "personnage": "doyen",
+  "humeur": "neutre",
+  "texte": "{titre}, le coffret du palais contient encore trois pièces qui appartiennent à l'État. L'inventaire est à faire, et il sera public.",
+  "gauche": {
+   "libelle": "On inventorie",
+   "effets": {
+    "presse": 6,
+    "peuple": 4,
+    "armee": -5
+   },
+   "journal": "L'inventaire a paru en annexe du budget. Les trois pièces sont parties au musée national, vitrine du fond."
+  },
+  "droite": {
+   "libelle": "Plus tard",
+   "effets": {
+    "presse": -6,
+    "caisses": 4,
+    "peuple": -3
+   },
+   "journal": "L'inventaire a été reporté à la session suivante. Le greffier qui l'avait demandé a été affecté aux archives."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_coffret"
+   ]
+  }
+ },
+ {
+  "id": "objet_quatre_quatre_piste",
+  "personnage": "chef",
+  "humeur": "neutre",
+  "texte": "{titre}, avec la 4×4 vous pouvez monter au nord par la piste. Le village vous attend depuis deux ans, et la route est mauvaise.",
+  "gauche": {
+   "libelle": "J'y vais",
+   "effets": {
+    "peuple": 7,
+    "caisses": -5,
+    "armee": -3
+   },
+   "journal": "Le convoi a mis onze heures. Les images du président dans la boue ont fait le tour des radios avant son retour."
+  },
+  "droite": {
+   "libelle": "Qu'ils descendent",
+   "effets": {
+    "caisses": 4,
+    "peuple": -6,
+    "presse": -3
+   },
+   "journal": "Une délégation du village est descendue à la capitale, à ses frais. Elle a attendu deux jours devant le portail."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_quatre_quatre"
+   ]
+  }
+ },
+ {
+  "id": "objet_motos_cortege",
+  "personnage": "maire",
+  "humeur": "fache",
+  "texte": "{titre}, votre cortège de six motos coupe l'avenue deux fois par jour. Les taxis ont commencé à klaxonner sur son passage.",
+  "gauche": {
+   "libelle": "Je change d'heure",
+   "effets": {
+    "peuple": 5,
+    "armee": -4,
+    "presse": 3
+   },
+   "journal": "Le cortège passe désormais avant six heures. L'avenue ne s'arrête plus, et personne n'a rien remarqué."
+  },
+  "droite": {
+   "libelle": "Qu'ils s'écartent",
+   "effets": {
+    "armee": 6,
+    "peuple": -7,
+    "presse": -3
+   },
+   "journal": "Un taxi a été verbalisé pour entrave au cortège. Sa photo, klaxon au poing, a circulé toute la journée."
+  },
+  "poids": 5,
+  "conditions": {
+   "drapeaux_requis": [
+    "objet_motos"
+   ]
+  }
  }
 ]

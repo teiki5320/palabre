@@ -5,6 +5,7 @@ import 'denouement.dart';
 import 'etat_partie.dart';
 import 'jauges.dart';
 import 'modeles.dart';
+import 'palais.dart';
 import 'partie.dart';
 import 'tirage.dart';
 
@@ -41,6 +42,7 @@ Mesures simule({
   int graine = 1,
   int duree = dureeMandat,
   int mandats = 1,
+  bool acheteDesObjets = false,
 }) {
   final alea = Random(graine);
   final depart = contenu.parcoursParId(parcours);
@@ -62,6 +64,7 @@ Mesures simule({
       // contenu écrit pour rien.
       adversaire: adversaires.isEmpty ? null : adversaires[alea.nextInt(adversaires.length)].id,
     );
+    final objets = <String>{};
     while (true) {
       final fin = evalue(etat, duree: duree);
       if (fin != null) {
@@ -80,6 +83,20 @@ Mesures simule({
         break;
       }
       vuesPartout.add(carte.id);
+      // Le palais fait partie du jeu : un joueur qui ne passe jamais à la
+      // boutique ne verra jamais les cartes qu'un objet ouvre, et elles
+      // passeraient pour du contenu écrit pour rien.
+      if (acheteDesObjets && etat.jour % 7 == 0) {
+        final possibles = [
+          for (final o in contenu.objets)
+            if (achetable(etat, o, objets)) o,
+        ];
+        if (possibles.isNotEmpty) {
+          final o = possibles[alea.nextInt(possibles.length)];
+          objets.add(o.id);
+          etat = achete(etat, o);
+        }
+      }
       etat = repond(
         etat: etat,
         carte: carte,
