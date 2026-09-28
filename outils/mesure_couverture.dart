@@ -14,7 +14,6 @@ import 'package:president/contenu/chargement.dart';
 import 'package:president/moteur/denouement.dart';
 import 'package:president/moteur/etat_partie.dart';
 import 'package:president/moteur/jauges.dart';
-import 'package:president/moteur/modeles.dart';
 import 'package:president/moteur/partie.dart';
 import 'package:president/moteur/tirage.dart';
 
