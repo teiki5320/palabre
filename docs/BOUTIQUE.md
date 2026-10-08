@@ -227,7 +227,7 @@ servir telle quelle.
 Il reste à l'héberger à une adresse publique stable. Le plus simple, et
 gratuit : activer GitHub Pages sur le dossier `docs/` du dépôt — Settings,
 Pages, source « main / docs ». L'adresse devient
-`https://teiki5320.github.io/palabre/confidentialite.html`, et c'est celle-là
+`https://palabre.toakeur.com/confidentialite.html`, et c'est celle-là
 qu'on colle dans les deux consoles.
 
 ---
