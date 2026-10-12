@@ -11,7 +11,7 @@
 - **Version commune** : **0.28.0+1** (`pubspec.yaml`). Les deux plateformes en dépendent : iOS lit `FLUTTER_BUILD_NAME` et `FLUTTER_BUILD_NUMBER`, Android lit `flutter.versionName` et `flutter.versionCode`. Une seule ligne à changer pour les deux.
 - **Identifiant de bundle** : **`sn.palabre.app`**, identique des deux côtés — `PRODUCT_BUNDLE_IDENTIFIER` dans `ios/Runner.xcodeproj/project.pbxproj`, `applicationId` dans `android/app/build.gradle.kts`. Le `namespace` Android, `sn.palabre.president`, est interne au code Kotlin et n'a aucun effet sur la boutique. Nom affiché des deux côtés : **« Palabre »**.
 - **Monétisation** : **aucune**. Ni SDK publicitaire, ni achat intégré, ni abonnement dans `pubspec.yaml` ou dans `lib/`. L'application ne fait aucun appel réseau et ne déclare aucune permission Android. C'est la réponse la plus simple possible aux questionnaires de confidentialité des deux boutiques : aucune donnée collectée.
-- **Confidentialité** : la politique est en ligne sur <https://palabre.toakeur.com/confidentialite.html> (GitHub Pages, vérifié le 12 octobre 2026), contact `palabre@toakeur.com`. La racine `palabre.toakeur.com` n'a pas encore de page d'accueil (404) : il manque une adresse d'assistance à donner aux boutiques.
+- **Confidentialité** : la politique est en ligne sur <https://palabre.toakeur.com/confidentialite.html> (GitHub Pages, vérifié le 12 octobre 2026), contact `palabre@toakeur.com`. La racine `palabre.toakeur.com` sert une page d'accueil, qui porte l'adresse de contact : c'est elle qu'on donnera aux boutiques comme site de l'application et comme assistance.
 - **Chemin critique** : la décision de monétisation — qui conditionne la fiche, la classification et le questionnaire de confidentialité —, puis la première soumission iOS, la seule chaîne déjà câblée. Android suit, une fois le keystore posé et le paquet ramené sous les 150 Mo.
 
 ### 1. iOS · App Store
@@ -65,9 +65,8 @@ captures sont prises, la politique de confidentialité est en ligne sur
 tout ce qui reste.
 
 1. **Trancher le modèle de rémunération.** Il décide de la fiche, de la classification IARC et du questionnaire de confidentialité : le faire après la soumission obligerait à tout reprendre.
-2. **Donner une page d'accueil à `palabre.toakeur.com`.** Seule `/confidentialite.html` répond ; la racine renvoie une 404, alors que les boutiques demandent une adresse d'assistance.
-3. **Remplir les questionnaires** de classification et de confidentialité des deux côtés, avec `palabre.toakeur.com` et `palabre@toakeur.com`. Les réponses sont préparées dans `docs/BOUTIQUE.md` et vérifiables dans le code.
-4. **Soumettre une première build iOS à TestFlight** par Xcode Cloud, et la faire tourner sur appareil réel avant toute ouverture publique.
-5. **Poser le vrai keystore Android.** Le câblage est fait et vérifié ; il ne manque que `android/key.properties` sur la machine de publication, sur le modèle de `android/key.properties.exemple`.
-6. **Ramener le paquet Android sous les 150 Mo.** Le bundle en fait 143,3. Une recompression des images à qualité ferme le ramène autour de 110 Mo sans perte visible ; la livraison d'actifs de Play le ferait sans toucher aux images.
-7. **Ouvrir en test fermé** sur les deux boutiques avant la publication générale.
+2. **Remplir les questionnaires** de classification et de confidentialité des deux côtés, avec `palabre.toakeur.com` et `palabre@toakeur.com`. Les réponses sont préparées dans `docs/BOUTIQUE.md` et vérifiables dans le code.
+3. **Soumettre une première build iOS à TestFlight** par Xcode Cloud, et la faire tourner sur appareil réel avant toute ouverture publique.
+4. **Poser le vrai keystore Android.** Le câblage est fait et vérifié ; il ne manque que `android/key.properties` sur la machine de publication, sur le modèle de `android/key.properties.exemple`.
+5. **Ramener le paquet Android sous les 150 Mo.** Le bundle en fait 143,3. Une recompression des images à qualité ferme le ramène autour de 110 Mo sans perte visible ; la livraison d'actifs de Play le ferait sans toucher aux images.
+6. **Ouvrir en test fermé** sur les deux boutiques avant la publication générale.
