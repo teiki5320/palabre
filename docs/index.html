@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palabre — Président pour 100 jours</title>
+<meta name="description" content="Un jeu de cartes à glisser. Vous êtes président d'un pays qui n'existe pas. Une carte par jour, quatre jauges, cent jours jusqu'à l'élection.">
+<link rel="icon" href="site/icone.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Palabre — Président pour 100 jours">
+<meta property="og:description" content="Une carte par jour, quatre jauges, cent jours jusqu'à l'élection.">
+<meta property="og:image" content="https://palabre.toakeur.com/site/partage.jpg">
+<meta property="og:url" content="https://palabre.toakeur.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Public+Sans:wght@0,400;0,600;0,700&display=swap">
+<style>
+  :root{
+    color-scheme: dark;
+    --nuit:#14131A; --leve:#1C1A23; --encre:#080709;
+    --creme:#F6EFE4; --douce:#C3BBB0; --faible:#857E8F;
+    --or:#E9B44C; --chair:#C97B6A; --trait:#2E2A38;
+    --titre:"Bricolage Grotesque","Trebuchet MS",sans-serif;
+    --corps:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--nuit); color:var(--creme);
+    font-family:var(--corps); font-size:17px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block}
+  a{color:var(--or)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--or); outline-offset:3px; border-radius:3px}
+
+  .page{max-width:1060px; margin:0 auto; padding-inline:22px}
+
+  /* ── l'ouverture ─────────────────────────────────────────── */
+  .haut{padding-block:34px 0; display:flex; align-items:center; gap:13px}
+  .haut img{width:40px; height:40px; border-radius:10px}
+  .haut b{font-family:var(--titre); font-weight:800; font-size:1.02rem; letter-spacing:.12em}
+
+  .ouverture{
+    display:grid; grid-template-columns:1fr 310px; gap:54px; align-items:center;
+    padding-block:58px 72px;
+  }
+  h1{
+    font-family:var(--titre); font-weight:800; margin:0;
+    font-size:clamp(2.5rem,7.4vw,4.3rem); line-height:.98; letter-spacing:-.022em;
+    text-wrap:balance;
+  }
+  h1 em{font-style:normal; color:var(--or); display:block; font-size:.47em; letter-spacing:.02em; margin-top:.5em; line-height:1.15}
+  .pitch{font-size:1.2rem; color:var(--douce); max-width:34ch; margin:26px 0 0}
+  .pitch b{color:var(--creme); font-weight:600}
+  .telephone{
+    border-radius:26px; overflow:hidden; border:1px solid var(--trait);
+    box-shadow:0 36px 70px rgba(0,0,0,.66), 0 0 0 7px #0b0a0e;
+    background:#000; line-height:0;
+  }
+
+  /* ── les quatre jauges, telles qu'elles sont dans le jeu ─── */
+  .jauges{
+    border-top:1px solid var(--trait); border-bottom:1px solid var(--trait);
+    padding-block:30px; display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+  }
+  .jauge p{margin:0 0 9px; font-size:.68rem; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--faible); font-weight:600}
+  .barre{height:5px; border-radius:99px; background:#2A2733; overflow:hidden}
+  .barre i{display:block; height:100%; background:var(--creme); border-radius:99px}
+  .jauges + .note{margin-top:18px; color:var(--faible); font-size:.9rem; max-width:62ch}
+
+  /* ── les sections ─────────────────────────────────────────── */
+  section{padding-block:66px}
+  h2{font-family:var(--titre); font-weight:700; font-size:clamp(1.5rem,3.3vw,2rem);
+    margin:0 0 16px; line-height:1.12; letter-spacing:-.012em; text-wrap:balance}
+  section > p{color:var(--douce); max-width:62ch; margin:0 0 16px; font-size:1.06rem}
+  section > p:last-child{margin-bottom:0}
+
+  .trois{display:grid; grid-template-columns:repeat(3,1fr); gap:30px; margin-top:38px}
+  .trois h3{font-family:var(--titre); font-weight:700; font-size:1.08rem; margin:0 0 9px}
+  .trois p{margin:0; color:var(--douce); font-size:.98rem}
+
+  /* ── la bande d'écrans ────────────────────────────────────── */
+  .ecrans{display:grid; grid-template-columns:repeat(5,1fr); gap:16px; padding-block:6px 20px}
+  .ecrans figure{margin:0; min-width:0}
+  .ecrans img{border-radius:16px; border:1px solid var(--trait); background:#000}
+  .ecrans figcaption{margin-top:11px; font-size:.84rem; color:var(--faible)}
+
+  /* ── les chiffres ─────────────────────────────────────────── */
+  .chiffres{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--trait);
+    border:1px solid var(--trait); border-radius:12px; overflow:hidden; margin-top:34px}
+  .chiffres div{background:var(--nuit); padding:24px 22px}
+  .chiffres b{font-family:var(--titre); font-weight:800; font-size:1.9rem; display:block;
+    line-height:1; font-variant-numeric:tabular-nums}
+  .chiffres span{color:var(--faible); font-size:.82rem; letter-spacing:.1em;
+    text-transform:uppercase; display:block; margin-top:9px}
+
+  /* ── où ça en est ─────────────────────────────────────────── */
+  .etat{background:var(--leve); border:1px solid var(--trait); border-radius:14px; padding:34px}
+  .etat h2{margin-top:0}
+  .etat p{max-width:58ch}
+  .bouton{display:inline-block; margin-top:10px; background:var(--or); color:var(--encre);
+    font-weight:700; text-decoration:none; padding:13px 26px; border-radius:99px; font-size:1rem}
+  .bouton:hover{filter:brightness(1.07)}
+
+  /* ── le pied ──────────────────────────────────────────────── */
+  footer{border-top:1px solid var(--trait); margin-top:26px; padding-block:34px 70px;
+    color:var(--faible); font-size:.9rem}
+  footer p{max-width:66ch; margin:0 0 12px}
+  .age{display:inline-block; border:1px solid var(--chair); color:var(--chair);
+    border-radius:6px; padding:2px 9px; font-weight:700; font-size:.78rem; letter-spacing:.06em}
+
+  @media (max-width:860px){
+    /* Au téléphone la bande défile du doigt plutôt que de se tasser à cinq. */
+    .ecrans{display:flex; overflow-x:auto; gap:18px; scroll-snap-type:x mandatory}
+    .ecrans figure{flex:0 0 206px; scroll-snap-align:start}
+    .ouverture{grid-template-columns:1fr; gap:42px; padding-block:40px 56px}
+    .telephone{max-width:300px}
+    .trois{grid-template-columns:1fr; gap:26px}
+    .jauges{grid-template-columns:repeat(2,1fr); gap:20px 24px}
+    .chiffres{grid-template-columns:1fr 1fr}
+    section{padding-block:52px}
+  }
+  @media (max-width:420px){
+    .chiffres{grid-template-columns:1fr}
+    .etat{padding:26px 22px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="haut">
+    <img src="site/icone.png" alt="">
+    <b>PALABRE</b>
+  </header>
+
+  <div class="ouverture">
+    <div>
+      <h1>Cent jours.<em>Une carte par jour.</em></h1>
+      <p class="pitch">Vous venez d'être élu président d'un pays qui n'existe pas.
+      Chaque jour, quelqu'un entre dans votre bureau et vous laisse
+      <b>deux réponses</b>. Puis le jour suivant arrive.</p>
+    </div>
+    <div class="telephone">
+      <img src="site/1-la-carte.jpg" width="620" height="1348"
+           alt="Une carte du jeu : le chef d'état-major annonce que des pneus brûlent devant la caserne.">
+    </div>
+  </div>
+
+  <div class="jauges">
+    <div class="jauge"><p>Peuple</p><div class="barre"><i style="width:38%"></i></div></div>
+    <div class="jauge"><p>Armée</p><div class="barre"><i style="width:61%"></i></div></div>
+    <div class="jauge"><p>Caisses</p><div class="barre"><i style="width:27%"></i></div></div>
+    <div class="jauge"><p>Presse</p><div class="barre"><i style="width:54%"></i></div></div>
+  </div>
+  <p class="note">Quatre jauges vous tiennent. Elles vous tuent à zéro comme à cent :
+  une armée négligée vous renverse, une armée trop contente gouverne à votre place.
+  Contenter l'une vide l'autre, et c'est tout le métier.</p>
+
+  <section>
+    <h2>Ce que vous répondez ne disparaît pas</h2>
+    <p>Une photo étouffée au douzième jour ressort au quarantième. Un colonel que
+    vous avez muté revient avec des galons. Cinquante-neuf histoires s'étalent sur
+    plusieurs cartes et se souviennent de vous — et les quinze personnes qui entrent
+    dans votre bureau retiennent, chacune, ce que vous avez fait de ce qu'elles
+    défendent.</p>
+
+    <div class="trois">
+      <div>
+        <h3>Le palais</h3>
+        <p>Entre deux cartes, vous le meublez avec l'argent de l'État. Un ventilateur,
+        un fauteuil de cuir, une limousine, un coffre-fort. Ce qui est acheté reste,
+        même après une chute.</p>
+      </div>
+      <div>
+        <h3>Dix départs</h3>
+        <p>L'ancien général, la professeure, le syndicaliste, la femme d'affaires, la
+        militante. Chacun arrive avec ses appuis, ses ennemis et ses propres cartes.</p>
+      </div>
+      <div>
+        <h3>Quatorze fins</h3>
+        <p>Les blindés à l'aube, les caisses vides, la rue, l'urne. On ne gagne pas un
+        mandat : on arrive au centième jour, ou on n'y arrive pas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Un pays entièrement inventé</h2>
+    <p>Rien de réel n'est nommé dans ce jeu. Ni pays, ni ville, ni monnaie, ni
+    institution, ni parti, ni religion. Le décor est inventé de bout en bout, jusqu'à
+    la carte satellite accrochée au mur du bureau — et les visages qui vous parlent
+    n'appartiennent à personne.</p>
+
+    <div class="ecrans">
+      <figure>
+        <img src="site/6-les-parcours.jpg" width="620" height="1348" loading="lazy"
+             alt="L'écran de choix du parcours : qui étiez-vous avant d'être président.">
+        <figcaption>Qui étiez-vous avant&nbsp;?</figcaption>
+      </figure>
+      <figure>
+        <img src="site/2-le-quotidien.jpg" width="620" height="1348" loading="lazy"
+             alt="La radio du matin, qui raconte ce qu'a donné la décision de la veille.">
+        <figcaption>La radio du matin, le lendemain</figcaption>
+      </figure>
+      <figure>
+        <img src="site/3-le-palais.jpg" width="620" height="1348" loading="lazy"
+             alt="Le bureau du palais, avec la porte du couloir et la carte du pays au mur.">
+        <figcaption>Le bureau, qu'on meuble</figcaption>
+      </figure>
+      <figure>
+        <img src="site/4-la-carte-du-pays.jpg" width="620" height="1348" loading="lazy"
+             alt="La carte du pays vue du ciel, de nuit, avec trois lieux éclairés.">
+        <figcaption>Le pays, qui s'éclaire</figcaption>
+      </figure>
+      <figure>
+        <img src="site/5-l-accueil.jpg" width="620" height="1348" loading="lazy"
+             alt="L'écran d'accueil, avec le mandat en cours et les quatre jauges.">
+        <figcaption>Le mandat en cours</figcaption>
+      </figure>
+    </div>
+
+    <div class="chiffres">
+      <div><b>687</b><span>cartes écrites à la main</span></div>
+      <div><b>59</b><span>histoires à suivre</span></div>
+      <div><b>15</b><span>personnages qui reviennent</span></div>
+      <div><b>10</b><span>parcours de départ</span></div>
+      <div><b>14</b><span>façons de finir</span></div>
+      <div><b>0</b><span>connexion requise</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="etat">
+      <h2>Pas encore sorti</h2>
+      <p>Le jeu est écrit et jouable, mais il n'est publié sur aucune boutique à ce
+      jour. Si vous voulez qu'on vous prévienne le jour où il arrive sur l'App Store
+      et sur Google Play, écrivez-moi — un mot suffit, et votre adresse ne servira
+      qu'à ça.</p>
+      <a class="bouton" href="mailto:palabre@toakeur.com?subject=Prévenez-moi%20pour%20Palabre">Me prévenir à la sortie</a>
+    </div>
+  </section>
+
+  <footer>
+    <p><span class="age">17+</span>&nbsp; Jeu pour adultes : il contient des scènes de
+    chambre suggérées, sans nudité, et des situations politiques violentes qui ne sont
+    jamais montrées.</p>
+    <p>Palabre ne collecte aucune donnée, ne demande aucune permission et fonctionne
+    entièrement hors ligne. <a href="confidentialite.html">Politique de confidentialité</a>
+    — <a href="mailto:palabre@toakeur.com">palabre@toakeur.com</a></p>
+    <p>Le pays, les villes, les institutions et les personnages de ce jeu sont
+    entièrement imaginaires. Toute ressemblance avec un pays ou une personne réelle
+    serait fortuite.</p>
+  </footer>
+
+</div>
+</body>
+</html>
