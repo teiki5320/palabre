@@ -2,6 +2,22 @@
 
 Mis à jour le 13 octobre 2026 d'après le dépôt et la page en ligne. Pour mettre à jour : relancer ce même prompt.
 
+## En bref
+
+- **Plateforme** : iOS et Android, un seul code Flutter
+- **Stack** : Flutter 3.47.3, Riverpod, shared_preferences, audioplayers
+- **Backend** : aucun — contenu embarqué, sauvegarde sur l'appareil
+- **Distribution** : Xcode Cloud pour iOS, Android construit à la main
+- **Site** : palabre.toakeur.com sur GitHub Pages, derrière Cloudflare
+- **IA et outils** : portraits et décors faits sur OpenArt, outils dans outils/
+
+## Parcours
+
+- 🍎 **iOS** : 🐙 GitHub — main · CI au vert [ok] → ☁️ Xcode Cloud — script prêt, builds à vérifier [à faire] → 🛒 App Store Connect — aucune soumission visible [à faire] → 📱 App Store — pas publiée [pas encore]
+- 🤖 **Android** : 🐙 GitHub — main · CI au vert [ok] → 🔑 Keystore Android (signature) — câblé, vraie clé à poser [à faire] → 🤖 Google Play Console — aucune soumission visible [à faire] → 📱 Google Play — pas publiée [pas encore]
+- 🌐 **Web** : 🐙 GitHub — dossier docs/ sur main [ok] → 🌐 Hébergement web — GitHub Pages, accueil et confidentialité [ok] → 🏷️ Nom de domaine — palabre.toakeur.com via Cloudflare [ok]
+- 🎨 **Contenu** : 🤖 API d'IA — portraits et décors sur OpenArt [ok] → 🐙 GitHub — images versionnées, 83 Mo [ok] → 📱 Application — tout embarqué, jouable hors ligne [ok]
+
 ## Vue d'ensemble
 
 - **Plateforme** : application mobile iOS et Android, un seul code source Flutter. Les deux dossiers natifs existent dans le dépôt (`ios/`, `android/`), aucune cible web, macOS, Windows ou Linux.
@@ -19,7 +35,7 @@ Mis à jour le 13 octobre 2026 d'après le dépôt et la page en ligne. Pour met
 - **Rôle** : dépôt du code et de tout le contenu, intégration continue, et publication de la page de confidentialité (GitHub Pages, voir plus bas). C'est la source unique — Xcode Cloud clone depuis ici.
 - **Console** : https://github.com/teiki5320/palabre
 - **Identifiants publics** : propriétaire `teiki5320`, dépôt `palabre` (public), branche par défaut `main`. Un tag historique, `palabre-final`, marque l'application précédente qui occupait ce dépôt.
-- **Secrets** : aucun secret n'est requis par le workflow. `.github/workflows/ci.yml` n'utilise ni `secrets.*` ni variable d'environnement chiffrée — il ne fait qu'analyser et tester (dernier passage vert le 12 octobre 2026).
+- **Secrets** : aucun secret n'est requis par le workflow. `.github/workflows/ci.yml` n'utilise ni `secrets.*` ni variable d'environnement chiffrée — il ne fait qu'analyser et tester (dernier passage vert le 13 octobre 2026).
 - **Coût** : GitHub Actions sur `ubuntu-latest`, dans le quota gratuit des dépôts publics.
 
 ### 2. Apple Developer Program

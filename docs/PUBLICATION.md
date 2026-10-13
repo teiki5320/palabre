@@ -4,6 +4,30 @@
 >
 > Aucun secret ici — uniquement des références.
 
+## En bref
+
+- **Version commune** : 0.28.0+1 (`pubspec.yaml`)
+- **Identifiant de bundle** : `sn.palabre.app`, iOS et Android
+- **Monétisation** : aucune — ni pub, ni achat intégré
+- **Confidentialité** : aucune donnée collectée, politique en ligne
+- **Contact** : palabre@toakeur.com
+
+## Boutiques
+
+| | 🍎 App Store | 🤖 Google Play |
+|---|---|---|
+| État | [pas encore] aucune soumission visible | [pas encore] aucune soumission visible |
+| Construction | [ok] Xcode Cloud, script dans le dépôt | [à faire] à la main, aucune automatisation |
+| Signature | [ok] gérée par Xcode Cloud | [à faire] câblée, vraie clé à poser |
+| Classification | [à faire] 17+ visée, questionnaire à remplir | [à faire] 18 visée, questionnaire à remplir |
+| Cible | [ok] iOS 15.0 minimum | [ok] SDK par défaut de Flutter |
+| Permissions | [ok] aucune | [ok] aucune déclarée |
+| Poids | [à faire] non mesuré, à vérifier dans la console | [à faire] bundle 143,3 Mo sur 150 |
+
+## Poids
+
+- 🤖 **Poids du bundle Android** : 143,3 / 150 Mo — mesuré en septembre, recompresser les images
+
 ## Vue d'ensemble
 
 - **iOS** : la chaîne de construction existe et fonctionne — Xcode Cloud est câblé par `ios/ci_scripts/ci_post_clone.sh`, la signature est déléguée au service, l'équipe et l'identifiant de bundle sont renseignés dans le projet Xcode. Le dépôt ne montre **aucune trace de soumission** : ni version publiée, ni numéro de build TestFlight, ni fiche. État réel de la fiche et des builds : à vérifier dans la console.
@@ -56,3 +80,15 @@
 | **Classification** | 18 visée — questionnaire à remplir, à vérifier dans la console |
 | **Confidentialité** | « aucune donnée collectée » ; politique en ligne, `https://palabre.toakeur.com/confidentialite.html`, contact `palabre@toakeur.com` |
 | **Fiche (titre, description, captures)** | rédigée dans `docs/BOUTIQUE.md`, captures dans `docs/captures/` |
+
+## Ce qui reste, dans l'ordre
+
+1. ✅ **Contenu et fiches de boutique** : 687 cartes relues, textes et captures prêts dans `docs/`.
+2. ✅ **Site et confidentialité** : accueil et politique en ligne sur palabre.toakeur.com.
+3. ✅ **Signature Android câblée** : `key.properties` lu s'il existe, vérifié avec une clé jetable.
+4. **Trancher le modèle de rémunération** : il décide de la fiche, de la classification et de la confidentialité.
+5. **Remplir les questionnaires** : classification et confidentialité, des deux côtés.
+6. **Première build sur TestFlight** : par Xcode Cloud, essayée sur un appareil réel.
+7. **Poser la vraie clé Android** : `android/key.properties`, sauvegardée hors du dépôt.
+8. **Ramener le bundle Android sous 150 Mo** : recompression des images ou livraison d'actifs de Play.
+9. **Test fermé puis sortie publique** : sur les deux boutiques.
