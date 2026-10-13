@@ -1,6 +1,6 @@
 # PUBLICATION — état des boutiques
 
-> Mis à jour le 12 octobre 2026 d'après le dépôt et la page en ligne — pas d'accès aux consoles : tout statut de boutique est « à vérifier dans la console ». Pour mettre à jour : relancer ce même prompt.
+> Mis à jour le 13 octobre 2026 d'après le dépôt et la page en ligne — pas d'accès aux consoles : tout statut de boutique est « à vérifier dans la console ». Pour mettre à jour : relancer ce même prompt.
 >
 > Aucun secret ici — uniquement des références.
 
@@ -11,8 +11,8 @@
 - **Version commune** : **0.28.0+1** (`pubspec.yaml`). Les deux plateformes en dépendent : iOS lit `FLUTTER_BUILD_NAME` et `FLUTTER_BUILD_NUMBER`, Android lit `flutter.versionName` et `flutter.versionCode`. Une seule ligne à changer pour les deux.
 - **Identifiant de bundle** : **`sn.palabre.app`**, identique des deux côtés — `PRODUCT_BUNDLE_IDENTIFIER` dans `ios/Runner.xcodeproj/project.pbxproj`, `applicationId` dans `android/app/build.gradle.kts`. Le `namespace` Android, `sn.palabre.president`, est interne au code Kotlin et n'a aucun effet sur la boutique. Nom affiché des deux côtés : **« Palabre »**.
 - **Monétisation** : **aucune**. Ni SDK publicitaire, ni achat intégré, ni abonnement dans `pubspec.yaml` ou dans `lib/`. L'application ne fait aucun appel réseau et ne déclare aucune permission Android. C'est la réponse la plus simple possible aux questionnaires de confidentialité des deux boutiques : aucune donnée collectée.
-- **Confidentialité** : la politique est en ligne sur <https://palabre.toakeur.com/confidentialite.html> (GitHub Pages, vérifié le 12 octobre 2026), contact `palabre@toakeur.com`. La racine `palabre.toakeur.com` sert une page d'accueil, qui porte l'adresse de contact : c'est elle qu'on donnera aux boutiques comme site de l'application et comme assistance.
-- **Chemin critique** : la décision de monétisation — qui conditionne la fiche, la classification et le questionnaire de confidentialité —, puis la première soumission iOS, la seule chaîne déjà câblée. Android suit, une fois le keystore posé et le paquet ramené sous les 150 Mo.
+- **Confidentialité** : la politique est en ligne sur <https://palabre.toakeur.com/confidentialite.html> (GitHub Pages derrière Cloudflare, vérifié le 13 octobre 2026), contact `palabre@toakeur.com`. La racine <https://palabre.toakeur.com/> sert une page d'accueil en ligne depuis le 12 octobre 2026, qui porte la même adresse de contact : c'est l'adresse de site et d'assistance prévue pour les deux fiches.
+- **Soumission** : aucune, ni sur l'App Store ni sur Google Play, d'après le dépôt ; le site lui-même dit que le jeu n'est publié nulle part. Seule la construction iOS est automatisée (Xcode Cloud) ; Android se construit à la main.
 
 ### 1. iOS · App Store
 
@@ -56,17 +56,3 @@
 | **Classification** | 18 visée — questionnaire à remplir, à vérifier dans la console |
 | **Confidentialité** | « aucune donnée collectée » ; politique en ligne, `https://palabre.toakeur.com/confidentialite.html`, contact `palabre@toakeur.com` |
 | **Fiche (titre, description, captures)** | rédigée dans `docs/BOUTIQUE.md`, captures dans `docs/captures/` |
-
-## Ce qui reste, dans l'ordre
-
-Le contenu est fini et relu, les fiches de boutique sont écrites, les
-captures sont prises, la politique de confidentialité est en ligne sur
-`palabre.toakeur.com` et la signature Android est câblée. Ce qui suit est
-tout ce qui reste.
-
-1. **Trancher le modèle de rémunération.** Il décide de la fiche, de la classification IARC et du questionnaire de confidentialité : le faire après la soumission obligerait à tout reprendre.
-2. **Remplir les questionnaires** de classification et de confidentialité des deux côtés, avec `palabre.toakeur.com` et `palabre@toakeur.com`. Les réponses sont préparées dans `docs/BOUTIQUE.md` et vérifiables dans le code.
-3. **Soumettre une première build iOS à TestFlight** par Xcode Cloud, et la faire tourner sur appareil réel avant toute ouverture publique.
-4. **Poser le vrai keystore Android.** Le câblage est fait et vérifié ; il ne manque que `android/key.properties` sur la machine de publication, sur le modèle de `android/key.properties.exemple`.
-5. **Ramener le paquet Android sous les 150 Mo.** Le bundle en fait 143,3. Une recompression des images à qualité ferme le ramène autour de 110 Mo sans perte visible ; la livraison d'actifs de Play le ferait sans toucher aux images.
-6. **Ouvrir en test fermé** sur les deux boutiques avant la publication générale.
