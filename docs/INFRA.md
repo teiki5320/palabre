@@ -13,7 +13,7 @@ Mis à jour le 21 octobre 2026 d'après le dépôt et la page en ligne. Pour met
 
 ## Parcours
 
-- 🍎 **iOS** : 🐙 GitHub — main · CI au vert [ok] → ☁️ Xcode Cloud — archive iOS réussie le 20 octobre [ok] → 🛒 App Store Connect — TestFlight et fiche à vérifier [à faire] → 📱 App Store — pas publiée [pas encore]
+- 🍎 **iOS** : 🐙 GitHub — main · CI au vert [ok] → ☁️ Xcode Cloud — archive iOS réussie le 20 octobre [ok] → 🛒 App Store Connect — TestFlight : envoi manuel par Jean, aucune build au 21 octobre [à faire] → 📱 App Store — pas publiée [pas encore]
 - 🤖 **Android** : 🐙 GitHub — main · CI au vert [ok] → 🔑 Keystore Android (signature) — câblé, vraie clé à poser [à faire] → 🤖 Google Play Console — aucune soumission visible [à faire] → 📱 Google Play — pas publiée [pas encore]
 - 🌐 **Web** : 🐙 GitHub — dossier docs/ sur main [ok] → 🌐 Hébergement web — GitHub Pages, accueil et confidentialité [ok] → 🏷️ Nom de domaine — palabre.toakeur.com via Cloudflare [ok]
 - 🎨 **Contenu** : 🤖 API d'IA — portraits et décors sur OpenArt [ok] → 🐙 GitHub — images versionnées, 83 Mo [ok] → 📱 Application — tout embarqué, jouable hors ligne [ok]
@@ -56,7 +56,7 @@ Mis à jour le 21 octobre 2026 d'après le dépôt et la page en ligne. Pour met
 
 ### 4. Xcode Cloud
 
-- **Rôle** : construction iOS. Le script `ios/ci_scripts/ci_post_clone.sh` installe Flutter **3.47.3**, fait `flutter pub get`, `flutter build ios --release --no-codesign --config-only` puis `pod install` ; la signature est faite par le service. Le numéro de build vient de `CI_BUILD_NUMBER`. Les flux de travail eux-mêmes ne sont pas dans le dépôt, mais GitHub en garde la trace : le flux **« palabre-testflight »**, action *Archive - iOS*, a réussi à chaque poussée vérifiée (13, 14 et 20 octobre 2026, quatre avertissements). L'arrivée des builds dans TestFlight est à vérifier dans la console.
+- **Rôle** : construction iOS. Le script `ios/ci_scripts/ci_post_clone.sh` installe Flutter **3.47.3**, fait `flutter pub get`, `flutter build ios --release --no-codesign --config-only` puis `pod install` ; la signature est faite par le service. Le numéro de build vient de `CI_BUILD_NUMBER`. Les flux de travail eux-mêmes ne sont pas dans le dépôt, mais GitHub en garde la trace : le flux **« palabre-testflight »**, action *Archive - iOS*, a réussi à chaque poussée vérifiée (13, 14 et 20 octobre 2026, quatre avertissements). Les builds n'arrivent pas seules dans TestFlight : Jean fait l'envoi à la main (constaté le 21 octobre 2026 : aucune build du 20 octobre dans TestFlight).
 - **Console** : App Store Connect → onglet Xcode Cloud.
 - **Identifiants publics** : variable `FLUTTER_VERSION` (facultative, 3.47.3 par défaut).
 - **Secrets** : aucun dans le dépôt (signature gérée par Apple).
