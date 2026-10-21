@@ -1,5 +1,9 @@
 # Président pour 100 jours
 
+> Nom public de l'application (boutiques, écran d'accueil, site) :
+> **Palabre** — <https://palabre.toakeur.com/>. « Président pour 100 jours »
+> est le nom de travail du projet, gardé dans `pubspec.yaml`.
+
 Un jeu de cartes façon Reigns : vous êtes président d'un pays d'Afrique de
 l'Ouest imaginaire. Chaque jour, une carte, glissée à gauche ou à droite.
 Quatre jauges — peuple, armée, caisses, presse — tuent à 0 comme à 100, et
