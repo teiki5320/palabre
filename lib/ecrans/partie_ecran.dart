@@ -293,15 +293,33 @@ class _LigneJour extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('JOUR $jour', style: Textes.jour),
-                const SizedBox(width: 8),
-                Text(mandat > 1 ? 'second mandat' : 'élection au jour $dureeMandat', style: Textes.echeance),
-                const SizedBox(width: 9),
-                CadranDuJour(ciel: ciel),
-              ],
+            // Les deux boutons sont posés sur les bords de la pile : sans
+            // cette réserve, la ligne centrale leur passe dessous. Mesuré,
+            // elle débordait l'écran dès que le système agrandissait le
+            // texte — et le hublot du jour finissait sur le fronton du
+            // palais. La réserve est un peu plus large que les boutons.
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 46),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('JOUR $jour', style: Textes.jour),
+                  const SizedBox(width: 8),
+                  // C'est l'échéance qui cède : le jour et le hublot ne se
+                  // rognent jamais, ils disent l'essentiel.
+                  Flexible(
+                    child: Text(
+                      mandat > 1 ? 'second mandat' : 'élection au jour $dureeMandat',
+                      style: Textes.echeance,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const SizedBox(width: 9),
+                  CadranDuJour(ciel: ciel),
+                ],
+              ),
             ),
             Positioned(
               left: 0,
@@ -436,18 +454,26 @@ class _AxeRegime extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(30, 0, 30, 34),
       child: Column(
         children: [
+          // Les deux bouts de l'axe débordaient l'écran quand le système
+          // grossissait le texte : chacun prend la moitié et se serre plutôt
+          // que de pousser l'autre dehors.
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              AnimatedDefaultTextStyle(
-                duration: const Duration(milliseconds: 160),
-                style: vise < 0 ? Textes.nomJauge.copyWith(color: Couleurs.or) : Textes.nomJauge,
-                child: const Text('RÉPUBLIQUE'),
+              Flexible(
+                child: AnimatedDefaultTextStyle(
+                  duration: const Duration(milliseconds: 160),
+                  style: vise < 0 ? Textes.nomJauge.copyWith(color: Couleurs.or) : Textes.nomJauge,
+                  child: const Text('RÉPUBLIQUE', maxLines: 1, overflow: TextOverflow.ellipsis),
+                ),
               ),
-              AnimatedDefaultTextStyle(
-                duration: const Duration(milliseconds: 160),
-                style: vise > 0 ? Textes.nomJauge.copyWith(color: Couleurs.or) : Textes.nomJauge,
-                child: const Text('DICTATURE'),
+              Flexible(
+                child: AnimatedDefaultTextStyle(
+                  duration: const Duration(milliseconds: 160),
+                  style: vise > 0 ? Textes.nomJauge.copyWith(color: Couleurs.or) : Textes.nomJauge,
+                  child: const Text('DICTATURE',
+                      maxLines: 1, overflow: TextOverflow.ellipsis, textAlign: TextAlign.right),
+                ),
               ),
             ],
           ),
