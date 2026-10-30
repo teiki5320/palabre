@@ -442,21 +442,21 @@ List<Passage> passagesDe(Piece piece) => switch (piece) {
       Piece.balcon => const [],
     };
 
-/// La carte du pays, accrochée au mur du bureau à gauche de la porte du
-/// couloir. Elle montre le pays de jour ou de nuit, et s'ouvre en grand
-/// quand on la touche.
+/// La carte du pays, accrochée au mur du bureau à droite de la porte du
+/// couloir, sous le climatiseur. Elle montre le pays de jour ou de nuit,
+/// et s'ouvre en grand quand on la touche.
 ///
 /// Les deux fractions sont égales parce que la plaque fait 2488 × 1656 :
 /// une zone carrée en fractions rend un rectangle de trois sur deux, qui
 /// est exactement le format de la carte. Y toucher la déforme.
 ///
-/// C'est le troisième endroit essayé, et le premier qui tienne dans les
-/// quatre états. À x = 0,30 elle était à cheval sur le rideau et le
-/// chambranle ; sous le climatiseur elle tombait en plein sur le portrait
-/// doré du palais du chef, et sur le panneau punaisé du bureau enseveli.
-/// Ce pan de mur-ci est nu dans les quatre plaques, au-dessus du chevalet
-/// de la porte ouverte et des cartons de l'enseveli.
-const Zone ecranDuBureau = Zone(0.350, 0.285, 0.070, 0.070);
+/// Le rectangle tient dans le plus petit mur libre des quatre plaques :
+/// le chambranle du couloir le borne à gauche, le climatiseur en haut, le
+/// buste du palais du chef à droite, et l'imprimante du bureau ordinaire
+/// en bas. Ce mur ne s'est libéré que le 30 octobre 2026, quand le
+/// portrait doré du chef et le panneau punaisé de l'enseveli ont été
+/// retirés de leurs plaques, de jour comme de nuit.
+const Zone ecranDuBureau = Zone(0.588, 0.288, 0.122, 0.122);
 
 /// L'écran de la pièce, ou null : le bureau seul en a un.
 Zone? ecranDe(Piece piece) => piece == Piece.bureau ? ecranDuBureau : null;
