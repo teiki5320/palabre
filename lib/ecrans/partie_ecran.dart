@@ -588,6 +588,10 @@ class _Jauge extends StatelessWidget {
   final int? effet;
   final double pulsation;
 
+  /// La longueur de l'encoche, la même pour un point comme pour vingt :
+  /// c'est elle qui dit le sens sans donner la mesure.
+  static const double _encoche = 14;
+
   bool get _concernee => effet != null;
   bool get _alerte => valeur <= _LigneJauges.bas || valeur >= _LigneJauges.haut;
 
@@ -616,10 +620,6 @@ class _Jauge extends StatelessWidget {
             builder: (context, c) {
               final large = c.maxWidth;
               double x(int v) => large * v.clamp(0, 100) / 100;
-              final apres = (valeur + (effet ?? 0)).clamp(0, 100);
-              final debut = effet != null && effet! < 0 ? apres : valeur;
-              final fin = effet != null && effet! < 0 ? valeur : apres;
-
               return Stack(
                 alignment: Alignment.center,
                 clipBehavior: Clip.none,
@@ -647,22 +647,29 @@ class _Jauge extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Le fantôme : la part que la réponse ferait gagner ou perdre.
-                  if (_concernee && fin > debut)
+                  // L'encoche : de quel côté la réponse pousse cette jauge.
+                  // Sa longueur est fixe, et c'est tout le sujet — un fantôme
+                  // proportionnel donnait le chiffre exact au pixel près, et
+                  // le jeu se résolvait alors de tête : il suffisait de
+                  // remonter la jauge la plus basse pour ne plus jamais
+                  // perdre. On montre le sens, pas la mesure.
+                  if (_concernee)
                     Positioned(
-                      left: x(debut),
-                      width: x(fin) - x(debut),
+                      key: ValueKey('encoche_${jauge.name}'),
+                      left: (effet! > 0 ? x(valeur) : x(valeur) - _encoche)
+                          .clamp(0.0, large - _encoche),
+                      width: _encoche,
                       child: Container(
                         height: _aggrave ? 6 : 4,
                         decoration: BoxDecoration(
-                          color: _aggrave ? Couleurs.or : Couleurs.or.withValues(alpha: .45),
+                          color: _aggrave ? Couleurs.or : Couleurs.or.withValues(alpha: .55),
                           borderRadius: BorderRadius.circular(_aggrave ? 4 : 2),
                         ),
                       ),
                     ),
-                  // Pour une perte, une marque au niveau d'aujourd'hui : on voit
-                  // d'où l'on part autant que là où l'on tombe.
-                  if (_concernee && effet! < 0)
+                  // La barre du niveau d'aujourd'hui, pour qu'on voie d'où
+                  // part l'encoche.
+                  if (_concernee)
                     Positioned(
                       left: x(valeur) - 1,
                       child: Container(width: 2, height: 14, color: Couleurs.or),
@@ -676,25 +683,38 @@ class _Jauge extends StatelessWidget {
         AnimatedOpacity(
           opacity: _concernee ? 1 : 0,
           duration: const Duration(milliseconds: 160),
-          // La hauteur du delta est toujours réservée : rien ne saute quand
+          // La hauteur du sens est toujours réservée : rien ne saute quand
           // une jauge s'allume.
-          child: _Delta(effet: effet ?? 0, aggrave: _aggrave),
+          child: _Sens(effet: effet, aggrave: _aggrave),
         ),
       ],
     );
   }
 }
 
-class _Delta extends StatelessWidget {
-  const _Delta({required this.effet, required this.aggrave});
+/// Le sens d'un mouvement, jamais sa mesure.
+///
+/// Cette ligne affichait « +7 » ou « −12 ». Avec quatre jauges et le chiffre
+/// donné avant de répondre, le jeu se calculait de tête : mesuré sur mille
+/// mandats, un joueur au hasard atteignait l'élection dans 4 % des parties,
+/// et le même joueur suivant les chiffres y arrivait dans 98 %. On garde donc
+/// ce que le joueur doit savoir — quelles jauges bougent, et de quel côté —
+/// et on retire ce qui transformait la décision en calcul.
+class _Sens extends StatelessWidget {
+  const _Sens({required this.effet, required this.aggrave});
 
-  final int effet;
+  /// Null quand la réponse ne touche pas cette jauge : on ne dessine alors
+  /// aucune flèche. Une flèche rendue transparente resterait lue à voix
+  /// haute, et compterait dans les recherches des tests.
+  final int? effet;
   final bool aggrave;
 
   @override
   Widget build(BuildContext context) {
-    // Le vrai signe moins, pas le trait d'union : il s'aligne sur le plus.
-    final texte = effet >= 0 ? '+$effet' : '−${-effet}';
+    final v = effet;
+    // La place reste prise, pour que rien ne saute quand une jauge s'allume.
+    if (v == null) return const Text(' ', style: Textes.deltaJauge);
+    final texte = v >= 0 ? '▲' : '▼';
     if (!aggrave) return Text(texte, style: Textes.deltaJauge);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),

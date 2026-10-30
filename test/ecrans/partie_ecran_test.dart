@@ -161,16 +161,87 @@ void main() {
     await geste.moveBy(const Offset(120, 0));
     await tester.pump();
 
-    // « On paie » : +10 a l armee, −10 aux caisses. Le peuple et la presse
-    // ne bougent pas.
+    // « On paie » : l armee monte, les caisses descendent. Le peuple et la
+    // presse ne bougent pas. On annonce le sens, jamais la mesure : le
+    // chiffre exact rendait la partie calculable de tete.
     expect(hauteurBarre(tester, 'armee'), 8);
     expect(hauteurBarre(tester, 'caisses'), 8);
     expect(hauteurBarre(tester, 'peuple'), 6);
-    expect(find.text('+10'), findsOneWidget);
-    expect(find.text('\u221210'), findsOneWidget);
+    Finder sens(String jauge, String fleche) => find.descendant(
+          of: find.byKey(ValueKey('jauge_$jauge')),
+          matching: find.text(fleche),
+        );
+    expect(sens('armee', '\u25b2'), findsOneWidget, reason: 'l armee monte');
+    expect(sens('caisses', '\u25bc'), findsOneWidget, reason: 'les caisses descendent');
+    expect(sens('peuple', '\u25b2'), findsNothing, reason: 'le peuple ne bouge pas');
+    expect(sens('peuple', '\u25bc'), findsNothing, reason: 'le peuple ne bouge pas');
+    for (final j in ['peuple', 'armee', 'caisses', 'presse']) {
+      expect(
+        find.descendant(of: find.byKey(ValueKey('jauge_$j')), matching: find.textContaining('10')),
+        findsNothing,
+        reason: 'aucune jauge ne doit annoncer un chiffre',
+      );
+    }
 
     await geste.up();
     await tester.pumpAndSettle();
+  });
+
+  testWidgets('l encoche dit le sens et jamais la mesure', (tester) async {
+    // Deux parties, un seul choix chacune, deux ampleurs tres differentes sur
+    // la meme jauge : un point d un cote, dix-huit de l autre. L encoche doit
+    // faire exactement la meme longueur dans les deux cas — c est toute la
+    // regle. Le fantome proportionnel d avant donnait le chiffre au pixel
+    // pres, et la partie se resolvait alors de tete.
+    Contenu uneSeuleCarte(int ampleur) => Contenu.depuisChaines(
+          cartes: '['
+              '{"id":"c","personnage":"general","humeur":"neutre","texte":"La solde a du retard.",'
+              '"gauche":{"libelle":"Non","effets":{"peuple":-1}},'
+              '"droite":{"libelle":"Oui","effets":{"armee":$ampleur}}}'
+              ']',
+          personnages: '[{"id":"general","nom":"Le General","titre":"Chef d etat-major"}]',
+          parcours: '[{"id":"general_parcours","nom":"L ancien general","titre":"Monsieur le President",'
+              '"femme":false,"depart":{"peuple":50,"armee":50,"caisses":50,"presse":50}}]',
+          fins: '[{"id":"election_gagnee","jauge":null,"vers_le_haut":true,"titre":"R","texte":"t","image":"i"},'
+              '{"id":"election_perdue","jauge":null,"vers_le_haut":false,"titre":"B","texte":"t","image":"i"}]',
+        );
+
+    final largeurs = <double>[];
+    for (final ampleur in [1, 18]) {
+      final contenu = uneSeuleCarte(ampleur);
+      // Une cle par tour : sans elle, la seconde passe reutilise l arbre de la
+      // premiere, le Navigator garde l ecran de jeu au-dessus et le bouton
+      // « commencer » reste introuvable.
+      await tester.pumpWidget(ProviderScope(
+        key: ValueKey('essai$ampleur'),
+        overrides: [contenuProvider.overrideWith((ref) => contenu)],
+        child: MaterialApp(
+          home: Consumer(builder: (context, ref, _) {
+            return TextButton(
+              onPressed: () {
+                ref.read(sessionProvider.notifier).demarre(
+                    parcours: contenu.parcours.first, nom: 'Awa', graine: 1);
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PartieEcran()));
+              },
+              child: const Text('commencer'),
+            );
+          }),
+        ),
+      ));
+      await tester.pump();
+      await tester.tap(find.text('commencer'));
+      await tester.pumpAndSettle();
+
+      final geste = await tester.startGesture(tester.getCenter(find.textContaining('solde')));
+      await geste.moveBy(const Offset(120, 0));
+      await tester.pump();
+      largeurs.add(tester.getSize(find.byKey(const ValueKey('encoche_armee'))).width);
+      await geste.up();
+      await tester.pumpAndSettle();
+    }
+
+    expect(largeurs[0], largeurs[1],
+        reason: 'un effet de 1 et un effet de 18 doivent dessiner la meme encoche');
   });
 
   testWidgets('un mouvement sous le seuil d intention ne montre aucun delta', (tester) async {

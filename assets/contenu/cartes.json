@@ -16356,7 +16356,7 @@
   "chaine": {
    "id": "coeur_cabinet",
    "rang": 2,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -16399,7 +16399,7 @@
   "chaine": {
    "id": "coeur_cabinet",
    "rang": 3,
-   "delai_min": 6
+   "delai_min": 4
   }
  },
  {
@@ -16442,7 +16442,7 @@
   "chaine": {
    "id": "coeur_cabinet",
    "rang": 4,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -16482,7 +16482,7 @@
   "chaine": {
    "id": "coeur_cabinet",
    "rang": 5,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -16531,7 +16531,7 @@
   "chaine": {
    "id": "coeur_cabinet",
    "rang": 9,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -16617,7 +16617,7 @@
   "chaine": {
    "id": "coeur_emissaire",
    "rang": 2,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -16660,7 +16660,7 @@
   "chaine": {
    "id": "coeur_emissaire",
    "rang": 3,
-   "delai_min": 6
+   "delai_min": 4
   }
  },
  {
@@ -16703,7 +16703,7 @@
   "chaine": {
    "id": "coeur_emissaire",
    "rang": 4,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -16744,7 +16744,7 @@
   "chaine": {
    "id": "coeur_emissaire",
    "rang": 5,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -16791,7 +16791,7 @@
   "chaine": {
    "id": "coeur_emissaire",
    "rang": 9,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -16882,7 +16882,7 @@
   "chaine": {
    "id": "coeur_militante",
    "rang": 2,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -16928,7 +16928,7 @@
   "chaine": {
    "id": "coeur_militante",
    "rang": 3,
-   "delai_min": 6
+   "delai_min": 4
   }
  },
  {
@@ -16974,7 +16974,7 @@
   "chaine": {
    "id": "coeur_militante",
    "rang": 4,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -17018,7 +17018,7 @@
   "chaine": {
    "id": "coeur_militante",
    "rang": 5,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -17070,7 +17070,7 @@
   "chaine": {
    "id": "coeur_militante",
    "rang": 9,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -17156,7 +17156,7 @@
   "chaine": {
    "id": "coeur_protocole",
    "rang": 2,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -17199,7 +17199,7 @@
   "chaine": {
    "id": "coeur_protocole",
    "rang": 3,
-   "delai_min": 6
+   "delai_min": 4
   }
  },
  {
@@ -17242,7 +17242,7 @@
   "chaine": {
    "id": "coeur_protocole",
    "rang": 4,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -17282,7 +17282,7 @@
   "chaine": {
    "id": "coeur_protocole",
    "rang": 5,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -17331,7 +17331,7 @@
   "chaine": {
    "id": "coeur_protocole",
    "rang": 9,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -17423,7 +17423,7 @@
   "chaine": {
    "id": "coeur_international",
    "rang": 2,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -17469,7 +17469,7 @@
   "chaine": {
    "id": "coeur_international",
    "rang": 3,
-   "delai_min": 6
+   "delai_min": 4
   }
  },
  {
@@ -17515,7 +17515,7 @@
   "chaine": {
    "id": "coeur_international",
    "rang": 4,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -17558,7 +17558,7 @@
   "chaine": {
    "id": "coeur_international",
    "rang": 5,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -17607,7 +17607,7 @@
   "chaine": {
    "id": "coeur_international",
    "rang": 9,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -17693,7 +17693,7 @@
   "chaine": {
    "id": "coeur_ministre",
    "rang": 2,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -17738,7 +17738,7 @@
   "chaine": {
    "id": "coeur_ministre",
    "rang": 3,
-   "delai_min": 6
+   "delai_min": 4
   }
  },
  {
@@ -17781,7 +17781,7 @@
   "chaine": {
    "id": "coeur_ministre",
    "rang": 4,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -17822,7 +17822,7 @@
   "chaine": {
    "id": "coeur_ministre",
    "rang": 5,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -17871,7 +17871,7 @@
   "chaine": {
    "id": "coeur_ministre",
    "rang": 9,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -17957,7 +17957,7 @@
   "chaine": {
    "id": "coeur_renseignements",
    "rang": 2,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -18002,7 +18002,7 @@
   "chaine": {
    "id": "coeur_renseignements",
    "rang": 3,
-   "delai_min": 6
+   "delai_min": 4
   }
  },
  {
@@ -18045,7 +18045,7 @@
   "chaine": {
    "id": "coeur_renseignements",
    "rang": 4,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -18086,7 +18086,7 @@
   "chaine": {
    "id": "coeur_renseignements",
    "rang": 5,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -18135,7 +18135,7 @@
   "chaine": {
    "id": "coeur_renseignements",
    "rang": 9,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -18221,7 +18221,7 @@
   "chaine": {
    "id": "coeur_maire",
    "rang": 2,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -18264,7 +18264,7 @@
   "chaine": {
    "id": "coeur_maire",
    "rang": 3,
-   "delai_min": 6
+   "delai_min": 4
   }
  },
  {
@@ -18307,7 +18307,7 @@
   "chaine": {
    "id": "coeur_maire",
    "rang": 4,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -18348,7 +18348,7 @@
   "chaine": {
    "id": "coeur_maire",
    "rang": 5,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -18397,7 +18397,7 @@
   "chaine": {
    "id": "coeur_maire",
    "rang": 9,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -18483,7 +18483,7 @@
   "chaine": {
    "id": "coeur_intendant",
    "rang": 2,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -18526,7 +18526,7 @@
   "chaine": {
    "id": "coeur_intendant",
    "rang": 3,
-   "delai_min": 6
+   "delai_min": 4
   }
  },
  {
@@ -18569,7 +18569,7 @@
   "chaine": {
    "id": "coeur_intendant",
    "rang": 4,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -18610,7 +18610,7 @@
   "chaine": {
    "id": "coeur_intendant",
    "rang": 5,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -18659,7 +18659,7 @@
   "chaine": {
    "id": "coeur_intendant",
    "rang": 9,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -19175,7 +19175,7 @@
   "chaine": {
    "id": "coeur_redactrice",
    "rang": 2,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -19218,7 +19218,7 @@
   "chaine": {
    "id": "coeur_redactrice",
    "rang": 3,
-   "delai_min": 6
+   "delai_min": 4
   }
  },
  {
@@ -19261,7 +19261,7 @@
   "chaine": {
    "id": "coeur_redactrice",
    "rang": 4,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -19302,7 +19302,7 @@
   "chaine": {
    "id": "coeur_redactrice",
    "rang": 5,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -19341,7 +19341,7 @@
   "chaine": {
    "id": "coeur_redactrice",
    "rang": 6,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -19380,7 +19380,7 @@
   "chaine": {
    "id": "coeur_redactrice",
    "rang": 7,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -19419,7 +19419,7 @@
   "chaine": {
    "id": "coeur_redactrice",
    "rang": 8,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -19468,7 +19468,7 @@
   "chaine": {
    "id": "coeur_redactrice",
    "rang": 9,
-   "delai_min": 7
+   "delai_min": 4
   }
  },
  {
@@ -19524,7 +19524,7 @@
   "chaine": {
    "id": "coeur_redactrice",
    "rang": 10,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -19563,7 +19563,7 @@
   "chaine": {
    "id": "coeur_cabinet",
    "rang": 6,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -19602,7 +19602,7 @@
   "chaine": {
    "id": "coeur_cabinet",
    "rang": 7,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -19641,7 +19641,7 @@
   "chaine": {
    "id": "coeur_cabinet",
    "rang": 8,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -19697,7 +19697,7 @@
   "chaine": {
    "id": "coeur_cabinet",
    "rang": 10,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -19736,7 +19736,7 @@
   "chaine": {
    "id": "coeur_emissaire",
    "rang": 6,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -19775,7 +19775,7 @@
   "chaine": {
    "id": "coeur_emissaire",
    "rang": 7,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -19814,7 +19814,7 @@
   "chaine": {
    "id": "coeur_emissaire",
    "rang": 8,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -19870,7 +19870,7 @@
   "chaine": {
    "id": "coeur_emissaire",
    "rang": 10,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -19912,7 +19912,7 @@
   "chaine": {
    "id": "coeur_militante",
    "rang": 6,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -19954,7 +19954,7 @@
   "chaine": {
    "id": "coeur_militante",
    "rang": 7,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -19996,7 +19996,7 @@
   "chaine": {
    "id": "coeur_militante",
    "rang": 8,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -20055,7 +20055,7 @@
   "chaine": {
    "id": "coeur_militante",
    "rang": 10,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -20094,7 +20094,7 @@
   "chaine": {
    "id": "coeur_protocole",
    "rang": 6,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -20133,7 +20133,7 @@
   "chaine": {
    "id": "coeur_protocole",
    "rang": 7,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -20172,7 +20172,7 @@
   "chaine": {
    "id": "coeur_protocole",
    "rang": 8,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -20228,7 +20228,7 @@
   "chaine": {
    "id": "coeur_protocole",
    "rang": 10,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -20267,7 +20267,7 @@
   "chaine": {
    "id": "coeur_international",
    "rang": 6,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -20306,7 +20306,7 @@
   "chaine": {
    "id": "coeur_international",
    "rang": 7,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -20345,7 +20345,7 @@
   "chaine": {
    "id": "coeur_international",
    "rang": 8,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -20401,7 +20401,7 @@
   "chaine": {
    "id": "coeur_international",
    "rang": 10,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -20440,7 +20440,7 @@
   "chaine": {
    "id": "coeur_ministre",
    "rang": 6,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -20479,7 +20479,7 @@
   "chaine": {
    "id": "coeur_ministre",
    "rang": 7,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -20518,7 +20518,7 @@
   "chaine": {
    "id": "coeur_ministre",
    "rang": 8,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -20574,7 +20574,7 @@
   "chaine": {
    "id": "coeur_ministre",
    "rang": 10,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -20613,7 +20613,7 @@
   "chaine": {
    "id": "coeur_renseignements",
    "rang": 6,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -20652,7 +20652,7 @@
   "chaine": {
    "id": "coeur_renseignements",
    "rang": 7,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -20691,7 +20691,7 @@
   "chaine": {
    "id": "coeur_renseignements",
    "rang": 8,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -20747,7 +20747,7 @@
   "chaine": {
    "id": "coeur_renseignements",
    "rang": 10,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -20786,7 +20786,7 @@
   "chaine": {
    "id": "coeur_maire",
    "rang": 6,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -20825,7 +20825,7 @@
   "chaine": {
    "id": "coeur_maire",
    "rang": 7,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -20864,7 +20864,7 @@
   "chaine": {
    "id": "coeur_maire",
    "rang": 8,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -20920,7 +20920,7 @@
   "chaine": {
    "id": "coeur_maire",
    "rang": 10,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -20959,7 +20959,7 @@
   "chaine": {
    "id": "coeur_intendant",
    "rang": 6,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -20998,7 +20998,7 @@
   "chaine": {
    "id": "coeur_intendant",
    "rang": 7,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -21037,7 +21037,7 @@
   "chaine": {
    "id": "coeur_intendant",
    "rang": 8,
-   "delai_min": 6
+   "delai_min": 3
   }
  },
  {
@@ -21093,7 +21093,7 @@
   "chaine": {
    "id": "coeur_intendant",
    "rang": 10,
-   "delai_min": 5
+   "delai_min": 3
   }
  },
  {
@@ -21134,7 +21134,7 @@
   "chaine": {
    "id": "coeur_redactrice",
    "rang": 10,
-   "delai_min": 4
+   "delai_min": 3
   }
  },
  {
@@ -21175,7 +21175,7 @@
   "chaine": {
    "id": "coeur_cabinet",
    "rang": 10,
-   "delai_min": 4
+   "delai_min": 3
   }
  },
  {
@@ -21216,7 +21216,7 @@
   "chaine": {
    "id": "coeur_emissaire",
    "rang": 10,
-   "delai_min": 4
+   "delai_min": 3
   }
  },
  {
@@ -21260,7 +21260,7 @@
   "chaine": {
    "id": "coeur_militante",
    "rang": 10,
-   "delai_min": 4
+   "delai_min": 3
   }
  },
  {
@@ -21301,7 +21301,7 @@
   "chaine": {
    "id": "coeur_protocole",
    "rang": 10,
-   "delai_min": 4
+   "delai_min": 3
   }
  },
  {
@@ -21342,7 +21342,7 @@
   "chaine": {
    "id": "coeur_international",
    "rang": 10,
-   "delai_min": 4
+   "delai_min": 3
   }
  },
  {
@@ -21383,7 +21383,7 @@
   "chaine": {
    "id": "coeur_ministre",
    "rang": 10,
-   "delai_min": 4
+   "delai_min": 3
   }
  },
  {
@@ -21424,7 +21424,7 @@
   "chaine": {
    "id": "coeur_renseignements",
    "rang": 10,
-   "delai_min": 4
+   "delai_min": 3
   }
  },
  {
@@ -21465,7 +21465,7 @@
   "chaine": {
    "id": "coeur_maire",
    "rang": 10,
-   "delai_min": 4
+   "delai_min": 3
   }
  },
  {
@@ -21506,7 +21506,7 @@
   "chaine": {
    "id": "coeur_intendant",
    "rang": 10,
-   "delai_min": 4
+   "delai_min": 3
   }
  },
  {

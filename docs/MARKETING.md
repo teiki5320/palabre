@@ -74,4 +74,4 @@ Aucune date de sortie n'est arrêtée dans le dépôt. L'ordre est contraint par
 
 - Trancher le modèle de rémunération (pub, payant d'emblée ou mixte) : il décide de la fiche, de la classification et du questionnaire de confidentialité, et le changer après la soumission obligerait à tout reprendre.
 - Remplir la fiche App Store avec `https://palabre.toakeur.com/` comme site et assistance, `palabre@toakeur.com` comme contact et la page de confidentialité déjà en ligne, répondre aux questionnaires 17+ et confidentialité, puis envoyer une première build Xcode Cloud sur TestFlight.
-- Préparer Android : poser la vraie clé de publication (`android/key.properties`, sauvegardée hors du dépôt) et ramener le bundle sous 150 Mo — il en fait 143,3, avec une marge sous 5 %.
+- Préparer Android : poser la vraie clé de publication (`android/key.properties`, sauvegardée hors du dépôt). Le poids n'est plus un obstacle : le bundle fait 109,3 Mo depuis la recompression des images du 30 octobre 2026.
