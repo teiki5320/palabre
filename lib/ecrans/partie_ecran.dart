@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../moteur/decor.dart';
 import '../moteur/denouement.dart';
+import '../moteur/etat_partie.dart';
 import '../moteur/jauges.dart';
 import '../moteur/modeles.dart';
 import '../moteur/partie.dart';
@@ -162,17 +163,22 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
             children: [
               _LigneJauges(
                 jauges: session.etat.jauges,
-                // Ce que la réponse fera vraiment, régime et mandat compris :
-                // montrer l'effet brut mentirait au joueur au moment précis où
-                // il décide.
-                effets: reponse == null
-                    ? const {}
-                    : effetsReels(
-                        effets: reponse.effets,
-                        style: session.etat.style,
-                        mandat: session.etat.mandat,
-                        atout: parcours?.atout,
-                      ),
+                // On n'annonce que la jauge défendue par celui qui parle : le
+                // général dit ce que la décision fait à l'armée, et se tait
+                // sur le reste. Montrer les quatre rendait la partie
+                // calculable — mesuré sur mille mandats, un joueur au hasard
+                // atteignait l'élection dans 4 % des parties, et le même
+                // joueur lisant les quatre jauges y arrivait dans 98 %.
+                //
+                // Le mouvement reste celui qu'on va vraiment subir, régime et
+                // mandat compris : ce qu'on montre est toujours vrai, c'est
+                // seulement incomplet.
+                effets: _ceQuIlDit(
+                  reponse: reponse,
+                  qui: personnage,
+                  etat: session.etat,
+                  atout: parcours?.atout,
+                ),
               ),
               _LigneJour(
                 jour: session.etat.jour,
@@ -712,6 +718,26 @@ class _Jauge extends StatelessWidget {
       ],
     );
   }
+}
+
+/// Ce que la personne en face accepte de dire de sa décision : le mouvement
+/// de **sa** jauge, et rien d'autre. Vide tant que le joueur n'a pas penché.
+Map<Jauge, int> _ceQuIlDit({
+  required Reponse? reponse,
+  required Personnage? qui,
+  required EtatPartie etat,
+  required Atout? atout,
+}) {
+  final jauge = qui?.jauge;
+  if (reponse == null || jauge == null) return const {};
+  final reels = effetsReels(
+    effets: reponse.effets,
+    style: etat.style,
+    mandat: etat.mandat,
+    atout: atout,
+  );
+  final v = reels[jauge];
+  return v == null ? const {} : {jauge: v};
 }
 
 /// Le sens d'un mouvement, jamais sa mesure.

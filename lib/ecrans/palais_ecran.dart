@@ -27,6 +27,35 @@ class PalaisEcran extends ConsumerStatefulWidget {
 class _PalaisEcranState extends ConsumerState<PalaisEcran> {
   Piece _piece = Piece.bureau;
 
+  /// Gardé ici plutôt que relu dans `dispose` : à ce moment-là le widget
+  /// n'est plus monté, et Riverpod refuse — à raison — qu'on touche à `ref`.
+  /// Le son est un objet de toute la partie, le garder ne risque rien.
+  Sons? _sons;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _sons = ref.read(sonsProvider);
+  }
+
+  @override
+  void dispose() {
+    // Le palais rend le silence en partant. L'écran des cartes coupait bien
+    // le fond, mais depuis son `build` — et visiter le palais ne consomme
+    // pas un jour : en revenant sans avoir rien acheté, la session n'a pas
+    // bougé, l'écran ne se reconstruit pas, et la foule du balcon continuait
+    // de courir sous les cartes. Ce qu'une pièce a allumé, c'est à elle de
+    // l'éteindre.
+    _sons?.metLeFond(null);
+    // Le palais est de loin ce que le jeu affiche de plus lourd : une plaque
+    // décodée pèse 15,7 Mo, et une visite en traverse plusieurs. En sortant,
+    // on rend ce qui ne sert plus. `clear` ne touche pas aux images encore à
+    // l'écran — le portrait de la carte du jour, qui est dessous, survit et
+    // ne clignote pas.
+    PaintingBinding.instance.imageCache.clear();
+    super.dispose();
+  }
+
   void _va(Piece p) {
     if (p == _piece) return;
     setState(() => _piece = p);
@@ -106,7 +135,12 @@ class _PalaisEcranState extends ConsumerState<PalaisEcran> {
                     catalogue: contenu.objetsDe(_piece),
                     achete: (o) => ref.read(sessionProvider.notifier).acheteObjet(o),
                   ),
-                _DemiTour(depuis: _piece, vers: _va),
+                Semantics(
+                  button: true,
+                  label: 'Revenir au bureau',
+                  onTap: () => _va(Piece.bureau),
+                  child: _DemiTour(depuis: _piece, vers: _va),
+                ),
               ],
             ),
           ),
@@ -292,10 +326,17 @@ class _DecorState extends State<_Decor> with SingleTickerProviderStateMixin {
                   if (r.width < 40 || r.height < 40) return const SizedBox.shrink();
                   return Positioned.fromRect(
                     rect: r,
-                    child: _Ouverture(
-                      nom: passage.nom,
-                      souffle: souffle,
+                    // C'est par les ouvertures qu'on circule dans le palais :
+                    // sans ce nœud, un lecteur d'écran n'y trouve aucune porte.
+                    child: Semantics(
+                      button: true,
+                      label: 'Aller vers ${passage.nom}',
                       onTap: () => widget.vers(passage.vers),
+                      child: _Ouverture(
+                        nom: passage.nom,
+                        souffle: souffle,
+                        onTap: () => widget.vers(passage.vers),
+                      ),
                     ),
                   );
                 }(),
@@ -580,10 +621,15 @@ class _TiroirState extends State<_Tiroir> {
                   ),
                 ),
               ),
-            _Poignee(
-              texte: _ouvert ? 'Fermer' : resume,
-              ouvert: _ouvert,
+            Semantics(
+              button: true,
+              label: _ouvert ? 'Fermer le tiroir des objets' : '$resume. Ouvrir le tiroir',
               onTap: () => setState(() => _ouvert = !_ouvert),
+              child: _Poignee(
+                texte: _ouvert ? 'Fermer' : resume,
+                ouvert: _ouvert,
+                onTap: () => setState(() => _ouvert = !_ouvert),
+              ),
             ),
           ],
         ),

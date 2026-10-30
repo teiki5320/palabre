@@ -203,6 +203,20 @@ class _FinEcranState extends ConsumerState<FinEcran> {
                                   onPressed: () => ref.read(sessionProvider.notifier).mandatSuivant(),
                                   child: const Text('Continuer, deuxième mandat'),
                                 ),
+                                const SizedBox(height: 10),
+                                // Treize cartes n'existent que pour les
+                                // réélus, et rien ne le disait : on gagnait
+                                // une élection sans savoir qu'il y avait
+                                // autre chose derrière. La phrase coûte une
+                                // ligne et double peut-être le nombre de
+                                // gens qui les voient.
+                                Text(
+                                  'Un second mandat a ses propres dossiers : '
+                                  'ceux qu\'on vous a cachés tant que vous '
+                                  'pouviez perdre.',
+                                  textAlign: TextAlign.center,
+                                  style: Textes.echeance,
+                                ),
                               ],
                             )
                           else

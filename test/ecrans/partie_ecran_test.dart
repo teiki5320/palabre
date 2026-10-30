@@ -23,7 +23,7 @@ Contenu contenuDEssai() => Contenu.depuisChaines(
           '"gauche":{"libelle":"Ignorer","effets":{"armee":-5}},'
           '"droite":{"libelle":"Ecouter","effets":{"armee":5}}}'
           ']',
-      personnages: '[{"id":"general","nom":"Le General","titre":"Chef d etat-major"}]',
+      personnages: '[{"id":"general","nom":"Le General","titre":"Chef d etat-major","jauge":"armee"}]',
       parcours: '[{"id":"general_parcours","nom":"L ancien general","titre":"Monsieur le President",'
           '"femme":false,"depart":{"peuple":50,"armee":50,"caisses":50,"presse":50}}]',
       fins: '[{"id":"election_gagnee","jauge":null,"vers_le_haut":true,"titre":"Reelu","texte":"t","image":"i"},'
@@ -162,20 +162,21 @@ void main() {
     await geste.moveBy(const Offset(120, 0));
     await tester.pump();
 
-    // « On paie » : l armee monte, les caisses descendent. Le peuple et la
-    // presse ne bougent pas. On annonce le sens, jamais la mesure : le
-    // chiffre exact rendait la partie calculable de tete.
-    expect(hauteurBarre(tester, 'armee'), 8);
-    expect(hauteurBarre(tester, 'caisses'), 8);
+    // « On paie » : +10 a l armee, −10 aux caisses. Seule l armee s allume,
+    // parce que c est elle que le general defend — il ne dit rien des
+    // caisses, et c est tout le sujet. On annonce le sens, jamais la mesure.
+    expect(hauteurBarre(tester, 'armee'), 8, reason: 'le general parle de l armee');
+    expect(hauteurBarre(tester, 'caisses'), 6, reason: 'il ne dit rien des caisses');
     expect(hauteurBarre(tester, 'peuple'), 6);
     Finder sens(String jauge, String fleche) => find.descendant(
           of: find.byKey(ValueKey('jauge_$jauge')),
           matching: find.text(fleche),
         );
     expect(sens('armee', '\u25b2'), findsOneWidget, reason: 'l armee monte');
-    expect(sens('caisses', '\u25bc'), findsOneWidget, reason: 'les caisses descendent');
-    expect(sens('peuple', '\u25b2'), findsNothing, reason: 'le peuple ne bouge pas');
-    expect(sens('peuple', '\u25bc'), findsNothing, reason: 'le peuple ne bouge pas');
+    for (final muette in ['caisses', 'peuple', 'presse']) {
+      expect(sens(muette, '\u25b2'), findsNothing, reason: 'le general ne parle que de l armee');
+      expect(sens(muette, '\u25bc'), findsNothing, reason: 'le general ne parle que de l armee');
+    }
     for (final j in ['peuple', 'armee', 'caisses', 'presse']) {
       expect(
         find.descendant(of: find.byKey(ValueKey('jauge_$j')), matching: find.textContaining('10')),
@@ -200,7 +201,7 @@ void main() {
               '"gauche":{"libelle":"Non","effets":{"peuple":-1}},'
               '"droite":{"libelle":"Oui","effets":{"armee":$ampleur}}}'
               ']',
-          personnages: '[{"id":"general","nom":"Le General","titre":"Chef d etat-major"}]',
+          personnages: '[{"id":"general","nom":"Le General","titre":"Chef d etat-major","jauge":"armee"}]',
           parcours: '[{"id":"general_parcours","nom":"L ancien general","titre":"Monsieur le President",'
               '"femme":false,"depart":{"peuple":50,"armee":50,"caisses":50,"presse":50}}]',
           fins: '[{"id":"election_gagnee","jauge":null,"vers_le_haut":true,"titre":"R","texte":"t","image":"i"},'
@@ -328,7 +329,7 @@ void main() {
           '"gauche":{"libelle":"Patientez","effets":{"armee":-10},"style":6},'
           '"droite":{"libelle":"On paie","effets":{"armee":10,"caisses":-10}}}'
           ']',
-      personnages: '[{"id":"general","nom":"Le General","titre":"Chef d etat-major"}]',
+      personnages: '[{"id":"general","nom":"Le General","titre":"Chef d etat-major","jauge":"armee"}]',
       parcours: '[{"id":"general_parcours","nom":"L ancien general","titre":"Monsieur le President",'
           '"femme":false,"depart":{"peuple":50,"armee":12,"caisses":50,"presse":50}}]',
       fins: '[{"id":"election_gagnee","jauge":null,"vers_le_haut":true,"titre":"Reelu","texte":"t","image":"i"},'

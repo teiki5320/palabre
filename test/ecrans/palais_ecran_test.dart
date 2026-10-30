@@ -4,7 +4,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:president/ecrans/carte_pays_ecran.dart';
 import 'package:president/contenu/chargement.dart';
 import 'package:president/ecrans/partie_ecran.dart';
+import 'package:president/ecrans/palais_ecran.dart';
 import 'package:president/ecrans/session.dart';
+import 'package:president/ecrans/sons.dart';
 import 'package:president/ecrans/theme.dart';
 import 'package:president/moteur/progression.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -183,5 +185,23 @@ void main() {
     await tester.tap(find.byTooltip('Retour à la journée'));
     await tester.pumpAndSettle();
     expect(find.text('JOUR 1'), findsOneWidget);
+  });
+
+  testWidgets('en quittant le palais, le fond se tait', (tester) async {
+    // Visiter le palais ne consomme pas un jour : en revenant sans avoir
+    // rien achete, la session n a pas bouge et l ecran des cartes ne se
+    // reconstruit pas. C est donc au palais d eteindre ce qu il a allume,
+    // sans quoi la foule du balcon continue de courir sous les cartes.
+    await _ouvreLePalais(tester);
+    final sons = ProviderScope.containerOf(
+      tester.element(find.byType(PalaisEcran)),
+      listen: false,
+    ).read(sonsProvider);
+    // Le palais allume lui-meme le fond de la piece ou l on entre.
+    expect(sons.fond, isNotNull, reason: 'le bureau a son fond');
+
+    await tester.tap(find.byTooltip('Retour à la journée'));
+    await tester.pumpAndSettle();
+    expect(sons.fond, isNull, reason: 'le palais doit rendre le silence en partant');
   });
 }
