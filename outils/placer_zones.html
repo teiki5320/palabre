@@ -45,6 +45,7 @@
   .zone .sw { left: -8px; bottom: -8px; cursor: nesw-resize; }
   .zone .se { right: -8px; bottom: -8px; cursor: nwse-resize; }
   .zone.choisie { box-shadow: 0 0 0 1px var(--encre), 0 0 14px #E9B44C66; }
+  .zone img.decoupe { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
   aside { flex: 0 0 330px; display: flex; flex-direction: column; gap: 14px; }
   .fiche { background: var(--nuit-clair); border: 1px solid var(--bordure); border-radius: 4px; padding: 12px 14px; }
   .fiche h2 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #F6EFE499; margin: 0 0 10px; font-weight: 600; }
@@ -119,6 +120,12 @@ const DEPOT = {
     // ouvertures. Le pan de mur à droite de la porte, sous le climatiseur,
     // a été libéré dans les quatre plaques le 30 octobre 2026.
     ecran: [0.588, 0.288, 0.122, 0.122],
+    // Les découpes : une image par objet, et une place par plaque. Le
+    // bureau est meublé quatre fois différemment, donc un objet peut
+    // devoir changer de coin d'un état à l'autre.
+    objets: [
+      ['portrait_officiel', 'Le portrait officiel', [0.364, 0.266, 0.044, 0.086]],
+    ],
   },
   piscine: {
     nom: 'La piscine',
@@ -161,6 +168,7 @@ const DEPOT = {
 
 const COULEURS = ['#E9B44C', '#6FD0E0', '#C97B6A', '#8FD67A'];
 const COULEUR_ECRAN = '#8FD67A';
+const COULEUR_OBJET = '#D98FE0';
 const CLE = 'palabre.zones.v1';
 const PLANCHER = 0.12;   // le test refuse une ouverture plus petite que ça
 
@@ -170,6 +178,8 @@ function neuf() { return JSON.parse(JSON.stringify(
   Object.fromEntries(Object.entries(DEPOT).map(([k, p]) => [k, {
     passages: Object.fromEntries(p.passages.map(([id, , z]) => [id, z.slice()])),
     ecran: p.ecran ? p.ecran.slice() : null,
+    objets: Object.fromEntries((p.objets || []).map(([id, , z]) =>
+      [id, Object.fromEntries(p.plaques.map(([q]) => [q, z.slice()]))])),
   }]))
 )); }
 
@@ -180,6 +190,11 @@ for (const [k, p] of Object.entries(DEPOT)) {
   valeurs[k] = valeurs[k] || { passages: {}, ecran: null };
   for (const [id, , z] of p.passages) valeurs[k].passages[id] = valeurs[k].passages[id] || z.slice();
   if (p.ecran) valeurs[k].ecran = valeurs[k].ecran || p.ecran.slice();
+  valeurs[k].objets = valeurs[k].objets || {};
+  for (const [id, , z] of p.objets || []) {
+    valeurs[k].objets[id] = valeurs[k].objets[id] || {};
+    for (const [q] of p.plaques) valeurs[k].objets[id][q] = valeurs[k].objets[id][q] || z.slice();
+  }
 }
 
 let piece = 'bureau';
@@ -204,6 +219,17 @@ function zonesVisibles() {
     lire: () => valeurs[piece].ecran,
     ecrire: (z) => { valeurs[piece].ecran = z; },
     carre: true,
+  });
+  // Les découpes de la plaque courante. Leur forme est celle de leur
+  // image : la redimensionner librement l'étirerait, donc la hauteur suit
+  // la largeur par le rapport d'origine.
+  for (const [id, nom, z] of p.objets || []) l.push({
+    cle: 'o:' + id, nom, couleur: COULEUR_OBJET,
+    image: '../assets/images/palais/objets/' + id + '.png',
+    rapport: z[3] / z[2],
+    lire: () => valeurs[piece].objets[id][plaque],
+    ecrire: (v) => { valeurs[piece].objets[id][plaque] = v; },
+    carre: false,
   });
   return l;
 }
@@ -251,7 +277,8 @@ function dessine() {
     const d = document.createElement('div');
     d.className = 'zone' + (choisie === z.cle ? ' choisie' : '');
     d.style.cssText = `left:${x * L}px;top:${y * H}px;width:${l * L}px;height:${h * H}px;color:${z.couleur};border-color:${z.couleur}`;
-    d.innerHTML = `<span class="etiquette" style="color:${z.couleur}">${z.nom}</span>`
+    d.innerHTML = (z.image ? `<img class="decoupe" src="${z.image}" alt="">` : '')
+      + `<span class="etiquette" style="color:${z.couleur}">${z.nom}</span>`
       + ['nw', 'ne', 'sw', 'se'].map((c) => `<span class="poignee ${c}" data-coin="${c}"></span>`).join('');
     d.onpointerdown = (ev) => prend(ev, z, d);
     scene.appendChild(d);
@@ -298,6 +325,18 @@ function dart() {
   if (p.ecran) {
     s += `\n\nconst Zone ecranDuBureau = Zone(${valeurs[piece].ecran.map(f).join(', ')});`;
   }
+  for (const [id, nom] of p.objets || []) {
+    const par = valeurs[piece].objets[id];
+    const toutes = p.plaques.map(([q]) => par[q]);
+    const pareil = toutes.every((v) => v.every((n, i) => n === toutes[0][i]));
+    s += `\n\n// ${nom}\nPoseObjet(\n  objet: '${id}',\n  piece: Piece.${piece},\n  places: {\n`;
+    if (pareil) {
+      s += `    '': Zone(${toutes[0].map(f).join(', ')}),\n`;
+    } else {
+      for (const [q] of p.plaques) s += `    '${q}': Zone(${par[q].map(f).join(', ')}),\n`;
+    }
+    s += '  },\n),';
+  }
   return s;
 }
 
@@ -322,7 +361,11 @@ function prend(ev, z, noeud) {
       const ouest = coin[1] === 'w', nord = coin[0] === 'n';
       let nl = ouest ? l - dx : l + dx;
       let nh = nord ? h - dy : h + dy;
-      if (z.carre) {
+      if (z.rapport) {
+        // La découpe garde la forme de son image : on tire la largeur, la
+        // hauteur suit.
+        nh = nl * z.rapport;
+      } else if (z.carre) {
         // La carte est en trois-deux, et la plaque aussi : une zone carrée
         // en fractions rend donc un rectangle de trois sur deux. On garde
         // les deux fractions égales, sans quoi la carte se mettrait à

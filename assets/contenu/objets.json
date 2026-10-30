@@ -69,7 +69,7 @@
     "id": "jardinieres",
     "piece": "balcon",
     "nom": "Les jardinières",
-    "description": "Sur la rambarde. Elles fanent quand les caisses baissent.",
+    "description": "Sur la rambarde. Le maire de la ville finira par les voir.",
     "prix": 4,
     "natures": ["decor"]
   },

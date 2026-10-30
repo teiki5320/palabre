@@ -103,7 +103,7 @@ class _AccueilEcranState extends ConsumerState<AccueilEcran> {
             ListTile(
               leading: const Icon(Icons.emoji_events_outlined, color: Couleurs.or),
               title: const Text('Collection'),
-              subtitle: Text('Exploits gagnés et fins découvertes', style: Textes.sousTitre),
+              subtitle: Text('Exploits, fins et objets du palais', style: Textes.sousTitre),
               onTap: () => Navigator.of(context).pop('collection'),
             ),
             // Sans mandat en cours, l'accueil est déjà l'écran d'une

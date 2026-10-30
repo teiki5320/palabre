@@ -114,6 +114,7 @@ class _PalaisEcranState extends ConsumerState<PalaisEcran> {
               decor: decor,
               passages: passagesDe(_piece),
               ecran: ecranDe(_piece),
+              decoupes: decoupesDe(_piece, decor.etat, objets),
               nuit: estNuit(session.etat),
               lieuxConnus: lieuxConnus(
                   paquet: contenu?.cartes ?? const [], vues: session.etat.vues),
@@ -163,6 +164,7 @@ class _Decor extends StatefulWidget {
     required this.passages,
     required this.vers,
     required this.ecran,
+    required this.decoupes,
     required this.nuit,
     required this.lieuxConnus,
     super.key,
@@ -177,6 +179,11 @@ class _Decor extends StatefulWidget {
 
   /// L'écran accroché au mur, ou null : seul le bureau en a un.
   final Zone? ecran;
+
+  /// Ce que le joueur a acheté et qu'on voit : une découpe par objet, à sa
+  /// place dans la plaque. Elles suivent le regard comme les ouvertures,
+  /// parce qu'elles sont posées sur l'image et non sur l'écran.
+  final List<Decoupe> decoupes;
 
   /// Ce que l'écran montre : le pays de jour ou de nuit, et les lieux
   /// qu'au moins une carte vue a nommés.
@@ -298,6 +305,16 @@ class _DecorState extends State<_Decor> with SingleTickerProviderStateMixin {
             children: [
               plan(i, 1),
               if (a > 0) plan(i + 1, a),
+              // Les objets achetés, posés sur la plaque avant les
+              // ouvertures : une porte reste touchable même si un meuble
+              // vient mordre dessus.
+              for (final decoupe in widget.decoupes)
+                Positioned.fromRect(
+                  rect: surEcran(decoupe.zone),
+                  child: IgnorePointer(
+                    child: _Decoupe(chemin: decoupe.image, nuit: widget.nuit),
+                  ),
+                ),
               if (widget.ecran != null)
                 () {
                   final r = surEcran(widget.ecran!)
@@ -410,6 +427,26 @@ class _Entete extends StatelessWidget {
           ),
         ),
       );
+}
+
+/// Un objet acheté, posé sur le décor. L'image est la même de jour comme
+/// de nuit : la teinte de nuit la ramène dans la lumière de la plaque,
+/// plutôt que de livrer deux fichiers par objet.
+class _Decoupe extends StatelessWidget {
+  const _Decoupe({required this.chemin, required this.nuit});
+
+  final String chemin;
+  final bool nuit;
+
+  @override
+  Widget build(BuildContext context) {
+    final image = Image.asset(chemin, fit: BoxFit.fill, gaplessPlayback: true);
+    if (!nuit) return image;
+    return ColorFiltered(
+      colorFilter: const ColorFilter.mode(Color(teinteDeNuit), BlendMode.modulate),
+      child: image,
+    );
+  }
 }
 
 /// La carte du pays accrochée au mur du bureau, qu'on touche pour
@@ -612,12 +649,41 @@ class _Tiroir extends StatefulWidget {
 class _TiroirState extends State<_Tiroir> {
   bool _ouvert = false;
 
+  /// Le dernier objet payé, et le compte à rebours qui efface son reçu.
+  /// Sans ça, on paie et il ne se passe rien de visible : la ligne du
+  /// catalogue passe à « Au palais » pendant que le joueur regarde
+  /// ailleurs, et les caisses baissent sans explication.
+  Objet? _paye;
+  Timer? _effacement;
+
+  @override
+  void dispose() {
+    _effacement?.cancel();
+    super.dispose();
+  }
+
+  void _paie(Objet objet) {
+    widget.achete(objet);
+    _effacement?.cancel();
+    setState(() => _paye = objet);
+    _effacement = Timer(const Duration(seconds: 6), () {
+      if (mounted) setState(() => _paye = null);
+    });
+  }
+
   @override
   void didUpdateWidget(_Tiroir ancien) {
     super.didUpdateWidget(ancien);
     // On change de pièce : le tiroir se referme, sinon on arrive dans la
     // chambre avec le catalogue du bureau grand ouvert devant les yeux.
-    if (ancien.piece != widget.piece && _ouvert) setState(() => _ouvert = false);
+    // Le reçu s'en va avec, il ne concerne plus la pièce où l'on est.
+    if (ancien.piece != widget.piece && (_ouvert || _paye != null)) {
+      _effacement?.cancel();
+      setState(() {
+        _ouvert = false;
+        _paye = null;
+      });
+    }
   }
 
   @override
@@ -655,12 +721,13 @@ class _TiroirState extends State<_Tiroir> {
                           objet: o,
                           possede: widget.objets.contains(o.id),
                           possible: achetable(widget.etat, o, widget.objets),
-                          onTap: () => widget.achete(o),
+                          onTap: () => _paie(o),
                         ),
                     ],
                   ),
                 ),
               ),
+            if (_paye != null) _Recu(objet: _paye!),
             Semantics(
               button: true,
               label: _ouvert ? 'Fermer le tiroir des objets' : '$resume. Ouvrir le tiroir',
@@ -672,6 +739,42 @@ class _TiroirState extends State<_Tiroir> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Le reçu d'un achat : ce qui a été pris, et ce que ça a fait tout de
+/// suite. Il s'efface au bout de six secondes, ou en changeant de pièce.
+class _Recu extends StatelessWidget {
+  const _Recu({required this.objet});
+
+  final Objet objet;
+
+  @override
+  Widget build(BuildContext context) {
+    final dit = [
+      objet.nom,
+      '− ${objet.prix} caisses',
+      ...effetsImmediats(objet),
+    ].join(' · ');
+    return Semantics(
+      liveRegion: true,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 6),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: Couleurs.nuitClair.withValues(alpha: .86),
+          border: Border.all(color: Couleurs.or.withValues(alpha: .5)),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Text(
+          dit,
+          textAlign: TextAlign.center,
+          style: Textes.echeance.copyWith(color: Couleurs.creme),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
         ),
       ),
     );
@@ -727,9 +830,14 @@ class _Ligne extends StatelessWidget {
     final couleur = possede
         ? Couleurs.cremeDoux.withValues(alpha: .45)
         : (possible ? Couleurs.creme : Couleurs.cremeDoux.withValues(alpha: .45));
+    final effets = effetsImmediats(objet);
     return Semantics(
       button: !possede && possible,
-      label: '${objet.nom}, ${objet.prix} points de caisses',
+      label: [
+        objet.nom,
+        '${objet.prix} points de caisses',
+        if (!possede) ...effets,
+      ].join(', '),
       child: GestureDetector(
         onTap: possede || !possible ? null : onTap,
         behavior: HitTestBehavior.opaque,
@@ -755,6 +863,18 @@ class _Ligne extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    // Ce que l'achat fait comptant, avant de payer. Trois
+                    // objets du catalogue en ont un : les autres ouvrent
+                    // quelque chose plus tard, et n'annoncent rien ici.
+                    if (!possede && effets.isNotEmpty) ...[
+                      const SizedBox(height: 3),
+                      Text(
+                        effets.join(' · '),
+                        style: Textes.echeance.copyWith(color: Couleurs.or),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ],
                 ),
               ),

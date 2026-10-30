@@ -461,6 +461,80 @@ const Zone ecranDuBureau = Zone(0.588, 0.288, 0.122, 0.122);
 /// L'écran de la pièce, ou null : le bureau seul en a un.
 Zone? ecranDe(Piece piece) => piece == Piece.bureau ? ecranDuBureau : null;
 
+// ───────────────────── les objets qu'on voit ──────────────────────
+
+/// Le dossier des découpes, une image par objet, sur fond transparent.
+const String dossierDesDecoupes = 'assets/images/palais/objets';
+
+/// Un objet du palais posé sur une plaque : une découpe à sa place dans
+/// l'image, dessinée seulement quand l'objet est au palais.
+///
+/// Sa place change d'un état à l'autre quand le mobilier change. Le bureau
+/// est meublé quatre fois différemment — sol nu, tapis et fauteuils de
+/// cuir, rangée de chaises pliantes, piles de dossiers — et une découpe
+/// posée au même endroit dans les quatre tomberait dans un meuble pour au
+/// moins un. Un état sans place n'affiche rien : mieux vaut un objet
+/// qu'on ne voit pas qu'un fauteuil planté dans une chaise.
+class PoseObjet {
+  const PoseObjet({required this.objet, required this.piece, required this.places});
+
+  /// L'identifiant au catalogue, qui est aussi le nom du fichier.
+  final String objet;
+  final Piece piece;
+
+  /// Où se pose la découpe, par état de décor. La clé vide sert de place
+  /// par défaut, pour les objets dont tous les états partagent le mur.
+  final Map<String, Zone> places;
+
+  Zone? placeDans(String etat) => places[etat] ?? places[''];
+}
+
+/// Le portrait officiel pend au mur de gauche du bureau, entre le rideau
+/// et le chambranle du couloir — le seul pan que les quatre états laissent
+/// nu, et celui-là même où le palais du chef accrochait son portrait doré
+/// avant qu'on l'en retire. Le visage y est indistinct : le président du
+/// jeu n'a pas de traits, nulle part.
+const _poses = <PoseObjet>[
+  PoseObjet(
+    objet: 'portrait_officiel',
+    piece: Piece.bureau,
+    places: {'': Zone(0.364, 0.266, 0.044, 0.086)},
+  ),
+];
+
+/// Une découpe à poser sur la plaque courante.
+class Decoupe {
+  const Decoupe({required this.objet, required this.zone});
+
+  final String objet;
+  final Zone zone;
+
+  String get image => '$dossierDesDecoupes/$objet.png';
+}
+
+/// Ce qu'il y a à poser sur cette plaque : les objets qui sont au palais,
+/// et auxquels cet état-là prévoit une place.
+List<Decoupe> decoupesDe(Piece piece, String etat, Set<String> objets) {
+  final liste = <Decoupe>[];
+  for (final pose in _poses) {
+    if (pose.piece != piece || !objets.contains(pose.objet)) continue;
+    final zone = pose.placeDans(etat);
+    if (zone != null) liste.add(Decoupe(objet: pose.objet, zone: zone));
+  }
+  return liste;
+}
+
+/// Les objets du catalogue qui ont une découpe, quelle que soit la pièce.
+/// Les tests s'en servent pour vérifier qu'aucune image ne manque, et
+/// qu'aucune ne traîne sans objet.
+Set<String> get objetsAvecDecoupe => {for (final p in _poses) p.objet};
+
+/// Ce qui teinte une découpe la nuit. Les plaques de nuit ont été étalonnées
+/// d'un bloc depuis celles de jour ; un même mur y passe de (109, 85, 58) à
+/// (39, 45, 49), soit des facteurs mesurés de 0,36, 0,53 et 0,85. Une
+/// découpe non teintée resterait en plein soleil au milieu de la nuit.
+const int teinteDeNuit = 0xFF5B87D7;
+
 /// Où mène le demi-tour, depuis n'importe où. Null depuis le bureau : on y
 /// est déjà, et le bureau est le vestibule du palais.
 Piece? demiTourDepuis(Piece piece) => piece == Piece.bureau ? null : Piece.bureau;

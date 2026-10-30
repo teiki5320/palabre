@@ -31,12 +31,21 @@ Contenu contenuDEssai() => Contenu.depuisChaines(
           '"condition":{"jours_min":30}},'
           '{"id":"caisses_pleines","titre":"Les coffres pleins","description":"Finir avec les caisses hautes",'
           '"condition":{"caisses_min":80}}]',
+      objets: '['
+          '{"id":"ventilateur","piece":"bureau","nom":"Le ventilateur de plafond",'
+          '"description":"Il tourne au-dessus du bureau.","prix":4,"natures":["decor"]},'
+          '{"id":"coffre_fort","piece":"bureau","nom":"Le coffre-fort",'
+          '"description":"Dix points de cote.","prix":14,"natures":["bonus"]},'
+          '{"id":"transats","piece":"piscine","nom":"Les transats",'
+          '"description":"Au bord du bassin.","prix":4,"natures":["decor"]}'
+          ']',
     );
 
 Progression progressionDEssai() => const Progression(
       parcoursDebloques: {},
       exploits: {'marathon'},
       finsDecouvertes: {'armee_bas'},
+      objets: {'ventilateur'},
       mandatsJoues: 1,
       meilleurJour: 30,
     );
@@ -111,6 +120,28 @@ void main() {
       expect(find.textContaining('sur 2'), findsWidgets);
       expect(find.textContaining('1 fin'), findsOneWidget);
       expect(find.textContaining('sur 3'), findsWidgets);
+    });
+
+    testWidgets('le palais est liste piece par piece, acquis ou non', (tester) async {
+      await montreCollection(tester);
+      expect(find.text('Le palais'), findsOneWidget);
+      // Le nom d un objet est toujours lisible, contrairement a un exploit :
+      // le catalogue est deja ouvert dans chaque piece du palais.
+      expect(find.text('Le ventilateur de plafond'), findsOneWidget);
+      expect(find.text('Le coffre-fort'), findsOneWidget);
+      expect(find.text('Les transats'), findsOneWidget);
+      // Les pieces qui n ont rien au catalogue ne s annoncent pas.
+      expect(find.text('Le bureau'), findsOneWidget);
+      expect(find.text('La piscine'), findsOneWidget);
+      expect(find.text('Le balcon'), findsNothing);
+    });
+
+    testWidgets('un objet acheté dit qu il est au palais, les autres leur prix', (tester) async {
+      await montreCollection(tester);
+      expect(find.text('au palais'), findsOneWidget);
+      expect(find.text('14 caisses'), findsOneWidget);
+      expect(find.text('4 caisses'), findsOneWidget);
+      expect(find.textContaining('1 objet sur 3'), findsOneWidget);
     });
   });
 

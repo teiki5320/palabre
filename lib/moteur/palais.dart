@@ -91,6 +91,21 @@ class Objet {
   }
 }
 
+/// Ce que l'achat fait tout de suite, en toutes lettres : les jauges
+/// d'abord, l'axe du régime ensuite.
+///
+/// La liste est vide pour la grande majorité du catalogue, et c'est exact :
+/// la plupart des objets ne paient pas comptant, ils ouvrent un dossier,
+/// une fin ou un exploit qui viendra plus tard. Le silence le dit mieux
+/// qu'une phrase qui promettrait un effet inexistant.
+List<String> effetsImmediats(Objet objet) => [
+      for (final e in objet.effetAchat.entries)
+        '${e.key.nom} ${e.value >= 0 ? '+' : '−'}${e.value.abs()}',
+      if (objet.styleAchat != 0)
+        'le palais penche de ${objet.styleAchat.abs()} vers '
+            '${objet.styleAchat > 0 ? 'la dictature' : 'la république'}',
+    ];
+
 /// On n'achète jamais au point de se tuer : un achat qui ferait tomber les
 /// caisses sous ce seuil est refusé. C'est le seul garde-fou du palais, et
 /// il est volontairement bas — on doit pouvoir se ruiner, pas se suicider

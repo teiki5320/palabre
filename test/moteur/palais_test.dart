@@ -524,4 +524,106 @@ void main() {
       expect(enTrop, isEmpty, reason: enTrop.join(', '));
     });
   });
+
+  group('ce que l achat fait comptant', () {
+    Objet objet({Map<Jauge, int> effets = const {}, int style = 0}) => Objet(
+          id: 'x',
+          piece: Piece.bureau,
+          nom: 'Un objet',
+          description: 'd',
+          prix: 5,
+          effetAchat: effets,
+          styleAchat: style,
+        );
+
+    test('un objet sans effet comptant n annonce rien', () {
+      // Les trois quarts du catalogue : ils ouvrent une carte, une fin ou
+      // un exploit, plus tard. Leur promettre un effet serait un mensonge.
+      expect(effetsImmediats(objet()), isEmpty);
+    });
+
+    test('un effet sur une jauge se lit avec son signe', () {
+      expect(effetsImmediats(objet(effets: {Jauge.armee: 3})), ['Armée +3']);
+      expect(effetsImmediats(objet(effets: {Jauge.presse: -4})), ['Presse −4']);
+    });
+
+    test('le decalage du regime se dit par son bord, pas par son signe', () {
+      expect(effetsImmediats(objet(style: 4)).single,
+          'le palais penche de 4 vers la dictature');
+      expect(effetsImmediats(objet(style: -4)).single,
+          'le palais penche de 4 vers la république');
+    });
+
+    test('les deux se cumulent, la jauge d abord', () {
+      final dit = effetsImmediats(objet(effets: {Jauge.peuple: 4}, style: -4));
+      expect(dit.length, 2);
+      expect(dit.first, 'Peuple +4');
+      expect(dit.last, contains('république'));
+    });
+
+    test('le catalogue réel : trois objets paient comptant, pas un de plus', () {
+      // Lu sur le fichier livré, pas sur une doublure : si quelqu'un ajoute
+      // un effet d'achat, ce test le dit, et la ligne du tiroir suivra.
+      final brut = json.decode(File('assets/contenu/objets.json').readAsStringSync()) as List;
+      final payants = [
+        for (final j in brut)
+          if (effetsImmediats(Objet.depuisJson(j as Map<String, dynamic>)).isNotEmpty)
+            j['id'] as String,
+      ];
+      expect(payants, ['portrait_officiel', 'motos', 'dimanche']);
+    });
+  });
+
+  group('les objets qu on voit', () {
+    test('rien tant que l objet n est pas au palais', () {
+      expect(decoupesDe(Piece.bureau, 'base', const {}), isEmpty);
+    });
+
+    test('le portrait officiel se pose dans les quatre etats du bureau', () {
+      for (final etat in ['base', 'chef', 'ouvert', 'enseveli']) {
+        final posees = decoupesDe(Piece.bureau, etat, const {'portrait_officiel'});
+        expect(posees.length, 1, reason: etat);
+        expect(posees.single.objet, 'portrait_officiel');
+        expect(posees.single.image, 'assets/images/palais/objets/portrait_officiel.png');
+      }
+    });
+
+    test('une decoupe ne deborde jamais de sa plaque', () {
+      for (final piece in Piece.values) {
+        final posees = decoupesDe(piece, 'base', objetsAvecDecoupe);
+        for (final d in posees) {
+          expect(d.zone.x, inInclusiveRange(0, 1), reason: d.objet);
+          expect(d.zone.y, inInclusiveRange(0, 1), reason: d.objet);
+          expect(d.zone.droite, lessThanOrEqualTo(1.0), reason: d.objet);
+          expect(d.zone.bas, lessThanOrEqualTo(1.0), reason: d.objet);
+        }
+      }
+    });
+
+    test('un objet pose n est jamais dans une autre piece que la sienne', () {
+      // La decoupe du bureau ne doit pas apparaitre au balcon parce qu on
+      // y est passe : c est la piece qui decide, pas la possession.
+      expect(decoupesDe(Piece.balcon, 'ordinaire', const {'portrait_officiel'}), isEmpty);
+    });
+
+    test('chaque decoupe declaree existe sur le disque, et aucune ne traine', () {
+      final dossier = Directory('assets/images/palais/objets');
+      final fichiers = dossier.existsSync()
+          ? dossier
+              .listSync()
+              .whereType<File>()
+              .where((f) => f.path.endsWith('.png'))
+              .map((f) => f.uri.pathSegments.last.replaceAll('.png', ''))
+              .toSet()
+          : <String>{};
+      expect(fichiers, objetsAvecDecoupe,
+          reason: 'le dossier des decoupes et les poses declarees doivent dire la meme chose');
+    });
+
+    test('chaque decoupe porte le nom d un objet du catalogue', () {
+      final brut = json.decode(File('assets/contenu/objets.json').readAsStringSync()) as List;
+      final connus = {for (final j in brut) j['id'] as String};
+      expect(objetsAvecDecoupe.difference(connus), isEmpty);
+    });
+  });
 }

@@ -172,6 +172,51 @@ void main() {
     await tester.pump(const Duration(milliseconds: 200));
     expect(find.text('46'), findsOneWidget);
     expect(find.text('Au palais'), findsOneWidget);
+    // Le reçu : ce qui a été pris, et ce que ça a fait. Sans lui, la ligne
+    // passe à « Au palais » pendant qu'on regarde ailleurs, et les caisses
+    // baissent sans explication.
+    expect(find.textContaining('Le ventilateur de plafond · − 4 caisses'), findsOneWidget);
+  });
+
+  testWidgets('le reçu s en va en changeant de pièce', (tester) async {
+    await _ouvreLePalais(tester);
+    await _ouvreLeTiroir(tester);
+    await tester.tap(find.text('Le ventilateur de plafond'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 200));
+    expect(find.textContaining('− 4 caisses'), findsOneWidget);
+    await tester.tap(find.text('Le balcon'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('− 4 caisses'), findsNothing);
+  });
+
+  /// La découpe d'un objet, cherchée par le fichier qu'elle pointe.
+  bool portraitAuMur() => find
+      .byWidgetPredicate((w) =>
+          w is Image &&
+          w.image is AssetImage &&
+          (w.image as AssetImage).assetName ==
+              'assets/images/palais/objets/portrait_officiel.png')
+      .evaluate()
+      .isNotEmpty;
+
+  testWidgets('sans l objet, rien ne pend au mur', (tester) async {
+    await _ouvreLePalais(tester);
+    expect(portraitAuMur(), isFalse);
+  });
+
+  testWidgets('le portrait acheté pend au mur du bureau, et nulle part ailleurs',
+      (tester) async {
+    await _ouvreLePalais(
+      tester,
+      progression: Progression.neuve().copie(objets: {'portrait_officiel'}),
+    );
+    expect(portraitAuMur(), isTrue);
+    // On ne l'emporte pas sur le balcon : c'est la pièce qui décide, pas
+    // la possession.
+    await tester.tap(find.text('Le balcon'));
+    await tester.pumpAndSettle();
+    expect(portraitAuMur(), isFalse);
   });
 
   testWidgets('on revient à la journée par la flèche', (tester) async {
