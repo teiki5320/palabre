@@ -42,10 +42,11 @@
 
 | | |
 |---|---|
-| **État** | Chaîne de construction prête, aucune soumission visible dans le dépôt — à vérifier dans la console |
+| **État** | Fiche créée (identifiant Apple `6811035059`), chaîne de construction qui archive, aucune soumission |
 | **Console** | https://appstoreconnect.apple.com |
 | **Version dans le dépôt** | 0.28.0+1 (`pubspec.yaml`) |
 | **Version en ligne** | à vérifier dans la console |
+| **Identifiant de l'application** | `6811035059` (relevé le 30 octobre 2026) |
 | **Identifiant de bundle** | `sn.palabre.app` |
 | **Équipe de développement** | `K597U7X3FZ` |
 | **Nom affiché** | Palabre |
@@ -55,7 +56,7 @@
 | **Signature** | déléguée à Xcode Cloud ; aucun certificat ni profil dans le dépôt |
 | **Classification** | 17+ visée, à cause des scènes de chambre — questionnaire à remplir, à vérifier dans la console |
 | **Confidentialité** | aucune donnée collectée ; politique en ligne, `https://palabre.toakeur.com/confidentialite.html`, contact `palabre@toakeur.com` |
-| **TestFlight** | envoi manuel par Jean, aucune build sur TestFlight au 30 octobre 2026 : le flux « palabre-testflight » ne fait que l'archive iOS (builds 167 à 171 réussies du 24 au 27 octobre, build 172 en échec le 28 octobre, build 173 réussie le 29 octobre), sans étape TestFlight |
+| **TestFlight** | envoi manuel par Jean, aucune build sur TestFlight au 30 octobre 2026 : le flux « palabre-testflight » ne fait que l'archive iOS (builds 167 à 171 réussies du 24 au 27 octobre, build 172 en échec le 28 octobre, build 173 réussie le 29 octobre), sans étape TestFlight ni post-action de distribution — vérifié par l'API GitHub le 30 octobre 2026 |
 | **Fiche (titre, description, captures)** | rédigée dans `docs/BOUTIQUE.md`, captures dans `docs/captures/` |
 
 ### 2. Android · Google Play
@@ -88,7 +89,8 @@
 3. ✅ **Signature Android câblée** : `key.properties` lu s'il existe, vérifié avec une clé jetable.
 4. **Trancher le modèle de rémunération** : il décide de la fiche, de la classification et de la confidentialité.
 5. **Remplir les questionnaires** : classification et confidentialité, des deux côtés.
-6. **Première build sur TestFlight** : archivée par Xcode Cloud, envoyée à la main par Jean, essayée sur un appareil réel.
-7. **Poser la vraie clé Android** : `android/key.properties`, sauvegardée hors du dépôt.
-8. **Ramener le bundle Android sous 150 Mo** : recompression des images ou livraison d'actifs de Play.
-9. **Test fermé puis sortie publique** : sur les deux boutiques.
+6. **Brancher TestFlight sur le flux Xcode Cloud** : le flux `palabre-testflight` n'a qu'une action, *Archive - iOS*, sans post-action de distribution — c'est pour cela qu'aucune build n'arrive. Console → Xcode Cloud → flux → Post-Actions → TestFlight Internal Testing. Deux minutes, et la suite se fait seule.
+7. **Première build sur TestFlight** : essayée sur un appareil réel. Tant que le point 6 n'est pas fait, l'archive se télécharge et s'envoie à la main.
+8. **Poser la vraie clé Android** : `android/key.properties`, sauvegardée hors du dépôt.
+9. **Ramener le bundle Android sous 150 Mo** : recompression des images ou livraison d'actifs de Play.
+10. **Test fermé puis sortie publique** : sur les deux boutiques.

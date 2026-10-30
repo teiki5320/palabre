@@ -48,9 +48,10 @@ Mis à jour le 30 octobre 2026 d'après le dépôt et la page en ligne. Pour met
 
 ### 3. App Store Connect
 
-- **Rôle** : fiche App Store, TestFlight, soumission. Textes de fiche et réponses aux questionnaires prêts dans `docs/BOUTIQUE.md`.
+- **Rôle** : fiche App Store, TestFlight, soumission. La fiche de l'application existe (identifiant `6811035059`) ; textes et réponses aux questionnaires prêts dans `docs/BOUTIQUE.md`.
+- **Point dur au 30 octobre 2026** : le flux Xcode Cloud `palabre-testflight` n'exécute qu'une seule action, *Archive - iOS* — vérifié par l'API GitHub sur les huit derniers envois. Il n'a **aucune post-action de distribution**, et c'est pour cela qu'aucune build n'arrive dans TestFlight. Le correctif est dans la console (flux → Post-Actions → TestFlight Internal Testing), pas dans le dépôt.
 - **Console** : https://appstoreconnect.apple.com
-- **Identifiants publics** : identifiant de bundle **`sn.palabre.app`** (`ios/Runner.xcodeproj/project.pbxproj`), nom affiché **« Palabre »** (`CFBundleDisplayName`), nom interne `president`. Cible minimale iOS 15.0. La version marketing vient de `FLUTTER_BUILD_NAME`, donc de `pubspec.yaml`. Adresse de confidentialité à coller : `https://palabre.toakeur.com/confidentialite.html`.
+- **Identifiants publics** : identifiant de l'application chez Apple **`6811035059`** (la fiche existe donc déjà dans la console — relevé le 30 octobre 2026 dans l'adresse d'un contrôle Xcode Cloud), identifiant de bundle **`sn.palabre.app`** (`ios/Runner.xcodeproj/project.pbxproj`), nom affiché **« Palabre »** (`CFBundleDisplayName`), nom interne `president`. Cible minimale iOS 15.0. La version marketing vient de `FLUTTER_BUILD_NAME`, donc de `pubspec.yaml`. Adresse de confidentialité à coller : `https://palabre.toakeur.com/confidentialite.html`.
 - **Secrets** : — (accès par le compte Apple Developer).
 - **Coût** : inclus dans l'adhésion Apple Developer.
 
