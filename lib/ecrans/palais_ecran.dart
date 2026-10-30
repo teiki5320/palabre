@@ -412,8 +412,10 @@ class _Entete extends StatelessWidget {
       );
 }
 
-/// L'écran accroché au mur du bureau : la carte du pays en petit, qu'on
-/// touche pour l'ouvrir. Il s'allume et s'éteint avec le palais.
+/// La carte du pays accrochée au mur du bureau, qu'on touche pour
+/// l'ouvrir. Elle porte le même contour qui respire que les portes, et son
+/// nom sous le cadre : c'est une chose qu'on touche, et rien d'autre ne le
+/// disait. Elle s'allume et s'éteint avec le palais.
 class _EcranDuMur extends StatelessWidget {
   const _EcranDuMur({
     required this.nuit,
@@ -434,26 +436,81 @@ class _EcranDuMur extends StatelessWidget {
       label: 'La carte du pays',
       child: GestureDetector(
         onTap: onTap,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            border: Border.all(color: Couleurs.encre, width: 2),
-            boxShadow: [
-              BoxShadow(
-                color: (nuit ? Couleurs.creme : Couleurs.or)
-                    .withValues(alpha: .10 + .16 * souffle),
-                blurRadius: 14,
-                spreadRadius: 1,
+        behavior: HitTestBehavior.opaque,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Couleurs.or.withValues(alpha: .22 + .26 * souffle),
+                    width: 1.4,
+                  ),
+                  borderRadius: BorderRadius.circular(3),
+                  boxShadow: [
+                    BoxShadow(
+                      color: (nuit ? Couleurs.creme : Couleurs.or)
+                          .withValues(alpha: .10 + .16 * souffle),
+                      blurRadius: 14,
+                      spreadRadius: 1,
+                    ),
+                    const BoxShadow(color: Colors.black54, blurRadius: 10, offset: Offset(0, 4)),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(2),
+                  child: PlaqueDuPays(nuit: nuit, connus: connus, avecNoms: false),
+                ),
               ),
-              const BoxShadow(color: Colors.black54, blurRadius: 10, offset: Offset(0, 4)),
-            ],
-          ),
-          child: ClipRect(
-            child: PlaqueDuPays(nuit: nuit, connus: connus, avecNoms: false),
-          ),
+            ),
+            // Le nom sous le cadre, et non dedans comme pour les portes :
+            // la carte est petite, et une étiquette posée par-dessus
+            // mangerait le pays qu'elle annonce. Il est retiré de
+            // l'arbre d'accessibilité : lu à la suite du nœud qui le
+            // porte, il ferait annoncer « la carte du pays, le pays ».
+            const Positioned(
+              left: -24,
+              right: -24,
+              bottom: -19,
+              child: ExcludeSemantics(
+                child: IgnorePointer(child: Center(child: _NomDuCadre('Le pays'))),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
+}
+
+/// Le nom posé sous un cadre ou au bas d'une ouverture : fond sombre,
+/// petites capitales, une seule ligne. Les portes et la carte le partagent,
+/// pour qu'on reconnaisse d'un coup d'œil ce qui se touche.
+class _NomDuCadre extends StatelessWidget {
+  const _NomDuCadre(this.nom);
+
+  final String nom;
+
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+        decoration: BoxDecoration(
+          color: Couleurs.encre.withValues(alpha: .62),
+          borderRadius: BorderRadius.circular(3),
+        ),
+        child: Text(
+          nom,
+          textAlign: TextAlign.center,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Textes.nomJauge.copyWith(
+            color: Couleurs.creme,
+            fontSize: 10,
+            letterSpacing: 1.1,
+          ),
+        ),
+      );
 }
 
 /// Une ouverture dans le décor : une baie, une porte, une colonnade. Pas
@@ -489,24 +546,7 @@ class _Ouverture extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 8),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Couleurs.encre.withValues(alpha: .62),
-                  borderRadius: BorderRadius.circular(3),
-                ),
-                child: Text(
-                  nom,
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Textes.nomJauge.copyWith(
-                    color: Couleurs.creme,
-                    fontSize: 10,
-                    letterSpacing: 1.1,
-                  ),
-                ),
-              ),
+              child: _NomDuCadre(nom),
             ),
           ),
         ),

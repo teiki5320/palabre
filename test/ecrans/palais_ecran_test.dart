@@ -96,6 +96,9 @@ void main() {
   testWidgets('la carte du pays est accrochee au mur du bureau', (tester) async {
     await _ouvreLePalais(tester);
     expect(find.bySemanticsLabel('La carte du pays'), findsOneWidget);
+    // Elle porte son nom sous le cadre, comme les portes portent le leur :
+    // sans ça, rien ne dit qu'un timbre au mur se touche.
+    expect(find.text('Le pays'), findsOneWidget);
     await tester.tap(find.bySemanticsLabel('La carte du pays'));
     await tester.pumpAndSettle();
     expect(find.byType(CartePaysEcran), findsOneWidget);

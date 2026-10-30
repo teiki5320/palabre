@@ -60,7 +60,12 @@ python3 outils/audit_cartes.py          # les contrôles que le moteur ne peut p
 python3 outils/planche_relecture.py     # une page HTML pour relire les cartes une par une
 python3 outils/planche_jeu.py           # le jeu entier : cartes, histoires, images, décors
 flutter test outils/mesure_par_histoire.dart   # mille mandats, taux d'achèvement par histoire
+open outils/placer_zones.html           # poser à la main les portes et la carte du palais
 ```
+
+`placer_zones.html` s'ouvre d'un double-clic : on y tire les ouvertures et
+la carte du mur sur la plaque elle-même, et la page rend les lignes Dart à
+recopier dans `lib/moteur/decor.dart`.
 
 Les pages fabriquées sont écrites dans `sources/`, qui n'est pas versionné.
 

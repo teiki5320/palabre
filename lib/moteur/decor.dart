@@ -400,10 +400,16 @@ class Passage {
 /// gauche, la porte du couloir au centre, la porte-fenêtre du jardin à
 /// droite. Les quatre plaques ont été faites depuis la même assise, donc
 /// une seule série de coordonnées les sert toutes.
+///
+/// Les trois rectangles ont été relevés sur la plaque elle-même, montants
+/// compris : un contour qui déborde d'une porte se voit, parce qu'il est
+/// dessiné. Le premier jeu de valeurs était posé à vue — la baie s'arrêtait
+/// avant son montant de droite, et le jardin mordait de deux cent cinquante
+/// pixels sur le mur et le fauteuil qui le suivent.
 const _passagesDuBureau = [
-  Passage(vers: Piece.balcon, nom: 'Le balcon', zone: Zone(0.00, 0.05, 0.26, 0.78)),
-  Passage(vers: Piece.chambre, nom: 'Le couloir', zone: Zone(0.42, 0.23, 0.16, 0.40)),
-  Passage(vers: Piece.piscine, nom: 'Le jardin', zone: Zone(0.76, 0.24, 0.24, 0.42)),
+  Passage(vers: Piece.balcon, nom: 'Le balcon', zone: Zone(0.005, 0.045, 0.283, 0.760)),
+  Passage(vers: Piece.chambre, nom: 'Le couloir', zone: Zone(0.425, 0.243, 0.157, 0.372)),
+  Passage(vers: Piece.piscine, nom: 'Le jardin', zone: Zone(0.762, 0.250, 0.168, 0.400)),
 ];
 
 /// Depuis la piscine, la colonnade ramène à l'intérieur et la terrasse mène
@@ -436,17 +442,21 @@ List<Passage> passagesDe(Piece piece) => switch (piece) {
       Piece.balcon => const [],
     };
 
-/// L'écran accroché au mur du bureau, sous le climatiseur : c'est le pan
-/// de mur nu de la plaque, et les quatre états du bureau partagent le même
-/// cadrage. Il montre la carte du pays, de jour ou de nuit, et s'ouvre en
-/// grand quand on le touche.
+/// La carte du pays, accrochée au mur du bureau à gauche de la porte du
+/// couloir. Elle montre le pays de jour ou de nuit, et s'ouvre en grand
+/// quand on la touche.
 ///
 /// Les deux fractions sont égales parce que la plaque fait 2488 × 1656 :
 /// une zone carrée en fractions rend un rectangle de trois sur deux, qui
-/// est exactement le format de la carte. Le premier essai le posait à
-/// x = 0,30, c'est-à-dire à cheval sur le rideau et le chambranle du
-/// couloir — il mordait sur l'ouverture.
-const Zone ecranDuBureau = Zone(0.60, 0.30, 0.13, 0.13);
+/// est exactement le format de la carte. Y toucher la déforme.
+///
+/// C'est le troisième endroit essayé, et le premier qui tienne dans les
+/// quatre états. À x = 0,30 elle était à cheval sur le rideau et le
+/// chambranle ; sous le climatiseur elle tombait en plein sur le portrait
+/// doré du palais du chef, et sur le panneau punaisé du bureau enseveli.
+/// Ce pan de mur-ci est nu dans les quatre plaques, au-dessus du chevalet
+/// de la porte ouverte et des cartons de l'enseveli.
+const Zone ecranDuBureau = Zone(0.350, 0.285, 0.070, 0.070);
 
 /// L'écran de la pièce, ou null : le bureau seul en a un.
 Zone? ecranDe(Piece piece) => piece == Piece.bureau ? ecranDuBureau : null;

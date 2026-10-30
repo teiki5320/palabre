@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Placer les zones du palais</title>
+<style>
+  :root {
+    --nuit: #14131A; --nuit-clair: #1C1A23; --encre: #080709;
+    --or: #E9B44C; --creme: #F6EFE4; --creme-doux: #E3D9C9;
+    --aplat: #26222E; --bordure: #ffffff2e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--nuit); color: var(--creme);
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  header {
+    padding: 14px 18px; border-bottom: 1px solid var(--bordure);
+    display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  }
+  h1 { font-size: 15px; margin: 0; letter-spacing: .06em; text-transform: uppercase; color: var(--or); font-weight: 600; }
+  .groupe { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .groupe > span { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #F6EFE499; margin-right: 4px; }
+  button {
+    font: inherit; font-size: 13px; padding: 5px 11px; border-radius: 4px; cursor: pointer;
+    background: var(--aplat); color: var(--creme-doux); border: 1px solid var(--bordure);
+  }
+  button:hover { border-color: var(--or); }
+  button.actif { background: var(--or); color: var(--encre); border-color: var(--or); font-weight: 600; }
+  main { display: flex; gap: 18px; padding: 18px; align-items: flex-start; flex-wrap: wrap; }
+  #scene { position: relative; flex: 1 1 640px; min-width: 320px; user-select: none; touch-action: none; }
+  #scene img { display: block; width: 100%; border-radius: 3px; }
+  .zone { position: absolute; border: 2px solid; border-radius: 2px; cursor: move; }
+  .zone .etiquette {
+    position: absolute; left: 0; bottom: 100%; margin-bottom: 2px; padding: 1px 6px;
+    font-size: 11px; letter-spacing: .06em; background: #080709cc; border-radius: 2px; white-space: nowrap;
+  }
+  .zone .poignee {
+    position: absolute; width: 14px; height: 14px; background: var(--encre);
+    border: 2px solid currentColor; border-radius: 50%;
+  }
+  .zone .nw { left: -8px; top: -8px; cursor: nwse-resize; }
+  .zone .ne { right: -8px; top: -8px; cursor: nesw-resize; }
+  .zone .sw { left: -8px; bottom: -8px; cursor: nesw-resize; }
+  .zone .se { right: -8px; bottom: -8px; cursor: nwse-resize; }
+  .zone.choisie { box-shadow: 0 0 0 1px var(--encre), 0 0 14px #E9B44C66; }
+  aside { flex: 0 0 330px; display: flex; flex-direction: column; gap: 14px; }
+  .fiche { background: var(--nuit-clair); border: 1px solid var(--bordure); border-radius: 4px; padding: 12px 14px; }
+  .fiche h2 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #F6EFE499; margin: 0 0 10px; font-weight: 600; }
+  .ligne { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .pastille { width: 10px; height: 10px; border-radius: 2px; flex: 0 0 auto; }
+  .ligne .nom { flex: 1; font-size: 13px; cursor: pointer; }
+  .ligne .chiffres { font-variant-numeric: tabular-nums; font-size: 12px; color: var(--creme-doux); }
+  .alerte { color: #C97B6A; font-size: 12px; margin-top: 8px; }
+  pre {
+    background: var(--encre); border: 1px solid var(--bordure); border-radius: 4px; padding: 10px;
+    font-size: 11.5px; line-height: 1.45; overflow-x: auto; margin: 0; color: var(--creme-doux); white-space: pre;
+  }
+  footer { padding: 0 18px 24px; color: #F6EFE499; font-size: 12.5px; max-width: 760px; }
+  kbd { background: var(--aplat); border: 1px solid var(--bordure); border-radius: 3px; padding: 0 4px; font-size: 11px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Placer les zones du palais</h1>
+  <div class="groupe" id="piecesBarre"><span>Pièce</span></div>
+  <div class="groupe" id="plaquesBarre"><span>Plaque</span></div>
+  <div class="groupe" id="heureBarre"><span>Heure</span></div>
+</header>
+
+<main>
+  <div id="scene"><img id="plaque" alt=""></div>
+  <aside>
+    <div class="fiche">
+      <h2>Les zones de cette plaque</h2>
+      <div id="liste"></div>
+      <div class="alerte" id="alerte"></div>
+    </div>
+    <div class="fiche">
+      <h2>À recopier dans decor.dart</h2>
+      <pre id="sortie"></pre>
+      <div style="display:flex;gap:6px;margin-top:10px">
+        <button id="copier">Copier</button>
+        <button id="remettre">Remettre les valeurs du dépôt</button>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  On tire une zone par son milieu, on la redimensionne par ses quatre coins. Les flèches du clavier
+  déplacent la zone choisie d'un millième de plaque, <kbd>⇧</kbd>+flèches d'un centième. La carte du
+  mur garde toujours la forme trois-deux : elle ne se déforme pas, elle grandit et rétrécit.
+  Tout est gardé dans le navigateur — on peut fermer la page et revenir.
+</footer>
+
+<script>
+'use strict';
+
+// Les valeurs du dépôt, au 30 octobre 2026. Elles servent de point de
+// départ et de retour en arrière : la page ne décide rien, elle propose.
+const DEPOT = {
+  bureau: {
+    nom: 'Le bureau',
+    plaques: [
+      ['base', 'Le bureau de travail', 'bureau_base'],
+      ['chef', 'Le palais du chef', 'bureau_chef'],
+      ['ouvert', 'La porte ouverte', 'bureau_ouvert'],
+      ['enseveli', 'Enseveli', 'bureau_enseveli'],
+    ],
+    nuit: true,
+    passages: [
+      ['balcon', 'Le balcon', [0.005, 0.045, 0.283, 0.760]],
+      ['chambre', 'Le couloir', [0.425, 0.243, 0.157, 0.372]],
+      ['piscine', 'Le jardin', [0.762, 0.250, 0.168, 0.400]],
+    ],
+    // La carte du mur : une seule pour les quatre états, comme les
+    // ouvertures. Le pan de mur à gauche de la porte est nu dans les quatre
+    // plaques — c'est ce qui permet de n'en garder qu'une.
+    ecran: [0.350, 0.285, 0.070, 0.070],
+  },
+  piscine: {
+    nom: 'La piscine',
+    plaques: [
+      ['base', "L'eau claire", 'piscine_base'],
+      ['verte', "L'eau verte", 'piscine_verte'],
+      ['vide', 'Le bassin vidé', 'piscine_vide'],
+    ],
+    nuit: true,
+    passages: [
+      ['garage', 'La cour', [0.04, 0.34, 0.20, 0.28]],
+      ['bureau', 'Le palais', [0.68, 0.30, 0.22, 0.40]],
+    ],
+  },
+  chambre: {
+    nom: 'La chambre',
+    plaques: [
+      ['base', 'La chambre', 'chambre_base'],
+      ['nuit_blanche', 'La nuit blanche', 'chambre_nuit'],
+    ],
+    nuit: false,
+    passages: [
+      ['balcon', 'Le balcon', [0.62, 0.14, 0.26, 0.68]],
+    ],
+  },
+  garage: {
+    nom: 'La cour',
+    plaques: [
+      ['base', 'La voiture de fonction', 'garage_base'],
+      ['deux', 'La sportive', 'garage_deux'],
+      ['trois', 'Le 4×4 noir', 'garage_trois'],
+      ['parc', 'Le parc', 'garage_parc'],
+    ],
+    nuit: true,
+    passages: [
+      ['bureau', 'Le palais', [0.00, 0.10, 0.21, 0.66]],
+    ],
+  },
+};
+
+const COULEURS = ['#E9B44C', '#6FD0E0', '#C97B6A', '#8FD67A'];
+const COULEUR_ECRAN = '#8FD67A';
+const CLE = 'palabre.zones.v1';
+const PLANCHER = 0.12;   // le test refuse une ouverture plus petite que ça
+
+// ─────────────────────────────── l'état ───────────────────────────────
+
+function neuf() { return JSON.parse(JSON.stringify(
+  Object.fromEntries(Object.entries(DEPOT).map(([k, p]) => [k, {
+    passages: Object.fromEntries(p.passages.map(([id, , z]) => [id, z.slice()])),
+    ecran: p.ecran ? p.ecran.slice() : null,
+  }]))
+)); }
+
+let valeurs;
+try { valeurs = JSON.parse(localStorage.getItem(CLE)) || neuf(); } catch (_) { valeurs = neuf(); }
+// Une clé ajoutée depuis la dernière visite ne doit pas faire une page vide.
+for (const [k, p] of Object.entries(DEPOT)) {
+  valeurs[k] = valeurs[k] || { passages: {}, ecran: null };
+  for (const [id, , z] of p.passages) valeurs[k].passages[id] = valeurs[k].passages[id] || z.slice();
+  if (p.ecran) valeurs[k].ecran = valeurs[k].ecran || p.ecran.slice();
+}
+
+let piece = 'bureau';
+let plaque = 'base';
+let heureNuit = false;
+let choisie = null;   // identifiant de la zone sélectionnée
+
+function garde() { localStorage.setItem(CLE, JSON.stringify(valeurs)); }
+
+// Les zones visibles sur la plaque courante : les ouvertures, partagées par
+// tous les états, et la carte, qui ne l'est pas.
+function zonesVisibles() {
+  const p = DEPOT[piece];
+  const l = p.passages.map(([id, nom], i) => ({
+    cle: 'p:' + id, nom, couleur: COULEURS[i % COULEURS.length],
+    lire: () => valeurs[piece].passages[id],
+    ecrire: (z) => { valeurs[piece].passages[id] = z; },
+    carre: false,
+  }));
+  if (p.ecran) l.push({
+    cle: 'e', nom: 'La carte du mur', couleur: COULEUR_ECRAN,
+    lire: () => valeurs[piece].ecran,
+    ecrire: (z) => { valeurs[piece].ecran = z; },
+    carre: true,
+  });
+  return l;
+}
+
+// ─────────────────────────────── l'écran ───────────────────────────────
+
+const scene = document.getElementById('scene');
+const img = document.getElementById('plaque');
+
+function cheminPlaque() {
+  const p = DEPOT[piece];
+  const fichier = p.plaques.find(([id]) => id === plaque)[2];
+  const dossier = heureNuit && p.nuit ? 'pieces/nuit' : 'pieces';
+  return '../assets/images/palais/' + dossier + '/' + fichier + '.jpg';
+}
+
+function barres() {
+  const faire = (hote, items, actif, clic) => {
+    [...hote.querySelectorAll('button')].forEach((b) => b.remove());
+    for (const [id, libelle] of items) {
+      const b = document.createElement('button');
+      b.textContent = libelle;
+      if (id === actif) b.className = 'actif';
+      b.onclick = () => clic(id);
+      hote.appendChild(b);
+    }
+  };
+  faire(document.getElementById('piecesBarre'),
+    Object.entries(DEPOT).map(([k, p]) => [k, p.nom]), piece,
+    (k) => { piece = k; plaque = DEPOT[k].plaques[0][0]; choisie = null; tout(); });
+  faire(document.getElementById('plaquesBarre'),
+    DEPOT[piece].plaques.map(([id, nom]) => [id, nom]), plaque,
+    (id) => { plaque = id; tout(); });
+  const h = document.getElementById('heureBarre');
+  h.style.display = DEPOT[piece].nuit ? '' : 'none';
+  faire(h, [['jour', 'Jour'], ['nuit', 'Nuit']], heureNuit ? 'nuit' : 'jour',
+    (id) => { heureNuit = id === 'nuit'; tout(); });
+}
+
+function dessine() {
+  [...scene.querySelectorAll('.zone')].forEach((e) => e.remove());
+  const L = scene.clientWidth, H = img.clientHeight || scene.clientWidth / 1.5;
+  for (const z of zonesVisibles()) {
+    const [x, y, l, h] = z.lire();
+    const d = document.createElement('div');
+    d.className = 'zone' + (choisie === z.cle ? ' choisie' : '');
+    d.style.cssText = `left:${x * L}px;top:${y * H}px;width:${l * L}px;height:${h * H}px;color:${z.couleur};border-color:${z.couleur}`;
+    d.innerHTML = `<span class="etiquette" style="color:${z.couleur}">${z.nom}</span>`
+      + ['nw', 'ne', 'sw', 'se'].map((c) => `<span class="poignee ${c}" data-coin="${c}"></span>`).join('');
+    d.onpointerdown = (ev) => prend(ev, z, d);
+    scene.appendChild(d);
+  }
+}
+
+function fiche() {
+  const liste = document.getElementById('liste');
+  liste.innerHTML = '';
+  const soucis = [];
+  for (const z of zonesVisibles()) {
+    const [x, y, l, h] = z.lire();
+    const d = document.createElement('div');
+    d.className = 'ligne';
+    d.innerHTML = `<span class="pastille" style="background:${z.couleur}"></span>`
+      + `<span class="nom">${z.nom}</span>`
+      + `<span class="chiffres">${[x, y, l, h].map((v) => v.toFixed(3)).join('  ')}</span>`;
+    d.querySelector('.nom').onclick = () => { choisie = z.cle; tout(); };
+    liste.appendChild(d);
+    if (!z.carre && (l < PLANCHER || h < PLANCHER)) soucis.push(`« ${z.nom} » est plus petite qu'un huitième de plaque : le test la refusera.`);
+    if (x < 0 || y < 0 || x + l > 1.0001 || y + h > 1.0001) soucis.push(`« ${z.nom} » sort de la plaque.`);
+  }
+  const ouvertures = zonesVisibles().filter((z) => !z.carre).map((z) => [z.nom, z.lire()]);
+  for (let i = 0; i < ouvertures.length; i++) for (let j = i + 1; j < ouvertures.length; j++) {
+    const [na, a] = ouvertures[i], [nb, b] = ouvertures[j];
+    if (a[0] < b[0] + b[2] && b[0] < a[0] + a[2] && a[1] < b[1] + b[3] && b[1] < a[1] + a[3])
+      soucis.push(`« ${na} » et « ${nb} » se chevauchent : le test le refuse.`);
+  }
+  document.getElementById('alerte').textContent = soucis.join(' ');
+  document.getElementById('sortie').textContent = dart();
+}
+
+const f = (v) => v.toFixed(3);
+
+function dart() {
+  const p = DEPOT[piece];
+  const nomPiece = { bureau: 'DuBureau', piscine: 'DeLaPiscine', chambre: 'DeLaChambre', garage: 'DuGarage' }[piece];
+  let s = `const _passages${nomPiece} = [\n`;
+  for (const [id, nom] of p.passages) {
+    const z = valeurs[piece].passages[id];
+    s += `  Passage(vers: Piece.${id === 'nuit_blanche' ? 'chambre' : id}, nom: '${nom}', zone: Zone(${z.map(f).join(', ')})),\n`;
+  }
+  s += '];';
+  if (p.ecran) {
+    s += `\n\nconst Zone ecranDuBureau = Zone(${valeurs[piece].ecran.map(f).join(', ')});`;
+  }
+  return s;
+}
+
+function tout() { barres(); img.src = cheminPlaque(); dessine(); fiche(); }
+
+// ──────────────────────────── la manipulation ────────────────────────────
+
+function prend(ev, z, noeud) {
+  ev.preventDefault();
+  choisie = z.cle;
+  const coin = ev.target.dataset ? ev.target.dataset.coin : null;
+  const L = scene.clientWidth, H = img.clientHeight;
+  const depart = z.lire().slice();
+  const x0 = ev.clientX, y0 = ev.clientY;
+  noeud.setPointerCapture(ev.pointerId);
+
+  const bouge = (e) => {
+    const dx = (e.clientX - x0) / L, dy = (e.clientY - y0) / H;
+    let [x, y, l, h] = depart;
+    if (!coin) { x += dx; y += dy; }
+    else {
+      const ouest = coin[1] === 'w', nord = coin[0] === 'n';
+      let nl = ouest ? l - dx : l + dx;
+      let nh = nord ? h - dy : h + dy;
+      if (z.carre) {
+        // La carte est en trois-deux, et la plaque aussi : une zone carrée
+        // en fractions rend donc un rectangle de trois sur deux. On garde
+        // les deux fractions égales, sans quoi la carte se mettrait à
+        // flotter dans sa boîte au lieu de la remplir.
+        const m = Math.max(nl, nh);
+        nl = m; nh = m;
+      }
+      nl = Math.max(0.02, nl); nh = Math.max(0.02, nh);
+      if (ouest) x = depart[0] + depart[2] - nl;
+      if (nord) y = depart[1] + depart[3] - nh;
+      l = nl; h = nh;
+    }
+    z.ecrire([x, y, l, h].map((v) => Math.round(v * 1000) / 1000));
+    dessine(); fiche();
+  };
+  const lache = () => {
+    noeud.onpointermove = null; noeud.onpointerup = null; garde();
+  };
+  noeud.onpointermove = bouge;
+  noeud.onpointerup = lache;
+  noeud.onpointercancel = lache;
+  dessine(); fiche();
+}
+
+document.addEventListener('keydown', (e) => {
+  if (!choisie) return;
+  const d = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }[e.key];
+  if (!d) return;
+  e.preventDefault();
+  const pas = (e.shiftKey ? 0.01 : 0.001);
+  const z = zonesVisibles().find((v) => v.cle === choisie);
+  if (!z) return;
+  const [x, y, l, h] = z.lire();
+  z.ecrire([Math.round((x + d[0] * pas) * 1000) / 1000, Math.round((y + d[1] * pas) * 1000) / 1000, l, h]);
+  garde(); dessine(); fiche();
+});
+
+document.getElementById('copier').onclick = async () => {
+  await navigator.clipboard.writeText(dart());
+  const b = document.getElementById('copier');
+  b.textContent = 'Copié';
+  setTimeout(() => { b.textContent = 'Copier'; }, 1200);
+};
+
+document.getElementById('remettre').onclick = () => {
+  valeurs = neuf(); garde(); tout();
+};
+
+img.onload = () => { dessine(); };
+window.addEventListener('resize', () => { dessine(); });
+tout();
+</script>
+</body>
+</html>
