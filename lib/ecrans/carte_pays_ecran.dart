@@ -55,6 +55,10 @@ class CartePaysEcran extends StatelessWidget {
 
 /// La plaque elle-même, sans cadre ni habillage : elle sert en grand comme
 /// en vignette au mur du bureau.
+/// La largeur des deux fichiers de carte, en pixels : on ne demande jamais
+/// un décodage plus grand que la source, ce qui ne ferait qu'interpoler.
+const int _largeurSource = 1600;
+
 class PlaqueDuPays extends StatelessWidget {
   const PlaqueDuPays({
     super.key,
@@ -75,14 +79,25 @@ class PlaqueDuPays extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 3 / 2,
       child: LayoutBuilder(builder: (context, c) {
+        // Flutter décode une image à la taille du fichier, pas à celle où on
+        // la dessine. Les deux cartes du pays font 1600 × 1074 : seize
+        // mégaoctets de mémoire à deux, ce qui est justifié en plein écran et
+        // absurde pour la vignette du bureau, large comme un timbre. On
+        // demande donc le décodage à la taille réelle d'affichage, au double
+        // pour les écrans denses, et jamais plus gros que le fichier.
+        final largeurUtile = (c.maxWidth * MediaQuery.devicePixelRatioOf(context))
+            .round()
+            .clamp(1, _largeurSource);
         return Stack(
           fit: StackFit.expand,
           children: [
-            Image.asset(CartePaysEcran.imageDuJour, fit: BoxFit.cover),
+            Image.asset(CartePaysEcran.imageDuJour,
+                fit: BoxFit.cover, cacheWidth: largeurUtile),
             AnimatedOpacity(
               opacity: nuit ? 1 : 0,
               duration: const Duration(milliseconds: 900),
-              child: Image.asset(CartePaysEcran.imageDeNuit, fit: BoxFit.cover),
+              child: Image.asset(CartePaysEcran.imageDeNuit,
+                  fit: BoxFit.cover, cacheWidth: largeurUtile),
             ),
             if (avecNoms)
               for (final lieu in lieuxDuPays)

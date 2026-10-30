@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart' show CustomSemanticsAction;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../moteur/decor.dart';
@@ -86,6 +87,39 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
       Cote.droite => carte.droite,
       null => null,
     };
+    final texteLu = habille(carte.texte, nom: session.etat.nomJoueur, titre: titre);
+
+    // Répondre, par le geste ou par le rotor d'un lecteur d'écran : un seul
+    // chemin, pour que les deux fassent exactement la même chose.
+    void repondre(Cote c) {
+      setState(() => _intention = null);
+      _doublure.value = 0;
+      // Le son se choisit sur ce que la réponse fait vraiment, régime et
+      // mandat compris : un même libellé ne frappe pas pareil au second
+      // mandat.
+      ref.read(sonsProvider).joue(sonDeLaReponse(effetsReels(
+            effets: (c == Cote.gauche ? carte.gauche : carte.droite).effets,
+            style: session.etat.style,
+            mandat: session.etat.mandat,
+            atout: parcours?.atout,
+          )));
+      ref.read(sessionProvider.notifier).repondA(c);
+      // Le quotidien du lendemain prend tout l'écran avant la carte
+      // suivante — sauf le jour des noces, où la cérémonie porte déjà la
+      // ligne.
+      final apres = ref.read(sessionProvider);
+      final ligne = apres?.journal;
+      if (apres != null &&
+          !apres.terminee &&
+          ligne != null &&
+          ligne.isNotEmpty &&
+          ceremonieDe(apres.etat) == null) {
+        setState(() {
+          _quotidien = ligne;
+          _matin = apres.etat.jour;
+        });
+      }
+    }
 
     // L'écran des cartes ne porte aucun fond. On y a essayé la musique du
     // bureau : elle tourne pendant les cent jours entiers, sous des cartes
@@ -166,7 +200,23 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                           ),
                         ),
                         Positioned.fill(
-                          child: CarteGlissante(
+                          // Le geste *est* le jeu : sans ce nœud, un joueur
+                          // qui s'en remet à VoiceOver ou à TalkBack n'a
+                          // accès à rien du tout. L'étiquette dit qui parle
+                          // et ce qui est dit ; les deux actions nommées
+                          // donnent les deux réponses, qu'on atteint par le
+                          // rotor plutôt qu'en glissant.
+                          child: Semantics(
+                            label: personnage == null
+                                ? texteLu
+                                : '${personnage.titre}. $texteLu',
+                            customSemanticsActions: {
+                              CustomSemanticsAction(label: 'Répondre : ${carte.gauche.libelle}'):
+                                  () => repondre(Cote.gauche),
+                              CustomSemanticsAction(label: 'Répondre : ${carte.droite.libelle}'):
+                                  () => repondre(Cote.droite),
+                            },
+                            child: CarteGlissante(
                             // Le jour fait partie de la clé : une carte répétable
                             // tirée deux jours de suite doit être une carte neuve
                             // pour Flutter, sinon il garde l'état « sortie » de la
@@ -179,43 +229,14 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                               setState(() => _intention = c);
                             },
                             onSortie: () => _doublure.forward(from: 0),
-                            onReponse: (c) {
-                              setState(() => _intention = null);
-                              _doublure.value = 0;
-                              // Le son se choisit sur ce que la réponse fait
-                              // vraiment, régime et mandat compris : un même
-                              // libellé ne frappe pas pareil au second mandat.
-                              ref.read(sonsProvider).joue(sonDeLaReponse(effetsReels(
-                                    effets: (c == Cote.gauche ? carte.gauche : carte.droite).effets,
-                                    style: session.etat.style,
-                                    mandat: session.etat.mandat,
-                                    atout: parcours?.atout,
-                                  )));
-                              ref.read(sessionProvider.notifier).repondA(c);
-                              // Le quotidien du lendemain prend tout l'écran
-                              // avant la carte suivante — sauf le jour des
-                              // noces, où la cérémonie porte déjà la ligne.
-                              final apres = ref.read(sessionProvider);
-                              final ligne = apres?.journal;
-                              if (apres != null &&
-                                  !apres.terminee &&
-                                  ligne != null &&
-                                  ligne.isNotEmpty &&
-                                  ceremonieDe(apres.etat) == null) {
-                                setState(() {
-                                  _quotidien = ligne;
-                                  _matin = apres.etat.jour;
-                                });
-                              }
-                            },
+                            onReponse: repondre,
                             enfant: Stack(
                               fit: StackFit.expand,
                               children: [
                                 _Carte(
                                   personnage: personnage,
                                   humeur: carte.humeur,
-                                  texte: habille(carte.texte,
-                                      nom: session.etat.nomJoueur, titre: titre),
+                                  texte: texteLu,
                                 ),
                                 // L'intro a dit le geste en mots ; ici on le
                                 // montre sur la carte, une seule fois.
@@ -227,6 +248,7 @@ class _PartieEcranState extends ConsumerState<PartieEcran> with SingleTickerProv
                                     droite: carte.droite.libelle,
                                   ),
                               ],
+                            ),
                             ),
                           ),
                         ),

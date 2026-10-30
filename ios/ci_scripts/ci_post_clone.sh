@@ -20,11 +20,18 @@ bat() {
   shift
   ( while true; do sleep 60; echo "  … $etiquette, toujours en cours"; done ) &
   pouls=$!
-  "$@"
-  issue=$?
+  # On récolte le code nous-mêmes plutôt que de laisser `set -e` couper ici :
+  # sinon l'échec saute l'arrêt du pouls, qui continue de battre quelques
+  # secondes après la dernière ligne du journal — de quoi lire l'erreur de
+  # travers au moment où l'on en a le plus besoin.
+  issue=0
+  "$@" || issue=$?
   kill "$pouls" 2>/dev/null || true
   wait "$pouls" 2>/dev/null || true
-  return $issue
+  if [ "$issue" -ne 0 ]; then
+    echo "✖ $etiquette : échec (code $issue)"
+    exit "$issue"
+  fi
 }
 
 echo "▸ Flutter $FLUTTER_VERSION"

@@ -60,8 +60,24 @@ class Session {
 class SessionNotifier extends Notifier<Session?> {
   late Random _alea;
 
+  /// Faux dès que le fournisseur est détruit. Deux écritures sur le disque
+  /// relisent la progression une fois terminées — l'achat d'un objet et le
+  /// bilan d'un mandat — et ce retour peut arriver après qu'on a quitté la
+  /// partie. Invalider un fournisseur déjà détruit lève une exception au
+  /// beau milieu d'une sauvegarde réussie.
+  bool _vivant = true;
+
+  /// Relit la progression du disque, sauf si plus personne n'écoute.
+  void _relis() {
+    if (_vivant) ref.invalidate(progressionProvider);
+  }
+
   @override
-  Session? build() => null;
+  Session? build() {
+    _vivant = true;
+    ref.onDispose(() => _vivant = false);
+    return null;
+  }
 
   Contenu get _contenu => ref.read(contenuProvider).requireValue;
 
@@ -106,7 +122,11 @@ class SessionNotifier extends Notifier<Session?> {
   /// ferait un décor.
   void ceremonieVue() {
     final s = state;
-    if (s == null) return;
+    // La même garde que `consommeRendezVous` : sur une partie finie, cette
+    // méthode reconstruirait une session sans dénouement, et l'écran de fin
+    // disparaîtrait. L'ordre de `build` l'empêche aujourd'hui ; on ne confie
+    // pas une règle du moteur à l'ordre d'un `build`.
+    if (s == null || s.terminee) return;
     if (s.etat.drapeaux.contains(drapeauNocesVues)) return;
     final etat = s.etat.copie(drapeaux: {...s.etat.drapeaux, drapeauNocesVues});
     Sauvegarde.enregistre(etat);
@@ -133,9 +153,7 @@ class SessionNotifier extends Notifier<Session?> {
       // L'écriture d'abord, la relecture ensuite : invalider avant que le
       // disque ait reçu l'objet fait relire l'ancien palais, et l'objet
       // qu'on vient de payer disparaît jusqu'au prochain lancement.
-      unawaited(Sauvegarde.enregistreProgression(apres).then((_) {
-        ref.invalidate(progressionProvider);
-      }));
+      unawaited(Sauvegarde.enregistreProgression(apres).then((_) => _relis()));
     }
     final etat = achete(s.etat, objet);
     Sauvegarde.enregistre(etat);
@@ -245,8 +263,15 @@ class SessionNotifier extends Notifier<Session?> {
       ),
       contenu: _contenu,
     );
-    if (chargee != null) Sauvegarde.enregistreProgression(resultat.progression);
-    ref.invalidate(progressionProvider); // pour que la fin et la collection voient la nouvelle progression
+    // L'écriture d'abord, la relecture ensuite — la même précaution que dans
+    // `acheteObjet`. Invalider avant que le disque ait reçu le bilan fait
+    // relire l'ancienne progression, et l'écran de fin annonce alors un
+    // exploit de moins que ce qui vient d'être gagné.
+    if (chargee != null) {
+      unawaited(Sauvegarde.enregistreProgression(resultat.progression).then((_) => _relis()));
+    } else {
+      _relis();
+    }
 
     return Session(etat: etat, denouement: denouement, fin: fin, nouveautes: resultat.nouveautes);
   }

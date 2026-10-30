@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:president/contenu/chargement.dart';
@@ -242,6 +243,31 @@ void main() {
 
     expect(largeurs[0], largeurs[1],
         reason: 'un effet de 1 et un effet de 18 doivent dessiner la meme encoche');
+  });
+
+  testWidgets('la carte s annonce et ses deux reponses sont atteignables sans le geste',
+      (tester) async {
+    final poignee = tester.ensureSemantics();
+    await lance(tester);
+
+    // Qui parle et ce qui est dit, dans une seule etiquette : sans elle, un
+    // joueur qui s en remet a VoiceOver n a acces a rien.
+    expect(
+      find.bySemanticsLabel(RegExp(r"Chef d etat-major\..*la solde a du retard", caseSensitive: false)),
+      findsOneWidget,
+    );
+
+    // Et les deux reponses, atteignables par le rotor plutot qu en glissant.
+    final noeud = tester.getSemantics(
+      find.bySemanticsLabel(RegExp('la solde a du retard', caseSensitive: false)),
+    );
+    final actions = noeud.getSemanticsData().customSemanticsActionIds ?? const <int>[];
+    final libelles = actions
+        .map((id) => CustomSemanticsAction.getAction(id)?.label ?? '')
+        .toList();
+    expect(libelles, containsAll(<String>['Répondre : Patientez', 'Répondre : On paie']));
+
+    poignee.dispose();
   });
 
   testWidgets('un mouvement sous le seuil d intention ne montre aucun delta', (tester) async {
