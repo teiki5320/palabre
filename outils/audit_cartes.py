@@ -352,9 +352,15 @@ def audit():
         for d in cond.get('drapeaux_requis', []) + cond.get('drapeaux_interdits', []):
             if d.startswith('objet_'):
                 lus_ailleurs.add(d[6:])
+    # Un objet qui a une découpe se voit dans sa pièce dès qu'il est acheté :
+    # c'est le décor qui le lit, et le dossier des découpes le dit mieux que
+    # n'importe quelle liste tenue à la main.
+    dossier = os.path.join(RACINE, 'assets/images/palais/objets')
+    avec_decoupe = {f[:-4] for f in os.listdir(dossier)
+                    if f.endswith('.png')} if os.path.isdir(dossier) else set()
     for o in catalogue:
         if (o['id'] in lus_par_une_carte or o['id'] in OBJETS_LUS_PAR_LE_MOTEUR
-                or o['id'] in lus_ailleurs):
+                or o['id'] in lus_ailleurs or o['id'] in avec_decoupe):
             continue
         if o.get('effet_achat') or o.get('style_achat'):
             continue

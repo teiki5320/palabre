@@ -40,8 +40,11 @@ void main() {
     late List<Objet> objets;
     setUpAll(() => objets = lisCatalogue());
 
-    test('se lit sans erreur et contient vingt-quatre objets', () {
-      expect(objets, hasLength(24));
+    test('se lit sans erreur et contient six objets', () {
+      // Le catalogue a ete vide le 31 octobre 2026 de toutes ses pieces
+      // sauf la cour des voitures, pour etre reecrit. Ce qui en est sorti
+      // est dans docs/objets-retires.md, texte et donnees.
+      expect(objets, hasLength(6));
     });
 
     test('les identifiants sont uniques', () {
@@ -49,16 +52,17 @@ void main() {
       expect(ids, hasLength(objets.length));
     });
 
-    test('chaque pièce a au moins deux objets', () {
+    test('une pièce a des objets, ou n en a aucun — jamais un seul', () {
+      // Un tiroir d un seul objet n est pas un catalogue, c est un bouton.
       for (final p in Piece.values) {
         final combien = objets.where((o) => o.piece == p).length;
-        expect(combien, greaterThanOrEqualTo(2), reason: 'la pièce ${p.name} n\'a que $combien objet(s)');
+        expect(combien, isNot(1), reason: 'la pièce ${p.name} n\'a qu\'un objet');
       }
     });
 
-    test('tout meubler coûte deux cents points de caisses', () {
+    test('tout meubler coûte soixante-neuf points de caisses', () {
       final total = objets.fold<int>(0, (s, o) => s + o.prix);
-      expect(total, 200);
+      expect(total, 69);
     });
 
     test('aucun objet ne coûte moins de trois ni plus de vingt', () {
@@ -80,8 +84,24 @@ void main() {
       }
     });
 
-    test('le coffre-fort porte bien l identifiant que le moteur attend', () {
-      expect(objets.any((o) => o.drapeau == drapeauCoffre), isTrue);
+    test('le coffre-fort n est plus au catalogue, et son mécanisme dort', () {
+      // Le filet du coffre reste dans le moteur, intact : le jour où
+      // l objet revient, il le retrouve sans qu on y touche.
+      expect(objets.any((o) => o.drapeau == drapeauCoffre), isFalse);
+      final sauve = coffreSiBesoin(
+        etatAvec(caisses: 4).copie(drapeaux: {drapeauCoffre}),
+      );
+      expect(sauve.jauges.caisses, 4 + renfortCoffre);
+    });
+
+    test('le berceau ne se vend qu à ceux qui se sont mariés', () {
+      final berceau = objets.firstWhere((o) => o.id == 'berceau');
+      final celibataire = etatAvec(caisses: 60);
+      expect(achetable(celibataire, berceau, const {}), isFalse);
+      expect(
+        achetable(celibataire.copie(epouse: 'epouse'), berceau, const {}),
+        isTrue,
+      );
     });
   });
 
@@ -561,7 +581,7 @@ void main() {
       expect(dit.last, contains('république'));
     });
 
-    test('le catalogue réel : trois objets paient comptant, pas un de plus', () {
+    test('le catalogue réel : un seul objet paie comptant', () {
       // Lu sur le fichier livré, pas sur une doublure : si quelqu'un ajoute
       // un effet d'achat, ce test le dit, et la ligne du tiroir suivra.
       final brut = json.decode(File('assets/contenu/objets.json').readAsStringSync()) as List;
@@ -570,22 +590,43 @@ void main() {
           if (effetsImmediats(Objet.depuisJson(j as Map<String, dynamic>)).isNotEmpty)
             j['id'] as String,
       ];
-      expect(payants, ['portrait_officiel', 'motos', 'dimanche']);
+      expect(payants, ['motos']);
     });
   });
 
   group('les objets qu on voit', () {
     test('rien tant que l objet n est pas au palais', () {
-      expect(decoupesDe(Piece.bureau, 'base', const {}), isEmpty);
+      expect(decoupesDe(Piece.chambre, 'base', const {}), isEmpty);
     });
 
-    test('le portrait officiel se pose dans les quatre etats du bureau', () {
-      for (final etat in ['base', 'chef', 'ouvert', 'enseveli']) {
-        final posees = decoupesDe(Piece.bureau, etat, const {'portrait_officiel'});
-        expect(posees.length, 1, reason: etat);
-        expect(posees.single.objet, 'portrait_officiel');
-        expect(posees.single.image, 'assets/images/palais/objets/portrait_officiel.png');
+    test('l aquarium et le berceau se posent le jour et la nuit blanche', () {
+      for (final etat in ['base', 'nuit']) {
+        final posees = decoupesDe(Piece.chambre, etat, const {'aquarium', 'berceau'});
+        expect(posees.length, 2, reason: etat);
+        expect(posees.map((d) => d.objet), containsAll(['aquarium', 'berceau']));
+        expect(posees.first.image, 'assets/images/palais/objets/aquarium.png');
       }
+    });
+
+    test('les dix plaques « on n est pas seul » partagent une place et une découpe', () {
+      // Elles sont cadrees de la meme fenetre : une seule ligne les sert
+      // toutes, et la decoupe y est celle de ce cadrage-la.
+      for (final qui in ['epouse', 'ministre', 'redactrice']) {
+        final posees = decoupesDe(Piece.chambre, 'presence_$qui', const {'aquarium'});
+        expect(posees.length, 1, reason: qui);
+        expect(posees.single.image,
+            'assets/images/palais/objets/aquarium_presence.png');
+      }
+      expect(familleDEtat('presence_maire'), 'presence');
+      expect(familleDEtat('nuit'), 'nuit');
+    });
+
+    test('ce qui eclaire ne se teinte pas la nuit', () {
+      final posees = decoupesDe(Piece.chambre, 'nuit', const {'aquarium', 'berceau'});
+      final aquarium = posees.firstWhere((d) => d.objet == 'aquarium');
+      final berceau = posees.firstWhere((d) => d.objet == 'berceau');
+      expect(aquarium.teinteLaNuit, isFalse);
+      expect(berceau.teinteLaNuit, isTrue);
     });
 
     test('une decoupe ne deborde jamais de sa plaque', () {
@@ -601,9 +642,9 @@ void main() {
     });
 
     test('un objet pose n est jamais dans une autre piece que la sienne', () {
-      // La decoupe du bureau ne doit pas apparaitre au balcon parce qu on
-      // y est passe : c est la piece qui decide, pas la possession.
-      expect(decoupesDe(Piece.balcon, 'ordinaire', const {'portrait_officiel'}), isEmpty);
+      // La decoupe de la chambre ne doit pas apparaitre au balcon parce
+      // qu on y est passe : c est la piece qui decide, pas la possession.
+      expect(decoupesDe(Piece.balcon, 'ordinaire', const {'aquarium'}), isEmpty);
     });
 
     test('chaque decoupe declaree existe sur le disque, et aucune ne traine', () {
@@ -616,7 +657,7 @@ void main() {
               .map((f) => f.uri.pathSegments.last.replaceAll('.png', ''))
               .toSet()
           : <String>{};
-      expect(fichiers, objetsAvecDecoupe,
+      expect(fichiers, fichiersDesDecoupes,
           reason: 'le dossier des decoupes et les poses declarees doivent dire la meme chose');
     });
 

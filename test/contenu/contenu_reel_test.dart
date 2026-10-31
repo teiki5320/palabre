@@ -51,9 +51,12 @@ void main() {
     }
   });
 
-  test('dix exploits sont definis, chacun avec un identifiant unique', () {
-    expect(contenu.exploits.length, 10);
-    expect(contenu.exploits.map((e) => e.id).toSet().length, 10);
+  test('neuf exploits sont definis, chacun avec un identifiant unique', () {
+    // Ils etaient dix jusqu au 31 octobre 2026 : « La bibliotheque pleine »
+    // est partie avec le vidage du catalogue du palais, et son texte attend
+    // dans docs/objets-retires.md.
+    expect(contenu.exploits.length, 9);
+    expect(contenu.exploits.map((e) => e.id).toSet().length, 9);
   });
 
   // Jouer au hasard ne doit jamais mener bien loin : un joueur qui répond

@@ -120,12 +120,7 @@ const DEPOT = {
     // ouvertures. Le pan de mur à droite de la porte, sous le climatiseur,
     // a été libéré dans les quatre plaques le 30 octobre 2026.
     ecran: [0.588, 0.288, 0.122, 0.122],
-    // Les découpes : une image par objet, et une place par plaque. Le
-    // bureau est meublé quatre fois différemment, donc un objet peut
-    // devoir changer de coin d'un état à l'autre.
-    objets: [
-      ['portrait_officiel', 'Le portrait officiel', [0.364, 0.266, 0.044, 0.086]],
-    ],
+
   },
   piscine: {
     nom: 'La piscine',
@@ -144,7 +139,14 @@ const DEPOT = {
     nom: 'La chambre',
     plaques: [
       ['base', 'La chambre', 'chambre_base'],
-      ['nuit_blanche', 'La nuit blanche', 'chambre_nuit'],
+      ['nuit', 'La nuit blanche', 'chambre_nuit'],
+    ],
+    // Les découpes : une image par objet, et une place par plaque. Les
+    // cadrages de la chambre ne sont pas les mêmes d'un état à l'autre,
+    // donc un objet change de coin.
+    objets: [
+      ['aquarium', "L'aquarium", [0.254, 0.313, 0.110, 0.105]],
+      ['berceau', 'Le berceau', [0.575, 0.635, 0.103, 0.138]],
     ],
     nuit: false,
     passages: [

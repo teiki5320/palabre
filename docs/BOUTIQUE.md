@@ -3,8 +3,8 @@
 Rédigé le 22 septembre 2026 d'après le contenu réel du jeu. Rien n'est encore
 soumis : ces textes sont des brouillons prêts à coller, pas un état de console.
 
-Tous les chiffres cités ici viennent du dépôt — 687 cartes, 59 histoires,
-15 personnages, 10 parcours, 24 objets, 14 fins, 10 exploits, 100 jours de
+Tous les chiffres cités ici viennent du dépôt — 673 cartes, 59 histoires,
+15 personnages, 10 parcours, 6 objets, 13 fins, 9 exploits, 100 jours de
 mandat. Ils changeront si le contenu change ; les recompter avant de coller.
 
 ---
@@ -54,12 +54,12 @@ de l'État : un ventilateur, un fauteuil de cuir, une limousine, un
 coffre-fort. Ce qui est acheté reste, même après une chute. Et quelqu'un
 finira par entrer dans votre chambre, si vous le voulez.
 
-— 687 cartes écrites à la main, en français
+— 673 cartes écrites à la main, en français
 — 59 histoires à suivre sur plusieurs jours
 — 15 personnages qui reviennent, et qui changent d'humeur
 — 10 parcours de départ : l'ancien général, la professeure, le syndicaliste,
   la femme d'affaires, le footballeur, la militante...
-— 24 objets à s'offrir au palais
+— des objets à s'offrir au palais
 — 14 façons de finir, dont quatre élections
 — Aucune connexion requise : tout le jeu tient dans l'application
 
@@ -102,7 +102,7 @@ Fifty-nine storylines run across several cards and remember you.
 Between cards, there is the palace. You furnish it with state money, one
 object at a time. What you buy stays, even after you fall.
 
-— 687 hand-written cards
+— 673 hand-written cards
 — 59 multi-card storylines
 — 15 recurring characters
 — 10 starting paths

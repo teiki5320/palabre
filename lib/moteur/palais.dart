@@ -1,5 +1,6 @@
 import 'etat_partie.dart';
 import 'jauges.dart';
+import 'modeles.dart';
 
 /// Les cinq pièces du palais. L'ordre est celui de la visite : on arrive au
 /// bureau, on en repart vers les autres.
@@ -39,6 +40,7 @@ class Objet {
     this.natures = const [],
     this.effetAchat = const {},
     this.styleAchat = 0,
+    this.conditions = const Conditions(),
   });
 
   final String id;
@@ -57,6 +59,12 @@ class Objet {
 
   /// Ce que l'achat décale sur l'axe du régime, une seule fois.
   final int styleAchat;
+
+  /// Ce que la partie doit déjà être pour qu'on puisse acheter. Le prix ne
+  /// suffit pas toujours : on n'achète pas un berceau avant de s'être
+  /// marié. Vide pour presque tout le catalogue, qui ne demande que de
+  /// l'argent.
+  final Conditions conditions;
 
   /// Le drapeau que l'objet pose dans la partie. C'est par lui que les
   /// cartes conditionnées apparaissent.
@@ -87,6 +95,7 @@ class Objet {
       natures: ((j['natures'] as List?) ?? const []).cast<String>(),
       effetAchat: effets,
       styleAchat: ((j['style_achat'] as num?) ?? 0).toInt(),
+      conditions: Conditions.depuisJson(j['conditions'] as Map<String, dynamic>?),
     );
   }
 }
@@ -122,9 +131,12 @@ const String drapeauCoffre = 'objet_coffre_fort';
 const String drapeauCoffreOuvert = 'coffre_ouvert';
 
 /// Peut-on acheter cet objet maintenant ? Non s'il est déjà au palais, non
-/// si le prix laisse les caisses sous le plancher.
+/// si le prix laisse les caisses sous le plancher, non si la partie n'est
+/// pas encore ce que l'objet exige.
 bool achetable(EtatPartie etat, Objet objet, Set<String> possedes) =>
-    !possedes.contains(objet.id) && etat.jauges.caisses - objet.prix >= plancherAchat;
+    !possedes.contains(objet.id) &&
+    etat.jauges.caisses - objet.prix >= plancherAchat &&
+    objet.conditions.satisfaites(etat);
 
 /// L'état après un achat : les caisses paient, l'effet unique s'applique,
 /// le régime bouge s'il y a lieu, et le drapeau de l'objet est posé pour

@@ -10,8 +10,8 @@ Mis à jour le 30 octobre 2026. Compagnon de INFRA.md. Pour l'actualiser : relan
 
 Trois choses que les concurrents directs n'ont pas :
 
-1. **La densité narrative.** 687 cartes, 59 histoires qui s'étalent sur plusieurs cartes et se souviennent de ce qu'on a répondu. Une réponse au jour 12 rouvre une carte au jour 40.
-2. **Le palais.** On l'achète pièce par pièce avec l'argent de l'État, 24 objets, et ce qu'on achète reste d'un mandat à l'autre même après une chute. C'est la progression longue, par-dessus la partie.
+1. **La densité narrative.** 673 cartes, 59 histoires qui s'étalent sur plusieurs cartes et se souviennent de ce qu'on a répondu. Une réponse au jour 12 rouvre une carte au jour 40.
+2. **Le palais.** On l'achète pièce par pièce avec l'argent de l'État, et ce qu'on achète reste d'un mandat à l'autre même après une chute. C'est la progression longue, par-dessus la partie.
 3. **Les romances.** Dix personnes, six crans, et l'attache ne monte jamais toute seule : elle ne bouge que si une réponse la déclare. Ça conduit au mariage, ou à la rupture, et ça change la chambre.
 
 **Les publics.** D'abord les joueurs de *Reigns* et de jeux narratifs courts, qui cherchent exactement cette boucle et n'en ont plus de neuve. Ensuite un public francophone, en Afrique de l'Ouest et dans la diaspora, à qui aucun jeu de ce genre ne parle aujourd'hui dans son décor. Enfin les curieux de politique-fiction, pour qui les arbitrages — payer la solde ou les enseignants, emprunter au fonds ou s'en passer — sont le sujet.
@@ -21,8 +21,8 @@ Trois choses que les concurrents directs n'ont pas :
 ## Points forts
 
 - 🃏 **Un décor neuf** : un palais d'Afrique de l'Ouest inventé, quand le genre vit au Moyen Âge.
-- 📜 **Des histoires qui se souviennent** : 687 cartes, 59 histoires ; une réponse du jour 12 rouvre une carte au jour 40.
-- 🏛️ **Le palais et les romances** : 24 objets gardés d'un mandat à l'autre, dix romances qui ne bougent que sur réponse.
+- 📜 **Des histoires qui se souviennent** : 673 cartes, 59 histoires ; une réponse du jour 12 rouvre une carte au jour 40.
+- 🏛️ **Le palais et les romances** : des objets gardés d'un mandat à l'autre, dix romances qui ne bougent que sur réponse.
 
 ## Modèle de rémunération
 

@@ -8,17 +8,6 @@
   "image": "fins/coup.jpg"
  },
  {
-  "id": "armee_bas_vitrage",
-  "jauge": "armee",
-  "vers_le_haut": false,
-  "titre": "Derrière la baie",
-  "texte": "Les blindés sont entrés à l'aube. Vous êtes resté au bureau, derrière le vitrage, et c'est par la porte qu'ils ont fini par passer, quatre heures plus tard. Le pays a eu le temps de voir.",
-  "image": "fins/coup.jpg",
-  "drapeaux_requis": [
-   "objet_vitrage"
-  ]
- },
- {
   "id": "armee_haut",
   "jauge": "armee",
   "vers_le_haut": true,

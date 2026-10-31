@@ -191,32 +191,33 @@ void main() {
   });
 
   /// La découpe d'un objet, cherchée par le fichier qu'elle pointe.
-  bool portraitAuMur() => find
+  bool auMur(String objet) => find
       .byWidgetPredicate((w) =>
           w is Image &&
           w.image is AssetImage &&
           (w.image as AssetImage).assetName ==
-              'assets/images/palais/objets/portrait_officiel.png')
+              'assets/images/palais/objets/$objet.png')
       .evaluate()
       .isNotEmpty;
 
-  testWidgets('sans l objet, rien ne pend au mur', (tester) async {
+  testWidgets('sans l objet, rien ne se pose dans la chambre', (tester) async {
     await _ouvreLePalais(tester);
-    expect(portraitAuMur(), isFalse);
+    await tester.tap(find.text('Le couloir'));
+    await tester.pumpAndSettle();
+    expect(auMur('aquarium'), isFalse);
   });
 
-  testWidgets('le portrait acheté pend au mur du bureau, et nulle part ailleurs',
+  testWidgets('l aquarium acheté se pose dans la chambre, et nulle part ailleurs',
       (tester) async {
     await _ouvreLePalais(
       tester,
-      progression: Progression.neuve().copie(objets: {'portrait_officiel'}),
+      progression: Progression.neuve().copie(objets: {'aquarium'}),
     );
-    expect(portraitAuMur(), isTrue);
-    // On ne l'emporte pas sur le balcon : c'est la pièce qui décide, pas
-    // la possession.
-    await tester.tap(find.text('Le balcon'));
+    // Le bureau est le vestibule : l'aquarium n'y est pas.
+    expect(auMur('aquarium'), isFalse);
+    await tester.tap(find.text('Le couloir'));
     await tester.pumpAndSettle();
-    expect(portraitAuMur(), isFalse);
+    expect(auMur('aquarium'), isTrue);
   });
 
   testWidgets('on revient à la journée par la flèche', (tester) async {

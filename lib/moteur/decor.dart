@@ -475,8 +475,21 @@ const String dossierDesDecoupes = 'assets/images/palais/objets';
 /// posée au même endroit dans les quatre tomberait dans un meuble pour au
 /// moins un. Un état sans place n'affiche rien : mieux vaut un objet
 /// qu'on ne voit pas qu'un fauteuil planté dans une chaise.
+/// Les dix plaques « on n'est pas seul » sont cadrées de la même fenêtre :
+/// elles partagent donc une place et une découpe. L'état les nomme une par
+/// une — `presence_epouse`, `presence_ministre` — et c'est ici qu'on les
+/// ramène à leur famille, pour n'écrire la place qu'une fois.
+String familleDEtat(String etat) =>
+    etat.startsWith('presence_') ? 'presence' : etat;
+
 class PoseObjet {
-  const PoseObjet({required this.objet, required this.piece, required this.places});
+  const PoseObjet({
+    required this.objet,
+    required this.piece,
+    required this.places,
+    this.images = const {},
+    this.teinteLaNuit = true,
+  });
 
   /// L'identifiant au catalogue, qui est aussi le nom du fichier.
   final String objet;
@@ -486,30 +499,69 @@ class PoseObjet {
   /// par défaut, pour les objets dont tous les états partagent le mur.
   final Map<String, Zone> places;
 
-  Zone? placeDans(String etat) => places[etat] ?? places[''];
+  /// Faux pour ce qui éclaire au lieu d'être éclairé. Un aquarium teinté
+  /// comme le reste de la pièce devient un tableau sombre ; c'est la
+  /// seule chose de la chambre qui brille quand la ville s'éteint.
+  final bool teinteLaNuit;
+
+  /// La découpe à poser, par famille d'état, quand une seule ne peut pas
+  /// servir partout : le cadrage change, et l'objet avec lui. Sans entrée,
+  /// c'est le fichier qui porte le nom de l'objet.
+  final Map<String, String> images;
+
+  Zone? placeDans(String etat) => places[familleDEtat(etat)] ?? places[''];
+
+  String imageDans(String etat) => images[familleDEtat(etat)] ?? objet;
 }
 
-/// Le portrait officiel pend au mur de gauche du bureau, entre le rideau
-/// et le chambranle du couloir — le seul pan que les quatre états laissent
-/// nu, et celui-là même où le palais du chef accrochait son portrait doré
-/// avant qu'on l'en retire. Le visage y est indistinct : le président du
-/// jeu n'a pas de traits, nulle part.
+/// L'aquarium est encastré dans le panneau de bois sous le climatiseur ; le
+/// berceau se pose sur le tapis, au bord de la baie. La chambre a trois
+/// cadrages — le jour, la nuit blanche, et celui des dix plaques « on n'est
+/// pas seul » — et chacun a sa place. Le troisième a aussi sa découpe : la
+/// lumière n'y tombe pas pareil, et un tirage de la chambre vide y aurait
+/// l'air collé.
 const _poses = <PoseObjet>[
   PoseObjet(
-    objet: 'portrait_officiel',
-    piece: Piece.bureau,
-    places: {'': Zone(0.364, 0.266, 0.044, 0.086)},
+    objet: 'aquarium',
+    piece: Piece.chambre,
+    teinteLaNuit: false,
+    images: {'presence': 'aquarium_presence'},
+    places: {
+      'base': Zone(0.254, 0.313, 0.110, 0.105),
+      'nuit': Zone(0.265, 0.310, 0.110, 0.105),
+      'presence': Zone(0.270, 0.320, 0.106, 0.105),
+    },
+  ),
+  PoseObjet(
+    objet: 'berceau',
+    piece: Piece.chambre,
+    images: {'presence': 'berceau_presence'},
+    places: {
+      'base': Zone(0.575, 0.635, 0.103, 0.138),
+      'nuit': Zone(0.600, 0.659, 0.103, 0.138),
+      'presence': Zone(0.547, 0.604, 0.117, 0.150),
+    },
   ),
 ];
 
 /// Une découpe à poser sur la plaque courante.
 class Decoupe {
-  const Decoupe({required this.objet, required this.zone});
+  const Decoupe({
+    required this.objet,
+    required this.fichier,
+    required this.zone,
+    required this.teinteLaNuit,
+  });
 
   final String objet;
-  final Zone zone;
 
-  String get image => '$dossierDesDecoupes/$objet.png';
+  /// Le nom du fichier, sans le dossier ni l'extension. Il vaut
+  /// l'identifiant de l'objet, sauf quand un cadrage demande sa découpe.
+  final String fichier;
+  final Zone zone;
+  final bool teinteLaNuit;
+
+  String get image => '$dossierDesDecoupes/$fichier.png';
 }
 
 /// Ce qu'il y a à poser sur cette plaque : les objets qui sont au palais,
@@ -519,15 +571,26 @@ List<Decoupe> decoupesDe(Piece piece, String etat, Set<String> objets) {
   for (final pose in _poses) {
     if (pose.piece != piece || !objets.contains(pose.objet)) continue;
     final zone = pose.placeDans(etat);
-    if (zone != null) liste.add(Decoupe(objet: pose.objet, zone: zone));
+    if (zone != null) {
+      liste.add(Decoupe(
+        objet: pose.objet,
+        fichier: pose.imageDans(etat),
+        zone: zone,
+        teinteLaNuit: pose.teinteLaNuit,
+      ));
+    }
   }
   return liste;
 }
 
 /// Les objets du catalogue qui ont une découpe, quelle que soit la pièce.
-/// Les tests s'en servent pour vérifier qu'aucune image ne manque, et
-/// qu'aucune ne traîne sans objet.
 Set<String> get objetsAvecDecoupe => {for (final p in _poses) p.objet};
+
+/// Tous les fichiers de découpe déclarés. Les tests s'en servent pour
+/// vérifier qu'aucune image ne manque, et qu'aucune ne traîne sans pose.
+Set<String> get fichiersDesDecoupes => {
+      for (final p in _poses) ...{p.objet, ...p.images.values},
+    };
 
 /// Ce qui teinte une découpe la nuit. Les plaques de nuit ont été étalonnées
 /// d'un bloc depuis celles de jour ; un même mur y passe de (109, 85, 58) à

@@ -312,7 +312,10 @@ class _DecorState extends State<_Decor> with SingleTickerProviderStateMixin {
                 Positioned.fromRect(
                   rect: surEcran(decoupe.zone),
                   child: IgnorePointer(
-                    child: _Decoupe(chemin: decoupe.image, nuit: widget.nuit),
+                    child: _Decoupe(
+                      chemin: decoupe.image,
+                      nuit: widget.nuit && decoupe.teinteLaNuit,
+                    ),
                   ),
                 ),
               if (widget.ecran != null)
