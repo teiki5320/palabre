@@ -30,7 +30,7 @@
 
 ## Vue d'ensemble
 
-- **iOS** : la chaîne de construction existe et fonctionne — Xcode Cloud est câblé par `ios/ci_scripts/ci_post_clone.sh`, la signature est déléguée au service, l'équipe et l'identifiant de bundle sont renseignés dans le projet Xcode. Preuve sur GitHub : le flux Xcode Cloud « palabre-testflight » a réussi son archive iOS du 13 au 27 octobre 2026, puis de nouveau le 29 octobre (build 173) et à chacun des huit envois du 30 octobre (builds 174 à 181, mails d'Apple) ; seule la build 172 du 28 octobre avait échoué, le script `ci_post_clone.sh` ayant dépassé le délai de 15 minutes sans rien écrire. **TestFlight** : deux builds y sont arrivées le 30 octobre 2026, 0.32.0 (178) puis 0.35.0 (181) — mails « is now available to test » d'Apple, vérifié dans Gmail le 31 octobre 2026 ; jusqu'au 29 octobre, aucune build n'y était arrivée. Aucune soumission en boutique : l'app n'est pas sur l'App Store. État de la fiche : à vérifier dans la console.
+- **iOS** : la chaîne de construction existe et fonctionne — Xcode Cloud est câblé par `ios/ci_scripts/ci_post_clone.sh`, la signature est déléguée au service, l'équipe et l'identifiant de bundle sont renseignés dans le projet Xcode. Preuve sur GitHub : le flux Xcode Cloud « palabre-testflight » a réussi son archive iOS du 13 au 27 octobre 2026, puis de nouveau le 29 octobre (build 173) et à chacun des huit envois du 30 octobre (builds 174 à 181, mails d'Apple) ; seule la build 172 du 28 octobre avait échoué, le script `ci_post_clone.sh` ayant dépassé le délai de 15 minutes sans rien écrire. **TestFlight** : deux builds y ont été envoyées à la main le 30 octobre 2026 (confirmé par Jean), 0.32.0 (178) puis 0.35.0 (181) — mails « is now available to test » d'Apple, vérifié dans Gmail le 31 octobre 2026 ; jusqu'au 29 octobre, aucune build n'y était arrivée. Aucune soumission en boutique : l'app n'est pas sur l'App Store. État de la fiche : à vérifier dans la console.
 - **Android** : la signature de publication est **câblée et vérifiée**. `android/app/build.gradle.kts` lit `android/key.properties` quand ce fichier existe et signe la variante `release` avec ; sans lui — intégration continue, machine neuve — il retombe sur la clé de debug pour que `flutter run --release` continue de marcher. Vérifié de bout en bout avec un keystore jetable : l'APK produit portait bien le certificat de cette clé, pas celui de debug. Aucune trace de la vraie clé de publication pour l'instant — à vérifier hors dépôt. Le bundle pèse **109,3 Mo** pour une limite de 150 Mo sur le module de base (mesuré le 30 octobre 2026) : la marge est de quarante mégaoctets. Il en faisait 143,3 jusqu'à la recompression des images du 30 octobre.
 - **Version commune** : **0.36.0+1** (`pubspec.yaml`). Les deux plateformes en dépendent : iOS lit `FLUTTER_BUILD_NAME` et `FLUTTER_BUILD_NUMBER`, Android lit `flutter.versionName` et `flutter.versionCode`. Une seule ligne à changer pour les deux.
 - **Identifiant de bundle** : **`sn.palabre.app`**, identique des deux côtés — `PRODUCT_BUNDLE_IDENTIFIER` dans `ios/Runner.xcodeproj/project.pbxproj`, `applicationId` dans `android/app/build.gradle.kts`. Le `namespace` Android, `sn.palabre.president`, est interne au code Kotlin et n'a aucun effet sur la boutique. Nom affiché des deux côtés : **« Palabre »**.
@@ -56,7 +56,7 @@
 | **Signature** | déléguée à Xcode Cloud ; aucun certificat ni profil dans le dépôt |
 | **Classification** | 17+ visée, à cause des scènes de chambre — questionnaire à remplir, à vérifier dans la console |
 | **Confidentialité** | aucune donnée collectée ; politique en ligne, `https://palabre.toakeur.com/confidentialite.html`, contact `palabre@toakeur.com` |
-| **TestFlight** | 0.32.0 (178) puis 0.35.0 (181) disponibles au test depuis le 30 octobre 2026 (mails d'Apple, vérifié dans Gmail le 31 octobre) ; jusqu'au 29 octobre, aucune build n'y était arrivée. Builds 174 à 181 réussies le 30 octobre ; testeurs et mode d'envoi : à vérifier dans la console |
+| **TestFlight** | 0.32.0 (178) puis 0.35.0 (181) disponibles au test depuis le 30 octobre 2026 (mails d'Apple, vérifié dans Gmail le 31 octobre) ; jusqu'au 29 octobre, aucune build n'y était arrivée. Builds 174 à 181 réussies le 30 octobre ; la 178 et la 181 ont été envoyées à la main sur TestFlight (le flux ne les envoie pas tout seul) ; testeurs : à vérifier dans la console |
 | **Fiche (titre, description, captures)** | rédigée dans `docs/BOUTIQUE.md`, captures dans `docs/captures/` |
 
 ### 2. Android · Google Play
@@ -88,7 +88,7 @@
 3. ✅ **Signature Android câblée** : `key.properties` lu s'il existe, vérifié avec une clé jetable.
 4. **Trancher le modèle de rémunération** : il décide de la fiche, de la classification et de la confidentialité.
 5. **Remplir les questionnaires** : classification et confidentialité, des deux côtés.
-6. ✅ **Builds sur TestFlight** : 0.32.0 (178) puis 0.35.0 (181), arrivées le 30 octobre 2026.
+6. ✅ **Builds sur TestFlight** : 0.32.0 (178) puis 0.35.0 (181), envoyées à la main le 30 octobre 2026.
 7. **Essayer la build 181 sur un appareil réel** : depuis TestFlight, avant toute soumission.
 8. **Poser la vraie clé Android** : `android/key.properties`, sauvegardée hors du dépôt.
 9. ✅ **Bundle Android sous 150 Mo** : 109,3 Mo depuis la recompression des images du 30 octobre 2026.
