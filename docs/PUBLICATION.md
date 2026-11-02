@@ -56,7 +56,7 @@
 | **Signature** | déléguée à Xcode Cloud ; aucun certificat ni profil dans le dépôt |
 | **Classification** | 17+ visée, à cause des scènes de chambre — questionnaire à remplir, à vérifier dans la console |
 | **Confidentialité** | aucune donnée collectée ; politique en ligne, `https://palabre.toakeur.com/confidentialite.html`, contact `palabre@toakeur.com` |
-| **TestFlight** | 0.32.0 (178) puis 0.35.0 (181) disponibles au test depuis le 30 octobre 2026, puis 0.36.0 (183) depuis le 31 octobre 2026 (mails d'Apple, vérifié dans Gmail le 1er novembre) ; jusqu'au 29 octobre, aucune build n'y était arrivée. La 178 et la 181 ont été envoyées à la main le 30 octobre ; pour la 183, envoi à la main ou automatique à vérifier dans la console ; testeurs : à vérifier dans la console |
+| **TestFlight** | 0.32.0 (178) puis 0.35.0 (181) disponibles au test depuis le 30 octobre 2026, puis 0.36.0 (183) depuis le 31 octobre 2026 (mails d'Apple, vérifié dans Gmail le 1er novembre) ; jusqu'au 29 octobre, aucune build n'y était arrivée. La 178 et la 181 ont été envoyées à la main le 30 octobre ; depuis la 183 (31 octobre 2026), Xcode Cloud envoie maintenant les builds tout seul sur TestFlight (flux `palabre-testflight`, vérifié dans Gmail le 2 novembre 2026) ; testeurs : à vérifier dans la console |
 | **Fiche (titre, description, captures)** | rédigée dans `docs/BOUTIQUE.md`, captures dans `docs/captures/` |
 
 ### 2. Android · Google Play
