@@ -1,5 +1,6 @@
-# Uncomment this line to define a global platform for your project
-# platform :ios, '15.0'
+# Plateforme minimale, la même que l'appli (Runner : IPHONEOS_DEPLOYMENT_TARGET = 15.0).
+# Xcode 27 refuse toute cible inférieure à iOS 15.
+platform :ios, '15.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -39,5 +40,15 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
+
+    # Tous les pods visent au moins iOS 15.0, comme l'appli : sinon certains
+    # gardent 13.0 et l'archive Xcode Cloud échoue (Xcode 27 : « deployment
+    # target 13.0 … supported 15.0 to 27.2 »).
+    target.build_configurations.each do |config|
+      cible = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
+      if cible.nil? || Gem::Version.new(cible) < Gem::Version.new('15.0')
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+      end
+    end
   end
 end
