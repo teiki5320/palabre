@@ -43,7 +43,7 @@ Mis à jour le 10 novembre 2026 d'après le dépôt et la page en ligne. Pour me
 - **Rôle** : compte développeur (compte Apple Developer de Jean) — certificats et profils de signature, gérés par Xcode Cloud et non par le dépôt.
 - **Console** : https://developer.apple.com/account
 - **Identifiants publics** : équipe de développement **`K597U7X3FZ`**.
-- **Migration vers une organisation** : faite le 9 novembre 2026 — inscription envoyée le 5 novembre, acceptée par Apple le 9 novembre ; l'adhésion est désormais attribuée à l'organisation ALOHASH, même équipe `K597U7X3FZ` (mails d'Apple du 9 novembre 2026, vérifié dans Gmail le 10 novembre 2026). Apple demande encore de terminer les tâches de l'entité juridique dans App Store Connect → Business (mail du 9 novembre 2026) : état à vérifier dans la console.
+- **Migration vers une organisation** : faite le 9 novembre 2026 — inscription envoyée le 5 novembre, acceptée par Apple le 9 novembre ; l'adhésion est désormais attribuée à l'organisation ALOHASH, même équipe `K597U7X3FZ` (mails d'Apple du 9 novembre 2026, vérifié dans Gmail le 10 novembre 2026). ✅ Tâches de l'entité juridique dans App Store Connect → Business (demandées par Apple le 9 novembre 2026) : terminées (confirmé par Jean le 10 novembre 2026).
 - **Secrets** : aucun dans le dépôt ; identifiants du compte → gestionnaire de mots de passe. État de l'abonnement et des certificats : à vérifier dans la console.
 - **Coût** : adhésion annuelle.
 

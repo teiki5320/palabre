@@ -48,7 +48,7 @@
 | **Version en ligne** | à vérifier dans la console |
 | **Identifiant de l'application** | `6811035059` (relevé le 30 octobre 2026) |
 | **Identifiant de bundle** | `sn.palabre.app` |
-| **Équipe de développement** | `K597U7X3FZ` — compte attribué à l'organisation ALOHASH depuis le 9 novembre 2026 (mails d'Apple) ; tâches de l'entité juridique dans App Store Connect → Business à vérifier dans la console |
+| **Équipe de développement** | `K597U7X3FZ` — compte attribué à l'organisation ALOHASH depuis le 9 novembre 2026 (mails d'Apple) ; ✅ tâches de l'entité juridique dans App Store Connect → Business terminées (confirmé par Jean le 10 novembre 2026) |
 | **Nom affiché** | Palabre |
 | **Cible minimale** | iOS 15.0 |
 | **Construction** | Xcode Cloud, `ios/ci_scripts/ci_post_clone.sh` — Flutter 3.47.3, `build ios --release --no-codesign --config-only`, puis `pod install` |
